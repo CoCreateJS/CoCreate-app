@@ -1,3 +1,10 @@
+## [1.36.2](https://github.com/CoCreate-app/CoCreate-admin/compare/v1.36.1...v1.36.2) (2026-07-12)
+
+
+### Bug Fixes
+
+* update package.json with additional dependencies and allowScripts ([b4b9070](https://github.com/CoCreate-app/CoCreate-admin/commit/b4b9070c1d47bee31784b82fa4d63aa24f3ab39a))
+
 ## [1.36.1](https://github.com/CoCreate-app/CoCreate-admin/compare/v1.36.0...v1.36.1) (2025-05-01)
 
 
