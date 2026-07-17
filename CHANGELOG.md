@@ -1,3 +1,10 @@
+## [1.36.3](https://github.com/CoCreate-app/CoCreate-admin/compare/v1.36.2...v1.36.3) (2026-07-17)
+
+
+### Bug Fixes
+
+* update package.json to improve script commands and bump @cocreate/webpack version ([3651dfe](https://github.com/CoCreate-app/CoCreate-admin/commit/3651dfe38abf2ad28e271bbb9d0f13c33db459d1))
+
 ## [1.36.2](https://github.com/CoCreate-app/CoCreate-admin/compare/v1.36.1...v1.36.2) (2026-07-12)
 
 
