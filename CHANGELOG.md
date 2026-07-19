@@ -1,3 +1,10 @@
+## [1.36.4](https://github.com/CoCreate-app/CoCreate-admin/compare/v1.36.3...v1.36.4) (2026-07-19)
+
+
+### Bug Fixes
+
+* update workflow and configuration to use 'main' branch instead of 'master' ([8990235](https://github.com/CoCreate-app/CoCreate-admin/commit/899023540450af1bd7a0657a42c6e2512508599e))
+
 ## [1.36.3](https://github.com/CoCreate-app/CoCreate-admin/compare/v1.36.2...v1.36.3) (2026-07-17)
 
 
