@@ -129,13 +129,13 @@ self.addEventListener('push', (event) => {
     // Handle WebSocket events
     socket.addEventListener('open', () => {
         // The WebSocket connection is open, send the message to the server
-        socket.send(JSON.stringify({ method: 'object.read', array: 'files', object: { _id }, uid: '' }));
+        socket.send(JSON.stringify({ method: 'object.read', array: 'files', object: { _id },  uuid: '' }));
     });
 
     socket.addEventListener('message', (event) => {
         // Handle messages received from the server over the WebSocket
         const serverData = JSON.parse(event.data);
-        if (serverData.uid === uid) {
+        if (serverData.uuid ===  uuid) {
             // TODO: add file to cache and close socket
         }
     });
