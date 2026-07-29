@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-
+      
 jobs:
   about:
     runs-on: ubuntu-latest
@@ -48,9 +48,7 @@ jobs:
         # This will automatically pick up your export default config file in the repository root
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          NPM_TOKEN: "${{ secrets.NPM_TOKEN }}"
-
+          GITHUB_TOKEN: "${{ secrets.GITHUB }}"
     outputs:
       new_release_published: "${{ steps.semantic.outputs.new_release_published }}"
       new_release_version: "${{ steps.semantic.outputs.new_release_version }}"
