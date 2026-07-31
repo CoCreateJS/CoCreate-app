@@ -38,6 +38,14 @@ export default async (env, argv) => {
         },
 
         resolve: {
+            // Prioritize browser fields/conditions when resolving package exports
+            conditionNames: ["browser", "import", "require"],
+            
+            alias: {
+                // Force @cocreate/utils to resolve directly to the browser entry point
+                "@cocreate/utils$": path.resolve(__dirname, "node_modules/@cocreate/utils/src/browser.js")
+            },
+
             fallback: {
                 // Completely exclude server-only node core modules from the client bundle
                 "child_process": false,
@@ -56,18 +64,6 @@ export default async (env, argv) => {
                 "assert": false,
                 "buffer": false
             }
-        },
-
-        externals: {
-            // Treat these dependencies as browser globals rather than bundling them
-            "marked": "marked",
-            "github-markdown-css/github-markdown.css": "var Object",
-            "@simonwep/pickr": "Pickr",
-            "@simonwep/pickr/dist/themes/monolith.min.css": "var Object",
-            "prismjs": "Prism",
-            "prismjs/components/prism-css-extras.js": "var Object",
-            "prismjs/plugins/line-numbers/prism-line-numbers.js": "var Object",
-            "prismjs/plugins/line-numbers/prism-line-numbers.css": "var Object"
         },
         
         plugins: [
@@ -88,15 +84,7 @@ export default async (env, argv) => {
             ),
 
             new MiniCssExtractPlugin({
-                filename: isProduction ? "[name].min.css" : "[name].css",
-                chunkFilename: (pathData) => {
-                    if (pathData.chunk.name === "CoCreateCSS") {
-                        return isProduction
-                            ? "CoCreate.min.css"
-                            : "CoCreate.css";
-                    }
-                    return isProduction ? "[name].min.css" : "[name].css";
-                }
+                filename: isProduction ? "[name].css" : "[name].css",
             })
         ],
 
@@ -111,23 +99,25 @@ export default async (env, argv) => {
                         if (/ffmpeg/.test(modulePath)) {
                             return true;
                         }
-                        if (/node_modules/.test(modulePath)) {
+                        // Do not exclude @cocreate modules inside node_modules
+                        if (/node_modules/.test(modulePath) && !/@cocreate/.test(modulePath)) {
                             return true;
                         }
                         return false;
                     },
                     use: [
                         {
-                            loader: path.resolve(
-                                __dirname,
-                                "node_modules/@cocreate/webpack/src/replace-unicode.js"
-                            )
-                        },
-                        {
                             loader: "esbuild-loader",
                             options: {
                                 target: "es2017"
                             }
+                        },
+                        {
+                            // Positioned last in array to execute FIRST on raw files
+                            loader: path.resolve(
+                                __dirname,
+                                "node_modules/@cocreate/webpack/src/replace-unicode.js"
+                            )
                         }
                     ]
                 },
@@ -150,7 +140,8 @@ export default async (env, argv) => {
             minimizer: [
                 new EsbuildPlugin({
                     target: "es2017",
-                    css: true
+                    css: true,
+                    charset: "utf8" // Prevents esbuild from stripping/mangling unicode escapes
                 })
             ],
 
