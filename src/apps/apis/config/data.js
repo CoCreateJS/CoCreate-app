@@ -18,7 +18,7 @@ export const seedApisPayload = {
       "_id": "65f8ca227b39a3c1a8904dfe",
       "name": "stripe",
       "url": "https://api.stripe.com/v1",
-      "key": "sk_live_StripeKeyPlaceholderXYZ12345",
+      "key": "",
       "headers": {
         "Authorization": { 
           "$concat": [ "Bearer ", "$key" ] 
@@ -39,7 +39,7 @@ export const seedApisPayload = {
       "_id": "65f8ca227b39a3c1a8904dff",
       "name": "twilio",
       "url": "https://api.twilio.com/2010-04-01",
-      "key": "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:your_auth_token_here",
+      "key": "",
       "headers": {
         "Authorization": { 
           "$concat": [ "Basic ", { "$btoa": "$key" } ] 
@@ -82,7 +82,7 @@ export const seedApisPayload = {
       "_id": "65f8ca227b39a3c1a8904e01",
       "name": "openai",
       "url": "https://api.openai.com/v1",
-      "key": "sk-proj-OpenAIKeyPlaceholderXYZ98765",
+      "key": "",
       "headers": {
         "Authorization": { 
           "$concat": [ "Bearer ", "$key" ] 
