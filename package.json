@@ -44,10 +44,10 @@
     "upload": "coc upload"
   },
   "devDependencies": {
-    "@cocreate/webpack": "^1.7.0"
+    "@cocreate/webpack": "^1.8.0"
   },
   "dependencies": {
-    "@cocreate/cocreatejs": "^1.80.2",
+    "@cocreate/cocreatejs": "^1.81.0",
     "bootstrap": "^5.3.8"
   }
 }
