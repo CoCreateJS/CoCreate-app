@@ -47,7 +47,7 @@
     "@cocreate/webpack": "^1.7.0"
   },
   "dependencies": {
-    "@cocreate/cocreatejs": "^1.80.0",
+    "@cocreate/cocreatejs": "^1.80.2",
     "bootstrap": "^5.3.8"
   },
   "allowScripts": {
