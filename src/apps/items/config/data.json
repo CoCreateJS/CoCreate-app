@@ -1,0 +1,492 @@
+{
+  "method": "object.update",
+  "array": "items",
+  "upsert": true,
+  "object": [
+    {
+      "_id": "68d100000000000000000001",
+      "name": "Discover",
+      "description": "A complete at-home diagnostic baseline covering genetics, gut health, hormones, heart health, and biological age. Includes home collection materials, laboratory processing, and a unified insight report.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 50,
+      "price": 2500,
+      "price_case_over_20k": 2500,
+      "discount": 0,
+      "orders": 18,
+      "meta": {
+        "title": "Discover",
+        "keywords": "discover, diagnostics, genetics, gut health, hormones, biological age",
+        "description": "The Geneomes Discover experience provides the biological baseline used to guide long-term regenerative care."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Discover",
+      "path": "products/discover/",
+      "tags": ["featured", "diagnostics", "baseline"],
+      "short_description": "At-home biological baseline with full lab processing.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000013",
+      "name": "Cellular Growth Factors",
+      "description": "A third-generation regenerative intervention using pure Cellular Growth Factors to accelerate cellular renewal and maximize longevity.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 20,
+      "price": 5000,
+      "price_case_over_20k": 5000,
+      "discount": 0,
+      "orders": 0,
+      "meta": {
+        "title": "Cellular Growth Factors",
+        "keywords": "geneomes, regenerate, cellular growth factors, regenerative medicine, longevity",
+        "description": "Cellular Growth Factors is a third-generation regenerative intervention focused on accelerated cellular renewal and longevity support."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Regenerate",
+      "path": "products/regenerate/",
+      "sku": "GEN-REGENERATE-001",
+      "tags": ["3rd Generation", "Proliferation", "Differentiation"],
+      "short_description": "A third-generation regenerative intervention using pure Cellular Growth Factors.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000002",
+      "name": "Optimize",
+      "description": "Optimize delivers a custom daily formula built from your Discover biological data for a flat 100 dollars per month. It provides exact foundational vitamins, chelated minerals, and amino acids required to maintain a healthy baseline and thrive.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 999,
+      "price": 100,
+      "price_case_over_20k": 100,
+      "discount": 0,
+      "orders": 46,
+      "meta": {
+        "title": "Geneomes - Optimize",
+        "keywords": "geneomes, optimize, custom vitamins, amino acids, chelated minerals, discover",
+        "description": "Optimize delivers a custom daily formula built from your Discover biological data for a flat 100 dollars per month."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Optimize",
+      "path": "products/optimize/",
+      "tags": ["Custom Formula", "Data Driven", "Subscription"],
+      "short_description": "Data-driven custom daily formula.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000004",
+      "name": "Cell Growth Factors - Full Vial Loading Dose",
+      "description": "The primary regenerative loading dose used to establish the cellular foundation. Intended for in-clinic initiation and accelerated systemic support.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 24,
+      "price": 5000,
+      "price_case_over_20k": 5000,
+      "discount": 0,
+      "orders": 9,
+      "meta": {
+        "title": "Cell Growth Factors - Full Vial Loading Dose",
+        "keywords": "cell growth factors, full vial, loading dose, regenerate",
+        "description": "The Geneomes Cell Growth Factors full vial loading dose is the main regenerative initiation format."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Regenerate",
+      "path": "products/cell-growth-factors-full-vial-loading-dose/",
+      "tags": ["growth factors", "loading dose", "regenerate"],
+      "short_description": "Primary regenerative loading dose for clinical initiation.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000005",
+      "name": "Cell Growth Factors - 1 mL Intramuscular",
+      "description": "A pre-filled 1 mL Cell Growth Factors dose intended for intramuscular administration as part of ongoing regenerative maintenance.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 60,
+      "price": 1250,
+      "price_case_over_20k": 1250,
+      "discount": 0,
+      "orders": 16,
+      "meta": {
+        "title": "Cell Growth Factors - 1 mL Intramuscular",
+        "keywords": "cell growth factors, 1 mL, intramuscular, regenerate",
+        "description": "A 1 mL intramuscular Cell Growth Factors format for regenerative maintenance."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Regenerate",
+      "path": "products/cell-growth-factors-1-ml-intramuscular/",
+      "tags": ["growth factors", "1 mL", "intramuscular"],
+      "short_description": "1 mL intramuscular regenerative maintenance dose.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000006",
+      "name": "Cell Growth Factors - 0.5 mL Subcutaneous",
+      "description": "A lower-volume pre-filled Cell Growth Factors dose intended for subcutaneous administration and simplified at-home maintenance.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 60,
+      "price": 625,
+      "price_case_over_20k": 625,
+      "discount": 0,
+      "orders": 14,
+      "meta": {
+        "title": "Cell Growth Factors - 0.5 mL Subcutaneous",
+        "keywords": "cell growth factors, 0.5 mL, subcutaneous, regenerate",
+        "description": "A 0.5 mL subcutaneous Cell Growth Factors format for at-home regenerative support."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Regenerate",
+      "path": "products/cell-growth-factors-0-5-ml-subcutaneous/",
+      "tags": ["growth factors", "0.5 mL", "subcutaneous"],
+      "short_description": "0.5 mL subcutaneous regenerative dose.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000007",
+      "name": "Cell Growth Factors - 1 mL Pre-Filled Dropper",
+      "description": "A 1 mL topical Cell Growth Factors format designed for use with Microneedling during skin or scalp protocols.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 45,
+      "price": 1250,
+      "price_case_over_20k": 1250,
+      "discount": 0,
+      "orders": 11,
+      "meta": {
+        "title": "Cell Growth Factors - 1 mL Pre-Filled Dropper",
+        "keywords": "cell growth factors, dropper, microneedling, 1 mL",
+        "description": "A 1 mL pre-filled dropper for topical Cell Growth Factors application."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Regenerate",
+      "path": "products/cell-growth-factors-1-ml-pre-filled-dropper/",
+      "tags": ["growth factors", "dropper", "microneedling"],
+      "short_description": "1 mL topical dropper for microneedling protocols.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000008",
+      "name": "Needless Injector",
+      "description": "The at-home hardware platform designed for precise subcutaneous or intramuscular systemic delivery.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 35,
+      "price": 1500,
+      "price_case_over_20k": 1500,
+      "discount": 0,
+      "orders": 10,
+      "meta": {
+        "title": "Needless Injector",
+        "keywords": "geneomes, needless injector, at-home hardware, systemic delivery",
+        "description": "Needless Injector is the Geneomes at-home delivery system for systemic application device use."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Application Devices",
+      "path": "products/needleless-injector-device/",
+      "sku": "GEN-HDW-IM1",
+      "tags": ["Hardware", "Needless Injector", "At-Home"],
+      "short_description": "At-home delivery hardware for systemic use.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000009",
+      "name": "Microneedling",
+      "description": "Advanced at-home hardware used to enhance topical absorption of curated serums during skin or scalp regenerative protocols.",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 35,
+      "price": 1500,
+      "price_case_over_20k": 1500,
+      "discount": 0,
+      "orders": 8,
+      "meta": {
+        "title": "Microneedling",
+        "keywords": "microneedling, topical delivery, at-home hardware",
+        "description": "Microneedling is Geneomes at-home topical delivery system for skin or scalp protocols."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Application Devices",
+      "path": "products/microneedling-device/",
+      "tags": ["hardware", "microneedling", "at-home"],
+      "short_description": "Topical delivery hardware for skin or scalp protocols.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000010",
+      "name": "Longevity Bundle",
+      "description": "<p class=\"text-muted\">A coordinated longevity bundle that includes Discover diagnostics, one at-home application device, and one full vial Cell Growth Factors loading dose.</p><ul><li>Three-part bundle</li><li>Clinic + home path</li><li>Single coordinated offer</li></ul>",
+      "detail": "<h4>A cleaner way to start the full methodology.</h4><p>This bundle combines baseline testing, regenerative initiation, and one at-home hardware system so the starting decision is simpler.</p><ul><li>Discover sets the baseline.</li><li>Full vial establishes regenerative initiation.</li><li>One application device supports transition toward maintenance.</li></ul><p><strong>Bundle math:</strong> Discover ($2,500) + Full vial ($5,000) + One application device ($1,500) = $9,000.</p>",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 20,
+      "price": 9000,
+      "price_case_over_20k": 9000,
+      "discount": 0,
+      "orders": 6,
+      "meta": {
+        "title": "Longevity Bundle",
+        "keywords": "geneomes, longevity bundle, discover, cell growth factors, application device",
+        "description": "The Longevity Bundle combines diagnostics, one application device, and a full vial loading dose in one coordinated offer."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Packages",
+      "path": "products/bundle-longevity/",
+      "tags": ["bundle", "longevity", "featured"],
+      "short_description": "Discover diagnostics + one application device + full vial loading dose.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000011",
+      "name": "Rejuvenate Bundle",
+      "description": "The Rejuvenate Bundle combines diagnostics, one application device, and two full vial loading doses in one coordinated offer.",
+      "detail": "<h4>A cleaner way to start the full methodology.</h4><p>This bundle combines baseline testing, higher-intensity regenerative initiation, and one at-home hardware system so the starting decision is simpler.</p><ul><li>Discover sets the baseline.</li><li>Two full vials establish regenerative initiation.</li><li>One application device supports transition toward maintenance.</li></ul><p><strong>Bundle math:</strong> Discover ($2,500) + Two full vials ($10,000) + One application device ($1,500) = $14,000.</p>",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 20,
+      "price": 14000,
+      "price_case_over_20k": 14000,
+      "discount": 0,
+      "orders": 0,
+      "meta": {
+        "title": "Rejuvenate Bundle",
+        "keywords": "geneomes, rejuvenate bundle, discover, cell growth factors, application device",
+        "description": "The Rejuvenate Bundle combines diagnostics, one application device, and two full vial loading doses in one coordinated offer."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Packages",
+      "path": "products/bundle-rejuvenate/",
+      "tags": ["bundle", "rejuvenate", "featured"],
+      "short_description": "Discover diagnostics + one application device + two full vial loading doses.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68d100000000000000000012",
+      "name": "Transcend Bundle",
+      "description": "<p class=\"text-muted\">A coordinated transcend bundle that includes Discover diagnostics, one at-home application device, and three full vial Cell Growth Factors loading doses.</p><ul><li>Three-part bundle</li><li>Clinic + home path</li><li>Deep regenerative initiation</li></ul>",
+      "detail": "<h4>A cleaner way to start the full methodology.</h4><p>This bundle combines baseline testing, regenerative initiation, and one at-home application device so the starting decision is simpler.</p><ul><li>Discover sets the baseline.</li><li>Three full vials establish regenerative initiation.</li><li>One application device supports transition toward maintenance.</li></ul><p><strong>Bundle math:</strong> Discover ($2,500) + Three full vials ($15,000) + One application device ($1,500) = $19,000.</p>",
+      "manufacturer": {
+        "name": "Geneomes",
+        "brand": "Geneomes"
+      },
+      "seller_id": "687f5c7d008f86f722a70c1b",
+      "stock": 20,
+      "price": 19000,
+      "price_case_over_20k": 19000,
+      "discount": 0,
+      "orders": 0,
+      "meta": {
+        "title": "Transcend Bundle",
+        "keywords": "geneomes, transcend bundle, discover, cell growth factors, application device",
+        "description": "The Transcend Bundle combines diagnostics, one application device, and three full vial loading doses in one coordinated offer."
+      },
+      "publish": {
+        "status": "Published",
+        "visibility": "Public",
+        "on": "2026-03-25T10:00:00Z",
+        "by": "user_id"
+      },
+      "category": "Packages",
+      "path": "products/bundle-transcend/",
+      "tags": ["bundle", "transcend", "featured"],
+      "short_description": "Discover diagnostics + one application device + three full vial loading doses.",
+      "status": "active",
+      "type": "product",
+      "created": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-03-25T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+<div
+	id="chat-sidenav"
+	class="chat-sidenav minimal-border d-none show position:absolute@xxs@xs@sm width:100%@xxs@xs@sm"
+	aria-hidden="false">
+	<div class="px-4 pt-4 mb-3">
+		<div class="d-flex align-items-start">
+			<div class="flex-grow-1">
+				<h5 class="mb-4">Chats</h5>
+			</div>
+			<div class="flex-shrink-0">
+				<button
+					type="button"
+					class="btn btn-soft-success btn-sm material-shadow-none"
+					aria-label="Add Contact"
+					aria-haspopup="dialog"
+					aria-expanded="false">
+					<i class="ri-add-line align-bottom"></i>
+				</button>
+			</div>
+		</div>
+		<div class="search-box">
+			<input
+				type="text"
+				class="form-control bg-light border-light"
+				placeholder="Search here..."
+				filter-query="$document .chat-list[]"
+				filter-query-key="name.$regex"
+				filter-query-options="i" />
+			<i class="ri-search-2-line search-icon"></i>
+		</div>
+	</div>
+
+	<ul
+		class="nav nav-tabs nav-tabs-custom nav-success nav-justified"
+		role="tablist">
+		<li class="nav-item">
+			<a
+				class="nav-link"
+				role="tab"
+				aria-controls="chats"
+				aria-selected="true">
+				Chats
+			</a>
+		</li>
+		<li class="nav-item">
+			<a
+				class="nav-link"
+				role="tab"
+				aria-controls="contacts"
+				aria-selected="false">
+				Contacts
+			</a>
+		</li>
+	</ul>
+
+	<div
+		class="text-muted chat-room-list"
+		plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="tab-content">
+			<div class="tab-pane pt-3 show" id="chats" role="tabpanel">
+				<ul
+					class="list-unstyled chat-list"
+					array="chats"
+					object
+					render-query="[template='chat-contact-template']"
+					filter-sort-key="modified.on"
+					filter-sort-direction="desc">
+					<li
+						template="chat-contact-template"
+						id="chat-head-{{object._id}}">
+						<a
+							state-to="selected-chat"
+							state.class="{{object.type}}"
+							state.filter-query-value="{{object._id}}"
+							aria-label="Toggle Chat Sidenav"
+							aria-controls="chat-sidenav"
+							aria-expanded="true">
+							<div
+								state-to="selected-chat_id"
+								state.object="{{object._id}}"></div>
+							<div
+								state-to="selected-chat-topbar"
+								state.src="/apps/chat/components/topbar/{{object.type}}.html"></div>
+							<div
+								state-to="selected-chat-view"
+								state.src="/apps/chat/view.html"></div>
+							<input
+								type="hidden"
+								filter-query-key="_id.$in"
+								filter-query-value="{{object.participants}}"
+								filter-query="$next [array='contacts']" />
+
+							<div
+								src="/apps/chat/components/sidenav/{{object.type}}.html"></div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="tab-pane pt-3" id="contacts" role="tabpanel">
+				<ul
+					class="list-unstyled chat-list"
+					array="contacts"
+					object
+					render-query="[template='chat-contact-tab-template']"
+					filter-sort-key="name"
+					filter-sort-direction="asc">
+					<li template="chat-contact-tab-template" class="mb-2">
+						<a class="d-flex align-items-center">
+							<div class="flex-shrink-0 me-2">
+								<div
+									class="avatar-xs rounded-circle position-relative overflow-hidden">
+									<div
+										class="avatar-title bg-secondary-subtle text-secondary material-shadow">
+										<span
+											class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"
+											>{{object.first_name}}</span
+										>
+										<span
+											class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"
+											>{{object.last_name}}</span
+										>
+										<img
+											src="/assets/images/transparent.png"
+											alt=""
+											class="position-absolute object-fit-cover"
+											array="contacts"
+											object="{{object._id}}"
+											key="avatar[0].src"
+											width="100%"
+											height="100%"
+											onerror="
+												this.onerror = null;
+												this.src =
+													'../assets/images/transparent.png';
+											" />
+									</div>
+								</div>
+							</div>
+							<div class="flex-grow-1">
+								<p class="text-truncate contactlist-name mb-0">
+									{{object.name}}
+								</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,269 @@
+<!-- Dragula css -->
+<link rel="stylesheet" href="/assets/libs/dragula/dragula.min.css" />
+	<div src="/components/field-select.html"></div>
+
+<div
+	id="kanban"
+	state-id="app"
+	state-overwrite
+	array="apps"
+	object=""
+	key=""
+	render-query="[template='column']"
+	render-as="column"
+	input.plugin="SimpleBar"
+	input-query="[plugin]"
+	class="tasks-board align-middle">
+	<div class="tasks-list" template="column">
+		<div class="d-flex mb-3">
+			<div class="flex-grow-1">
+				<h6 class="fs-14 text-uppercase fw-semibold mb-0">
+					{{column.innerText}}
+					<small
+						class="badge bg-success align-bottom ms-1 totaltask-badge"
+						>{{column.cards.length}}</small
+					>
+				</h6>
+			</div>
+			<div class="flex-shrink-0">
+				<div class="dropdown">
+					<button
+						type="button"
+						class="btn btn-link text-reset p-0"
+						aria-controls="priority-dropdown"
+						aria-haspopup="true"
+						aria-expanded="false">
+						<span class="fw-medium text-muted fs-12">
+							Priority<i class="mdi mdi-chevron-down ms-1"></i>
+						</span>
+					</button>
+					<div
+						id="priority-dropdown"
+						class="dropdown-menu dropdown-menu-end"
+						role="menu"
+						aria-hidden="true">
+						<a class="dropdown-item" href="#">Priority</a>
+						<a class="dropdown-item" href="#">Date Added</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div 	
+			filter-query-key="status"
+			filter-query-value="{{column.key}}"
+			filter-query="$next">
+		</div>
+		<div
+			state-id="list"
+			state-overwrite
+			array="{{column.$array}}"
+			object
+			render-query="[template='card']"
+			filter-limit
+			style="max-height: 300px;"
+			plugin='{"SimpleBar": ["$this", {}]}'
+			class="tasks-wrapper px-3 mx-n3">
+			<div class="tasks h-100" >
+				<!-- Card Template -->
+				<div class="card tasks-box" template="card" object="">
+					<div class="card-body">
+						<div class="d-flex mb-2">
+							<h6
+								class="fs-15 mb-0 flex-grow-1 text-truncate task-title">
+								<a
+									tabindex="0"
+									aria-controls="offcanvas-app"
+									aria-open
+									aria-haspopup="dialog"
+									aria-expanded="false"
+									click-query="$document #offcanvas-app"
+									click.object="{{object._id}}"
+									class="name-trigger">
+									{{object.name}}
+								</a>
+							</h6>
+							<div class="dropdown">
+								<a
+									href="javascript:void(0);"
+									class="text-muted"
+									id="dropdownMenuLink1"
+									data-bs-toggle="dropdown"
+									aria-expanded="false"
+									><i class="ri-more-fill"></i
+								></a>
+								<ul
+									class="dropdown-menu"
+									aria-labelledby="dropdownMenuLink1">
+									<li>
+										<a
+											tabindex="0"
+											aria-controls="offcanvas-app"
+											aria-open
+											aria-haspopup="dialog"
+											aria-expanded="false"
+											click-query="$document #offcanvas-app"
+											click.object="{{object._id}}"
+											class="dropdown-item">
+											<i
+												class="ri-eye-fill align-bottom me-2 text-muted"></i>
+											View
+										</a>
+									</li>
+									<li>
+										<a
+											tabindex="0"
+											aria-controls="offcanvas-app"
+											aria-open
+											aria-haspopup="dialog"
+											aria-expanded="false"
+											state-to="offcanvas-app-view"
+											state.view="form"
+											click-query="$document #offcanvas-app"
+											click.object="{{object._id}}"
+											class="dropdown-item"
+											href="#">
+											<i
+												class="ri-edit-2-line align-bottom me-2 text-muted"></i>
+											Edit
+										</a>
+									</li>
+									<li>
+										<a
+											class="dropdown-item"
+											aria-haspopup="dialog"
+											aria-label="Remove selected items"
+											aria-controls="removeItemModal">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<p class="text-muted">{{object.description}}</p>
+						<div class="mb-3">
+							<div class="d-flex mb-1">
+								<div class="flex-grow-1">
+									<h6 class="text-muted mb-0">
+										<span class="text-secondary">15%</span>
+										of 100%
+									</h6>
+								</div>
+								<div class="flex-shrink-0">
+									<span class="text-muted">03 Jan, 2022</span>
+								</div>
+							</div>
+							<div class="progress rounded-3 progress-sm">
+								<div
+									class="progress-bar bg-danger"
+									role="progressbar"
+									style="width: 15%"
+									aria-valuenow="15"
+									aria-valuemin="0"
+									aria-valuemax="100"></div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center">
+							<div class="flex-grow-1">
+								<span
+									array="contacts"
+									object="{{object._id}}"
+									key="tags"
+									render-query="[template]">
+									<span
+										template
+										class="badge bg-primary-subtle text-primary me-1">
+										{{tags}}
+									</span>
+								</span>
+							</div>
+							<div
+								class="flex-shrink-0"
+								src="components/avatar-group.html"></div>
+						</div>
+					</div>
+					<div class="card-footer border-top-dashed">
+						<div class="d-flex">
+							<div class="flex-grow-1">
+								<!-- <h6 class="text-muted mb-0">{{object._id}}</h6> -->
+								<span class="text-muted"
+									><i class="ri-time-line align-bottom"></i>
+									07 Jan, 2022</span
+								>
+							</div>
+							<div class="flex-shrink-0">
+								<ul class="link-inline mb-0">
+									<li class="list-inline-item">
+										<a href="#" class="text-muted">
+											<i
+												class="ri-eye-line align-bottom"></i>
+											<span
+												array="{{object.$array}}"
+												object="{{object._id}}"
+												key="views">
+												{{object.views}}
+											</span>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a
+											href="javascript:void(0)"
+											class="text-muted">
+											<i
+												class="ri-question-answer-line align-bottom"></i>
+											<span
+												array="comments"
+												object
+												filter-query-key="related_to"
+												filter-query-value="{{object._id}}">
+												0
+											</span>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a
+											href="javascript:void(0)"
+											class="text-muted"
+											><i
+												class="ri-attachment-2 align-bottom"></i>
+											<span
+												array="files"
+												object
+												filter-query-key="related_to"
+												filter-query-value="{{object._id}}">
+												0
+											</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--end card-body-->
+				</div>
+				<!--end card-->
+			</div>
+		</div>
+		<!--end tasks-->
+		<div class="my-3">
+			<button
+				class="btn btn-soft-info w-100"
+				aria-controls="offcanvas-app"
+				aria-open
+				aria-haspopup="dialog"
+				aria-expanded="false"
+				state-to="offcanvas-app-view"
+				state.view="form"
+				state.$reset
+				id="create-btn">
+				<i class="ri-add-line align-bottom"></i>
+				<span class="ms-1">Add More</span>
+			</button>
+		</div>
+	</div>
+	<!--end tasks-list-->
+</div>
+<!--end card-->
+
+<!-- dragula init js -->
+<script src="/assets/libs/dragula/dragula.min.js"></script>
+<!-- dom autoscroll -->
+<script src="/assets/libs/dom-autoscroller/dom-autoscroller.min.js"></script>

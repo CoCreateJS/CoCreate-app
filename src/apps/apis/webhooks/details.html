@@ -1,0 +1,127 @@
+<form
+    class="card mb-0"
+    array="webhooks"
+    object
+    state-id="offcanvas-app-form"
+    state-overwrite>
+    
+    <div
+        class="card-header text-center border-bottom-0"
+        input-query=".form-view-btn[]"
+        input.state.src="/apps/apis/webhooks/form.html"
+        src="components/offcanvas-header.html"
+        aria-label="Webhook Details Header"></div>
+
+    <div
+        class="form-container"
+        plugin="SimpleBar"
+        simplebar='["$this", {}]'
+        aria-label="Webhook Configuration Details">
+        
+        <div class="card-body d-flex flex-wrap gap-4">
+            
+            <div class="flex-shrink-0 d-flex flex-column align-items-center width:100% m-2">
+                
+                <div class="avatar-lg rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24" style="width: 80px; height: 80px;">
+                    <i class="ri-bubble-chart-line"></i>
+                </div>
+
+                <h5 class="mt-4 mb-1 text-dark fw-bold font-monospace" key="path" value-prefix="/webhooks/" aria-label="Webhook Path Suffix"></h5>
+                
+                <!-- Dynamic provider lookup linking back to apis collection -->
+                <code>
+                    <span 
+                        class="text-uppercase fw-bold fs-12 text-primary bg-primary-subtle px-2 py-1 rounded" 
+                        array="apis" 
+                        object="{{object.api_id}}" 
+                        key="name" 
+                        aria-label="Parent API Connection Profile"></span>
+                </code>
+
+                <!-- Operational developer sandboxing hooks -->
+                <ul class="list-inline mb-0 d-flex gap-2 mt-3" aria-label="Webhook Debugger Handshakes">
+                    <li class="avatar-xs">
+                        <button
+                            type="button"
+                            class="avatar-title bg-info-subtle text-info fs-15 rounded border-0"
+                            aria-label="Copy Webhook Endpoint URL"
+                            onclick="
+                                const pathVal = document.getElementById('webhook-path-string').innerText;
+                                const fullUrl = window.location.origin + '/webhooks/' + pathVal;
+                                const tempInput = document.createElement('input');
+                                tempInput.value = fullUrl;
+                                document.body.appendChild(tempInput);
+                                tempInput.select();
+                                document.execCommand('copy');
+                                document.body.removeChild(tempInput);
+                            ">
+                            <i class="ri-file-copy-line"></i>
+                        </button>
+                    </li>
+                    <li class="avatar-xs">
+                        <button
+                            type="button"
+                            class="avatar-title bg-success-subtle text-success fs-15 rounded border-0"
+                            aria-label="Simulate Webhook POST Handshake">
+                            <i class="ri-terminal-window-line"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="flex-grow-1" style="flex-basis: 0; min-width: 300px">
+                <h6
+                    class="text-muted text-uppercase fw-semibold mb-3"
+                    aria-label="Webhook Specifications Panel">
+                    Webhook Specifications
+                </h6>
+                
+                <p
+                    class="text-muted mb-4 fs-14"
+                    key="description"
+                    aria-describedby="webhook-specs-heading"></p>
+                    
+                <div class="table-responsive table-card">
+                    <table
+                        class="table table-borderless mb-0"
+                        aria-label="Webhook Specification Settings">
+                        <tbody>
+                            <tr>
+                                <td class="fw-medium text-muted" scope="row" style="width: 35%;">API Provider</td>
+                                <td>
+                                    <span 
+                                        class="fw-bold text-dark text-capitalize" 
+                                        array="apis" 
+                                        object="{{object.api_id}}" 
+                                        key="name"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-medium text-muted" scope="row">Webhook URL Path</td>
+                                <td>
+                                    <code class="text-danger">/webhooks/<span id="webhook-path-string" key="path"></span></code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-medium text-muted" scope="row">Event Locator Key</td>
+                                <td><code class="text-dark" key="action" aria-label="Dynamic Event Selector"></code></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-medium text-muted" scope="row">System Status</td>
+                                <td aria-label="Webhook Active State">
+                                    <span key="status" class="badge bg-success-subtle text-success text-uppercase">Active</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Inbound Webhook Execution Metrics and History logs -->
+            <div
+                class="w-100"
+                src="components/activities.html"
+                aria-label="Webhook Transaction Audit Logs"></div>
+        </div>
+    </div>
+</form>

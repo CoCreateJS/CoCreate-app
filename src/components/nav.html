@@ -1,0 +1,193 @@
+<nav id="navbar"
+    class="navbar navbar-expand-lg navbar-landing fixed-top is-top" 
+    scroll-top="is-top">  
+    <div class="d-flex align-items-center order-0">
+        <!-- Menu Icon -->
+        <a
+            class="menu-icon d-lg-none ms-3 ms-sm-4"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            click-query="$document #navbar"
+            click.class="is-open,">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    
+
+        <a class="navbar-brand-box d-flex align-items-center px-3 px-sm-4" href="/">
+            <img
+                src="/assets/images/icons/512x512.png"
+                alt="icon"
+                height="50"
+                class="d-block d-sm-none" />
+            <img
+                src="/assets/images/logos/logo.png"
+                alt="logo"
+                height="50"
+                class="d-none d-sm-block" />
+        </a>
+    </div>
+
+    <div
+        class="collapse navbar-collapse p-3 p-lg-0 order:1@xxs&xs&sm&md"
+        id="navbarSupportedContent">
+        <ul
+            class="navbar-nav mx-auto mt-2 mt-lg-0"
+            id="navbar-example">
+
+            <li class="nav-item dropdown">
+                <button
+                    class="nav-link dropdown-toggle"
+                    type="button"
+                    id="productsDropdown"
+                    aria-controls="productsMenu"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    Products
+                </button>
+                <ul
+                    id="productsMenu"
+                    class="dropdown-menu"
+                    aria-labelledby="productsDropdown"
+                    aria-close-on="anywhere"
+                    aria-hidden="true">
+                    <li><a class="dropdown-item" href="/shop/">All Products</a></li>
+                    
+                    <li><hr class="dropdown-divider"></li>
+                    <li><h6 class="dropdown-header text-primary text-uppercase">DISCOVER</h6></li>
+                    <li><a class="dropdown-item" href="/products/discover/">The Complete 360° Health Diagnostic</a></li>
+
+                    <li><hr class="dropdown-divider"></li>
+                    <li><h6 class="dropdown-header text-primary text-uppercase">OPTIMIZE</h6></li>
+                    <li><a class="dropdown-item" href="/products/optimize/">Your Biology, Optimized in a Bottle</a></li>
+
+                    <li><hr class="dropdown-divider"></li>
+                    <li><h6 class="dropdown-header text-primary text-uppercase">REGENERATE</h6></li>
+                    <li><a class="dropdown-item" href="/products/regenerate/">Cellular Growth Factors</a></li>
+
+                    <li><hr class="dropdown-divider"></li>
+                    <li><h6 class="dropdown-header text-primary text-uppercase">APPLICATION DEVICES</h6></li>
+                    <li><a class="dropdown-item" href="/products/needleless-injector-device/">Needleless Injector</a></li>
+                    <li><a class="dropdown-item" href="/products/microneedling-device/">Microneedling</a></li>
+                    <li><a class="dropdown-item" href="/products/pulmonary-nebulization-device/">Pulmonary Nebulization</a></li>
+                    <li><a class="dropdown-item" href="/products/nasal-spray-device/">Nasal Spray</a></li>
+
+                    <li><hr class="dropdown-divider"></li>
+                    <li><h6 class="dropdown-header text-primary text-uppercase">BUNDLES</h6></li>
+                    <li><a class="dropdown-item" href="/products/bundle-longevity/">Longevity</a></li>
+                    <li><a class="dropdown-item" href="/products/bundle-rejuvenate/">Rejuvenate</a></li>
+                    <li><a class="dropdown-item" href="/products/bundle-transcend/">Transcend</a></li>
+
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <button
+                    class="nav-link dropdown-toggle"
+                    type="button"
+                    id="solutionsDropdown"
+                    aria-controls="solutionsMenu"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                >
+                    Solutions
+                </button>
+                <ul
+                    id="solutionsMenu"
+                    class="dropdown-menu shadow-sm border-light"
+                    aria-labelledby="solutionsDropdown"
+                    aria-close-on="anywhere"
+                    aria-hidden="true"
+                    plugin="SimpleBar" 
+                    simplebar='$param($parse(["$this", {}]))' class="h-100">
+                    
+                    <!-- SECTION 1: Orthopedics -->
+                    <li><h6 class="dropdown-header text-primary fw-bold text-uppercase small letter-spacing-1">Orthopedics</h6></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/sports-injuries/">Sports Injuries & Recovery</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/general-injuries/">General Injuries & Recovery</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/orthopedics-recovery/">Orthopedic Surgery Recovery</a></li>
+                    
+                    <li><hr class="dropdown-divider opacity-25"></li>
+                    
+                    <!-- SECTION 2: Neurological & Mental Health -->
+                    <li><h6 class="dropdown-header text-primary fw-bold text-uppercase small letter-spacing-1">Neurological & Mental Health</h6></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/brain-cognitive/">Brain & Cognitive Performance</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/mental-health-resilience/">Mental Health & Resilience</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/nerver-neuropathy/">Nerve & Neuropathy</a></li>
+
+                    <li><hr class="dropdown-divider opacity-25"></li>
+
+                    <!-- SECTION 3: Aesthetics & Vitality -->
+                    <li><h6 class="dropdown-header text-primary fw-bold text-uppercase small letter-spacing-1">Aesthetics & Vitality</h6></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/skin-dermal-rejuvenation/">Skin & Dermal Rejuvenation</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/hair-loss.html">Hair & Follicle Research</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/sexual-wellness/">Sexual Wellness & Performance</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/metabolic/">Metabolic & Weight</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/scar-wound/">Scar & Wound Repair</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/cosmetic-recovery/">Cosmetic Surgery Recovery</a></li>
+
+                    <li><hr class="dropdown-divider opacity-25"></li>
+
+                    <!-- SECTION 4: Systemic & Visceral Research -->
+                    <li><h6 class="dropdown-header text-primary fw-bold text-uppercase small letter-spacing-1">Systemic & Visceral</h6></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/autoimmune/">Autoimmune & Immune</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/visceral-organs/">Organ & Visceral Health</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/inflammation/">Inflammatory Resolution</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/longevity-age/">Longevity & Age Optimization</a></li>
+                    <li><a class="dropdown-item py-2" href="/solutions/surgical-recovery/">Major Surgical & Trauma Recovery</a></li>
+                </ul>
+            </li> 
+
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#reviews">Reviews</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#team">Team</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="/contact/">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="d-flex align-items-center px-3 px-sm-4">
+        
+        <a
+            href="#"
+            class="btn btn-link p-0 me-3 text-body"
+            aria-label="Search">
+            <i class="mdi mdi-magnify fs-20"></i>
+        </a>
+
+        <a
+            href="/auth/"
+            class="btn btn-outline-secondary rounded-pill px-4"
+            state-to="authView"
+            state.src="./signin.html">Sign In
+        </a>
+    </div>
+
+    <style>
+        .vertical-overlay[aria-expanded="true"] {
+            display:block;
+        }
+    </style>
+
+    <!-- Vertical Overlay Start -->
+    <div
+        class="vertical-overlay z-index:-1"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false">
+    </div>
+    <!-- Vertical Overlay End -->
+</nav>  

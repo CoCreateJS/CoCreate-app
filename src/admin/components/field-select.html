@@ -1,0 +1,42 @@
+<div class="dropdown position:relative field-select-component">
+	<!-- search box: writes its value to the results container's filter-search -->
+	<div class="mb-3">
+		<input
+			id="field-search"
+			type="search"
+			class="form-control"
+			placeholder="Search fields"
+			title="Search fields by label or type..."
+			aria-label="Search fields"
+			filter-query-key="label"
+			filter-query="$document #field-results"
+			aria-haspopup="listbox"
+			aria-controls="field-results" />
+	</div>
+
+	<!-- results: read-only rendering of `fields` in parent state -->
+	<div
+		id="field-results"
+		state-id="app"
+		state-overwrite
+		array="apps"
+		object=""
+		key="fields"
+		render-query="[template]"
+		filter-limit="20"
+		aria-close-on="anywhere"
+		role="listbox"
+		class="dropdown-menu max-height:280px overflowy:auto position:absolute width:100% z-index:1">
+		<div template class="field-card border" tagname="{{fields.tagName}}">
+			<a
+				class="d-flex flex-direction:column align-items-start p-2"
+				role="button"
+				click.key="fields[{{index}}].children"
+				click-query="$document #kanban"
+				aria-label="Select field">
+				<h6 class="mb-0">{{fields.label}}</h6>
+				<small class="text-muted">{{fields.tagName}}</small>
+			</a>
+		</div>
+	</div>
+</div>

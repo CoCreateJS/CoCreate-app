@@ -1,0 +1,180 @@
+<form
+	class="card mb-0"
+	array=""
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/apps/form.html"
+		src="components/offcanvas-header.html"
+		aria-label="Application Details Header"></div>
+	<div
+		class="form-container"
+		plugin='{"SimpleBar": ["$this", {}]}'
+		aria-label="Application Details Container">
+		<div
+			class="card-body d-flex flex-wrap gap-4 justify-content-center"
+			aria-label="Application Details Body">
+			<!-- Centered Avatar Section -->
+			<div
+				class="flex-shrink-0 d-flex flex-column align-items-center width:100%"
+				style="margin-bottom: 2rem">
+				<div class="position-relative d-inline-block">
+					<img
+						src="/assets/images/user.png"
+						key="avatar[0].src"
+						alt="Avatar"
+						class="avatar-xl rounded-circle img-thumbnail material-shadow"
+						aria-label="Application Avatar" />
+				</div>
+				<h5
+					class="mt-4 mb-1"
+					key="name"
+					aria-label="Application Name"></h5>
+				<p
+					class="text-muted"
+					key="singularName"
+					aria-label="Application Singular Name"></p>
+			</div>
+			<!-- Application Information Section -->
+			<div
+				class="flex-grow-1"
+				style="min-width: 300px"
+				aria-label="Application Information Section">
+				<h6
+					class="text-muted text-uppercase fw-semibold mb-3"
+					aria-label="Application Information Heading">
+					Application Information
+				</h6>
+				<div class="table-responsive table-card">
+					<table
+						class="table table-borderless mb-0"
+						aria-label="Application Details Table">
+						<tbody>
+							<tr>
+								<td
+									class="fw-medium"
+									scope="row"
+									aria-label="Path Label">
+									Path
+								</td>
+								<td key="path" aria-label="Path Value"></td>
+							</tr>
+							<tr>
+								<td
+									class="fw-medium"
+									scope="row"
+									aria-label="Statuses Label">
+									Statuses
+								</td>
+								<td aria-label="Statuses Values">
+									<span
+										key="statuses"
+										render-query="[template]"
+										aria-label="Statuses List">
+										<span
+											template
+											class="badge bg-success-subtle text-success me-1"
+											aria-label="Status Badge">
+											{{statuses.label}}
+										</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td
+									class="fw-medium"
+									scope="row"
+									aria-label="Type Label">
+									Type
+								</td>
+								<td aria-label="Type Value">
+									<span
+										key="type"
+										render-query="[template]"
+										aria-label="Type List">
+										<span
+											template
+											class="badge bg-info-subtle text-info me-1"
+											aria-label="Type Badge">
+											{{type}}
+										</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td
+									class="fw-medium"
+									scope="row"
+									aria-label="Tags Label">
+									Tags
+								</td>
+								<td aria-label="Tags Values">
+									<span
+										key="tags"
+										render-query="[template]"
+										aria-label="Tags List">
+										<span
+											template
+											class="badge bg-primary-subtle text-primary me-1"
+											aria-label="Tag Badge">
+											{{tags}}
+										</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td
+									class="fw-medium"
+									scope="row"
+									aria-label="Main Views Label">
+									Main Views
+								</td>
+								<td aria-label="Main Views Values">
+									<span
+										key="mainViews"
+										render-query="[template]"
+										aria-label="Main Views List">
+										<span
+											template
+											class="badge bg-warning-subtle text-warning me-1"
+											aria-label="Main View Badge">
+											{{mainViews}}
+										</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td
+									class="fw-medium"
+									scope="row"
+									aria-label="Secondary Views Label">
+									Secondary Views
+								</td>
+								<td aria-label="Secondary Views Values">
+									<span
+										key="secondaryViews"
+										render-query="[template]"
+										aria-label="Secondary Views List">
+										<span
+											template
+											class="badge bg-secondary-subtle text-secondary me-1"
+											aria-label="Secondary View Badge">
+											{{secondaryViews}}
+										</span>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div
+				class="w-100"
+				src="components/activities.html"
+				aria-label="Application Activities Section"></div>
+		</div>
+	</div>
+</form>

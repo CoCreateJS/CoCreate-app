@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Clinic Floor Plan (33' W x 18.3'/19.4' D)</title>
+        <style>
+            :root {
+                --bg-color: #f8f9fa;
+                --wall-color: #333;
+                --grid-color: #e0e0e0;
+                --furniture-stroke: #000;
+                --furniture-fill: #fff;
+                --text-color: #000;
+
+                /* Layer Colors */
+                --elec-color: #d32f2f; /* Red */
+                --data-color: #1976d2; /* Blue */
+                --hvac-color: #00897b; /* Teal */
+                --light-color: #fbc02d; /* Yellow/Gold */
+                --gas-color: #795548; /* Brown for Brown Gas */
+                --equip-color: #9b59b6;
+                --dims-color: #e74c3c;
+            }
+
+            body {
+                font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                background-color: var(--bg-color);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+                color: #444;
+                text-align: center;
+            }
+
+            /* Controls */
+            .controls {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .toggle-btn {
+                padding: 8px 16px;
+                border: 2px solid #ccc;
+                background: white;
+                border-radius: 20px;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.2s ease;
+                color: #777;
+            }
+
+            .toggle-btn.active {
+                border-color: transparent;
+                color: white;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Specific Button Colors when Active */
+            .toggle-btn[data-target="furniture"].active { background-color: #555; }
+            .toggle-btn[data-target="equipment"].active { background-color: var(--equip-color); }
+            .toggle-btn[data-target="dimensions"].active { background-color: var(--dims-color); }
+            .toggle-btn[data-target="electrical"].active { background-color: var(--elec-color); }
+            .toggle-btn[data-target="hvac"].active { background-color: var(--hvac-color); }
+            .toggle-btn[data-target="data"].active { background-color: var(--data-color); }
+            .toggle-btn[data-target="browngas"].active { background-color: var(--gas-color); }
+
+            .blueprint-container {
+                background: white;
+                padding: 40px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                max-width: 100%;
+                overflow: auto;
+                position: relative;
+            }
+
+            /* SVG Styles */
+            svg {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Legend Styles */
+            .legend {
+                margin-top: 30px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+                width: 100%;
+                border-top: 1px solid #eee;
+                padding-top: 20px;
+            }
+            .legend-item {
+                display: flex;
+                align-items: center;
+                font-size: 12px;
+                color: #555;
+            }
+            .legend-icon {
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Transition for layers */
+            g.layer { transition: opacity 0.3s ease; }
+            g.layer.hidden { opacity: 0; pointer-events: none; }
+
+            .grid-line {
+                stroke: var(--grid-color);
+                stroke-width: 1;
+            }
+
+            .wall {
+                stroke: var(--wall-color);
+                stroke-width: 6; /* Thick walls */
+                fill: none;
+                stroke-linecap: square;
+            }
+
+            .wall-thin {
+                stroke: var(--wall-color);
+                stroke-width: 3;
+                fill: none;
+            }
+
+            .furniture {
+                stroke: var(--furniture-stroke);
+                stroke-width: 2;
+                fill: var(--furniture-fill);
+            }
+
+            .furniture-detail {
+                stroke: var(--furniture-stroke);
+                stroke-width: 1;
+                fill: none;
+            }
+
+            .door-swing {
+                stroke: var(--wall-color);
+                stroke-width: 1;
+                fill: none;
+                stroke-dasharray: 4, 2;
+            }
+
+            .dimension-line {
+                stroke: #666;
+                stroke-width: 1;
+            }
+
+            .dimension-text {
+                font-size: 12px;
+                fill: #333;
+                font-weight: 600;
+                text-anchor: middle;
+            }
+
+            .label-text {
+                font-size: 14px;
+                font-weight: bold;
+                fill: #000;
+                text-anchor: middle;
+                dominant-baseline: middle;
+            }
+
+            .sub-label-text {
+                font-size: 11px;
+                fill: #333;
+                text-anchor: middle;
+                dominant-baseline: middle;
+            }
+
+            /* Symbol Styles */
+            .elec-symbol { stroke: var(--elec-color); stroke-width: 1.5; fill: white; }
+            .elec-text { font-size: 9px; fill: var(--elec-color); font-weight: bold; text-anchor: middle; }
+            .light-symbol { stroke: var(--light-color); stroke-width: 2; fill: none; }
+            .data-symbol { stroke: var(--data-color); stroke-width: 2; fill: var(--data-color); }
+            .hvac-symbol { stroke: var(--hvac-color); stroke-width: 1.5; fill: white; }
+            .hvac-text { font-size: 8px; fill: var(--hvac-color); font-weight: bold; text-anchor: middle; }
+            .gas-symbol { stroke: var(--gas-color); stroke-width: 1.5; fill: white; }
+            .gas-text { font-size: 7px; fill: var(--gas-color); font-weight: bold; text-anchor: middle; }
+
+            /* Utility classes for text rotation */
+            .rotate-neg-90 { transform-box: fill-box; transform-origin: center; transform: rotate(-90deg); }
+            .rotate-90 { transform-box: fill-box; transform-origin: center; transform: rotate(90deg); }
+        </style>
+    </head>
+    <body>
+        <h1>Clinic Floor Plan (33' W x 18.3'/19.4' D)</h1>
+
+        <!-- Toggle Controls -->
+        <div class="controls">
+            <button class="toggle-btn active" data-target="furniture" onclick="toggleLayer('furniture', this)">Furniture</button>
+            <button class="toggle-btn active" data-target="equipment" onclick="toggleLayer('equipment', this)">Equipment</button>
+            <button class="toggle-btn active" data-target="dimensions" onclick="toggleLayer('dimensions', this)">Dimensions</button>
+            <button class="toggle-btn active" data-target="electrical" onclick="toggleLayer('electrical', this)">Electrical</button>
+            <button class="toggle-btn active" data-target="data" onclick="toggleLayer('data', this)">Data</button>
+            <button class="toggle-btn active" data-target="hvac" onclick="toggleLayer('hvac', this)">HVAC</button>
+            <button class="toggle-btn active" data-target="browngas" onclick="toggleLayer('browngas', this)">Brown Gas</button>
+        </div>
+
+        <div class="blueprint-container">
+            <!-- Width extended to 660 (33ft) -->
+            <svg width="780" height="520" viewBox="-60 -60 780 520" xmlns="http://www.w3.org/2000/svg">
+                <!-- Definitions for Arrowheads and Grid -->
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#666" />
+                    </marker>
+                    <marker id="arrow-start" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                        <path d="M9,0 L9,6 L0,3 z" fill="#666" />
+                    </marker>
+                    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#eee" stroke-width="1" />
+                    </pattern>
+
+                    <!-- NEW SYMBOLS -->
+                    <g id="mirror">
+                        <!-- 36" (60 units) wide, offset to be outside wall -->
+                        <rect x="-7" y="-30" width="4" height="60" fill="#aed6f1" stroke="#3498db" stroke-width="1" />
+                    </g>
+
+                    <g id="salon-chair">
+                        <!-- 27" Wide (Y) x 20" Deep (X) = 45u x 33.3u -->
+                        <rect x="-16.6" y="-22.5" width="33.3" height="45" rx="4" class="furniture" />
+                        <rect x="-16.6" y="-18" width="5" height="36" rx="2" fill="#999" stroke="#000" stroke-width="1" />
+                        <rect x="-10" y="-24" width="20" height="5" rx="1" class="furniture" />
+                        <rect x="-10" y="19" width="20" height="5" rx="1" class="furniture" />
+                    </g>
+
+                    <g id="barber-chair">
+                        <!-- 27" Wide (Y) x 20" Deep (X) -->
+                        <rect x="-16.6" y="-22.5" width="33.3" height="45" rx="6" class="furniture" />
+                        <rect x="-16.6" y="-18" width="6" height="36" rx="2" fill="#555" />
+                        <rect x="-18" y="-6" width="4" height="12" rx="1" fill="#333" />
+                        <path d="M 16.7 -15 L 25 -15 L 25 15 L 16.7 15" fill="none" stroke="#000" stroke-width="1" />
+                        <rect x="-8" y="-25" width="20" height="6" rx="2" fill="#333" />
+                        <rect x="-8" y="19" width="20" height="6" rx="2" fill="#333" />
+                    </g>
+
+                    <g id="wash-station">
+                        <!-- Dimensions: 26.5" W x 40" D = 44.2u x 66.7u -->
+                        <path d="M 0 0 L 44.2 0 L 44.2 25 Q 22.1 35 0 25 Z" fill="#fff" stroke="#000" stroke-width="1" />
+                        <path d="M 15 0 Q 22.1 10 29.2 0" fill="none" stroke="#000" stroke-width="1" />
+                        <rect x="2" y="25" width="40.2" height="41.7" rx="4" class="furniture" fill="#444" />
+                        <rect x="0" y="30" width="6" height="30" rx="2" class="furniture" fill="#333" />
+                        <rect x="38.2" y="30" width="6" height="30" rx="2" class="furniture" fill="#333" />
+                    </g>
+
+                    <g id="outlet">
+                        <circle cx="0" cy="0" r="5" class="elec-symbol" />
+                        <line x1="5" y1="-2.2" x2="-12" y2="-2.2" stroke="#d32f2f" stroke-width="1.2" />
+                        <line x1="5" y1="2.2" x2="-12" y2="2.2" stroke="#d32f2f" stroke-width="1.2" />
+                    </g>
+
+                    <g id="outlet-dedicated">
+                        <circle cx="0" cy="0" r="6" class="elec-symbol" stroke-width="2" />
+                        <line x1="6" y1="-2.2" x2="-13" y2="-2.2" stroke="#d32f2f" stroke-width="1.5" />
+                        <line x1="6" y1="2.2" x2="-13" y2="2.2" stroke="#d32f2f" stroke-width="1.5" />
+                        <text x="0" y="2.5" class="elec-text" style="font-size: 6.5px">D</text>
+                    </g>
+
+                    <g id="switch">
+                        <circle cx="0" cy="0" r="5" fill="#d32f2f" />
+                        <text x="8" y="4" class="elec-text">S</text>
+                    </g>
+
+                    <g id="light-recessed">
+                        <circle cx="0" cy="0" r="8" class="light-symbol" />
+                        <line x1="-5" y1="-5" x2="5" y2="5" stroke="#fbc02d" />
+                        <line x1="5" y1="-5" x2="-5" y2="5" stroke="#fbc02d" />
+                    </g>
+
+                    <g id="data-port">
+                        <rect x="-5" y="-5" width="10" height="10" class="data-symbol" />
+                    </g>
+
+                    <g id="ac-unit-top">
+                        <rect x="-15" y="-6" width="30" height="12" class="hvac-symbol" rx="2" />
+                        <line x1="-15" y1="2" x2="15" y2="2" stroke="#00897b" stroke-opacity="0.2" />
+                        <text y="1" class="hvac-text">AC</text>
+                    </g>
+                    <g id="ac-unit-bottom">
+                        <rect x="-15" y="-6" width="30" height="12" class="hvac-symbol" rx="2" />
+                        <line x1="-15" y1="-2" x2="15" y2="-2" stroke="#00897b" stroke-opacity="0.2" />
+                        <text y="1" class="hvac-text">AC</text>
+                    </g>
+                    <g id="gas-outlet">
+                        <polygon points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3" class="gas-symbol" />
+                        <text y="1.5" class="gas-text">BG</text>
+                    </g>
+                </defs>
+
+                <rect x="0" y="0" width="660" height="400" fill="url(#grid)" />
+
+                <!-- === OUTER WALLS & ENTRANCE === -->
+                <path d="M 0 0 L 660 0 L 660 366 L 316.7 366 L 316.7 388 L 0 388 Z" class="wall" />
+
+                <!-- Structural Columns -->
+                <rect x="316.7" y="363.8" width="25" height="24.2" class="wall" style="fill: var(--wall-color)" />
+                <rect x="316.7" y="0" width="25" height="30.8" class="wall" style="fill: var(--wall-color)" />
+                <rect x="0" y="0" width="25" height="31" class="wall" style="fill: var(--wall-color)" />
+                <rect x="648.34" y="0" width="11.66" height="26.66" class="wall" style="fill: var(--wall-color)" />
+
+                <!-- Main Entrance Door (Bottom Left) -->
+                <line x1="20" y1="388" x2="80" y2="388" stroke="white" stroke-width="8" />
+                <path d="M 80 388 A 60 60 0 0 0 20 328" class="door-swing" />
+                <line x1="20" y1="388" x2="20" y2="328" class="wall-thin" />
+
+                <!-- === INTERNAL PARTITIONS === -->
+                <!-- Barber/Salon Vertical Wall - MOVED to 9ft (x=180) -->
+                <line x1="180" y1="0" x2="180" y2="200" class="wall" />
+                <!-- Horizontal Partition (T-wall Junction) -->
+                <line x1="100" y1="200" x2="260" y2="200" class="wall" />
+
+                <!-- IV Prep / Lounge Vertical (x=341.7) -->
+                <line x1="341.7" y1="0" x2="341.7" y2="153" class="wall" /> <!-- Top segment (Cryotech) -->
+                <line x1="341.7" y1="233" x2="341.7" y2="366" class="wall" /> <!-- Bottom segment (IV Prep) -->
+
+                <!-- Other Interior Walls -->
+                <line x1="449" y1="270" x2="449" y2="366" class="wall" />
+                <line x1="440" y1="200" x2="660" y2="200" class="wall" />
+                <line x1="440" y1="0" x2="440" y2="120" class="wall" />
+                <line x1="341.7" y1="310" x2="449" y2="310" class="wall" />
+
+                <!-- === FURNITURE LAYER === -->
+                <g id="furniture-layer" class="layer">
+                    <!-- Reception Area -->
+                    <g transform="translate(100, 250)">
+                        <rect x="0" y="0" width="160" height="30" class="furniture" />
+                        <rect x="0" y="10" width="160" height="20" fill="none" stroke="#999" stroke-width="1" />
+                        <text x="80" y="18" class="sub-label-text" style="font-size: 10px">RECEPTION / OXYGEN</text>
+                    </g>
+                    
+                    <circle cx="120" cy="295" r="12" class="furniture" />
+                    <circle cx="180" cy="295" r="12" class="furniture" />
+                    <circle cx="240" cy="295" r="12" class="furniture" />
+
+                    <!-- Barber & Salon (Room Width decreased by 1ft) -->
+                    <!-- Mirrors moved to x=180 -->
+                    <use href="#mirror" x="180" y="60" />
+                    <use href="#mirror" x="180" y="140" />
+                    <!-- Chairs moved to x=140 to maintain 2ft distance -->
+                    <use href="#barber-chair" x="140" y="60" />
+                    <use href="#salon-chair" x="140" y="140" />
+                    <text x="90" y="180" class="label-text" style="text-anchor: middle; font-size: 11px">BARBER & SALON</text>
+                    <use href="#wash-station" x="40" y="0" />
+                    <text x="62" y="35" class="sub-label-text" style="font-size: 8px; fill: white">WASH</text>
+
+                    <!-- IV Lounge (Centered vertically, wall at x=180) -->
+                    <!-- Recliner 1 -->
+                    <g transform="translate(183, 21.1)">
+                        <rect x="0" y="0" width="61.7" height="68.3" rx="8" class="furniture" />
+                        <rect x="15" y="2" width="45" height="8" rx="2" class="furniture" />
+                        <rect x="15" y="58.3" width="45" height="8" rx="2" class="furniture" />
+                        <rect x="0" y="0" width="15" height="68.3" class="furniture" />
+                    </g>
+                    <!-- Recliner 2 -->
+                    <g transform="translate(183, 110.5)">
+                        <rect x="0" y="0" width="61.7" height="68.3" rx="8" class="furniture" />
+                        <rect x="15" y="2" width="45" height="8" rx="2" class="furniture" />
+                        <rect x="15" y="58.3" width="45" height="8" rx="2" class="furniture" />
+                        <rect x="0" y="0" width="15" height="68.3" class="furniture" />
+                    </g>
+                    <text x="260" y="100" class="label-text" style="text-anchor: middle; font-size: 12px">IV LOUNGE</text>
+                    
+                    <text x="391.7" y="250" class="label-text" style="font-size: 14px; fill: #555">IV PREP</text>
+                </g>
+
+                <!-- === EQUIPMENT LAYER === -->
+                <g id="equipment-layer" class="layer">
+                    <!-- 95" Flat Screen -->
+                    <g transform="translate(180, 203)">
+                        <rect x="-71.65" y="0" width="143.3" height="4" fill="#333" stroke="none" />
+                        <line x1="-71.65" y1="4" x2="71.65" y2="4" stroke="#000" stroke-width="1" />
+                        <text x="0" y="15" class="sub-label-text" style="font-size: 9px">95" FLAT SCREEN</text>
+                    </g>
+                    <!-- 70" Flat Screen -->
+                    <g transform="translate(341.7, 100) rotate(90)">
+                        <rect x="-51.65" y="0" width="103.3" height="4" fill="#333" stroke="none" />
+                        <line x1="-51.65" y1="4" x2="51.65" y2="4" stroke="#000" stroke-width="1" />
+                        <text x="0" y="15" class="sub-label-text" style="font-size: 9px">70" FLAT SCREEN</text>
+                    </g>
+                    <g transform="translate(393, 321)">
+                        <rect x="0" y="0" width="50" height="30" class="furniture" style="fill: #f0f4f8" />
+                        <rect x="35" y="3" width="10" height="24" fill="none" stroke="#666" stroke-width="1" />
+                        <circle cx="15" cy="15" r="6" fill="none" stroke="#666" stroke-width="1" />
+                        <text x="25" y="18" class="sub-label-text" style="font-size: 7px">HBOT AIO</text>
+                    </g>
+                    <g transform="translate(345.7, 270)">
+                        <rect x="0" y="0" width="100" height="40" class="furniture" />
+                        <rect x="4" y="2" width="36" height="36" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="3,2" />
+                        <text x="22" y="20" class="sub-label-text" style="font-size: 9px">UC</text>
+                        <text x="22" y="30" class="sub-label-text" style="font-size: 9px">FRIDGE</text>
+                        <rect x="70" y="5" width="25" height="30" rx="3" fill="none" stroke="#000" stroke-width="1" />
+                        <circle cx="82.5" y="20" r="2" fill="#000" />
+                        <line x1="82.5" y1="30" x2="82.5" y2="35" stroke="#000" stroke-width="1" />
+                        <text x="82.5" y="-5" class="sub-label-text" style="font-size: 9px">SINK</text>
+                    </g>
+                    <g transform="translate(577, 27)">
+                        <rect x="0" y="0" width="65" height="141" rx="5" class="furniture" />
+                        <path d="M 0 71 Q 32.5 0 65 71" fill="none" stroke="black" stroke-width="1" />
+                        <line x1="5" y1="60" x2="5" y2="80" stroke="black" stroke-width="2" />
+                        <line x1="60" y1="60" x2="60" y2="80" stroke="black" stroke-width="2" />
+                        <g transform="translate(32.5, 70.5) rotate(90)">
+                            <text x="0" y="-5" class="label-text">XP-3 WELLNESS</text>
+                            <text x="0" y="10" class="label-text" style="font-size: 11px">BED & CANOPY</text>
+                        </g>
+                    </g>
+                    <g transform="translate(346.2, 55)">
+                        <rect x="0" y="0" width="91" height="60" class="furniture" />
+                        <text x="45" y="25" class="label-text" style="font-size: 12px">CRYOTECH</text>
+                        <text x="45" y="40" class="label-text" style="font-size: 12px">EVEREST PEAK</text>
+                    </g>
+                    <g transform="translate(352.7, 2)">
+                        <rect x="0" y="0" width="78.3" height="50" class="furniture" style="fill: #e6e6e6" />
+                        <line x1="0" y1="0" x2="78.3" y2="50" class="furniture-detail" stroke-opacity="0.3" />
+                        <line x1="78.3" y1="0" x2="0" y2="50" class="furniture-detail" stroke-opacity="0.3" />
+                        <text x="39" y="20" class="sub-label-text" style="font-size: 9px; font-weight: bold">CRYO BRAIN</text>
+                        <text x="39" y="30" class="sub-label-text" style="font-size: 8px; fill: #666">(MECH)</text>
+                    </g>
+                    <g transform="translate(490.2, 269.4)">
+                        <rect x="0" y="0" width="146.6" height="66.6" rx="33.3" class="furniture" />
+                        <line x1="33.3" y1="0" x2="33.3" y2="66.6" class="furniture-detail" />
+                        <line x1="113.3" y1="0" x2="113.3" y2="66.6" class="furniture-detail" />
+                        <g transform="translate(73.3, 33.3)">
+                            <text x="0" y="-10" class="label-text">OHS 40D</text>
+                            <text x="0" y="5" class="label-text" style="font-size: 11px">HYPERBARIC</text>
+                            <text x="0" y="18" class="label-text" style="font-size: 11px">CHAMBER</text>
+                        </g>
+                    </g>
+                </g>
+
+                <!-- === ELECTRICAL LAYER === -->
+                <g id="electrical-layer" class="layer">
+                    <use href="#outlet" x="140" y="265" transform="rotate(0, 140, 265)" />
+                    <use href="#outlet" x="220" y="265" transform="rotate(0, 220, 265)" />
+                    <use href="#outlet" x="180" y="205" transform="rotate(0, 180, 205)" />
+                    <!-- 70" Screen Outlet -->
+                    <use href="#outlet" x="325" y="100" transform="rotate(270, 325, 100)" />
+                    <!-- Salon Outlets moved to x=175 -->
+                    <use href="#outlet" x="175" y="60" transform="rotate(180, 175, 60)" />
+                    <use href="#outlet" x="175" y="140" transform="rotate(180, 175, 140)" />
+                    <!-- IV Lounge Outlets moved to x=185 -->
+                    <use href="#outlet" x="185" y="55.2" transform="rotate(0, 185, 55.2)" />
+                    <use href="#outlet" x="185" y="144.6" transform="rotate(0, 185, 144.6)" />
+                    
+                    <use href="#light-recessed" x="75" y="340" />
+                    <use href="#light-recessed" x="300" y="340" />
+                    <use href="#light-recessed" x="395.7" y="250" />
+                    <use href="#light-recessed" x="80" y="150" />
+                    <use href="#light-recessed" x="280" y="150" />
+                    <circle cx="120" cy="265" r="4" fill="#fbc02d" />
+                    <circle cx="180" cy="265" r="4" fill="#fbc02d" />
+                    <circle cx="240" cy="265" r="4" fill="#fbc02d" />
+                    <use href="#switch" x="90" y="373" />
+                    <use href="#switch" x="250" y="208" />
+                </g>
+
+                <!-- === DATA LAYER === -->
+                <g id="data-layer" class="layer">
+                    <use href="#data-port" x="180" y="255" />
+                    <use href="#data-port" x="155" y="195" />
+                    <use href="#data-port" x="155" y="205" />
+                    <use href="#data-port" x="430" y="15" />
+                    <use href="#data-port" x="443" y="355" />
+                    <use href="#data-port" x="180" y="208" /> <!-- 95" Screen -->
+                    <use href="#data-port" x="325" y="100" /> <!-- 70" Screen -->
+                </g>
+
+                <!-- === DIMENSIONS LAYER === -->
+                <g id="dimensions-layer" class="layer">
+                    <line x1="0" y1="-40" x2="660" y2="-40" class="dimension-line" marker-start="url(#arrow-start)" marker-end="url(#arrow)" />
+                    <text x="330" y="-35" class="label-text">33'-0"</text>
+                    <line x1="-40" y1="0" x2="-40" y2="388" class="dimension-line" marker-start="url(#arrow-start)" marker-end="url(#arrow)" />
+                    <text x="-35" y="190" class="label-text rotate-neg-90">19.4'</text>
+                    <line x1="30" y1="0" x2="30" y2="200" class="dimension-line" marker-start="url(#arrow-start)" marker-end="url(#arrow)" />
+                    <text x="20" y="100" class="dimension-text rotate-neg-90">10'</text>
+                    <line x1="0" y1="215" x2="100" y2="215" class="dimension-line" marker-start="url(#arrow-start)" marker-end="url(#arrow)" />
+                    <text x="50" y="210" class="dimension-text" style="font-size: 10px">5' OPENING</text>
+                    <line x1="335" y1="153" x2="335" y2="233" class="dimension-line" marker-start="url(#arrow-start)" marker-end="url(#arrow)" />
+                    <text x="325" y="193" class="dimension-text rotate-neg-90" style="font-size: 9px">4' OPENING</text>
+                </g>
+            </svg>
+
+            <div class="legend">
+                <div class="legend-item"><div class="legend-icon"><svg width="24" height="24" viewBox="-10 -10 20 20"><use href="#outlet" /></svg></div><span>120V Outlet</span></div>
+                <div class="legend-item"><div class="legend-icon"><svg width="24" height="24" viewBox="-10 -10 20 20"><use href="#switch" /></svg></div><span>Light Switch</span></div>
+                <div class="legend-item"><div class="legend-icon"><svg width="24" height="24" viewBox="-10 -10 20 20"><use href="#light-recessed" /></svg></div><span>Recessed Light</span></div>
+                <div class="legend-item"><div class="legend-icon"><svg width="24" height="24" viewBox="-10 -10 20 20"><circle cx="0" cy="0" r="4" fill="#fbc02d" /></svg></div><span>Pendant Light</span></div>
+                <div class="legend-item"><div class="legend-icon"><svg width="34" height="24" viewBox="-20 -12 40 24"><use href="#ac-unit-top" /></svg></div><span>HVAC Supply</span></div>
+                <div class="legend-item"><div class="legend-icon"><svg width="24" height="24" viewBox="-10 -10 20 20"><use href="#gas-outlet" /></svg></div><span>Brown Gas</span></div>
+            </div>
+        </div>
+
+        <script>
+            function toggleLayer(layerName, btn) {
+                const layer = document.getElementById(layerName + "-layer");
+                if (layer) {
+                    layer.classList.toggle("hidden");
+                    btn.classList.toggle("active");
+                }
+            }
+        </script>
+    </body>
+</html>

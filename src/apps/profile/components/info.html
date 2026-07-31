@@ -1,0 +1,52 @@
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title mb-3">Info</h5>
+		<div class="table-responsive">
+			<table class="table table-borderless mb-0">
+				<tbody>
+					<tr>
+						<th class="ps-0" scope="row">Full Name:</th>
+						<td class="text-muted">
+							<span array="contacts" object="$user_id" key="first_name"></span>
+							<span array="contacts" object="$user_id" key="last_name"></span>
+						</td>
+					</tr>
+					<tr>
+						<th class="ps-0" scope="row">Company:</th>
+						<td class="text-muted">
+							<span array="contacts" object="$user_id" key="company"></span>
+						</td>
+					</tr>
+					<tr>
+						<th class="ps-0" scope="row">Title:</th>
+						<td class="text-muted">
+							<span array="contacts" object="$user_id" key="title"></span>
+						</td>
+					</tr>
+					<tr>
+						<th class="ps-0" scope="row">Mobile:</th>
+						<td class="text-muted" array="contacts" object="$user_id" key="phone_number">
+						</td>
+					</tr>
+					<tr>
+						<th class="ps-0" scope="row">E-mail:</th>
+						<td class="text-muted" array="contacts" object="$user_id" key="email">
+						</td>
+					</tr>
+					<tr>
+						<th class="ps-0" scope="row">Location:</th>
+						<td class="text-muted">
+							<span array="contacts" object="$user_id" key="city"></span>,
+							<span array="contacts" object="$user_id" key="country"></span>
+						</td>
+					</tr>
+					<tr>
+						<th class="ps-0" scope="row">Joining Date :</th>
+						<td class="text-muted" array="contacts" object="$user_id" key="created.on"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- end card body -->
+</div>

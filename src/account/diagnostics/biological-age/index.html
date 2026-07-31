@@ -1,0 +1,133 @@
+<div class="container-fluid pb-5">
+	<div class="card bg-opacity-75 border-secondary shadow-sm mb-4">
+		<div class="card-body p-4">
+			<div class="d-flex align-items-center gap-3 mb-3">
+				<div class="avatar-md">
+					<span
+						class="avatar-title bg-secondary bg-opacity-25 text-primary rounded fs-2">
+						<i class="ri-timer-line"></i>
+					</span>
+				</div>
+				<div>
+					<h4 class="fs-24 fw-bold text-white mb-1">
+						Biological Age
+					</h4>
+					<p class="text-muted fs-14 mb-0">
+						Diagnostic breakdown for
+						<span
+							array="contacts"
+							object="$user_id"
+							key="name"></span>
+					</p>
+				</div>
+			</div>
+			<p class="text-muted lh-base">
+				Comprehensive analysis of biological age markers derived from
+				epigenetic and systemic diagnostics.
+			</p>
+		</div>
+	</div>
+
+	<div class="row g-4">
+		<!-- Pace of Aging -->
+		<div class="col-md-4">
+			<div
+				class="card bg-opacity-50 border-secondary rounded-4 p-4 shadow-sm h-100 d-flex flex-column">
+				<div
+					class="card-body d-flex flex-column justify-content-between">
+					<div class="d-flex align-items-center mb-3">
+						<i
+							class="ri-heart-pulse-line fs-2 text-primary me-2"></i>
+						<h5 class="text-white mb-0">Pace of Aging</h5>
+					</div>
+					<h2 class="display-4 fw-bold text-primary mb-2">
+						<span
+							class="diagnostic"
+							array="diagnostics"
+							object
+							key="reports[0].results.pace_of_aging.value"
+							>0.00</span
+						>
+					</h2>
+					<p class="text-muted fs-14 mb-0">DunedinPACE ratio</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Biological Age Value -->
+		<div class="col-md-4">
+			<div
+				class="card bg-opacity-50 border-secondary rounded-4 p-4 shadow-sm h-100 d-flex flex-column">
+				<div
+					class="card-body d-flex flex-column justify-content-between">
+					<div class="d-flex align-items-center mb-3">
+						<i class="ri-timer-line fs-2 text-info me-2"></i>
+						<h5 class="text-white mb-0">Biological Age</h5>
+					</div>
+					<h2 class="display-4 fw-bold text-info mb-2">
+						<span
+							class="diagnostic"
+							array="diagnostics"
+							object
+							key="reports[0].results.biological_age.value"
+							>0</span
+						>
+						<span class="fs-4 text-muted">
+							<span
+								class="diagnostic"
+								array="diagnostics"
+								object
+								key="reports[0].results.biological_age.unit"
+								>yrs</span
+							></span
+						>
+					</h2>
+					<p class="text-muted fs-14 mb-0">
+						Algorithm:
+						<span
+							class="diagnostic"
+							array="diagnostics"
+							object
+							key="reports[0].results.biological_age.algorithm"
+							>—</span
+						>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Age Differential -->
+		<div class="col-md-4">
+			<div
+				class="card bg-opacity-50 border-secondary rounded-4 p-4 shadow-sm h-100 d-flex flex-column">
+				<div
+					class="card-body d-flex flex-column justify-content-between">
+					<div class="d-flex align-items-center mb-3">
+						<i
+							class="ri-calendar-event-line fs-2 text-info me-2"></i>
+						<h5 class="text-white mb-0">Age Differential</h5>
+					</div>
+					<h2 class="display-4 fw-bold text-info mb-2">
+						<span
+							class="diagnostic"
+							array="diagnostics"
+							object
+							key="reports[0].results.biological_age.age_difference"
+							>0</span
+						>
+						<span class="fs-4 text-muted">yrs</span>
+					</h2>
+					<p class="text-muted fs-14 mb-0">
+						vs. Chronological Age (<span
+							class="diagnostic"
+							array="contacts"
+							object="$user_id"
+							key="age"
+							>—</span
+						>)
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

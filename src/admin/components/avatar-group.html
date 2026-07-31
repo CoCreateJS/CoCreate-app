@@ -1,0 +1,47 @@
+<div
+	class="avatar-group"
+	array="projects"
+	object="{{object._id}}"
+	key="members"
+	render-query="[template]">
+	<div class="avatar-group-item material-shadow" template>
+		<div class="avatar-xs rounded-circle position-relative overflow-hidden">
+			<div
+				class="avatar-title bg-secondary-subtle text-secondary material-shadow">
+				<span
+					array="contacts"
+					object="{{members}}"
+					key="first_name"
+					form-attributes="false"
+					class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"></span>
+				<span
+					array="contacts"
+					object="{{members}}"
+					key="last_name"
+					form-attributes="false"
+					class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"></span>
+				<img
+					class="position-absolute avatar-xs"
+					src="/assets/images/transparent.png"
+					array="contacts"
+					object="{{members}}"
+					key="avatar[0].src"
+					form-attributes="false"
+					alt="Header Avatar"
+					onerror="this.onerror=null; this.src='../assets/images/user.jpg';" />
+			</div>
+		</div>
+	</div>
+	<a
+		class="avatar-group-item material-shadow"
+		aria-controls="inviteMembersModal"
+		aria-haspopup="dialog"
+		aria-expanded="false">
+		<div class="avatar-xs position-relative rounded-circle">
+			<div
+				class="avatar-title fs-16 rounded-circle bg-success text-primary">
+				+
+			</div>
+		</div>
+	</a>
+</div>

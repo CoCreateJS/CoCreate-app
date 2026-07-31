@@ -1,0 +1,93 @@
+<div class="container-fluid pb-5" data-category="Amino Acids">
+	<div class="card bg-opacity-75 border-secondary shadow-sm mb-4">
+		<div class="card-body p-4">
+			<div class="d-flex align-items-center gap-3 mb-3">
+				<div class="avatar-md">
+					<span
+						class="avatar-title bg-secondary bg-opacity-25 text-success rounded fs-2">
+						<i class="ri-dna-line"></i>
+					</span>
+				</div>
+				<div>
+					<h4 class="fs-24 fw-bold text-white mb-1">Amino Acids</h4>
+					<p class="text-muted fs-14 mb-0">
+						Category diagnostic breakdown for amino acids.
+					</p>
+				</div>
+			</div>
+			<p class="text-muted lh-base">
+				Markers mapped to the Amino Acids category.
+			</p>
+		</div>
+	</div>
+
+	<div
+		class="row g-4"
+		array="diagnostics"
+		render="biomarkers"
+		render-type="object"
+		render-as="biomarker">
+		<div class="col-md-4 col-sm-6 template biomarker-card">
+			<div
+				class="card bg-opacity-50 border-secondary rounded-4 p-4 shadow-sm h-100">
+				<div
+					class="d-flex align-items-center justify-content-between mb-3">
+					<div class="d-flex align-items-center gap-2">
+						<i class="ri-flask-line fs-4 text-success"></i>
+						<h6
+							class="text-white fs-14 fw-medium text-capitalize mb-0"
+							calculate="{biomarker.display_name}">
+							Biomarker
+						</h6>
+					</div>
+				</div>
+				<div class="mb-3">
+					<h3 class="fw-bold text-white mb-0">
+						<span calculate="{biomarker.value}">--</span>
+						<small
+							class="fs-12 text-muted fw-normal text-lowercase"
+							calculate="{biomarker.unit}"
+							>unit</small
+						>
+					</h3>
+				</div>
+				<div
+					class="d-flex justify-content-between align-items-center mt-auto">
+					<span
+						class="badge bg-success-subtle text-success border border-success-subtle text-capitalize rounded-pill px-2"
+						calculate="{biomarker.status}"
+						>status</span
+					>
+					<span
+						class="fs-12 text-muted text-capitalize biomarker-cat"
+						calculate="{biomarker.category}"
+						>category</span
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		(function () {
+			function filter() {
+				var container = document.querySelector("[data-category]");
+				if (!container) return;
+				var target = container.getAttribute("data-category");
+				var cards = container.querySelectorAll(".biomarker-card");
+				cards.forEach(function (card) {
+					var catEl = card.querySelector(".biomarker-cat");
+					if (!catEl) return;
+					var cat = catEl.textContent && catEl.textContent.trim();
+					if (!cat) return;
+					if (cat.toLowerCase() !== target.toLowerCase())
+						card.style.display = "none";
+				});
+			}
+			document.addEventListener("DOMContentLoaded", function () {
+				setTimeout(filter, 300);
+			});
+			setTimeout(filter, 1500);
+		})();
+	</script>
+</div>

@@ -1,0 +1,188 @@
+{
+  "method": "object.update",
+  "array": "tasks",
+  "upsert": true,
+  "descriptionExample": "AAA: Action - what to do; Audience - who should act/benefit; Acceptance - measurable success criteria. Example: 'Action: Implement profile page layout components (header, avatar, activity); Audience: frontend devs; Acceptance: responsive across 320–1920px, components documented, unit tests for avatar and header.'",
+  "object": [
+    {
+      "_id": "688480f60a05c1699c35062f",
+      "project": "688491b10a05c1699c350800",
+      "name": "Profile Page Satructure",
+      "description": "Build the profile page structure (header, avatar, bio, activity feed). Audience: frontend devs. Acceptance: responsive layout across devices, accessible markup, basic interactions (edit profile) implemented and documented.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "25 Jan, 2022",
+      "dueTime": "08:13",
+      "status": "Inprogress",
+      "tags": ["ui", "profile", "frontend"],
+      "priority": "Medium",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f600abef3b9cc10630",
+      "project": "688491b105e2797580f70801",
+      "name": "Apologize for shopping Error!",
+      "description": "Diagnose and fix the shopping checkout error that prevents orders. Audience: backend engineers and QA. Acceptance: reproduce on staging, implement fix, verify with end-to-end tests and update incident notes.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "23 Oct, 2021",
+      "dueTime": "11:47",
+      "status": "Completed",
+      "tags": ["bug", "customer-service", "backend"],
+      "priority": "Low",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f604df59dce2e50631",
+      "project": "Minia - v1.0.0",
+      "name": "Post launch reminder/ Post list",
+      "description": "Create post-launch reminder and post list features for marketing campaigns. Audience: frontend and marketing automation engineers. Acceptance: scheduled reminders work, post list fetches paginated results and matches UI spec.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "05 Oct, 2021",
+      "dueTime": "16:05",
+      "status": "Pending",
+      "tags": ["marketing", "automation", "frontend"],
+      "priority": "High",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f600b5368983040632",
+      "project": "Dason - v1.0.0",
+      "name": "User research",
+      "description": "Conduct user research to gather insights on onboarding flow. Audience: UX researchers and product team. Acceptance: complete 8 user interviews, synthesize findings, and provide prioritized recommendations.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "11 Dec, 2021",
+      "dueTime": "09:22",
+      "status": "New",
+      "tags": ["research", "ux", "discovery"],
+      "priority": "Medium",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f605aa3b2380ac0633",
+      "project": "Minible - v1.0.0",
+      "name": "Make a creating an account profile",
+      "description": "Implement account creation and profile-onboarding screens. Audience: frontend and auth engineers. Acceptance: signup flow integrated with auth service, validations in place, and onboarding checklist working.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "11 Jan, 2019",
+      "dueTime": "14:58",
+      "status": "Inprogress",
+      "tags": ["auth", "onboarding", "frontend"],
+      "priority": "High",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f603b3d96d59ac0634",
+      "project": "Minimal - v2.1.0",
+      "name": "Change email option process",
+      "description": "Update email change process and security checks. Audience: backend and security engineers. Acceptance: secure email-change flow, email verification enforced, and tests cover edge cases.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "03 Mar, 2020",
+      "dueTime": "07:35",
+      "status": "Completed",
+      "tags": ["settings", "security", "backend"],
+      "priority": "Low",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f60c22e2d476070635",
+      "project": "Dorsin - Landing Page",
+      "name": "Benner design for FB & Twitter",
+      "description": "Design banner assets for Facebook and Twitter campaigns. Audience: design and marketing teams. Acceptance: provide 3 banner variants per platform respecting size guidelines and export-ready files.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "26 Feb, 2019",
+      "dueTime": "19:11",
+      "status": "Pending",
+      "tags": ["marketing", "design", "social"],
+      "priority": "Medium",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f6032da55979320636",
+      "project": "Qexal - Landing Page",
+      "name": "Brand Logo design",
+      "description": "Design and deliver brand logo options and assets. Audience: design team and product stakeholders. Acceptance: supply vector and raster formats, color variations, and usage guidelines.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "29 Dec, 2021",
+      "dueTime": "12:30",
+      "status": "Pending",
+      "tags": ["branding", "design", "creative"],
+      "priority": "High",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f60d9878852e710637",
+      "project": "Doot - Chat App Template",
+      "name": "Additional Calendar",
+      "description": "Add calendar feature to chat app template for scheduling. Audience: frontend engineers and product managers. Acceptance: calendar UI integrated, event creation/editing working, and interactions tested.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "13 Jun, 2020",
+      "dueTime": "17:49",
+      "status": "New",
+      "tags": ["feature", "calendar", "ux"],
+      "priority": "Low",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    },
+    {
+      "_id": "688480f60dcfd946f4070638",
+      "project": "Symox v1.0.0",
+      "name": "Add Dynamic Contact List",
+      "description": "Implement dynamic contact list with search and syncing. Audience: backend and frontend engineers. Acceptance: realtime sync enabled, search performant, and contact CRUD operations covered by tests.",
+      "members": ["5ff747727005da1c272740ac", "68765ca00be67f92d8df050c"],
+      "dueDate": "15 Dec, 2020",
+      "dueTime": "10:06",
+      "status": "Inprogress",
+      "tags": ["feature", "contacts", "backend"],
+      "priority": "Medium",
+      "progress": "",
+      "stage": "",
+      "tasksImages": "",
+      "modified": {
+        "on": "2025-07-26T07:17:10.100Z"
+      }
+    }
+  ]
+}

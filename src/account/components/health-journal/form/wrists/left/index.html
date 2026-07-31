@@ -1,0 +1,112 @@
+<!-- Left Wrist canonical -->
+<!-- hidden concern input removed; overlay manages selection -->
+
+<div id="sub-wrist-left" class="d-flex flex-column gap-2">
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="wrist-left-carpal">
+			<input
+				type="checkbox"
+				id="wrist-left-carpal"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.wrists.left.carpal_bones.status"
+				key="biometrics.wrists.left.carpal_bones.status"
+				value="active"
+				class="form-check-input d-none"
+				input-query="$parent $next"
+				input.class="show," />
+			<span class="text-uppercase">Carpal Bones</span>
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.wrists.left.carpal_bones.details"
+			key="biometrics.wrists.left.carpal_bones.details"
+			placeholder="Details..."
+			class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100"
+			rows="2"
+			style="resize: none; outline: none; box-shadow: none"
+			hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="wrist-left-scapholunate">
+			<input
+				type="checkbox"
+				id="wrist-left-scapholunate"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.wrists.left.scapholunate.status"
+				key="biometrics.wrists.left.scapholunate.status"
+				value="active"
+				class="form-check-input d-none"
+				input-query="$parent $next"
+				input.class="show," />
+			<span class="text-uppercase">Scapholunate Ligament</span>
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.wrists.left.scapholunate.details"
+			key="biometrics.wrists.left.scapholunate.details"
+			placeholder="Details..."
+			class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100"
+			rows="2"
+			style="resize: none; outline: none; box-shadow: none"
+			hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="wrist-left-tfcc">
+			<input
+				type="checkbox"
+				id="wrist-left-tfcc"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.wrists.left.tfcc.status"
+				key="biometrics.wrists.left.tfcc.status"
+				value="active"
+				class="form-check-input d-none"
+				input-query="$parent $next"
+				input.class="show," />
+			<span class="text-uppercase">TFCC (Fibrocartilage)</span>
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.wrists.left.tfcc.details"
+			key="biometrics.wrists.left.tfcc.details"
+			placeholder="Details..."
+			class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100"
+			rows="2"
+			style="resize: none; outline: none; box-shadow: none"
+			hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="wrist-left-median">
+			<input
+				type="checkbox"
+				id="wrist-left-median"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.wrists.left.median_nerve.status"
+				key="biometrics.wrists.left.median_nerve.status"
+				value="active"
+				class="form-check-input d-none"
+				input-query="$parent $next"
+				input.class="show," />
+			<span class="text-uppercase">Median Nerve (Carpal Tunnel)</span>
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.wrists.left.median_nerve.details"
+			key="biometrics.wrists.left.median_nerve.details"
+			placeholder="Details..."
+			class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100"
+			rows="2"
+			style="resize: none; outline: none; box-shadow: none"
+			hidden></textarea>
+	</div>
+</div>

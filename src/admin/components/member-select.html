@@ -1,0 +1,75 @@
+<script>
+	const members = [
+		{
+			id: "anna-adame",
+			name: "Anna Adame",
+			avatar: "/assets/images/users/avatar-1.jpg"
+		},
+		{
+			id: "frank-hook",
+			name: "Frank Hook",
+			avatar: "/assets/images/users/avatar-3.jpg"
+		},
+		{
+			id: "alexis-clarke",
+			name: "Alexis Clarke",
+			avatar: "/assets/images/users/avatar-6.jpg"
+		},
+		{
+			id: "herbert-stokes",
+			name: "Herbert Stokes",
+			avatar: "/assets/images/users/avatar-2.jpg"
+		},
+		{
+			id: "michael-morris",
+			name: "Michael Morris",
+			avatar: "/assets/images/users/avatar-7.jpg"
+		},
+		{
+			id: "nancy-martino",
+			name: "Nancy Martino",
+			avatar: "/assets/images/users/avatar-5.jpg"
+		},
+		{
+			id: "thomas-taylor",
+			name: "Thomas Taylor",
+			avatar: "/assets/images/users/avatar-8.jpg"
+		},
+		{
+			id: "tonya-noble",
+			name: "Tonya Noble",
+			avatar: "/assets/images/users/avatar-10.jpg"
+		}
+	];
+</script>
+
+<div class="col-lg-12">
+	<label for="tasks-progress" class="form-label">Add Team Member</label>
+	<div plugin='{"SimpleBar": ["$this", {}]}' style="height: 95px">
+		<ul
+			class="list-unstyled vstack gap-2 mb-0"
+			render="members"
+			render-as="member">
+			<li template object="{{member.id}}">
+				<div class="form-check d-flex align-items-center">
+					<input
+						class="form-check-input me-3"
+						type="checkbox"
+						value=""
+						id="{{member.id}}" />
+					<label
+						class="form-check-label d-flex align-items-center"
+						for="{{member.id}}">
+						<span class="flex-shrink-0">
+							<img
+								src="{{member.avatar}}"
+								alt=""
+								class="avatar-xxs rounded-circle" />
+						</span>
+						<span class="flex-grow-1 ms-2"> {{member.name}} </span>
+					</label>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

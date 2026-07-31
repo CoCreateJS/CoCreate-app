@@ -1,0 +1,104 @@
+<form
+	class="card mb-0"
+	array="sales_orders"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".details-view-btn[]"
+		input.state.src="/apps/sales-orders/details.html"
+		src="components/offcanvas-header.html"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4">
+			<div class="flex-grow-1" style="flex-basis: 480px">
+				<div class="card">
+					<div class="card-header">Order</div>
+					<div class="card-body d-flex flex-column gap-3">
+						<label class="form-label" for="order_number">
+							Order Number
+							<input
+								type="text"
+								key="order_number"
+								id="order_number"
+								class="form-control"
+								placeholder="SO-0001" />
+						</label>
+						<label class="form-label" for="customer">
+							Customer
+							<input
+								type="text"
+								key="customer"
+								id="customer"
+								class="form-control"
+								placeholder="Customer name" />
+						</label>
+						<label class="form-label" for="items">
+							Items (JSON)
+							<textarea
+								key="items"
+								id="items"
+								class="form-control"
+								rows="4"
+								placeholder='[{"product":"SKU","qty":1,"price":0}]'></textarea>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="flex-grow-1" style="flex-basis: 320px">
+				<div class="card">
+					<div class="card-header">Amounts & Delivery</div>
+					<div class="card-body d-flex flex-column gap-3">
+						<label class="form-label" for="subtotal">
+							Subtotal
+							<input
+								type="number"
+								key="subtotal"
+								id="subtotal"
+								class="form-control" />
+						</label>
+						<label class="form-label" for="tax">
+							Tax
+							<input
+								type="number"
+								key="tax"
+								id="tax"
+								class="form-control" />
+						</label>
+						<label class="form-label" for="shipping_cost">
+							Shipping Cost
+							<input
+								type="number"
+								key="shipping_cost"
+								id="shipping_cost"
+								class="form-control" />
+						</label>
+						<label class="form-label" for="total">
+							Total
+							<input
+								type="number"
+								key="total"
+								id="total"
+								class="form-control" />
+						</label>
+						<label class="form-label" for="status">
+							Status
+							<select
+								key="status"
+								id="status"
+								class="form-select"
+								aria-label="Select order status">
+								<option value="pending">Pending</option>
+								<option value="processing">Processing</option>
+								<option value="shipped">Shipped</option>
+								<option value="delivered">Delivered</option>
+								<option value="cancelled">Cancelled</option>
+							</select>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="w-100" src="components/form-buttons.html"></div>
+		</div>
+	</div>
+</form>

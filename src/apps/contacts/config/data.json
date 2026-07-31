@@ -1,0 +1,1574 @@
+{
+  "method": "object.update",
+  "array": "contacts",
+  "upsert": true,
+  "object": [
+    {
+      "_id": "5ff747727005da1c272740ac",
+      "first_name": "Frankie",
+      "last_name": "Pagan",
+      "name": "Frankie Pagan",
+      "email": "frank@geneomes.com",
+      "phone": "9418820466",
+      "company": "Geneomes",
+      "city": "Brooklyn",
+      "country": "United States",
+      "zip": "11221",
+      "website": "geneomes.com",
+      "title": "CEO",
+      "type": [
+        "Employee",
+        "User",
+        "Administrator"
+      ],
+      "tags": [
+        "founder",
+        "startup",
+        "tech",
+        "mentor"
+      ],
+      "description": "I've spent nearly two decades in the startup trenches, wearing every hat\u2014from software engineering to sales and operations. That hands-on experience taught me the true cost of friction and complexity in the launch process. Now, I dedicate myself to distilling that knowledge into solutions. My mission is simple: to drastically reduce the time and effort required for aspiring entrepreneurs to create and successfully launch their startups.",
+      "followers": 0,
+      "following": 0,
+      "profile_completeness": 30,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/frankiepagan",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/frankiepagan",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/frankiepagan",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-09-03T07:39:23.058Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-10-04T01:28:37.166Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "",
+      "age": 43,
+      "gender": "male",
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04",
+        "healthScore": 90,
+        "categories": {
+          "biological-age": { "score": 95, "status": "Optimal" },
+          "cardiovascular": { "score": 92, "status": "Optimal" },
+          "metabolism": { "score": 94, "status": "Optimal" },
+          "nutrition": { "score": 97, "status": "Optimal" },
+          "hormones": { "score": 91, "status": "Optimal" },
+          "gut-health": { "score": 93, "status": "Optimal" },
+          "genetics": { "score": 96, "status": "Optimal" },
+          "cellular": { "score": 92, "status": "Optimal" },
+          "neurological": { "score": 94, "status": "Optimal" },
+          "immune": { "score": 98, "status": "Optimal" },
+          "renal": { "score": 90, "status": "Optimal" },
+          "musculoskeletal": { "score": 95, "status": "Optimal" },
+          "inflammation": { "score": 93, "status": "Optimal" }
+        }
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "68765ca00be67f92d8df050c",
+      "first_name": "Peter",
+      "last_name": "Stember",
+      "name": "Peter Stember",
+      "email": "peter@CoCreate.app",
+      "phone": "580-464-4694",
+      "company": "Geneomes",
+      "city": "Tamarindo",
+      "country": "Costa Rica",
+      "zip": "",
+      "website": "",
+      "title": "CVO",
+      "type": [
+        "Employee",
+        "User",
+        "Administrator"
+      ],
+      "tags": [
+        "Sales",
+        "Business Development"
+      ],
+      "description": "Peter Stember is the Founder and Chief Visionary Officer (CVO) at Geneomes. With a deep passion for innovation and leadership, Peter has been instrumental in shaping the company's vision and driving its growth. He leads the sales team with a focus on building strong client relationships and delivering exceptional value. As CVO, Peter ensures that Geneomes stays ahead of industry trends, inspiring the team to achieve ambitious goals.",
+      "followers": 1200,
+      "following": 350,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/peterstember",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/peterstember",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/peterstember",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "by": "5ff747727005da1c272740ac",
+        "on": "2025-07-16T09:12:34.253Z"
+      },
+      "modified": {
+        "by": "5ff747727005da1c272740ac",
+        "on": "2025-08-01T15:22:10.915Z"
+      },
+      "status": "active",
+      "nickname": "",
+      "age": 55,
+      "gender": "",
+      "discover": {
+        "frequency": 4,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-02-07",
+        "healthScore": 90,
+        "categories": {
+          "biological-age": { "score": 94, "status": "Optimal" },
+          "cardiovascular": { "score": 91, "status": "Optimal" },
+          "metabolism": { "score": 93, "status": "Optimal" },
+          "nutrition": { "score": 96, "status": "Optimal" },
+          "hormones": { "score": 90, "status": "Optimal" },
+          "gut-health": { "score": 92, "status": "Optimal" },
+          "genetics": { "score": 95, "status": "Optimal" },
+          "cellular": { "score": 91, "status": "Optimal" },
+          "neurological": { "score": 93, "status": "Optimal" },
+          "immune": { "score": 97, "status": "Optimal" },
+          "renal": { "score": 90, "status": "Optimal" },
+          "musculoskeletal": { "score": 94, "status": "Optimal" },
+          "inflammation": { "score": 92, "status": "Optimal" }
+        }
+      },
+      "optimize": {
+        "frequency": 12,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-05-24"
+      },
+      "regenerate": {
+        "frequency": 4,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2025-12-29"
+      }
+    },
+    {
+      "_id": "68765ca00d899aa18761050d",
+      "first_name": "Amy",
+      "last_name": "Araya",
+      "name": "Amy Araya",
+      "email": "amy.araya.888@gmail.com",
+      "phone": "5067139269",
+      "company": "Geneomes",
+      "city": "Santa Ana",
+      "country": "Costa Rica",
+      "zip": "",
+      "website": "",
+      "title": "Chief Marketing Officer CMO",
+      "type": [
+        "Employee",
+        "User",
+        "Administrator"
+      ],
+      "tags": [
+        "Salonist",
+        "Makeup Artist"
+      ],
+      "description": "Amy Araya is a Chief Marketing Officer CMO at Geneomes.",
+      "followers": 0,
+      "following": 0,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/amyaraya",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-07-18T11:45:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-03T10:05:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "Amy",
+      "age": 24,
+      "gender": "",
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04",
+        "healthScore": 90,
+        "categories": {
+          "biological-age": { "score": 93, "status": "Optimal" },
+          "cardiovascular": { "score": 90, "status": "Optimal" },
+          "metabolism": { "score": 92, "status": "Optimal" },
+          "nutrition": { "score": 95, "status": "Optimal" },
+          "hormones": { "score": 91, "status": "Optimal" },
+          "gut-health": { "score": 94, "status": "Optimal" },
+          "genetics": { "score": 96, "status": "Optimal" },
+          "cellular": { "score": 92, "status": "Optimal" },
+          "neurological": { "score": 93, "status": "Optimal" },
+          "immune": { "score": 97, "status": "Optimal" },
+          "renal": { "score": 90, "status": "Optimal" },
+          "musculoskeletal": { "score": 94, "status": "Optimal" },
+          "inflammation": { "score": 92, "status": "Optimal" }
+        }
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 4,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2025-12-29"
+      }
+    },
+    {
+      "_id": "68765ca0021cd388e66b050e",
+      "first_name": "Mildred",
+      "last_name": "Leckner",
+      "name": "Mildred Leckner",
+      "email": "mildred@limagesalonandbarber.com",
+      "phone": "+1 (470) 315-3324",
+      "company": "L'Image Salon and Barber",
+      "city": "Tamarindo",
+      "country": "Costa Rica",
+      "zip": "",
+      "website": "",
+      "title": "CBDO",
+      "type": [
+        "Employee",
+        "User",
+        "Administrator"
+      ],
+      "tags": [
+        "Business Development"
+      ],
+      "description": "Brittany Leckner brings expertise in mobile solutions as a lead and partner at Android Galaxy. She has a proven track record of managing complex projects and collaborating with teams to deliver cutting-edge technology for clients.",
+      "followers": 0,
+      "following": 0,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/mildredleckner",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-07-20T14:30:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-05T18:40:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "Mili",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "68765ca00960f12deb7f050f",
+      "first_name": "James",
+      "last_name": "Price",
+      "name": "James Price",
+      "email": "jamesprice@CoCreate.com",
+      "phone": "646-276-2274",
+      "company": "CoCreate",
+      "city": "",
+      "country": "United States",
+      "zip": "",
+      "website": "",
+      "title": "",
+      "type": [
+        "Lead"
+      ],
+      "tags": [
+        "trial"
+      ],
+      "description": "James Price is a sales lead at CoCreate, focused on driving new business and managing key client accounts. He excels at identifying growth opportunities and is dedicated to helping clients achieve their goals through tailored solutions.",
+      "followers": 800,
+      "following": 180,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/frankiepagan",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/frankiepagan",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/frankiepagan",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-07-22T08:10:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-07T09:15:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "68765ca00d140d2cd0540510",
+      "first_name": "Mary",
+      "last_name": "Cousar",
+      "name": "Mary Cousar",
+      "email": "marycousar@CoCreate.com",
+      "phone": "540-575-0991",
+      "company": "Micro Design",
+      "city": "",
+      "country": "Australia",
+      "zip": "",
+      "website": "",
+      "title": "",
+      "type": [
+        "Customer"
+      ],
+      "tags": [
+        "exiting",
+        "inactive"
+      ],
+      "description": "Mary Cousar is a consultant at Micro Design, specializing in design systems and client exit strategies. She is valued for her creative problem-solving skills and her ability to guide clients through transitions with confidence.",
+      "followers": 600,
+      "following": 90,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/frankiepagan",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/frankiepagan",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/frankiepagan",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-07-24T17:55:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-09T21:30:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "inactive",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "68765ca007019466ead40511",
+      "first_name": "Herbert",
+      "last_name": "Stokes",
+      "name": "Herbert Stokes",
+      "email": "herbertstokes@CoCreate.com",
+      "phone": "949-791-0614",
+      "company": "CoCreate",
+      "city": "",
+      "country": "United States",
+      "zip": "",
+      "website": "",
+      "title": "",
+      "type": [
+        "Partner",
+        "Lead",
+        "Customer"
+      ],
+      "tags": [
+        "vip"
+      ],
+      "description": "Herbert Stokes is a partner and lead at CoCreate, with expertise in business development and partnerships. He is known for his collaborative spirit and his ability to foster lasting relationships within the industry.",
+      "followers": 2000,
+      "following": 500,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/frankiepagan",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/frankiepagan",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/frankiepagan",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-07-26T12:20:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-11T13:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "68765ca00fc772eba5dd0512",
+      "first_name": "Michael",
+      "last_name": "Morris",
+      "name": "Michael Morris",
+      "email": "michaelmorris@CoCreate.com",
+      "phone": "231-480-8536",
+      "company": "Syntyce Solutions",
+      "city": "",
+      "country": "Canada",
+      "zip": "",
+      "website": "",
+      "title": "",
+      "type": [
+        "Lead",
+        "Partner"
+      ],
+      "tags": [
+        "newsletter"
+      ],
+      "description": "Michael Morris is a business strategist at Syntyce Solutions, focusing on partner relations and company growth. He enjoys working with diverse teams and is committed to driving innovation in every project he undertakes.",
+      "followers": 1100,
+      "following": 320,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/frankiepagan",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/frankiepagan",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/frankiepagan",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-07-28T19:40:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-13T16:55:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "68765ca003526737290b0513",
+      "first_name": "Timothy",
+      "last_name": "Smith",
+      "name": "Timothy Smith",
+      "email": "timothysmith@CoCreate.com",
+      "phone": "414-453-5725",
+      "company": "Digitech Galaxy",
+      "city": "",
+      "country": "United States",
+      "zip": "",
+      "website": "",
+      "title": "",
+      "type": [
+        "Partner"
+      ],
+      "tags": [
+        "referral"
+      ],
+      "description": "Timothy Smith is a partner at Digitech Galaxy, specializing in digital transformation projects. He is passionate about helping organizations adapt to new technologies and is recognized for his forward-thinking mindset.",
+      "followers": 950,
+      "following": 250,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/frankiepagan",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/frankiepagan",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/frankiepagan",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-07-30T07:05:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-15T20:10:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "68765ca0068411b422040514",
+      "first_name": "Kevin",
+      "last_name": "Dawson",
+      "name": "Kevin Dawson",
+      "email": "kevindawson@CoCreate.com",
+      "phone": "745-321-9874",
+      "company": "Meta4Systems",
+      "city": "",
+      "country": "United Kingdom",
+      "zip": "",
+      "website": "",
+      "title": "",
+      "type": [
+        "Lead"
+      ],
+      "tags": [
+        "prospect"
+      ],
+      "description": "Kevin Dawson is a lead at Meta4Systems, with expertise in system integration and client management. He is dedicated to delivering seamless solutions and is respected for his reliability and technical knowledge.",
+      "followers": 700,
+      "following": 150,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/frankiepagan",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/frankiepagan",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/frankiepagan",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-08-01T13:25:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-17T22:25:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "68765ca0045137c30e870515",
+      "first_name": "Tonya",
+      "last_name": "Noble",
+      "name": "Tonya Noble",
+      "email": "tonyanoble@CoCreate.com",
+      "phone": "414-453-5725",
+      "company": "Nesta Technologies",
+      "city": "",
+      "country": "United States",
+      "zip": "",
+      "website": "",
+      "title": "",
+      "type": [
+        "Lead",
+        "Partner"
+      ],
+      "tags": [
+        "priority"
+      ],
+      "description": "Tonya Noble is a lead and partner at Nesta Technologies, focused on tech innovation and client success. She thrives in fast-paced environments and is committed to helping clients leverage technology for growth.",
+      "followers": 1600,
+      "following": 420,
+      "profile_completeness": 0,
+      "notifications": {
+        "chat": false,
+        "desktop": false,
+        "direct_messages": false,
+        "email": false,
+        "purchase": false
+      },
+      "social": [
+        {
+          "network": "github",
+          "url": "https://github.com/frankiepagan",
+          "icon": "/assets/svg/github.svg",
+          "background_color": "#24292e",
+          "color": "#ffffff"
+        },
+        {
+          "network": "dribbble",
+          "url": "https://dribbble.com/frankiepagan",
+          "icon": "/assets/svg/dribbble.svg",
+          "background_color": "#ea4c89",
+          "color": "#ffffff"
+        },
+        {
+          "network": "linkedin",
+          "url": "https://linkedin.com/in/frankiepagan",
+          "icon": "/assets/svg/linkedin-in.svg",
+          "background_color": "#0077b5",
+          "color": "#ffffff"
+        },
+        {
+          "network": "website",
+          "url": "https://cocreate.app",
+          "icon": "/assets/svg/globe.svg",
+          "background_color": "#f5f5f5",
+          "color": "#222222"
+        }
+      ],
+      "lastSignIn": "2023-05-19T21:56:09.330Z",
+      "created": {
+        "on": "2025-08-03T16:50:24.253Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2025-08-19T11:35:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "status": "active",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d47770f8f066c1dd505ee",
+      "first_name": "Nicholas",
+      "last_name": "Ball",
+      "name": "Nicholas Ball",
+      "image": "/assets/images/users/avatar-1.jpg",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "lead_score": "",
+      "type": [
+        "Candidate"
+      ],
+      "status": "applicant",
+      "tags": [],
+      "availability": "Full Time",
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Nicholas Ball is a full-time candidate seeking opportunities in software engineering. He is eager to contribute his skills to dynamic teams and is motivated by challenges that foster professional growth.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d4777045d3619395d05ef",
+      "first_name": "Philippa",
+      "last_name": "Santiago",
+      "name": "Philippa Santiago",
+      "image": "/assets/images/users/avatar-2.jpg",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "lead_score": "",
+      "type": [
+        "Candidate"
+      ],
+      "status": "applicant",
+      "tags": [],
+      "availability": "Part Time",
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Philippa Santiago is a part-time candidate with experience in customer support and administration. She is known for her adaptability and her commitment to providing excellent service in every role.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d47770333ac31c33305f0",
+      "first_name": "Cassian",
+      "last_name": "Jenning",
+      "name": "Cassian Jenning",
+      "image": "/assets/images/users/avatar-5.jpg",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "lead_score": "",
+      "type": [
+        "candidate"
+      ],
+      "status": "applicant",
+      "tags": [],
+      "availability": "Part Time",
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Cassian Jenning is a part-time candidate interested in marketing and communications roles. He enjoys creative projects and is always looking for new ways to engage audiences.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d47770ef95cf32f8a05f1",
+      "first_name": "Nadia",
+      "last_name": "Harding",
+      "name": "Nadia Harding",
+      "image": "/assets/images/users/avatar-7.jpg",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "lead_score": "",
+      "type": [
+        "candidate"
+      ],
+      "status": "applicant",
+      "tags": [],
+      "availability": "Freelancer",
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Nadia Harding is a freelancer with a background in graphic design and creative projects. She values flexibility in her work and enjoys collaborating with clients to bring their ideas to life.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d4777058c98708cdc05f2",
+      "first_name": "Nancy",
+      "last_name": "Martino",
+      "name": "Nancy Martino",
+      "image": "/assets/images/users/avatar-2.jpg",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "lead_score": "",
+      "type": [
+        "candidate"
+      ],
+      "status": "applicant",
+      "tags": [],
+      "availability": "Part Time",
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Nancy Martino (Applicant) is a part-time applicant with experience in pharmaceutical sales. She is enthusiastic about new opportunities and is dedicated to building strong client relationships.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d477708088706fa8c05f3",
+      "first_name": "Alexis",
+      "last_name": "Clarke",
+      "name": "Alexis Clarke",
+      "image": "/assets/images/users/avatar-4.jpg",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "lead_score": "",
+      "type": [
+        "candidate"
+      ],
+      "status": "applicant",
+      "tags": [],
+      "availability": "Full Time",
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Alexis Clarke (Applicant) is a full-time applicant skilled in mobile app development. She is passionate about technology and enjoys working on innovative projects that make a difference.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d47770cfd00a2f23205f4",
+      "first_name": "Jeff",
+      "last_name": "Taylor",
+      "name": "Jeff Taylor",
+      "image": "",
+      "company": "",
+      "email": "jefftaylor@CoCreate.com",
+      "phone": "863-577-5537",
+      "lead_score": "",
+      "type": [
+        "customer"
+      ],
+      "status": "active",
+      "tags": [],
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Jeff Taylor is an active customer with a focus on IT consulting and support. He values clear communication and is committed to finding effective solutions for his business needs.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d47770baa419ebf8805f5",
+      "first_name": "Robert",
+      "last_name": "McMahon",
+      "name": "Robert McMahon",
+      "image": "",
+      "company": "",
+      "email": "robertmcmahon@CoCreate.com",
+      "phone": "786-253-9927",
+      "lead_score": "",
+      "type": [
+        "customer"
+      ],
+      "status": "active",
+      "tags": [],
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Robert McMahon is an active customer interested in cloud solutions and infrastructure. He is always looking for ways to improve efficiency and enjoys learning about new technologies.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d47770f1382b0898005f6",
+      "first_name": "Carolyn",
+      "last_name": "Jones",
+      "name": "Carolyn Jones",
+      "image": "",
+      "company": "",
+      "email": "carolynjones@CoCreate.com",
+      "phone": "414-453-5725",
+      "lead_score": "",
+      "type": [
+        "customer"
+      ],
+      "status": "active",
+      "tags": [],
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Carolyn Jones is an active customer with a background in business analytics. She is detail-oriented and enjoys using data to drive decision-making and business growth.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d47770610d105522005f7",
+      "first_name": "Glen",
+      "last_name": "Matney",
+      "name": "Glen Matney",
+      "image": "",
+      "company": "",
+      "email": "glenmatney@CoCreate.com",
+      "phone": "515-395-1069",
+      "lead_score": "",
+      "type": [
+        "customer"
+      ],
+      "status": "active",
+      "tags": [],
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Glen Matney is an active customer specializing in network administration. He is dedicated to maintaining reliable systems and is known for his problem-solving abilities.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d477705ca7839925e05f8",
+      "first_name": "Charles",
+      "last_name": "Kubik",
+      "name": "Charles Kubik",
+      "image": "",
+      "company": "",
+      "email": "charleskubik@CoCreate.com",
+      "phone": "231-480-8536",
+      "lead_score": "",
+      "type": [
+        "customer"
+      ],
+      "status": "block",
+      "tags": [],
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Charles Kubik is a blocked customer, previously engaged in software procurement. He has experience in vendor management and is knowledgeable about the software industry.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d477708f2c89650c005f9",
+      "first_name": "Ava",
+      "last_name": "Brooks",
+      "name": "Ava Brooks",
+      "image": "",
+      "company": "Brooks Consulting",
+      "email": "ava.brooks@cocreate.com",
+      "phone": "555-123-4567",
+      "lead_score": "",
+      "type": [
+        "customer"
+      ],
+      "status": "active",
+      "tags": [],
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Ava Brooks is a consultant at Brooks Consulting, expert in business strategy. She enjoys helping organizations grow and is committed to delivering results for her clients.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    },
+    {
+      "_id": "687d47770d41a000f22c05fa",
+      "first_name": "Liam",
+      "last_name": "Carter",
+      "name": "Liam Carter",
+      "image": "",
+      "company": "Carter Solutions",
+      "email": "liam.carter@cocreate.com",
+      "phone": "555-987-6543",
+      "lead_score": "",
+      "type": [
+        "customer"
+      ],
+      "status": "active",
+      "tags": [],
+      "modified": {
+        "on": "2025-07-20T19:45:59.915Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "description": "Liam Carter is the founder of Carter Solutions, focused on enterprise software. He is passionate about building scalable solutions and leading teams to success.",
+      "nickname": "",
+      "age": 43,
+      "discover": {
+        "frequency": 12,
+        "previous_delivery": "2026-01-10",
+        "status": "Activated",
+        "next_delivery": "2026-04-04"
+      },
+      "optimize": {
+        "frequency": 4,
+        "previous_delivery": "2026-03-01",
+        "status": "Activated",
+        "next_delivery": "2026-03-29"
+      },
+      "regenerate": {
+        "frequency": 26,
+        "previous_delivery": "2025-12-01",
+        "status": "Activated",
+        "next_delivery": "2026-06-01"
+      }
+    }
+  ]
+}

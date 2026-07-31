@@ -1,0 +1,141 @@
+<form
+	class="card mb-0"
+	array="contacts"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/candidates/form.html"
+		src="components/offcanvas-header.html"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4">
+			<div
+				class="flex-shrink-0 d-flex flex-column align-items-center"
+				style="margin-bottom: 2rem; flex-basis: 250px">
+				<div class="position-relative d-inline-block">
+					<img
+						src=""
+						key="avatar[0].src"
+						alt="Candidate Avatar"
+						class="avatar-xl rounded-circle img-thumbnail material-shadow" />
+					<span
+						class="contact-active position-absolute rounded-circle bg-success"
+						aria-hidden="true">
+						<span class="visually-hidden">Contact is active</span>
+					</span>
+				</div>
+				<h5
+					class="mt-4 mb-1"
+					key="name"
+					aria-label="Candidate Name"></h5>
+				<p class="text-muted" key="company" aria-label="Company"></p>
+				<ul
+					class="list-inline mb-0 d-flex gap-2 mt-3"
+					aria-label="Contact Options">
+					<li class="avatar-xs">
+						<a
+							href=""
+							key="phone"
+							input.href="$value"
+							value-prefix="tel:"
+							value=""
+							class="avatar-title bg-success-subtle text-success fs-15 rounded"
+							aria-label="Call Candidate">
+							<i class="ri-phone-line"></i>
+						</a>
+					</li>
+					<li class="avatar-xs">
+						<a
+							href=""
+							key="email"
+							input.href="$value"
+							value-prefix="mailto:"
+							value=""
+							class="avatar-title bg-danger-subtle text-danger fs-15 rounded"
+							aria-label="Email Candidate">
+							<i class="ri-mail-line"></i>
+						</a>
+					</li>
+					<li class="avatar-xs">
+						<a
+							href=""
+							key="phone"
+							input.href="$value"
+							value-prefix="sms:"
+							value=""
+							class="avatar-title bg-warning-subtle text-warning fs-15 rounded"
+							aria-label="Text Candidate">
+							<i class="ri-question-answer-line"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-grow-1" style="flex-basis: 0; min-width: 300px">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">
+					Personal Information
+				</h6>
+				<p
+					class="text-muted mb-4"
+					key="description"
+					aria-label="Candidate Description"></p>
+				<div class="table-responsive table-card">
+					<table
+						class="table table-borderless mb-0"
+						aria-label="Candidate Details">
+						<tbody>
+							<tr>
+								<td class="fw-medium" scope="row">Name</td>
+								<td key="name" aria-labelledby="name"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Email</td>
+								<td key="email" aria-labelledby="email"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Phone</td>
+								<td key="phone" aria-labelledby="phone"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Skills</td>
+								<td aria-label="Candidate Skills">
+									<span
+										key="skills"
+										render-query="[template]">
+										<span
+											template
+											class="badge bg-info-subtle text-info me-1"
+											>{{skills}}</span
+										>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">
+									Lead Score
+								</td>
+								<td
+									key="lead_score"
+									aria-label="Lead Score"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Tags</td>
+								<td aria-label="Candidate Tags">
+									<span key="tags" render-query="[template]">
+										<span
+											template
+											class="badge bg-primary-subtle text-primary me-1"
+											>{{tags}}</span
+										>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="w-100" src="components/activities.html"></div>
+		</div>
+	</div>
+</form>

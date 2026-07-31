@@ -1,0 +1,35 @@
+<div
+	onload.value="$uuid(6)"
+	onload-query="[value-prefix]">
+	<a
+		id="list-actions-toggle"
+		class="dropdown text-muted d-inline-block"
+		role="button"
+		aria-haspopup="menu"
+		aria-controls="list-actions-"
+		aria-expanded="false"
+		aria-label="List actions"
+		value-attribute="aria-controls"
+		value-query="$next">
+		<i class="ri-more-2-fill align-middle fs-18"></i>
+	</a>
+
+	<input type="hidden"  value-prefix="list-actions-" />
+
+	<ul
+		id="list-actions-"
+		class="dropdown-menu dropdown-menu-end"
+		value-attribute="id"
+		value-query="$previous"
+		aria-close-on="anywhere"
+		role="menu"
+		aria-label="List actions menu">
+		<li><a class="dropdown-item" href="#" role="menuitem">Copy</a></li>
+		<li><a class="dropdown-item" href="#" role="menuitem">Import</a></li>
+		<li><a class="dropdown-item" href="#" role="menuitem">Export</a></li>
+		<li><a class="dropdown-item" href="#" role="menuitem">Print</a></li>
+		<li>
+			<a class="dropdown-item" href="#" role="menuitem">Download as CSV</a>
+		</li>
+	</ul>
+</div>

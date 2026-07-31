@@ -1,0 +1,121 @@
+<form
+	class="card mb-0"
+	array=""
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/contacts/form.html"
+		src="components/offcanvas-header.html"
+		role="heading"
+		aria-level="1"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4">
+			<div class="text-center flex-shrink-0" style="margin-bottom: 2rem">
+				<div class="position-relative d-inline-block">
+					<img
+						src=""
+						key="avatar[0].src"
+						alt="Company Avatar"
+						class="avatar-xl rounded-circle img-thumbnail material-shadow" />
+					<span
+						class="company-active position-absolute rounded-circle bg-success"
+						aria-hidden="true">
+						<span class="visually-hidden">Active</span>
+					</span>
+				</div>
+				<h5 class="mt-4 mb-1" key="name" id="company-name"></h5>
+				<p
+					class="text-muted"
+					key="company"
+					aria-labelledby="company-name"></p>
+				<ul class="list-inline mb-0">
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="phone"
+							input.href="$value"
+							value-prefix="tel:"
+							value=""
+							class="avatar-title bg-success-subtle text-success fs-15 rounded"
+							aria-label="Call company">
+							<i class="ri-phone-line"></i>
+						</a>
+					</li>
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="email"
+							input.href="$value"
+							value-prefix="mailto:"
+							value=""
+							class="avatar-title bg-danger-subtle text-danger fs-15 rounded"
+							aria-label="Email company">
+							<i class="ri-mail-line"></i>
+						</a>
+					</li>
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="phone"
+							input.href="$value"
+							value-prefix="sms:"
+							value=""
+							class="avatar-title bg-warning-subtle text-warning fs-15 rounded"
+							aria-label="Send message to company">
+							<i class="ri-question-answer-line"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-grow-1">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">
+					Personal Information
+				</h6>
+				<p class="text-muted mb-4" key="description"></p>
+				<div class="table-responsive table-card">
+					<table
+						class="table table-borderless mb-0"
+						aria-label="company Details">
+						<tbody>
+							<tr>
+								<td class="fw-medium" scope="row">Name</td>
+								<td key="name"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Email</td>
+								<td key="email"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Phone</td>
+								<td key="phone"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">
+									Lead Score
+								</td>
+								<td key="lead_score"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Tags</td>
+								<td>
+									<span key="tags" render-query="[template]">
+										<span
+											template
+											class="badge bg-primary-subtle text-primary me-1"
+											role="listitem"
+											>{{tags}}</span
+										>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="w-100" src="components/activities.html"></div>
+		</div>
+	</div>
+</form>

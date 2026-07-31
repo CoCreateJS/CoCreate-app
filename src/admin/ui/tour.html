@@ -1,0 +1,145 @@
+<div class="container-fluid"
+     plugin="Shepherd"
+     shepherd='{
+        "Tour": {
+            "defaultStepOptions": {
+                "cancelIcon": { "enabled": true },
+                "classes": "shadow-md bg-purple-dark",
+                "scrollTo": { "behavior": "smooth", "block": "center" }
+            },
+            "useModalOverlay": { "enabled": true },
+            "steps": [
+                {
+                    "title": "Welcome Back !",
+                    "text": "This is Step 1",
+                    "attachTo": { "element": "#logo-tour", "on": "bottom" },
+                    "buttons": [
+                        { "text": "Next", "classes": "btn btn-success", "action": "$this.Shepherd.Tour.next" }
+                    ]
+                },
+                {
+                    "title": "Register your account",
+                    "text": "Get your Free CoCreate account now.",
+                    "attachTo": { "element": "#register-tour", "on": "bottom" },
+                    "buttons": [
+                        { "text": "Back", "classes": "btn btn-light", "action": "$this.Shepherd.Tour.back" },
+                        { "text": "Next", "classes": "btn btn-success", "action": "$this.Shepherd.Tour.next" }
+                    ]
+                },
+                {
+                    "title": "Login your account",
+                    "text": "Sign in to continue to CoCreate.",
+                    "attachTo": { "element": "#login-tour", "on": "bottom" },
+                    "buttons": [
+                        { "text": "Back", "classes": "btn btn-light", "action": "$this.Shepherd.Tour.back" },
+                        { "text": "Next", "classes": "btn btn-success", "action": "$this.Shepherd.Tour.next" }
+                    ]
+                },
+                {
+                    "title": "Get your Product",
+                    "text": "Sign in to continue to CoCreate.",
+                    "attachTo": { "element": "#getproduct-tour", "on": "bottom" },
+                    "buttons": [
+                        { "text": "Back", "classes": "btn btn-light", "action": "$this.Shepherd.Tour.back" },
+                        { "text": "Next", "classes": "btn btn-success", "action": "$this.Shepherd.Tour.next" }
+                    ]
+                },
+                {
+                    "title": "Thank you !",
+                    "text": "Sign in to continue to CoCreate.",
+                    "attachTo": { "element": "#thankyou-tour", "on": "bottom" },
+                    "buttons": [
+                        { "text": "Back", "classes": "btn btn-light", "action": "$this.Shepherd.Tour.back" },
+                        { "text": "Thank you !", "classes": "btn btn-primary", "action": "$this.Shepherd.Tour.complete" }
+                    ]
+                }
+            ]
+        }
+     }'
+     Shepherd.Tour.start
+     >
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card" show="preview">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Shepherdjs</h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-4">
+                        Use when you want to help users along getting accustomed
+                        to your user interface or Use when you want to notify
+                        your users of new or unfamiliar features.
+                    </p>
+                    <div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="text-center mt-4 mb-5">
+                                    <div class="py-3 px-2 d-inline-block" id="logo-tour">
+                                        <img src="/assets/images/logos/dark.png" class="card-logo card-logo-dark" alt="logo" height="17" />
+                                        <img src="/assets/images/logos/light.png" class="card-logo card-logo-light" alt="logo" height="17" />
+                                    </div>
+                                    <h5 class="fs-16">Responsive Admin Dashboard Template</h5>
+                                    <p class="text-muted">
+                                        Vestibulum auctor tincidunt semper. Phasellus ut vulputate lacus. Suspendisse ultricies mi eros, sit amet tempor nulla varius sed dapibus in tellus.
+                                    </p>
+                                    <div class="hstack gap-2 justify-content-center">
+                                        <button type="button" class="btn btn-primary btn-sm">View more</button>
+                                        <button type="button" class="btn btn-success btn-sm">Email us</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-xxl-9 col-lg-10 col-sm-8">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none material-shadow">
+                                            <div class="card-body text-center">
+                                                <div class="avatar-md mx-auto mb-4" id="register-tour">
+                                                    <div class="avatar-title bg-light rounded-circle text-primary fs-24 material-shadow">
+                                                        <i class="ri-edit-box-line"></i>
+                                                    </div>
+                                                </div>
+                                                <h5>Free register</h5>
+                                                <p class="text-muted mb-0">Get your Free CoCreate account now.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none material-shadow">
+                                            <div class="card-body text-center">
+                                                <div class="avatar-md mx-auto mb-4" id="login-tour">
+                                                    <div class="avatar-title bg-light rounded-circle text-primary fs-24 material-shadow">
+                                                        <i class="ri-user-shared-line"></i>
+                                                    </div>
+                                                </div>
+                                                <h5>Log in account</h5>
+                                                <p class="text-muted mb-0">Sign in to continue to CoCreate.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none material-shadow">
+                                            <div class="card-body text-center">
+                                                <div class="avatar-md mx-auto mb-4" id="getproduct-tour">
+                                                    <div class="avatar-title bg-light rounded-circle text-primary fs-24 material-shadow">
+                                                        <i class="ri-file-download-line"></i>
+                                                    </div>
+                                                </div>
+                                                <h5>Get Product</h5>
+                                                <p class="text-muted mb-0">Sign in to continue to CoCreate.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center my-4">
+                            <button class="btn btn-success" id="thankyou-tour">Thank you !</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

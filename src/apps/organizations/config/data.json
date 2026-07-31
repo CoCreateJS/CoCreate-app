@@ -1,0 +1,80 @@
+{
+  "method": "object.update",
+  "array": "organizations",
+  "upsert": true,
+  "object":[
+  {
+    "_id": "68c7bbf505da6ef2c862092c",
+    "organization_id": "68c7bbf505da6ef2c862092c",
+    "host": [
+      {
+        "array": "",
+        "database": "",
+        "name": "geneomes.cocreate.app",
+        "storage": ""
+      },
+      {
+        "array": "",
+        "database": "",
+        "name": "geneomes.com",
+        "storage": ""
+      },
+      {
+        "array": "",
+        "database": "dev",
+        "name": "dev.geneomes.com",
+        "storage": ""
+      },
+      {
+        "array": "",
+        "database": "test",
+        "name": "test.geneomes.com",
+        "storage": ""
+      }
+    ],
+    "name": "Geneomes",
+    "owner": "5ff747727005da1c272740ac",
+    "storage": [
+      {
+        "name": "mongodb",
+        "provider": "mongodb",
+        "url": "mongodb+srv://db_user:fYS1wQz7JxXhhAlx@geneomes.egpfpy7.mongodb.net/?retryWrites=true&w=majority"
+      }
+    ],
+    "city": "Tamarindo",
+    "contact_person": "",
+    "country": "Costa Rica",
+    "cover_image": [],
+    "created_at": "",
+    "description": "",
+    "email": "info@geneomes.com",
+    "followers": "\n\t\t\t\t\t\t\t0\n\t\t\t\t\t\t",
+    "following": "\n\t\t\t\t\t\t\t0\n\t\t\t\t\t\t",
+    "notifications": {
+      "chat": false,
+      "desktop": false,
+      "direct_messages": false,
+      "email": false,
+      "purchase": false
+    },
+    "password": "",
+    "phone": "",
+    "profile_completeness_percentage": "width: \n\t\t\t\t\t\t\t30%\n\t\t\t\t\t\t%;",
+    "social": {
+      "dribbble": {
+        "username": ""
+      },
+      "github": {
+        "username": ""
+      },
+      "pinterest": {
+        "username": ""
+      },
+      "website": ""
+    },
+    "tagline": "",
+    "website": "geneomes.com",
+    "zip_code": ""
+  }
+]
+}

@@ -1,0 +1,248 @@
+<form
+	class="card mb-0"
+	array
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".details-view-btn[]"
+		input.state.src="/apps/expenses/details.html"
+		src="components/offcanvas-header.html"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body gap-3">
+			<div class="row g-3">
+				<div class="col-md-6">
+					<label class="form-label" for="expense-name">Name</label>
+					<input
+						type="text"
+						id="expense-name"
+						key="name"
+						class="form-control"
+						placeholder="Enter name"
+						aria-label="Expense Name" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-id"
+						>Expense ID</label
+					>
+					<input
+						type="text"
+						id="expense-id"
+						key="_id"
+						class="form-control"
+						placeholder="Expense ID"
+						readonly
+						aria-label="Expense ID" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-date">Date</label>
+					<input
+						type="date"
+						id="expense-date"
+						key="date"
+						class="form-control"
+						placeholder="Select date"
+						aria-label="Expense Date" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-category"
+						>Category</label
+					>
+					<select
+						id="expense-category"
+						key="category"
+						class="form-control"
+						aria-label="Expense Category">
+						<option value="">Select category</option>
+						<option value="Office Supplies">Office Supplies</option>
+						<option value="Travel">Travel</option>
+						<option value="Meals">Meals</option>
+						<option value="Utilities">Utilities</option>
+						<option value="Software">Software</option>
+						<option value="Marketing">Marketing</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-vendor"
+						>Vendor</label
+					>
+					<input
+						type="text"
+						id="expense-vendor"
+						key="vendor"
+						class="form-control"
+						placeholder="Enter vendor/supplier"
+						aria-label="Expense Vendor" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-reference"
+						>Reference #</label
+					>
+					<input
+						type="text"
+						id="expense-reference"
+						key="reference"
+						class="form-control"
+						placeholder="Enter reference or invoice number"
+						aria-label="Expense Reference Number" />
+				</div>
+				<div class="col-12">
+					<label class="form-label" for="expense-description"
+						>Description</label
+					>
+					<textarea
+						id="expense-description"
+						key="description"
+						class="form-control"
+						rows="2"
+						placeholder="Enter description"
+						aria-label="Expense Description"></textarea>
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-amount"
+						>Amount</label
+					>
+					<input
+						type="number"
+						id="expense-amount"
+						key="amount"
+						class="form-control"
+						placeholder="Total amount"
+						min="0"
+						step="0.01"
+						aria-label="Expense Amount" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-tax">Tax</label>
+					<input
+						type="number"
+						id="expense-tax"
+						key="tax"
+						class="form-control"
+						placeholder="Tax amount"
+						min="0"
+						step="0.01"
+						aria-label="Expense Tax Amount" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-currency"
+						>Currency</label
+					>
+					<select
+						id="expense-currency"
+						key="currency"
+						class="form-control"
+						aria-label="Expense Currency">
+						<option value="">Select currency</option>
+						<option value="USD">USD</option>
+						<option value="EUR">EUR</option>
+						<option value="GBP">GBP</option>
+						<option value="CAD">CAD</option>
+						<option value="AUD">AUD</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-status"
+						>Status</label
+					>
+					<select
+						id="expense-status"
+						key="status"
+						class="form-control"
+						aria-label="Expense Status">
+						<option value="">Select status</option>
+						<option value="Pending">Pending</option>
+						<option value="Approved">Approved</option>
+						<option value="Rejected">Rejected</option>
+						<option value="Paid">Paid</option>
+					</select>
+				</div>
+				<div class="col-12">
+					<label class="form-check-label" for="expense-reimbursable">
+						<input
+							type="checkbox"
+							id="expense-reimbursable"
+							key="reimbursable"
+							class="form-check-input" />
+						Reimbursable
+					</label>
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-paid-by"
+						>Paid By</label
+					>
+					<input
+						type="text"
+						id="expense-paid-by"
+						key="paid_by"
+						class="form-control"
+						placeholder="Who paid for this expense?"
+						aria-label="Paid By" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-project"
+						>Project/Department</label
+					>
+					<input
+						type="text"
+						id="expense-project"
+						key="project"
+						class="form-control"
+						placeholder="Project or department (optional)"
+						aria-label="Project or Department" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-due-date"
+						>Due Date</label
+					>
+					<input
+						type="date"
+						id="expense-due-date"
+						key="due_date"
+						class="form-control"
+						placeholder="Due date (optional)"
+						aria-label="Due Date" />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="expense-approved-by"
+						>Approval By</label
+					>
+					<input
+						type="text"
+						id="expense-approved-by"
+						key="approved_by"
+						class="form-control"
+						placeholder="Person who approved (optional)"
+						aria-label="Approved By" />
+				</div>
+				<div class="col-12">
+					<label class="form-label" for="expense-receipt"
+						>Receipt Upload</label
+					>
+					<input
+						type="file"
+						id="expense-receipt"
+						key="receipt"
+						class="form-control"
+						accept="image/*,application/pdf"
+						actions="upload, save"
+						aria-label="Receipt Upload" />
+				</div>
+				<div class="col-12">
+					<label class="form-label" for="expense-notes">Notes</label>
+					<textarea
+						id="expense-notes"
+						key="notes"
+						class="form-control"
+						rows="2"
+						placeholder="Additional notes"
+						aria-label="Additional Notes"></textarea>
+				</div>
+			</div>
+			<div src="/components/form-buttons.html"></div>
+		</div>
+	</div>
+</form>

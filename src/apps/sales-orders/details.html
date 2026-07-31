@@ -1,0 +1,80 @@
+<form
+	class="card mb-0"
+	array="sales_orders"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/sales-orders/form.html"
+		src="components/offcanvas-header.html"
+		role="region"
+		aria-label="Sales Order Header"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div
+			class="card-body d-flex flex-wrap gap-4"
+			role="region"
+			aria-label="Sales Order Details">
+			<div class="flex-grow-1" style="flex-basis: 350px">
+				<h5
+					class="mb-2"
+					key="order_number"
+					aria-label="Order Number"></h5>
+				<p class="text-muted mb-1">
+					<strong>Customer:</strong>
+					<span key="customer" aria-label="Customer Name"></span>
+				</p>
+				<p class="text-muted">
+					<strong>Status:</strong>
+					<span key="status" aria-label="Order Status"></span>
+				</p>
+				<div class="card mt-3" role="region" aria-label="Order Items">
+					<div class="card-header">Items</div>
+					<div class="card-body">
+						<pre
+							key="items"
+							aria-label="List of items in the order"></pre>
+					</div>
+				</div>
+			</div>
+			<div class="flex-grow-1" style="flex-basis: 300px">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">
+					Amounts
+				</h6>
+				<table
+					class="table table-borderless"
+					role="table"
+					aria-label="Order Amounts">
+					<tbody>
+						<tr>
+							<td>Subtotal</td>
+							<td
+								key="subtotal"
+								aria-label="Subtotal Amount"></td>
+						</tr>
+						<tr>
+							<td>Tax</td>
+							<td key="tax" aria-label="Tax Amount"></td>
+						</tr>
+						<tr>
+							<td>Shipping</td>
+							<td
+								key="shipping_cost"
+								aria-label="Shipping Cost Amount"></td>
+						</tr>
+						<tr class="fw-bold">
+							<td>Total</td>
+							<td key="total" aria-label="Total Amount"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div
+				class="w-100"
+				src="components/activities.html"
+				role="region"
+				aria-label="Order Activities"></div>
+		</div>
+	</div>
+</form>

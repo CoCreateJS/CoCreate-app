@@ -1,0 +1,275 @@
+<div class="chat-content d-flex">
+	<div class="w-100 overflow-hidden position-relative">
+		<div class="position-relative" id="users-chat">
+			<div
+				src="/apps/chat/components/topbar/index.html"></div>
+
+			<div
+				class="chat-conversation p-3 p-lg-4"
+				id="chat-conversation"
+				plugin="SimpleBar"
+				simplebar='["$this", {}]'>
+				<div></div>
+				<ul
+					class="list-unstyled chat-conversation-list"
+					id="chat-conversation"
+					state-id="selected-chat"
+					state-overwrite
+					array="messages"
+					object
+					filter-query-key="chat_id"
+					filter-query-value
+					filter-sort-key="created.on"
+					filter-sort-direction="desc"
+					render-query="[template='chat-message-template']"
+					render-reverse>
+					<div filter-on="scroll" filter-query="$parent"></div>
+					<li
+						template="chat-message-template"
+						class="chat-list {{ '$user_id' === '{{object.created.by}}' ? 'right' : '' }}"
+						id="message-{{object._id}}">
+						<div class="conversation-list">
+							<div class="chat-avatar">
+								<div
+									class="avatar-xs rounded-circle position-relative overflow-hidden">
+									<div
+										class="avatar-title bg-secondary-subtle text-secondary material-shadow">
+										<span
+											array="contacts"
+											object="{{object.created.by}}"
+											key="first_name"
+											class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"></span>
+										<span
+											array="contacts"
+											object="{{object.created.by}}"
+											key="last_name"
+											class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"></span>
+										<img
+											src="/assets/images/transparent.png"
+											alt=""
+											class="position-absolute object-fit-cover"
+											array="contacts"
+											object="{{object.created.by}}"
+											key="avatar[0].src"
+											width="100%"
+											height="100%"
+											onerror="
+												this.onerror = null;
+												this.src =
+													'../assets/images/transparent.png';
+											" />
+									</div>
+								</div>
+							</div>
+							<div class="user-chat-content">
+								<div class="ctext-wrap">
+									<div class="ctext-wrap-content">
+										<span
+											class="fs-6 text-secondary message-name"
+											array="contacts"
+											object="{{object.created.by}}"
+											key="name">
+										</span>
+										<p class="mb-0 ctext-content">
+											{{object.content}}
+										</p>
+										<div class="message-info">
+											<input
+												type="time"
+												value-type="getTime"
+												onload.value="$value"
+												onload-query="$next"
+												value="{{object.created.on}}"
+												hidden />
+											<small
+												class="text-muted message-time"></small>
+
+											<span
+												class="text-success check-message-icon">
+												<i
+													class="ri-check-double-line"></i>
+											</span>
+										</div>
+									</div>
+									<div
+										class="dropdown align-self-start message-box-drop">
+										<a
+											id="message-menu-btn-{{object._id}}"
+											class="dropdown-toggle"
+											role="button"
+											aria-controls="message-menu-{{object._id}}"
+											aria-haspopup="true"
+											aria-expanded="false">
+											<i class="ri-more-2-fill"></i>
+										</a>
+										<div
+											class="dropdown-menu"
+											id="message-menu-{{object._id}}"
+											aria-hidden="true"
+											aria-labelledby="message-menu-btn-{{object._id}}"
+											aria-close-on="anywhere">
+											<a
+												class="dropdown-item reply-message"
+												href="#">
+												<i
+													class="ri-reply-line me-2 text-muted align-bottom"></i>
+												Reply
+											</a>
+											<a class="dropdown-item" href="#">
+												<i
+													class="ri-share-line me-2 text-muted align-bottom"></i>
+												Forward
+											</a>
+											<a
+												class="dropdown-item copy-message"
+												href="#">
+												<i
+													class="ri-file-copy-line me-2 text-muted align-bottom"></i>
+												Copy
+											</a>
+											<a class="dropdown-item" href="#">
+												<i
+													class="ri-bookmark-line me-2 text-muted align-bottom"></i>
+												Bookmark
+											</a>
+											<a
+												class="dropdown-item"
+												aria-haspopup="dialog"
+												aria-label="Delete selected messages"
+												aria-controls="removeItemModal"
+												role="menuitem"
+												state-to="delete-record"
+												state-overwrite
+												state.array="messages"
+												state.object="{{object._id}}">
+												<i
+													class="ri-delete-bin-5-line me-2 text-muted align-bottom"></i>
+												Delete
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div
+				class="alert alert-warning alert-dismissible copyclipboard-alert px-4 fade"
+				id="copyClipBoard"
+				role="alert">
+				Message copied
+			</div>
+		</div>
+
+		<div class="chat-input-section p-3 border-top">
+			<form id="chatinput-form" array="messages" object>
+				<input
+					type="hidden"
+					key="_id"
+					input-query="$next"
+					input.value="$value" />
+				<input
+					type="hidden"
+					form-attributes="false"
+					state-id="selected-chat_id"
+					state-overwrite
+					array="chats"
+					object
+					key="last_message_id"
+					reset="value" />
+				<input
+					type="hidden"
+					form-attributes="false"
+					state-id="selected-chat_id"
+					state-overwrite
+					array="chats"
+					object
+					key="_id"
+					reset="false"
+					input-query="$next"
+					input.value="$value" />
+				<input type="hidden" key="chat_id" reset="object" />
+				<div class="row g-0 align-items-center">
+					<div class="col-auto">
+						<div class="chat-input-links me-2">
+							<div class="links-list-item">
+								<button
+									type="button"
+									class="btn btn-link text-decoration-none emoji-btn"
+									id="emoji-btn">
+									<i class="ri-emotion-line align-middle"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="chat-input-feedback">
+							Please Enter a Message
+						</div>
+						<input
+							type="text"
+							class="form-control chat-input bg-light border-light"
+							id="chat-input"
+							key="content"
+							plugin="FgEmojiPicker"
+							fgemojipicker='{"trigger":[".emoji-btn"],"removeOnSelection":false,"closeButton":true,"position":["top","right"],"preFetch":true,"dir":"https://cdn.jsdelivr.net/npm/fg-emoji-picker/fgEmojiPicker.js","insertInto":"$this"}'
+							placeholder="Message..."
+							autocomplete="off"
+							required
+							onkeydown="
+								if (event.key === 'Enter')
+									document
+										.getElementById('chat-message-send')
+										.click();
+							" />
+					</div>
+					<div class="col-auto">
+						<div class="chat-input-links ms-2">
+							<div class="links-list-item">
+								<button
+									id="chat-message-send"
+									type="button"
+									class="btn btn-success chat-send waves-effect waves-light"
+									click-query="$closest .chat-content .simplebar-content-wrapper"
+									click.scroll-to="bottom"
+									actions="save, click, reset">
+									<i
+										class="ri-send-plane-2-fill align-bottom"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="replyCard">
+			<form
+				class="card mb-0"
+				array=""
+				object
+				state-id="offcanvas-app-form"
+				state-overwrite>
+				<div class="card-body py-3">
+					<div
+						class="replymessage-block mb-0 d-flex align-items-start">
+						<div class="flex-grow-1">
+							<h5 class="conversation-name"></h5>
+							<p class="mb-0"></p>
+						</div>
+						<div class="flex-shrink-0">
+							<button
+								type="button"
+								id="close_toggle"
+								class="btn btn-sm btn-link mt-n2 me-n3 fs-18">
+								<i class="ri-close-line align-middle"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,228 @@
+<div class="mx-n3 pt-3 px-3 file-detail-content-scroll" plugin='{"SimpleBar": ["$this", {}]}'>
+	<div id="folder-overview">
+		<div
+			class="d-flex align-items-center pb-3 border-bottom border-bottom-dashed">
+			<h5 class="flex-grow-1 fw-semibold mb-0">Overview</h5>
+			<div>
+				<button
+					type="button"
+					class="btn btn-soft-danger btn-icon btn-sm fs-16 close-btn-overview">
+					<i class="ri-close-fill align-bottom"></i>
+				</button>
+			</div>
+		</div>
+		<div
+			id="simple_dount_chart"
+			data-colors='["--coc-info", "--coc-danger", "--coc-primary", "--coc-success"]'
+			class="apex-charts mt-3"
+			dir="ltr"></div>
+		<div class="mt-4">
+			<ul class="list-unstyled vstack gap-4">
+				<li>
+					<div class="d-flex align-items-center">
+						<div class="flex-shrink-0">
+							<div class="avatar-xs">
+								<div
+									class="avatar-title rounded bg-secondary-subtle text-secondary">
+									<i class="ri-file-text-line fs-17"></i>
+								</div>
+							</div>
+						</div>
+						<div class="flex-grow-1 ms-3">
+							<h5 class="mb-1 fs-15">Documents</h5>
+							<p class="mb-0 fs-12 text-muted">2348 files</p>
+						</div>
+						<b>27.01 GB</b>
+					</div>
+				</li>
+				<li>
+					<div class="d-flex align-items-center">
+						<div class="flex-shrink-0">
+							<div class="avatar-xs">
+								<div
+									class="avatar-title rounded bg-success-subtle text-success">
+									<i class="ri-gallery-line fs-17"></i>
+								</div>
+							</div>
+						</div>
+						<div class="flex-grow-1 ms-3">
+							<h5 class="mb-1 fs-15">Media</h5>
+							<p class="mb-0 fs-12 text-muted">12480 files</p>
+						</div>
+						<b>20.87 GB</b>
+					</div>
+				</li>
+				<li>
+					<div class="d-flex align-items-center">
+						<div class="flex-shrink-0">
+							<div class="avatar-xs">
+								<div
+									class="avatar-title rounded bg-warning-subtle text-warning">
+									<i class="ri-folder-2-line fs-17"></i>
+								</div>
+							</div>
+						</div>
+						<div class="flex-grow-1 ms-3">
+							<h5 class="mb-1 fs-15">Projects</h5>
+							<p class="mb-0 fs-12 text-muted">349 files</p>
+						</div>
+						<b>4.10 GB</b>
+					</div>
+				</li>
+				<li>
+					<div class="d-flex align-items-center">
+						<div class="flex-shrink-0">
+							<div class="avatar-xs">
+								<div
+									class="avatar-title rounded bg-primary-subtle text-primary">
+									<i class="ri-error-warning-line fs-17"></i>
+								</div>
+							</div>
+						</div>
+						<div class="flex-grow-1 ms-3">
+							<h5 class="mb-1 fs-15">Others</h5>
+							<p class="mb-0 fs-12 text-muted">9873 files</p>
+						</div>
+						<b>33.54 GB</b>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="pb-3 mt-auto">
+			<div class="alert alert-danger d-flex align-items-center mb-0">
+				<div class="flex-shrink-0">
+					<i
+						class="ri-cloud-line text-danger align-bottom display-5"></i>
+				</div>
+				<div class="flex-grow-1 ms-3">
+					<h5 class="text-danger fs-14">Upgrade to Pro</h5>
+					<p class="text-muted mb-2">Get more space for your...</p>
+					<button class="btn btn-sm btn-danger">
+						<i class="ri-upload-cloud-line align-bottom"></i>
+						Upgrade Now
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="file-overview" class="h-100">
+		<div class="d-flex h-100 flex-column">
+			<div
+				class="d-flex align-items-center pb-3 border-bottom border-bottom-dashed mb-3 gap-2">
+				<h5 class="flex-grow-1 fw-semibold mb-0">File Preview</h5>
+				<div>
+					<button
+						type="button"
+						class="btn btn-ghost-primary btn-icon btn-sm fs-16 favourite-btn">
+						<i class="ri-star-fill align-bottom"></i>
+					</button>
+					<button
+						type="button"
+						class="btn btn-soft-danger btn-icon btn-sm fs-16 close-btn-overview">
+						<i class="ri-close-fill align-bottom"></i>
+					</button>
+				</div>
+			</div>
+
+			<div class="pb-3 border-bottom border-bottom-dashed mb-3">
+				<div
+					class="file-details-box bg-light p-3 text-center rounded-3 border border-light mb-3">
+					<div class="display-4 file-icon">
+						<i class="ri-file-text-fill text-secondary"></i>
+					</div>
+				</div>
+				<button
+					type="button"
+					class="btn btn-icon btn-sm btn-ghost-success float-end fs-16">
+					<i class="ri-share-forward-line"></i>
+				</button>
+				<h5 class="fs-16 mb-1 file-name">html.docx</h5>
+				<p class="text-muted mb-0 fs-12">
+					<span class="file-size">0.3 KB</span>,
+					<span class="create-date">19 Apr, 2022</span>
+				</p>
+			</div>
+			<div>
+				<h5 class="fs-12 text-uppercase text-muted mb-3">
+					File Description :
+				</h5>
+
+				<div class="table-responsive">
+					<table class="table table-borderless table-nowrap table-sm">
+						<tbody>
+							<tr>
+								<th scope="row" style="width: 35%">
+									File Name :
+								</th>
+								<td class="file-name">html.docx</td>
+							</tr>
+							<tr>
+								<th scope="row">File Type :</th>
+								<td class="file-type">Documents</td>
+							</tr>
+							<tr>
+								<th scope="row">Size :</th>
+								<td class="file-size">0.3 KB</td>
+							</tr>
+							<tr>
+								<th scope="row">Created :</th>
+								<td class="create-date">19 Apr, 2022</td>
+							</tr>
+							<tr>
+								<th scope="row">Path :</th>
+								<td class="file-path">
+									<div class="user-select-all text-truncate">
+										*:\projects\src\assets\images
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div>
+					<h5 class="fs-12 text-uppercase text-muted mb-3">
+						Share Information:
+					</h5>
+					<div class="table-responsive">
+						<table
+							class="table table-borderless table-nowrap table-sm">
+							<tbody>
+								<tr>
+									<th scope="row" style="width: 35%">
+										Share Name :
+									</th>
+									<td class="share-name">\\*\Projects</td>
+								</tr>
+								<tr>
+									<th scope="row">Share Path :</th>
+									<td class="share-path">
+										CoCreate:\Documents\
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-auto border-top border-top-dashed py-3">
+				<div class="hstack gap-2">
+					<button type="button" class="btn btn-soft-primary w-100">
+						<i class="ri-download-2-line align-bottom me-1"></i>
+						Download
+					</button>
+					<button
+						type="button"
+						class="btn btn-soft-danger w-100 remove-file-overview"
+						data-remove-id=""
+						data-bs-toggle="modal"
+						data-bs-target="#removeFileItemModal">
+						<i class="ri-close-fill align-bottom me-1"></i>
+						Delete
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

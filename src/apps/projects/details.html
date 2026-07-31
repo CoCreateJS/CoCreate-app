@@ -1,0 +1,982 @@
+<form
+	class="card mb-0"
+	array
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/projects/form.html"
+		src="components/offcanvas-header.html"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4">
+			<div class="bg-warning-subtle flex-grow-1 height:250px">
+				<div class="card-body pb-0 px-4">
+					<div
+						class="row mb-3 d-flex flex-wrap align-items-center g-3">
+						<div class="col-md d-flex flex-wrap flex-grow-1">
+							<div class="row align-items-center g-3 flex-grow-1">
+								<div class="col-md-auto flex-shrink-0">
+									<div class="avatar-md">
+										<div
+											class="avatar-title bg-white rounded-circle">
+											<img
+												src="/assets/images/brands/slack.png"
+												alt="Project Logo"
+												class="avatar-xs"
+												key="project-logo" />
+										</div>
+									</div>
+								</div>
+								<div class="col-md flex-grow-1">
+									<div>
+										<h4
+											class="fw-bold"
+											key="project-title"
+											aria-label="Project Title"></h4>
+										<div class="hstack gap-3 flex-wrap">
+											<div>
+												<i
+													class="ri-building-line align-bottom me-1"></i>
+												<span
+													key="organization-name"
+													aria-label="Organization Name"></span>
+											</div>
+											<div class="vr"></div>
+											<div>
+												Create Date:
+												<span
+													class="fw-medium"
+													key="create-date"
+													aria-label="Create Date"></span>
+											</div>
+											<div class="vr"></div>
+											<div>
+												Due Date:
+												<span
+													class="fw-medium"
+													key="due-date"
+													aria-label="Due Date"></span>
+											</div>
+											<div class="vr"></div>
+											<div
+												class="badge rounded-pill bg-info fs-12"
+												key="status-new"
+												aria-label="Status"></div>
+											<div
+												class="badge rounded-pill bg-danger fs-12"
+												key="priority-high"
+												aria-label="Priority"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-auto flex-shrink-0">
+							<div class="hstack gap-1 flex-wrap">
+								<button
+									type="button"
+									class="btn py-0 fs-16 favourite-btn material-shadow-none active"
+									title="Mark as Favourite"
+									key="favourite-btn"
+									aria-label="Mark as Favourite">
+									<i class="ri-star-fill"></i>
+								</button>
+								<button
+									type="button"
+									class="btn py-0 fs-16 text-body material-shadow-none"
+									title="Share"
+									key="share-btn"
+									aria-label="Share Project">
+									<i class="ri-share-line"></i>
+								</button>
+								<button
+									type="button"
+									class="btn py-0 fs-16 text-body material-shadow-none"
+									title="Flag"
+									key="flag-btn"
+									aria-label="Flag Project">
+									<i class="ri-flag-line"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					<ul
+						class="nav nav-tabs-custom border-bottom-0"
+						role="tablist">
+						<li class="nav-item">
+							<a
+								class="nav-link active fw-semibold"
+								id="tab-overview"
+								aria-controls="project-overview"
+								aria-expanded="true"
+								href="#project-overview"
+								role="tab"
+								key="tab-overview"
+								aria-label="Overview Tab">
+								Overview
+							</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link fw-semibold"
+								id="tab-documents"
+								aria-controls="project-documents"
+								href="#project-documents"
+								role="tab"
+								key="tab-documents"
+								aria-label="Documents Tab">
+								Documents
+							</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link fw-semibold"
+								id="tab-activities"
+								aria-controls="project-activities"
+								href="#project-activities"
+								role="tab"
+								key="tab-activities"
+								aria-label="Activities Tab">
+								Activities
+							</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link fw-semibold"
+								id="tab-team"
+								aria-controls="project-team"
+								href="#project-team"
+								role="tab"
+								key="tab-team"
+								aria-label="Team Tab">
+								Team
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="tab-content text-muted w-100">
+				<div
+					class="tab-pane fade show active"
+					id="project-overview"
+					role="tabpanel"
+					aria-labelledby="tab-overview">
+					<div class="row">
+						<div class="col-xl-9 col-lg-8 flex-grow-1">
+							<div class="card">
+								<div class="card-body">
+									<div class="text-muted">
+										<h6
+											class="mb-3 fw-semibold text-uppercase">
+											Summary
+										</h6>
+										<p>
+											It will be as simple as occidental
+											in fact, it will be Occidental. To
+											an English person, it will seem like
+											simplified English, as a skeptical
+											Cambridge friend of mine told me
+											what Occidental is. The European
+											languages are members of the same
+											family. Their separate existence is
+											a myth. For science, music, sport,
+											etc, Europe uses the same
+											vocabulary. The languages only
+											differ in their grammar, their
+											pronunciation and their most common
+											words.
+										</p>
+										<ul class="ps-4 vstack gap-2">
+											<li>
+												Product Design, Figma
+												(Software), Prototype
+											</li>
+											<li>
+												Four Dashboards : Ecommerce,
+												Analytics, Project,etc.
+											</li>
+											<li>
+												Create calendar, chat and email
+												app pages.
+											</li>
+											<li>Add authentication pages.</li>
+											<li>Content listing.</li>
+										</ul>
+										<div>
+											<button
+												type="button"
+												class="btn btn-link link-success p-0 material-shadow-none">
+												Read more
+											</button>
+										</div>
+										<div
+											class="pt-3 border-top border-top-dashed mt-4">
+											<div class="row gy-3">
+												<div class="col-lg-3 col-sm-6">
+													<div>
+														<p
+															class="mb-2 text-uppercase fw-medium">
+															Create Date :
+														</p>
+														<h5 class="fs-15 mb-0">
+															15 Sep, 2021
+														</h5>
+													</div>
+												</div>
+												<div class="col-lg-3 col-sm-6">
+													<div>
+														<p
+															class="mb-2 text-uppercase fw-medium">
+															Due Date :
+														</p>
+														<h5 class="fs-15 mb-0">
+															29 Dec, 2021
+														</h5>
+													</div>
+												</div>
+												<div class="col-lg-3 col-sm-6">
+													<div>
+														<p
+															class="mb-2 text-uppercase fw-medium">
+															Priority :
+														</p>
+														<div
+															class="badge bg-danger fs-12">
+															High
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-3 col-sm-6">
+													<div>
+														<p
+															class="mb-2 text-uppercase fw-medium">
+															Status :
+														</p>
+														<div
+															class="badge bg-warning fs-12">
+															Inprogress
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="pt-3 border-top border-top-dashed mt-4">
+											<h6
+												class="mb-3 fw-semibold text-uppercase">
+												Resources
+											</h6>
+											<div class="row g-3">
+												<div class="col-xxl-4 col-lg-6">
+													<div
+														class="border rounded border-dashed p-2">
+														<div
+															class="d-flex align-items-center">
+															<div
+																class="flex-shrink-0 me-3">
+																<div
+																	class="avatar-sm">
+																	<div
+																		class="avatar-title bg-light text-secondary rounded fs-24">
+																		<i
+																			class="ri-folder-zip-line"></i>
+																	</div>
+																</div>
+															</div>
+															<div
+																class="flex-grow-1 overflow-hidden">
+																<h5
+																	class="fs-13 mb-1">
+																	<a
+																		href="#"
+																		class="text-body text-truncate d-block"
+																		>App
+																		pages.zip</a
+																	>
+																</h5>
+																<div>2.2MB</div>
+															</div>
+															<div
+																class="flex-shrink-0 ms-2">
+																<div
+																	class="d-flex gap-1">
+																	<button
+																		type="button"
+																		class="btn btn-icon text-muted btn-sm fs-18"
+																		aria-label="Download App pages.zip">
+																		<i
+																			class="ri-download-2-line"></i>
+																	</button>
+																	<div
+																		class="dropdown">
+																		<button
+																			class="btn btn-icon text-muted btn-sm fs-18 dropdown"
+																			type="button"
+																			data-bs-toggle="dropdown"
+																			aria-expanded="false"
+																			aria-label="More options for App pages.zip">
+																			<i
+																				class="ri-more-fill"></i>
+																		</button>
+																		<ul
+																			class="dropdown-menu"
+																			aria-close-on="anywhere">
+																			<li>
+																				<a
+																					class="dropdown-item"
+																					href="#"
+																					><i
+																						class="ri-pencil-fill align-bottom me-2 text-muted"></i
+																					>Rename</a
+																				>
+																			</li>
+																			<li>
+																				<a
+																					class="dropdown-item"
+																					href="#"
+																					><i
+																						class="ri-delete-bin-fill align-bottom me-2 text-muted"></i
+																					>Delete</a
+																				>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xxl-4 col-lg-6">
+													<div
+														class="border rounded border-dashed p-2">
+														<div
+															class="d-flex align-items-center">
+															<div
+																class="flex-shrink-0 me-3">
+																<div
+																	class="avatar-sm">
+																	<div
+																		class="avatar-title bg-light text-secondary rounded fs-24 material-shadow">
+																		<i
+																			class="ri-file-ppt-2-line"></i>
+																	</div>
+																</div>
+															</div>
+															<div
+																class="flex-grow-1 overflow-hidden">
+																<h5
+																	class="fs-13 mb-1">
+																	<a
+																		href="#"
+																		class="text-body text-truncate d-block"
+																		>CoCreate
+																		admin.ppt</a
+																	>
+																</h5>
+																<div>2.4MB</div>
+															</div>
+															<div
+																class="flex-shrink-0 ms-2">
+																<div
+																	class="d-flex gap-1">
+																	<button
+																		type="button"
+																		class="btn btn-icon text-muted btn-sm fs-18 material-shadow-none"
+																		aria-label="Download CoCreate admin.ppt">
+																		<i
+																			class="ri-download-2-line"></i>
+																	</button>
+																	<div
+																		class="dropdown">
+																		<button
+																			class="btn btn-icon text-muted btn-sm fs-18 dropdown material-shadow-none"
+																			type="button"
+																			data-bs-toggle="dropdown"
+																			aria-expanded="false"
+																			aria-label="More options for CoCreate admin.ppt">
+																			<i
+																				class="ri-more-fill"></i>
+																		</button>
+																		<ul
+																			class="dropdown-menu"
+																			aria-close-on="anywhere">
+																			<li>
+																				<a
+																					class="dropdown-item"
+																					href="#"
+																					><i
+																						class="ri-pencil-fill align-bottom me-2 text-muted"></i
+																					>Rename</a
+																				>
+																			</li>
+																			<li>
+																				<a
+																					class="dropdown-item"
+																					href="#"
+																					><i
+																						class="ri-delete-bin-fill align-bottom me-2 text-muted"></i
+																					>Delete</a
+																				>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div
+								class="card"
+								src="components/comments.html"></div>
+						</div>
+						<div class="col-xl-3 col-lg-4">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title mb-4">Skills</h5>
+									<div class="d-flex flex-wrap gap-2 fs-16">
+										<div
+											class="badge fw-medium bg-secondary-subtle text-secondary">
+											UI/UX
+										</div>
+										<div
+											class="badge fw-medium bg-secondary-subtle text-secondary">
+											Figma
+										</div>
+										<div
+											class="badge fw-medium bg-secondary-subtle text-secondary">
+											HTML
+										</div>
+										<div
+											class="badge fw-medium bg-secondary-subtle text-secondary">
+											CSS
+										</div>
+										<div
+											class="badge fw-medium bg-secondary-subtle text-secondary">
+											Javascript
+										</div>
+										<div
+											class="badge fw-medium bg-secondary-subtle text-secondary">
+											C#
+										</div>
+										<div
+											class="badge fw-medium bg-secondary-subtle text-secondary">
+											Nodejs
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div
+									class="card-header align-items-center d-flex border-bottom-dashed">
+									<h4 class="card-title mb-0 flex-grow-1">
+										Members
+									</h4>
+									<div class="flex-shrink-0">
+										<button
+											type="button"
+											class="btn btn-soft-danger btn-sm material-shadow-none"
+											data-bs-toggle="modal"
+											data-bs-target="#inviteMembersModal"
+											aria-label="Invite Member">
+											<i
+												class="ri-share-line me-1 align-bottom"></i>
+											Invite Member
+										</button>
+									</div>
+								</div>
+								<div class="card-body">
+									<div
+										plugin="SimpleBar"
+										simplebar='["$this", {}]'
+										style="height: 235px"
+										class="mx-n3 px-3">
+										<div class="vstack gap-3">
+											<div
+												class="d-flex align-items-center">
+												<div
+													class="avatar-xs flex-shrink-0 me-3">
+													<img
+														src="/assets/images/users/avatar-2.jpg"
+														alt="Nancy Martino"
+														class="img-fluid rounded-circle" />
+												</div>
+												<div class="flex-grow-1">
+													<h5 class="fs-13 mb-0">
+														<a
+															href="#"
+															class="text-body d-block"
+															>Nancy Martino</a
+														>
+													</h5>
+												</div>
+												<div class="flex-shrink-0">
+													<div
+														class="d-flex align-items-center gap-1">
+														<button
+															type="button"
+															class="btn btn-light btn-sm material-shadow-none">
+															Message
+														</button>
+														<div class="dropdown">
+															<button
+																class="btn btn-icon btn-sm fs-16 text-muted dropdown material-shadow-none"
+																type="button"
+																data-bs-toggle="dropdown"
+																aria-expanded="false"
+																aria-label="More options for Nancy Martino">
+																<i
+																	class="ri-more-fill"></i>
+															</button>
+															<ul
+																class="dropdown-menu"
+																aria-close-on="anywhere">
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-eye-fill text-muted me-2 align-bottom"></i
+																		>View</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-star-fill text-muted me-2 align-bottom"></i
+																		>Favourite</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i
+																		>Delete</a
+																	>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div
+												class="d-flex align-items-center">
+												<div
+													class="avatar-xs flex-shrink-0 me-3">
+													<div
+														class="avatar-title bg-danger-subtle text-danger rounded-circle">
+														HB
+													</div>
+												</div>
+												<div class="flex-grow-1">
+													<h5 class="fs-13 mb-0">
+														<a
+															href="#"
+															class="text-body d-block"
+															>Henry Baird</a
+														>
+													</h5>
+												</div>
+												<div class="flex-shrink-0">
+													<div
+														class="d-flex align-items-center gap-1">
+														<button
+															type="button"
+															class="btn btn-light btn-sm material-shadow-none">
+															Message
+														</button>
+														<div class="dropdown">
+															<button
+																class="btn btn-icon btn-sm fs-16 text-muted dropdown material-shadow-none"
+																type="button"
+																data-bs-toggle="dropdown"
+																aria-expanded="false"
+																aria-label="More options for Henry Baird">
+																<i
+																	class="ri-more-fill"></i>
+															</button>
+															<ul
+																class="dropdown-menu"
+																aria-close-on="anywhere">
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-eye-fill text-muted me-2 align-bottom"></i
+																		>View</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-star-fill text-muted me-2 align-bottom"></i
+																		>Favourite</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i
+																		>Delete</a
+																	>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div
+												class="d-flex align-items-center">
+												<div
+													class="avatar-xs flex-shrink-0 me-3">
+													<img
+														src="/assets/images/users/avatar-3.jpg"
+														alt="Frank Hook"
+														class="img-fluid rounded-circle" />
+												</div>
+												<div class="flex-grow-1">
+													<h5 class="fs-13 mb-0">
+														<a
+															href="#"
+															class="text-body d-block"
+															>Frank Hook</a
+														>
+													</h5>
+												</div>
+												<div class="flex-shrink-0">
+													<div
+														class="d-flex align-items-center gap-1">
+														<button
+															type="button"
+															class="btn btn-light btn-sm material-shadow-none">
+															Message
+														</button>
+														<div class="dropdown">
+															<button
+																class="btn btn-icon btn-sm fs-16 text-muted dropdown material-shadow-none"
+																type="button"
+																data-bs-toggle="dropdown"
+																aria-expanded="false"
+																aria-label="More options for Frank Hook">
+																<i
+																	class="ri-more-fill"></i>
+															</button>
+															<ul
+																class="dropdown-menu"
+																aria-close-on="anywhere">
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-eye-fill text-muted me-2 align-bottom"></i
+																		>View</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-star-fill text-muted me-2 align-bottom"></i
+																		>Favourite</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i
+																		>Delete</a
+																	>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div
+												class="d-flex align-items-center">
+												<div
+													class="avatar-xs flex-shrink-0 me-3">
+													<img
+														src="/assets/images/users/avatar-4.jpg"
+														alt="Jennifer Carter"
+														class="img-fluid rounded-circle" />
+												</div>
+												<div class="flex-grow-1">
+													<h5 class="fs-13 mb-0">
+														<a
+															href="#"
+															class="text-body d-block"
+															>Jennifer Carter</a
+														>
+													</h5>
+												</div>
+												<div class="flex-shrink-0">
+													<div
+														class="d-flex align-items-center gap-1">
+														<button
+															type="button"
+															class="btn btn-light btn-sm material-shadow-none">
+															Message
+														</button>
+														<div class="dropdown">
+															<button
+																class="btn btn-icon btn-sm fs-16 text-muted dropdown material-shadow-none"
+																type="button"
+																data-bs-toggle="dropdown"
+																aria-expanded="false"
+																aria-label="More options for Jennifer Carter">
+																<i
+																	class="ri-more-fill"></i>
+															</button>
+															<ul
+																class="dropdown-menu"
+																aria-close-on="anywhere">
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-eye-fill text-muted me-2 align-bottom"></i
+																		>View</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-star-fill text-muted me-2 align-bottom"></i
+																		>Favourite</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i
+																		>Delete</a
+																	>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div
+												class="d-flex align-items-center">
+												<div
+													class="avatar-xs flex-shrink-0 me-3">
+													<div
+														class="avatar-title bg-success-subtle text-success rounded-circle">
+														AC
+													</div>
+												</div>
+												<div class="flex-grow-1">
+													<h5 class="fs-13 mb-0">
+														<a
+															href="#"
+															class="text-body d-block"
+															>Alexis Clarke</a
+														>
+													</h5>
+												</div>
+												<div class="flex-shrink-0">
+													<div
+														class="d-flex align-items-center gap-1">
+														<button
+															type="button"
+															class="btn btn-light btn-sm material-shadow-none">
+															Message
+														</button>
+														<div class="dropdown">
+															<button
+																class="btn btn-icon btn-sm fs-16 text-muted dropdown material-shadow-none"
+																type="button"
+																data-bs-toggle="dropdown"
+																aria-expanded="false"
+																aria-label="More options for Alexis Clarke">
+																<i
+																	class="ri-more-fill"></i>
+															</button>
+															<ul
+																class="dropdown-menu"
+																aria-close-on="anywhere">
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-eye-fill text-muted me-2 align-bottom"></i
+																		>View</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-star-fill text-muted me-2 align-bottom"></i
+																		>Favourite</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i
+																		>Delete</a
+																	>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div
+												class="d-flex align-items-center">
+												<div
+													class="avatar-xs flex-shrink-0 me-3">
+													<img
+														src="/assets/images/users/avatar-7.jpg"
+														alt="Joseph Parker"
+														class="img-fluid rounded-circle" />
+												</div>
+												<div class="flex-grow-1">
+													<h5 class="fs-13 mb-0">
+														<a
+															href="#"
+															class="text-body d-block"
+															>Joseph Parker</a
+														>
+													</h5>
+												</div>
+												<div class="flex-shrink-0">
+													<div
+														class="d-flex align-items-center gap-1">
+														<button
+															type="button"
+															class="btn btn-light btn-sm material-shadow-none">
+															Message
+														</button>
+														<div class="dropdown">
+															<button
+																class="btn btn-icon btn-sm fs-16 text-muted dropdown material-shadow-none"
+																type="button"
+																data-bs-toggle="dropdown"
+																aria-expanded="false"
+																aria-label="More options for Joseph Parker">
+																<i
+																	class="ri-more-fill"></i>
+															</button>
+															<ul
+																class="dropdown-menu"
+																aria-close-on="anywhere">
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-eye-fill text-muted me-2 align-bottom"></i
+																		>View</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-star-fill text-muted me-2 align-bottom"></i
+																		>Favourite</a
+																	>
+																</li>
+																<li>
+																	<a
+																		class="dropdown-item"
+																		href="javascript:void(0);"
+																		><i
+																			class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i
+																		>Delete</a
+																	>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div src="components/mini-file-manager.html"></div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="tab-pane fade"
+					id="project-documents"
+					role="tabpanel"
+					aria-labelledby="tab-documents"
+					src="components/document-list.html"></div>
+				<div
+					class="tab-pane fade"
+					id="project-activities"
+					role="tabpanel"
+					aria-labelledby="tab-activities">
+					<div src="components/activities.html"></div>
+				</div>
+				<div class="tab-pane fade" id="project-team" role="tabpanel">
+					<div class="row g-4 mb-3">
+						<div class="col-sm flex-grow-1">
+							<div class="d-flex">
+								<div class="search-box me-2 w-100">
+									<input
+										type="text"
+										class="form-control w-100"
+										placeholder="Search member..."
+										aria-label="Search for team members" />
+									<i class="ri-search-line search-icon"></i>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-auto flex-shrink-0">
+							<div>
+								<button
+									type="button"
+									class="btn btn-danger"
+									data-bs-toggle="modal"
+									data-bs-target="#inviteMembersModal"
+									aria-label="Invite Member">
+									<i
+										class="ri-share-line me-1 align-bottom"></i>
+									Invite Member
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="row" src="components/team-members.html"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

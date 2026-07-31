@@ -1,0 +1,83 @@
+<div class="card">
+	<div class="card-header align-items-center d-flex border-bottom-dashed">
+		<h4 class="card-title mb-0 flex-grow-1">Attachments</h4>
+		<div class="flex-shrink-0">
+			<button type="button" class="btn btn-soft-info btn-sm">
+				<i class="ri-upload-2-fill me-1 align-bottom"></i>
+				Upload
+			</button>
+		</div>
+	</div>
+
+	<div class="card-body">
+		<div
+			class="vstack gap-2"
+			render="files"
+			render-type="array"
+			render-as="file">
+			<!-- Template: File Item -->
+			<div class="border rounded border-dashed p-2">
+				<div class="d-flex align-items-center">
+					<div class="flex-shrink-0 me-3">
+						<div class="avatar-sm">
+							<div
+								class="avatar-title bg-light text-secondary rounded fs-24">
+								<i class="{{file.icon}}"></i>
+							</div>
+						</div>
+					</div>
+					<div class="flex-grow-1 overflow-hidden">
+						<h5 class="fs-13 mb-1">
+							<a
+								href="{{file.url}}"
+								class="text-body text-truncate d-block">
+								{{file.name}}
+							</a>
+						</h5>
+						<div>{{file.size}}</div>
+					</div>
+					<div class="flex-shrink-0 ms-2">
+						<div class="d-flex gap-1">
+							<button
+								type="button"
+								class="btn btn-icon text-muted btn-sm fs-18 material-shadow-none">
+								<i class="ri-download-2-line"></i>
+							</button>
+							<div class="dropdown">
+								<button
+									class="btn btn-icon text-muted btn-sm fs-18 dropdown material-shadow-none"
+									type="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false">
+									<i class="ri-more-fill"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item" href="#"
+											><i
+												class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+											Rename</a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#"
+											><i
+												class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+											Delete</a
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Template: File Item -->
+		</div>
+
+		<div class="mt-2 text-center">
+			<button type="button" class="btn btn-success">View more</button>
+		</div>
+	</div>
+	<!-- end card body -->
+</div>

@@ -1,0 +1,185 @@
+<ul
+	class="list-inline hstack justify-content-between align-items-center gap-2 mb-0"
+	style="min-height: unset"
+	role="toolbar"
+	aria-label="Offcanvas header controls">
+	<style>
+		#form-btn {
+			display: none;
+		}
+		#save-btn {
+			display: none;
+		}
+		#details-btn {
+			display: none;
+		}
+		/* Show Details button if src ends with /details.html */
+		[src$="/details.html"] #form-btn {
+			display: inline;
+		}
+		/* Show Form button if src ends with /form.html */
+		[src$="/form.html"] #save-btn {
+			display: inline;
+		}
+		/* Show Form button if src ends with /form.html */
+		[src$="/form.html"] #details-btn {
+			display: inline;
+		}
+	</style>
+
+	<li class="list-inline-item">
+		<div class="dropdown d-inline-block" role="region" aria-label="More actions">
+			<a
+				class="dropdown"
+				role="button"
+				aria-haspopup="menu"
+				aria-controls="offcanvas-header-dropdown"
+				aria-expanded="false"
+				aria-label="More actions"
+				class="text-muted d-inline-block">
+				<i class="ri-more-2-fill align-middle fs-18"></i>
+			</a>
+			<ul id="offcanvas-header-dropdown" class="dropdown-menu dropdown-menu-start" aria-close-on="anywhere" role="menu" aria-label="Header actions menu">
+				<li>
+					<a
+						class="dropdown-item details-view-btn"
+						href="javascript:void(0);"
+						state-to="offcanvas-app-view"
+						state.src=""
+						role="menuitem"
+						><i class="ri-eye-fill align-bottom me-2 text-muted"></i
+						>View</a
+					>
+				</li>
+				<li>
+					<a
+						class="dropdown-item form-view-btn"
+						href="javascript:void(0);"
+						state-to="offcanvas-app-view"
+						state.src=""
+						role="menuitem"
+						><i class="ri-eye-fill align-bottom me-2 text-muted"></i
+						>Edit</a
+					>
+				</li>
+				<li>
+					<a
+						class="dropdown-item remove-item-btn"
+						aria-haspopup="dialog"
+						aria-label="Remove selected items"
+						aria-controls="removeItemModal"
+						role="menuitem"
+						state-id="offcanvas-app-form"
+						state-to="delete-record"
+						state-overwrite
+						state.array
+						state.object>
+						<i
+							class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+						Delete</a
+					>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Details button outside dropdown, next to three-dot icon -->
+		<div role="group" aria-label="Primary header actions" class="d-inline-block align-middle">
+			<button
+				id="details-btn"
+				type="button"
+				state-to="offcanvas-app-view" 
+				state.src=""
+				class="btn btn-sm btn-outline-primary ms-2 details-view-btn"
+				title="Details"
+				aria-label="Details">
+				<i class="ri-eye-fill align-bottom"></i>
+				<span>Details</span>
+			</button>
+			<button
+				type="submit"
+				class="btn btn-sm ms-2 btn-success btn-spinner"
+				id="save-btn"
+				actions="disabled, save, timeout(2000), disabled"
+				aria-label="Save">
+				<span
+					class="spinner-border spinner-border-xs display:none"
+					role="status"
+					aria-hidden="true">
+				</span>
+				<span class="button-text">Save</span>
+			</button>
+
+			<button
+				id="form-btn"
+				type="button"
+				state-to="offcanvas-app-view" 
+				state.src=""
+				class="btn btn-sm btn-outline-primary ms-2 form-view-btn"
+				title="Edit"
+				aria-label="Edit">
+				<i class="ri-pencil-fill align-bottom"></i>
+				<span>Edit</span>
+			</button>
+		</div>
+	</li>
+	
+	<div role="group" aria-label="Window controls">
+		<li class="list-inline-item d-none d-lg-inline">
+			<!-- Dock icon button -->
+			<a
+				role="button"
+				id="dock-lead-side-view"
+				title="Dock Right"
+				aria-label="Dock Right"
+				toggle.docked="true, false"
+				toggle-query="$document #offcanvas-app"
+				class="text-muted d-inline-block">
+				<i
+					toggle.class="ri-layout-right-fill, ri-layout-right-line"
+					class="ri-layout-right-line align-middle fs-22"></i>
+			</a>
+		</li>
+		<li class="list-inline-item d-none d-lg-inline">
+			<!-- Popout icon button -->
+			<a
+				role="button"
+				id="popout-lead-view"
+				title="Popout Left"
+				aria-label="Popout Left"
+				toggle.popout="true, false"
+				toggle-query="$document #offcanvas-app"
+				class="text-muted d-inline-block">
+				<i
+					toggle.class="ri-arrow-left-up-fill, ri-arrow-left-up-line"
+					class="ri-arrow-left-up-line align-middle fs-22"></i>
+			</a>
+		</li>
+		<li class="list-inline-item d-none">
+			<!-- Pin icon button -->
+			<a
+				role="button"
+				id="pin-lead-bottom-tab"
+				title="Pin Bottom"
+				aria-label="Pin Bottom"
+				toggle.pin="bottom, none"
+				toggle-query="$document #offcanvas-app"
+				class="text-muted d-inline-block">
+				<i
+					toggle.class="ri-pushpin-2-fill, ri-pushpin-2-line"
+					class="ri-pushpin-2-line align-middle fs-22"></i>
+			</a>
+		</li>
+		<li
+			class="list-inline-item"
+			title="Close">
+			<a
+				role="button"
+				aria-label="Close"
+				aria-controls="offcanvas-app"
+				aria-expanded="true"
+				class="text-muted d-inline-block">
+				<i class="ri-close-line align-middle fs-22"></i>
+			</a>
+		</li>
+	</div>
+</ul>

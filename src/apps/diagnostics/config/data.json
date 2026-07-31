@@ -1,0 +1,1976 @@
+{
+  "method": "object.update",
+  "array": "diagnostics",
+  "upsert": true,
+  "object": [
+    {
+      "_id": "68765ca00d899aa18761050d",
+      "user_id": "68765ca00d899aa18761050d",
+      "patient_id": "68765ca00d899aa18761050d",
+      "status": "success",
+      "patient": {
+        "patient_id": "68765ca00d899aa18761050d",
+        "first_name": "Amy",
+        "last_name": "Araya",
+        "biological_sex": "Female"
+      },
+      "reports": [
+        {
+          "report_id": "HCBUNK2_AMY",
+          "report_type": "TruAge",
+          "chronological_age_at_collection": 24,
+          "collection_date": "2025-08-28",
+          "report_date": "2025-11-07",
+          "fasting_status": "Unknown",
+          "results": {
+            "biological_age": {
+              "algorithm": "OMICm Age",
+              "value": 22.1,
+              "unit": "years",
+              "age_difference": -1.9,
+              "population_percentile": 85
+            },
+            "pace_of_aging": {
+              "algorithm": "DunedinPACE",
+              "value": 0.75,
+              "unit": "biological_years_per_chronological_year",
+              "status": "aging_slowly"
+            },
+            "organ_systems": {
+              "algorithm": "SYMPHONYAge",
+              "system_scores": [
+                {
+                  "system": "Blood",
+                  "age": 22.8,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Brain",
+                  "age": 21.6,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Inflammation",
+                  "age": 20.7,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Heart",
+                  "age": 23.5,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Hormone",
+                  "age": 24.1,
+                  "status": "normal"
+                },
+                {
+                  "system": "Immune",
+                  "age": 21.3,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Kidney",
+                  "age": 22.7,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Liver",
+                  "age": 23.6,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Metabolic",
+                  "age": 23.8,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Lung",
+                  "age": 22.7,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Musculoskeletal",
+                  "age": 21.7,
+                  "status": "aging_slowly"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "report_id": "DEQV94YQ2EJ258F4_AMY",
+          "report_type": "TruHealth",
+          "chronological_age_at_collection": 24,
+          "collection_date": "2026-02-23",
+          "report_date": "2026-03-01",
+          "fasting_status": "Unknown",
+          "results": {
+            "category_scores": [
+              {
+                "category": "Vitamins",
+                "score": 90,
+                "status": "Optimal"
+              },
+              {
+                "category": "Amino Acids",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "Antioxidants",
+                "score": 88,
+                "status": "Optimal"
+              },
+              {
+                "category": "Fats and Cellular Membranes",
+                "score": 92,
+                "status": "Optimal"
+              },
+              {
+                "category": "Lipid Peroxidation",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "Serum Lipids",
+                "score": 80,
+                "status": "Optimal"
+              },
+              {
+                "category": "Blood Pressure",
+                "score": 95,
+                "status": "Optimal"
+              },
+              {
+                "category": "Metabolic Markers",
+                "score": 89,
+                "status": "Optimal"
+              },
+              {
+                "category": "Immune Markers",
+                "score": 92,
+                "status": "Optimal"
+              },
+              {
+                "category": "Neurocognitive Markers",
+                "score": 90,
+                "status": "Optimal"
+              },
+              {
+                "category": "Inflammation Markers",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "Stress Markers",
+                "score": 88,
+                "status": "Optimal"
+              },
+              {
+                "category": "Toxins",
+                "score": 80,
+                "status": "Optimal"
+              },
+              {
+                "category": "Uric Acid Pathway",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "Mitochondrial Function",
+                "score": 93,
+                "status": "Optimal"
+              },
+              {
+                "category": "Oxidative Defense",
+                "score": 82,
+                "status": "Optimal"
+              },
+              {
+                "category": "NAD+ Metabolism",
+                "score": 86,
+                "status": "Optimal"
+              },
+              {
+                "category": "Ketones",
+                "score": 90,
+                "status": "Optimal"
+              },
+              {
+                "category": "Supplements",
+                "score": 85,
+                "status": "Optimal"
+              }
+            ],
+            "biomarkers": []
+          }
+        }
+      ]
+    },
+    {
+      "_id": "69cd4911cad496654efbba14",
+      "user_id": "5ff747727005da1c272740ac",
+      "patient_id": "DEQV94YQ2EJ258F4",
+      "status": "success",
+      "patient": {
+        "patient_id": "DEQV94YQ2EJ258F4",
+        "first_name": "Frankie",
+        "last_name": "Pagan",
+        "biological_sex": "Male"
+      },
+      "reports": [
+        {
+          "report_id": "HCBUNK2",
+          "report_type": "TruAge",
+          "chronological_age_at_collection": 43,
+          "collection_date": "2025-08-28",
+          "report_date": "2025-11-07",
+          "fasting_status": "Unknown",
+          "results": {
+            "biological_age": {
+              "algorithm": "OMICm Age",
+              "value": 39.5,
+              "unit": "years",
+              "age_difference": -3.5,
+              "population_percentile": 20.8
+            },
+            "pace_of_aging": {
+              "algorithm": "DunedinPACE",
+              "value": 0.82,
+              "unit": "biological_years_per_chronological_year",
+              "status": "Optimal"
+            },
+            "organ_systems": {
+              "algorithm": "SYMPHONYAge",
+              "system_scores": [
+                {
+                  "system": "Blood",
+                  "age": 38.8,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Brain",
+                  "age": 37.6,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Inflammation",
+                  "age": 36.7,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Heart",
+                  "age": 38.5,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Hormone",
+                  "age": 39.1,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Immune",
+                  "age": 36.3,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Kidney",
+                  "age": 35.7,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Liver",
+                  "age": 39.6,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Metabolic",
+                  "age": 36.8,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Lung",
+                  "age": 39.7,
+                  "status": "Optimal"
+                },
+                {
+                  "system": "Musculoskeletal",
+                  "age": 34.7,
+                  "status": "Optimal"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "report_id": "DEQV94YQ2EJ258F4",
+          "report_type": "TruHealth",
+          "chronological_age_at_collection": 43,
+          "collection_date": "2026-02-23",
+          "report_date": "1900-01-01",
+          "fasting_status": "Unknown",
+          "results": {
+            "category_scores": [
+              {
+                "category": "Vitamins",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "Amino Acids",
+                "score": 88,
+                "status": "Optimal"
+              },
+              {
+                "category": "Antioxidants",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "Fats and Cellular Membranes",
+                "score": 82,
+                "status": "Optimal"
+              },
+              {
+                "category": "Lipid Peroxidation",
+                "score": 87,
+                "status": "Optimal"
+              },
+              {
+                "category": "Serum Lipids",
+                "score": 82,
+                "status": "Optimal"
+              },
+              {
+                "category": "Blood Pressure",
+                "score": 81,
+                "status": "Optimal"
+              },
+              {
+                "category": "Metabolic Markers",
+                "score": 84,
+                "status": "Optimal"
+              },
+              {
+                "category": "Immune Markers",
+                "score": 82,
+                "status": "Optimal"
+              },
+              {
+                "category": "Neurocognitive Markers",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "Inflammation Markers",
+                "score": 83,
+                "status": "Optimal"
+              },
+              {
+                "category": "Stress Markers",
+                "score": 83,
+                "status": "Optimal"
+              },
+              {
+                "category": "Toxins",
+                "score": 81,
+                "status": "Optimal"
+              },
+              {
+                "category": "Uric Acid Pathway",
+                "score": 89,
+                "status": "Optimal"
+              },
+              {
+                "category": "Mitochondrial Function",
+                "score": 83,
+                "status": "Optimal"
+              },
+              {
+                "category": "Oxidative Defense",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "NAD+ Metabolism",
+                "score": 86,
+                "status": "Optimal"
+              },
+              {
+                "category": "Ketones",
+                "score": 88,
+                "status": "Optimal"
+              },
+              {
+                "category": "Supplements",
+                "score": 88,
+                "status": "Optimal"
+              }
+            ],
+            "biomarkers": [
+              {
+                "marker_id": "vit_a_retinol",
+                "category": "Vitamins",
+                "display_name": "Retinol (Vitamin A)",
+                "value": 33,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 98
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_b2_riboflavin",
+                "category": "Vitamins",
+                "display_name": "Riboflavin (Vitamin B2)",
+                "value": 96,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_b3_nicotinamide",
+                "category": "Vitamins",
+                "display_name": "Nicotinamide (Vitamin B3)",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_b5_pantothenic",
+                "category": "Vitamins",
+                "display_name": "Pantothenic Acid (Vitamin B5)",
+                "value": 75,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_b6_p5p",
+                "category": "Vitamins",
+                "display_name": "Pyridoxine (Vitamin B6)",
+                "value": 75,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_b8_inositol",
+                "category": "Vitamins",
+                "display_name": "Inositol (Vitamin B8)",
+                "value": 48,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_c_ascorbic_2s",
+                "category": "Vitamins",
+                "display_name": "Ascorbic acid 2-sulfate",
+                "value": 98,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_c_ascorbic_3s",
+                "category": "Vitamins",
+                "display_name": "Ascorbic acid 3-sulfate",
+                "value": 88,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_d_cholecalciferol",
+                "category": "Vitamins",
+                "display_name": "Cholecalciferol (Vitamin D)",
+                "value": 80,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 20,
+                  "max": 98
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_e_alpha_tocopherol",
+                "category": "Vitamins",
+                "display_name": "Alpha-tocopherol (Vitamin E)",
+                "value": 85,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 98
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "choline_total",
+                "category": "Vitamins",
+                "display_name": "Total cholines",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "betaine",
+                "category": "Vitamins",
+                "display_name": "Betaine",
+                "value": 96,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_methionine",
+                "category": "Amino Acids",
+                "display_name": "Methionine",
+                "value": 76,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_cysteine",
+                "category": "Amino Acids",
+                "display_name": "Cysteine",
+                "value": 94,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_s_methylmethionine",
+                "category": "Amino Acids",
+                "display_name": "S-methylmethionine",
+                "value": 84,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_taurine",
+                "category": "Amino Acids",
+                "display_name": "Taurine",
+                "value": 42,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_ergothioneine",
+                "category": "Amino Acids",
+                "display_name": "Ergothioneine",
+                "value": 87,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_glutamine",
+                "category": "Amino Acids",
+                "display_name": "Glutamine",
+                "value": 64,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_arginine",
+                "category": "Amino Acids",
+                "display_name": "Arginine",
+                "value": 24,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_aspartic_acid",
+                "category": "Amino Acids",
+                "display_name": "L-Aspartic Acid",
+                "value": 69,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_citrulline",
+                "category": "Amino Acids",
+                "display_name": "Citrulline",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_glycine",
+                "category": "Amino Acids",
+                "display_name": "Glycine",
+                "value": 24,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_histidine_n_acetyl",
+                "category": "Amino Acids",
+                "display_name": "N-acetylhistidine",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_valine_n_acetyl",
+                "category": "Amino Acids",
+                "display_name": "N-acetylvaline",
+                "value": 55,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "aa_carnosine_n_acetyl",
+                "category": "Amino Acids",
+                "display_name": "N-acetylcarnosine",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ao_lutein",
+                "category": "Antioxidants",
+                "display_name": "Lutein",
+                "value": 62,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ao_carotene_diol",
+                "category": "Antioxidants",
+                "display_name": "Carotene diol",
+                "value": 78,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 98
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ao_acetyl_l_carnitine",
+                "category": "Antioxidants",
+                "display_name": "Acetyl-L-Carnitine",
+                "value": 85,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_omega_3",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Omega-3",
+                "value": 91,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 20,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_dha",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Docosahexaenoate (DHA)",
+                "value": 75,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_dpa",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Docosapentaenoic acid",
+                "value": 87,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_epa",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Eicosapentaenoate (EPA)",
+                "value": 73,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_omega_6",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Omega-6",
+                "value": 72,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_linoleic_acid",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Linoleic Acid (LA)",
+                "value": 22,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_pufa",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Polyunsaturated Fatty Acids",
+                "value": 40,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_mufa",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Monounsaturated Fatty Acids",
+                "value": 67,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_sfa",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Saturated Fatty Acids",
+                "value": 65,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_pentadecanoate",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Pentadecanoate (C15:0)",
+                "value": 66,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_phosphoglycerides",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Phosphoglycerides",
+                "value": 37,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_phosphatidylcholines",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Phosphatidylcholines",
+                "value": 34,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "fat_sphingomyelins",
+                "category": "Fats and Cellular Membranes",
+                "display_name": "Sphingomyelins",
+                "value": 41,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "lp_phospholipase_a2",
+                "category": "Lipid Peroxidation",
+                "display_name": "Phospholipase A2",
+                "value": 28,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "lp_glutathione_peroxidase",
+                "category": "Lipid Peroxidation",
+                "display_name": "Glutathione peroxidase 1",
+                "value": 29,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "lp_c18_2_dc",
+                "category": "Lipid Peroxidation",
+                "display_name": "Octadecadienedioate (C18:2-DC)",
+                "value": 71,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_apob",
+                "category": "Serum Lipids",
+                "display_name": "ApoB",
+                "value": 15,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_ldl_c",
+                "category": "Serum Lipids",
+                "display_name": "LDL-C",
+                "value": 56,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_ldl_size",
+                "category": "Serum Lipids",
+                "display_name": "LDL particle size",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_vldl_c",
+                "category": "Serum Lipids",
+                "display_name": "VLDL-C",
+                "value": 37,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_vldl_size",
+                "category": "Serum Lipids",
+                "display_name": "VLDL particle size",
+                "value": 77,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_apoa1",
+                "category": "Serum Lipids",
+                "display_name": "ApoA1",
+                "value": 35,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 20,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_hdl_c",
+                "category": "Serum Lipids",
+                "display_name": "HDL-C",
+                "value": 33,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_hdl_size",
+                "category": "Serum Lipids",
+                "display_name": "HDL particle size",
+                "value": 48,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_triglycerides",
+                "category": "Serum Lipids",
+                "display_name": "Total triglycerides",
+                "value": 66,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_remnant_cholesterol",
+                "category": "Serum Lipids",
+                "display_name": "Remnant Cholesterol",
+                "value": 7,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_apoc_ii",
+                "category": "Serum Lipids",
+                "display_name": "ApoC-II",
+                "value": 53,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_apoe",
+                "category": "Serum Lipids",
+                "display_name": "APOE",
+                "value": 55,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_pcsk9",
+                "category": "Serum Lipids",
+                "display_name": "PCSK9",
+                "value": 65,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "bp_vanillactic_acid",
+                "category": "Blood Pressure",
+                "display_name": "Vanillactic Acid",
+                "value": 65,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "bp_phenylacetylglutamine",
+                "category": "Blood Pressure",
+                "display_name": "Phenylacetylglutamine",
+                "value": 15,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "bp_sdma_adma",
+                "category": "Blood Pressure",
+                "display_name": "Dimethylarginine",
+                "value": 74,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_hba1c",
+                "category": "Metabolic Markers",
+                "display_name": "HgbA1c",
+                "value": 55,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_glucose",
+                "category": "Metabolic Markers",
+                "display_name": "Glucose",
+                "value": 68,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_palmitoylcarnitine",
+                "category": "Metabolic Markers",
+                "display_name": "Palmitoylcarnitine",
+                "value": 85,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_leptin",
+                "category": "Metabolic Markers",
+                "display_name": "Leptin",
+                "value": 20,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_igf_1",
+                "category": "Metabolic Markers",
+                "display_name": "IGF-1",
+                "value": 71,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_adiponectin",
+                "category": "Metabolic Markers",
+                "display_name": "Adiponectin",
+                "value": 70,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 98
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_cystatin_c",
+                "category": "Metabolic Markers",
+                "display_name": "Cystatin-C",
+                "value": 75,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_erythritol",
+                "category": "Metabolic Markers",
+                "display_name": "Erythritol",
+                "value": 77,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_homocitrulline",
+                "category": "Metabolic Markers",
+                "display_name": "Homocitrulline",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "imm_wbc_count",
+                "category": "Immune Markers",
+                "display_name": "White Blood Cell Count",
+                "value": 74,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "imm_neutrophil_count",
+                "category": "Immune Markers",
+                "display_name": "Neutrophil count",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "imm_lymphocyte_count",
+                "category": "Immune Markers",
+                "display_name": "Lymphocyte count",
+                "value": 26,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "imm_nlr",
+                "category": "Immune Markers",
+                "display_name": "Neutrophil to lymphocyte ratio",
+                "value": 69,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "imm_sii",
+                "category": "Immune Markers",
+                "display_name": "Systemic Immune-Inflammation Index",
+                "value": 63,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "imm_cd4_cd8",
+                "category": "Immune Markers",
+                "display_name": "CD4/CD8 Ratio",
+                "value": 39,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 30,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "nc_neurogranin",
+                "category": "Neurocognitive Markers",
+                "display_name": "Neurogranin",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "nc_quinolinate",
+                "category": "Neurocognitive Markers",
+                "display_name": "Quinolinate",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 2,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "nc_dopamine_sulfate",
+                "category": "Neurocognitive Markers",
+                "display_name": "Dopamine 3-O-sulfate",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "nc_tgf_beta",
+                "category": "Neurocognitive Markers",
+                "display_name": "TGF-beta",
+                "value": 71,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "nc_progranulin",
+                "category": "Neurocognitive Markers",
+                "display_name": "Progranulin",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "nc_vgf",
+                "category": "Neurocognitive Markers",
+                "display_name": "VGF",
+                "value": 66,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "inf_il_6",
+                "category": "Inflammation Markers",
+                "display_name": "IL-6",
+                "value": 23,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "inf_saa_1",
+                "category": "Inflammation Markers",
+                "display_name": "Serum amyloid A-1",
+                "value": 28,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "inf_glycoprotein_acetyls",
+                "category": "Inflammation Markers",
+                "display_name": "Glycoprotein acetyls",
+                "value": 69,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "inf_crp",
+                "category": "Inflammation Markers",
+                "display_name": "CRP",
+                "value": 76,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "str_kynurenine",
+                "category": "Stress Markers",
+                "display_name": "Kynurenine",
+                "value": 40,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 2,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "str_vma",
+                "category": "Stress Markers",
+                "display_name": "Vanilmandelic Acid",
+                "value": 58,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "str_dhea_sulfate",
+                "category": "Stress Markers",
+                "display_name": "DHEA Sulfate",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 20,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "tox_glyphosate",
+                "category": "Toxins",
+                "display_name": "Glyphosate",
+                "value": 40,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "tox_pfos",
+                "category": "Toxins",
+                "display_name": "PFOS",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "tox_pfoa",
+                "category": "Toxins",
+                "display_name": "PFOA",
+                "value": 75,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "tox_lead",
+                "category": "Toxins",
+                "display_name": "Bone Lead Predictor",
+                "value": 75,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "tox_hpma",
+                "category": "Toxins",
+                "display_name": "HPMA (Acrolein)",
+                "value": 62,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "tox_pah",
+                "category": "Toxins",
+                "display_name": "2-hydroxyfluorene sulfate",
+                "value": 4,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ua_urate",
+                "category": "Uric Acid Pathway",
+                "display_name": "Urate",
+                "value": 91,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ua_xanthine",
+                "category": "Uric Acid Pathway",
+                "display_name": "Xanthine",
+                "value": 93,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ua_allantoin",
+                "category": "Uric Acid Pathway",
+                "display_name": "Allantoin",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "mito_drp1",
+                "category": "Mitochondrial Function",
+                "display_name": "DRP1",
+                "value": 40,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "mito_atp5b",
+                "category": "Mitochondrial Function",
+                "display_name": "ATP5B",
+                "value": 44,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ox_mpo",
+                "category": "Oxidative Defense",
+                "display_name": "Myeloperoxidase (MPO)",
+                "value": 80,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 90
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ox_methionine_sulfone",
+                "category": "Oxidative Defense",
+                "display_name": "Methionine sulfone",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ox_dimethyllysine",
+                "category": "Oxidative Defense",
+                "display_name": "Dimethyllysine",
+                "value": 67,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ox_hsp_90",
+                "category": "Oxidative Defense",
+                "display_name": "HSP-90 alpha",
+                "value": 54,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ox_g6pd",
+                "category": "Oxidative Defense",
+                "display_name": "G6PD",
+                "value": 36,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "nad_2py",
+                "category": "NAD+ Metabolism",
+                "display_name": "2PY",
+                "value": 84,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "nad_nr",
+                "category": "NAD+ Metabolism",
+                "display_name": "Nicotinamide riboside",
+                "value": 70,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "ket_bhba",
+                "category": "Ketones",
+                "display_name": "3-hydroxybutyrate",
+                "value": 95,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sup_akg",
+                "category": "Supplements",
+                "display_name": "Alpha-ketoglutarate",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 95
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sup_spermidine",
+                "category": "Supplements",
+                "display_name": "Spermidine",
+                "value": 50,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 5,
+                  "max": 100
+                },
+                "status": "normal"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_id": "68765ca00be67f92d8df050c",
+      "user_id": "68765ca00be67f92d8df050c",
+      "patient_id": "68765ca00be67f92d8df050c",
+      "status": "success",
+      "patient": {
+        "patient_id": "68765ca00be67f92d8df050c",
+        "first_name": "Peter",
+        "last_name": "Stember",
+        "biological_sex": "Male"
+      },
+      "reports": [
+        {
+          "report_id": "HCBUNK2_PETER",
+          "report_type": "TruAge",
+          "chronological_age_at_collection": 55,
+          "collection_date": "2025-08-28",
+          "report_date": "2025-11-07",
+          "fasting_status": "Unknown",
+          "results": {
+            "biological_age": {
+              "algorithm": "OMICm Age",
+              "value": 48.5,
+              "unit": "years",
+              "age_difference": -6.5,
+              "population_percentile": 15
+            },
+            "pace_of_aging": {
+              "algorithm": "DunedinPACE",
+              "value": 0.81,
+              "unit": "biological_years_per_chronological_year",
+              "status": "aging_slowly"
+            },
+            "organ_systems": {
+              "algorithm": "SYMPHONYAge",
+              "system_scores": [
+                {
+                  "system": "Blood",
+                  "age": 47.8,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Brain",
+                  "age": 45.6,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Inflammation",
+                  "age": 44.7,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Heart",
+                  "age": 49.5,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Hormone",
+                  "age": 48.1,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Immune",
+                  "age": 46.3,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Kidney",
+                  "age": 47.7,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Liver",
+                  "age": 48.6,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Metabolic",
+                  "age": 45.8,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Lung",
+                  "age": 49.7,
+                  "status": "aging_slowly"
+                },
+                {
+                  "system": "Musculoskeletal",
+                  "age": 46.7,
+                  "status": "aging_slowly"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "report_id": "DEQV94YQ2EJ258F4_PETER",
+          "report_type": "TruHealth",
+          "chronological_age_at_collection": 55,
+          "collection_date": "2026-02-23",
+          "report_date": "2026-03-01",
+          "fasting_status": "Unknown",
+          "results": {
+            "category_scores": [
+              {
+                "category": "Vitamins",
+                "score": 88,
+                "status": "Optimal"
+              },
+              {
+                "category": "Amino Acids",
+                "score": 86,
+                "status": "Optimal"
+              },
+              {
+                "category": "Antioxidants",
+                "score": 89,
+                "status": "Optimal"
+              },
+              {
+                "category": "Fats and Cellular Membranes",
+                "score": 87,
+                "status": "Optimal"
+              },
+              {
+                "category": "Lipid Peroxidation",
+                "score": 90,
+                "status": "Optimal"
+              },
+              {
+                "category": "Serum Lipids",
+                "score": 85,
+                "status": "Optimal"
+              },
+              {
+                "category": "Blood Pressure",
+                "score": 88,
+                "status": "Optimal"
+              },
+              {
+                "category": "Metabolic Markers",
+                "score": 91,
+                "status": "Optimal"
+              },
+              {
+                "category": "Immune Markers",
+                "score": 87,
+                "status": "Optimal"
+              },
+              {
+                "category": "Neurocognitive Markers",
+                "score": 88,
+                "status": "Optimal"
+              },
+              {
+                "category": "Inflammation Markers",
+                "score": 89,
+                "status": "Optimal"
+              }
+            ],
+            "biomarkers": [
+              {
+                "marker_id": "vit_d_cholecalciferol",
+                "category": "Vitamins",
+                "display_name": "Cholecalciferol (Vitamin D)",
+                "value": 75,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 20,
+                  "max": 98
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "vit_b12",
+                "category": "Vitamins",
+                "display_name": "Vitamin B12",
+                "value": 80,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 20,
+                  "max": 98
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_glucose",
+                "category": "Metabolic Markers",
+                "display_name": "Glucose",
+                "value": 65,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "met_hba1c",
+                "category": "Metabolic Markers",
+                "display_name": "HgbA1c",
+                "value": 52,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_ldl_c",
+                "category": "Serum Lipids",
+                "display_name": "LDL-C",
+                "value": 55,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "sl_hdl_c",
+                "category": "Serum Lipids",
+                "display_name": "HDL-C",
+                "value": 45,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 10,
+                  "max": 100
+                },
+                "status": "normal"
+              },
+              {
+                "marker_id": "inf_crp",
+                "category": "Inflammation Markers",
+                "display_name": "CRP",
+                "value": 25,
+                "unit": "percentile",
+                "reference_range": {
+                  "min": 0,
+                  "max": 80
+                },
+                "status": "normal"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

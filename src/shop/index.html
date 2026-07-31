@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html
+	state-id="theme"
+	lang="en"
+	data-layout="vertical"
+	data-topbar-color="defualt"
+	data-sidebar-color="dark"
+	data-sidebar-size="sm-hover"
+	data-sidebar-image="none"
+	data-preloader="disable"
+	data-theme="default"
+	data-theme-colors="default"
+	data-bs-theme=""
+	session
+	src="">
+	<head>
+		<meta charset="utf-8" />
+		<title>Geneomes - Regenerative Health Store</title>
+		<meta
+			name="keywords"
+			content="geneomes, regenerative health, store, cart, checkout, wishlist, growth factors, diagnostics, application devices" />
+		<meta
+			name="description"
+			content="Geneomes shop shell for marketplace browsing, cart, checkout, and wishlist views." />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta content="Geneomes" name="author" />
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+
+		<!-- Bootstrap -->
+		<link
+			href="/assets/css/bootstrap.min.css"
+			rel="stylesheet"
+			type="text/css" />
+
+		<!-- Icons -->
+		<link
+			href="/assets/css/icons.min.css"
+			rel="stylesheet"
+			type="text/css" />
+
+		<!-- Menu Icon -->
+		<link
+			href="/assets/css/menu-icon.css"
+			rel="stylesheet"
+			type="text/css" />
+
+		<!-- Plugins -->
+		<link plugins />
+
+		<!-- App -->
+		<link href="/assets/css/app.css" rel="stylesheet" type="text/css" />
+
+		<!-- Custom -->
+		<link
+			href="/assets/css/custom.css"
+			rel="stylesheet"
+			type="text/css" />
+
+		<!-- Custom -->
+		<link
+			rel="stylesheet"
+			href="../index.css"
+			type="text/css"
+			parse="true"
+			save="false" />
+
+		<!-- Manifest -->
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
+
+	<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+		<!-- Begin page -->
+		<div class="layout-wrapper landing">
+            <!-- Nav Start -->
+			<nav src="/components/nav.html" value-type="outerHTML"></nav>
+            <!-- Nav End -->
+
+			<!-- start hero section -->
+			<section class="section hero-section" id="hero">
+				<div class="bg-overlay bg-overlay-pattern"></div>
+				<div 
+					class="position-relative z-1"
+					state-id="shopView"
+					state-overwrite
+					src="/components/marketplace.html">
+				</div>
+				<!-- end container -->
+				<div
+					class="position-absolute start-0 end-0 bottom-0 hero-shape-svg">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						version="1.1"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						viewBox="0 0 1440 120">
+						<g mask='url("#SvgjsMask1003")' fill="none">
+							<path
+								d="M 0,118 C 288,98.6 1152,40.4 1440,21L1440 140L0 140z"></path>
+						</g>
+					</svg>
+				</div>
+				<!-- end shape -->
+			</section>
+			<!-- end hero section -->
+
+			<!-- start cta -->
+			<section class="py-5 bg-primary position-relative" src="/components/cta.html"></section>
+			<!-- end cta -->
+
+			<!-- Footer Start -->
+			<footer src="/components/footer.html" value-type="outerHTML"></footer>
+			<!-- Footer End -->
+
+
+			<!-- Back To Top Start -->
+			 <div src="/components/scroll-to-top.html"></div>
+			<!-- Back To Top End -->
+		</div>
+		<!-- end layout wrapper -->
+
+		<script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/assets/libs/node-waves/waves.min.js"></script>
+		<script src="/assets/libs/feather-icons/feather.min.js"></script>
+		<script src="/assets/js/lord-icon-2.1.0.js"></script>
+		<script src="../dist/CoCreate.js"></script>
+	</body>
+</html>

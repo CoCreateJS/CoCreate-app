@@ -1,0 +1,84 @@
+<form action="#">
+	<div class="row g-3">
+		<div class="col-lg-12">
+			<label for="projectName" class="form-label">Project Name</label>
+			<input
+				type="text"
+				class="form-control"
+				id="projectName"
+				placeholder="Enter project name" />
+		</div>
+		<!--end col-->
+		<div class="col-lg-12">
+			<label for="sub-tasks" class="form-label">Task Title</label>
+			<input
+				type="text"
+				class="form-control"
+				id="sub-tasks"
+				placeholder="Task title" />
+		</div>
+		<!--end col-->
+		<div class="col-lg-12">
+			<label for="task-description" class="form-label"
+				>Task Description</label
+			>
+			<textarea
+				class="form-control"
+				id="task-description"
+				rows="3"
+				placeholder="Task description"></textarea>
+		</div>
+		<!--end col-->
+		<div class="col-lg-12">
+			<label for="formFile" class="form-label">Tasks Images</label>
+			<input class="form-control" type="file" id="formFile" />
+		</div>
+		<!--end col-->
+		<div src="components/members.html"></div>
+		<!--end col-->
+		<div class="col-lg-4">
+			<label for="due-date" class="form-label">Due Date</label>
+			<input
+				type="text"
+				class="form-control"
+				id="due-date"
+				date-picker="flatpickr"
+				placeholder="Select date" />
+		</div>
+		<!--end col-->
+		<div class="col-lg-4">
+			<label for="categories" class="form-label">Tags</label>
+			<input
+				type="text"
+				class="form-control"
+				id="categories"
+				placeholder="Enter tag" />
+		</div>
+		<!--end col-->
+		<div class="col-lg-4">
+			<label for="tasks-progress" class="form-label"
+				>Tasks Progress</label
+			>
+			<input
+				type="text"
+				class="form-control"
+				maxlength="3"
+				id="tasks-progress"
+				placeholder="Enter progress" />
+		</div>
+		<!--end col-->
+		<div class="mt-4">
+			<div class="hstack gap-2 justify-content-end">
+				<button
+					type="button"
+					class="btn btn-light"
+					data-bs-dismiss="modal">
+					Close
+				</button>
+				<button type="button" class="btn btn-success">Add Task</button>
+			</div>
+		</div>
+		<!--end col-->
+	</div>
+	<!--end row-->
+</form>

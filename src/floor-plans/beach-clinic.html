@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Semicircular Clinic Site Plan</title>
+        <style>
+            :root {
+                --bg-color: #f0f2f5;
+                --wall-color: #1e272e;
+                --grid-color: #e0e0e0;
+                --furniture-stroke: #485460;
+                --furniture-fill: #ffffff;
+                --text-color: #1e272e;
+                --grass-color: #9e9d6d;
+                --pavement-color: #a3a08d;
+                --walkway-color: #5d4037;
+
+                /* Layer Colors */
+                --elec-color: #eb4d4b;
+                --data-color: #0984e3;
+                --hvac-color: #009432;
+                --equip-color: #8e44ad;
+                --dims-color: #e67e22;
+                --site-color: #636e72;
+            }
+
+            body {
+                font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+                background-color: var(--bg-color);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0;
+                padding: 20px;
+                color: var(--text-color);
+            }
+
+            header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+                margin: 0;
+                letter-spacing: -0.5px;
+            }
+
+            .controls {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 24px;
+                flex-wrap: wrap;
+                justify-content: center;
+                max-width: 900px;
+            }
+
+            .toggle-btn {
+                padding: 6px 14px;
+                border: 1px solid #dcdde1;
+                background: white;
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 12px;
+                transition: all 0.2s ease;
+                color: #7f8c8d;
+            }
+
+            .toggle-btn.active {
+                border-color: transparent;
+                color: white;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .toggle-btn[data-target="furniture"].active { background-color: var(--wall-color); }
+            .toggle-btn[data-target="equipment"].active { background-color: var(--equip-color); }
+            .toggle-btn[data-target="dimensions"].active { background-color: var(--dims-color); }
+            .toggle-btn[data-target="electrical"].active { background-color: var(--elec-color); }
+            .toggle-btn[data-target="hvac"].active { background-color: var(--hvac-color); }
+            .toggle-btn[data-target="site"].active { background-color: var(--site-color); }
+
+            .blueprint-card {
+                background: #e5e5e5;
+                padding: 40px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                max-width: 100%;
+                overflow: hidden;
+                border: 1px solid #ccc;
+            }
+
+            svg {
+                display: block;
+                height: auto;
+                background-color: var(--grass-color);
+                border-radius: 4px;
+            }
+
+            g.layer { transition: opacity 0.3s ease; }
+            g.layer.hidden { opacity: 0; pointer-events: none; }
+
+            .wall { stroke: var(--wall-color); stroke-width: 4; fill: none; stroke-linejoin: round; }
+            .wall-internal { stroke: #a4b0be; stroke-width: 1.5; fill: none; }
+            .wall-divider { stroke: var(--wall-color); stroke-width: 8; fill: none; stroke-linecap: round; }
+            .furniture { stroke: var(--furniture-stroke); stroke-width: 1; fill: var(--furniture-fill); }
+            .atrium { fill: #f1f2f6; stroke: #dfe4ea; stroke-width: 1; }
+            .water { fill: #3498db; stroke: #2980b9; stroke-width: 1.5; }
+            .label-text { font-size: 10px; font-weight: 700; fill: #57606f; text-anchor: middle; text-transform: uppercase; pointer-events: none; }
+            .dimension-line { stroke: #bdc3c7; stroke-width: 1; stroke-dasharray: 2, 2; }
+            
+            .elec-symbol { stroke: var(--elec-color); stroke-width: 1; fill: white; }
+            .park-line { stroke: #ffffff; stroke-width: 2; }
+            .park-marker { fill: #f1c40f; }
+            .walkway { fill: var(--walkway-color); }
+            .grass-texture { fill: url(#grass-pattern); }
+            
+            .legend {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 24px;
+                flex-wrap: wrap;
+                font-size: 12px;
+                color: #555;
+            }
+            .legend-item { display: flex; align-items: center; gap: 6px; }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Radical Semicircle Site Plan</h1>
+            <p style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">Integrated Landscape & Site Study</p>
+        </header>
+
+        <div class="controls">
+            <button class="toggle-btn active" data-target="site" onclick="toggleLayer('site', this)">Site Layout</button>
+            <button class="toggle-btn active" data-target="furniture" onclick="toggleLayer('furniture', this)">Furniture</button>
+            <button class="toggle-btn active" data-target="equipment" onclick="toggleLayer('equipment', this)">Equipment</button>
+            <button class="toggle-btn active" data-target="dimensions" onclick="toggleLayer('dimensions', this)">Dimensions</button>
+            <button class="toggle-btn active" data-target="electrical" onclick="toggleLayer('electrical', this)">Electrical</button>
+            <button class="toggle-btn active" data-target="hvac" onclick="toggleLayer('hvac', this)">HVAC</button>
+        </div>
+
+        <div class="blueprint-card">
+            <svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grass-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="0.5" fill="#8d8c60" />
+                        <circle cx="12" cy="14" r="0.5" fill="#8d8c60" />
+                    </pattern>
+                    
+                    <clipPath id="fan-clip">
+                        <path d="M 70 380 A 330 330 0 0 1 730 380 L 510 380 A 110 110 0 0 0 290 380 Z" />
+                    </clipPath>
+
+                    <g id="chair">
+                        <rect x="-7" y="-7" width="14" height="14" rx="2" class="furniture" />
+                        <rect x="-7" y="-9" width="14" height="3" rx="1" class="furniture" />
+                    </g>
+                </defs>
+
+                <!-- === SITE LAYER === -->
+                <g id="site-layer" class="layer">
+                    <!-- Site Perimeter -->
+                    <polygon points="180,20 620,20 780,500 20,500" fill="var(--pavement-color)" />
+                    <rect width="800" height="500" class="grass-texture" pointer-events="none" />
+
+                    <!-- Parking Area (Bottom) -->
+                    <g transform="translate(240, 420)">
+                        <line x1="0" y1="0" x2="0" y2="70" class="park-line" />
+                        <line x1="40" y1="0" x2="40" y2="70" class="park-line" />
+                        <line x1="80" y1="0" x2="80" y2="70" class="park-line" />
+                        <line x1="120" y1="0" x2="120" y2="70" class="park-line" />
+                        <rect x="5" y="10" width="30" height="4" class="park-marker" />
+                        <rect x="45" y="10" width="30" height="4" class="park-marker" />
+                        <rect x="85" y="10" width="30" height="4" class="park-marker" />
+                    </g>
+                    <g transform="translate(440, 420)">
+                        <line x1="0" y1="0" x2="0" y2="70" class="park-line" />
+                        <line x1="40" y1="0" x2="40" y2="70" class="park-line" />
+                        <line x1="80" y1="0" x2="80" y2="70" class="park-line" />
+                        <line x1="120" y1="0" x2="120" y2="70" class="park-line" />
+                        <rect x="5" y="10" width="30" height="4" class="park-marker" />
+                        <rect x="45" y="10" width="30" height="4" class="park-marker" />
+                        <rect x="85" y="10" width="30" height="4" class="park-marker" />
+                    </g>
+
+                    <rect x="390" y="300" width="20" height="200" class="walkway" />
+                    
+                    <rect x="250" y="125" width="40" height="10" fill="#2d3436" />
+                    <circle cx="255" cy="130" r="2" fill="#2ecc71" />
+                    <circle cx="265" cy="130" r="2" fill="#2ecc71" />
+                    <circle cx="275" cy="130" r="2" fill="#2ecc71" />
+                    <circle cx="285" cy="130" r="2" fill="#2ecc71" />
+
+                    <rect x="510" y="125" width="40" height="10" fill="#2d3436" />
+                    <circle cx="515" cy="130" r="2" fill="#2ecc71" />
+                    <circle cx="525" cy="130" r="2" fill="#2ecc71" />
+                    <circle cx="535" cy="130" r="2" fill="#2ecc71" />
+                    <circle cx="545" cy="130" r="2" fill="#2ecc71" />
+
+                    <g transform="translate(320, 70)">
+                        <circle cx="0" cy="0" r="25" fill="#57606f" opacity="0.8" />
+                        <line x1="-25" y1="0" x2="25" y2="0" stroke="white" stroke-width="0.5" />
+                        <line x1="0" y1="-25" x2="0" y2="25" stroke="white" stroke-width="0.5" />
+                        <circle cx="10" cy="10" r="5" class="furniture" />
+                        <circle cx="-10" cy="10" r="5" class="furniture" />
+                        <circle cx="10" cy="-10" r="5" class="furniture" />
+                        <circle cx="-10" cy="-10" r="5" class="furniture" />
+                    </g>
+
+                    <g transform="translate(520, 80)">
+                        <circle cx="0" cy="0" r="15" fill="#3d3d3d" />
+                        <circle cx="0" cy="0" r="15" fill="#f1f2f6" clip-path="inset(0 0 50% 0)" />
+                    </g>
+                    <g transform="translate(560, 80)">
+                        <circle cx="0" cy="0" r="15" fill="#3d3d3d" />
+                        <circle cx="0" cy="0" r="15" fill="#f1f2f6" clip-path="inset(0 0 50% 0)" />
+                    </g>
+                </g>
+
+                <!-- === STRUCTURE === -->
+                <circle cx="400" cy="380" r="110" class="atrium" />
+                <circle cx="400" cy="380" r="60" class="water" />
+                <rect x="390" y="320" width="20" height="120" class="walkway" />
+                <text x="400" y="380" class="label-text" style="font-size: 7px; fill: white;">HUB</text>
+
+                <!-- Building Interior Floor -->
+                <path d="M 70 380 A 330 330 0 0 1 730 380 L 510 380 A 110 110 0 0 0 290 380 Z" fill="#ffffff" />
+                
+                <!-- Room Dividers (5 partitions = 6 rooms) -->
+                <g id="room-dividers" class="wall-divider">
+                    <line x1="305" y1="325" x2="114" y2="215" />
+                    <line x1="345" y1="285" x2="235" y2="94" />
+                    <line x1="400" y1="270" x2="400" y2="50" />
+                    <line x1="455" y1="285" x2="565" y2="94" />
+                    <line x1="495" y1="325" x2="686" y2="215" />
+                </g>
+
+                <!-- Boundary Walls -->
+                <path d="M 70 380 A 330 330 0 0 1 730 380" class="wall" />
+                <path d="M 290 380 A 110 110 0 0 1 510 380" class="wall" />
+                <line x1="70" y1="380" x2="290" y2="380" class="wall" />
+                <line x1="510" y1="380" x2="730" y2="380" class="wall" />
+
+                <!-- Room Labels -->
+                <g class="label-layer">
+                    <text x="170" y="325" class="label-text" style="font-size: 8px;">DR OFFICE</text>
+                    <text x="250" y="205" class="label-text" style="font-size: 8px;">PATIENT ROOM</text>
+                    <text x="365" y="135" class="label-text" style="font-size: 8px;">NURSE</text>
+                    <text x="435" y="135" class="label-text" style="font-size: 8px;">SURGERY</text>
+                    <text x="550" y="205" class="label-text" style="font-size: 8px;">PATIENT ROOM</text>
+                    <text x="630" y="325" class="label-text" style="font-size: 8px;">DR OFFICE</text>
+                </g>
+
+                <!-- === FURNITURE LAYER === -->
+                <g id="furniture-layer" class="layer">
+                    <g transform="translate(150, 360) rotate(-15)">
+                        <rect x="-15" y="-5" width="30" height="10" class="furniture" />
+                        <use href="#chair" y="10" />
+                    </g>
+                    <g transform="translate(650, 360) rotate(15)">
+                        <rect x="-15" y="-5" width="30" height="10" class="furniture" />
+                        <use href="#chair" y="10" />
+                    </g>
+                    <path d="M 365 240 Q 400 225 435 240" fill="none" stroke="#485460" stroke-width="3" stroke-linecap="round" />
+                    <use href="#chair" x="400" y="260" />
+                </g>
+
+                <!-- === EQUIPMENT LAYER === -->
+                <g id="equipment-layer" class="layer">
+                    <rect x="430" y="150" width="20" height="40" rx="2" class="furniture" style="stroke: var(--equip-color)" />
+                    <circle cx="270" cy="230" r="5" fill="var(--equip-color)" />
+                </g>
+
+                <!-- === ELECTRICAL LAYER === -->
+                <g id="electrical-layer" class="layer">
+                    <circle cx="90" cy="370" r="3" class="elec-symbol" />
+                    <circle cx="710" cy="370" r="3" class="elec-symbol" />
+                    <circle cx="400" cy="100" r="3" class="elec-symbol" />
+                </g>
+
+                <!-- === HVAC LAYER === -->
+                <g id="hvac-layer" class="layer">
+                    <rect x="390" y="90" width="20" height="8" fill="var(--hvac-color)" rx="1" opacity="0.6" />
+                </g>
+
+                <!-- === DIMENSIONS LAYER === -->
+                <g id="dimensions-layer" class="layer">
+                    <path d="M 400 380 L 730 380" class="dimension-line" />
+                    <text x="565" y="395" class="label-text" style="font-size: 7px; fill: #636e72;">R = 16.5'</text>
+                </g>
+            </svg>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <svg width="12" height="12"><rect width="12" height="12" class="walkway" /></svg>
+                    <span>Main Walkway</span>
+                </div>
+                <div class="legend-item">
+                    <svg width="12" height="12"><circle cx="6" cy="6" r="4" class="water" /></svg>
+                    <span>Fountain Hub</span>
+                </div>
+                <div class="legend-item">
+                    <svg width="12" height="12"><rect width="12" height="4" y="4" class="park-marker" /></svg>
+                    <span>Parking Slot</span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toggleLayer(layerName, btn) {
+                const layer = document.getElementById(layerName + "-layer");
+                if (layer) {
+                    const isHidden = layer.classList.toggle("hidden");
+                    btn.classList.toggle("active", !isHidden);
+                }
+            }
+        </script>
+    </body>
+</html>

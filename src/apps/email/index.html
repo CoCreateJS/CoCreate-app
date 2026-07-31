@@ -1,0 +1,211 @@
+<div class="container-fluid">
+	<div class="email-wrapper d-lg-flex gap-1 mx-n4 mt-n4 p-1">
+		<div src="/apps/email/components/sidenav.html"></div>
+		<!-- end email-menu-sidebar -->
+
+		<div class="email-content minimal-border">
+			<div class="p-4 pb-0">
+				<div class="border-bottom border-bottom-dashed">
+					<div
+						class="row mt-n2 mb-3 mb-sm-0"
+						id="email-topbar"
+						src="/apps/email/components/topbar.html"></div>
+
+					<div class="row align-items-end mt-3">
+						<div class="col">
+							<div id="mail-filter-navlist">
+								<ul
+									class="nav nav-tabs nav-tabs-custom nav-success gap-1 text-center border-bottom-0"
+									role="tablist">
+									<li class="nav-item">
+										<button
+											class="nav-link fw-semibold active"
+											id="primary-email-tab"
+											type="button"
+											role="tab"
+											aria-controls="primary-tab-content"
+											aria-selected="true">
+											<i
+												class="ri-inbox-fill align-bottom d-inline-block"></i>
+											<span
+												class="ms-1 d-none d-sm-inline-block"
+												>Primary</span
+											>
+										</button>
+									</li>
+									<li class="nav-item">
+										<button
+											class="nav-link fw-semibold"
+											id="social-email-tab"
+											type="button"
+											role="tab"
+											aria-controls="social-tab-content"
+											aria-selected="false">
+											<i
+												class="ri-group-fill align-bottom d-inline-block"></i>
+											<span
+												class="ms-1 d-none d-sm-inline-block"
+												>Social</span
+											>
+										</button>
+									</li>
+									<li class="nav-item">
+										<button
+											class="nav-link fw-semibold"
+											id="promotions-email-tab"
+											type="button"
+											role="tab"
+											aria-controls="promotions-tab-content"
+											aria-selected="false">
+											<i
+												class="ri-price-tag-3-fill align-bottom d-inline-block"></i>
+											<span
+												class="ms-1 d-none d-sm-inline-block"
+												>Promotions</span
+											>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-auto">
+							<div class="text-muted mb-2">1-50 of 154</div>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="tab-content"
+					id="mail-filter-tab-content"
+					aria-labelledby="mail-filter-navlist">
+					<div
+						class="tab-pane fade show active"
+						id="primary-tab-content"
+						role="tabpanel"
+						aria-labelledby="primary-email-tab"
+						tabindex="0">
+						<div
+							class="message-list-content mx-n4 px-4 message-list-scroll">
+							<div id="elmLoader">
+								<div
+									class="spinner-border text-primary avatar-sm"
+									role="status">
+									<span class="visually-hidden"
+										>Loading...</span
+									>
+								</div>
+							</div>
+							<ul class="message-list" id="mail-list">
+								<li class="">
+									<div class="col-mail col-mail-1">
+										<div
+											class="form-check checkbox-wrapper-mail fs-14">
+											<input
+												class="form-check-input"
+												type="checkbox"
+												value="1"
+												id="checkbox-1" />
+											<label
+												class="form-check-label"
+												for="checkbox-1"></label>
+										</div>
+										<input
+											type="hidden"
+											value="/assets/images/users/avatar-2.jpg"
+											class="mail-userimg" />
+										<button
+											type="button"
+											realtime="true"
+											array="emails"
+											object="{{object._id}}"
+											key="starred"
+											value="true"
+											value-type="boolean"
+											click.value="true, false"
+											class="btn avatar-xs p-0 material-shadow-none favourite-btn fs-15 active">
+											<i class="ri-star-fill"></i>
+										</button>
+										<a
+											href="javascript:void(0);"
+											class="title"
+											role="button"
+											tabindex="0"
+											aria-haspopup="dialog"
+											aria-controls="email-detail"
+											aria-label="Open email details for Peter, me"
+											aria-expanded="false">
+											<span class="title-name"
+												>Peter, me</span
+											>
+										</a>
+									</div>
+									<div class="col-mail col-mail-2">
+										<a
+											href="javascript:void(0);"
+											class="subject"
+											role="button"
+											tabindex="0"
+											aria-haspopup="dialog"
+											aria-controls="email-detail"
+											aria-label="Open email conversation: Hello"
+											aria-expanded="false">
+											<span class="subject-title"
+												>Hello</span
+											>
+											–
+											<span class="teaser">
+												Trip home from Colombo has been
+												arranged, then Jenna will come
+												get me from Stockholm. :)
+											</span>
+										</a>
+										<div class="date">Mar 7</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div
+						class="tab-pane fade"
+						id="social-tab-content"
+						role="tabpanel"
+						aria-labelledby="social-email-tab"
+						tabindex="0">
+						<div
+							class="message-list-content mx-n4 px-4 message-list-scroll">
+							<ul class="message-list" id="social-mail-list"></ul>
+						</div>
+					</div>
+					<div
+						class="tab-pane fade"
+						id="promotions-tab-content"
+						role="tabpanel"
+						aria-labelledby="promotions-email-tab"
+						tabindex="0">
+						<div
+							class="message-list-content mx-n4 px-4 message-list-scroll">
+							<ul
+								class="message-list"
+								id="promotions-mail-list"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end email-content -->
+	</div>
+	<!-- end email wrapper -->
+
+	<div src="/apps/email/components/email-detail.html"></div>
+	<!-- end email-detail -->
+
+	<div src="/apps/email/components/compose.html"></div>
+	<!-- end email compose -->
+
+	<div src="/apps/email/components/email-chat.html"></div>
+	<!-- end email chat detail -->
+</div>
+<!-- container-fluid -->
+
+<!-- mailbox init -->
+<script src="/assets/js/pages/mailbox.init.js"></script>

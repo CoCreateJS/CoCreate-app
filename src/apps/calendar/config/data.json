@@ -1,0 +1,181 @@
+{
+  "method": "object.update",
+  "array": "calendar",
+  "upsert": true,
+  "object": [
+    {
+      "_id": "68b5a1012f4e1f7b8a010001",
+      "name": "Quarterly Planning Kickoff",
+      "title": "Quarterly Planning Kickoff",
+      "description": "Cross-functional planning session for Q2 goals and dependencies.",
+      "start_date": "2026-03-03",
+      "end_date": "2026-03-03",
+      "start": "2026-03-03T09:00:00",
+      "end": "2026-03-03T10:30:00",
+      "start_time": "09:00",
+      "end_time": "10:30",
+      "location": "Main Conference Room",
+      "all_day": false,
+      "allDay": false,
+      "color": "#0d6efd",
+      "category": "bg-primary-subtle",
+      "status": "scheduled",
+      "type": ["calendar", "events"],
+      "tags": ["meeting", "planning"],
+      "organization": "68c7bbf505da6ef2c862092c",
+      "created": {
+        "on": "2026-02-25T14:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-02-25T14:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68b5a1012f4e1f7b8a010002",
+      "name": "Product Demo: Geneomes Platform",
+      "title": "Product Demo: Geneomes Platform",
+      "description": "Live product walkthrough for a new enterprise prospect.",
+      "start_date": "2026-03-05",
+      "end_date": "2026-03-05",
+      "start": "2026-03-05T13:00:00",
+      "end": "2026-03-05T14:00:00",
+      "start_time": "13:00",
+      "end_time": "14:00",
+      "location": "Zoom",
+      "all_day": false,
+      "allDay": false,
+      "color": "#20c997",
+      "category": "bg-success-subtle",
+      "status": "scheduled",
+      "type": ["calendar", "events"],
+      "tags": ["meeting", "reminder"],
+      "organization": "68c7bbf505da6ef2c862092c",
+      "created": {
+        "on": "2026-02-25T14:10:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      },
+      "modified": {
+        "on": "2026-02-25T14:10:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      }
+    },
+    {
+      "_id": "68b5a1012f4e1f7b8a010003",
+      "name": "Tax Filing Deadline",
+      "title": "Tax Filing Deadline",
+      "description": "Final day to submit monthly tax package.",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "start": "2026-03-10",
+      "end": "2026-03-11",
+      "start_time": "00:00",
+      "end_time": "23:59",
+      "location": "",
+      "all_day": true,
+      "allDay": true,
+      "color": "#ffc107",
+      "category": "bg-warning-subtle",
+      "status": "scheduled",
+      "type": ["calendar", "events"],
+      "tags": ["deadline"],
+      "organization": "68c7bbf505da6ef2c862092c",
+      "created": {
+        "on": "2026-02-25T14:20:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-02-25T14:20:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68b5a1012f4e1f7b8a010004",
+      "name": "Engineering Sprint Review",
+      "title": "Engineering Sprint Review",
+      "description": "Demo completed sprint work and capture action items.",
+      "start_date": "2026-03-12",
+      "end_date": "2026-03-12",
+      "start": "2026-03-12T16:00:00",
+      "end": "2026-03-12T17:00:00",
+      "start_time": "16:00",
+      "end_time": "17:00",
+      "location": "Team War Room",
+      "all_day": false,
+      "allDay": false,
+      "color": "#0dcaf0",
+      "category": "bg-info-subtle",
+      "status": "scheduled",
+      "type": ["calendar", "events"],
+      "tags": ["meeting"],
+      "organization": "68c7bbf505da6ef2c862092c",
+      "created": {
+        "on": "2026-02-25T14:30:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      },
+      "modified": {
+        "on": "2026-02-25T14:30:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      }
+    },
+    {
+      "_id": "68b5a1012f4e1f7b8a010005",
+      "name": "Company Retreat",
+      "title": "Company Retreat",
+      "description": "Two-day offsite for strategy and team building.",
+      "start_date": "2026-03-18",
+      "end_date": "2026-03-19",
+      "start": "2026-03-18",
+      "end": "2026-03-20",
+      "start_time": "00:00",
+      "end_time": "23:59",
+      "location": "Nosara, Costa Rica",
+      "all_day": true,
+      "allDay": true,
+      "color": "#198754",
+      "category": "bg-success-subtle",
+      "status": "scheduled",
+      "type": ["calendar", "events"],
+      "tags": ["holiday", "reminder"],
+      "organization": "68c7bbf505da6ef2c862092c",
+      "created": {
+        "on": "2026-02-25T14:40:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-02-25T14:40:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "68b5a1012f4e1f7b8a010006",
+      "name": "Website Deployment Window",
+      "title": "Website Deployment Window",
+      "description": "Planned deployment for marketing site updates.",
+      "start_date": "2026-03-22",
+      "end_date": "2026-03-22",
+      "start": "2026-03-22T21:00:00",
+      "end": "2026-03-22T23:00:00",
+      "start_time": "21:00",
+      "end_time": "23:00",
+      "location": "Remote",
+      "all_day": false,
+      "allDay": false,
+      "color": "#6f42c1",
+      "category": "bg-dark-subtle",
+      "status": "scheduled",
+      "type": ["calendar", "events"],
+      "tags": ["deadline", "reminder"],
+      "organization": "68c7bbf505da6ef2c862092c",
+      "created": {
+        "on": "2026-02-25T14:50:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      },
+      "modified": {
+        "on": "2026-02-25T14:50:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      }
+    }
+  ]
+}

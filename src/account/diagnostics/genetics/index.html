@@ -1,0 +1,92 @@
+<div class="container-fluid pb-5">
+	<div class="card bg-opacity-75 border-secondary shadow-sm mb-4">
+		<div class="card-body p-4">
+			<div class="d-flex align-items-center gap-3 mb-3">
+				<div class="avatar-md">
+					<span
+						class="avatar-title bg-secondary bg-opacity-25 text-primary rounded fs-2">
+						<i class="ri-node-tree"></i>
+					</span>
+				</div>
+				<div>
+					<h4 class="fs-24 fw-bold text-white mb-1">Genetics</h4>
+					<p class="text-muted fs-14 mb-0">
+						Diagnostic breakdown for
+						<span
+							array="contacts"
+							object="$user_id"
+							key="first_name"
+							>Eleanor Vance</span
+						>
+					</p>
+				</div>
+			</div>
+			<p class="text-muted lh-base">
+				Comprehensive analysis of genetics markers derived from
+				epigenetic and systemic diagnostics.
+			</p>
+		</div>
+	</div>
+
+	<div class="row g-4">
+		<!-- Genetic Risk Score -->
+		<div class="col-md-6">
+			<div
+				class="card bg-opacity-50 border-secondary rounded-4 p-4 shadow-sm h-100">
+				<div class="card-body">
+					<div class="d-flex align-items-center mb-3">
+						<i class="ri-dossier-line fs-2 text-primary me-2"></i>
+						<h5 class="text-white mb-0">Risk Score</h5>
+					</div>
+					<h2 class="display-4 fw-bold text-success mb-2">
+						<span
+							class="diagnostic"
+							array="diagnostics"
+							key="systems.renal.score"
+							>0.8</span
+						>
+					</h2>
+					<p class="text-muted fs-14">Polygenic Assessment</p>
+				</div>
+			</div>
+		</div>
+		<!-- Methylation & Repair -->
+		<div class="col-md-6">
+			<div
+				class="card bg-opacity-50 border-secondary rounded-4 p-4 shadow-sm h-100">
+				<div class="card-body">
+					<div class="d-flex align-items-center mb-3">
+						<i class="ri-dna-line fs-2 text-info me-2"></i>
+						<h5 class="text-white mb-0">Methylation & Repair</h5>
+					</div>
+					<div class="mb-3">
+						<h6 class="text-muted fs-14 text-uppercase mb-1">
+							Methylation Density
+						</h6>
+						<h3 class="fw-bold text-white mb-0">
+							<span
+								class="diagnostic"
+								array="diagnostics"
+								key="systems.hormonal.score"
+								>85</span
+							><span class="fs-12 text-muted fw-normal">%</span>
+						</h3>
+					</div>
+					<div>
+						<h6 class="text-muted fs-14 text-uppercase mb-1">
+							DNA Repair
+						</h6>
+						<h3 class="fw-bold text-success mb-0">
+							<span
+								class="diagnostic"
+								array="diagnostics"
+								key="systems.musculoskeletal.score"
+								>Efficient</span
+							>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

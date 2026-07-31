@@ -1,0 +1,158 @@
+<form array="contacts" object="$user_id">
+	<section role="banner" class="position-relative">
+		<div class="profile-wid-bg mx-n5 my-n3 height:480px@xxs&xs height:370px@sm height:300px@md&xxxl">
+			<img
+				src="/assets/images/profile-bg.jpg"
+				alt=""
+				class="profile-wid-img"
+				key="cover_image"
+			/>
+		</div>
+
+		<div class="mb-4 mb-lg-3 pb-lg-4">
+			<div class="d-flex flex-wrap gap-4">
+				<div src="/components/profile-img.html" input.src="/assets/images/user.png" input-query="[src]"></div>
+
+				<div class="position-relative flex-grow-1 mb-3 width:100%@xxs&xs">
+					<div>
+						<h3 class="text-white mb-1">
+							<span key="first_name"></span>
+							<span key="last_name"></span>
+						</h3>
+						<p class="text-white text-opacity-75">
+							<strong class="me-1">Age:</strong>
+							<span key="age"></span>
+						</p>
+					</div>
+					<div class="d-flex flex-wrap flex-direction:column@xxs@xs gap-2 text-white-50">
+						<div>
+							<i class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>
+							<span key="city"></span>,
+							<span key="country"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="position-relative d-flex justify-content-between text text-white-50 text-center width:250px mb-2 width:100%@xxs&xs">
+					<div class="p-2">
+						<h4
+							class="text-white mb-1"
+							key="followers"
+						>
+							0
+						</h4>
+						<p class="fs-14 mb-0">Followers</p>
+					</div>
+
+					<div class="p-2">
+						<h4
+							class="text-white mb-1"
+							key="following"
+						>
+							0
+						</h4>
+						<p class="fs-14 mb-0">Following</p>
+					</div>
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+		</div>
+
+		<div class="d-flex">
+			<!-- Nav tabs -->
+			<ul
+				class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1"
+				role="tablist"
+			>
+				<li class="nav-item">
+					<a
+						class="nav-link fs-14"
+						role="tab"
+						id="profile-info-btn"
+						aria-selected="true"
+						aria-controls="profile-info"
+						tabindex="0"
+						
+					>
+						<i class="ri-user-heart-line d-inline-block d-md-none"></i>
+						<span class="d-none d-md-inline-block">Profile</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link fs-14"
+						role="tab"
+						id="journal-tab-btn"
+						aria-selected="false"
+						aria-controls="journal-pane"
+						tabindex="0"
+						
+					>
+						<i class="ri-book-read-line d-inline-block d-md-none"></i>
+						<span class="d-none d-md-inline-block">Journal</span>
+					</a>
+				</li>
+				<li>
+					<a
+						class="nav-link fs-14"
+						role="tab"
+						id="documents-tab-btn"
+						aria-selected="false"
+						aria-controls="documents"
+						tabindex="0"
+						
+					>
+						<i class="ri-folder-4-line d-inline-block d-md-none"></i>
+						<span class="d-none d-md-inline-block">Documents</span>
+					</a>
+				</li>
+			</ul>
+
+			<a
+				role="button"
+				state-to="accountView"                                             
+				state.src="./profile/form.html"
+				class="btn btn-success z-index:1"
+				href="javascript:void(0);"
+			>
+				<i class="ri-edit-box-line align-bottom"></i>
+				<span class="d-none d-sm-inline-block">Edit Profile</span>
+			</a>
+		</div>
+	</section>
+
+	<!-- Tab panes -->
+	<section class="tab-content pt-4 text-muted">
+		<div
+			class="tab-pane show"
+			id="profile-info"
+			role="tabpanel"
+		>
+			<div class="d-flex flex-wrap gap-4">
+				<div class="flex-grow-1 width:300px max-width:420px min-width:100%@xxs&lg">
+					<div src="/account/profile/components/info.html"></div>
+					<!-- <div src="/account/components/about.html"></div> -->
+				</div>
+			</div>
+		</div>
+		<!--end tab-pane-->
+		<div
+			class="tab-pane fade"
+			id="journal-pane"
+			role="tabpanel"
+		>
+			<div class="card">
+				<div class="card-body" src="/components/health-journal/index.html"></div>
+			</div>
+		</div>
+		<!--end tab-pane-->
+		<div
+			class="tab-pane fade"
+			id="documents"
+			role="tabpanel"
+			src="/apps/file-manager/list.html"
+		></div>
+		<!--end tab-pane-->
+	</section>
+</form>

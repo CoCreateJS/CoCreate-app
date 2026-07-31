@@ -1,0 +1,142 @@
+{
+  "method": "object.update",
+  "array": "keys",
+  "upsert": true,
+  "object": [
+    {
+      "_id": "68e1134a6b2c4d5e7f8a9010",
+      "admin": true,
+      "key": "252a4e9b-eee2-409b-92c3-524cae66070a",
+      "modified": {
+        "on": {
+          "$date": "2025-09-17T14:24:15.405Z"
+        },
+        "by": null
+      },
+      "type": "key",
+      "status": "active"
+  },
+  {
+    "_id": "68e1134a4f7b9d2c1a3e4f51",
+    "actions": {
+      "object": {
+        "*": {
+          "contacts": {
+            "_id.$eq": "$user_id"
+          }
+        },
+        "read": {
+          "$array": [
+            "ai",
+            "blog-posts"
+          ]
+        }
+      },
+      "checkSession": "true",
+      "signIn": "true",
+      "signUp": "true",
+      "acceptInvite": "true",
+      "forgotPassword": "true",
+      "resetPassword": "true",
+      "updateUserStatus": "true",
+      "isUnique": "true",
+      "inviteUser": "true"
+    },
+    "default": true,
+    "key": "421572b3-e332-402c-bc42-77242fc0c211",
+    "modified": {
+      "on": {
+        "$date": "2025-09-17T14:24:15.405Z"
+      },
+      "by": null
+    },
+    "type": "key",
+    "status": "active"
+  },
+  {
+    "_id": "68e1134a8c1d2e3f4a5b6c7d",
+    "admin": true,
+    "modified": {
+      "on": {
+        "$date": "2025-09-17T14:24:15.405Z"
+      },
+      "by": null
+    },
+    "name": "admin",
+    "type": "role",
+    "status": "active"
+  },
+  {
+    "_id": "68e1134ab7c8d9e0f1a2b3c4",
+    "actions": {
+      "object": {
+        "*": {
+          "diagnostics": {
+            "user_id.$eq": "$user_id"
+          }
+        }
+      }
+    },
+    "modified": {
+      "on": {
+        "$date": "2026-04-01T00:00:00.000Z"
+      },
+      "by": null
+    },
+    "name": "patient",
+    "type": "role",
+    "status": "active"
+  },
+  {
+    "_id": "68e1134ad4e5f6a7b8c9d0e1",
+    "array": "contacts",
+    "email": "peter@cocreate.app",
+    "key": "68765ca00be67f92d8df050c",
+    "modified": {
+      "on": {
+        "$date": "2025-10-09T11:23:01.679Z"
+      }
+    },
+    "password": "ZXRIRnNIaDcyQUx2anBo",
+    "roles": [
+      "68e1134a8c1d2e3f4a5b6c7d"
+    ],
+    "type": "user",
+    "status": "active"
+  },
+  {
+    "_id": "68e1134af1e2d3c4b5a69788",
+    "array": "contacts",
+    "email": "frank@cocreate.app",
+    "key": "5ff747727005da1c272740ac",
+    "modified": {
+      "on": {
+        "$date": "2025-10-09T11:23:01.679Z"
+      }
+    },
+    "password": "dGVtcG9yYXJ5NA==",
+    "roles": [
+      "68e1134a8c1d2e3f4a5b6c7d"
+    ],
+    "type": "user",
+    "status": "active"
+  },
+  {
+    "_id": "68e1134b0a1b2c3d4e5f6078",
+    "array": "contacts",
+    "email": "amy.araya.888@gmail.com",
+    "key": "68765ca00d899aa18761050d",
+    "modified": {
+      "on": {
+        "$date": "2025-10-09T11:23:01.679Z"
+      }
+    },
+    "password": "dGVtcG9yYXJ5NA==",
+    "roles": [
+      "68e1134a8c1d2e3f4a5b6c7d"
+    ],
+    "type": "user",
+    "status": "active"
+  }
+]
+}

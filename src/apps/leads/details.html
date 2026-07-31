@@ -1,0 +1,129 @@
+<form
+	class="card mb-0"
+	array
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/leads/form.html"
+		src="components/offcanvas-header.html"
+		aria-label="Leads Form Header"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-3" aria-label="Lead Details">
+			<div class="text-center flex-shrink-0" style="margin-bottom: 2rem">
+				<div class="position-relative d-inline-block">
+					<img
+						src="/assets/images/users.jpg"
+						key="avatar[0].src"
+						alt="Lead Avatar"
+						class="avatar-xl rounded-circle img-thumbnail material-shadow margin:auto" />
+				</div>
+				<h5 class="mt-4 mb-1" key="name" aria-label="Lead Name"></h5>
+				<p
+					class="text-muted"
+					key="company"
+					aria-label="Lead Company"></p>
+
+				<ul class="list-inline mb-0" aria-label="Lead Information">
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="phone"
+							value-prefix="tel:"
+							class="avatar-title bg-success-subtle text-success fs-15 rounded"
+							aria-label="Call Lead">
+							<i class="ri-phone-line"></i>
+						</a>
+					</li>
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="email"
+							value-prefix="mailto:"
+							class="avatar-title bg-danger-subtle text-danger fs-15 rounded"
+							aria-label="Email Lead">
+							<i class="ri-mail-line"></i>
+						</a>
+					</li>
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="phone"
+							value-prefix="sms:"
+							class="avatar-title bg-warning-subtle text-warning fs-15 rounded"
+							aria-label="Text Lead">
+							<i class="ri-question-answer-line"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-grow-1">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">
+					Lead Information
+				</h6>
+				<p
+					class="text-muted mb-4"
+					key="description"
+					aria-label="Lead Description"></p>
+				<div class="table-responsive table-card">
+					<table
+						class="table table-borderless mb-0"
+						aria-label="Lead Details Table">
+						<tbody>
+							<tr>
+								<td class="fw-medium" scope="row">Company</td>
+								<td
+									key="company"
+									aria-labelledby="Company"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Phone</td>
+								<td key="phone" aria-labelledby="Phone"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">
+									Lead Score
+								</td>
+								<td
+									key="lead_score"
+									aria-labelledby="Lead Score"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Tags</td>
+								<td aria-label="Lead Tags">
+									<span key="tags" render-query="[template]">
+										<span
+											template
+											class="badge bg-primary-subtle text-primary me-1"
+											>{{tags}}</span
+										>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Location</td>
+								<td
+									key="location"
+									aria-labelledby="Location"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">
+									Create Date
+								</td>
+								<td
+									key="created.on"
+									aria-labelledby="Create Date"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div
+				class="w-100"
+				src="components/activities.html"
+				aria-label="Lead Activities"></div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,702 @@
+<style>
+	.char-counter {
+		visibility: hidden;
+		transition: visibility 0.2s;
+	}
+	.char-counter.visible {
+		visibility: visible;
+	}
+</style>
+
+<form 
+	class="card mb-0"
+	array
+	object
+	state-id="offcanvas-app-form" 
+	state-overwrite>
+	<div class="card-header text-center border-bottom-0" src="components/offcanvas-header.html"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4">
+			<form state-id="form-fields" state-overwrite array="blog-posts" object="">
+				<!-- Add hidden fields for missing keys -->
+				<input type="hidden" key="_id" />
+				<input type="hidden" key="published" />
+				<input type="hidden" key="url" />
+				<input type="hidden" key="video" />
+				<div class="display:flex flex-wrap gap:1.5rem width:100%">
+					<!-- Status card spanning both columns -->
+					<div class="display:flex flex-wrap width:100% flex-direction:column">
+						<div class="card mb-3">
+							<div
+								class="card-body d-flex justify-content-between align-items-center">
+								<!-- Save state indicator (left) -->
+								<div class="d-flex align-items-center">
+									<i
+										class="ri-cloud-check-line text-success me-2"
+										title="All changes saved"></i>
+									<span class="text-muted" style="font-size: 0.95em"
+										>All changes saved</span
+									>
+								</div>
+								<!-- Actions and status (right) -->
+								<div class="d-flex align-items-center gap-2">
+									<button
+										type="button"
+										class="btn btn-info btn-sm me-2">
+										Preview
+									</button>
+									<div class="btn-group me-2">
+										<button
+											type="button"
+											class="btn btn-success btn-sm"
+											id="publish-btn">
+											Publish Now
+										</button>
+										<button
+											type="button"
+											class="btn btn-success btn-sm border-start border-success"
+											plugin='{
+												"flatpickr": [
+														"$this",
+														{
+														"enableTime": true,
+														"dateFormat": "Y-m-d H:i",
+														"time_24hr": true,
+														"defaultDate": "today"
+														}
+												],
+												"getValue": "$flatpickr.selectedDates",
+												"setValue": { 
+													"$flatpickr.setDate": "$event.value" 
+												}
+											}'
+											aria-expanded="false"
+											aria-label="Open calendar to schedule publish date">
+											<i class="ri-calendar-line"></i>
+										</button>
+										<ul
+											class="dropdown-menu dropdown-menu-end"
+											id="schedule-dropdown-menu"
+											aria-close-on="anywhere"
+											aria-labelledby="publish-btn">
+											<li class="mb-2 px-3 pt-2">
+												<label
+													for="schedule-date-picker"
+													class="form-label mb-1"
+													style="font-size: 0.95em">
+													Schedule publish date:
+												</label>
+												<!-- Replace native date input with structured Flatpickr initialization -->
+												<input
+													type="text"
+													class="form-control"
+													id="schedule-date-picker"
+													plugin='{
+														"flatpickr": [
+															"$this",
+															{
+																"enableTime": true,
+																"dateFormat": "Y-m-d H:i",
+																"appendTo": "#schedule-dropdown-menu"
+															}
+														],
+														"setValue": { "$flatpickr.setDate": "$event.value" }
+													}'
+													placeholder="Select date & time"
+													autocomplete="off"
+													onchange="schedulePost(this.value)" />
+											</li>
+										</ul>
+									</div>
+									<!-- Scheduled dropdown (single button with caret, no disabled state, no btn-group) -->
+									<div class="dropdown me-2">
+										<button
+											class="btn btn-warning btn-sm dropdown-toggle"
+											type="button"
+											id="scheduledDropdown"
+											aria-controls="scheduledDropdownMenu"
+											aria-haspopup="menu"
+											aria-expanded="false">
+											Scheduled
+										</button>
+										<ul
+											class="dropdown-menu"
+											id="scheduledDropdownMenu"
+											aria-close-on="anywhere"
+											aria-labelledby="scheduledDropdown">
+											<li>
+												<a
+													class="dropdown-item"
+													plugin='{"flatpickr": ["$this", {}]}'
+													>Edit Schedule</a
+												>
+											</li>
+											<li>
+												<a
+													class="dropdown-item"
+													href="#"
+													onclick="unschedulePost()"
+													>Unschedule (Return to Draft)</a
+												>
+											</li>
+											<li>
+												<a
+													class="dropdown-item"
+													href="#"
+													onclick="publishNow()"
+													>Publish Now</a
+												>
+											</li>
+										</ul>
+									</div>
+									<div class="dropdown d-flex align-items-center">
+										<i
+											class="ri-more-2-fill"
+											style="
+												font-size: 1.4rem;
+												cursor: pointer;
+												padding: 0 0.5rem;
+											"
+											aria-controls="moreActionsDropdownMenu"
+											aria-haspopup="menu"
+											aria-expanded="false"
+											tabindex="0"
+											aria-label="More actions"></i>
+										<ul
+											class="dropdown-menu dropdown-menu-end"
+											id="moreActionsDropdownMenu"
+											aria-close-on="anywhere">
+											<li>
+												<button
+													class="dropdown-item text-warning"
+													type="button"
+													onclick="archivePost()">
+													<i class="ri-archive-line me-2"></i
+													>Archive
+												</button>
+											</li>
+											<li>
+												<button
+													class="dropdown-item text-danger"
+													type="button"
+													onclick="deletePost()">
+													<i
+														class="ri-delete-bin-line me-2"></i
+													>Delete
+												</button>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Main column representing a minimum responsive base width that grows dynamically -->
+					<div class="display:flex flex-wrap flex-direction:column width:500px flex-grow:1">
+						<div class="card">
+							<div class="card-body">
+								<div class="mb-3">
+									<div
+										class="d-flex justify-content-between align-items-center">
+										<label
+											class="form-label mb-0"
+											for="post-headline">
+											Headline
+											<i
+												class="ri-information-line ms-1"
+												style="cursor: pointer"
+												title="This is the main headline readers see on your blog post. Make it clear and engaging for readers. Recommended length: 50–70 characters for readability, but up to 120 characters is allowed. For SEO, use the Meta Title field (keep that under 60 characters)."></i>
+										</label>
+										<span
+											id="headline-char-count"
+											class="text-muted char-counter"
+											style="font-size: 0.9em"
+											>(0/120)</span
+										>
+									</div>
+									<input
+										type="text"
+										class="form-control"
+										id="post-headline"
+										maxlength="120"
+										key="headline"
+										placeholder="Enter post headline"
+										aria-label="Post Headline"
+										oninput="document.getElementById('headline-char-count').textContent = `(${this.value.length}/120)`;toggleCounter(this, 'headline-char-count');"
+										onfocus="toggleCounter(this, 'headline-char-count')"
+										onblur="toggleCounter(this, 'headline-char-count')" />
+								</div>
+
+								<div class="mb-3">
+									<div
+										class="d-flex justify-content-between align-items-center">
+										<label
+											for="post-summary"
+											class="form-label mb-0">
+											Summary
+											<i
+												class="ri-information-line ms-1"
+												style="cursor: pointer"
+												title="A short summary for search engines. Keep under 160 characters."></i>
+										</label>
+										<span
+											id="post-summary-char-count"
+											class="text-muted char-counter"
+											style="font-size: 0.9em"
+											>(0/160)</span
+										>
+									</div>
+									<textarea
+										class="form-control"
+										id="post-summary"
+										maxlength="160"
+										key="post-summary"
+										placeholder="Enter post summary"
+										aria-label="Post Summary"
+										oninput="document.getElementById('post-summary-char-count').textContent = `(${this.value.length}/160)`;toggleCounter(this, 'post-summary-char-count');"
+										onfocus="toggleCounter(this, 'post-summary-char-count')"
+										onblur="toggleCounter(this, 'post-summary-char-count')"></textarea>
+								</div>
+
+								<div class="mb-3">
+									<label
+										class="form-label"
+										for="project-thumbnail-img">
+										Thumbnail Image
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="Upload or provide a URL for the main image that will represent your post. This image is shown in listings and previews."></i>
+									</label>
+									<div class="input-group">
+										<label
+											class="input-group-text btn btn-light mb-0"
+											for="project-thumbnail-img"
+											style="min-width: 130px; cursor: pointer">
+											Choose Image
+											<input
+												class="form-control d-none"
+												id="project-thumbnail-img"
+												type="file"
+												accept="image/png, image/gif, image/jpeg"
+												key="image"
+												aria-label="Choose Thumbnail Image File"
+												onchange="document.getElementById('image-url-input').value = this.files[0?.name || ''];" />
+										</label>
+										<input
+											id="image-url-input"
+											key="image"
+											type="text"
+											class="form-control"
+											placeholder="Enter image URL or choose file"
+											style="position: relative"
+											aria-label="Thumbnail Image URL" />
+										<span
+											class="input-group-text"
+											style="
+												background: transparent;
+												border-left: 0;
+												cursor: pointer;
+												padding: 0px 10px;
+											"
+											title="Generate image with AI"
+											id="ai-generate-image-btn"
+											tabindex="0"
+											role="button"
+											aria-label="Generate Image with AI">
+											<i
+												class="ri-sparkling-2-line"
+												style="
+													font-size: 1.2rem;
+													color: #6c757d;
+												"></i>
+										</span>
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label" for="video-input"
+										>Video (optional)
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="If a video is provided, the image will be used as a thumbnail."></i>
+									</label>
+									<div class="input-group">
+										<label
+											class="input-group-text btn btn-light waves-effect mb-0"
+											for="video-file-input"
+											style="min-width: 130px; cursor: pointer">
+											Choose Video
+											<input
+												id="video-file-input"
+												type="file"
+												accept="video/*"
+												class="form-control d-none"
+												aria-label="Choose Video File"
+												onchange="document.getElementById('video-url-input').value = this.files[0?.name || ''];" />
+										</label>
+										<input
+											id="video-url-input"
+											key="video"
+											type="text"
+											class="form-control"
+											placeholder="Enter video URL or choose file"
+											style="position: relative"
+											aria-label="Video URL" />
+										<span
+											class="input-group-text"
+											style="
+												background: transparent;
+												border-left: 0;
+												cursor: pointer;
+												padding: 0px 10px;
+											"
+											title="Generate video with AI"
+											id="ai-generate-video-btn"
+											tabindex="0"
+											role="button"
+											aria-label="Generate Video with AI">
+											<i
+												class="ri-sparkling-2-line"
+												style="
+													font-size: 1.2rem;
+													color: #6c757d;
+												"></i>
+										</span>
+									</div>
+									<!-- <small class="form-text text-muted">If a video is provided, the image will be used as a thumbnail.</small> -->
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label" id="post-content-label">Post Content</label>
+									<div 
+										key="content" 
+										aria-labelledby="post-content-label"
+										plugin='{
+											"ClassicEditor.create": [
+												"$this",
+												{
+												"placeholder": "Type your custom article body here...",
+												"toolbar": [
+													"heading", "|", "bold", "italic", "link", 
+													"bulletedList", "numberedList", "blockQuote", 
+													"undo", "redo"
+												]
+												}
+											],
+											"getValue": "$ClassicEditor.getData",
+											"setValue": { 
+												"$ClassicEditor.setData": "$event.value" 
+											}
+										}'>
+										<p>
+											It will be as simple as occidental in fact,
+											it will be Occidental. To an English person,
+											it will seem like simplified English, as a
+											skeptical Cambridge friend of mine told me
+											what Occidental is. The European languages
+											are members of the same family. Their
+											separate existence is a myth. For science,
+											music, sport, etc, Europe uses the same
+											vocabulary.
+										</p>
+										<ul>
+											<li>
+												Product Design, Figma (Software),
+												Prototype
+											</li>
+											<li>
+												Four Dashboards : Ecommerce, Analytics,
+												Post etc.
+											</li>
+											<li>
+												Create calendar, chat and email app
+												pages.
+											</li>
+											<li>Add authentication pages</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end card body -->
+						</div>
+						<!-- end card -->
+					</div>
+					<!-- Sidebar column representing a fixed settings panel -->
+					<div class="display:flex flex-wrap flex-direction:column width:300px flex-grow-1">
+						<!-- Post Settings card  -->
+						<div class="card mb-3">
+							<div class="card-header">
+								<h5 class="card-title mb-0">Post Settings</h5>
+							</div>
+							<div class="card-body">
+								<!-- Category -->
+								<div class="mb-3">
+									<label
+										for="choices-categories-input"
+										class="form-label">
+										Category
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="Select the main topic or section for this post. Categories help organize your blog content."></i>
+									</label>
+									<input
+										type="text"
+										class="form-control"
+										id="choices-categories-input"
+										key="category"
+										placeholder="Enter or select category"
+										aria-label="Post Category"
+										plugin='{
+											"Choices": ["$this", {"maxItemCount": 3, "removeItemButton": true}],
+											"getValue": "$Choices.getValue",
+											"setValue": { "$Choices.setValue": "$event.value" }
+										}' />
+								</div>
+
+								<!-- Tags (moved here, after Category) -->
+								<div class="mb-3">
+									<label for="choices-text-input" class="form-label">
+										Tags
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="Add relevant keywords to help organize and filter posts. Separate tags with commas or press Enter."></i>
+									</label>
+									<input
+										class="form-control"
+										id="choices-text-input"
+										aria-label="Post Tags"
+										plugin='{
+											"Choices": ["$this", {"maxItemCount": 3, "removeItemButton": true}],
+											"getValue": "$Choices.getValue",
+											"setValue": { "$Choices.setValue": "$event.value" }
+										}' />
+								</div>
+
+								<!-- Slug field (moved here,after Tags, before Author) -->
+								<div class="mb-3">
+									<label class="form-label" for="slug-input">
+										Slug
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="Auto-generated from title, but you can edit. Only lowercase letters, numbers, and hyphens."></i>
+									</label>
+									<input
+										type="text"
+										class="form-control"
+										id="slug-input"
+										key="slug"
+										placeholder="e.g. my-awesome-blog-post"
+										pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$"
+										title="Only lowercase letters, numbers, and hyphens allowed."
+										aria-label="Post Slug" />
+								</div>
+
+								<!-- Author (moved here, with info icon) -->
+								<div class="mb-3">
+									<label for="author-input" class="form-label">
+										Author
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="Select an author from your team, or enter a name for a guest/external author."></i>
+									</label>
+									<select
+										class="form-select"
+										id="author-input"
+										key="author"
+										aria-label="Post Author">
+										<option value="">Select author</option>
+										<!-- Populate with users -->
+									</select>
+								</div>
+
+								<!-- Comments Settings -->
+								<div class="mb-3">
+									<label
+										for="comments-state.select"
+										class="form-label"
+										>Comments
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="Control whether readers can comment on this post."></i>
+									</label>
+									<select
+										class="form-select"
+										id="comments-state.select"
+										key="comments.state"
+										aria-label="Comment Settings">
+										<option value="enabled" selected>
+											Enabled
+										</option>
+										<option value="disabled">Disabled</option>
+										<option value="hidden">Hidden</option>
+									</select>
+								</div>
+
+								<!-- Related Posts (moved here, below Comments) -->
+								<div class="mb-3">
+									<label for="related-post-select" class="form-label">
+										Related Posts
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="Optionally link this post to one or more related posts."></i>
+									</label>
+									<select
+										class="form-select"
+										id="related-post-select"
+										key="related_posts"
+										multiple
+										value-type="array"
+										aria-label="Related Posts">
+										<option value="">None</option>
+										<!-- Optionally populate with blog post titles/IDs -->
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title mb-0">Meta Tags</h5>
+							</div>
+							<div class="card-body display:flex flex-direction:column gap:1rem">
+								<div>
+									<div
+										class="d-flex justify-content-between align-items-center">
+										<label class="form-label mb-0" for="meta-title">
+											Meta Title
+											<i
+												class="ri-information-line ms-1"
+												style="cursor: pointer"
+												title="Keep your title under 60 characters for best SEO results."></i>
+										</label>
+										<span
+											id="meta-title-char-count"
+											class="text-muted char-counter"
+											style="font-size: 0.9em"
+											>(0/60)</span
+										>
+									</div>
+									<input
+										type="text"
+										class="form-control"
+										id="meta-title"
+										key="meta-title"
+										maxlength="60"
+										placeholder="Enter meta title"
+										aria-label="Meta Title"
+										oninput="document.getElementById('meta-title-char-count').textContent = `(${this.value.length}/60)`;toggleCounter(this, 'meta-title-char-count');"
+										onfocus="toggleCounter(this, 'meta-title-char-count')"
+										onblur="toggleCounter(this, 'meta-title-char-count')" />
+								</div>
+
+								<div>
+									<div
+										class="d-flex justify-content-between align-items-center">
+										<label
+											for="meta-description"
+											class="form-label mb-0">
+											Meta Description
+											<i
+												class="ri-information-line ms-1"
+												style="cursor: pointer"
+												title="A short summary for search engines. Keep under 160 characters."></i>
+										</label>
+										<span
+											id="meta-desc-char-count"
+											class="text-muted char-counter"
+											style="font-size: 0.9em"
+											>(0/160)</span
+										>
+									</div>
+									<textarea
+										class="form-control"
+										id="meta-description"
+										maxlength="160"
+										key="meta-description"
+										placeholder="Enter meta description"
+										aria-label="Meta Description"
+										oninput="document.getElementById('meta-desc-char-count').textContent = `(${this.value.length}/160)`;toggleCounter(this, 'meta-desc-char-count');"
+										onfocus="toggleCounter(this, 'meta-desc-char-count')"
+										onblur="toggleCounter(this, 'meta-desc-char-count')"></textarea>
+								</div>
+
+								<div>
+									<label for="meta-keywords" class="form-label">
+										Meta Keywords
+										<i
+											class="ri-information-line ms-1"
+											style="cursor: pointer"
+											title="Comma-separated keywords to help search engines understand your post topic."></i>
+									</label>
+									<input
+										class="form-control"
+										id="meta-keywords"
+										placeholder="Enter Keywords"
+										type="text"
+										value="UI/UX, Figma, HTML, CSS, Javascript, C#, Nodejs"
+										key="meta-keywords"
+										aria-label="Meta Keywords"
+										plugin='{
+											"Choices": ["$this", {"maxItemCount": 3, "removeItemButton": true}],
+											"getValue": "$Choices.getValue",
+											"setValue": { "$Choices.setValue": "$event.value" }
+										}' />
+								</div>
+							</div>
+							<!-- end card body -->
+						</div>
+
+						<!-- Remove the separate Related Posts card from below -->
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- Remove the separate row for action buttons -->
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- container-fluid -->
+
+<script>
+	function toggleCounter(el, counterId) {
+		const counter = document.getElementById(counterId);
+		if (el === document.activeElement || el.value.length > 0) {
+			counter.classList.add("visible");
+		} else {
+			counter.classList.remove("visible");
+		}
+	}
+
+	// Prevent dropdown from closing when interacting with Flatpickr
+	document.addEventListener("DOMContentLoaded", function () {
+		const fpInput = document.getElementById("schedule-date-picker");
+		if (fpInput) {
+			// Prevent dropdown close on input click
+			fpInput_addEventListener("click", function (e) {
+				e.stopPropagation();
+			});
+			// Prevent dropdown close on calendar click
+			document.addEventListener(
+				"click",
+				function (e) {
+					const calendar = document.querySelector(
+						".flatpickr-calendar"
+					);
+					if (calendar && calendar.contains(e.target)) {
+						e.stopPropagation();
+					}
+				},
+				true
+			);
+		}
+	});
+</script>

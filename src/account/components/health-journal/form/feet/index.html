@@ -1,0 +1,436 @@
+<!-- Feet Accordion -->
+			<div>
+				<button
+					class="accordion-toggle btn btn-link text-decoration-none w-100 d-flex align-items-center justify-content-between fs-14 py-2 px-0"
+					aria-controls="acc-feet">
+					<span class="d-flex align-items-center">
+						<svg
+							class="text-info me-3"
+							style="width: 1rem; height: 1rem"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+						</svg>
+					
+					</span>
+
+				</button>
+				<div
+					id="acc-feet"
+					class="ps-4 pt-1 pb-2 mt-1 d-flex flex-column gap-2">
+					<!-- Left Foot Group -->
+					<div>
+						<input
+								type="checkbox"
+								id="concern-foot-left"
+								array="contacts"
+								object="$user_id"
+								name="biometrics.feet.left.joint.status"
+								key="biometrics.feet.left.joint.status"
+								value="active"
+								class="cyber-checkbox d-none" />
+
+                                                
+                                                
+						<div
+							id="sub-foot-left"
+							class="ps-4 pt-2 mt-1 mb-2 d-flex flex-column gap-2">
+							<input
+								type="checkbox"
+								id="concern-foot-right"
+								array="contacts"
+								object="$user_id"
+								name="biometrics.feet.right.joint.status"
+								key="biometrics.feet.right.joint.status"
+								value="active"
+								class="cyber-checkbox d-none" />
+
+                                                
+                                                
+						<div
+							id="sub-foot-right"
+							class="ps-4 pt-2 mt-1 mb-2 d-flex flex-column gap-2">
+							<label
+								class="d-flex align-items-center cursor-pointer group"
+								><input
+									type="checkbox"
+									array="contacts"
+									object="$user_id"
+									name="biometrics.feet.right.plantar_fascia.status"
+									key="biometrics.feet.right.plantar_fascia.status"
+									value="active"
+									class="cyber-checkbox-sub d-none" />
+								<div
+									class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+									style="width: 0.75rem; height: 0.75rem">
+									<svg
+										class="text-white d-none"
+										style="width: 0.5rem; height: 0.5rem"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="3"
+											d="M5 13l4 4L19 7"></path>
+									</svg>
+								</div>
+								<span
+									class="text-secondary text-uppercase "
+									style="
+										font-size: 10px;
+										letter-spacing: 0.05em;
+									"
+									>Plantar Fascia</span
+								></label
+							>
+							<label
+								class="d-flex align-items-center cursor-pointer group"
+								><input
+									type="checkbox"
+									array="contacts"
+									object="$user_id"
+									name="biometrics.feet.right.calcaneus.status"
+									key="biometrics.feet.right.calcaneus.status"
+									value="active"
+									class="cyber-checkbox-sub d-none" />
+								<div
+									class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+									style="width: 0.75rem; height: 0.75rem">
+									<svg
+										class="text-white d-none"
+										style="width: 0.5rem; height: 0.5rem"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="3"
+											d="M5 13l4 4L19 7"></path>
+									</svg>
+								</div>
+								<span
+									class="text-secondary text-uppercase "
+									style="
+										font-size: 10px;
+										letter-spacing: 0.05em;
+									"
+									>Heel (Calcaneus)</span
+								></label
+							>
+							<label
+								class="d-flex align-items-center cursor-pointer group"
+								><input
+									type="checkbox"
+									array="contacts"
+									object="$user_id"
+									name="biometrics.feet.right.metatarsals.status"
+									key="biometrics.feet.right.metatarsals.status"
+									value="active"
+									class="cyber-checkbox-sub d-none" />
+								<div
+									class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+									style="width: 0.75rem; height: 0.75rem">
+									<svg
+										class="text-white d-none"
+										style="width: 0.5rem; height: 0.5rem"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="3"
+											d="M5 13l4 4L19 7"></path>
+									</svg>
+								</div>
+								<span
+									class="text-secondary text-uppercase "
+									style="
+										font-size: 10px;
+										letter-spacing: 0.05em;
+									"
+									>Metatarsals</span
+								></label
+							>
+
+							<!-- Nested Toes Level 3 -->
+							<div>
+								<label
+									class="d-flex align-items-center cursor-pointer group">
+									<input
+										type="checkbox"
+										id="concern-toes-right"
+										array="contacts"
+										object="$user_id"
+										name="biometrics.feet.right.toes.all.status"
+										key="biometrics.feet.right.toes.all.status"
+										value="active"
+										class="cyber-checkbox-sub d-none" />
+									<div
+										class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+										style="width: 0.75rem; height: 0.75rem">
+										<svg
+											class="text-white d-none"
+											style="
+												width: 0.5rem;
+												height: 0.5rem;
+											"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24">
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="3"
+												d="M5 13l4 4L19 7"></path>
+										</svg>
+									</div>
+									<span
+										class="text-secondary text-uppercase "
+										style="
+											font-size: 10px;
+											letter-spacing: 0.05em;
+										"
+										>Phalanges (Toes)</span
+									>
+								</label>
+<textarea array="contacts" object="$user_id" name="biometrics.feet.right.plantar_fascia.details" key="biometrics.feet.right.plantar_fascia.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;"></textarea>
+
+
+
+
+                                                        
+                                                        
+                                                        
+                                                        
+								<div
+									id="sub-toes-right"
+									class="ps-3 pt-1 mt-1 mb-1 d-flex flex-column gap-1">
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.feet.right.toes.hallux.status"
+											key="biometrics.feet.right.toes.hallux.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Great Toe (Hallux)</span
+										></label
+									>
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.feet.right.toes.second.status"
+											key="biometrics.feet.right.toes.second.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Second Toe</span
+										></label
+									>
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.feet.right.toes.third.status"
+											key="biometrics.feet.right.toes.third.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Third Toe</span
+										></label
+									>
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.feet.right.toes.fourth.status"
+											key="biometrics.feet.right.toes.fourth.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Fourth Toe</span
+										></label
+									>
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.feet.right.toes.pinky.status"
+											key="biometrics.feet.right.toes.pinky.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Little Toe (Pinky)</span
+										></label
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div></label>
+<textarea array="contacts" object="$user_id" name="biometrics.feet.right.toes.hallux.details" key="biometrics.feet.right.toes.hallux.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;"></textarea>
+
+
+
+
+                                                        
+                                                        
+                                                        
+                                                        

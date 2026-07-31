@@ -1,0 +1,139 @@
+<div class="card-body p-4">
+	<div class="text-center mt-2">
+		<h5 class="text-primary">Let's begin your journey</h5>
+		<p class="text-muted">Enter your details below</p>
+	</div>
+	<div class="p-2 mt-4">
+		<form
+			array="contacts"
+			object=""
+			upsert="true"
+			class="coform"
+			autocomplete="off"
+			role="form"
+			aria-label="Sign up form"
+			onkeydown="
+				if (event.key === 'Enter')
+					document.getElementById('signup-btn').click();
+			">
+			<div class="mb-3">
+				<label for="first_name" class="form-label"
+					>Full Name <span class="text-danger">*</span></label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="name"
+					name="name"
+					input-query="$document .name-field[]"
+					input.value="$value"
+					placeholder="Enter your full name"
+					required
+					aria-required="true" />
+
+				<input
+					class="name-field"
+					name="first_name"
+					id="first_name"
+					type="hidden"
+					key="first_name"
+					value-match="/^\s*([^\s]+)/" />
+				<input
+					class="name-field"
+					name="last_name"
+					id="last_name"
+					type="hidden"
+					key="last_name"
+					value-match="/\s+([^\s]+)\s*$/" />
+
+			</div>
+
+			<div class="mb-3">
+				<label for="email" class="form-label"
+					>Email <span class="text-danger">*</span></label
+				>
+				<input
+					type="email"
+					class="form-control"
+					id="email"
+					name="email"
+					key="email"
+					placeholder="Enter email address"
+					required
+					unique
+					email
+					aria-required="true" />
+			</div>
+
+			<div class="mb-3">
+				<label for="password" class="form-label"
+					>Password <span class="text-danger">*</span></label
+				>
+				<input
+					type="password"
+					class="form-control"
+					id="password"
+					name="password"
+					key="password"
+					placeholder="Enter password"
+					required
+					aria-required="true" />
+			</div>
+
+			<div class="mt-4">
+				<style>
+					#signup-btn[disabled] .spinner-border {
+						display: inline-block !important;
+					}
+				</style>
+				<button
+					id="signup-btn"
+					class="btn btn-success w-100"
+					actions="validate, click, disabled, signUp, signIn, state, disabled, click"
+					click.value="Creating your account..., Continue"
+					click-query=".button-text"
+					state-to="authView"
+					state.src="./signin.html"
+					href="/account/"
+					type="button"
+					aria-label="Begin your journey">
+					<span
+						class="spinner-border spinner-border-sm d-none"
+						role="status"
+						aria-hidden="true">
+					</span>
+					<span class="button-text">Continue</span>
+				</button>
+
+				<p class="mb-0 mt-1">
+					Already have an account?
+					<a
+						state-to="authView"
+						state.src="./signin.html"
+						class="fw-semibold text-primary text-decoration-underline">
+						Sign In
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</div>
+
+			<!-- <div
+				id="password-contains"
+				class="p-3 bg-light mb-2 rounded" hidden>
+				<h5 class="fs-13">Password must contain:</h5>
+				<p id="pass-length" class="invalid fs-12 mb-2">
+					Minimum <b>8 characters</b>
+				</p>
+				<p id="pass-lower" class="invalid fs-12 mb-2">
+					At <b>lowercase</b> letter (a-z)
+				</p>
+				<p id="pass-upper" class="invalid fs-12 mb-2">
+					At least
+					<b>uppercase</b> letter (A-Z)
+				</p>
+				<p id="pass-number" class="invalid fs-12 mb-0">
+					A least <b>number</b> (0-9)
+				</p>
+			</div> -->

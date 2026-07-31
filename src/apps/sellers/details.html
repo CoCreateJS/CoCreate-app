@@ -1,0 +1,136 @@
+<form
+	class="card mb-0"
+	array
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/sellers/form.html"
+		src="components/offcanvas-header.html"
+		role="region"
+		aria-labelledby="offcanvas-header-heading"></div>
+
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4" array="companies" object>
+			<div class="text-center flex-shrink-0" style="margin-bottom: 2rem">
+				<div class="position-relative d-inline-block">
+					<div class="avatar-md">
+						<div
+							class="avatar-title bg-light rounded-circle material-shadow">
+							<img
+								src="/assets/images/multi-users.jpg"
+								alt="Company Logo"
+								class="avatar-xl rounded-circle object-fit-cover"
+								key="logo[0].src" />
+						</div>
+					</div>
+				</div>
+				<h5 class="mt-3 mb-1" key="name" aria-label="Company Name"></h5>
+				<p
+					class="text-muted"
+					key="owner"
+					aria-label="Company Owner"></p>
+
+				<ul class="list-inline mb-0" aria-label="Company Links">
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="website"
+							target="_blank"
+							class="avatar-title bg-success-subtle text-success fs-15 rounded"
+							aria-label="Company Website">
+							<i class="ri-global-line"></i>
+						</a>
+					</li>
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="contact_email"
+							value-prefix="mailto:"
+							class="avatar-title bg-danger-subtle text-danger fs-15 rounded"
+							aria-label="Company Email">
+							<i class="ri-mail-line"></i>
+						</a>
+					</li>
+					<li class="list-inline-item avatar-xs">
+						<a
+							href=""
+							key="phone"
+							value-prefix="sms:"
+							class="avatar-title bg-warning-subtle text-warning fs-15 rounded"
+							aria-label="Company Phone">
+							<i class="ri-question-answer-line"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-grow-1">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">
+					Information
+				</h6>
+				<p
+					class="text-muted mb-4"
+					key="description"
+					aria-label="Company Description"></p>
+				<div class="table-responsive table-card">
+					<table
+						class="table table-borderless mb-0"
+						aria-label="Company Details">
+						<tbody>
+							<tr>
+								<td class="fw-medium" scope="row">
+									Industry Type
+								</td>
+								<td
+									key="industry_type"
+									aria-label="Industry Type"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Location</td>
+								<td key="location" aria-label="Location"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Employees</td>
+								<td
+									key="employee"
+									aria-label="Number of Employees"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Rating</td>
+								<td
+									key="rating"
+									aria-label="Company Rating"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Website</td>
+								<td>
+									<a
+										href=""
+										key="website"
+										target="_blank"
+										class="link-primary text-decoration-underline"
+										aria-label="Company Website Link"></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">
+									Contact Email
+								</td>
+								<td
+									key="contact_email"
+									aria-label="Contact Email"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Since</td>
+								<td key="since" aria-label="Company Since"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div src="components/activities.html"></div>
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,65 @@
+<div class="card">
+	<div class="card-header">
+		<h5 class="card-title mb-0">Credit Card - card js plugin</h5>
+	</div>
+	<div class="card-body">
+		<div class="card-wrapper mb-3"></div>
+
+		<div class="form-container active">
+			<form action="" id="card-form-elem" autocomplete="off">
+				<div class="mb-3">
+					<label for="card-number-input" class="form-label"
+						>Card Number</label
+					>
+					<input
+						class="form-control"
+						placeholder="Card number"
+						type="tel"
+						id="card-number-input" />
+				</div>
+				<div class="mb-3">
+					<label for="card-name-input" class="form-label"
+						>Card Holder</label
+					>
+					<input
+						class="form-control"
+						placeholder="Full name"
+						type="text"
+						id="card-name-input" />
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="mb-3">
+							<label for="card-expiry-input" class="form-label"
+								>Expiry</label
+							>
+							<input
+								class="form-control"
+								placeholder="MM/YY"
+								type="tel"
+								id="card-expiry-input" />
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="mb-3">
+							<label for="card-cvc-input" class="form-label"
+								>CVC</label
+							>
+							<input
+								class="form-control"
+								placeholder="CVC"
+								type="number"
+								id="card-cvc-input" />
+						</div>
+					</div>
+				</div>
+				<button class="btn btn-danger w-100" type="submit">
+					Pay Now
+				</button>
+			</form>
+		</div>
+	</div>
+	<!-- end card-body -->
+</div>
+<!-- end card -->
+<script src="/assets/libs/card/card.js"></script>

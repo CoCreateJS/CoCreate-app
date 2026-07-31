@@ -1,0 +1,83 @@
+<div
+	id="org-members-grid"
+	array="organization"
+	object="$organization_id"
+	key="members"
+	filter-limit="40"
+	render-query="[template]"
+	state-overwrite
+	class="d-flex flex-wrap gap-3">
+	<!-- Member card template -->
+	<div class="card flex-grow-1" template style="width: 320px">
+		<div class="card-body">
+			<div class="d-flex justify-content-between">
+				<div class="d-flex align-items-start">
+					<div class="me-3">
+						<div class="avatar-title bg-light rounded-circle">
+							<img
+								src="{{object.avatar || 'assets/images/users/avatar-1.jpg'}}"
+								alt="{{object.name}}"
+								class="avatar-xs rounded-circle" />
+						</div>
+					</div>
+					<div>
+						<h6 class="mb-1">{{object.name}}</h6>
+						<div class="text-muted fs-13">{{object.role}}</div>
+					</div>
+				</div>
+				<div>
+					<span
+						class="badge bg-{{object.status == 'active' ? 'success' : 'secondary'}}-subtle text-{{object.status == 'active' ? 'success' : 'secondary'}}"
+						>{{object.status}}</span
+					>
+				</div>
+			</div>
+
+			<div class="mt-3 text-muted fs-13">
+				<div>
+					Email: <span class="text-dark">{{object.email}}</span>
+				</div>
+				<div>
+					Phone: <span class="text-dark">{{object.phone}}</span>
+				</div>
+				<div>
+					Joined: <span class="text-dark">{{object.joined.on}}</span>
+				</div>
+			</div>
+
+			<div class="mt-3 d-flex gap-2">
+				<a
+					class="btn btn-soft-primary btn-sm"
+					state-to="adminView"
+					state.src="/apps/organizations/member-details.html?id={{object._id}}"
+					>Details</a
+				>
+				<button
+					class="btn btn-soft-danger btn-sm"
+					click="remove"
+					click-query="$parent">
+					Remove
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row g-0 justify-content-end mb-4" id="org-pagination-element">
+	<div class="col-sm-6">
+		<div
+			class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
+			<div class="page-item">
+				<a href="javascript:void(0);" class="page-link" id="page-prev"
+					>Previous</a
+				>
+			</div>
+			<span id="page-num" class="pagination"></span>
+			<div class="page-item">
+				<a href="javascript:void(0);" class="page-link" id="page-next"
+					>Next</a
+				>
+			</div>
+		</div>
+	</div>
+</div>

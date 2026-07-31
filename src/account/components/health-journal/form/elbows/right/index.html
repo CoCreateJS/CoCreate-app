@@ -1,0 +1,43 @@
+<!-- Right Elbow Group -->
+<input
+	type="hidden"
+	id="concern-elbow-right"
+	array="contacts"
+	object="$user_id"
+	name="biometrics.elbows.right.joint.status"
+	key="biometrics.elbows.right.joint.status"
+	value="active" />
+
+<div id="sub-elbow-right" class="d-flex flex-column gap-2">
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="UCL_R">
+			<input class="form-check-input" type="checkbox" id="UCL_R" array="contacts" object="$user_id" name="biometrics.elbows.right.ucl.status" key="biometrics.elbows.right.ucl.status" value="active">
+			UCL (Medial Ligament)
+		</label>
+	</div>
+	<textarea data-show-for="UCL_R" array="contacts" object="$user_id" name="biometrics.elbows.right.ucl.details" key="biometrics.elbows.right.ucl.details" placeholder="Details..." class="form-control border border-secondary rounded-2 w-100" rows="2" hidden></textarea>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="RCL_R">
+			<input class="form-check-input" type="checkbox" id="RCL_R" array="contacts" object="$user_id" name="biometrics.elbows.right.rcl.status" key="biometrics.elbows.right.rcl.status" value="active">
+			RCL (Lateral Ligament)
+		</label>
+	</div>
+	<textarea data-show-for="RCL_R" array="contacts" object="$user_id" name="biometrics.elbows.right.rcl.details" key="biometrics.elbows.right.rcl.details" placeholder="Details..." class="form-control border border-secondary rounded-2 w-100" rows="2" hidden></textarea>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="EXTENSOR_R">
+			<input class="form-check-input" type="checkbox" id="EXTENSOR_R" array="contacts" object="$user_id" name="biometrics.elbows.right.extensor_tendon.status" key="biometrics.elbows.right.extensor_tendon.status" value="active">
+			Common Extensor Tendon
+		</label>
+	</div>
+	<textarea data-show-for="EXTENSOR_R" array="contacts" object="$user_id" name="biometrics.elbows.right.extensor_tendon.details" key="biometrics.elbows.right.extensor_tendon.details" placeholder="Details..." class="form-control border border-secondary rounded-2 w-100" rows="2" hidden></textarea>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="FLEXOR_R">
+			<input class="form-check-input" type="checkbox" id="FLEXOR_R" array="contacts" object="$user_id" name="biometrics.elbows.right.flexor_tendon.status" key="biometrics.elbows.right.flexor_tendon.status" value="active">
+			Common Flexor Tendon
+		</label>
+	</div>
+	<textarea data-show-for="FLEXOR_R" array="contacts" object="$user_id" name="biometrics.elbows.right.flexor_tendon.details" key="biometrics.elbows.right.flexor_tendon.details" placeholder="Details..." class="form-control border border-secondary rounded-2 w-100" rows="2" hidden></textarea>
+</div>
