@@ -253,12 +253,6 @@ export default {
             path: "../CoCreate-modules/CoCreate-unique",
             repo: "github.com/CoCreate-app/CoCreate-unique.git"
         },
-        industry: {
-            import: "@cocreate/industry",
-            selector: "[actions*='createIndustry'], [actions*='runIndustry'], [actions*='deleteIndustry'], [actions*='deleteIndustries']",
-            path: "../CoCreate-modules/CoCreate-industry",
-            repo: "github.com/CoCreate-app/CoCreate-industry.git"
-        },
         search: {
             import: "@cocreate/search",
             selector: "[search_id]",
@@ -390,30 +384,6 @@ export default {
             selector: "[actions*='notification']",
             path: "../CoCreate-modules/CoCreate-notification",
             repo: "github.com/CoCreate-app/CoCreate-notification.git"
-        },
-        pickr: {
-            import: "@cocreate/pickr",
-            selector: ".color-picker",
-            path: "../CoCreate-plugins/CoCreate-pickr",
-            repo: "github.com/CoCreate-app/CoCreate-pickr.git"
-        },
-        marked: {
-            import: "@cocreate/marked",
-            selector: "[marked], [actions*='marked'], .markdown-body",
-            path: "../CoCreate-plugins/CoCreate-marked",
-            repo: "github.com/CoCreate-app/CoCreate-marked.git"
-        },
-        prism: {
-            import: "@cocreate/prism",
-            selector: "[class*='language-']",
-            path: "../CoCreate-plugins/CoCreate-prism",
-            repo: "github.com/CoCreate-app/CoCreate-prism.git"
-        },
-        "google-maps": {
-            import: "@cocreate/google-maps",
-            selector: "[google-maps]",
-            path: "../CoCreate-plugins/CoCreate-google-maps",
-            repo: "github.com/CoCreate-app/CoCreate-google-maps.git"
         },
         webpack: {
             path: "../CoCreate-plugins/CoCreate-webpack",
