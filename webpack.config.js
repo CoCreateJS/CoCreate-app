@@ -89,7 +89,7 @@ export default async (env, argv) => {
         ],
 
         mode: isProduction ? "production" : "development",
-        devtool: isProduction ? "source-map" : "eval-source-map",
+        devtool: isProduction ? false : "eval-source-map",
 
         module: {
             rules: [
