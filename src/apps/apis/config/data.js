@@ -23,15 +23,7 @@ export const seedApisPayload = {
         }
       },
       "description": "Stripe payment gateway API integration utilizing dynamic bearer authorization header resolution.",
-      "status": "active",
-      "created": {
-        "on": "2025-09-03T07:39:23.058Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-10-04T01:28:37.166Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904dff",
@@ -45,15 +37,7 @@ export const seedApisPayload = {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       "description": "Standard Twilio Communications API. Handles automated text-to-speech calls, real-time telephony, and transactional SMS messages. Leverages $security.base64Encode AST directive for Basic authentication.",
-      "status": "active",
-      "created": {
-        "on": "2025-09-03T07:39:23.058Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-10-04T01:28:37.166Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e00",
@@ -66,15 +50,7 @@ export const seedApisPayload = {
         "Content-Type": "application/json"
       },
       "description": "Postmark transactional email pipeline configuration. Built to handle secure email transmissions with zero hardcoded authentication dependencies.",
-      "status": "active",
-      "created": {
-        "on": "2025-09-03T07:39:23.058Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-10-04T01:28:37.166Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e01",
@@ -87,15 +63,7 @@ export const seedApisPayload = {
         }
       },
       "description": "OpenAI LLM Integration Pipeline. Powers intelligent content completion, conversational agents, vector searches, and structured JSON parsing engines directly within our multi-tenant microservices.",
-      "status": "active",
-      "created": {
-        "on": "2025-09-03T07:39:23.058Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-10-04T01:28:37.166Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e02",
@@ -104,42 +72,51 @@ export const seedApisPayload = {
       "key": "aws_access_key_id_placeholder:aws_secret_access_key_placeholder",
       "headers": {
         "Authorization": {
-          "$security.createAwsSigV4Token": "$key"
+          "$concat": [
+            "AWS4-HMAC-SHA256 Credential=",
+            "$key",
+            ", Signature=",
+            {
+              "$security.signHmac": {
+                "payload": "$key",
+                "secret": "$key",
+                "algorithm": "sha256",
+                "digest": "hex"
+              }
+            }
+          ]
         },
         "Content-Type": "application/x-amz-json-1.1"
       },
-      "description": "Amazon Web Services (AWS) infrastructure API configuration leveraging dynamic SigV4 signature calculation for secure request authorization.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "description": "Amazon Web Services (AWS) infrastructure API configuration leveraging $security.signHmac and $concat primitives for request signature authorization.",
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e03",
       "name": "gcp",
       "url": "https://compute.googleapis.com/compute/v1",
-      "key": "gcp_service_account_token_placeholder",
+      "key": "gcp_service_account_private_key_placeholder",
       "headers": {
         "Authorization": {
-          "$concat": [ "Bearer ", "$key" ]
+          "$concat": [
+            "Bearer ",
+            {
+              "$security.generateJWT": {
+                "header": { "alg": "RS256", "typ": "JWT" },
+                "payload": {
+                  "iss": "gcp-service-account@project.iam.gserviceaccount.com",
+                  "sub": "gcp-service-account@project.iam.gserviceaccount.com",
+                  "aud": "https://oauth2.googleapis.com/token",
+                  "scope": "https://www.googleapis.com/auth/cloud-platform"
+                }
+              }
+            }
+          ]
         },
         "Content-Type": "application/json"
       },
-      "description": "Google Cloud Platform (GCP) REST API integration using OAuth 2.0 Bearer authorization headers.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "description": "Google Cloud Platform (GCP) REST API integration using $security.generateJWT for OAuth 2.0 client assertion authorization.",
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e04",
@@ -153,15 +130,7 @@ export const seedApisPayload = {
         "Content-Type": "application/json"
       },
       "description": "Microsoft Azure Resource Manager REST API utilizing standard Bearer token header resolution.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e05",
@@ -175,37 +144,31 @@ export const seedApisPayload = {
         "Content-Type": "application/json"
       },
       "description": "DigitalOcean v2 REST API configuration for managing Droplets, Kubernetes, and cloud networking.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e06",
       "name": "oci",
       "url": "https://iaas.us-ashburn-1.oraclecloud.com/20160918",
-      "key": "oci_api_key_placeholder",
+      "key": "oci_tenancy_ocid:oci_user_ocid:oci_key_fingerprint:oci_private_key",
       "headers": {
         "Authorization": {
-          "$concat": [ "Bearer ", "$key" ]
+          "$concat": [
+            "Signature algorithm=\"hmac-sha256\",headers=\"date (request-target) host\",signature=",
+            {
+              "$security.signHmac": {
+                "payload": "$key",
+                "secret": "$key",
+                "algorithm": "sha256",
+                "digest": "base64"
+              }
+            }
+          ]
         },
         "Content-Type": "application/json"
       },
-      "description": "Oracle Cloud Infrastructure (OCI) Core Services API integration using dynamic Bearer authorization headers.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "description": "Oracle Cloud Infrastructure (OCI) Core Services API integration using $security.signHmac for signature header generation.",
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e07",
@@ -219,15 +182,7 @@ export const seedApisPayload = {
         "Content-Type": "application/json"
       },
       "description": "Hetzner Cloud v1 API pipeline for managing cloud server instances and network infrastructure.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e08",
@@ -242,15 +197,7 @@ export const seedApisPayload = {
         "Content-Type": "application/json"
       },
       "description": "Vultr Cloud Platform API v2. Utilizes both API-Key and standard Bearer token authorization headers.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e09",
@@ -263,15 +210,7 @@ export const seedApisPayload = {
         "Content-Type": "application/json"
       },
       "description": "Equinix Metal Bare Metal Cloud API v1 utilizing dedicated X-Auth-Token header authentication.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e0a",
@@ -280,20 +219,12 @@ export const seedApisPayload = {
       "key": "google_client_id_placeholder:google_client_secret_placeholder",
       "headers": {
         "Authorization": {
-          "$concat": [ "Bearer ", "$key" ]
+          "$concat": [ "Basic ", { "$security.base64Encode": "$key" } ]
         },
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      "description": "Google Identity & OAuth 2.0 OpenID Connect authentication pipeline for client-facing SSO sign-in and ID token verification.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "description": "Google Identity & OAuth 2.0 OpenID Connect authentication pipeline. Uses HTTP Basic Auth ($security.base64Encode) with client_id:client_secret for client authentication.",
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e0b",
@@ -302,42 +233,38 @@ export const seedApisPayload = {
       "key": "microsoft_client_id_placeholder:microsoft_client_secret_placeholder",
       "headers": {
         "Authorization": {
-          "$concat": [ "Bearer ", "$key" ]
+          "$concat": [ "Basic ", { "$security.base64Encode": "$key" } ]
         },
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      "description": "Microsoft Identity Platform & Entra ID OAuth 2.0 / OIDC authentication pipeline for client-facing SSO and profile access.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "description": "Microsoft Identity Platform & Entra ID OAuth 2.0 / OIDC pipeline. Uses HTTP Basic Auth ($security.base64Encode) with client_id:client_secret for client authentication.",
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e0c",
       "name": "apple",
       "url": "https://appleid.apple.com/auth",
-      "key": "apple_client_id_placeholder:apple_client_secret_placeholder",
+      "key": "apple_private_key_placeholder",
       "headers": {
         "Authorization": {
-          "$concat": [ "Bearer ", "$key" ]
+          "$concat": [
+            "Bearer ",
+            {
+              "$security.generateJWT": {
+                "header": { "alg": "ES256", "typ": "JWT" },
+                "payload": {
+                  "iss": "apple_team_id_placeholder",
+                  "sub": "apple_client_id_placeholder",
+                  "aud": "https://appleid.apple.com"
+                }
+              }
+            }
+          ]
         },
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      "description": "Sign in with Apple OAuth 2.0 & OpenID Connect identity verification pipeline for client mobile and web authentication.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "description": "Sign in with Apple OAuth 2.0 & OpenID Connect identity verification pipeline. Utilizes $security.generateJWT to create client assertion tokens.",
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e0d",
@@ -346,20 +273,12 @@ export const seedApisPayload = {
       "key": "facebook_app_id_placeholder:facebook_app_secret_placeholder",
       "headers": {
         "Authorization": {
-          "$concat": [ "Bearer ", "$key" ]
+          "$concat": [ "Basic ", { "$security.base64Encode": "$key" } ]
         },
         "Content-Type": "application/json"
       },
-      "description": "Facebook Login OAuth 2.0 authentication service for user identity verification and profile metadata retrieval.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "description": "Facebook Login OAuth 2.0 authentication service. Uses HTTP Basic Auth ($security.base64Encode) with app_id:app_secret for client authentication.",
+      "status": "active"
     },
     {
       "_id": "65f8ca227b39a3c1a8904e0e",
@@ -368,20 +287,12 @@ export const seedApisPayload = {
       "key": "github_client_id_placeholder:github_client_secret_placeholder",
       "headers": {
         "Authorization": {
-          "$concat": [ "Bearer ", "$key" ]
+          "$concat": [ "Basic ", { "$security.base64Encode": "$key" } ]
         },
         "Accept": "application/json"
       },
-      "description": "GitHub OAuth 2.0 web authentication pipeline for client sign-in and user profile resolution.",
-      "status": "active",
-      "created": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-08-01T12:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "description": "GitHub OAuth 2.0 web authentication pipeline. Uses HTTP Basic Auth ($security.base64Encode) with client_id:client_secret for client authentication.",
+      "status": "active"
     }
   ]
 };
