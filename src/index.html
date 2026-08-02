@@ -3,7 +3,7 @@
 	state-id="theme"
 	lang="en"
 	data-layout="vertical"
-	data-topbar-color="defualt"
+	data-topbar-color="default"
 	data-sidebar-color="dark"
 	data-sidebar-size="sm-hover"
 	data-sidebar-image="none"
@@ -11,170 +11,407 @@
 	data-theme="default"
 	data-theme-colors="default"
 	data-bs-theme=""
-	session 
+	session
 	src="">
-	<head>
-		<meta charset="utf-8" />
-        <title>Geneomes - Regenerative Health & Medicine Store</title>
-        <meta name="keywords" content="geneomes, cells, peptides, exosomes, regenerative medicine, health, medicines, growth factors, health supplies, biotech, wellness, ecommerce, store" />
-        <meta name="description" content="Geneomes is an ecommerce store for regenerative health and medicine, offering peptides, exosomes, cell growth factors, and innovative health supplies." />
+<head>
+	<meta charset="utf-8" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CoCreateJS | Open Source Edge Runtime for Distributed Applications</title>
 
-		<meta content="Geneomes" name="author" />
+	<meta
+		name="description"
+		content="CoCreateJS is an open source distributed runtime for building self-hosted, edge-native applications. Deploy once. Auto-scale, self-heal, replicate globally, and run on any cloud using simple JavaScript APIs." />
 
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+	<meta
+		name="keywords"
+		content="CoCreateJS, CoCreate, edge runtime, distributed runtime, JavaScript runtime, Node.js, WebSocket, distributed systems, self-hosted, autoscaling, orchestration, edge computing, Anycast, GeoDNS, open source, multi-cloud, clustering, IPC, server runtime, cloud runtime, infrastructure, developer platform" />
 
-		<!-- Bootstrap -->
-		<link
-			href="/assets/css/bootstrap.min.css"
-			rel="stylesheet"
-			type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="CoCreate" />
 
-		<!-- Icons -->
-		<link
-			href="/assets/css/icons.min.css"
-			rel="stylesheet"
-			type="text/css" />
+	<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
 
-		<!-- Menu Icon -->
-		<link
-			href="/assets/css/menu-icon.css"
-			rel="stylesheet"
-			type="text/css" />
+	<link
+		href="/assets/css/bootstrap.min.css"
+		rel="stylesheet"
+		type="text/css" />
 
-		<!-- Plugins -->
-		<link plugins />
-		
-		<!-- App -->
-		<link href="/assets/css/app.css" rel="stylesheet" type="text/css" />
+	<link
+		href="/assets/css/icons.min.css"
+		rel="stylesheet"
+		type="text/css" />
 
-		<!-- Custom -->
-		<link href="/assets/css/custom.css" 
-			rel="stylesheet" 
-			type="text/css" 
-			parse="true" 
-			save="false" />
+	<link
+		href="/assets/css/menu-icon.css"
+		rel="stylesheet"
+		type="text/css" />
 
-		<!-- Manifest -->
-		<link rel="manifest" href="/manifest.webmanifest" />
-	</head>
+	<link plugins />
 
-	<body data-bs-spy="scroll" data-bs-target="#navbar-example">
-		<!-- Begin page -->
-		<div class="layout-wrapper landing">
-            
-			<!-- Nav Start -->
-			<nav src="/components/nav.html" value-type="outerHTML"></nav>
-            <!-- Nav End -->
-			
-			<!-- start hero section -->
-			<section class="section hero-section" id="hero">
-				<video
-					class="position-absolute top-0 start-0 w-100 h-100"
-					autoplay
-					muted
-					loop
-					playsinline
-					preload="metadata"
-					style="object-fit: cover"
-					aria-hidden="true">
-					<source src="/assets/videos/home.mp4" type="video/mp4" />
-				</video>
-				<div
-					class="position-absolute top-0 start-0 w-100 h-100"
-					style="background: rgba(10, 19, 33, 0.55)"></div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-10">
-							<div class="text-center mt-lg-5 pt-5">
-								<h1 class="text-white display-4 fw-bolder mb-0">
-									Discover. Optimize. Regenerate.
-									<span class="d-block fs-5 fw-normal mt-4 lh-lg" style="max-width: 800px; margin: 0 auto;">
-										Map your unique biological blueprint with precision diagnostics. Optimize your molecular chemistry with personalized formulations. Signal cellular renewal to maximize your performance and longevity.
-									</span>
-								</h1>
-								<div class="d-flex gap-2 justify-content-center mt-4">
-									<a href="#process" class="btn btn-primary">How It Works
-										<i class="ri-information-line align-middle ms-1"></i>
-									</a>
-									<a 
-										state-to="authView"
-										state.src="./signup.html"
-										href="/auth/" 
-										class="btn btn-outline-secondary">Start Your Journey
-										<i class="ri-arrow-right-line align-middle ms-1"></i>
-									</a>
-								</div>
-							</div>
+	<link
+		href="/assets/css/app.css"
+		rel="stylesheet"
+		type="text/css" />
+
+	<link
+		href="/assets/css/custom.css"
+		rel="stylesheet"
+		type="text/css"
+		parse="true"
+		save="false" />
+
+	<link rel="manifest" href="/manifest.webmanifest" />
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+
+<div class="layout-wrapper landing">
+
+	<!-- Navigation -->
+	<nav src="/components/nav.html" value-type="outerHTML"></nav>
+
+	<!-- Hero -->
+	<section class="section hero-section" id="hero">
+
+		<video
+			class="position-absolute top-0 start-0 w-100 h-100"
+			autoplay
+			muted
+			loop
+			playsinline
+			preload="metadata"
+			style="object-fit:cover"
+			aria-hidden="true">
+
+			<source src="/assets/videos/home.mp4" type="video/mp4" />
+
+		</video>
+
+		<div
+			class="position-absolute top-0 start-0 w-100 h-100"
+			style="background:rgba(10,19,33,.60)">
+		</div>
+
+		<div class="container">
+
+			<div class="row justify-content-center">
+
+				<div class="col-lg-10">
+
+					<div class="text-center mt-lg-5 pt-5">
+
+						<h1 class="display-3 fw-bold text-white">
+
+							Build Once.
+							Run Everywhere.
+
+						</h1>
+
+						<p
+							class="text-white fs-5 mt-4 mx-auto"
+							style="max-width:850px;">
+
+							CoCreateJS is an open source distributed runtime that
+							turns ordinary Node.js applications into
+							self-healing,
+							auto-scaling,
+							multi-cloud,
+							edge-native systems—
+							using familiar JavaScript APIs.
+
+						</p>
+
+						<div class="d-flex gap-3 justify-content-center mt-5">
+
+							<a
+								href="#features"
+								class="btn btn-primary">
+
+								Explore Features
+
+								<i class="ri-arrow-right-line ms-1"></i>
+
+							</a>
+
+							<a
+								href="/docs/"
+								class="btn btn-outline-light">
+
+								Documentation
+
+							</a>
+
 						</div>
+
 					</div>
+
 				</div>
-			</section>
-			<!-- end hero section -->
 
-			<!-- start client section -->
-			<!-- <section class="pt-5 mt-5" src="/components/clients.html"></section> -->
-			<!-- end client section -->
-
-			<!-- start process -->
-			<section class="section" id="process" src="/components/process.html"></section>
-			<!-- end process -->
-
-			<!-- start cta -->
-			<section class="py-5 bg-primary position-relative" src="/components/cta.html"></section>
-			<!-- end cta -->
-
-			<!-- start marketplace -->
-			<!-- <section class="section bg-light" id="marketplace" src="/components/marketplace.html"></section> -->
-			<!-- end marketplace -->
-			
-			<!-- start plan -->
-			<!-- <section class="section bg-light" id="plans" src="/components/plans.html"></section> -->
-			<!-- end plan -->
-
-			<!-- start faqs -->
-			<section class="section" id="faqs" src="/components/faqs.html"></section>
-			<!-- end faqs -->
-
-			<!-- start review -->
-			<section class="section bg-primary" id="reviews" src="/components/reviews.html"></section>
-			<!-- end review -->
-
-			<!-- start counter -->
-			<!-- <section class="py-5 position-relative bg-light" src="/components/counter.html"></section> -->
-			<!-- end counter -->
-
-			<!-- start team -->
-			<section class="section bg-light" id="team" src="/components/team.html"></section>
-			<!-- end team -->
-
-			<!-- start contact -->
-			<section class="section" id="contact" src="/components/contact.html"></section>
-			<!-- end contact -->
-
-			<!-- start cta -->
-			<section class="py-5 bg-primary position-relative" src="/components/cta.html"></section>
-			<!-- end cta -->
-
-            <!-- Footer Start -->
-            <footer 
-                class="custom-footer bg-dark py-5 position-relative" 
-                src="/components/footer.html" value-type="outerHTML">
-            </footer>
-            <!-- Footer End -->
-
-			<!-- Back To Top Start -->
-			 <div src="/components/scroll-to-top.html"></div>
-			<!-- Back To Top End -->
+			</div>
 
 		</div>
-		<!-- end layout wrapper -->
 
-		<!-- JAVASCRIPT -->
-		<script src="./dist/CoCreate.js"></script>
-		<script src="/assets/js/lord-icon-2.1.0.js"></script>
+	</section>
 
-	</body>
+	<!--
+	SECTION:
+	Problem Statement
+
+	Explain why modern infrastructure is unnecessarily complex.
+
+	Typical stack:
+
+	CDN
+	Load Balancer
+	Ingress
+	Reverse Proxy
+	Autoscaler
+	Service Discovery
+	Health Checks
+	Runtime
+	Application
+
+	Show how CoCreateJS collapses these layers into a single runtime.
+
+	A comparison diagram would work extremely well here.
+	-->
+
+	<!--
+	SECTION:
+	Features
+
+	Use the Features component we already built.
+
+	6 feature cards.
+	-->
+
+	<section
+		class="section"
+		id="features"
+		src="/components/features.html">
+	</section>
+
+	<!--
+	SECTION:
+	Runtime Architecture
+
+	A full-width diagram.
+
+	Show:
+
+	Client
+
+	↓
+
+	Anycast DNS
+
+	↓
+
+	Runtime Nodes
+
+	↓
+
+	Workers
+
+	↓
+
+	Storage
+
+	Show that every node is identical.
+
+	No masters.
+
+	No ingress.
+
+	No dedicated load balancers.
+
+	-->
+
+	<!--
+	SECTION:
+	Why CoCreateJS
+
+	4 comparison cards.
+
+	Traditional Infrastructure
+
+	vs
+
+	CoCreateJS
+
+	Examples:
+
+	Multiple infrastructure layers
+	↓
+
+	Single runtime
+
+	Manual scaling
+	↓
+
+	Automatic
+
+	Complex networking
+	↓
+
+	Object configuration
+
+	Large operational footprint
+	↓
+
+	Minimal footprint
+	-->
+
+	<!--
+	SECTION:
+	Developer Experience
+
+	Show code snippets.
+
+	npm install
+
+	server.edge.on()
+
+	socket.on()
+
+	socket.emit()
+
+	crud.emit()
+
+	Show how little code is required.
+	-->
+
+	<!--
+	SECTION:
+	Framework Agnostic
+
+	Show logos:
+
+	React
+
+	Vue
+
+	Svelte
+
+	Angular
+
+	Next.js
+
+	Astro
+
+	Nuxt
+
+	Express
+
+	Hono
+
+	Fastify
+
+	Text:
+
+	Use any framework.
+
+	CoCreateJS runs your infrastructure,
+	not your UI framework.
+	-->
+
+	<!--
+	SECTION:
+	How It Works
+
+	Process component.
+
+	Replace healthcare wording.
+
+	1.
+	Deploy Runtime
+
+	2.
+	Deploy Application
+
+	3.
+	Scale Automatically
+	-->
+
+	<section
+		class="section"
+		id="process"
+		src="/components/process.html">
+	</section>
+
+	<!--
+	SECTION:
+	Open Source
+
+	Dual licensing.
+
+	Community.
+
+	Commercial.
+
+	Enterprise.
+
+	Explain philosophy rather than pricing.
+	-->
+
+	<!--
+	SECTION:
+	Documentation CTA
+
+	Instead of marketing.
+
+	"Read the Docs"
+
+	"View GitHub"
+
+	"Join Discord"
+
+	-->
+
+	<!-- FAQ -->
+
+	<section
+		class="section"
+		id="faqs"
+		src="/components/faqs.html">
+	</section>
+
+	<!--
+	SECTION:
+	Community
+
+	GitHub stars
+
+	Contributors
+
+	Discord
+
+	Roadmap
+
+	Blog
+
+	Releases
+	-->
+
+	<!-- Contact -->
+
+	<section
+		class="section"
+		id="contact"
+		src="/components/contact.html">
+	</section>
+
+	<footer
+		src="/components/footer.html"
+		value-type="outerHTML">
+	</footer>
+
+	<div src="/components/scroll-to-top.html"></div>
+
+</div>
+
+<script src="./dist/CoCreate.js"></script>
+<script src="/assets/js/lord-icon-2.1.0.js"></script>
+
+</body>
 </html>

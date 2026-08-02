@@ -1,6 +1,4 @@
 export default {
-    organization_id: "",
-    apikey: "",
     host: {
         $branch: {
             main: "wss://cocreatejs.com",

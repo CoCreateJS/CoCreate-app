@@ -2,109 +2,145 @@
 	<div class="text-center mb-5">
 		<h3 class="mb-3 fw-semibold">Get In Touch</h3>
 		<p class="text-muted mb-4 ff-secondary">
-			We thrive when coming up with innovative ideas but also
-			understand that a smart concept should be supported with
-			faucibus sapien odio measurable results.
+			Whether you're evaluating CoCreateJS, planning a self-hosted deployment,
+			building on our cloud platform, or exploring enterprise licensing, we'd
+			love to hear about your project.
 		</p>
 	</div>
 
-
-	<div class="d-flex flex-wrap gy-4">
+	<div class="d-flex flex-wrap gap-4">
 		<div class="w-300">
 			<div class="mb-4">
 				<h5 class="fs-13 text-muted text-uppercase">
-					Office Address 1:
+					Headquarters
 				</h5>
-				<address class="ff-secondary fw-semibold">
-					Plaza Conchal II, <br/>Guanacaste Province,  <br/>Tamarindo, 50309
+				<address class="ff-secondary fw-semibold mb-0">
+					42 Broadway #12<br />
+					New York, NY 10004<br />
+					United States
 				</address>
 			</div>
+
+			<div class="mb-4">
+				<h5 class="fs-13 text-muted text-uppercase">
+					Email
+				</h5>
+				<div class="ff-secondary fw-semibold">
+					<a href="mailto:info@cocreatejs.com">
+						info@cocreatejs.com
+					</a>
+				</div>
+			</div>
+
+			<div class="mb-4">
+				<h5 class="fs-13 text-muted text-uppercase">
+					Phone
+				</h5>
+				<div class="ff-secondary fw-semibold">
+					<a href="tel:+19418820466">
+						+1 (941) 882-0466
+					</a>
+				</div>
+			</div>
+
 			<div>
 				<h5 class="fs-13 text-muted text-uppercase">
-					Working Hours:
+					Let's Talk About
 				</h5>
-				<div class="ff-secondary fw-semibold">9:00am to 6:00pm</div>
+
+				<ul class="list-unstyled ff-secondary fw-semibold mb-0">
+					<li>• Cloud Platform</li>
+					<li>• Self-Hosting</li>
+					<li>• Enterprise Licensing</li>
+					<li>• Technical Support</li>
+					<li>• Partnerships</li>
+				</ul>
 			</div>
-		
 		</div>
 
 		<div class="w-300 flex-grow-1">
 			<form array="contacts" object>
 				<div class="d-flex flex-wrap gap-4 w-100">
-						<div class="w-300 flex-grow-1 mb-4">
-							<label for="name" class="form-label fs-13"
-								>Name</label
-							>
-							<input
-								name="name"
-								id="name"
-								type="text"
-								class="form-control bg-light border-light"
-								input-query="$document .name-field[]"
-								input.value="$value"
-								placeholder="Your full name*" />
-							<input
-								class="name-field"
-								name="first_name"
-								id="first_name"
-								type="hidden"
-								key="first_name"
-								value-match="/^\s*([^\s]+)/" />
-							<input
-								class="name-field"
-								name="last_name"
-								id="last_name"
-								type="hidden"
-								key="last_name"
-								value-match="/\s+([^\s]+)\s*$/" />
-						</div>
-				
-						<div class="w-300 flex-grow-1 mb-4">
-							<label for="email" class="form-label fs-13"
-								>Email</label
-							>
-							<input
-								name="email"
-								id="email"
-								type="email"
-								key="email"
-								class="form-control bg-light border-light"
-								placeholder="Your email*" />
-						</div>
+					<div class="w-300 flex-grow-1 mb-4">
+						<label for="name" class="form-label fs-13">
+							Name
+						</label>
+
+						<input
+							name="name"
+							id="name"
+							type="text"
+							class="form-control bg-light border-light"
+							input-query="$document .name-field[]"
+							input.value="$value"
+							placeholder="Your full name*" />
+
+						<input
+							class="name-field"
+							name="first_name"
+							id="first_name"
+							type="hidden"
+							key="first_name"
+							value-match="/^\s*([^\s]+)/" />
+
+						<input
+							class="name-field"
+							name="last_name"
+							id="last_name"
+							type="hidden"
+							key="last_name"
+							value-match="/\s+([^\s]+)\s*$/" />
+					</div>
+
+					<div class="w-300 flex-grow-1 mb-4">
+						<label for="email" class="form-label fs-13">
+							Email
+						</label>
+
+						<input
+							name="email"
+							id="email"
+							type="email"
+							key="email"
+							class="form-control bg-light border-light"
+							placeholder="Your email*" />
+					</div>
 				</div>
+
 				<div class="w-100 mb-4">
-					<label for="subject" class="form-label fs-13"
-						>Subject</label
-					>
+					<label for="subject" class="form-label fs-13">
+						Subject
+					</label>
+
 					<input
 						type="text"
 						class="form-control bg-light border-light"
 						id="subject"
 						name="subject"
 						key="subject"
-						placeholder="Your Subject.." />
+						placeholder="How can we help?" />
 				</div>
-			
+
 				<div class="w-100 mb-3">
-					<label for="comments" class="form-label fs-13"
-						>Message</label
-					>
+					<label for="comments" class="form-label fs-13">
+						Message
+					</label>
+
 					<textarea
 						name="comments"
 						id="comments"
-						rows="3"
+						rows="5"
 						key="message"
 						class="form-control bg-light border-light"
-						placeholder="Your message..."></textarea>
+						placeholder="Tell us about your application, deployment plans, or questions..."></textarea>
 				</div>
-		
+
 				<button
 					actions="save, timeout(1000), reset"
-					class="btn btn-primary btn-sm">
+					class="btn btn-primary">
 					Send Message
 				</button>
 			</form>
 		</div>
 	</div>
 </div>
-<!-- end container -->
