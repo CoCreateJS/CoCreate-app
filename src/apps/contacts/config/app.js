@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   "method": "object.update",
   "upsert": true,
   "array": "apps",
