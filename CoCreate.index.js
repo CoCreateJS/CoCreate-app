@@ -458,7 +458,6 @@ lazyLoad('remove', '[actions*="remove"]', () => import(/*webpackChunkName: "remo
 lazyLoad('attributes', '[attribute]', () => import(/*webpackChunkName: "attributes-chunk"*/ '@cocreate/attributes'));
 lazyLoad('users', '[session], [actions*="signUp"], [actions*="signIn"], [actions*="signOut"], [user-status]', () => import(/*webpackChunkName: "users-chunk"*/ '@cocreate/users'));
 lazyLoad('unique', '[unique]', () => import(/*webpackChunkName: "unique-chunk"*/ '@cocreate/unique'));
-lazyLoad('industry', '[actions*="createIndustry"], [actions*="runIndustry"], [actions*="deleteIndustry"], [actions*="deleteIndustries"]', () => import(/*webpackChunkName: "industry-chunk"*/ '@cocreate/industry'));
 lazyLoad('search', '[search_id]', () => import(/*webpackChunkName: "search-chunk"*/ '@cocreate/search'));
 lazyLoad('elementConfig', '[config-query]', () => import(/*webpackChunkName: "elementConfig-chunk"*/ '@cocreate/element-config'));
 lazyLoad('validation', '[actions*="validate"], [required]', () => import(/*webpackChunkName: "validation-chunk"*/ '@cocreate/validation'));
@@ -481,7 +480,3 @@ lazyLoad('select', 'cocreate-select', () => import(/*webpackChunkName: "select-c
 lazyLoad('toolbar', '[toolbar-query]', () => import(/*webpackChunkName: "toolbar-chunk"*/ '@cocreate/toolbar'));
 lazyLoad('vdom', '[vdom-query], [vdom-id]', () => import(/*webpackChunkName: "vdom-chunk"*/ '@cocreate/vdom'));
 lazyLoad('notification', '[actions*="notification"]', () => import(/*webpackChunkName: "notification-chunk"*/ '@cocreate/notification'));
-lazyLoad('pickr', '.color-picker', () => import(/*webpackChunkName: "pickr-chunk"*/ '@cocreate/pickr'));
-lazyLoad('marked', '[marked], [actions*="marked"], .markdown-body', () => import(/*webpackChunkName: "marked-chunk"*/ '@cocreate/marked'));
-lazyLoad('prism', '[class*="language-"]', () => import(/*webpackChunkName: "prism-chunk"*/ '@cocreate/prism'));
-lazyLoad('google-maps', '[google-maps]', () => import(/*webpackChunkName: "google-maps-chunk"*/ '@cocreate/google-maps'));

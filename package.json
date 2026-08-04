@@ -35,6 +35,7 @@
     "type": "GitHub Sponsors ❤",
     "url": "https://github.com/sponsors/CoCreate-app"
   },
+  "type":"module",  
   "main": "./CoCreate.index.js",
   "scripts": {
     "start": "webpack --config webpack.config.js",
