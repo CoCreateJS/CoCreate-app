@@ -9,7 +9,7 @@
  * ($concat, $btoa) referencing the secured "$key" value, completely bypassing 
  * hardcoded API format rules.
  */
-export const seedApisPayload = {
+export default {
   "method": "object.update",
   "array": "apis",
   "upsert": true,
@@ -18,11 +18,8 @@ export const seedApisPayload = {
       "_id": "65f8ca227b39a3c1a8904dfe",
       "name": "stripe",
       "url": "https://api.stripe.com/v1",
-<<<<<<< HEAD
       "key": "STRIPE_KEY_PLACEHOLDER",
-=======
       "key": "",
->>>>>>> 8b674b9a (fix: clear API key placeholders in seedApisPayload)
       "headers": {
         "Authorization": { 
           "$concat": [ "Bearer ", "$key" ] 
