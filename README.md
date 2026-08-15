@@ -123,7 +123,7 @@ Built with complete framework independence, the UI relies on **pure HTML templat
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/CoCreate-app/CoCreate-app.git
+git clone https://gitlab.com/cocreatejs/CoCreate-app.git
 cd CoCreate-app
 
 ```
