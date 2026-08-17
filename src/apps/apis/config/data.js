@@ -13,6 +13,14 @@ export const seedApisPayload = {
   "upsert": true,
   "object": [
     {
+      "_id": "65f8ca227b39a3c1a8904dfd",
+      name: "mongodb", // Friendly name for the API configuration
+      provider: "mongodb",
+      url: "",
+      description: "MongoDB Atlas API integration for managing clusters, databases, and collections. Utilizes dynamic credential resolution for secure access.",
+      status: "active"
+    },
+    {
       "_id": "65f8ca227b39a3c1a8904dfe",
       "name": "stripe",
       "url": "https://api.stripe.com/v1",
