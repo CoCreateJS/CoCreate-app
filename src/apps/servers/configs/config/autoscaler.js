@@ -17,9 +17,6 @@ export const seedStorageConfigs = {
   "array": "servers_config",
   "upsert": true,
   "object": [
-        /* -------------------------------------------------------------------------- */
-    /* AUTOSCALE CONFIGURATION                                                    */
-    /* -------------------------------------------------------------------------- */
     {
       "_id": "65f8cb447b39a3c1a8904e30",
       "type": "autoscaler",
