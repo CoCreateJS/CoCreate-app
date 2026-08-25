@@ -15,30 +15,30 @@
  * within the 'servers_config' array.
  */
 export const seedTelemetryConfigs = {
-  "method": "object.update",
-  "array": "servers_config",
-  "upsert": true,
-  "object": [
-    {
-      "_id": "66c9fe7a3f81b4d912a58b91",
-      "type": "telemetry",
-      "name": "Cluster Autoscale Configuration",
-      "enabled": true,
-      "cluster": "*",
-      "server": "*",
-      "worker": "*",
-      "config": {
-        "enabled": true,
-        "collectionInterval": 1000,
-        "writeInterval": 240000,
-        "retentionDays": 30,
-        "broadcast": false,
-        "scaleUpMemoryThreshold": 85,
-        "safetyLimits": {
-            "cordonMemoryThreshold": 90,
-            "cordonCpuThreshold": 90
+    "method": "object.update",
+    "array": "servers_config",
+    "upsert": true,
+    "object": [
+        {
+            "_id": "66c9fe7a3f81b4d912a58b91",
+            "type": "telemetry",
+            "name": "Cluster Autoscale Configuration",
+            "enabled": true,
+            "cluster": "*",
+            "server": "*",
+            "worker": "*",
+            "config": {
+                "enabled": true,
+                "collectionInterval": 1000,
+                "writeInterval": 240000,
+                "retentionDays": 30,
+                "broadcast": false,
+                "scaleUpMemoryThreshold": 85,
+                "safetyLimits": {
+                    "cordonMemoryThreshold": 90,
+                    "cordonCpuThreshold": 90
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 };
