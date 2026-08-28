@@ -1,52 +1,15 @@
 {
-	"short_name": "Geneomes",
-	"name": "Geneomes",
-	"description": "Geneomes - Regenerative products",
-	"protocol_handlers": [
-		{
-			"protocol": "web+jngl",
-			"url": "/lookup?type=%s"
-		}
-	],
-	"orientation": "portrait-primary",
+	"short_name": "CoCreateJS",
+	"name": "CoCreateJS Distributed JavaScript Runtime",
+	"description": "An open-source distributed JavaScript runtime for realtime, self-healing, autoscaling applications.",
+	"orientation": "any",
 	"start_url": "/",
+	"scope": "/",
 	"id": "/",
-	"theme_color": "#ffffff",
+	"theme_color": "#405189",
 	"background_color": "#ffffff",
-	"display": "fullscreen",
-	"categories": "productivity",
-	"file_handlers": [
-		{
-			"action": "/open-file",
-			"accept": {
-				"text/*": [".txt"]
-			}
-		}
-	],
-	"share_target": {
-		"action": "/",
-		"method": "GET",
-		"enctype": "application/x-www-form-urlencoded",
-		"params": {
-			"title": "title",
-			"text": "text",
-			"url": "url"
-		}
-	},
-	"screenshots": [
-		{
-			"src": "/assets/images/screenshots/mobile-1.png",
-			"sizes": "1080x1920",
-			"type": "image/png",
-			"form_factor": "narrow"
-		},
-		{
-			"src": "/assets/images/screenshots/desktop-1.png",
-			"sizes": "1920x1080",
-			"type": "image/png",
-			"form_factor": "wide"
-		}
-	],
+	"display": "standalone",
+	"categories": ["developer", "productivity", "utilities"],
 	"icons": [
 		{
 			"src": "/assets/images/icons/192x192.png",
@@ -59,6 +22,12 @@
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any"
+		},
+		{
+			"src": "/assets/images/icons/512x512-maskable.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
 		}
 	]
 }

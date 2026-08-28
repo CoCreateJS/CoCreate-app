@@ -78,15 +78,38 @@ export const seedApisPayload = {
             "_id": "65f8ca227b39a3c1a8904e01",
             "name": "openai",
             "provider": "openai",
-            "model": "gpt-4o",
             "url": "https://api.openai.com/v1",
             "key": "openai_api_key_placeholder",
             "headers": {
                 "Authorization": {
                     "$concat": ["Bearer ", "$key"]
-                }
+                },
+                "Content-Type": "application/json"
             },
             "description": "OpenAI LLM Integration Pipeline. Powers intelligent content completion, conversational agents, vector searches, and structured JSON parsing engines directly within our multi-tenant microservices.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8ca227b39a3c1a8904e0f",
+            "name": "gemini",
+            "provider": "gemini",
+            "url": "https://generativelanguage.googleapis.com/v1beta/openai",
+            "key": "gemini_api_key_placeholder",
+            "headers": {
+                "Authorization": {
+                    "$concat": ["Bearer ", "$key"]
+                },
+                "Content-Type": "application/json"
+            },
+            "description": "Google Gemini integration through its OpenAI-compatible API endpoint.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8ca227b39a3c1a8904e10",
+            "name": "copilot",
+            "provider": "copilot",
+            "key": "github_copilot_token_placeholder",
+            "description": "GitHub Copilot SDK authentication. The key is supplied directly to CopilotClient as its GitHub token.",
             "enabled": true
         },
 

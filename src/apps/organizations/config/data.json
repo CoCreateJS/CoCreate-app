@@ -10,25 +10,25 @@
       {
         "array": "",
         "database": "",
-        "name": "geneomes.cocreate.app",
+        "name": "CoCreateJS.cocreate.app",
         "storage": ""
       },
       {
         "array": "",
         "database": "",
-        "name": "geneomes.com",
+        "name": "CoCreateJS.com",
         "storage": ""
       },
       {
         "array": "",
         "database": "dev",
-        "name": "dev.geneomes.com",
+        "name": "dev.CoCreateJS.com",
         "storage": ""
       },
       {
         "array": "",
         "database": "test",
-        "name": "test.geneomes.com",
+        "name": "test.CoCreateJS.com",
         "storage": ""
       }
     ],
@@ -38,7 +38,7 @@
       {
         "name": "mongodb",
         "provider": "mongodb",
-        "url": "mongodb+srv://db_user:fYS1wQz7JxXhhAlx@geneomes.egpfpy7.mongodb.net/?retryWrites=true&w=majority"
+        "url": "mongodb+srv://db_user:fYS1wQz7JxXhhAlx@CoCreateJS.egpfpy7.mongodb.net/?retryWrites=true&w=majority"
       }
     ],
     "city": "Tamarindo",
@@ -47,7 +47,7 @@
     "cover_image": [],
     "created_at": "",
     "description": "",
-    "email": "info@geneomes.com",
+    "email": "info@CoCreateJS.com",
     "followers": "\n\t\t\t\t\t\t\t0\n\t\t\t\t\t\t",
     "following": "\n\t\t\t\t\t\t\t0\n\t\t\t\t\t\t",
     "notifications": {
@@ -73,7 +73,7 @@
       "website": ""
     },
     "tagline": "",
-    "website": "geneomes.com",
+    "website": "CoCreateJS.com",
     "zip_code": ""
   }
 ]

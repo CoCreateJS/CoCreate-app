@@ -1,175 +1,37 @@
 <section class="section" id="architecture">
 	<div class="container">
-
 		<div class="d-flex justify-content-center mb-5">
-			<div class="flex-grow-1" style="max-width: 900px;">
-				<div class="text-center">
-					<h2 class="mb-3 fw-semibold">
-						A Different Approach to Distributed Infrastructure
-					</h2>
-
-					<p class="text-muted fs-16 mb-0">
-						CoCreateJS is a lightweight distributed runtime that combines
-						clustering, edge routing, real-time communication, storage,
-						telemetry, and orchestration into a single runtime designed to
-						run your application.
-					</p>
-				</div>
+			<div class="text-center flex-grow-1 cocreate-section-intro">
+				<h2 class="mb-3 fw-semibold">One runtime. Every node complete.</h2>
+				<p class="text-muted fs-16 mb-0">Every node can receive traffic, run workers, serve applications, communicate with peers, monitor itself, and participate in scaling decisions.</p>
 			</div>
 		</div>
 
-		<div class="d-flex flex-wrap gap-5 align-items-center">
-
-			<!-- Architecture Diagram -->
-
+		<div class="d-flex flex-wrap gap-5 align-items-stretch">
 			<div class="flex-grow-1 w-400">
-
-				<div class="card border-0 shadow-sm h-100">
-
-					<div class="card-body p-5">
-
-						<div
-							class="border rounded d-flex justify-content-center align-items-center text-center"
-							style="min-height:420px;">
-
-							<div>
-
-								<i class="ri-git-branch-line fs-48 text-primary"></i>
-
-								<h5 class="mt-3">
-									Runtime Architecture Diagram
-								</h5>
-
-								<p class="text-muted mb-0">
-
-									Replace with architecture illustration showing:
-
-									<br><br>
-
-									Client
-
-									↓
-
-									Anycast DNS
-
-									↓
-
-									Edge Runtime Nodes
-
-									↓
-
-									Worker Processes
-
-									↓
-
-									Unified Storage
-
-								</p>
-
-							</div>
-
-						</div>
-
+				<div class="card border-0 shadow-sm h-100"><div class="card-body p-4 p-lg-5">
+					<div class="text-center border rounded p-3 bg-light"><i class="ri-computer-line fs-30 text-primary"></i><div class="fw-semibold mt-2">Browser / Application Client</div></div>
+					<div class="text-center py-2 text-primary fs-22"><i class="ri-arrow-down-line"></i></div>
+					<div class="text-center border rounded p-3"><i class="ri-global-line fs-30 text-primary"></i><div class="fw-semibold mt-2">Anycast / GeoDNS</div></div>
+					<div class="text-center py-2 text-primary fs-22"><i class="ri-arrow-down-line"></i></div>
+					<div class="d-flex flex-wrap gap-2 justify-content-center">
+						<div class="cocreate-node"><strong>Runtime A</strong><small>HTTP · Sockets · API<br />CRUD · Workers · IPC</small></div>
+						<div class="cocreate-node"><strong>Runtime B</strong><small>HTTP · Sockets · API<br />CRUD · Workers · IPC</small></div>
+						<div class="cocreate-node"><strong>Runtime C</strong><small>HTTP · Sockets · API<br />CRUD · Workers · IPC</small></div>
 					</div>
-
-				</div>
-
+					<div class="text-center text-muted mt-3"><i class="ri-arrow-left-right-line text-primary me-2"></i>Peer communication</div>
+					<div class="text-center py-2 text-primary fs-22"><i class="ri-arrow-down-line"></i></div>
+					<div class="text-center border rounded p-3 bg-light"><i class="ri-database-2-line fs-30 text-primary"></i><div class="fw-semibold mt-2">Database / Source of Truth</div></div>
+				</div></div>
 			</div>
 
-			<!-- Description -->
-
-			<div class="flex-grow-1 w-400">
-
-				<h3 class="mb-4 fw-semibold">
-
-					One Runtime.<br>
-
-					One Deployment Model.
-
-				</h3>
-
-				<p class="text-muted mb-4">
-
-					Every server runs the exact same runtime. Every node can receive
-					requests, participate in the cluster, communicate with other
-					nodes, monitor itself, and host your application.
-
-				</p>
-
-				<div class="d-flex flex-column gap-4">
-
-					<div class="d-flex gap-3">
-
-						<div class="flex-shrink-0">
-							<i class="ri-checkbox-circle-fill text-success fs-22"></i>
-						</div>
-
-						<div>
-							<h6 class="mb-1">Every Node Is Equal</h6>
-							<p class="text-muted mb-0">
-								There are no dedicated ingress servers, load balancers,
-								or coordinator nodes. Every runtime participates equally.
-							</p>
-						</div>
-
-					</div>
-
-					<div class="d-flex gap-3">
-
-						<div class="flex-shrink-0">
-							<i class="ri-checkbox-circle-fill text-success fs-22"></i>
-						</div>
-
-						<div>
-							<h6 class="mb-1">Configuration Instead of Infrastructure</h6>
-							<p class="text-muted mb-0">
-								Routing, scaling, communication, and behavior are defined
-								through configuration instead of assembling additional
-								infrastructure components.
-							</p>
-						</div>
-
-					</div>
-
-					<div class="d-flex gap-3">
-
-						<div class="flex-shrink-0">
-							<i class="ri-checkbox-circle-fill text-success fs-22"></i>
-						</div>
-
-						<div>
-							<h6 class="mb-1">Runs Your Application</h6>
-							<p class="text-muted mb-0">
-								Use the runtime as your application host. Handle HTTP,
-								WebSockets, APIs, storage, or integrate your preferred
-								framework through a small, familiar API.
-							</p>
-						</div>
-
-					</div>
-
-					<div class="d-flex gap-3">
-
-						<div class="flex-shrink-0">
-							<i class="ri-checkbox-circle-fill text-success fs-22"></i>
-						</div>
-
-						<div>
-							<h6 class="mb-1">Built Around Native Node.js</h6>
-							<p class="text-muted mb-0">
-								Built on native Node.js primitives with minimal
-								dependencies, keeping the runtime lightweight,
-								predictable, and easy to understand.
-							</p>
-						</div>
-
-					</div>
-
-				</div>
-
+			<div class="flex-grow-1 w-400 d-flex flex-column gap-4">
+				<div><h5><i class="ri-node-tree text-primary me-2"></i>Every Node Is a Complete Participant</h5><p class="text-muted mb-0">There is no dedicated global master, ingress tier, or load-balancer tier. Every node is a complete peer with its own local worker orchestration.</p></div>
+				<div><h5><i class="ri-route-line text-primary me-2"></i>Integrated Traffic Handling</h5><p class="text-muted mb-0">Anycast or GeoDNS directs the initial connection. Once traffic arrives, JavaScript and stored policy can make application-aware routing decisions.</p></div>
+				<div><h5><i class="ri-database-line text-primary me-2"></i>Stateless, Disposable Nodes</h5><p class="text-muted mb-0">Definitions, workflows, permissions, files, and operational state live in shared storage, so nodes can be created, replaced, or removed.</p></div>
+				<div><h5><i class="ri-code-s-slash-line text-primary me-2"></i>Framework Agnostic</h5><p class="text-muted mb-0">Host or support applications built with any frontend or server-side framework without changing the runtime model.</p></div>
+				<div><h5><i class="ri-cloud-line text-primary me-2"></i>Multi-Cloud by Design</h5><p class="text-muted mb-0">Operate across providers, regions, bare metal, private infrastructure, or any combination of them.</p></div>
 			</div>
-
 		</div>
-
 	</div>
 </section>

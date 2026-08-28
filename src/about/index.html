@@ -1,179 +1,78 @@
-<!doctype html>
-<html
-    state-id="theme"
-    lang="en"
-    data-layout="vertical"
-    data-topbar-color="defualt"
-    data-sidebar-color="dark"
-    data-sidebar-size="sm-hover"
-    data-sidebar-image="none"
-    data-preloader="disable"
-    data-theme="default"
-    data-theme-colors="default"
-    data-bs-theme=""
-    session
-    src="">
-    <head>
-        <meta charset="utf-8" />
-        <title>Our Mission: Regenerative Medicine in Every Home | Geneomes</title>
-        <meta
-            name="keywords"
-            content="geneomes mission, regenerative medicine home, biological engineering, democratizing health, 3rd generation cell factors, biotech wellness" />
-        <meta
-            name="description"
-            content="Geneomes is on a mission to democratize elite-grade biological engineering, bringing the power of 3rd generation regenerative medicine out of gated clinics and into every home." />
+<!DOCTYPE html>
+<html state-id="theme" lang="en" data-layout="vertical" data-topbar-color="default" data-theme="default" data-theme-colors="default" data-bs-theme="" session src="">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>About CoCreateJS — Open-Source Distributed Runtime</title>
+		<meta name="description" content="Learn why CoCreateJS is building a compact, open-source distributed JavaScript runtime that lets teams focus on applications instead of infrastructure." />
+		<meta name="keywords" content="about CoCreateJS, open-source JavaScript runtime, distributed systems, runtime architecture, CoCreate community" />
+		<meta name="author" content="CoCreate" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://cocreatejs.com/about/" />
+		<link rel="icon" type="image/png" href="/assets/images/icons/icon.png" />
+		<link rel="apple-touch-icon" href="/assets/images/icons/180x180.png" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="About CoCreateJS" />
+		<meta property="og:description" content="Build applications—not infrastructure. Learn about the ideas and community behind CoCreateJS." />
+		<meta property="og:url" content="https://cocreatejs.com/about/" />
+		<meta property="og:image" content="https://cocreatejs.com/assets/images/icons/1640x1640.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+		<link href="/assets/css/menu-icon.css" rel="stylesheet" type="text/css" />
+		<link plugins />
+		<link href="/assets/css/app.css" rel="stylesheet" type="text/css" />
+		<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" parse="true" save="false" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
+	<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+		<div class="layout-wrapper landing">
+			<nav src="/components/nav.html" value-type="outerHTML"></nav>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta content="Geneomes" name="author" />
+			<section class="section hero-section bg-light" id="hero">
+				<div class="container position-relative pt-5">
+					<div class="d-flex justify-content-center text-center">
+						<div class="cocreate-section-intro">
+							<p class="text-primary text-uppercase fw-semibold mb-2">About CoCreateJS</p>
+							<h1 class="display-4 fw-semibold mb-4">Build applications&mdash;not infrastructure.</h1>
+							<p class="lead text-muted mb-0">We are building an open-source distributed JavaScript runtime that replaces fragmented infrastructure roles with complete, understandable runtime nodes.</p>
+						</div>
+					</div>
+				</div>
+			</section>
 
-        <link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
-        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/assets/css/menu-icon.css" rel="stylesheet" type="text/css" />
-        <link plugins />
-        <link href="/assets/css/app.css" rel="stylesheet" type="text/css" />
-        <link href="/assets/css/custom.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="../index.css" type="text/css" parse="true" save="false" />
-        <link rel="manifest" href="/manifest.webmanifest" />
-    </head>
+			<section class="section">
+				<div class="container">
+					<div class="d-flex flex-wrap gap-5 align-items-center">
+						<div class="w-400 flex-grow-1"><h2 class="fw-semibold mb-3">Why CoCreateJS exists</h2><p class="text-muted fs-16">Distributed applications often begin with application code and end with teams maintaining a growing collection of proxies, gateways, process managers, telemetry agents, queues, caches, deployment tools, and provider-specific configuration.</p><p class="text-muted fs-16 mb-0">CoCreateJS takes a different approach: bring the capabilities surrounding an application into one compact runtime, expose them through familiar JavaScript primitives, and keep application policy under the developer’s control.</p></div>
+						<div class="w-400 flex-grow-1"><div class="card border-0 shadow-sm bg-primary text-white"><div class="card-body p-4 p-lg-5"><i class="ri-node-tree fs-42"></i><h3 class="text-white mt-3">Complete nodes, shared knowledge</h3><p class="text-white-50 mb-0">Each node can serve traffic, run workers, communicate with peers, monitor health, and participate in scaling. Application definitions and state live in shared storage so infrastructure remains replaceable.</p></div></div></div>
+					</div>
+				</div>
+			</section>
 
-    <body data-bs-spy="scroll" data-bs-target="#navbar-example">
-        <div class="layout-wrapper landing">
-            <nav src="/components/nav.html" value-type="outerHTML"></nav>
+			<section class="section bg-light">
+				<div class="container">
+					<div class="text-center mx-auto mb-5 cocreate-section-intro"><h2 class="fw-semibold">Principles that guide the runtime</h2><p class="text-muted mb-0">A smaller system becomes more powerful when its primitives stay consistent and composable.</p></div>
+					<div class="d-flex flex-wrap gap-4">
+						<div class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><i class="ri-code-s-slash-line fs-36 text-primary"></i><h5 class="mt-3">Native Primitives</h5><p class="text-muted mb-0">Prefer objects, arrays, maps, functions, events, and standard HTTP behavior.</p></div></div>
+						<div class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><i class="ri-scales-3-line fs-36 text-success"></i><h5 class="mt-3">Capabilities, Not Policy</h5><p class="text-muted mb-0">The runtime supplies infrastructure capabilities while applications define decisions.</p></div></div>
+						<div class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><i class="ri-open-source-line fs-36 text-info"></i><h5 class="mt-3">Open and Inspectable</h5><p class="text-muted mb-0">Infrastructure should be understandable, auditable, extensible, and community-driven.</p></div></div>
+						<div class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><i class="ri-cloud-line fs-36 text-warning"></i><h5 class="mt-3">Infrastructure Independent</h5><p class="text-muted mb-0">Run across clouds, regions, private servers, and bare metal without fixed roles.</p></div></div>
+						<div class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><i class="ri-layout-line fs-36 text-danger"></i><h5 class="mt-3">Framework Agnostic</h5><p class="text-muted mb-0">Use any frontend or pair the runtime with the optional CoCreateJS Client.</p></div></div>
+						<div class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><i class="ri-tools-line fs-36 text-secondary"></i><h5 class="mt-3">Refinement Over Expansion</h5><p class="text-muted mb-0">Improve compatibility, performance, and clarity without growing unnecessary surface area.</p></div></div>
+					</div>
+				</div>
+			</section>
 
-            <!-- HERO: The Mission Hook -->
-            <section class="section hero-section" id="hero">
-                <div class="bg-overlay bg-overlay-pattern"></div>
-                <div class="container position-relative z-1 mt-lg-5 pt-5 mb-5 pb-5">
-                    <div class="d-flex justify-content-center text-center w-100">
-                        <div class="max-w-800">
-                            <span class="badge rounded-pill bg-primary py-2 mb-3">The Geneomes Mission</span>
-                            <h1 class="display-4 fw-semibold mb-4">
-                                Regenerative Medicine: <br><span class="text-primary">In Every Home.</span>
-                            </h1>
-                            <p class="lead opacity-75 mb-0">
-                                We are democratizing elite-grade biological engineering. By translating complex clinical protocols into a shelf-stable, at-home system, we are making the third generation of regenerative medicine accessible to everyone.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 end-0 bottom-0 hero-shape-svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1440 120">
-                        <g fill="none">
-                            <path fill="white" d="M 0,118 C 288,98.6 1152,40.4 1440,21L1440 140L0 140z"></path>
-                        </g>
-                    </svg>
-                </div>
-            </section>
+			<section class="section">
+				<div class="container"><div class="d-flex flex-wrap gap-5 align-items-center"><div class="w-400 flex-grow-1"><h2 class="fw-semibold">Built with the community</h2><p class="text-muted">CoCreateJS welcomes source contributions, storage adapters, documentation, examples, performance improvements, issue reports, and architectural discussion.</p><p class="text-muted mb-0">The project is available under AGPL-3.0 with alternative commercial licensing where required.</p></div><div class="w-300"><div class="d-flex flex-column gap-3"><a class="btn btn-primary" href="https://gitlab.com/CoCreateJS" target="_blank" rel="noopener noreferrer"><i class="ri-git-repository-line me-2"></i>View on GitLab</a><a class="btn btn-outline-primary" href="/#contact">Join the Community</a></div></div></div></div>
+			</section>
 
-            <!-- VISION SECTION: Breaking the Gated Community -->
-            <section class="section pt-0" id="mission-vision">
-                <div class="container">
-                    <div class="row align-items-center g-5">
-                        <div class="col-lg-6">
-                            <h2 class="fw-semibold mb-4">The End of the "Gated Community" of Longevity</h2>
-                            <p class="text-muted fs-16 mb-4">
-                                For too long, the most advanced breakthroughs in human health have been restricted to a "gated community." True regenerative medicine—the kind that rebuilds systems rather than just patching symptoms—has been locked behind $20,000-a-day clinics and the hurdles of medical tourism.
-                            </p>
-                            <p class="text-muted fs-16 mb-4">
-                                <strong>At Geneomes, we refuse to accept that biological sovereignty is a luxury for the few.</strong> 
-                            </p>
-                            <div class="d-flex gap-3 align-items-start mb-3">
-                                <div class="avatar-sm flex-shrink-0">
-                                    <div class="avatar-title bg-soft-primary text-primary rounded-circle fs-18">
-                                        <i class="ri-checkbox-circle-line"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1">Standardized Potency</h6>
-                                    <p class="text-muted small">Moving beyond the variability of raw cells to purified signaling factors.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex gap-3 align-items-start">
-                                <div class="avatar-sm flex-shrink-0">
-                                    <div class="avatar-title bg-soft-primary text-primary rounded-circle fs-18">
-                                        <i class="ri-checkbox-circle-line"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1">Scalable Access</h6>
-                                    <p class="text-muted small">Professional protocols delivered in a secure, shelf-stable format to your doorstep.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card card-dark p-4 p-lg-5 shadow-lg border-0 rounded-4 bg-primary text-white">
-                                <h3 class="text-white fw-semibold mb-4">Beyond Fragmented "Biohacking"</h3>
-                                <p class="opacity-75 fs-16 mb-4">
-                                    The current wellness market is a sea of fragmented data: a DNA test here, a generic vitamin there, and an occasional "miracle" treatment elsewhere. This approach ignores the fundamental truth of biology: <strong>Interconnectivity.</strong>
-                                </p>
-                                <p class="opacity-75 fs-16 mb-0">
-                                    Geneomes provides a closed-loop system. We combine diagnostic depth, nutritional precision, and regenerative signaling into a single, unified path to homeostatic excellence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- PILLARS: How We Bring It Home -->
-            <section class="section bg-light">
-                <div class="container">
-                    <div class="text-center mb-5">
-                        <h2 class="fw-semibold">The Pillars of At-Home Regeneration</h2>
-                        <p class="text-muted">Our three-stage protocol replaces clinical complexity with biological intelligence.</p>
-                    </div>
-                    <div class="d-flex flex-wrap gap-4 justify-content-center">
-                        <!-- Pillar 1 -->
-                        <div class="w-300 flex-grow-1">
-                            <div class="card p-4 h-100 border-0 shadow-sm rounded-4">
-                                <div class="avatar-md mb-4">
-                                    <div class="avatar-title bg-primary-subtle text-primary rounded-circle fs-24 shadow-sm">
-                                        <i class="ri-microscope-line"></i>
-                                    </div>
-                                </div>
-                                <h5 class="fw-bold">Diagnostic Depth</h5>
-                                <p class="text-muted small mb-0">At-home genomic and metabolic profiling provides the "Biological Blueprint" required to understand your unique signaling environment.</p>
-                            </div>
-                        </div>
-                        <!-- Pillar 2 -->
-                        <div class="w-300 flex-grow-1">
-                            <div class="card p-4 h-100 border-0 shadow-sm rounded-4">
-                                <div class="avatar-md mb-4">
-                                    <div class="avatar-title bg-success-subtle text-success rounded-circle fs-24 shadow-sm">
-                                        <i class="ri-capsule-line"></i>
-                                    </div>
-                                </div>
-                                <h5 class="fw-bold">Precision Nutrition</h5>
-                                <p class="text-muted small mb-0">Custom-formulated nutrient protocols prepare the "Bio-Terrain," ensuring your cells are ready to receive and act upon regenerative signals.</p>
-                            </div>
-                        </div>
-                        <!-- Pillar 3 -->
-                        <div class="w-300 flex-grow-1">
-                            <div class="card p-4 h-100 border-0 shadow-sm rounded-4">
-                                <div class="avatar-md mb-4">
-                                    <div class="avatar-title bg-info-subtle text-info rounded-circle fs-24 shadow-sm">
-                                        <i class="ri-pulse-line"></i>
-                                    </div>
-                                </div>
-                                <h5 class="fw-bold">Signal Intelligence</h5>
-                                <p class="text-muted small mb-0">The implementation of 3rd Generation Signaling Proteins to resolve systemic noise and re-activate natural renewal pathways.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="py-5 bg-primary position-relative" src="/components/cta.html"></section>
-            
-            <footer src="/components/footer.html" value-type="outerHTML"></footer>
-            <div src="/components/scroll-to-top.html"></div>
-        </div>
-
-        <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/assets/libs/node-waves/waves.min.js"></script>
-        <script src="/assets/libs/feather-icons/feather.min.js"></script>
-        <script src="/assets/js/lord-icon-2.1.0.js"></script>
-        <script src="../dist/CoCreate.js"></script>
-    </body>
+			<section class="py-5 bg-primary position-relative" src="/components/cta.html"></section>
+			<footer src="/components/footer.html" value-type="outerHTML"></footer>
+			<div src="/components/scroll-to-top.html"></div>
+		</div>
+		<script src="../dist/CoCreate.js"></script>
+		<script src="/assets/js/lord-icon-2.1.0.js"></script>
+	</body>
 </html>

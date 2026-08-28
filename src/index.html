@@ -3,7 +3,7 @@
 	state-id="theme"
 	lang="en"
 	data-layout="vertical"
-	data-topbar-color="defualt"
+	data-topbar-color="default"
 	data-sidebar-color="dark"
 	data-sidebar-size="sm-hover"
 	data-sidebar-image="none"
@@ -11,168 +11,107 @@
 	data-theme="default"
 	data-theme-colors="default"
 	data-bs-theme=""
-	session 
+	session
 	src="">
 	<head>
 		<meta charset="utf-8" />
-		<title>CoCreateJS | Open Source Edge Runtime for Distributed Applications</title>
-		<meta
-			name="description"
-			content="CoCreateJS is an open source distributed runtime for building self-hosted, edge-native applications. Deploy once. Auto-scale, self-heal, replicate globally, and run on any cloud using simple JavaScript APIs." />
-		<meta
-			name="keywords"
-			content="CoCreateJS, CoCreate, edge runtime, distributed runtime, JavaScript runtime, Node.js, WebSocket, distributed systems, self-hosted, autoscaling, orchestration, edge computing, Anycast, GeoDNS, open source, multi-cloud, clustering, IPC, server runtime, cloud runtime, infrastructure, developer platform" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CoCreateJS — Open-Source Distributed JavaScript Runtime</title>
+		<meta name="description" content="CoCreateJS is a lightweight, framework-agnostic JavaScript runtime for realtime, self-healing, autoscaling applications across any cloud or infrastructure." />
+		<meta name="keywords" content="CoCreateJS, distributed JavaScript runtime, open-source application runtime, Node.js runtime, realtime applications, self-healing runtime, autoscaling server, multi-cloud runtime, API orchestration, AST workflows" />
 		<meta name="author" content="CoCreate" />
+		<meta name="application-name" content="CoCreateJS" />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#405189" />
 
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+		<link rel="canonical" href="https://cocreatejs.com/" />
+		<link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+		<link rel="icon" type="image/png" href="/assets/images/icons/icon.png" />
+		<link rel="apple-touch-icon" href="/assets/images/icons/180x180.png" />
 
-		<!-- Bootstrap -->
-		<link
-			href="/assets/css/bootstrap.min.css"
-			rel="stylesheet"
-			type="text/css" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="CoCreateJS" />
+		<meta property="og:title" content="CoCreateJS — Build Applications, Not Infrastructure" />
+		<meta property="og:description" content="A compact open-source runtime for distributed, realtime, self-healing applications across any cloud." />
+		<meta property="og:url" content="https://cocreatejs.com/" />
+		<meta property="og:image" content="https://cocreatejs.com/assets/images/icons/1640x1640.png" />
+		<meta property="og:image:alt" content="CoCreateJS open-source distributed JavaScript runtime" />
 
-		<!-- Icons -->
-		<link
-			href="/assets/css/icons.min.css"
-			rel="stylesheet"
-			type="text/css" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="CoCreateJS — Build Applications, Not Infrastructure" />
+		<meta name="twitter:description" content="A compact open-source runtime for distributed, realtime, self-healing applications across any cloud." />
+		<meta name="twitter:image" content="https://cocreatejs.com/assets/images/icons/1640x1640.png" />
 
-		<!-- Menu Icon -->
-		<link
-			href="/assets/css/menu-icon.css"
-			rel="stylesheet"
-			type="text/css" />
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "Organization",
+					"@id": "https://cocreatejs.com/#organization",
+					"name": "CoCreate",
+					"url": "https://cocreatejs.com/",
+					"logo": "https://cocreatejs.com/assets/images/icons/512x512.png"
+				},
+				{
+					"@type": "WebSite",
+					"@id": "https://cocreatejs.com/#website",
+					"url": "https://cocreatejs.com/",
+					"name": "CoCreateJS",
+					"publisher": { "@id": "https://cocreatejs.com/#organization" }
+				},
+				{
+					"@type": "SoftwareSourceCode",
+					"@id": "https://cocreatejs.com/#runtime",
+					"name": "CoCreateJS",
+					"description": "An open-source distributed JavaScript runtime for realtime, self-healing, autoscaling applications.",
+					"codeRepository": "https://gitlab.com/CoCreateJS",
+					"programmingLanguage": "JavaScript",
+					"runtimePlatform": "Node.js",
+					"license": "https://www.gnu.org/licenses/agpl-3.0.html",
+					"publisher": { "@id": "https://cocreatejs.com/#organization" }
+				}
+			]
+		}
+		</script>
 
-		<!-- Plugins -->
+		<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+		<link href="/assets/css/menu-icon.css" rel="stylesheet" type="text/css" />
 		<link plugins />
-		
-		<!-- App -->
 		<link href="/assets/css/app.css" rel="stylesheet" type="text/css" />
-
-		<!-- Custom -->
-		<link href="/assets/css/custom.css" 
-			rel="stylesheet" 
-			type="text/css" 
-			parse="true" 
-			save="false" />
-
-		<!-- Manifest -->
+		<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" parse="true" save="false" />
 		<link rel="manifest" href="/manifest.webmanifest" />
 	</head>
 
 	<body data-bs-spy="scroll" data-bs-target="#navbar-example">
-		<!-- Begin page -->
 		<div class="layout-wrapper landing">
-            
-			<!-- Nav Start -->
 			<nav src="/components/nav.html" value-type="outerHTML"></nav>
-            <!-- Nav End -->
-			
-			<!-- start hero section -->
-			<section class="section hero-section" id="hero">
-				<video
-					class="position-absolute top-0 start-0 w-100 h-100"
-					autoplay
-					muted
-					loop
-					playsinline
-					preload="metadata"
-					style="object-fit: cover"
-					aria-hidden="true">
-					<source src="/assets/videos/home.mp4" type="video/mp4" />
-				</video>
-				<div
-					class="position-absolute top-0 start-0 w-100 h-100"
-					style="background: rgba(10, 19, 33, 0.55)"></div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-10">
-							<div class="text-center mt-lg-5 pt-5">
-								<h1 class="display-3 fw-bold text-white">
-									Build Once.
-									Run Everywhere.
-								</h1>
-								<p class="text-white fs-5 mt-4 mx-auto" style="max-width: 850px;">
-									CoCreateJS is an open source distributed runtime that turns ordinary Node.js applications into self-healing, auto-scaling, multi-cloud, edge-native systems using familiar JavaScript APIs.
-								</p>
-								<div class="d-flex gap-3 justify-content-center mt-5">
-									<a href="#features" class="btn btn-primary">Explore Features
-										<i class="ri-arrow-right-line ms-1"></i>
-									</a>
-									<a href="/docs/" class="btn btn-outline-light">Documentation</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- end hero section -->
-
-			<!-- start client section -->
-			<!-- <section class="pt-5 mt-5" src="/components/clients.html"></section> -->
-			<!-- end client section -->
-
-			<!-- start process -->
-			<section class="section" id="process" src="/components/process.html"></section>
-			<!-- end process -->
-
-			<!-- start cta -->
-			<section class="py-5 bg-primary position-relative" src="/components/cta.html"></section>
-			<!-- end cta -->
-
-			<!-- start marketplace -->
-			<!-- <section class="section bg-light" id="marketplace" src="/components/marketplace.html"></section> -->
-			<!-- end marketplace -->
-			
-			<!-- start plan -->
-			<!-- <section class="section bg-light" id="plans" src="/components/plans.html"></section> -->
-			<!-- end plan -->
-
-			<!-- start faqs -->
-			<section class="section" id="faqs" src="/components/faqs.html"></section>
-			<!-- end faqs -->
-
-			<!-- start review -->
-			<section class="section bg-primary" id="reviews" src="/components/reviews.html"></section>
-			<!-- end review -->
-
-			<!-- start counter -->
-			<!-- <section class="py-5 position-relative bg-light" src="/components/counter.html"></section> -->
-			<!-- end counter -->
-
-			<!-- start team -->
-			<section class="section bg-light" id="team" src="/components/team.html"></section>
-			<!-- end team -->
-
-			<!-- start contact -->
+			<section src="/components/hero.html" value-type="outerHTML"></section>
+			<section src="/components/proof-strip.html" value-type="outerHTML"></section>
+			<section src="/components/problem.html" value-type="outerHTML"></section>
+			<section src="/components/architecture.html" value-type="outerHTML"></section>
+			<section class="section bg-light" id="features" src="/components/features.html"></section>
+			<section class="section" id="application-as-data" src="/components/application-as-data.html"></section>
+			<section class="section bg-light" id="orchestration" src="/components/orchestration.html"></section>
+			<section class="section" id="runtime-api" src="/components/runtime-api.html"></section>
+			<section class="section bg-light" id="operations" src="/components/autonomous-operations.html"></section>
+			<section class="section" id="data" src="/components/data.html"></section>
+			<section class="section bg-light" id="client" src="/components/client.html"></section>
+			<section class="section" id="delivery" src="/components/edge-delivery.html"></section>
+			<section class="section bg-light" id="efficiency" src="/components/efficiency.html"></section>
+			<section class="section" id="use-cases" src="/components/use-cases.html"></section>
+			<section class="section bg-light" id="open-source" src="/components/open-source.html"></section>
+			<section class="section" id="documentation" src="/components/documentation.html"></section>
+			<section class="section bg-light" id="faqs" src="/components/faqs.html"></section>
 			<section class="section" id="contact" src="/components/contact.html"></section>
-			<!-- end contact -->
-
-			<!-- start cta -->
 			<section class="py-5 bg-primary position-relative" src="/components/cta.html"></section>
-			<!-- end cta -->
 
-            <!-- Footer Start -->
-            <footer 
-                class="custom-footer bg-dark py-5 position-relative" 
-                src="/components/footer.html" value-type="outerHTML">
-            </footer>
-            <!-- Footer End -->
-
-			<!-- Back To Top Start -->
-			 <div src="/components/scroll-to-top.html"></div>
-			<!-- Back To Top End -->
-
+			<footer class="custom-footer bg-dark py-5 position-relative" src="/components/footer.html" value-type="outerHTML"></footer>
+			<div src="/components/scroll-to-top.html"></div>
 		</div>
-		<!-- end layout wrapper -->
 
-		<!-- JAVASCRIPT -->
 		<script src="./dist/CoCreate.js"></script>
 		<script src="/assets/js/lord-icon-2.1.0.js"></script>
-
 	</body>
 </html>

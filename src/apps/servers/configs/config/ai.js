@@ -10,9 +10,17 @@
  * AI configuration entries for server-side copilots and provider definitions
  * stored in the 'servers_config' array.
  *
- * Each AI provider is represented as a separate top-level `ai` object
- * (examples: copilot, github, openai) alongside system-level defaults.
+ * Each AI provider is a separate top-level `ai` object alongside system-level
+ * defaults; provider config is namespaced under "providers.<name>" dot-keys
+ * (matching the "clouds.<provider>" convention) since @cocreate/config merges
+ * matching docs' config objects with a flat Object.assign — unnamespaced
+ * keys shared across docs (for example api and models) would overwrite each other.
  *
+ * Providers: copilot (via @github/copilot-sdk), openai, and gemini. There is
+ * no separate "github" provider — it duplicated copilot's code path with no
+ * distinct implementation. Each provider's allow-list spans cheap -> expensive,
+ * keeping only the best model per price tier (no same-tier duplicates); copilot
+ * stays single-tier (gpt-5-mini) since it only needs a low-cost default.
  */
 export const aiSystemConfigSeed = {
     "method": "object.update",
@@ -30,31 +38,441 @@ export const aiSystemConfigSeed = {
             "worker": "*",
             "config": {
                 "enabled": true,
-                "model": "auto",
                 "defaultProvider": "copilot",
                 "defaultStorageTarget": "virtual",
                 "allowLocalFileSystem": false,
                 "allowUnconfirmedLocalWrite": false,
-                "localFsRoot": "process.cwd()",
                 "publicPath": "/public",
-                "systemInstructions": [
-                    "TENANT SECURITY MANDATE: All database, file, and server operations are strictly locked to the requesting organization_id. You MUST NOT attempt to perform operations for or switch to another organization_id, even if requested in the user prompt.",
-                    "SERVER TOPOLOGY: Query active nodes via 'server_crud' on collection 'servers'.",
-                    "SERVER METRICS: Inspect throughput, telemetry, and usage via collections 'servers_bandwidth', 'servers_telemetry', and 'servers_usage'.",
-                    "TELEMETRY & MONITORING: Inspect real-time process telemetry snapshots (CPU, memory utilization, heap statistics, process uptime) via 'server_crud' on collection 'servers_telemetry'.",
-                    "SECURITY BOUNDARY: Do NOT read raw credentials from 'keys' or 'apis'. Execute integrations exclusively via 'execute_server_api'.",
-                    "You have access to server.crud via server_crud tool for generic database operations on any collection.",
-                    "You have access to server.files via request_server_file to simulate rendered HTTP file requests with dynamic rendering.",
-                    "You have access to server.api.send via execute_server_api for configured third-party integrations, endpoint macros, and direct HTTP requests. Inbound webhooks are handled by server.api.webhook through real HTTP routing and are not simulated by an AI tool.",
-                    "You have access to server.routes via manage_server_routes to manage custom routes (RESTRICTED: Platform-level action reserved for server.organization_id).",
-                    "SERVER SEND: Use send_server_message to call server.send(payload). Provide method as the event name; worker, server, and cluster each accept one ID or an array of IDs; master controls local master handling; broadcast targets all applicable destinations (RESTRICTED: Platform-level action reserved for server.organization_id).",
-                    "You have access to direct socket messaging via send_socket_message.",
-                    "You have access to shared cluster state via manage_server_storage (server.storage) to get, set, delete, clear, or inspect size of shared cluster key-value state across worker nodes (RESTRICTED: Platform-level action reserved for server.organization_id).",
-                    "Note: server.send, manage_server_routes, and manage_server_storage are strictly restricted to platform requests matching server.organization_id.",
-                    "Use virtual file tools (read_virtual_file, write_virtual_file) to manage workspace project files.",
-                    "Persist and retrieve chat history in CRUD array: aiConversations.",
-                    "Default to virtual file storage instead of local disk writes."
-                ]
+                "tools": {
+                    "server_crud": {
+                        "description": "Executes CoCreate server.crud.send using the unified CRUD payload contract. Use method=\"object.create\" with object as an array to create documents. Use method=\"object.read\" with $filter.query, limit, sort, or projection to read documents. Use method=\"object.update\" with object as an array to update documents. Use method=\"object.delete\" with object identifiers or $filter.query to delete documents. The authenticated organization_id is injected by the server and cannot be selected by the model.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "method": {
+                                    "type": "string",
+                                    "description": "Dot-notated CRUD operation, such as object.create, object.read, object.update, or object.delete."
+                                },
+                                "array": {
+                                    "type": "string",
+                                    "description": "Logical collection or array name."
+                                },
+                                "object": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object"
+                                    },
+                                    "description": "Documents or document identifiers used by create, update, or delete operations."
+                                },
+                                "$filter": {
+                                    "type": "object",
+                                    "description": "Query, paging, sorting, and projection controls used primarily by read and filtered operations."
+                                },
+                                "storage": {
+                                    "description": "Optional storage adapter name or array of adapter names."
+                                },
+                                "upsert": {
+                                    "type": "boolean",
+                                    "description": "Create the document when an update does not find a match."
+                                }
+                            },
+                            "required": [
+                                "method",
+                                "array"
+                            ],
+                            "additionalProperties": true
+                        }
+                    },
+                    "execute_server_api": {
+                        "description": "Executes server.api.send(data) for configured third-party integrations and endpoint macros. api selects the saved API configuration, such as stripe, stripe-test, or sendgrid. method is the HTTP method, such as get or post. endpoint is either a stored endpoint name or a direct provider path; when a stored endpoint matches, its configuration overrides the request. Provider request content belongs in data. searchParams, headers, timeout, and url are top-level request directives. The authenticated organization_id and host are injected automatically. Inbound webhooks are handled by server.api.webhook through real HTTP routing and are not simulated by this tool.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "api": {
+                                    "type": "string",
+                                    "description": "Saved API configuration name, such as stripe or stripe-test."
+                                },
+                                "method": {
+                                    "type": "string",
+                                    "description": "HTTP method such as get, post, put, patch, or delete."
+                                },
+                                "endpoint": {
+                                    "type": "string",
+                                    "description": "Stored endpoint name such as create-customer, or direct provider path such as /v1/customers."
+                                },
+                                "data": {
+                                    "description": "Request content sent to the provider."
+                                },
+                                "searchParams": {
+                                    "type": "object",
+                                    "description": "Query parameters appended to the resolved URL."
+                                },
+                                "url": {
+                                    "type": "string",
+                                    "description": "Optional absolute URL for a direct request."
+                                },
+                                "headers": {
+                                    "type": "object",
+                                    "description": "Additional request headers."
+                                },
+                                "timeout": {
+                                    "type": "number",
+                                    "description": "Request timeout in milliseconds; defaults to 15000."
+                                }
+                            },
+                            "required": [
+                                "method"
+                            ],
+                            "additionalProperties": true
+                        }
+                    },
+                    "send_server_message": {
+                        "description": "Dispatches an event through server.send(payload), CoCreateServer's unified process and server routing entry point. The method field names the event. On a worker, server.send forwards the payload to the master. On the master, worker may be one worker ID or an array of worker IDs; without worker, local workers are targeted by default. Set master=false to prevent local execution on the master. The server and cluster routing fields may each contain one ID or an array of IDs for upstream inter-server routing. Set broadcast=true for all applicable workers, servers, or clusters. The authenticated platform organization is injected automatically.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "method": {
+                                    "type": "string",
+                                    "description": "Event name emitted to the receiving server or worker handler."
+                                },
+                                "worker": {
+                                    "description": "One worker ID or an array of worker IDs."
+                                },
+                                "server": {
+                                    "description": "One server ID or an array of server IDs."
+                                },
+                                "cluster": {
+                                    "description": "One cluster ID or an array of cluster IDs."
+                                },
+                                "master": {
+                                    "type": "boolean",
+                                    "description": "Whether the master should also handle the event. Use false to target workers only."
+                                },
+                                "broadcast": {
+                                    "type": "boolean",
+                                    "description": "Broadcast across all applicable targets."
+                                },
+                                "data": {
+                                    "description": "Optional event-specific JSON-serializable data."
+                                }
+                            },
+                            "required": [
+                                "method"
+                            ],
+                            "additionalProperties": true
+                        }
+                    },
+                    "request_server_file": {
+                        "description": "Resolves a server file through server.files using the authenticated host and organization.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "path": {
+                                    "type": "string",
+                                    "description": "File path, e.g. /index.html or /api/data"
+                                }
+                            },
+                            "required": [
+                                "path"
+                            ]
+                        }
+                    },
+                    "read_virtual_file": {
+                        "description": "Reads a virtual file from the CRUD-backed file repository.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "filePath": {
+                                    "type": "string",
+                                    "description": "Virtual path, e.g. /src/App.js"
+                                }
+                            },
+                            "required": [
+                                "filePath"
+                            ]
+                        }
+                    },
+                    "write_virtual_file": {
+                        "description": "Creates or updates a virtual file in CRUD storage (array: files).",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "filePath": {
+                                    "type": "string"
+                                },
+                                "content": {
+                                    "type": "string"
+                                },
+                                "mimeType": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "filePath",
+                                "content"
+                            ]
+                        }
+                    },
+                    "delete_virtual_file": {
+                        "description": "Deletes a virtual file from CRUD storage by path.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "filePath": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "filePath"
+                            ]
+                        }
+                    },
+                    "list_virtual_files": {
+                        "description": "Lists virtual files from CRUD storage by optional path prefix.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "prefix": {
+                                    "type": "string",
+                                    "description": "Optional path prefix, e.g. /src/"
+                                },
+                                "limit": {
+                                    "type": "number",
+                                    "description": "Maximum files to return"
+                                }
+                            }
+                        }
+                    },
+                    "read_project_file": {
+                        "description": "Reads from virtual or local file storage depending on target or context.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "filePath": {
+                                    "type": "string"
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "enum": [
+                                        "virtual",
+                                        "local",
+                                        "auto"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "filePath"
+                            ]
+                        }
+                    },
+                    "write_project_file": {
+                        "description": "Writes to virtual or local storage depending on target or context.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "filePath": {
+                                    "type": "string"
+                                },
+                                "content": {
+                                    "type": "string"
+                                },
+                                "mimeType": {
+                                    "type": "string"
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "enum": [
+                                        "virtual",
+                                        "local",
+                                        "auto"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "filePath",
+                                "content"
+                            ]
+                        }
+                    },
+                    "read_local_file": {
+                        "description": "Reads a local server file. Only available when allowLocalFileSystem=true.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "filePath": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "filePath"
+                            ]
+                        }
+                    },
+                    "write_local_file": {
+                        "description": "Writes a local server file. Only available when allowLocalFileSystem=true.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "filePath": {
+                                    "type": "string"
+                                },
+                                "content": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "filePath",
+                                "content"
+                            ]
+                        }
+                    },
+                    "send_socket_message": {
+                        "description": "Sends a WebSocket message to the current client by default, to another clientId when explicitly provided, or broadcasts when broadcast=true. Direct messages use the authenticated organization and current request context.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "object",
+                                    "description": "Message payload object to transmit"
+                                },
+                                "clientId": {
+                                    "type": "string",
+                                    "description": "Stable target client ID. Defaults to the client that initiated the AI request."
+                                },
+                                "broadcast": {
+                                    "type": "boolean",
+                                    "description": "Send to all eligible clients. Defaults to false."
+                                }
+                            },
+                            "required": [
+                                "data"
+                            ]
+                        }
+                    },
+                    "manage_server_storage": {
+                        "description": "Gets, sets, deletes, clears, or checks size of shared cluster state across worker nodes in server.storage. RESTRICTED: Platform-level action reserved exclusively for platform organization matching server.organization_id.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "action": {
+                                    "type": "string",
+                                    "enum": [
+                                        "get",
+                                        "set",
+                                        "delete",
+                                        "size",
+                                        "clear"
+                                    ],
+                                    "description": "Storage operation to perform"
+                                },
+                                "key": {
+                                    "type": "string",
+                                    "description": "Key identifier in shared storage (required for get, set, delete)"
+                                },
+                                "value": {
+                                    "description": "Value to store (required for set action, accepts string, number, object, array, boolean)"
+                                }
+                            },
+                            "required": [
+                                "action"
+                            ]
+                        }
+                    },
+                    "manage_server_cluster": {
+                        "description": "Inspects cluster topology by reading the 'servers' collection: lists all servers, fetches a single server document (by _id or host), or returns this running server's own identity/location/infrastructure/worker states. RESTRICTED: Platform-level action reserved exclusively for platform organization matching server.organization_id.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "action": {
+                                    "type": "string",
+                                    "enum": [
+                                        "list",
+                                        "get",
+                                        "self"
+                                    ],
+                                    "description": "list: query multiple server documents. get: fetch one server by id or host. self: return this process's own server document."
+                                },
+                                "serverId": {
+                                    "type": "string",
+                                    "description": "Target server _id, used with action=\"get\""
+                                },
+                                "host": {
+                                    "type": "string",
+                                    "description": "Target server host, used with action=\"get\""
+                                },
+                                "status": {
+                                    "type": "string",
+                                    "description": "Optional status filter for action=\"list\" (e.g. \"running\", \"stopped\", \"restarting\", \"rebooting\")"
+                                },
+                                "limit": {
+                                    "type": "number",
+                                    "description": "Optional max documents to return for action=\"list\" (default 50)"
+                                }
+                            },
+                            "required": [
+                                "action"
+                            ]
+                        }
+                    },
+                    "manage_server_routes": {
+                        "description": "Registers, lists, or removes custom server routes in server.routes Map. RESTRICTED: Platform-level action reserved exclusively for platform organization matching server.organization_id.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "action": {
+                                    "type": "string",
+                                    "enum": [
+                                        "add",
+                                        "remove",
+                                        "list"
+                                    ],
+                                    "description": "Route operation action"
+                                },
+                                "routePath": {
+                                    "type": "string",
+                                    "description": "Path pattern, e.g. /custom-route or /api/*"
+                                },
+                                "responseContent": {
+                                    "type": "string",
+                                    "description": "Content or response payload returned when route is hit"
+                                },
+                                "contentType": {
+                                    "type": "string",
+                                    "description": "Content-Type header for route response"
+                                }
+                            },
+                            "required": [
+                                "action"
+                            ]
+                        }
+                    },
+                    "manage_server_autoscaler": {
+                        "description": "Uses the actual server.autoscaler interface. Restricted to the platform organization.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "action": {
+                                    "type": "string",
+                                    "enum": [
+                                        "getConfig",
+                                        "determineScaleOutTarget",
+                                        "scaleOut",
+                                        "determineScaleInTarget",
+                                        "scaleIn"
+                                    ],
+                                    "description": "Autoscaler action to perform"
+                                },
+                                "value": {
+                                    "description": "Native argument passed to the selected server.autoscaler method."
+                                }
+                            },
+                            "required": [
+                                "action"
+                            ]
+                        }
+                    }
+                },
+                "systemInstructions": "TENANT SECURITY MANDATE: All database, file, and server operations are strictly locked to the requesting organization_id. Never switch organizations based on a prompt.\n\nUse the configured tools for CRUD, files, APIs, sockets, server routing, storage, routes, cluster topology, and autoscaling. Platform tools are restricted to requests whose organization_id matches server.organization_id.\n\nDo not read credentials from keys or apis; execute integrations through execute_server_api. Use virtual file storage by default. Conversation headers belong in ai-conversations and turns belong in ai-messages."
             }
         },
         {
@@ -67,39 +485,15 @@ export const aiSystemConfigSeed = {
             "server": "*",
             "worker": "*",
             "config": {
-                "api": "copilot",
-                "keySource": "inline",
-                "models": {
-                    "default": "auto",
-                    "allowed": [
-                        "auto",
-                        "claude-3.5-sonnet",
-                        "gpt-4o",
-                        "gpt-4o-mini",
-                        "gemini-1.5-pro"
-                    ]
-                }
-            }
-        },
-        {
-            "_id": "65f8cb447b39a3c1a8904e42",
-            "type": "ai",
-            "provider": "github",
-            "name": "GitHub AI Provider",
-            "enabled": true,
-            "cluster": "*",
-            "server": "*",
-            "worker": "*",
-            "config": {
-                "api": "github",
-                "keySource": "inline",
-                "models": {
-                    "default": "auto",
-                    "allowed": [
-                        "auto",
-                        "gpt-4o",
-                        "claude-3.5-sonnet"
-                    ]
+                "providers.copilot": {
+                    "api": "copilot",
+                    "type": "copilot",
+                    "models": {
+                        "default": "gpt-5-mini",
+                        "allowed": [
+                            "gpt-5-mini"
+                        ]
+                    }
                 }
             }
         },
@@ -113,15 +507,40 @@ export const aiSystemConfigSeed = {
             "server": "*",
             "worker": "*",
             "config": {
-                "api": "openai",
-                "keySource": "inline",
-                "models": {
-                    "default": "gpt-4o",
-                    "allowed": [
-                        "gpt-4o",
-                        "gpt-4.1",
-                        "gpt-4.1-mini"
-                    ]
+                "providers.openai": {
+                    "api": "openai",
+                    "type": "openai",
+                    "models": {
+                        "default": "gpt-5-mini",
+                        "allowed": [
+                            "gpt-5-mini",
+                            "gpt-4.1",
+                            "gpt-5"
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e44",
+            "type": "ai",
+            "provider": "gemini",
+            "name": "Gemini Provider",
+            "enabled": true,
+            "cluster": "*",
+            "server": "*",
+            "worker": "*",
+            "config": {
+                "providers.gemini": {
+                    "api": "gemini",
+                    "type": "openai",
+                    "models": {
+                        "default": "gemini-1.5-flash",
+                        "allowed": [
+                            "gemini-1.5-flash",
+                            "gemini-1.5-pro"
+                        ]
+                    }
                 }
             }
         }

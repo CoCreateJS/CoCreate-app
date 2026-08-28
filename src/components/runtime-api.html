@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="d-flex justify-content-center mb-5"><div class="text-center flex-grow-1 cocreate-section-intro"><h2 class="mb-3 fw-semibold">A small surface built from familiar JavaScript primitives.</h2><p class="text-muted mb-0">Capabilities are exposed through ordinary objects, functions, maps, events, and payloads—not proprietary method trees or another routing language.</p></div></div>
+
+	<div class="d-flex flex-wrap gap-5 align-items-stretch">
+		<div class="w-400 flex-grow-1">
+			<div class="card bg-dark border-0 shadow-sm h-100"><div class="card-header border-secondary text-white d-flex align-items-center"><i class="ri-terminal-box-line text-info me-2"></i>server.js</div><div class="card-body p-0"><pre class="language-javascript cocreate-code mb-0"><code>import server from "@cocreate/server";
+
+await server.init();
+
+server.routes.set("/health", (req, res) =&gt; {
+  res.writeHead(200, {
+    "Content-Type": "application/json"
+  });
+
+  res.end(JSON.stringify({ status: "healthy" }));
+});
+
+await server.crud.send({
+  method: "object.read",
+  array: "users",
+  $filter: { limit: 1 }
+});
+
+server.wsManager.on("message", callback);</code></pre></div></div>
+		</div>
+		<div class="w-400 flex-grow-1 d-flex flex-column gap-3">
+			<div><h5><code>server.routes</code></h5><p class="text-muted mb-0">A native Map for application request handlers. Method, host, tenant, and geographic policy remain ordinary JavaScript.</p></div>
+			<div><h5><code>server.api</code> and <code>server.files</code></h5><p class="text-muted mb-0">Built-in handlers that applications can use directly, call from a route, wrap, or replace.</p></div>
+			<div><h5><code>server.crud</code></h5><p class="text-muted mb-0">A unified object-based interface for data operations across storage providers.</p></div>
+			<div><h5><code>server.wsManager</code></h5><p class="text-muted mb-0">Realtime messages through a consistent event-driven interface.</p></div>
+			<div><h5><code>server.storage</code></h5><p class="text-muted mb-0">Shared runtime state and coordination across workers through IPC.</p></div>
+		</div>
+	</div>
+	<div class="text-center mt-5"><h4 class="mb-2">The runtime provides capabilities. The application provides policy.</h4><p class="text-muted mb-0">Authentication, authorization, geographic routing, tenant placement, request transformation, caching, and provider selection stay under application control.</p></div>
+</div>
