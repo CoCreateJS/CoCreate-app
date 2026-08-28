@@ -13,7 +13,7 @@ export default {
             entry: "./src",
             array: "files",
             languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
-            exclude: ["/config/", "/scss/", "/assets/js/"],
+            exclude: ["/config/", "/scss/", "/assets/"],
             object: {
                 name: "{{name}}",
                 src: "{{source}}",
