@@ -7,11 +7,11 @@
 /**
  * Seeding Payload: servers_config collection
  * 
- * Autoscaler configuration entries for cluster node scaling, collection and
- * write intervals, retention policy, broadcast options, and safety thresholds
+ * Telemetry configuration entries for metric collection and write intervals,
+ * retention policy, broadcast options, and cluster scale/safety thresholds
  * stored in the 'servers_config' array.
  * 
- * Note: Autoscaler-related settings are represented as individual objects
+ * Note: Telemetry-related settings are represented as individual objects
  * within the 'servers_config' array.
  */
 export const seedTelemetryConfigs = {

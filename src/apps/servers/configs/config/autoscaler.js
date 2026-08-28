@@ -5,14 +5,12 @@
  ********************************************************************************/
 
 /**
- * Seeding Payload: servers_config collection
+ * Seeding Payload: servers_config collection (Autoscaler)
  * 
  * Autoscaler configurations for cloud providers, instance types, regions,
  * and cluster autoscaling policies stored in the 'servers_config' array.
- * 
- * Note: Storage-related configs have been moved to a dedicated storage config file.
  */
-export const seedStorageConfigs = {
+export const seedAutoscalerConfigs = {
     "method": "object.update",
     "array": "servers_config",
     "upsert": true,
@@ -61,7 +59,113 @@ export const seedStorageConfigs = {
                         { "vCPU": 32, "memoryGb": 128 },
                         { "vCPU": 64, "memoryGb": 256 }
                     ]
-                }
+                },
+                "startupScript": `#!/usr/bin/env bash
+# ==============================================================================
+# CoCreate WebService Startup Script (Cloud-Init / User Data)
+# Zero-Trust / Immutable Node Lockdown
+# ==============================================================================
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# 1. Host System Directories Preparation
+# ------------------------------------------------------------------------------
+echo "[CoCreate] Preparing workspace directories..."
+mkdir -p /var/log/cocreatews
+mkdir -p /etc/cocreatews
+
+# ------------------------------------------------------------------------------
+# 2. Linux Swap Space Provisioning (4GB Fixed Safety Net)
+# ------------------------------------------------------------------------------
+if ! grep -q '/swapfile' /etc/fstab; then
+  echo "[CoCreate] Configuring 4GB disk swap space..."
+  fallocate -l 4G /swapfile || dd if=/dev/zero of=/swapfile bs=1M count=4096
+  chmod 600 /swapfile
+  mkswap /swapfile
+  swapon /swapfile
+  echo '/swapfile swap swap defaults 0 0' >> /etc/fstab
+  sysctl vm.swappiness=10
+  echo 'vm.swappiness=10' >> /etc/sysctl.conf
+else
+  echo "[CoCreate] Swap file already present, skipping swap creation."
+fi
+
+# ------------------------------------------------------------------------------
+# 3. Download Latest Binary (Public GitHub Release - No API Key Needed)
+# ------------------------------------------------------------------------------
+if [ -f /usr/local/bin/cocreatews-linux-x86 ]; then
+  echo "[CoCreate] Binary already present locally at /usr/local/bin/cocreatews-linux-x86, skipping download."
+else
+  echo "[CoCreate] Fetching latest compiled binary from public GitHub Releases..."
+  curl -sL https://github.com/CoCreate-app/CoCreateWS/releases/latest/download/cocreatews-linux-x86 -o /usr/local/bin/cocreatews-linux-x86
+fi
+chmod +x /usr/local/bin/cocreatews-linux-x86
+
+# ------------------------------------------------------------------------------
+# 4. Systemd Service Unit Provisioning
+# ------------------------------------------------------------------------------
+echo "[CoCreate] Creating systemd service unit..."
+cat << 'EOF' > /etc/systemd/system/cocreatews.service
+[Unit]
+Description=CoCreate WebService Node
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Restart=always
+RestartSec=3
+
+# Environment Variables
+Environment=NODE_ENV=production
+Environment=organization_id=5ff747727005da1c272740ab
+Environment=storage.mongodb.provider=mongodb
+Environment=storage.mongodb.url=mongodb+srv://cocreate-app:F98HAalM9qVZxfcU@cocreatedatabase.ne3tel6.mongodb.net/?retryWrites=true&w=majority
+
+# Execution & Logging
+ExecStart=/usr/local/bin/cocreatews-linux-x86
+StandardOutput=append:/var/log/cocreatews/output.log
+StandardError=append:/var/log/cocreatews/error.log
+
+# Graceful Shutdown for AWS Spot Interruption (2-minute / 120s warning)
+# systemd sends SIGTERM first and grants 110s for connection draining & metrics flush
+KillSignal=SIGTERM
+TimeoutStopSec=110
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Reload systemd daemon and enable service
+systemctl daemon-reload
+systemctl enable cocreatews
+
+# ------------------------------------------------------------------------------
+# 5. Boot WebService via Systemd
+# ------------------------------------------------------------------------------
+echo "[CoCreate] Booting WebService node via systemd..."
+systemctl restart cocreatews
+
+# ------------------------------------------------------------------------------
+# 6. Security Hardening: Lockdown Server & Close Port 22 (Disable SSH)
+# ------------------------------------------------------------------------------
+echo "[CoCreate] Locking down server: configuring firewall and disabling SSH..."
+
+if command -v ufw >/dev/null 2>&1; then
+  ufw default deny incoming
+  ufw default allow outgoing
+  ufw allow 80/tcp
+  ufw allow 443/tcp
+  ufw deny 22/tcp
+  ufw --force enable || true
+fi
+
+# Stop, disable, and mask SSH daemon so it cannot be started
+systemctl stop sshd || systemctl stop ssh || true
+systemctl disable sshd || systemctl disable ssh || true
+systemctl mask sshd || systemctl mask ssh || true
+
+echo "[CoCreate] Node successfully locked down. HTTP (80) & HTTPS (443) open, SSH (22) disabled."`,
             }
         },
         {
@@ -75,14 +179,15 @@ export const seedStorageConfigs = {
             "worker": "*",
             "config": {
                 "clouds.aws": {
+                    "image": "ubuntu-24.04-lts",
                     "instances": [
-                        { "name": "t3a.nano", "vCPU": 1, "memoryGb": 2 },
-                        { "name": "t3a.small", "vCPU": 2, "memoryGb": 8 },
-                        { "name": "t3a.medium", "vCPU": 4, "memoryGb": 16 },
-                        { "name": "t3a.large", "vCPU": 8, "memoryGb": 32 },
-                        { "name": "t3a.xlarge", "vCPU": 16, "memoryGb": 64 },
-                        { "name": "t3a.2xlarge", "vCPU": 32, "memoryGb": 128 },
-                        { "name": "c5a.4xlarge", "vCPU": 64, "memoryGb": 256 }
+                        { "name": "t3a.nano", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.small", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.medium", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.large", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.xlarge", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.2xlarge", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24.04-lts" },
+                        { "name": "c5a.4xlarge", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24.04-lts" }
                     ],
                     "regions": [
                         { "region": "us-east-1", "name": "N. Virginia", "country": "US", "lat": 38.9489, "lng": -77.4499 },
@@ -120,14 +225,15 @@ export const seedStorageConfigs = {
             "worker": "*",
             "config": {
                 "clouds.gcp": {
+                    "image": "ubuntu-2404-lts",
                     "instances": [
-                        { "name": "e2-micro", "vCPU": 1, "memoryGb": 2 },
-                        { "name": "e2-standard-2", "vCPU": 2, "memoryGb": 8 },
-                        { "name": "e2-standard-4", "vCPU": 4, "memoryGb": 16 },
-                        { "name": "e2-standard-8", "vCPU": 8, "memoryGb": 32 },
-                        { "name": "e2-standard-16", "vCPU": 16, "memoryGb": 64 },
-                        { "name": "e2-standard-32", "vCPU": 32, "memoryGb": 128 },
-                        { "name": "n2-standard-64", "vCPU": 64, "memoryGb": 256 }
+                        { "name": "e2-micro", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-2404-lts" },
+                        { "name": "e2-standard-2", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-2404-lts" },
+                        { "name": "e2-standard-4", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-2404-lts" },
+                        { "name": "e2-standard-8", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-2404-lts" },
+                        { "name": "e2-standard-16", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-2404-lts" },
+                        { "name": "e2-standard-32", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-2404-lts" },
+                        { "name": "n2-standard-64", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-2404-lts" }
                     ],
                     "regions": [
                         { "region": "us-central1", "name": "Iowa", "country": "US", "lat": 41.2619, "lng": -95.8608 },
@@ -163,14 +269,15 @@ export const seedStorageConfigs = {
             "worker": "*",
             "config": {
                 "clouds.azure": {
+                    "image": "ubuntu-24_04-lts",
                     "instances": [
-                        { "name": "Standard_B1s", "vCPU": 1, "memoryGb": 2 },
-                        { "name": "Standard_B2s", "vCPU": 2, "memoryGb": 8 },
-                        { "name": "Standard_B4ms", "vCPU": 4, "memoryGb": 16 },
-                        { "name": "Standard_B8ms", "vCPU": 8, "memoryGb": 32 },
-                        { "name": "Standard_B16ms", "vCPU": 16, "memoryGb": 64 },
-                        { "name": "Standard_B32ms", "vCPU": 32, "memoryGb": 128 },
-                        { "name": "Standard_D64s_v5", "vCPU": 64, "memoryGb": 256 }
+                        { "name": "Standard_B1s", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24_04-lts" },
+                        { "name": "Standard_B2s", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24_04-lts" },
+                        { "name": "Standard_B4ms", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24_04-lts" },
+                        { "name": "Standard_B8ms", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24_04-lts" },
+                        { "name": "Standard_B16ms", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24_04-lts" },
+                        { "name": "Standard_B32ms", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24_04-lts" },
+                        { "name": "Standard_D64s_v5", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24_04-lts" }
                     ],
                     "regions": [
                         { "region": "eastus", "name": "Virginia", "country": "US", "lat": 37.3719, "lng": -79.8164 },
@@ -206,14 +313,15 @@ export const seedStorageConfigs = {
             "worker": "*",
             "config": {
                 "clouds.digitalocean": {
+                    "image": "ubuntu-24-04-x64",
                     "instances": [
-                        { "name": "s-1vcpu-2gb", "vCPU": 1, "memoryGb": 2 },
-                        { "name": "s-2vcpu-8gb", "vCPU": 2, "memoryGb": 8 },
-                        { "name": "s-4vcpu-16gb", "vCPU": 4, "memoryGb": 16 },
-                        { "name": "s-8vcpu-32gb", "vCPU": 8, "memoryGb": 32 },
-                        { "name": "s-16vcpu-64gb", "vCPU": 16, "memoryGb": 64 },
-                        { "name": "s-32vcpu-128gb", "vCPU": 32, "memoryGb": 128 },
-                        { "name": "s-64vcpu-256gb", "vCPU": 64, "memoryGb": 256 }
+                        { "name": "s-1vcpu-2gb", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24-04-x64" },
+                        { "name": "s-2vcpu-8gb", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24-04-x64" },
+                        { "name": "s-4vcpu-16gb", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24-04-x64" },
+                        { "name": "s-8vcpu-32gb", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24-04-x64" },
+                        { "name": "s-16vcpu-64gb", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24-04-x64" },
+                        { "name": "s-32vcpu-128gb", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24-04-x64" },
+                        { "name": "s-64vcpu-256gb", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24-04-x64" }
                     ],
                     "regions": [
                         { "region": "nyc1", "name": "New York 1", "country": "US", "lat": 40.7128, "lng": -74.0060 },
@@ -241,14 +349,15 @@ export const seedStorageConfigs = {
             "worker": "*",
             "config": {
                 "clouds.oci": {
+                    "image": "ubuntu-24.04",
                     "instances": [
-                        { "name": "VM.Standard.E4.Flex-1v2g", "vCPU": 1, "memoryGb": 2 },
-                        { "name": "VM.Standard.E4.Flex-2v8g", "vCPU": 2, "memoryGb": 8 },
-                        { "name": "VM.Standard.E4.Flex-4v16g", "vCPU": 4, "memoryGb": 16 },
-                        { "name": "VM.Standard.E4.Flex-8v32g", "vCPU": 8, "memoryGb": 32 },
-                        { "name": "VM.Standard.E4.Flex-16v64g", "vCPU": 16, "memoryGb": 64 },
-                        { "name": "VM.Standard.E4.Flex-32v128g", "vCPU": 32, "memoryGb": 128 },
-                        { "name": "VM.Standard.E4.Flex-64v256g", "vCPU": 64, "memoryGb": 256 }
+                        { "name": "VM.Standard.E4.Flex-1v2g", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24.04" },
+                        { "name": "VM.Standard.E4.Flex-2v8g", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24.04" },
+                        { "name": "VM.Standard.E4.Flex-4v16g", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24.04" },
+                        { "name": "VM.Standard.E4.Flex-8v32g", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24.04" },
+                        { "name": "VM.Standard.E4.Flex-16v64g", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24.04" },
+                        { "name": "VM.Standard.E4.Flex-32v128g", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24.04" },
+                        { "name": "VM.Standard.E4.Flex-64v256g", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24.04" }
                     ],
                     "regions": [
                         { "region": "us-ashburn-1", "name": "Ashburn", "country": "US", "lat": 39.0438, "lng": -77.4874 },
@@ -281,14 +390,15 @@ export const seedStorageConfigs = {
             "worker": "*",
             "config": {
                 "clouds.hetzner": {
+                    "image": "ubuntu-24.04",
                     "instances": [
-                        { "name": "cx11", "vCPU": 1, "memoryGb": 2 },
-                        { "name": "cx22", "vCPU": 2, "memoryGb": 8 },
-                        { "name": "cx32", "vCPU": 4, "memoryGb": 16 },
-                        { "name": "cx42", "vCPU": 8, "memoryGb": 32 },
-                        { "name": "cx52", "vCPU": 16, "memoryGb": 64 },
-                        { "name": "ccx43", "vCPU": 32, "memoryGb": 128 },
-                        { "name": "ccx63", "vCPU": 64, "memoryGb": 256 }
+                        { "name": "cx11", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24.04" },
+                        { "name": "cx22", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24.04" },
+                        { "name": "cx32", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24.04" },
+                        { "name": "cx42", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24.04" },
+                        { "name": "cx52", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24.04" },
+                        { "name": "ccx43", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24.04" },
+                        { "name": "ccx63", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24.04" }
                     ],
                     "regions": [
                         { "region": "fsn1", "name": "Falkenstein", "country": "DE", "lat": 50.4779, "lng": 12.3713 },
@@ -312,14 +422,15 @@ export const seedStorageConfigs = {
             "worker": "*",
             "config": {
                 "clouds.vultr": {
+                    "image": "ubuntu-24-04-x64",
                     "instances": [
-                        { "name": "vc2-1c-2gb", "vCPU": 1, "memoryGb": 2 },
-                        { "name": "vc2-2c-8gb", "vCPU": 2, "memoryGb": 8 },
-                        { "name": "vc2-4c-16gb", "vCPU": 4, "memoryGb": 16 },
-                        { "name": "vc2-8c-32gb", "vCPU": 8, "memoryGb": 32 },
-                        { "name": "vc2-16c-64gb", "vCPU": 16, "memoryGb": 64 },
-                        { "name": "vc2-32c-128gb", "vCPU": 32, "memoryGb": 128 },
-                        { "name": "vc2-64c-256gb", "vCPU": 64, "memoryGb": 256 }
+                        { "name": "vc2-1c-2gb", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24-04-x64" },
+                        { "name": "vc2-2c-8gb", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24-04-x64" },
+                        { "name": "vc2-4c-16gb", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24-04-x64" },
+                        { "name": "vc2-8c-32gb", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24-04-x64" },
+                        { "name": "vc2-16c-64gb", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24-04-x64" },
+                        { "name": "vc2-32c-128gb", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24-04-x64" },
+                        { "name": "vc2-64c-256gb", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24-04-x64" }
                     ],
                     "regions": [
                         { "region": "ewr", "name": "New Jersey", "country": "US", "lat": 40.7128, "lng": -74.0060 },
@@ -358,14 +469,15 @@ export const seedStorageConfigs = {
             "worker": "*",
             "config": {
                 "clouds.equinix": {
+                    "image": "ubuntu_24_04",
                     "instances": [
-                        { "name": "c3.small.x86", "vCPU": 1, "memoryGb": 2 },
-                        { "name": "c3.medium.x86", "vCPU": 2, "memoryGb": 8 },
-                        { "name": "c3.large.x86", "vCPU": 4, "memoryGb": 16 },
-                        { "name": "c3.xlarge.x86", "vCPU": 8, "memoryGb": 32 },
-                        { "name": "m3.large.x86", "vCPU": 16, "memoryGb": 64 },
-                        { "name": "m3.xlarge.x86", "vCPU": 32, "memoryGb": 128 },
-                        { "name": "n3.xlarge.x86", "vCPU": 64, "memoryGb": 256 }
+                        { "name": "c3.small.x86", "vCPU": 1, "memoryGb": 2, "image": "ubuntu_24_04" },
+                        { "name": "c3.medium.x86", "vCPU": 2, "memoryGb": 8, "image": "ubuntu_24_04" },
+                        { "name": "c3.large.x86", "vCPU": 4, "memoryGb": 16, "image": "ubuntu_24_04" },
+                        { "name": "c3.xlarge.x86", "vCPU": 8, "memoryGb": 32, "image": "ubuntu_24_04" },
+                        { "name": "m3.large.x86", "vCPU": 16, "memoryGb": 64, "image": "ubuntu_24_04" },
+                        { "name": "m3.xlarge.x86", "vCPU": 32, "memoryGb": 128, "image": "ubuntu_24_04" },
+                        { "name": "n3.xlarge.x86", "vCPU": 64, "memoryGb": 256, "image": "ubuntu_24_04" }
                     ],
                     "regions": [
                         { "region": "da", "name": "Dallas", "country": "US", "lat": 32.7767, "lng": -96.7970 },

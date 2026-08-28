@@ -5,8 +5,23 @@
  * it under the terms of the GNU Affero General Public License as published
  * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
  ********************************************************************************/
 
+/**
+ * Seeding Payload: apis collection
+ *
+ * Configures API keys, authentication methods, base URLs, headers, and default
+ * provider metadata (project IDs, subscription IDs, account SIDs, image IDs) bound
+ * to $config in AST execution contexts.
+ */
 export const seedApisPayload = {
     "method": "object.update",
     "array": "apis",
@@ -15,8 +30,10 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904dfe",
             "name": "stripe",
+            "provider": "stripe",
             "url": "https://api.stripe.com/v1",
             "key": "stripe_api_key_placeholder",
+            "webhookSecret": "stripe_webhook_signing_secret_placeholder",
             "headers": {
                 "Authorization": {
                     "$concat": ["Bearer ", "$key"]
@@ -25,9 +42,12 @@ export const seedApisPayload = {
             "description": "Stripe payment gateway API integration utilizing dynamic bearer authorization header resolution.",
             "enabled": true
         },
+
         {
             "_id": "65f8ca227b39a3c1a8904dff",
             "name": "twilio",
+            "provider": "twilio",
+            "accountSid": "twilio_account_sid_placeholder",
             "url": "https://api.twilio.com/2010-04-01",
             "key": "twilio_account_sid_placeholder:twilio_auth_token_placeholder",
             "headers": {
@@ -42,6 +62,7 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e00",
             "name": "postmark",
+            "provider": "postmark",
             "url": "https://api.postmarkapp.com",
             "key": "postmark_server_token_placeholder",
             "headers": {
@@ -52,9 +73,12 @@ export const seedApisPayload = {
             "description": "Postmark transactional email pipeline configuration. Built to handle secure email transmissions with zero hardcoded authentication dependencies.",
             "enabled": true
         },
+
         {
             "_id": "65f8ca227b39a3c1a8904e01",
             "name": "openai",
+            "provider": "openai",
+            "model": "gpt-4o",
             "url": "https://api.openai.com/v1",
             "key": "openai_api_key_placeholder",
             "headers": {
@@ -65,9 +89,11 @@ export const seedApisPayload = {
             "description": "OpenAI LLM Integration Pipeline. Powers intelligent content completion, conversational agents, vector searches, and structured JSON parsing engines directly within our multi-tenant microservices.",
             "enabled": true
         },
+
         {
             "_id": "65f8ca227b39a3c1a8904e02",
             "name": "aws",
+            "provider": "aws",
             "url": "https://amazonaws.com",
             "key": "aws_access_key_id_placeholder:aws_secret_access_key_placeholder",
             "headers": {
@@ -94,6 +120,8 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e03",
             "name": "gcp",
+            "provider": "gcp",
+            "project": "gcp_project_id_placeholder",
             "url": "https://compute.googleapis.com/compute/v1",
             "key": "gcp_service_account_private_key_placeholder",
             "headers": {
@@ -121,6 +149,9 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e04",
             "name": "azure",
+            "provider": "azure",
+            "subscriptionId": "azure_subscription_id_placeholder",
+            "resourceGroup": "default-rg",
             "url": "https://management.azure.com",
             "key": "azure_bearer_token_placeholder",
             "headers": {
@@ -132,9 +163,11 @@ export const seedApisPayload = {
             "description": "Microsoft Azure Resource Manager REST API utilizing standard Bearer token header resolution.",
             "enabled": true
         },
+
         {
             "_id": "65f8ca227b39a3c1a8904e05",
             "name": "digitalocean",
+            "provider": "digitalocean",
             "url": "https://api.digitalocean.com/v2",
             "key": "digitalocean_personal_access_token_placeholder",
             "headers": {
@@ -149,6 +182,8 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e06",
             "name": "oci",
+            "provider": "oci",
+            "compartmentId": "oci_compartment_id_placeholder",
             "url": "https://iaas.us-ashburn-1.oraclecloud.com/20160918",
             "key": "oci_tenancy_ocid:oci_user_ocid:oci_key_fingerprint:oci_private_key",
             "headers": {
@@ -173,6 +208,7 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e07",
             "name": "hetzner",
+            "provider": "hetzner",
             "url": "https://api.hetzner.cloud/v1",
             "key": "hetzner_api_token_placeholder",
             "headers": {
@@ -187,6 +223,7 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e08",
             "name": "vultr",
+            "provider": "vultr",
             "url": "https://api.vultr.com/v2",
             "key": "vultr_api_key_placeholder",
             "headers": {
@@ -202,6 +239,8 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e09",
             "name": "equinix",
+            "provider": "equinix",
+            "projectId": "equinix_project_id_placeholder",
             "url": "https://api.equinix.com/metal/v1",
             "key": "equinix_user_api_token_placeholder",
             "headers": {
@@ -212,9 +251,11 @@ export const seedApisPayload = {
             "description": "Equinix Metal Bare Metal Cloud API v1 utilizing dedicated X-Auth-Token header authentication.",
             "enabled": true
         },
+
         {
             "_id": "65f8ca227b39a3c1a8904e0a",
             "name": "google",
+            "provider": "google",
             "url": "https://oauth2.googleapis.com",
             "key": "google_client_id_placeholder:google_client_secret_placeholder",
             "headers": {
@@ -229,6 +270,7 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e0b",
             "name": "microsoft",
+            "provider": "microsoft",
             "url": "https://login.microsoftonline.com/common/oauth2/v2.0",
             "key": "microsoft_client_id_placeholder:microsoft_client_secret_placeholder",
             "headers": {
@@ -243,6 +285,7 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e0c",
             "name": "apple",
+            "provider": "apple",
             "url": "https://appleid.apple.com/auth",
             "key": "apple_private_key_placeholder",
             "headers": {
@@ -269,6 +312,7 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e0d",
             "name": "facebook",
+            "provider": "facebook",
             "url": "https://graph.facebook.com/v19.0",
             "key": "facebook_app_id_placeholder:facebook_app_secret_placeholder",
             "headers": {
@@ -283,6 +327,7 @@ export const seedApisPayload = {
         {
             "_id": "65f8ca227b39a3c1a8904e0e",
             "name": "github",
+            "provider": "github",
             "url": "https://github.com/login/oauth",
             "key": "github_client_id_placeholder:github_client_secret_placeholder",
             "headers": {
