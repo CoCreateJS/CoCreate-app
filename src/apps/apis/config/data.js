@@ -79,7 +79,7 @@ export const seedApisPayload = {
             "name": "openai",
             "provider": "openai",
             "url": "https://api.openai.com/v1",
-            "key": "openai_api_key_placeholder",
+            "key": "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",
             "headers": {
                 "Authorization": {
                     "$concat": ["Bearer ", "$key"]
