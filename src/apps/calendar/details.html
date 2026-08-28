@@ -1,0 +1,139 @@
+<form
+	class="card mb-0"
+	array="events"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/calendar/form.html"
+		src="components/offcanvas-header.html"
+		aria-label="Calendar Details Header"></div>
+	<div
+		class="form-container"
+		plugin='{"SimpleBar": ["$this", {}]}'
+		aria-label="Event Information Container">
+		<div class="card-body d-flex flex-wrap gap-4">
+			<div
+				class="flex-shrink-0 d-flex flex-column align-items-center width:100% m-2">
+				<i
+					class="ri-calendar-event-line avatar-xl rounded-circle img-thumbnail material-shadow text-muted fs-16"
+					aria-label="Event Icon"></i>
+
+				<h5 class="mt-4 mb-1" key="title" aria-label="Event Title"></h5>
+				<p
+					class="text-muted"
+					key="category"
+					aria-label="Event Category"></p>
+				<ul
+					class="list-inline mb-0 d-flex gap-2 mt-3"
+					aria-label="Event Actions">
+					<li class="avatar-xs">
+						<a
+							href=""
+							key="location"
+							input.href="$value"
+							value-prefix="https://maps.google.com/?q="
+							value=""
+							class="avatar-title bg-success-subtle text-success fs-15 rounded"
+							aria-label="View Location">
+							<i class="ri-map-pin-line"></i>
+						</a>
+					</li>
+					<li class="avatar-xs">
+						<a
+							href=""
+							key="email"
+							input.href="$value"
+							value-prefix="mailto:"
+							value=""
+							class="avatar-title bg-danger-subtle text-danger fs-15 rounded"
+							aria-label="Email Contact">
+							<i class="ri-mail-line"></i>
+						</a>
+					</li>
+					<li class="avatar-xs">
+						<a
+							href=""
+							key="phone"
+							input.href="$value"
+							value-prefix="tel:"
+							value=""
+							class="avatar-title bg-warning-subtle text-warning fs-15 rounded"
+							aria-label="Call Contact">
+							<i class="ri-phone-line"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-grow-1" style="flex-basis: 0; min-width: 300px">
+				<h6
+					class="text-muted text-uppercase fw-semibold mb-3"
+					aria-label="Event Information Section">
+					Event Information
+				</h6>
+				<p
+					class="text-muted mb-4"
+					key="description"
+					aria-describedby="event-info-heading"></p>
+				<div class="table-responsive table-card">
+					<table
+						class="table table-borderless mb-0"
+						aria-label="Event Details Table">
+						<tbody>
+							<tr>
+								<td class="fw-medium" scope="row">Title</td>
+								<td key="title" aria-label="Event Title"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Date</td>
+								<td
+									key="start_date"
+									aria-label="Event Date"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">
+									Start Time
+								</td>
+								<td
+									key="start_time"
+									aria-label="Event Start Time"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">End Time</td>
+								<td
+									key="end_time"
+									aria-label="Event End Time"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Location</td>
+								<td
+									key="location"
+									aria-label="Event Location"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Name</td>
+								<td key="name" aria-label="Contact Name"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Email</td>
+								<td key="email" aria-label="Contact Email"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium" scope="row">Category</td>
+								<td
+									key="category"
+									aria-label="Event Category"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div
+				class="w-100"
+				src="components/activities.html"
+				aria-label="Event Activities Section"></div>
+		</div>
+	</div>
+</form>

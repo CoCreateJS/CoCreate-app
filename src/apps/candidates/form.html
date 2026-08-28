@@ -1,0 +1,112 @@
+<form
+	class="card mb-0"
+	array="contacts"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".details-view-btn[]"
+		input.state.src="/apps/candidates/details.html"
+		src="components/offcanvas-header.html"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4">
+			<div class="flex-grow-1" style="flex-basis: 400px">
+				<div class="card">
+					<div class="card-header">Candidate Information</div>
+					<div class="card-body d-flex flex-column gap-3">
+						<label class="form-label"
+							>First Name
+							<input
+								type="text"
+								key="first_name"
+								class="form-control"
+								placeholder="Enter first name"
+								aria-label="First Name" />
+						</label>
+						<label class="form-label"
+							>Last Name
+							<input
+								type="text"
+								key="last_name"
+								class="form-control"
+								placeholder="Enter last name"
+								aria-label="Last Name" />
+						</label>
+						<label class="form-label"
+							>Email
+							<input
+								type="email"
+								key="email"
+								class="form-control"
+								placeholder="candidate@example.com"
+								aria-label="Email" />
+						</label>
+						<label class="form-label"
+							>Phone Number
+							<input
+								type="tel"
+								key="phone"
+								class="form-control"
+								placeholder="(123) 456-7890"
+								aria-label="Phone Number" />
+						</label>
+						<label class="form-label"
+							>Company
+							<input
+								type="text"
+								key="company"
+								class="form-control"
+								placeholder="Enter company name"
+								aria-label="Company" />
+						</label>
+						<label class="form-label"
+							>Title
+							<input
+								type="text"
+								key="title"
+								class="form-control"
+								placeholder="e.g., Software Engineer"
+								aria-label="Title" />
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="flex-grow-1" style="flex-basis: 400px">
+				<div class="card">
+					<div class="card-header">Additional Details</div>
+					<div class="card-body d-flex flex-column gap-3">
+						<label class="form-label"
+							>Website
+							<input
+								type="url"
+								key="website"
+								class="form-control"
+								placeholder="https://www.example.com"
+								aria-label="Website" />
+						</label>
+						<label class="form-label"
+							>Description
+							<textarea
+								key="description"
+								class="form-control"
+								placeholder="Brief candidate description"
+								rows="5"
+								aria-label="Description"></textarea>
+						</label>
+						<label class="form-label"
+							>Tags
+							<select
+								key="tags"
+								class="form-select"
+								multiple
+								plugin="choices"
+								aria-label="Tags"></select>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="w-100" src="/components/form-buttons.html"></div>
+		</div>
+	</div>
+</form>

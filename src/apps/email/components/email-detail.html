@@ -1,0 +1,388 @@
+<div
+	class="email-detail minimal-border"
+	id="email-detail"
+	aria-close-on="button">
+	<div class="p-4 d-flex flex-column h-100">
+		<div class="pb-4 border-bottom border-bottom-dashed">
+			<div class="row">
+				<div class="col">
+					<div class="">
+						<button
+							type="button"
+							class="btn btn-soft-danger btn-icon btn-sm fs-16 material-shadow-none"
+							id="close-btn-email"
+							aria-label="Close email detail"
+							aria-controls="email-detail"
+							aria-expanded="true">
+							<i class="ri-close-fill align-bottom"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-auto">
+					<div
+						class="hstack gap-sm-1 align-items-center flex-wrap email-topbar-link">
+						<button
+							type="button"
+							class="btn btn-ghost-secondary btn-icon btn-sm fs-16 favourite-btn active material-shadow-none"
+							aria-pressed="true"
+							aria-label="Mark as favorite">
+							<i class="ri-star-fill align-bottom"></i>
+						</button>
+						<button
+							type="button"
+							class="btn btn-ghost-secondary btn-icon btn-sm fs-16 material-shadow-none"
+							aria-label="Print email">
+							<i class="ri-printer-fill align-bottom"></i>
+						</button>
+						<button
+							type="button"
+							class="btn btn-ghost-secondary btn-icon btn-sm fs-16 material-shadow-none remove-mail"
+							data-remove-id=""
+							aria-label="Delete email"
+							aria-haspopup="dialog"
+							aria-controls="removeItemModal">
+							<i class="ri-delete-bin-5-fill align-bottom"></i>
+						</button>
+						<div class="dropdown">
+							<button
+								class="btn btn-ghost-secondary btn-icon btn-sm fs-16 material-shadow-none"
+								type="button"
+								aria-haspopup="menu"
+								aria-expanded="false"
+								aria-controls="email-detail-dropdown-menu"
+								aria-label="More actions">
+								<i class="ri-more-2-fill align-bottom"></i>
+							</button>
+							<div
+								class="dropdown-menu dropdown-menu-end"
+								id="email-detail-dropdown-menu"
+								aria-close-on="anywhere"
+								role="menu">
+								<a
+									class="dropdown-item"
+									href="#"
+									role="menuitem"
+									>Mark as Unread</a
+								>
+								<a
+									class="dropdown-item"
+									href="#"
+									role="menuitem"
+									>Mark as Important</a
+								>
+								<a
+									class="dropdown-item"
+									href="#"
+									role="menuitem"
+									>Add to Tasks</a
+								>
+								<a
+									class="dropdown-item"
+									href="#"
+									role="menuitem"
+									>Add Star</a
+								>
+								<a
+									class="dropdown-item"
+									href="#"
+									role="menuitem"
+									>Mute</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mx-n4 px-4 email-detail-scroll" plugin='{"SimpleBar": ["$this", {}]}'>
+			<div class="mt-4 mb-3">
+				<h5 class="fw-bold email-subject-title">
+					New updates for Skote Theme
+				</h5>
+			</div>
+
+			<div class="accordion accordion-flush">
+				<div class="accordion-item border-dashed left">
+					<div class="accordion-header">
+						<a
+							role="button"
+							class="btn w-100 text-start px-0 bg-transparent shadow-none collapsed"
+							data-bs-toggle="collapse"
+							href="#email-collapseOne"
+							aria-expanded="true"
+							aria-controls="email-collapseOne">
+							<div class="d-flex align-items-center text-muted">
+								<div class="flex-shrink-0 avatar-xs me-3">
+									<img
+										src="/assets/images/users/avatar-3.jpg"
+										alt=""
+										class="img-fluid rounded-circle" />
+								</div>
+								<div class="flex-grow-1 overflow-hidden">
+									<h5
+										class="fs-14 text-truncate email-user-name mb-0">
+										Jack Davis
+									</h5>
+									<div class="text-truncate fs-12">
+										to: me
+									</div>
+								</div>
+								<div class="flex-shrink-0 align-self-start">
+									<div class="text-muted fs-12">
+										09 Jan 2022, 11:12 AM
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+
+					<div
+						id="email-collapseOne"
+						class="accordion-collapse collapse">
+						<div class="accordion-body text-body px-0">
+							<div>
+								<p>Hi,</p>
+								<p>
+									Praesent dui ex, dapibus eget mauris ut,
+									finibus vestibulum enim. Quisque arcu leo,
+									facilisis in fringilla id, luctus in tortor.
+								</p>
+								<p>
+									Sed elementum turpis eu lorem interdum, sed
+									porttitor eros commodo. Nam eu venenatis
+									tortor, id lacinia diam. Sed aliquam in dui
+									et porta. Sed bibendum orci non tincidunt
+									ultrices.
+								</p>
+								<p>Sincerly,</p>
+
+								<div class="d-flex gap-3">
+									<div
+										class="border rounded avatar-xl h-auto">
+										<img
+											src="/assets/images/small/img-2.jpg"
+											alt=""
+											class="img-fluid rouned-top" />
+										<div class="py-2 text-center">
+											<a
+												href=""
+												class="d-block fw-semibold"
+												>Download</a
+											>
+										</div>
+									</div>
+									<div
+										class="border rounded avatar-xl h-auto">
+										<img
+											src="/assets/images/small/img-6.jpg"
+											alt=""
+											class="img-fluid rouned-top" />
+										<div class="py-2 text-center">
+											<a
+												href=""
+												class="d-block fw-semibold"
+												>Download</a
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end accordion-item -->
+
+				<div class="accordion-item border-dashed right">
+					<div class="accordion-header">
+						<a
+							role="button"
+							class="btn w-100 text-start px-0 bg-transparent shadow-none collapsed"
+							data-bs-toggle="collapse"
+							href="#email-collapseTwo"
+							aria-expanded="true"
+							aria-controls="email-collapseTwo">
+							<div class="d-flex align-items-center text-muted">
+								<div class="flex-shrink-0 avatar-xs me-3">
+									<img
+										src="/assets/images/users/avatar-1.jpg"
+										alt=""
+										class="img-fluid rounded-circle" />
+								</div>
+								<div class="flex-grow-1 overflow-hidden">
+									<h5
+										class="fs-14 text-truncate email-user-name-right mb-0">
+										Anna Adame
+									</h5>
+									<div class="text-truncate fs-12">
+										to: jackdavis@email.com
+									</div>
+								</div>
+								<div class="flex-shrink-0 align-self-start">
+									<div class="text-muted fs-12">
+										09 Jan 2022, 02:15 PM
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+
+					<div
+						id="email-collapseTwo"
+						class="accordion-collapse collapse">
+						<div class="accordion-body text-body px-0">
+							<div>
+								<p>Hi,</p>
+								<p>
+									If several languages coalesce, the grammar
+									of the resulting language is more simple and
+									regular than that of the individual.
+								</p>
+								<p>Thank you</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end accordion-item -->
+
+				<div class="accordion-item border-dashed left">
+					<div class="accordion-header">
+						<a
+							role="button"
+							class="btn w-100 text-start px-0 bg-transparent shadow-none"
+							data-bs-toggle="collapse"
+							href="#email-collapseThree"
+							aria-expanded="true"
+							aria-controls="email-collapseThree">
+							<div class="d-flex align-items-center text-muted">
+								<div class="flex-shrink-0 avatar-xs me-3">
+									<img
+										src="/assets/images/users/avatar-3.jpg"
+										alt=""
+										class="img-fluid rounded-circle" />
+								</div>
+								<div class="flex-grow-1 overflow-hidden">
+									<h5
+										class="fs-14 text-truncate email-user-name mb-0">
+										Jack Davis
+									</h5>
+									<div class="text-truncate fs-12">
+										to: me
+									</div>
+								</div>
+								<div class="flex-shrink-0 align-self-start">
+									<div class="text-muted fs-12">
+										10 Jan 2022, 10:08 AM
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+
+					<div
+						id="email-collapseThree"
+						class="accordion-collapse collapse show">
+						<div class="accordion-body text-body px-0">
+							<div>
+								<p>Hi,</p>
+								<p>
+									Everyone realizes why a new common language
+									would be desirable: one could refuse to pay
+									expensive translators. To achieve this, it
+									would be necessary to have uniform grammar
+									pronunciation.
+								</p>
+								<p>Thank you</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end accordion-item -->
+			</div>
+			<!-- end accordion -->
+		</div>
+		<div class="mt-auto">
+			<form class="mt-2">
+				<div>
+					<label for="exampleFormControlTextarea1" class="form-label"
+						>Reply :</label
+					>
+					<textarea
+						class="form-control border-bottom-0 rounded-top rounded-0 border"
+						id="exampleFormControlTextarea1"
+						rows="3"
+						placeholder="Enter message"></textarea>
+					<div class="bg-light px-2 py-1 rouned-bottom border">
+						<div class="row">
+							<div class="col">
+								<div class="btn-group" role="group">
+									<button
+										type="button"
+										class="btn btn-sm py-0 fs-15 btn-light material-shadow-none"
+										data-bs-toggle="tooltip"
+										data-bs-placement="top"
+										title="Bold">
+										<i class="ri-bold align-bottom"></i>
+									</button>
+									<button
+										type="button"
+										class="btn btn-sm py-0 fs-15 btn-light material-shadow-none"
+										data-bs-toggle="tooltip"
+										data-bs-placement="top"
+										title="Italic">
+										<i class="ri-italic align-bottom"></i>
+									</button>
+									<button
+										type="button"
+										class="btn btn-sm py-0 fs-15 btn-light material-shadow-none"
+										data-bs-toggle="tooltip"
+										data-bs-placement="top"
+										title="Link">
+										<i class="ri-link align-bottom"></i>
+									</button>
+									<button
+										type="button"
+										class="btn btn-sm py-0 fs-15 btn-light material-shadow-none"
+										data-bs-toggle="tooltip"
+										data-bs-placement="top"
+										title="Image">
+										<i
+											class="ri-image-2-line align-bottom"></i>
+									</button>
+								</div>
+							</div>
+							<div class="col-auto">
+								<div class="btn-group">
+									<button
+										type="button"
+										class="btn btn-sm btn-success">
+										<i
+											class="ri-send-plane-2-fill align-bottom"></i>
+									</button>
+									<button
+										type="button"
+										class="btn btn-sm btn-success dropdown-toggle dropdown-toggle-split"
+										data-bs-toggle="dropdown"
+										aria-expanded="false">
+										<span class="visually-hidden"
+											>Toggle Dropdown</span
+										>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere">
+										<li>
+											<a class="dropdown-item" href="#"
+												><i
+													class="ri-timer-line text-muted me-1 align-bottom"></i>
+												Schedule Send</a
+											>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

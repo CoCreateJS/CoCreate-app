@@ -1,0 +1,70 @@
+<div  class="px-3 mx-n3 mb-2">
+	<div class="card-header align-items-center d-flex">
+		<h4 class="card-title mb-0 flex-grow-1">Comments</h4>
+		<div class="flex-shrink-0">
+			<div class="dropdown card-header-dropdown">
+				<a
+					class="text-reset dropdown-btn"
+					href="#"
+					data-bs-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+					<span class="text-muted">
+						Recent
+						<i class="mdi mdi-chevron-down ms-1"></i>
+					</span>
+				</a>
+				<div class="dropdown-menu dropdown-menu-end">
+					<a class="dropdown-item" href="#">Recent</a>
+					<a class="dropdown-item" href="#">Top Rated</a>
+					<a class="dropdown-item" href="#">Previous</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end card header -->
+
+	<div class="d-flex mb-4">
+		<img src="/assets/images/users/avatar-7.jpg" alt="User Avatar" class="avatar-xs rounded-circle material-shadow" />
+		<div class="ms-3">
+			<div array="comments" render-query="[template='comment-template']" >
+				<div template="comment-template">
+					<h5 class="fs-13">
+						<a key="name">{{object.name}}</a>
+						<small class="text-muted" key="date">{{object.date}}</small>
+					</h5>
+					<p class="text-muted" key="content">{{object.content}}</p>
+					<a href="javascript: void(0);" class="badge text-muted bg-light" aria-label="Reply to comment">
+						<i class="mdi mdi-reply"></i> Reply
+					</a>
+					<div array="replies" render-query="[template='reply-template']">
+						<div class="d-flex mt-4" template="reply-template">
+							<img src="" key="avatar" alt="User Avatar" class="avatar-xs rounded-circle material-shadow" />
+							<div class="ms-3">
+								<h5 class="fs-13">
+									<a href="pages-profile.html" key="name">{{object.name}}</a>
+									<small class="text-muted" key="date">{{object.date}}</small>
+								</h5>
+								<p class="text-muted" key="content">{{object.content}}</p>
+								<a href="javascript: void(0);" class="badge text-muted bg-light" aria-label="Reply to reply">
+									<i class="mdi mdi-reply"></i> Reply
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<form action="addComment" class="mt-4">
+		<textarea class="form-control bg-light border-light mb-3" rows="3" placeholder="Enter comments" key="content" aria-label="New comment content"></textarea>
+		<div class="text-end">
+			<button type="button" class="btn btn-ghost-secondary btn-icon waves-effect me-1" aria-label="Attach file">
+				<i class="ri-attachment-line fs-16"></i>
+			</button>
+			<button type="submit" class="btn btn-success">
+				Post Comments
+			</button>
+		</div>
+	</form>
+</div>

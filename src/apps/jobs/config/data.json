@@ -1,0 +1,499 @@
+{
+  "method": "object.update",
+  "array": "jobPosts",
+  "upsert": true,
+  "object": [
+    {
+        "_id": "6884784d0f273950e19f05f7",
+        "coverImg": "assets/images/small/img-2.jpg",
+        "companyLogo": "assets/images/companies/img-3.png",
+        "jobTitle": "UI/UX designer",
+        "companyName": "Nesta Technologies",
+        "location": "Escondido, California",
+        "postDate": "11 Sep, 2022",
+        "description": "A UI/UX designer's job is to create user-friendly interfaces that enable users to understand how to use complex technical products. If you're passionate about the latest technology trends and devices, you'll find great fulfillment in being involved in the design process for the next hot gadget.",
+        "tags": [
+            "Design",
+            "Remote",
+            "UI/UX Designer",
+            "Designer"
+        ],
+        "type": "Full Time",
+        "experience": "2 Year",
+        "applied": "640 Applied",
+        "requirement": [
+            "Full Time",
+            "Freelance",
+            "Urgent"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Designer",
+        "category": "Design",
+        "last_apply_date": "2024-08-01",
+        "close_date": "2024-08-15",
+        "start_salary": "50000",
+        "last_salary": "70000",
+        "country": "USA",
+        "state": "California"
+    },
+    {
+        "_id": "6884784d0339753921f105f8",
+        "coverImg": "assets/images/small/img-4.jpg",
+        "companyLogo": "assets/images/companies/img-4.png",
+        "jobTitle": "Marketing Director",
+        "companyName": "Meta4Systems",
+        "location": "Vinninga, Sweden",
+        "postDate": "13 Sep, 2022",
+        "description": "These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents to do what we like best, every pleasure is to be welcomed and every pain avoided. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.",
+        "tags": [
+            "Design",
+            "Remote",
+            "UI/UX Designer",
+            "Designer"
+        ],
+        "type": "Intership",
+        "experience": "Fresher",
+        "applied": "134 Applied",
+        "requirement": [
+            "Part Time",
+            "Freelance"
+        ],
+        "status": "New",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Director",
+        "category": "Marketing",
+        "last_apply_date": "2024-08-02",
+        "close_date": "2024-08-16",
+        "start_salary": "60000",
+        "last_salary": "90000",
+        "country": "Sweden",
+        "state": "Vinninga"
+    },
+    {
+        "_id": "6884784d0e015a443e2005f9",
+        "coverImg": "assets/images/small/img-7.jpg",
+        "companyLogo": "assets/images/companies/img-5.png",
+        "jobTitle": "Product Sales Specialist",
+        "companyName": "Digitech Galaxy",
+        "location": "Cullera, Spain",
+        "postDate": "14 Sep, 2022",
+        "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+        "tags": [
+            "Design",
+            "Remote",
+            "UI/UX Designer",
+            "Designer"
+        ],
+        "type": "Part Time",
+        "experience": "0 - 5 Year",
+        "applied": "79 Applied",
+        "requirement": [
+            "Full Time",
+            "Private"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Sales Specialist",
+        "category": "Sales",
+        "last_apply_date": "2024-08-03",
+        "close_date": "2024-08-17",
+        "start_salary": "40000",
+        "last_salary": "65000",
+        "country": "Spain",
+        "state": "Cullera"
+    },
+    {
+        "_id": "6884784d022392be377605fa",
+        "coverImg": "assets/images/small/img-3.jpg",
+        "companyLogo": "assets/images/companies/img-6.png",
+        "jobTitle": "Project Manager",
+        "companyName": "Syntyce Solutions",
+        "location": "Stordorf, Germany",
+        "postDate": "14 Sep, 2022",
+        "description": "In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated.",
+        "tags": [
+            "Design",
+            "Remote",
+            "UI/UX Designer",
+            "Designer"
+        ],
+        "type": "Freelance",
+        "experience": "1 Year",
+        "applied": "36 Applied",
+        "requirement": [
+            "Full Time",
+            "Freelance"
+        ],
+        "status": "New",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Manager",
+        "category": "Project Management",
+        "last_apply_date": "2024-08-04",
+        "close_date": "2024-08-18",
+        "start_salary": "70000",
+        "last_salary": "95000",
+        "country": "Germany",
+        "state": "Stordorf"
+    },
+    {
+        "_id": "6884784d01bebd3b38e705fb",
+        "coverImg": "assets/images/small/img-8.jpg",
+        "companyLogo": "assets/images/companies/img-7.png",
+        "jobTitle": "Product Designer",
+        "companyName": "CoCreate",
+        "location": "United Kingdom",
+        "postDate": "15 Sep, 2022",
+        "description": "A UI/UX designer's job is to create user-friendly interfaces that enable users to understand how to use complex technical products. If you're passionate about the latest technology trends and devices, you'll find great fulfillment in being involved in the design process for the next hot gadget.",
+        "tags": [
+            "Design",
+            "Remote",
+            "UI/UX Designer",
+            "Designer"
+        ],
+        "type": "Full Time",
+        "experience": "1 - 2 Year",
+        "applied": "74 Applied",
+        "requirement": [
+            "Part Time"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Designer",
+        "category": "Product Design",
+        "last_apply_date": "2024-08-05",
+        "close_date": "2024-08-19",
+        "start_salary": "55000",
+        "last_salary": "80000",
+        "country": "United Kingdom",
+        "state": "London"
+    },
+    {
+        "_id": "6884784d0d074b9d34cb05fc",
+        "companyLogo": "assets/images/companies/img-1.png",
+        "jobTitle": "Education Training",
+        "companyName": "Micro Design",
+        "location": "Escondido,California",
+        "postDate": "15 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Full Time",
+            "Freelance",
+            "Urgent"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Trainer",
+        "category": "Education",
+        "last_apply_date": "2024-08-06",
+        "close_date": "2024-08-20",
+        "start_salary": "45000",
+        "last_salary": "60000",
+        "country": "USA",
+        "state": "California"
+    },
+    {
+        "_id": "6884784d0c0ec1e16e6205fd",
+        "companyLogo": "assets/images/companies/img-2.png",
+        "jobTitle": "Magento Developer",
+        "companyName": "CoCreate",
+        "location": "Stordorf, Germany",
+        "postDate": "15 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Part Time",
+            "Freelance"
+        ],
+        "status": "New",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Developer",
+        "category": "Software",
+        "last_apply_date": "2024-08-07",
+        "close_date": "2024-08-21",
+        "start_salary": "65000",
+        "last_salary": "85000",
+        "country": "Germany",
+        "state": "Stordorf"
+    },
+    {
+        "_id": "6884784d0651c0eeb09405fe",
+        "companyLogo": "assets/images/companies/img-3.png",
+        "jobTitle": "Product Designer",
+        "companyName": "CoCreate",
+        "location": "Cullera, Spain",
+        "postDate": "14 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Full Time",
+            "Private"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Designer",
+        "category": "Product Design",
+        "last_apply_date": "2024-08-08",
+        "close_date": "2024-08-22",
+        "start_salary": "60000",
+        "last_salary": "90000",
+        "country": "Spain",
+        "state": "Cullera"
+    },
+    {
+        "_id": "6884784d0bb91743cc2605ff",
+        "companyLogo": "assets/images/companies/img-5.png",
+        "jobTitle": "React Developer",
+        "companyName": "iTest Factory",
+        "location": "Haren, Germany",
+        "postDate": "13 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Full Time",
+            "Freelance",
+            "Urgent"
+        ],
+        "status": "New",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Developer",
+        "category": "Frontend",
+        "last_apply_date": "2024-08-09",
+        "close_date": "2024-08-23",
+        "start_salary": "70000",
+        "last_salary": "95000",
+        "country": "Germany",
+        "state": "Haren"
+    },
+    {
+        "_id": "6884784d00f6443a3d2a0600",
+        "companyLogo": "assets/images/companies/img-6.png",
+        "jobTitle": "UI/UX Designer",
+        "companyName": "Creative Team",
+        "location": "Vinninga, Sweden",
+        "postDate": "13 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Part Time"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Designer",
+        "category": "UI/UX",
+        "last_apply_date": "2024-08-10",
+        "close_date": "2024-08-24",
+        "start_salary": "50000",
+        "last_salary": "75000",
+        "country": "Sweden",
+        "state": "Vinninga"
+    },
+    {
+        "_id": "6884784d0ac0dbc31f1a0601",
+        "companyLogo": "assets/images/companies/img-7.png",
+        "jobTitle": "Marketing Director",
+        "companyName": "CoCreate",
+        "location": "Zhoukou, China",
+        "postDate": "12 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Freelance",
+            "Urgent"
+        ],
+        "status": "Close",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Director",
+        "category": "Marketing",
+        "last_apply_date": "2024-08-11",
+        "close_date": "2024-08-25",
+        "start_salary": "80000",
+        "last_salary": "110000",
+        "country": "China",
+        "state": "Zhoukou"
+    },
+    {
+        "_id": "6884784d03d9d1d3de960602",
+        "companyLogo": "assets/images/companies/img-8.png",
+        "jobTitle": "Full Stack Engineer",
+        "companyName": "Syntyce Solutions",
+        "location": "Boroaia, Romania",
+        "postDate": "11 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Full Time"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Engineer",
+        "category": "Full Stack",
+        "last_apply_date": "2024-08-12",
+        "close_date": "2024-08-26",
+        "start_salary": "90000",
+        "last_salary": "120000",
+        "country": "Romania",
+        "state": "Boroaia"
+    },
+    {
+        "_id": "6884784d0b56f5a49ff60603",
+        "companyLogo": "assets/images/companies/img-1.png",
+        "jobTitle": "Project Manager",
+        "companyName": "CoCreate",
+        "location": "Pazmand, Hungary",
+        "postDate": "11 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Full Time",
+            "Freelance"
+        ],
+        "status": "New",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Manager",
+        "category": "Project Management",
+        "last_apply_date": "2024-08-13",
+        "close_date": "2024-08-27",
+        "start_salary": "95000",
+        "last_salary": "130000",
+        "country": "Hungary",
+        "state": "Pazmand"
+    },
+    {
+        "_id": "6884784d0ecb620c88840604",
+        "companyLogo": "assets/images/companies/img-2.png",
+        "jobTitle": "HTML Developer",
+        "companyName": "CoCreate",
+        "location": "Donsieders, Germany",
+        "postDate": "10 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Part Time",
+            "Freelance"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Developer",
+        "category": "HTML",
+        "last_apply_date": "2024-08-14",
+        "close_date": "2024-08-28",
+        "start_salary": "60000",
+        "last_salary": "85000",
+        "country": "Germany",
+        "state": "Donsieders"
+    },
+    {
+        "_id": "6884784d095015799b000605",
+        "companyLogo": "assets/images/companies/img-3.png",
+        "jobTitle": "Business Associate",
+        "companyName": "CoCreate",
+        "location": "Sermerieu, France",
+        "postDate": "09 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Full Time",
+            "Freelance",
+            "Urgent"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Associate",
+        "category": "Business",
+        "last_apply_date": "2024-08-15",
+        "close_date": "2024-08-29",
+        "start_salary": "70000",
+        "last_salary": "100000",
+        "country": "France",
+        "state": "Sermerieu"
+    },
+    {
+        "_id": "6884784d03fb8a88c1fc0606",
+        "companyLogo": "assets/images/companies/img-5.png",
+        "jobTitle": "Assistant / Store Keeper",
+        "companyName": "Force Medicines",
+        "location": "San Lorenzo, Philippines",
+        "postDate": "08 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Part Time"
+        ],
+        "status": "Active",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Assistant",
+        "category": "Store",
+        "last_apply_date": "2024-08-16",
+        "close_date": "2024-08-30",
+        "start_salary": "40000",
+        "last_salary": "60000",
+        "country": "Philippines",
+        "state": "San Lorenzo"
+    },
+    {
+        "_id": "6884784d0a5ea4c1ea7c0607",
+        "companyLogo": "assets/images/companies/img-6.png",
+        "jobTitle": "Product Sales Specialist",
+        "companyName": "CoCreate",
+        "location": "Pazmand, Hungary",
+        "postDate": "08 Sep, 2022",
+        "description": "As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent.",
+        "requirement": [
+            "Full Time",
+            "Private"
+        ],
+        "status": "New",
+        "organization_id": "68518729061bf6900cb907d1",
+        "modified": {
+            "on": "2025-07-26T06:40:13.465Z"
+        },
+        "position": "Sales Specialist",
+        "category": "Sales",
+        "last_apply_date": "2024-08-17",
+        "close_date": "2024-08-31",
+        "start_salary": "50000",
+        "last_salary": "80000",
+        "country": "Hungary",
+        "state": "Pazmand"
+    }
+  ]
+}

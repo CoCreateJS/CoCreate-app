@@ -1,0 +1,165 @@
+<div class="p-3 d-flex flex-column h-100">
+	<div class="mb-3">
+		<h5 class="mb-0 fw-semibold">My Drive</h5>
+	</div>
+	<div class="search-box">
+		<input
+			type="text"
+			class="form-control bg-light border-light"
+			placeholder="Search here..." />
+		<i class="ri-search-2-line search-icon"></i>
+	</div>
+	<div class="mt-3 mx-n4 px-4 file-menu-sidebar-scroll" plugin='{"SimpleBar": ["$this", {}]}'>
+		<ul class="list-unstyled file-manager-menu">
+			<li>
+				<a
+					data-bs-toggle="collapse"
+					href="#collapseExample"
+					role="button"
+					aria-expanded="true"
+					aria-controls="collapseExample">
+					<i class="ri-folder-2-line align-bottom me-2"></i>
+					<span class="file-list-link">My Drive</span>
+				</a>
+				<div class="collapse show" id="collapseExample">
+					<ul class="sub-menu list-unstyled">
+						<li>
+							<a href="#!">Assets</a>
+						</li>
+						<li>
+							<a href="#!">Marketing</a>
+						</li>
+						<li>
+							<a href="#!">Personal</a>
+						</li>
+						<li>
+							<a href="#!">Projects</a>
+						</li>
+						<li>
+							<a href="#!">Templates</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a href="#!"
+					><i class="ri-file-list-2-line align-bottom me-2"></i>
+					<span class="file-list-link">Documents</span></a
+				>
+			</li>
+			<li>
+				<a href="#!"
+					><i class="ri-image-2-line align-bottom me-2"></i>
+					<span class="file-list-link">Media</span></a
+				>
+			</li>
+
+			<li>
+				<a href="#!"
+					><i class="ri-history-line align-bottom me-2"></i>
+					<span class="file-list-link">Recent</span></a
+				>
+			</li>
+			<li>
+				<a href="#!"
+					><i class="ri-star-line align-bottom me-2"></i>
+					<span class="file-list-link">Important</span></a
+				>
+			</li>
+			<li>
+				<a href="#!"
+					><i class="ri-delete-bin-line align-bottom me-2"></i>
+					<span class="file-list-link">Deleted</span></a
+				>
+			</li>
+		</ul>
+	</div>
+
+	<div class="mt-auto">
+		<h6 class="fs-11 text-muted text-uppercase mb-3">Storage Status</h6>
+		<div class="d-flex align-items-center">
+			<div class="flex-shrink-0">
+				<i class="ri-database-2-line fs-17"></i>
+			</div>
+			<div class="flex-grow-1 ms-3 overflow-hidden">
+				<div class="progress mb-2 progress-sm">
+					<div
+						class="progress-bar bg-success"
+						role="progressbar"
+						style="width: 25%"
+						aria-valuenow="25"
+						aria-valuemin="0"
+						aria-valuemax="100"></div>
+				</div>
+				<span class="text-muted fs-12 d-block text-truncate"
+					><b>47.52</b>GB used of <b>119</b>GB</span
+				>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div
+	class="margin-left:10px"
+	sortable
+	array="files"
+	filter-query-key="directory.$eq"
+	filter-query-value="parent"
+	filter-sort-key="directory"
+	order_type="asc"
+	render_id="$auto"
+	render-query=":last-child">
+	<div
+		filter-query-key="content-type"
+		filter-query-value="directory"
+		filter-query="$parent"></div>
+	<!--Folder Template -->
+	<div class="padding:5px" template render="object" object="{{object._id}}">
+		<span
+			class=""
+			show="#directory{{object._id}}"
+			hide="#directory{{object._id}}"
+			toggle="fa-caret-down, fa-caret-right"
+			toggle-query="#icon{{object._id}}">
+			<i id="icon{{object._id}}" class="fa fa-caret-right"></i>
+		</span>
+		<span
+			class="margin-left:5px"
+			array="files"
+			object="{{object._id}}"
+			key="name"
+			>Folder name</span
+		>
+		<div
+			id="directory{{object._id}}"
+			class="domEditor margin-left:10px"
+			hidden
+			array="files"
+			object="611ab5d9251afa96bd20f6cc"
+			key="src"
+			filter-query-value="{{object.path}}"></div>
+	</div>
+</div>
+<div
+	class="margin-left:10px"
+	sortable
+	array="files"
+	filter-query-key="directory.$eq"
+	filter-query-value="parent"
+	filter-sort-key="directory"
+	render-query="[template]">
+	<div
+		filter-query="$parent"
+		filter-query-key="content-type"
+		filter-query-value="text/directory.$ne"></div>
+
+	<!--File Template -->
+	<div class="padding:5px" template render="object" object="{{object._id}}">
+		<span class=""><i src="/assets/svg/html5.svg"></i></span>
+		<span
+			class="margin-left:5px"
+			array="files"
+			object="{{object._id}}"
+			key="name"></span>
+	</div>
+</div>

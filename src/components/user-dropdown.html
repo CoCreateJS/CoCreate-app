@@ -1,0 +1,109 @@
+<!-- item-->
+<h6 class="dropdown-header">Welcome <span array="contacts" object="$user_id" key="first_name"></span>!</h6>
+<a
+	class="dropdown-item"
+	state-to="adminView, accountView"
+	state.src="/apps/profile/index.html"
+	state.array="contacts"
+	state.object="$user_id"
+	role="menuitem"
+	title="View your profile">
+	<i class="ri-account-circle-line text-muted fs-16 align-middle me-1"></i>
+	<span class="align-middle">Profile</span>
+	<div state-to="app" state.object="68741e1d07a037d0d6d00efd"></div>
+</a>
+<a
+	class="dropdown-item"
+	state-to="adminView, accountView"
+	state.src="/apps/organizations/index.html"
+	state.array="organizations"
+	state.object="$organization_id"
+	role="menuitem"
+	title="Organization settings">
+	<i class="ri-building-line text-muted fs-16 align-middle me-1"></i>
+	<span class="align-middle">Organization</span>
+	<div state-to="app" state.object="68741e1d07a037d0d6d70dfb"></div>
+</a>
+<a
+	class="dropdown-item"
+	aria-expanded="false"
+	aria-haspopup="dialog"
+	aria-controls="theme-settings-dialog"
+	role="menuitem"
+	title="Open theme editor">
+	<i class="ri-palette-line text-muted fs-16 align-middle me-1"></i>
+	<span class="align-middle">Theme</span>
+</a>
+<a
+	class="dropdown-item"
+	state-to="adminView"
+	state.src="components/index.html"
+	role="menuitem"
+	title="UI Components & Widgets">
+	<i class="ri-braces-line text-muted fs-16 align-middle me-1"></i>
+	<span class="align-middle">Components</span>
+	<div state-to="app" state.object=""></div>
+</a>
+
+<!-- Language Selector Dropdown -->
+<a
+	class="dropdown-item"
+	aria-haspopup="menu"
+	aria-expanded="false"
+	aria-close="false"
+	aria-controls="language-dropdown"
+	title="Select language">
+	<input 
+		array="contacts"
+		object="$user_id"
+		key="lang.flag" 
+		input-query="$next" 
+		input.src="$value"
+		hidden>
+	<i
+		src="/assets/svg/globe.svg"
+		class="d-inline-flex align-middle text-muted me-1 height:16px"></i>
+	<span class="align-middle">Language</span>
+</a>
+
+<div
+	class="dropdown-menu"
+	id="language-dropdown"
+	role="menu"
+	style="box-shadow: none"
+	aria-close-on="anywhere"
+	aria-hidden="true"
+	aria-close="true"
+	src="/components/language-dropdown.html">
+</div>
+
+<div class="dropdown-divider"></div>
+<a
+	class="dropdown-item"
+	state-to="adminView, accountView"
+	state.src="/apps/settings/index.html"
+	role="menuitem"
+	title="Global settings hub (includes Organization, Security, Integrations and more)">
+	<i class="ri-settings-3-line text-muted fs-16 align-middle me-1"></i>
+	<span class="align-middle">Settings</span>
+	<div state-to="app" state.object="68741e1d07a037d0d6d00eff"></div>
+</a>
+<a
+	class="dropdown-item"
+	state-to="adminView, accountView"
+	state.src="pages/faqs.html"
+	role="menuitem"
+	title="Help & FAQs">
+	<i class="ri-question-line text-muted fs-16 align-middle me-1"></i>
+	<span class="align-middle">Help</span>
+	<div state-to="app" state.object=""></div>
+</a>
+<a
+	class="dropdown-item"
+	actions="signOut"
+	href="/auth/"
+	role="menuitem"
+	title="Sign out">
+	<i class="ri-logout-box-line text-muted fs-16 align-middle me-1"></i>
+	<span class="align-middle" data-key="t-logout">Logout</span>
+</a>

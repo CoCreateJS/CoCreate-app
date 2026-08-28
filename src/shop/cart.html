@@ -1,0 +1,198 @@
+<div
+    array="invoices"
+    object
+    key="_id"
+    value
+    filter-limit="1"
+    input-query="$document .cart-invoice[]"
+    input.object="$value">
+
+    <div
+        hidden
+        filter-query="$parent"
+        filter-query-key="isCart"
+        filter-query-value="$true">
+    </div>
+
+    <div
+        hidden
+        filter-query="$parent"
+        filter-query-key="$or[1].client_id"
+        filter-query-value="$client_id">
+    </div>
+    <div
+        hidden
+        filter-query="$parent"
+        filter-query-key="$or[0].modified.by"
+        filter-query-value="$user_id">
+    </div>
+
+    <button
+        type="button"
+        class="btn btn-link position-relative p-0 text-body"
+        id="cartDropdown"
+        aria-controls="cart-dropdown"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-label="Cart">
+        <i class="mdi mdi-cart-outline fs-20"></i>
+        <span 
+            class="cart-invoice position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger display:none:empty" 
+            array="invoices"
+            key="items.$length"
+            style="font-size:10px;"></span>
+    </button>
+
+    <div
+        class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-3"
+        id="cart-dropdown"
+        role="dialog"
+        aria-labelledby="cartDropdown"
+        aria-hidden="true"
+        aria-close-on="outside">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+                <div class="fw-semibold">Cart</div>
+            </div>
+            <span class="badge bg-danger-subtle text-danger">
+                <span class="cart-invoice" array="invoices" key="currency">$</span>
+                <span class="cart-invoice" array="invoices" key="total">0</span>
+            </span>
+        </div>
+
+        <div plugin="SimpleBar" simplebar='$parse(["$this", {}])' style="max-height: 420px;">
+            <div class="vstack gap-3">
+                <div
+                    class="vstack gap-3 cart-invoice"
+                    array="invoices"
+                    object
+                    key="items"
+                    render-query="[template]">
+                    <div 
+                        class="border-bottom pb-3"
+                        render-as="item"
+                        template>
+                        <div class="d-flex gap-2">
+                            <img
+                                src="/assets/svg/boxes.svg"
+                                array="items"
+                                object="{{item._id}}"
+                                key="images[0].src"
+                                alt="image"
+                                class="avatar-md rounded img-thumbnail material-shadow"
+                                onerror="this.onerror=null; this.src='/assets/svg/boxes.svg';" />
+                    
+                            <div class="" >
+                                <a
+                                    class="fw-medium text-decoration-none"
+                                    href="{{item.href}}">
+                                    {{item.name}}
+                                </a>
+                                <div class="small text-muted mt-1 mb-1">
+                                    {{item.description}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 pt-1">
+                            <input
+                                id="price{{index}}"
+                                type="number"
+                                value="{{item.price}}"
+                                hidden
+                            />
+                            <div class="input-step">
+                                <!-- minus: update quantity value on click via CoCreate attributes -->
+                                <button
+                                    type="button"
+                                    class="minus"
+                                    aria-label="Decrease quantity"
+                                    calculate="$eval($query($next).value - Number(1))"
+                                    click-query="$next"
+                                    click.value="$value"
+                                    click.if=">=0"
+                                    value
+                                >–</button>
+
+                                <input
+                                    id="quantity{{index}}"
+                                    type="number"
+                                    class="quantity align-center cart-invoice"
+                                    array="invoices" 
+                                    key="items[{{index}}].quantity"
+                                    readonly
+                                    min="0"
+                                    placeholder="0"
+                                    aria-label="Quantity"
+                                />
+
+                                <!-- plus: update quantity value on click via CoCreate attributes -->
+                                <button
+                                    type="button"
+                                    class="plus"
+                                    aria-label="Increase quantity"
+                                    calculate="$eval(Number($query($previous).value) + Number(1))"
+                                    click-query="$previous"
+                                    click.value="$value"
+                                    value
+                                >+</button>
+                            </div>
+                        
+                            <input
+                                type="text"
+                                class="form-control bg-light border-0 lineAmounts width:100px cart-invoice"
+                                array="invoices" 
+                                key="items[{{index}}].amount"
+                                readonly
+                                placeholder="$0.00"
+                                aria-label="Item amount"
+                                calculate="$eval(Number($query($document #price{{index}}).value) * Number($query($document #quantity{{index}}).value))"/>
+                        </div>
+                    </div>		
+                </div>
+
+                <div class="border rounded-3 p-3">
+                    <div class="d-flex justify-content-between small mb-2">
+                        <span class="text-muted">Subtotal</span>
+                        <div>  
+                            <span class="cart-invoice" array="invoices" key="currency">$</span>
+                            <span class="cart-invoice" array="invoices" key="subtotal">0</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between small mb-2">
+                        <span class="text-muted">Shipping</span>
+                        <div>
+                            <span class="cart-invoice" array="invoices" key="currency">$</span>
+                            <span class="cart-invoice" array="invoices" key="shipping">0</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between fw-semibold">
+                        <span>Total</span>
+                        <div>
+                            <span class="cart-invoice" array="invoices" key="currency">$</span>
+                            <span class="cart-invoice" array="invoices" key="total">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vstack gap-2">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Coupon code"
+                            aria-label="Coupon code" />
+                        <button class="btn btn-outline-primary" type="button">Apply</button>
+                    </div>
+                    <a state-to="shopView" state.src="/shop/checkout.html" href="/shop/" aria-controls="cart-dropdown"
+                    aria-haspopup="dialog"
+                    aria-expanded="false"
+                    aria-label="Cart"
+                    class="btn btn-primary w-100">
+                        Proceed to Checkout
+                        <i class="ri-arrow-right-line align-middle ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

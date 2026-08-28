@@ -1,0 +1,164 @@
+<!doctype html>
+<html
+    state-id="theme"
+    lang="en"
+    data-layout="vertical"
+    data-topbar-color="defualt"
+    data-sidebar-color="dark"
+    data-sidebar-size="sm-hover"
+    data-sidebar-image="none"
+    data-preloader="disable"
+    data-theme="default"
+    data-theme-colors="default"
+    data-bs-theme=""
+    session
+    parse="true">
+    <head>
+        <meta charset="utf-8" />
+        <title>Sign In · Geneomes</title>
+        <meta
+            name="description"
+            content="Secure sign in / sign up for Geneomes — access your dashboard and projects." />
+        <meta name="robots" content="noindex, nofollow" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta content="CoCreate" name="author" />
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+
+        <!-- Bootstrap -->
+        <link
+            href="/assets/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css" />
+
+        <!-- Icons -->
+        <link
+            href="/assets/css/icons.min.css"
+            rel="stylesheet"
+            type="text/css" />
+
+        <!-- App -->
+        <link href="/assets/css/app.css" rel="stylesheet" type="text/css" />
+
+        <!-- Custom -->
+        <link
+            href="/assets/css/custom.css"
+            rel="stylesheet"
+            type="text/css" />
+
+        <!-- Custom Dynamic Style Tag -->
+        <link rel="stylesheet" type="text/css" parse="true" save="false" />
+
+        <!-- Manifest -->
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <style>
+            .auth-page-content .main-view {
+                z-index: 1;
+            }
+            .auth-page-content .card {
+                max-width: 1000px;
+            }
+        </style>
+    </head>
+
+    <body id="layout-wrapper">
+        <a href="/account/" session="true" state-id="authRedirect" state-overwrite hidden></a>
+        
+        <!-- auth-page wrapper -->
+        <div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
+            <div class="bg-overlay"></div>
+            
+            <!-- auth-page content -->
+            <div class="auth-page-content overflow-hidden pt-lg-5 w-100">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-11">
+                            <div class="card overflow-hidden card-bg-fill galaxy-border-none">
+                                <div class="row g-0">
+                                    
+                                    <!-- Left Column (Visual Branding & Active Carousel Component) -->
+                                    <div class="col-lg-6">
+                                        <div class="p-lg-5 p-4 auth-one-bg h-100">
+                                            <div class="bg-overlay"></div>
+                                            <div class="position-relative h-100 d-flex flex-column">
+                                                <div class="mb-4">
+                                                    <a href="../" class="d-block">
+                                                        <img
+                                                            src="/assets/images/logos/light.png"
+                                                            alt="Logo"
+                                                            height="40" />
+                                                    </a>
+                                                </div>
+                                                <!-- Dynamic Presentation Carousel -->
+                                                <div class="mt-auto" src="pages/auth/components/carousel.html"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end col -->
+                                    
+                                    <!-- Right Column (Injects Core Credential Form Guts) -->
+                                    <div class="col-lg-6">
+                                        <div 
+                                            class="p-lg-5 p-4 h-100 d-flex flex-column justify-content-center"
+                                            state-id="authView"
+                                            state-overwrite>
+                                            
+                                            <!-- Loads dynamic form core guts -->
+                                            <div
+                                                onload-query="$parent"
+                                                onload.src="./signin.html"
+                                                onload-delay="3000"></div>
+                                                
+                                        </div>
+                                    </div>
+                                    <!-- end col -->
+                                    
+                                </div>
+                                <!-- end row -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end auth page content -->
+        </div>
+        <!-- end auth-page-wrapper -->
+
+        <!-- Persistent Page Footer -->
+        <p class="position-fixed w-100 mb-3 mt-3 text-muted mx-auto text-center bottom-0 z-index:1">
+            <input 
+                type="date" value-type="getYear" onload.value="$value" onload-query="$next" now hidden>
+            © <span>2026</span>
+            Geneomes
+        </p>
+
+        <!-- Notification Center Start -->
+        <div
+            class="position:fixed!important bottom:15px right:15px"
+            aria-live="polite"
+            role="status"
+            aria-atomic="true">
+            <div
+                template="notification"
+                class="card position:relative margin-top:10px padding:20px {{status}}">
+                <span class="{{type}} font-weight:400">{{message}}</span>
+                <a
+                    actions="remove"
+                    class="position:absolute top:4px right:4px"
+                    aria-label="Dismiss notification">
+                    <i src="/assets/svg/times.svg" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Notification Center End -->
+
+        <!-- CoCreateJS Core -->
+        <script src="../dist/CoCreate.js" organization></script>
+    </body>
+</html>

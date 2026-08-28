@@ -1,0 +1,420 @@
+<!-- Hands Accordion -->
+			<div>
+				<button
+					class="accordion-toggle btn btn-link text-decoration-none w-100 d-flex align-items-center justify-content-between fs-14 py-2 px-0"
+					aria-controls="acc-hands">
+					<span class="d-flex align-items-center"></span>
+				</button>
+				<div
+					id="acc-hands"
+					class="ps-4 pt-1 pb-2 mt-1 d-flex flex-column gap-2">
+					<!-- Left Hand Group -->
+					<div>
+						<input
+								type="checkbox"
+								id="concern-hand-left"
+								array="contacts"
+								object="$user_id"
+								name="biometrics.hands.left.joint.status"
+								key="biometrics.hands.left.joint.status"
+								value="active"
+								class="cyber-checkbox d-none" />
+                                                
+                                                
+						<div
+							id="sub-hand-left"
+							class="ps-4 pt-2 mt-1 mb-2 d-flex flex-column gap-2">
+							<input
+								type="checkbox"
+								id="concern-hand-right"
+								array="contacts"
+								object="$user_id"
+								name="biometrics.hands.right.joint.status"
+								key="biometrics.hands.right.joint.status"
+								value="active"
+								class="cyber-checkbox d-none" />
+                                                
+                                                
+						<div
+							id="sub-hand-right"
+							class="ps-4 pt-2 mt-1 mb-2 d-flex flex-column gap-2">
+							<label
+								class="d-flex align-items-center cursor-pointer group"
+								><input
+									type="checkbox"
+									array="contacts"
+									object="$user_id"
+									name="biometrics.hands.right.metacarpals.status"
+									key="biometrics.hands.right.metacarpals.status"
+									value="active"
+									class="cyber-checkbox-sub d-none" />
+								<div
+									class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+									style="width: 0.75rem; height: 0.75rem">
+									<svg
+										class="text-white d-none"
+										style="width: 0.5rem; height: 0.5rem"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="3"
+											d="M5 13l4 4L19 7"></path>
+									</svg>
+								</div>
+								<span
+									class="text-secondary text-uppercase "
+									style="
+										font-size: 10px;
+										letter-spacing: 0.05em;
+									"
+									>Metacarpals</span
+								></label
+							>
+
+							<!-- Nested Fingers Level 3 -->
+							<div>
+								<label
+									class="d-flex align-items-center cursor-pointer group">
+									<input
+										type="checkbox"
+										id="concern-fingers-right"
+										array="contacts"
+										object="$user_id"
+										name="biometrics.hands.right.fingers.all.status"
+										key="biometrics.hands.right.fingers.all.status"
+										value="active"
+										class="cyber-checkbox-sub d-none" />
+									<div
+										class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+										style="width: 0.75rem; height: 0.75rem">
+										<svg
+											class="text-white d-none"
+											style="
+												width: 0.5rem;
+												height: 0.5rem;
+											"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24">
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="3"
+												d="M5 13l4 4L19 7"></path>
+										</svg>
+									</div>
+									<span
+										class="text-secondary text-uppercase "
+										style="
+											font-size: 10px;
+											letter-spacing: 0.05em;
+										"
+										>Phalanges (Fingers)</span
+									>
+								</label>
+<textarea array="contacts" object="$user_id" name="biometrics.hands.right.metacarpals.details" key="biometrics.hands.right.metacarpals.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;"></textarea>
+
+
+
+
+                                                        
+                                                        
+                                                        
+                                                        
+								<div
+									id="sub-fingers-right"
+									class="ps-3 pt-1 mt-1 mb-1 d-flex flex-column gap-1">
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.hands.right.fingers.digit_1_thumb.status"
+											key="biometrics.hands.right.fingers.digit_1_thumb.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-1 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Thumb (Digit I)</span
+										></label
+									>
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.hands.right.fingers.digit_2_index.status"
+											key="biometrics.hands.right.fingers.digit_2_index.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-1 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Index (Digit II)</span
+										></label
+									>
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.hands.right.fingers.digit_3_middle.status"
+											key="biometrics.hands.right.fingers.digit_3_middle.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-1 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Middle (Digit III)</span
+										></label
+									>
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.hands.right.fingers.digit_4_ring.status"
+											key="biometrics.hands.right.fingers.digit_4_ring.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-1 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Ring (Digit IV)</span
+										></label
+									>
+									<label
+										class="d-flex align-items-center cursor-pointer group"
+										><input
+											type="checkbox"
+											array="contacts"
+											object="$user_id"
+											name="biometrics.hands.right.fingers.digit_5_little.status"
+											key="biometrics.hands.right.fingers.digit_5_little.status"
+											value="active"
+											class="cyber-checkbox-sub d-none" />
+										<div
+											class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-1 transition-colors group-hover:border-info"
+											style="
+												width: 0.625rem;
+												height: 0.625rem;
+											">
+											<svg
+												class="text-white d-none"
+												style="
+													width: 0.375rem;
+													height: 0.375rem;
+												"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"></path>
+											</svg>
+										</div>
+										<span
+											class="text-secondary text-uppercase "
+											style="
+												font-size: 9px;
+												letter-spacing: 0.05em;
+											"
+											>Little (Digit V)</span
+										></label
+									>
+								</div>
+							</div>
+
+							<label
+								class="d-flex align-items-center cursor-pointer group"
+								><input
+									type="checkbox"
+									array="contacts"
+									object="$user_id"
+									name="biometrics.hands.right.thumb_ucl.status"
+									key="biometrics.hands.right.thumb_ucl.status"
+									value="active"
+									class="cyber-checkbox-sub d-none" />
+								<div
+									class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+									style="width: 0.75rem; height: 0.75rem">
+									<svg
+										class="text-white d-none"
+										style="width: 0.5rem; height: 0.5rem"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="3"
+											d="M5 13l4 4L19 7"></path>
+									</svg>
+								</div>
+								<span
+									class="text-secondary text-uppercase "
+									style="
+										font-size: 10px;
+										letter-spacing: 0.05em;
+									"
+									>Thumb UCL</span
+								></label
+							>
+							<label
+								class="d-flex align-items-center cursor-pointer group"
+								><input
+									type="checkbox"
+									array="contacts"
+									object="$user_id"
+									name="biometrics.hands.right.palmar_fascia.status"
+									key="biometrics.hands.right.palmar_fascia.status"
+									value="active"
+									class="cyber-checkbox-sub d-none" />
+								<div
+									class="border border-secondary rounded-1 d-flex align-items-center justify-content-center me-2 transition-colors group-hover:border-info"
+									style="width: 0.75rem; height: 0.75rem">
+									<svg
+										class="text-white d-none"
+										style="width: 0.5rem; height: 0.5rem"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="3"
+											d="M5 13l4 4L19 7"></path>
+									</svg>
+								</div>
+								<span
+									class="text-secondary text-uppercase "
+									style="
+										font-size: 10px;
+										letter-spacing: 0.05em;
+									"
+									>Palmar Fascia</span
+								></label
+							>
+						</div>
+					</div>
+				</div>
+			</div></label>
+<textarea array="contacts" object="$user_id" name="biometrics.hands.right.fingers.digit_1_thumb.details" key="biometrics.hands.right.fingers.digit_1_thumb.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;"></textarea>
+
+
+
+
+                                                        
+                                                        
+                                                        
+                                                        

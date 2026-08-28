@@ -1,0 +1,337 @@
+<div class="dateRange" value="" value-suffix="-start" input.state-id="$value" input-query="input[]">
+	<input
+		type="datetime-local"
+		filter-query-key="created.on.$gte"
+		filter-query="$closest .card .card-data"
+		state-overwrite
+		hidden />
+	<!-- <input
+		type="datetime-local"
+		filter-query-key="createdAt.$gte"
+		filter-query="$closest .card .card-data-previous"
+		state-overwrite
+		add-days
+		value-type
+		hidden /> -->
+</div>
+<div class="dateRange" value="" value-suffix="-end" input.state-id="$value" input-query="input[]">
+	<input
+		type="datetime-local"
+		filter-query-key="created.on.$lte"
+		filter-query="$closest .card .card-data"
+		state-overwrite
+		hidden />
+	<!-- <input
+		type="datetime-local"
+		filter-query-key="createdAt.$lte"
+		filter-query="$closest .card .card-data-previous"
+		state-overwrite
+		add-days
+		value-type
+		hidden /> -->
+</div>
+
+<button
+	class="btn btn-outline-primary btn-sm dropdown-toggle"
+	type="button"
+	value-query="$next"
+	value-attribute="aria-controls"
+	aria-controls="dateRangeMenu"
+	aria-haspopup="menu"
+	aria-expanded="false">
+	<span class="text-muted dateRange" value="" value-suffix="-label" input.state-id="$value" input-query="span">
+		<span state-overwrite>Today</span>
+	</span>
+</button>
+<input type="hidden" class="dateRange" value-suffix="-dropdown" />
+<div
+	id="dateRange"
+	value-attribute="id"
+	value-query="$previous"
+	class="dropdown-menu dropdown-menu-end"
+	aria-hidden="true"
+	aria-close-on="anywhere"
+	role="menu"
+	aria-labelledby="dateRangeDropdown">
+	<input type="hidden" class="dateRange" value-suffix="-start" input.state-to="$value" input-query="$next $next $next [state-to='dateRangeStart'][]"/>
+	<input type="hidden" class="dateRange" value-suffix="-end" input.state-to="$value" input-query="$next $next [state-to='dateRangeEnd'][]"/>
+	<input type="hidden" class="dateRange" value-suffix="-label" input.state-to="$value" input-query="$next [state-to='dateRangeLabel'][]"/>
+	<div class="d-flex">
+		<div class="d-flex justify-content-between flex-wrap flex-grow-1 width:280px dateRange" value value-suffix="-start" input.state-to="$value" input-query="a[state-to]">
+			<div class="flex-wrap width:120px">
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="startOfDay"
+					state-to="dateRangeStart"
+					state.value-type="startOfDay"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfDay"
+						state-to="dateRangeEnd"
+						state.value-type="endOfDay"
+						state.value>
+						<div state-to="dateRangeLabel" state.value>
+							Today
+						</div>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="subtractDays"
+					add-days="-1"
+					state-to="dateRangeStart"
+					state.value-type="subtractDays"
+					state.add-days="-1"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfDay"
+						add-days="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfDay"
+						state.add-days="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Yesterday
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="subtractDays"
+					add-days="-7"
+					state-to="dateRangeStart"
+					state.value-type="subtractDays"
+					state.add-days="-7"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfDay"
+						add-days="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfDay"
+						state.add-days="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Last 7 Days
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="subtractDays"
+					add-days="-30"
+					state-to="dateRangeStart"
+					state.value-type="subtractDays"
+					state.add-days="-30"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfDay"
+						add-days="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfDay"
+						state.add-days="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Last 30 Days
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="subtractDays"
+					add-days="-90"
+					state-to="dateRangeStart"
+					state.value-type="subtractDays"
+					state.add-days="-90"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfDay"
+						add-days="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfDay"
+						state.add-days="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Last 90 Days
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="subtractDays"
+					add-days="-180"
+					state-to="dateRangeStart"
+					state.value-type="subtractDays"
+					state.add-days="-180"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfDay"
+						add-days="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfDay"
+						state.add-days="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Last 6 Months
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="subtractDays"
+					add-days="-365"
+					state-to="dateRangeStart"
+					state.value-type="subtractDays"
+					state.add-days="-365"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfDay"
+						add-days="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfDay"
+						state.add-days="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Last 12 Months
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class="flex-wrap width:120px">
+				<a class="dropdown-item"
+					state-to="dateRangeStart"
+					state.value=""
+					value>
+					<span state-to="dateRangeEnd" state.value="" value>
+						<span state-to="dateRangeLabel" state.value>
+							All Time
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="startOfWeek"
+					state-to="dateRangeStart"
+					state.value-type="startOfWeek"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfWeek"
+						state-to="dateRangeEnd"
+						state.value-type="endOfWeek"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							This Week
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="startOfWeek"
+					add-days="-7"
+					state-to="dateRangeStart"
+					state.value-type="startOfWeek"
+					state.add-days="-7"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfWeek"
+						add-days="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfWeek"
+						state.add-days="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Last Week
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="startOfMonth"
+					state-to="dateRangeStart"
+					state.value-type="startOfMonth"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfMonth"
+						state-to="dateRangeEnd"
+						state.value-type="endOfMonth"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							This Month
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="startOfMonth"
+					add-days="-30"
+					state-to="dateRangeStart"
+					state.value-type="startOfMonth"
+					state.add-days="-30"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfMonth"
+						add-days="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfMonth"
+						state.add-days="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Last Month
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="startOfYear"
+					state-to="dateRangeStart"
+					state.value-type="startOfYear"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfYear"
+						state-to="dateRangeEnd"
+						state.value-type="endOfYear"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							This Year
+						</span>
+					</span>
+				</a>
+				<a class="dropdown-item"
+					type="datetime-local"
+					value-type="startOfYear"
+					add-years="-1"
+					state-to="dateRangeStart"
+					state.value-type="startOfYear"
+					state.add-years="-1"
+					state.value>
+					<span
+						type="datetime-local"
+						value-type="endOfYear"
+						add-years="-1"
+						state-to="dateRangeEnd"
+						state.value-type="endOfYear"
+						state.add-years="-1"
+						state.value>
+						<span state-to="dateRangeLabel" state.value>
+							Last Year
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class="dropdown-divider w-100"></div>
+			<a class="dropdown-item" href="#">Custom Range...</a>
+		</div>
+	</div>
+</div>
+

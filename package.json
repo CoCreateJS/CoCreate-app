@@ -1,37 +1,42 @@
 {
-  "name": "@cocreate/admin",
-  "version": "1.37.0",
-  "description": "A No Code Admin, CRM, CMS, Website Builder platform. Powered by CoCreateJS to provide Realtime and Collaborative CRUD functionality. ",
+  "name": "CoCreateJS",
+  "version": "1.1.0",
+  "description": "Geneomes is a company specializing in regenerative medicines, offering self factors, stem cells, and related therapies.",
   "keywords": [
-    "admin",
-    "crm",
-    "cms",
+    "CoCreateJS",
+    "regenerative-medicine",
+    "stem-cells",
+    "self-factors",
+    "therapies",
+    "healthcare",
+    "biotech",
+    "medical",
+    "website-template",
     "low-code",
     "realtime",
-    "realtime-framework",
     "collaboration",
-    "shared-editing",
     "html5-framework",
     "javascript-framework"
   ],
   "publishConfig": {
     "access": "restricted"
   },
-  "author": "CoCreate LLC",
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CoCreate-app/CoCreate-admin.git"
+    "url": "git+https://github.com/frankpagan/Geneomes.git"
   },
+  "author": "CoCreate LLC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CoCreate-app/CoCreate-admin/issues"
+    "url": "https://github.com/frankpagan/Geneomes/issues"
   },
-  "homepage": "https://cocreate.app",
+  "homepage": "https://cocreate.app/docs/website-template",
   "funding": {
     "type": "GitHub Sponsors ❤",
     "url": "https://github.com/sponsors/CoCreate-app"
   },
-  "main": "index.js",
+  "type": "module",
+  "main": "./CoCreate.index.js",
   "scripts": {
     "start": "webpack --config webpack.config.js",
     "build": "webpack --mode=production --config webpack.config.js",
@@ -40,11 +45,10 @@
     "upload": "coc upload"
   },
   "devDependencies": {
-    "@cocreate/webpack": "^1.6.2"
+    "@cocreate/webpack": "^1.9.0"
   },
-  "allowScripts": {
-    "@cocreate/webpack@1.4.3": true,
-    "esbuild@0.25.12": true,
-    "esbuild@0.28.1": true
+  "dependencies": {
+    "@cocreate/cocreatejs": "^1.82.0",
+    "bootstrap": "^5.3.8"
   }
 }

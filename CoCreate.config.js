@@ -13,7 +13,7 @@ export default {
             entry: "./src",
             array: "files",
             languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
-            exclude: ["/config/", "/scss/", "/assets/"],
+            exclude: ["/config/", "/scss/", "/assets/js/"],
             object: {
                 name: "{{name}}",
                 src: "{{source}}",
@@ -577,9 +577,9 @@ export default {
      */
     projects: {
         CoCreateWS: {
-            path: "../Geneomes",
-            repo: "https://github.com/frankpagan/Geneomes.git",
+            path: "../CoCreate-app",
+            repo: "https://gitlab.com/cocreatejs/CoCreate-app .git",
             exclude: ["git"]
         }
     }
-}; 
+};

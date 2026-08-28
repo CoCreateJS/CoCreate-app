@@ -1,0 +1,130 @@
+<div class="container-fluid pb-5">
+  <!-- Header Card -->
+  <div class="d-flex flex-wrap gap-4 mb-4 w-100">
+    <div class="w-100">
+      <div class="card bg-primary-subtle bg-opacity-10 border-primary-subtle position-relative overflow-hidden shadow-sm">
+        <div class="position-absolute top-0 end-0 p-3 opacity:.2 z-index:-1">
+            <i class="ri-capsule-line" style="font-size: 130px;"></i>
+        </div>
+
+        <div class="card-body p-4 position-relative z-1">
+            <div class="d-flex flex-column flex-sm-row gap-3 mb-3">
+                <div>
+                    <h4 class="fs-24 fw-bold text-muted mb-2">Optimize</h4>
+                    <p class="lh-base mb-0" style="max-width: 800px;">
+                        You are completely unique, right down to your biological profile. So your supplements should be, too. We formulate the exact compounds your body needs into one simple, daily serving.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap gap-4 mb-4 align-items-stretch w-100">
+    <div class="w-300 flex-grow-1">
+      <!-- Administration/Instructions -->
+      <div class="card border-primary border-opacity-50 mb-4 h-100">
+        <div class="card-body p-4">
+          <div class="text-center mb-4">
+            <i class="ri-cup-line display-4 text-primary mb-3 d-block"></i>
+            <h4 class="fs-20 fw-bold text-muted mb-2">Instructions</h4>
+            <p class="mx-auto" style="max-width: 450px;">Daily protocol administration guidelines.</p>
+          </div>
+          
+          <div class="d-flex align-items-center justify-content-between p-3 border border-secondary rounded-subtle">
+            <div>
+              <h5 class="fs-15 fw-semibold text-primary mb-1" key="optimizeFormat">(Scoop)</h5>
+              <p class="fs-12 mb-0" key="optimizeDosing">Scoop daily in 8oz water</p>
+            </div>
+          </div>
+          
+          <div class="mt-4 text-center">
+            <button class="btn btn-primary btn-lg px-5 shadow-sm d-inline-flex align-items-center justify-content-center gap-2 fw-medium w-100">
+              Manage Fulfillment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logistics -->
+    <div class="w-300 flex-grow-1">
+      <div class="card border-secondary overflow-hidden mb-4 h-100">
+        <div class="card-body p-4">
+          <div class="d-flex align-items-center gap-2 mb-4">
+            <i class="ri-truck-line fs-20 text-primary"></i>
+            <h5 class="fs-16 fw-semibold text-muted mb-0">Logistics</h5>
+          </div>
+          
+          <div class="mb-4">
+            <p class="fs-12 text-uppercase tracking-widest mb-1 d-flex justify-content-between">
+              Subscription
+              <span class="form-check form-switch form-switch-primary form-switch-sm mb-0 d-inline-block">
+                <input class="form-check-input cursor-pointer" type="checkbox" role="switch" 
+                  array="contacts" 
+                  object="$user_id" 
+                  key="optimize.subscribed"
+                  actions="save" 
+                  realtime="true">
+              </span>
+            </p>
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-15 fw-semibold text-primary">Every 90 Days</span>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <p class="fs-12 text-uppercase tracking-widest mb-1">Status</p>
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-15 text-primary fw-bold" array="contacts" object="$user_id" key="optimize.status">Active</span>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <p class="fs-12 text-uppercase tracking-widest mb-1">Next Ship</p>
+            <div class="d-flex align-items-center gap-2">
+              <i class="ri-calendar-check-line text-primary fs-20"></i>
+              <span class="fs-15 fw-semibold" array="contacts" object="$user_id" key="optimize.nextDelivery">TBD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap gap-4 w-100">
+    <div class="w-100">
+      <div class="mb-4">
+        <h5 class="fs-16 fw-semibold text-muted mb-3 ps-1">History</h5>
+        <div class="card border-secondary shadow-sm">
+          <div class="table-responsive">
+            <table class="table table-dark table-borderless table-hover align-middle mb-0 text-start">
+              <thead class="table-light table-active text-muted fs-11 text-uppercase">
+                <tr>
+                  <th scope="col" class="py-3 px-4">Date</th>
+                  <th scope="col" class="py-3 px-4">Order ID</th>
+                  <th scope="col" class="py-3 px-4">Amount</th>
+                  <th scope="col" class="py-3 px-4">Method</th>
+                  <th scope="col" class="py-3 px-4">Status</th>
+                </tr>
+              </thead>
+              <tbody array="optimizeOrderHistory">
+                <tr>
+                  <td class="px-4 py-3 fs-14" key="date"></td>
+                  <td class="px-4 py-3 text-muted fs-12 font-monospace" key="id"></td>
+                  <td class="px-4 py-3 fw-semibold text-primary fs-14" key="amount"></td>
+                  <td class="px-4 py-3 text-muted fs-12" key="method">Bottle (Powder)</td>
+                  <td class="px-4 py-3">
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1 fs-10" key="status"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<!--
+  Reusable CoCreate search + select component.
+
+  Usage examples:
+  1) Render items provided by current state: include this component inside a parent that has `items` available.
+     <div src="components/search-select.html"></div>
+
+  2) If you want to feed a specific key (e.g. products), add `render="products"` on the results container below
+     or override `data-source-key` on the wrapper and replace `render="items"` with render="yourKey".
+
+  3) To insert a selected item into a specific form area after selection:
+     - Option A (simple): change the "Select" button attributes to set the values directly:
+         click-query="#newlink" click.innerHTML="(render HTML or template string)"
+     - Option B (preferred): listen for the passValues action or passValues event from the Select button and handle insertion.
+       The Select button currently calls click.action="passValues" with click.value set to the selected item JSON;
+       your page can handle that action or read from the emitted value and insert it where you want.
+
+  The component below is intentionally attribute-driven — no custom JS required.
+-->
+
+<div class="search-select-component">
+	<!-- outer wrapper attribute: optional data-target attribute (set to selector where selected item should be inserted) -->
+	<div class="search-select p-2" data-target="#newlink">
+		<!-- Search input: writes its value to the results container's filter-search automatically -->
+		<div class="mb-2">
+			<input
+				type="search"
+				class="form-control"
+				placeholder="Search items, contacts, companies..."
+				aria-label="Search"
+				id="search-input"
+				input-query="#search-results"
+				input.filter-search="$value" />
+		</div>
+
+		<!-- Results area:
+         - render="items" expects `items` to be available in parent state, change to render="products" etc. as needed.
+         - filter-key controls which field(s) are matched (supports dot notation). Adjust to your data shape.
+         - filter-limit limits number of results shown.
+    -->
+		<div
+			id="search-results"
+			class="search-results list-unstyled"
+			render="items"
+			render-query="[template]"
+			filter-key="name"
+			filter-limit="8"
+			style="max-height: 360px; overflow: auto">
+			<!-- Template used to render each result as a card -->
+			<div
+				template
+				class="result-card p-2 mb-2 border rounded d-flex align-items-start gap-2">
+				<img
+					src="{{avatar || 'assets/images/users/avatar-1.jpg'}}"
+					alt="avatar"
+					width="48"
+					height="48"
+					class="rounded-circle flex-shrink-0" />
+
+				<div class="flex-grow-1">
+					<div
+						class="d-flex justify-content-between align-items-start gap-2">
+						<div>
+							<h6 class="mb-0">{{name}}</h6>
+							<small class="text-muted">{{subtitle}}</small>
+						</div>
+						<div class="text-end">
+							<small class="text-muted">{{meta}}</small>
+						</div>
+					</div>
+
+					<p class="mb-1 text-muted fs-12">{{description}}</p>
+
+					<div class="d-flex gap-2 mt-1">
+						<!--
+              Select button behavior:
+              - By default this triggers passValues with click.value containing the item JSON.
+              - You can change the click.* attributes to instead insert data into a target, for example:
+                click-query="#your-target" click.innerHTML="<tr>...</tr>" click.action="update"
+              - Or use click.action="render-key" / click.action="passValues" and handle it elsewhere.
+            -->
+						<button
+							type="button"
+							class="btn btn-sm btn-outline-primary"
+							aria-label="Select item"
+							click-action="passValues"
+							click.value='{"id":"{{id}}","name":"{{name}}","rate":"{{rate}}","quantity":1,"description":"{{description}}"}'>
+							Select
+						</button>
+
+						<a
+							href="javascript:void(0);"
+							class="btn btn-sm btn-light"
+							aria-label="Preview"
+							click.action="show"
+							click-query="#preview-{{id}}">
+							Preview
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional: small preview area (hidden by default) -->
+		<div id="preview-area" class="mt-3">
+			<!-- Individual previews can be rendered or toggled by click.action later -->
+			<div id="preview-{{id}}" style="display: none">
+				<!-- ...example preview template ... -->
+			</div>
+		</div>
+	</div>
+</div>

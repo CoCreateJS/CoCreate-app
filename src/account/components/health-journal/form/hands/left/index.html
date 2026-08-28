@@ -1,0 +1,104 @@
+
+<!-- Left Hand Group -->
+<input
+	type="hidden"
+	id="concern-hand-left"
+	array="contacts"
+	object="$user_id"
+	name="biometrics.hands.left.joint.status"
+	key="biometrics.hands.left.joint.status"
+	value="active"
+	class="d-none" />
+
+<div id="sub-hand-left" class="d-flex flex-column gap-2">
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="metacarpals-left">
+			<input type="checkbox" id="metacarpals-left" array="contacts" object="$user_id" name="biometrics.hands.left.metacarpals.status" key="biometrics.hands.left.metacarpals.status" value="active" class="form-check-input" input-query="$parent $next" input.class="show," />
+				<svg class="text-white d-none" style="width: 0.5rem; height: 0.5rem" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+				</svg>
+			</div>
+			<span class="text-uppercase">Metacarpals</span>
+		</label>
+		<textarea array="contacts" object="$user_id" name="biometrics.hands.left.metacarpals.details" key="biometrics.hands.left.metacarpals.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;" hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="concern-fingers-left">
+			<input
+				type="checkbox"
+				id="concern-fingers-left"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.hands.left.fingers.all.status"
+				key="biometrics.hands.left.fingers.all.status"
+				value="active"
+				class="form-check-input" />
+
+			<span class="text-uppercase">Phalanges (Fingers)</span>
+		</label>
+		<!-- parent with subitems: no top textarea -->
+
+		<div id="sub-fingers-left" class="ps-3 pt-1 mt-1 mb-1 d-flex flex-column gap-1">
+			<div class="form-check form-check-secondary">
+				<label class="form-check-label" for="hand-left-digit-1-thumb">
+					<input type="checkbox" id="hand-left-digit-1-thumb" array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_1_thumb.status" key="biometrics.hands.left.fingers.digit_1_thumb.status" value="active" class="form-check-input" input-query="$parent $next" input.class="show," />
+						<span class="text-uppercase">Thumb (Digit I)</span>
+				</label>
+				<textarea array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_1_thumb.details" key="biometrics.hands.left.fingers.digit_1_thumb.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;" hidden></textarea>
+			</div>
+
+			<div class="form-check form-check-secondary">
+				<label class="form-check-label" for="hand-left-digit-2-index">
+					<input type="checkbox" id="hand-left-digit-2-index" array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_2_index.status" key="biometrics.hands.left.fingers.digit_2_index.status" value="active" class="form-check-input" input-query="$parent $next" input.class="show," />
+						<span class="text-uppercase">Index (Digit II)</span>
+				</label>
+				<textarea array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_2_index.details" key="biometrics.hands.left.fingers.digit_2_index.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;" hidden></textarea>
+			</div>
+
+			<div class="form-check form-check-secondary">
+				<label class="form-check-label" for="hand-left-digit-3-middle">
+					<input type="checkbox" id="hand-left-digit-3-middle" array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_3_middle.status" key="biometrics.hands.left.fingers.digit_3_middle.status" value="active" class="form-check-input" input-query="$parent $next" input.class="show," />
+						<span class="text-uppercase">Middle (Digit III)</span>
+				</label>
+				<textarea array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_3_middle.details" key="biometrics.hands.left.fingers.digit_3_middle.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;" hidden></textarea>
+			</div>
+
+			<div class="form-check form-check-secondary">
+				<label class="form-check-label" for="hand-left-digit-4-ring">
+					<input type="checkbox" id="hand-left-digit-4-ring" array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_4_ring.status" key="biometrics.hands.left.fingers.digit_4_ring.status" value="active" class="form-check-input" input-query="$parent $next" input.class="show," />
+
+						<span class="text-uppercase">Ring (Digit IV)</span>
+				</label>
+				<textarea array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_4_ring.details" key="biometrics.hands.left.fingers.digit_4_ring.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;" hidden></textarea>
+			</div>
+
+			<div class="form-check form-check-secondary">
+				<label class="form-check-label" for="hand-left-digit-5-little">
+					<input type="checkbox" id="hand-left-digit-5-little" array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_5_little.status" key="biometrics.hands.left.fingers.digit_5_little.status" value="active" class="form-check-input" input-query="$parent $next" input.class="show," />
+						<span class="text-uppercase">Little (Digit V)</span>
+				</label>
+				<textarea array="contacts" object="$user_id" name="biometrics.hands.left.fingers.digit_5_little.details" key="biometrics.hands.left.fingers.digit_5_little.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;" hidden></textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="hand-left-thumb-ucl">
+			<input type="checkbox" id="hand-left-thumb-ucl" array="contacts" object="$user_id" name="biometrics.hands.left.thumb_ucl.status" key="biometrics.hands.left.thumb_ucl.status" value="active" class="form-check-input" />
+
+			<span class="text-uppercase">Thumb UCL</span>
+		</label>
+		<textarea array="contacts" object="$user_id" name="biometrics.hands.left.thumb_ucl.details" key="biometrics.hands.left.thumb_ucl.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;" hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="hand-left-palmar-fascia">
+			<input type="checkbox" id="hand-left-palmar-fascia" array="contacts" object="$user_id" name="biometrics.hands.left.palmar_fascia.status" key="biometrics.hands.left.palmar_fascia.status" value="active" class="form-check-input" />
+
+			<span class="text-uppercase">Palmar Fascia</span>
+		</label>
+		<textarea array="contacts" object="$user_id" name="biometrics.hands.left.palmar_fascia.details" key="biometrics.hands.left.palmar_fascia.details" placeholder="Details..." class="form-control bg-opacity-50 border border-secondary fs-12 mt-1 mb-2 p-2 rounded-2 w-100" rows="2" style="resize:none; outline:none; box-shadow:none;" hidden></textarea>
+	</div>
+</div>

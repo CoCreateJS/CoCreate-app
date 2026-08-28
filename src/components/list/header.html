@@ -1,0 +1,196 @@
+<div class="card-body d-flex justify-content-between align-items-center gap-2">
+	<style>
+		/* .search-box {
+			flex-grow: 1;
+		} */
+
+		.search-box {
+			min-width: 20px;
+			justify-content: flex-start;
+		}
+		.form-control.search {
+			z-index: unset !important;
+		}
+		.search-box .input-group {
+			width: 100% !important;
+			flex-wrap: nowrap;
+			display: flex;
+		}
+		@media (max-width: 576px) {
+			.search-box .form-control {
+				padding-left: 0px;
+			}
+			.form-control.search.search-sm {
+				width: 39px !important;
+				max-width: 39px !important;
+				transition: width 0.2s, padding-left 0.2s;
+			}
+			.form-control.search.search-sm::placeholder {
+				color: transparent !important;
+			}
+			.form-control.search.search-sm:focus::placeholder,
+			.form-control.search.search-sm:not(:placeholder-shown)::placeholder {
+				color: #6c757d !important;
+			}
+			.form-control.search.search-sm:focus,
+			.form-control.search.search-sm:not(:placeholder-shown) {
+				width: 100% !important;
+				max-width: 100% !important;
+				padding-left: 40px !important;
+			}
+
+		}
+	</style>
+
+	<div class="search-box">
+		<div class="input-group">
+			<input
+				id="search-objects"
+				type="text"
+				class="form-control search search-sm "
+				placeholder="Search for..."
+				filter-search
+				filter-query="$document .list-view"
+			/>
+			<button
+				type="button"
+				class="btn btn-outline-success"
+				aria-controls="filters-view"
+				aria-haspopup="dialog"
+				aria-expanded="false"
+				title="Filter options">
+				<i class="ri-filter-3-line align-bottom"></i>
+			</button>
+
+		</div>
+		<i class="ri-search-line search-icon" style="pointer-events: none;"></i>
+	</div>
+
+	<!-- View Dropdown -->
+	<div class="hstack gap-2">
+		<div class="dropdown">
+			<button
+				class="btn btn-outline-primary dropdown-toggle"
+				type="button"
+				id="viewDropdown"
+				aria-expanded="false"
+				aria-controls="viewDropdownMenu"
+				aria-haspopup="menu">
+				<i state-id="list-view" class="ri-layout-grid-line"></i>
+				<span class="d-none d-sm-inline">View</span>
+			</button>
+			<ul
+				id="viewDropdownMenu"
+				class="dropdown-menu"
+				role="menu"
+				aria-labelledby="viewDropdown"
+				aria-close-on="anywhere"
+				aria-hidden="true">
+				<li>
+					<a
+						class="dropdown-item"
+						href="#"
+						state-to="list-view"
+						state.src="/components/list/table.html">
+						<i class="ri-table-line me-2"></i>
+						Table
+					</a>
+				</li>
+				<li>
+					<a
+						class="dropdown-item"
+						href="#"
+						state-to="list-view"
+						state.src="/components/list/grid.html">
+						<i class="ri-layout-grid-line me-2"></i>
+						Grid
+					</a>
+				</li>
+				<li>
+					<a
+						class="dropdown-item"
+						href="#"
+						state-to="list-view"
+						state.src="/components/list/kanban.html">
+						<i class="ri-layout-masonry-line me-2"></i>
+						Kanban
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<button class="btn btn-soft-danger" id="remove-actions">
+			<i class="ri-delete-bin-2-line"></i>
+		</button>
+		<button
+			type="button"
+			class="btn btn-success add-btn"
+			aria-controls="offcanvas-app"
+			aria-open
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			state-to="offcanvas-app-view"
+			state.src=""
+			id="create-btn">
+			<input
+				type="hidden"
+				state-id="app"
+				state-overwrite
+				array="apps"
+				object
+				key="path"
+				value-suffix="/form.html"
+				input.state.src="$value"
+				input-query="$parent">
+			<div state-to="offcanvas-app-form" state.$reset state.array="">
+				<input
+					type="hidden"
+					state-id="app"
+					state-overwrite
+					array="apps"
+					object
+					key="array"
+					input.state.array="$value"
+					input-query="$parent">
+			</div>
+
+			<i class="ri-add-line align-bottom"></i>
+			<span class="d-none d-xl-inline ms-1">
+				New
+				<span
+					state-id="app"
+					state-overwrite
+					array="apps"
+					object
+					key="singularName"></span>
+			</span>
+		</button>
+		<span class="dropdown">
+			<button
+				class="btn btn-soft-info btn-icon fs-14"
+				type="button"
+				id="settingsDropdownButton"
+				aria-controls="settingsDropdownMenu"
+				aria-haspopup="menu"
+				aria-expanded="false"
+				title="Settings">
+				<i class="ri-settings-4-line"></i>
+			</button>
+			<ul
+				id="settingsDropdownMenu"
+				class="dropdown-menu dropdown-menu-end"
+				role="menu"
+				aria-labelledby="settingsDropdownButton"
+				aria-hidden="true"
+				aria-close-on="anywhere">
+				<li><a class="dropdown-item" href="#" role="menuitem">Copy</a></li>
+				<li><a class="dropdown-item" href="#" role="menuitem">Import</a></li>
+				<li><a class="dropdown-item" href="#" role="menuitem">Export</a></li>
+				<li><a class="dropdown-item" href="#" role="menuitem">Print</a></li>
+				<li><a class="dropdown-item" href="#" role="menuitem">Download as CSV</a></li>
+				<!-- <li><a class="dropdown-item" href="#" role="menuitem">Customize Columns</a></li> -->
+				<!-- <li><a class="dropdown-item" href="#" role="menuitem">Reset board view to default</a></li> -->
+			</ul>
+		</span>
+	</div>
+</div>

@@ -1,0 +1,113 @@
+<div
+	class="p-3 user-chat-topbar"
+	state-id="selected-chat"
+	state-overwrite
+	array="chats"
+	object>
+	<div class="d-flex align-items-center w-100">
+		<div class="d-flex align-items-center flex-grow-1">
+			<div class="flex-shrink-0 d-block me-3">
+				<button
+					type="button"
+					class="btn user-chat-remove fs-18 p-1"
+					aria-label="Toggle Chat Sidenav"
+					aria-controls="chat-sidenav"
+					aria-expanded="true">
+					<i class="ri-arrow-left-s-line align-bottom"></i>
+				</button>
+			</div>
+			<div class="flex-grow-1 overflow-hidden">
+				<div
+					class="d-flex align-items-center"
+					state-id="selected-chat-topbar"
+					state-overwrite
+					src></div>
+			</div>
+		</div>
+		<ul class="list-inline user-chat-nav text-end mb-0">
+			<li class="list-inline-item m-0">
+				<div class="dropdown">
+					<button
+						class="btn btn-ghost-secondary btn-icon material-shadow-none"
+						type="button"
+						aria-haspopup="menu"
+						aria-expanded="false"
+						aria-controls="chat-search-dropdown-menu">
+						<i class="ri-search-2-line icon-sm"></i>
+					</button>
+					<div
+						class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg"
+						id="chat-search-dropdown-menu"
+						aria-close-on="outside"
+						role="menu">
+						<div class="p-2">
+							<div class="search-box">
+								<input
+									type="text"
+									class="form-control bg-light border-light"
+									placeholder="Search messages..."
+									id="searchMessage"
+									filter-query="$document #chat-conversation"
+									filter-query-key="content.$regex"
+									filter-query-options="i" />
+								<i class="ri-search-2-line search-icon"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li class="list-inline-item d-none d-lg-inline-block m-0">
+				<button
+					type="button"
+					class="btn btn-ghost-secondary btn-icon material-shadow-none"
+					aria-controls="userProfileCanvasExample"
+					aria-haspopup="dialog"
+					aria-expanded="false">
+					<i class="ri-information-line icon-sm"></i>
+				</button>
+			</li>
+
+			<li class="list-inline-item m-0">
+				<div class="dropdown">
+					<button
+						class="btn btn-ghost-secondary btn-icon material-shadow-none"
+						type="button"
+						aria-haspopup="menu"
+						aria-expanded="false"
+						aria-controls="chat-more-dropdown-menu">
+						<i class="ri-more-2-fill icon-sm"></i>
+					</button>
+					<div
+						class="dropdown-menu dropdown-menu-end"
+						id="chat-more-dropdown-menu"
+						aria-close-on="anywhere"
+						role="menu">
+						<a
+							class="dropdown-item d-block d-lg-none user-profile-show"
+							href="#"
+							><i
+								class="ri-user-2-fill align-bottom text-muted me-2"></i>
+							View Profile</a
+						>
+						<a class="dropdown-item" href="#"
+							><i
+								class="ri-inbox-archive-line align-bottom text-muted me-2"></i>
+							Archive</a
+						>
+						<a class="dropdown-item" href="#"
+							><i
+								class="ri-mic-off-line align-bottom text-muted me-2"></i>
+							Muted</a
+						>
+						<a class="dropdown-item" href="#"
+							><i
+								class="ri-delete-bin-5-line align-bottom text-muted me-2"></i>
+							Delete</a
+						>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

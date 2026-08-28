@@ -1,0 +1,402 @@
+/*
+Template Name: CoCreate - Admin & Dashboard Template
+Author: CoCreate
+Website: https://CoCreate.app/
+Contact: support@CoCreate.app
+File: Custom Css File
+*/
+
+[show="preview"] .live-preview {
+	display: block;
+}
+[show="preview"] .code-view {
+	display: none;
+}
+[show="code"] .code-view {
+	display: block;
+}
+[show="code"] .live-preview {
+	display: none;
+}
+
+/* Dialog overlay */
+.dialog {
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1050;
+	background: rgba(0, 0, 0, 0.4);
+	/* backdrop */
+	overflow-y: auto;
+	transition: opacity 0.2s;
+	opacity: 0;
+	pointer-events: none;
+	padding: 5px;
+}
+
+.dialog.show {
+	opacity: 1;
+	pointer-events: auto;
+	display: flex !important;
+}
+
+.card-sm {
+	max-width: 400px;
+	flex-grow: 1;
+}
+
+.card-md {
+	max-width: 600px;
+	flex-grow: 1;
+}
+
+.card-lg {
+	max-width: 800px;
+	flex-grow: 1;
+}
+
+.dropdown-menu-end {
+	right: 0px;
+}
+
+.show {
+	display: block !important;
+}
+dialog.show {
+	display: flex !important;
+}
+
+[view="details"] #form-view {
+	display: none;
+}
+
+[view="form"] #detail-view {
+	display: none;
+}
+
+#offcanvas-app .form-container {
+	height: calc(100vh - 65px);
+}
+
+#offcanvas-app[docked="true"] .form-container {
+	height: calc(100vh - 90px);
+}
+
+#offcanvas-app[docked="true"].show {
+	position: relative;
+	transform: none;
+	min-width: 320px;
+	z-index: unset;
+}
+
+@media (max-width: 992px) {
+	#offcanvas-app[docked="true"].show {
+		position: fixed !important;
+		z-index: 1040;
+	}
+}
+
+
+#table {
+	table-layout: auto;
+	width: 100%;
+	max-width: 100%;
+}
+
+#table td,
+#table th {
+	white-space: nowrap;
+	min-width: 1px;
+	width: 1%;
+	max-width: 600px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+[data-sidebar-size="sm-hover"] .navbar-menu:not(:hover) .sidebar-notification {
+	display: block !important;
+	position: absolute;
+	font-size: 0px !important;
+	width: 6px !important;
+	height: 6px !important;
+	color: transparent;
+	top: 12px;
+	right: 28px;
+}
+
+.nav-link {
+	position: relative;
+}
+
+[template],
+.template {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+.menu-title {
+	padding-top: 2rem;
+}
+
+.form-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+/* .form-container > * {
+	flex: 1 1 300px;
+	min-width: 300px;
+}
+
+*/
+.form-container .form-label {
+	flex-grow: 1;
+}
+
+.form-container .form-label>* {
+	margin-top: 0.5rem;
+}
+
+
+.form-container .form-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+/* .form-container .form-row > * {
+	flex: 1 1 100px;
+	min-width: 100px;
+}
+*/
+/* [aria-hidden="true"] {
+	display: none !important;
+}
+
+*/
+/* [aria-hidden="false"] {
+	display: block !important;
+} */
+
+.offcanvas[aria-hidden="false"] {
+	-webkit-transform: none;
+	transform: none;
+}
+
+/* Placeholder Effect: Only when the element is empty */
+[contenteditable][placeholder]:empty::before {
+	content: attr(placeholder);
+	color: #999;
+	pointer-events: none;
+}
+
+/* logo uploader placeholder — theme aware, uses design tokens / CSS vars */
+.logo-uploader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 300px;
+	max-width: 100%;
+	height: 80px;
+	min-width: 120px;
+	min-height: 40px;
+	padding: 0.5rem;
+	box-sizing: border-box;
+	border: 2px dashed var(--coc-border-color-translucent, rgba(0, 0, 0, 0.12));
+	border-radius: 0.5rem;
+	background-color: var(--coc-input-bg, transparent);
+	cursor: pointer;
+	overflow: hidden;
+	transition: border-color .12s ease, background-color .12s ease;
+	color: var(--coc-muted-color);
+}
+
+/* hover / focus use theme tokens (no hardcoded colors) */
+.logo-uploader:focus,
+.logo-uploader:hover {
+	border-color: var(--coc-border-color, rgba(0, 0, 0, 0.20));
+	background-color: var(--coc-input-bg-hover, rgba(255, 255, 255, 0.02));
+	outline: none;
+}
+
+/* ensure the uploaded logo scales and preserves aspect ratio */
+.logo-uploader img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+/* placeholder text when no image is present — toggle .no-image via JS if template system always renders nodes */
+.logo-uploader.no-image::before {
+	content: attr(data-placeholder);
+	font-size: 0.9rem;
+	color: inherit;
+	text-align: center;
+	pointer-events: none;
+}
+
+/* compact variant (optional) */
+.logo-uploader.compact {
+	width: 120px;
+	height: 40px;
+}
+
+.btn-spinner[disabled] .spinner-border {
+	display: inline-block !important;
+}
+
+.spinner-border.spinner-border-xs {
+	height: 0.75rem;
+	width: 0.75rem;
+}
+
+
+/* Base star container */
+.star-rating {
+	display: inline-block;
+	position: relative;
+	font-size: 1rem;
+	/* Adjust size here */
+	line-height: 1;
+}
+
+/* Empty stars (Background) */
+.stars-empty {
+	color: #d1d5db;
+	/* Gray-300 */
+	display: flex;
+	gap: 2px;
+}
+
+/* Filled stars (Foreground) */
+.star-ratings {
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	color: #fbbf24;
+	/* Golden Yellow */
+	display: flex;
+	gap: 2px;
+	/* This is the value your system targets */
+	width: 84%;
+}
+
+/* Product review progress rows */
+.progress-bar-style-02 .rating-progress-row {
+	gap: 10px;
+}
+
+.progress-bar-style-02 .rating-progress-row .progress {
+	min-width: 180px;
+}
+
+.w-300 {
+	width: 300px;
+}
+.w-250 {
+	width: 250px;
+}
+.w-150 {
+	width: 150px;
+}
+
+[fullscreen] i:last-child {
+	display: none;
+
+}
+.hide-empty:empty {
+	display: none !important;
+}
+
+/* CoCreateJS runtime landing page */
+.cocreate-hero {
+	min-height: 760px;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+.cocreate-hero video {
+	object-fit: cover;
+}
+
+.cocreate-hero-overlay {
+	background: linear-gradient(135deg, rgba(7, 15, 30, 0.92), rgba(22, 43, 72, 0.72));
+}
+
+.cocreate-hero-content,
+.cocreate-section-intro {
+	max-width: 900px;
+}
+
+.cocreate-lead {
+	max-width: 860px;
+}
+
+.cocreate-node {
+	width: 145px;
+	padding: 1rem 0.5rem;
+	border: 1px solid var(--coc-border-color);
+	border-radius: var(--coc-border-radius);
+	text-align: center;
+	background: var(--coc-body-bg);
+}
+
+.cocreate-node small {
+	display: block;
+	margin-top: 0.5rem;
+	color: var(--coc-secondary-color);
+	line-height: 1.6;
+}
+
+.cocreate-code {
+	padding: 1.5rem;
+	color: #d9e2f2;
+	font-size: 0.875rem;
+	line-height: 1.7;
+	overflow-x: auto;
+	white-space: pre;
+}
+
+.cocreate-code code {
+	color: inherit;
+}
+
+.cocreate-process {
+	width: 200px;
+	flex-grow: 1;
+}
+
+.cocreate-legal {
+	max-width: 1000px;
+}
+
+.w-200 {
+	width: 200px;
+}
+
+.w-400 {
+	width: 400px;
+}
+
+@media (max-width: 767.98px) {
+	.cocreate-hero {
+		min-height: 680px;
+	}
+
+	.cocreate-hero .display-3 {
+		font-size: 2.5rem;
+	}
+
+	.cocreate-process {
+		width: 100%;
+	}
+}

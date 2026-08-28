@@ -1,0 +1,122 @@
+<div class="card">
+	<div class="card-body position-relative">
+		<h5 class="mb-3">Select Account</h5>
+		<div class="vstack gap-2">
+			<div class="form-check card-radio">
+				<input
+					id="listGroupRadioGrid1"
+					name="listGroupRadioGrid"
+					type="radio"
+					class="form-check-input" />
+				<label class="form-check-label" for="listGroupRadioGrid1">
+					<div class="d-flex align-items-center">
+						<div class="flex-shrink-0">
+							<div class="avatar-xs">
+								<div
+									class="avatar-title bg-success-subtle text-success fs-18 rounded">
+									<i class="ri-visa-fill"></i>
+								</div>
+							</div>
+						</div>
+						<div class="flex-grow-1 ms-3">
+							<h6 class="mb-1">Visa Card</h6>
+							<b class="pay-amount">$8,500</b>
+						</div>
+					</div>
+				</label>
+			</div>
+			<div class="form-check card-radio">
+				<input
+					id="listGroupRadioGrid2"
+					name="listGroupRadioGrid"
+					type="radio"
+					class="form-check-input" />
+				<label class="form-check-label" for="listGroupRadioGrid2">
+					<div class="d-flex align-items-center">
+						<div class="flex-shrink-0">
+							<div class="avatar-xs">
+								<div
+									class="avatar-title bg-info-subtle text-info fs-18 rounded">
+									<i class="ri-bank-card-2-line"></i>
+								</div>
+							</div>
+						</div>
+						<div class="flex-grow-1 ms-3">
+							<h6 class="mb-1">Credit Card</h6>
+							<b class="pay-amount">$8,326</b>
+						</div>
+					</div>
+				</label>
+			</div>
+			<div class="form-check card-radio">
+				<input
+					id="listGroupRadioGrid3"
+					name="listGroupRadioGrid"
+					type="radio"
+					class="form-check-input" />
+				<label class="form-check-label" for="listGroupRadioGrid3">
+					<div class="d-flex align-items-center">
+						<div class="flex-shrink-0">
+							<div class="avatar-xs">
+								<div
+									class="avatar-title bg-danger-subtle text-danger fs-18 rounded">
+									<i class="ri-mastercard-line"></i>
+								</div>
+							</div>
+						</div>
+						<div class="flex-grow-1 ms-3">
+							<h6 class="mb-1">Mastercard Card</h6>
+							<b class="pay-amount">$8,400</b>
+						</div>
+					</div>
+				</label>
+			</div>
+		</div>
+
+		<button
+			type="button"
+			class="btn btn-success w-100 mt-3"
+			id="confirm-btn">
+			Confirm
+		</button>
+
+		<div
+			id="notification-warn"
+			class="position-absolute top-0 start-0 end-0 d-none">
+			<div class="alert alert-warning" role="alert">
+				Select at list one item
+			</div>
+		</div>
+		<!-- notification-warning -->
+
+		<div class="notification-elem" id="notification-overlay">
+			<div class="text-center">
+				<lord-icon
+					src="https://cdn.lordicon.com/lupuorrc.json"
+					trigger="loop"
+					colors="primary:#0ab39c,secondary:#405189"
+					style="width: 120px; height: 120px"></lord-icon>
+				<div class="mt-4 pt-2">
+					<h5 class="mb-1 success-pay">
+						$6,201 Payment Successfully
+					</h5>
+					<p class="text-muted mx-4">
+						Aww yeah, you successfully read this important message.
+					</p>
+
+					<div>
+						<button
+							type="button"
+							class="btn btn-success btn-sm w-sm"
+							id="back-btn">
+							Back to Home
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- notification-overlay -->
+	</div>
+	<!-- end card body -->
+</div>
+<!-- end card -->

@@ -1,0 +1,22 @@
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title mb-4">Skills</h5>
+		<div
+			class="d-flex flex-wrap gap-2 fs-15"
+			array="contacts"
+			object="$user_id"
+			key="skills"
+			render-query="#skillTemplate">
+			<!-- Static skill badges will be replaced by the template rendering -->
+			<template id="skillTemplate">
+				<a
+					href="javascript:void(0);"
+					class="badge bg-primary-subtle text-primary"
+					>{{skills}}</a
+				>
+			</template>
+		</div>
+	</div>
+	<!-- end card body -->
+</div>
+<!-- end card -->

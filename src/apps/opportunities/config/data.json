@@ -1,0 +1,132 @@
+{
+  "method": "object.update",
+  "array": "opportunities",
+  "upsert": true,
+  "object": [
+    {
+      "_id": "688469b3062c5b9e6a150285",
+      "type": "Lead Discovered",
+      "name": "Website Redesign",
+      "description": "Client interested in a full website redesign.",
+      "value": 12000,
+      "owner": "Alice Smith",
+      "assigned_to": "Alice Smith",
+      "lead_source": "Website",
+      "probability": 60,
+      "expected_revenue": 7200,
+      "currency": "USD",
+      "next_steps": "Send revised proposal and confirm timeline.",
+      "products": ["Website Package"],
+      "due_date": "2024-07-01",
+      "email": "alice.smith@example.com",
+      "phone": "+1234567890",
+      "status": "open",
+      "stage": "Lead Discovered",
+      "tags": ["hot", "follow-up"],
+      "priority": "High",
+      "created": {
+        "on": "2025-07-26T05:37:55.895Z"
+      }
+    },
+    {
+      "_id": "688469b3062c5b9e6a150284",
+      "type": "Contact Initiated",
+      "name": "Mobile App Development",
+      "description": "Initial call completed, proposal sent.",
+      "value": 25000,
+      "owner": "Bob Johnson",
+      "assigned_to": "Bob Johnson",
+      "lead_source": "Referral",
+      "probability": 40,
+      "expected_revenue": 10000,
+      "currency": "USD",
+      "next_steps": "Follow up on proposal and schedule demo.",
+      "products": ["Mobile Suite"],
+      "due_date": "2024-07-15",
+      "email": "bob.johnson@example.com",
+      "phone": "+1987654321",
+      "status": "open",
+      "stage": "Contact Initiated",
+      "tags": ["cold"],
+      "priority": "Medium",
+      "created": {
+        "on": "2025-07-26T05:37:55.896Z"
+      }
+    },
+    {
+      "_id": "688469b3062c5b9e6a150286",
+      "type": "Need Identified",
+      "name": "SEO Optimization",
+      "description": "Client needs SEO for e-commerce site.",
+      "value": 5000,
+      "owner": "Carol Lee",
+      "assigned_to": "Carol Lee",
+      "lead_source": "Event",
+      "probability": 90,
+      "expected_revenue": 4500,
+      "currency": "USD",
+      "next_steps": "Prepare scope & start keyword audit.",
+      "products": ["SEO Basic"],
+      "due_date": "2024-07-10",
+      "email": "carol.lee@example.com",
+      "phone": "+1122334455",
+      "status": "won",
+      "stage": "Need Identified",
+      "tags": ["hot"],
+      "priority": "High",
+      "created": {
+        "on": "2025-07-26T05:37:55.897Z"
+      }
+    },
+    {
+      "_id": "688469b3062c5b9e6a150283",
+      "type": "Meeting Arranged",
+      "name": "Cloud Migration",
+      "description": "Meeting scheduled to discuss migration details.",
+      "value": 40000,
+      "owner": "David Kim",
+      "assigned_to": "David Kim",
+      "lead_source": "Email",
+      "probability": 50,
+      "expected_revenue": 20000,
+      "currency": "USD",
+      "next_steps": "Gather infra details and prepare migration plan.",
+      "products": ["Cloud Migration Pack"],
+      "due_date": "2024-07-20",
+      "email": "david.kim@example.com",
+      "phone": "+1223344556",
+      "status": "open",
+      "stage": "Meeting Arranged",
+      "tags": ["follow-up"],
+      "priority": "Medium",
+      "created": {
+        "on": "2025-07-26T05:37:55.898Z"
+      }
+    },
+    {
+      "_id": "688469b3062c5b9e6a150282",
+      "type": "Offer Accepted",
+      "name": "CRM Integration",
+      "description": "Offer accepted, contract pending.",
+      "value": 15000,
+      "owner": "Eva Green",
+      "assigned_to": "Eva Green",
+      "lead_source": "Referral",
+      "probability": 80,
+      "expected_revenue": 12000,
+      "currency": "USD",
+      "next_steps": "Finalize contract and schedule kickoff.",
+      "products": ["CRM Integration Module"],
+      "due_date": "2024-07-05",
+      "email": "eva.green@example.com",
+      "phone": "+1334455667",
+      "status": "won",
+      "stage": "Offer Accepted",
+      "tags": ["hot"],
+      "priority": "High",
+      "created": {
+        "on": "2025-07-26T05:37:55.899Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="d-flex justify-content-center mb-5"><div class="text-center flex-grow-1 cocreate-section-intro"><h2 class="mb-3 fw-semibold">One object model across every storage engine.</h2><p class="text-muted mb-0">Work with universal application concepts instead of rewriting logic around collections, tables, rows, records, or documents.</p></div></div>
+	<div class="d-flex flex-wrap gap-5 align-items-stretch">
+		<div class="w-400 flex-grow-1"><div class="card bg-dark border-0 shadow-sm h-100"><div class="card-header border-secondary text-white"><i class="ri-database-2-line text-info me-2"></i>Unified CRUD payload</div><div class="card-body p-0"><pre class="language-javascript cocreate-code mb-0"><code>await server.crud.send({
+  method: "object.read",
+  array: "users",
+  $filter: {
+    query: {
+      email: "user@example.com"
+    },
+    sort: {
+      created: -1
+    },
+    limit: 1
+  }
+});</code></pre></div></div></div>
+		<div class="w-400 flex-grow-1">
+			<div class="d-flex flex-wrap gap-2 mb-4"><span class="badge bg-primary-subtle text-primary fs-14">array</span><span class="badge bg-primary-subtle text-primary fs-14">object</span><span class="badge bg-primary-subtle text-primary fs-14">key</span><span class="badge bg-primary-subtle text-primary fs-14">filter</span><span class="badge bg-primary-subtle text-primary fs-14">storage</span><span class="badge bg-primary-subtle text-primary fs-14">method</span></div>
+			<h5>Native Optimization</h5><p class="text-muted">Adapters translate unified operations into efficient native database operations such as <code>findOne</code>, <code>LIMIT 1</code>, or the provider equivalent.</p>
+			<h5>Multiple Storage Providers</h5><p class="text-muted">Target multiple providers in parallel for replication, migration, backup, edge synchronization, analytics, or redundant writes.</p>
+			<h5>Shared Client and Server Concepts</h5><p class="text-muted mb-0">The same vocabulary carries across declarative HTML, JavaScript, browser storage, sockets, and server databases.</p>
+		</div>
+	</div>
+</div>

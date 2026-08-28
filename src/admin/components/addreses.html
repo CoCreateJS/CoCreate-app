@@ -1,0 +1,131 @@
+<!--
+  Address component (reusable)
+
+  Recommended address object shape (store as an array under a document, e.g. contacts.addresses or company.addresses):
+
+  { 
+    "label": "Home",              // short label shown in UI (Home / Work / Billing / Shipping / Warehouse)
+    "type": "shipping",           // semantic type (billing | shipping | other)
+    "fullName": "Jane Doe",       // recipient name
+    "company": "Acme Ltd",        // optional company
+    "lines": ["123 Main St", "Unit 4"], // address lines
+    "city": "Austin",
+    "region": "TX",               // state/province code or name
+    "postalCode": "78701",
+    "country": "US",              // ISO code recommended
+    "phone": "+1-512-555-1212",
+    "email": "jane@example.com",
+    "isPrimary": true,            // one primary address per entity
+    "validated": false,           // optional validation flag
+    "geo": { "lat": 30.2672, "lng": -97.7431 }, // optional geolocation
+    "createdOn": "2025-01-01T12:00:00Z",
+    "updatedOn": "2025-02-01T12:00:00Z"
+  }
+
+  Storage notes:
+  - Store as an array: e.g. object.addresses = [ {...}, {...} ]
+  - Use dot-notation keys to reference items, e.g. "addresses[0].postalCode" or render the full array with render="addresses".
+  - For forms that need to save an address as an object rather than a string, map the parsed object into data.object when uploading.
+
+  Usage:
+  - Place this component inside any object scope that exposes `addresses` (key="addresses" or render="addresses").
+  - Select an address: Select button emits passValues with the full address JSON. Consumer can listen for passValues to insert the address into a form or kanban mapping.
+-->
+
+<div class="addresses-component">
+	<!-- Header: can be omitted when embedded in small UI -->
+	<div class="d-flex justify-content-between align-items-center mb-2">
+		<strong>Addresses</strong>
+		<!-- consumer can override to open an address editor -->
+		<button
+			type="button"
+			class="btn btn-sm btn-outline-primary"
+			aria-label="Add address"
+			click-action="passValues"
+			click.value='{"action":"addAddress"}'>
+			Add
+		</button>
+	</div>
+
+	<!-- Render addresses array from current context.
+       Example usage in a form: <div array="contacts" object="{{object_id}}"> and this component inside will render that object's addresses.
+       The component expects the template engine to provide `addresses` as the key (use key="addresses" if necessary).
+  -->
+	<div
+		id="address-list"
+		render="addresses"
+		render-query="[template]"
+		filter-limit="50"
+		style="max-height: 320px; overflow: auto">
+		<div
+			template
+			class="list-group-item d-flex justify-content-between align-items-start gap-2 p-2">
+			<div class="flex-grow-1">
+				<div class="d-flex align-items-start gap-2">
+					<div>
+						<strong class="d-block"
+							>{{label || (fullName || 'Address')}}</strong
+						>
+						<small class="text-muted">{{company}}</small>
+					</div>
+					<div class="ms-auto text-end">
+						<small class="text-muted"
+							>{{city}}{{#if region}}, {{region}}{{/if}}
+							{{postalCode}}</small
+						>
+						<div>
+							<small class="text-muted">{{country}}</small>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-2 text-muted fs-13">
+					<!-- address lines -->
+					<div>
+						{{#if lines}}{{lines.join(',
+						')}}{{else}}{{lines}}{{/if}}
+					</div>
+					<div class="mt-1">
+						<span>{{phone}}</span>
+						<span class="mx-2">•</span>
+						<span>{{email}}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="d-flex flex-column align-items-end gap-1">
+				<!-- Primary badge -->
+				<span
+					class="badge bg-primary-subtle text-primary small"
+					aria-hidden="true"
+					>{{isPrimary ? 'Primary' : ''}}</span
+				>
+
+				<!-- Select emits the full address for consumer handling (passValues contains the address object) -->
+				<button
+					type="button"
+					class="btn btn-sm btn-outline-success"
+					click-action="passValues"
+					click.value="{{{JSONstringify this}}}"
+					aria-label="Select address">
+					Select
+				</button>
+
+				<!-- Edit opens an offcanvas/form (consumer should set the state.src via input.query or handle the passValues) -->
+				<button
+					type="button"
+					class="btn btn-sm btn-outline-secondary mt-1"
+					click-action="passValues"
+					click.value='{"action":"editAddress","address":{{{JSONstringify this}}}}'
+					aria-label="Edit address">
+					Edit
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Note: JSONstringify helper above is a placeholder for your templating engine.
+     If your renderer doesn't provide a helper, swap click.value to a string expression your engine supports,
+     e.g. click.value='{"_id":"{{_id}}","label":"{{label}}",...}' where you list required fields.
+-->

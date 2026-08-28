@@ -1,0 +1,96 @@
+<form
+    class="card mb-0"
+    array="endpoints"
+    object
+    state-id="offcanvas-app-form"
+    state-overwrite>
+    
+    <div
+        class="card-header text-center border-bottom-0"
+        input-query=".details-view-btn[]"
+        input.state.src="/apps/apis/endpoints/details.html"
+        src="components/offcanvas-header.html"
+        aria-label="Endpoint Configuration Header"></div>
+
+    <div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+        <div class="card-body d-flex flex-wrap gap-4">
+            
+            <div class="text-center w-100 mb-2">
+                <div class="avatar-lg rounded-circle d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24 m-auto" style="width: 80px; height: 80px;">
+                    <i class="ri-terminal-box-line"></i>
+                </div>
+                <p class="text-muted mt-2 fs-13">Configure Outbound REST API Parameters</p>
+            </div>
+
+            <!-- Dynamic relational dropdown list connecting to our apis collection -->
+            <label class="form-label w-100" id="parent-api-label">
+                API Provider Connection
+                <select
+                    class="form-select text-capitalize"
+                    key="api_id"
+                    name="api_id"
+                    required
+                    aria-labelledby="parent-api-label">
+                    <option value="">Select Connection...</option>
+                    <!-- CoCreate Dynamic Render Option Loop -->
+                    <option template value="{{object._id}}">{{object.name}}</option>
+                </select>
+                <div array="apis" render-query="$previous"></div>
+            </label>
+
+            <label class="form-label w-100" id="route-endpoint-label">
+                API Route (Method & Endpoint)
+                <input
+                    type="text"
+                    id="endpoint-route"
+                    key="endpoint"
+                    name="endpoint"
+                    class="form-control font-monospace"
+                    placeholder="e.g. POST /customers"
+                    required
+                    aria-labelledby="route-endpoint-label" />
+            </label>
+
+            <label class="form-label w-100" id="path-override-label">
+                Path Override URL
+                <input
+                    type="text"
+                    id="endpoint-path"
+                    key="path"
+                    name="path"
+                    class="form-control font-monospace"
+                    placeholder="e.g. /customers"
+                    aria-labelledby="path-override-label" />
+            </label>
+
+            <label class="form-label w-100" id="endpoint-desc-label">
+                Description / Purpose
+                <textarea
+                    key="description"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Provide developer details explaining this transactional path..."
+                    aria-labelledby="endpoint-desc-label"></textarea>
+            </label>
+
+            <label class="form-label w-100" id="endpoint-status-label">
+                Connection Status
+                <select
+                    class="form-select"
+                    key="status"
+                    name="status"
+                    aria-labelledby="endpoint-status-label">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </label>
+
+            <!-- Standard Layout Control Action Buttons -->
+            <div
+                src="/components/form-buttons.html"
+                role="region"
+                aria-label="Configuration Form Actions"></div>
+        </div>
+    </div>
+</form>

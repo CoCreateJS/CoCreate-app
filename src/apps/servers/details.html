@@ -1,0 +1,110 @@
+<form
+    class="card mb-0"
+    array="apis"
+    object
+    state-id="offcanvas-app-form"
+    state-overwrite>
+    
+    <div
+        class="card-header text-center border-bottom-0"
+        input-query=".form-view-btn[]"
+        input.state.src="/apps/apis/form.html"
+        src="components/offcanvas-header.html"
+        aria-label="API Details Header"></div>
+
+    <div
+        class="form-container"
+        plugin="SimpleBar"
+        simplebar='["$this", {}]'
+        aria-label="API Configuration Container">
+        
+        <div class="card-body d-flex flex-wrap gap-4">
+            
+            <div class="flex-shrink-0 d-flex flex-column align-items-center width:100% m-2">
+                
+                <!-- Dynamic brand key placeholder icon rather than generic person placeholder -->
+                <div class="avatar-lg rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24" style="width: 80px; height: 80px;">
+                    <i class="ri-key-2-line"></i>
+                </div>
+
+                <h5 class="mt-4 mb-1 text-capitalize text-dark fw-semibold" key="name" aria-label="API Provider Name"></h5>
+                <code><span class="text-muted fs-12 text-lowercase" key="url" aria-label="Base URL"></span></code>
+                
+                <!-- Quick developer handshakes (Direct Base URL mapping and connection tests) -->
+                <ul class="list-inline mb-0 d-flex gap-2 mt-3" aria-label="API Integration Actions">
+                    <li class="avatar-xs">
+                        <a
+                            href=""
+                            key="url"
+                            input.href="$value"
+                            target="_blank"
+                            class="avatar-title bg-info-subtle text-info fs-15 rounded"
+                            aria-label="Open Base URL in Browser">
+                            <i class="ri-external-link-line"></i>
+                        </a>
+                    </li>
+                    <li class="avatar-xs">
+                        <button
+                            type="button"
+                            class="avatar-title bg-success-subtle text-success fs-15 rounded border-0"
+                            aria-label="Test Gateway Endpoint Latency">
+                            <i class="ri-pulse-line"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="flex-grow-1" style="flex-basis: 0; min-width: 300px">
+                <h6
+                    class="text-muted text-uppercase fw-semibold mb-3"
+                    aria-label="API Profile Details Section">
+                    Integration Profile
+                </h6>
+                
+                <p
+                    class="text-muted mb-4 fs-14"
+                    key="description"
+                    aria-describedby="api-profile-heading"></p>
+                    
+                <div class="table-responsive table-card">
+                    <table
+                        class="table table-borderless mb-0"
+                        aria-label="API Parameter Layout Table">
+                        <tbody>
+                            <tr>
+                                <td class="fw-medium text-muted" scope="row" style="width: 35%;">Provider Name</td>
+                                <td class="text-capitalize fw-semibold text-dark" key="name" aria-label="Provider Name"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-medium text-muted" scope="row">Base Endpoint</td>
+                                <td><code class="text-primary text-lowercase" key="url" aria-label="API Base URL"></code></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-medium text-muted" scope="row">Signing Key / Token</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="text-muted fs-12" aria-label="Encrypted Token Hash">●●●●●●●●●●●●</span>
+                                        <button type="button" class="btn btn-link p-0 text-decoration-none text-muted fs-14" aria-label="Reveal Token Block">
+                                            <i class="ri-eye-off-line"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-medium text-muted" scope="row">Connection Status</td>
+                                <td aria-label="Integration Status">
+                                    <span key="status" class="badge bg-success-subtle text-success text-uppercase">Active</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div
+                class="w-100"
+                src="components/activities.html"
+                aria-label="API Outbound Event Activity Logs"></div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,156 @@
+<form
+  class="card mb-0"
+  array
+  object
+  state-id="offcanvas-order-form"
+  state-overwrite
+>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title mb-0">Order Information</h4>
+    </div>
+    <div class="card-body d-flex flex-wrap gap-4" plugin='{"SimpleBar": ["$this", {}]}'>
+      <div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+        <div class="card-body d-flex flex-wrap gap-4">
+          <label class="form-label" for="orderId">
+            Order ID
+            <input
+              type="text"
+              id="orderId"
+              key="order_id"
+              class="form-control"
+              placeholder="ID"
+              readonly
+              aria-label="Order ID"
+            />
+          </label>
+
+          <label class="form-label" for="customername-field">
+            Customer Name
+            <input
+              type="text"
+              id="customername-field"
+              key="customer_name"
+              class="form-control"
+              placeholder="Enter name"
+              
+              aria-label="Customer Name"
+            />
+          </label>
+
+          <label class="form-label" for="productname-field">
+            Product
+            <select
+              class="form-control"
+              key="product_name"
+              id="productname-field"
+              
+              aria-label="Product"
+            >
+              <option value="">Select Product</option>
+              <option value="Puma Tshirt">Puma Tshirt</option>
+              <option value="Adidas Sneakers">Adidas Sneakers</option>
+              <option value="350 ml Glass Grocery Container">
+                350 ml Glass Grocery Container
+              </option>
+              <option value="American egale outfitters Shirt">
+                American egale outfitters Shirt
+              </option>
+              <option value="Galaxy Watch4">Galaxy Watch4</option>
+              <option value="Apple iPhone 12">Apple iPhone 12</option>
+              <option value="Funky Prints T-shirt">Funky Prints T-shirt</option>
+              <option value="USB Flash Drive Personalized with 3D Print">
+                USB Flash Drive Personalized with 3D Print
+              </option>
+              <option value="Oxford Button-Down Shirt">
+                Oxford Button-Down Shirt
+              </option>
+              <option value="Classic Short Sleeve Shirt">
+                Classic Short Sleeve Shirt
+              </option>
+              <option value="Half Sleeve T-Shirts (Blue)">
+                Half Sleeve T-Shirts (Blue)
+              </option>
+              <option value="Noise Evolve Smartwatch">
+                Noise Evolve Smartwatch
+              </option>
+            </select>
+          </label>
+
+          <label class="form-label" for="date-field">
+            Order Date
+            <input
+              type="date"
+              id="date-field"
+              key="order_date"
+              class="form-control"
+              date-picker="flatpickr"
+              data-date-format="d M, Y"
+              data-enable-time
+              placeholder="Select date"
+              
+              aria-label="Order Date"
+            />
+          </label>
+
+          <div class="form-row-container" style="display: flex; gap: 1rem;">
+            <label class="form-label flex-grow-1" for="amount-field">
+              Amount
+              <input
+                type="text"
+                id="amount-field"
+                key="amount"
+                class="form-control"
+                placeholder="Total amount"
+                
+                aria-label="Amount"
+              />
+            </label>
+
+            <label class="form-label flex-grow-1" for="payment-field">
+              Payment Method
+              <select
+                class="form-control"
+                key="payment_method"
+                id="payment-field"
+                
+                aria-label="Payment Method"
+              >
+                <option value="">Select Payment Method</option>
+                <option value="Mastercard">Mastercard</option>
+                <option value="Visa">Visa</option>
+                <option value="COD">COD</option>
+                <option value="Paypal">Paypal</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="form-label" for="delivered-status">
+            Delivery Status
+            <select
+              class="form-control"
+              key="delivery_status"
+              id="delivered-status"
+              
+              aria-label="Delivery Status"
+            >
+              <option value="">Select Delivery Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Inprogress">Inprogress</option>
+              <option value="Cancelled">Cancelled</option>
+              <option value="Pickups">Pickups</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Returns">Returns</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="d-flex gap-2 justify-content-end mt-4">
+        <button type="reset" class="btn btn-light" aria-label="Reset Form">Reset</button>
+        <button type="submit" class="btn btn-success" id="add-btn" aria-label="Add Order">
+          Add Order
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,123 @@
+<div
+	class="dialog fade"
+	id="composemodal"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="composemodalTitle"
+	aria-modal="true">
+	<div class="card card-lg" role="document" aria-close-on="outside">
+		<div class="card-header d-flex justify-content-between p-3 bg-light">
+			<h5 class="card-title mb-0" id="composemodalTitle">New Message</h5>
+			<button
+				type="button"
+				class="btn-close"
+				aria-label="Close"
+				aria-controls="composemodal"
+				aria-expanded="true"></button>
+		</div>
+		<div class="card-body">
+			<div>
+				<div class="mb-3 position-relative">
+					<input
+						type="text"
+						class="form-control email-compose-input"
+						plugin="Choices"
+						data-Choices='["$this", {"limit":15, "removeItem":true}]'
+						value="support@themesbrand.com"
+						placeholder="To" />
+					<div class="position-absolute top-0 end-0">
+						<div class="d-flex">
+							<button
+								class="btn btn-link text-reset fw-semibold px-2"
+								type="button"
+								aria-controls="CcRecipientsCollapse"
+								aria-expanded="false"
+								aria-label="Show Cc recipients"
+								role="button">
+								Cc
+							</button>
+							<button
+								class="btn btn-link text-reset fw-semibold px-2"
+								type="button"
+								aria-controls="BccRecipientsCollapse"
+								aria-expanded="false"
+								aria-label="Show Bcc recipients"
+								role="button">
+								Bcc
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="collapse" id="CcRecipientsCollapse">
+					<div class="mb-3">
+						<label>Cc:</label>
+						<input
+							type="text"
+							class="form-control"
+							plugin="Choices"
+							data-Choices='["$this", {"limit":15, "removeItem":true}]'
+							placeholder="Cc recipients" />
+					</div>
+				</div>
+				<div class="collapse" id="BccRecipientsCollapse">
+					<div class="mb-3">
+						<label>Bcc:</label>
+						<input
+							type="text"
+							class="form-control"
+							plugin="Choices"
+							data-Choices='["$this", {"limit":15, "removeItem":true}]'
+							placeholder="Bcc recipients" />
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Subject" />
+				</div>
+				<div class="ck-editor-reverse">
+					<div
+						id="email-editor"
+						plugin="ClassicEditor"
+						data-ClassicEditor-$create="$this"></div>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer d-flex justify-content-end">
+			<button
+				type="button"
+				class="btn btn-ghost-danger"
+				aria-controls="composemodal"
+				aria-expanded="false">
+				Discard
+			</button>
+
+			<div class="btn-group">
+				<button type="button" class="btn btn-success">Send</button>
+				<button
+					type="button"
+					class="btn btn-success dropdown-toggle dropdown-toggle-split"
+					aria-haspopup="menu"
+					aria-expanded="false"
+					aria-controls="composemodal-dropdown-menu">
+					<span class="visually-hidden">Toggle Dropdown</span>
+				</button>
+				<ul
+					class="dropdown-menu dropdown-menu-end"
+					id="composemodal-dropdown-menu"
+					aria-close-on="anywhere"
+					role="menu">
+					<li>
+						<a class="dropdown-item" href="#" role="menuitem"
+							><i
+								class="ri-timer-line text-muted me-1 align-bottom"></i>
+							Schedule Send</a
+						>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

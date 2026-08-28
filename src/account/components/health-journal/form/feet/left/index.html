@@ -1,0 +1,237 @@
+<!-- Left Foot Group -->
+<input
+	type="hidden"
+	id="concern-foot-left"
+	array="contacts"
+	object="$user_id"
+	name="biometrics.feet.left.joint.status"
+	key="biometrics.feet.left.joint.status"
+	value="active" />
+
+<div id="sub-foot-left" class="d-flex flex-column gap-2">
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="Plantar">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				id="Plantar"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.plantar_fascia.status"
+				key="biometrics.feet.left.plantar_fascia.status"
+				value="active"
+				input-query="$parent $next"
+				input.class="show," />
+			Plantar Fascia
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.feet.left.plantar_fascia.details"
+			key="biometrics.feet.left.plantar_fascia.details"
+			placeholder="Details..."
+			class="form-control border border-secondary rounded-2 w-100"
+			rows="2"
+			hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="Calcaneus">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				id="Calcaneus"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.calcaneus.status"
+				key="biometrics.feet.left.calcaneus.status"
+				value="active"
+				input-query="$parent $next"
+				input.class="show," />
+			Heel (Calcaneus)
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.feet.left.calcaneus.details"
+			key="biometrics.feet.left.calcaneus.details"
+			placeholder="Details..."
+			class="form-control border border-secondary rounded-2 w-100"
+			rows="2"
+			hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="Metatarsals">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				id="Metatarsals"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.metatarsals.status"
+				key="biometrics.feet.left.metatarsals.status"
+				value="active"
+				input-query="$parent $next"
+				input.class="show," />
+			Metatarsals
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.feet.left.metatarsals.details"
+			key="biometrics.feet.left.metatarsals.details"
+			placeholder="Details..."
+			class="form-control border border-secondary rounded-2 w-100"
+			rows="2"
+			hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="Toes">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				id="Toes"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.toes.all.status"
+				key="biometrics.feet.left.toes.all.status"
+				value="active" />
+			Phalanges (Toes)
+		</label>
+	</div>
+	<div
+		id="sub-toes-left"
+		class="ps-3 pt-1 mt-1 mb-1 d-flex flex-column gap-1">
+		<div class="form-check form-check-secondary">
+			<label class="form-check-label" for="Hallux">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					id="Hallux"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.feet.left.toes.hallux.status"
+					key="biometrics.feet.left.toes.hallux.status"
+					value="active"
+					input-query="$parent $next"
+					input.class="show," />
+				Great Toe (Hallux)
+			</label>
+			<textarea
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.toes.hallux.details"
+				key="biometrics.feet.left.toes.hallux.details"
+				placeholder="Details..."
+				class="form-control border border-secondary rounded-2 w-100"
+				rows="2"
+				hidden></textarea>
+		</div>
+
+		<div class="form-check form-check-secondary">
+			<label class="form-check-label" for="Second">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					id="Second"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.feet.left.toes.second.status"
+					key="biometrics.feet.left.toes.second.status"
+					value="active"
+					input-query="$parent $next"
+					input.class="show," />
+				Second Toe
+			</label>
+			<textarea
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.toes.second.details"
+				key="biometrics.feet.left.toes.second.details"
+				placeholder="Details..."
+				class="form-control border border-secondary rounded-2 w-100"
+				rows="2"
+				hidden></textarea>
+		</div>
+
+		<div class="form-check form-check-secondary">
+			<label class="form-check-label" for="Third">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					id="Third"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.feet.left.toes.third.status"
+					key="biometrics.feet.left.toes.third.status"
+					value="active"
+					input-query="$parent $next"
+					input.class="show," />
+				Third Toe
+			</label>
+			<textarea
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.toes.third.details"
+				key="biometrics.feet.left.toes.third.details"
+				placeholder="Details..."
+				class="form-control border border-secondary rounded-2 w-100"
+				rows="2"
+				hidden></textarea>
+		</div>
+
+		<div class="form-check form-check-secondary">
+			<label class="form-check-label" for="Fourth">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					id="Fourth"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.feet.left.toes.fourth.status"
+					key="biometrics.feet.left.toes.fourth.status"
+					value="active"
+					input-query="$parent $next"
+					input.class="show," />
+				Fourth Toe
+			</label>
+			<textarea
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.toes.fourth.details"
+				key="biometrics.feet.left.toes.fourth.details"
+				placeholder="Details..."
+				class="form-control border border-secondary rounded-2 w-100"
+				rows="2"
+				hidden></textarea>
+		</div>
+
+		<div class="form-check form-check-secondary">
+			<label class="form-check-label" for="Pinky">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					id="Pinky"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.feet.left.toes.pinky.status"
+					key="biometrics.feet.left.toes.pinky.status"
+					value="active"
+					input-query="$parent $next"
+					input.class="show," />
+				Little Toe (Pinky)
+			</label>
+			<textarea
+				array="contacts"
+				object="$user_id"
+				name="biometrics.feet.left.toes.pinky.details"
+				key="biometrics.feet.left.toes.pinky.details"
+				placeholder="Details..."
+				class="form-control border border-secondary rounded-2 w-100"
+				rows="2"
+				hidden></textarea>
+		</div>
+	</div>
+</div>

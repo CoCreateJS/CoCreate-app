@@ -1,0 +1,33 @@
+<div`	
+	class="avatar-xl rounded-circle img-thumbnail p-0 position-relative d-inline-block mb-4 hello">
+	<img
+	
+		src="/assets/images/user.jpg"
+		array="contacts"
+		object="$user_id"
+		key="avatar[0].src"
+		alt="image"
+		width="100%"
+		height="100%"
+		class="avatar-xl rounded-circle img-thumbnail object-fit-cover"
+		onerror="this.onerror=null; this.src='../assets/images/user.jpg';" />
+	<div
+		id="profile-img-file-input"
+		class="avatar-xs rounded-circle position-absolute right:0 left:auto bottom:0 overflow-hidden cursor-pointer"
+		type="file"
+		array="contacts"
+		object="$user_id"
+		key="avatar"
+		read="false"
+		realtime="true"
+		accept="image/*"
+		title="Upload new profile photo"
+		aria-label="Upload new profile photo"
+		file_id="test">
+		<i class="avatar-title ri-camera-fill"></i>
+	</div>
+	<div file_id="test" hidden>
+		<input file="name" value="$user_id" />
+	</div>
+
+</div>

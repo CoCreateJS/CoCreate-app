@@ -1,0 +1,108 @@
+{
+  "method": "object.update",
+  "upsert": true,
+  "array": "messages",
+  "object": [
+    {
+      "_id": "67b8a1e1e4b0a1f2c3d4e5f0",
+      "chat_id": "67b8b555e4b0a1f2c3d4e999",
+      "related": [
+        { "id": "5ff747727005da1c272740ac", "type": "quote" },
+        { "id": "68765ca00be67f92d8df050c", "type": "contact" }
+      ],
+      "content": "Hey Peter, did you have a chance to look at the pricing for the L'Image project?",
+      "parent_id": null,
+      "files": [],
+      "is_system": false,
+      "created": {
+        "on": "2026-02-21T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-02-21T10:00:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "67b8a20ae4b0a1f2c3d4e5f1",
+      "chat_id": "67b8b555e4b0a1f2c3d4e999",
+      "related": [
+        { "id": "5ff747727005da1c272740ac", "type": "quote" },
+        { "id": "68765ca00be67f92d8df050c", "type": "contact" }
+      ],
+      "content": "Just opened it now. The labor costs look a bit high compared to our last run.",
+      "parent_id": "67b8a1e1e4b0a1f2c3d4e5f0",
+      "files": [],
+      "is_system": false,
+      "created": {
+        "on": "2026-02-21T10:05:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      },
+      "modified": {
+        "on": "2026-02-21T10:05:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      }
+    },
+    {
+      "_id": "67b8a225e4b0a1f2c3d4e5f2",
+      "chat_id": "67b8b555e4b0a1f2c3d4e999",
+      "related": [
+        { "id": "5ff747727005da1c272740ac", "type": "quote" },
+        { "id": "68765ca00be67f92d8df050c", "type": "contact" },
+        { "id": "77c9b335e4b0a1f2c3d4e6a1", "type": "site_survey" }
+      ],
+      "content": "Which specific section? I based it on the new site survey photos.",
+      "parent_id": "67b8a20ae4b0a1f2c3d4e5f1",
+      "files": ["67b8a240e4b0a1f2c3d4e5f9"],
+      "is_system": false,
+      "created": {
+        "on": "2026-02-21T10:08:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-02-21T10:08:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    },
+    {
+      "_id": "67b8a25ae4b0a1f2c3d4e5f3",
+      "chat_id": "67b8b555e4b0a1f2c3d4e999",
+      "related": [
+        { "id": "5ff747727005da1c272740ac", "type": "quote" },
+        { "id": "68765ca00be67f92d8df050c", "type": "contact" }
+      ],
+      "content": "Ah, the electrical rerouting. That makes sense if you saw the exposed wiring in the photos.",
+      "parent_id": "67b8a225e4b0a1f2c3d4e5f2",
+      "files": [],
+      "is_system": false,
+      "created": {
+        "on": "2026-02-21T10:12:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      },
+      "modified": {
+        "on": "2026-02-21T10:12:00.000Z",
+        "by": "68765ca00be67f92d8df050c"
+      }
+    },
+    {
+      "_id": "67b8a28be4b0a1f2c3d4e5f5",
+      "chat_id": "67b8a000e4b0a1f2c3d4e000",
+      "related": [
+        { "id": "5ff747727005da1c272740ac", "type": "quote" },
+        { "id": "88d0c446e4b0a1f2c3d4e7b2", "type": "invoice" }
+      ],
+      "content": "Quote status updated to 'Technical Review'. Draft Invoice generated.",
+      "parent_id": null,
+      "files": [],
+      "is_system": true,
+      "created": {
+        "on": "2026-02-21T10:20:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      },
+      "modified": {
+        "on": "2026-02-21T10:20:00.000Z",
+        "by": "5ff747727005da1c272740ac"
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+<form
+	class="card mb-0"
+	array="purchase_orders"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".details-view-btn[]"
+		input.state.src="/apps/purchase-orders/details.html"
+		src="components/offcanvas-header.html"></div>
+	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4">
+			<div class="flex-grow-1" style="flex-basis: 480px">
+				<div class="card">
+					<div class="card-header">Purchase Order</div>
+					<div class="card-body d-flex flex-column gap-3">
+						<label class="form-label" for="po_number">
+							PO Number
+							<input
+								type="text"
+								key="po_number"
+								id="po_number"
+								class="form-control"
+								placeholder="PO-0001"
+								aria-label="Purchase Order Number" />
+						</label>
+						<label class="form-label" for="supplier">
+							Supplier
+							<input
+								type="text"
+								key="supplier"
+								id="supplier"
+								class="form-control"
+								placeholder="Supplier name"
+								aria-label="Supplier Name" />
+						</label>
+						<label class="form-label" for="items">
+							Items (JSON)
+							<textarea
+								key="items"
+								id="items"
+								class="form-control"
+								rows="4"
+								placeholder='[{"product":"SKU","qty":1,"price":0}]'
+								aria-label="Purchase Order Items in JSON format"></textarea>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="flex-grow-1" style="flex-basis: 320px">
+				<div class="card">
+					<div class="card-header">Amounts & Dates</div>
+					<div class="card-body d-flex flex-column gap-3">
+						<label class="form-label" for="order_date">
+							Order Date
+							<input
+								type="date"
+								key="order_date"
+								id="order_date"
+								class="form-control"
+								aria-label="Order Date" />
+						</label>
+						<label class="form-label" for="expected_delivery">
+							Expected Delivery
+							<input
+								type="date"
+								key="expected_delivery"
+								id="expected_delivery"
+								class="form-control"
+								aria-label="Expected Delivery Date" />
+						</label>
+						<label class="form-label" for="subtotal">
+							Subtotal
+							<input
+								type="number"
+								key="subtotal"
+								id="subtotal"
+								class="form-control"
+								aria-label="Subtotal Amount" />
+						</label>
+						<label class="form-label" for="tax">
+							Tax
+							<input
+								type="number"
+								key="tax"
+								id="tax"
+								class="form-control"
+								aria-label="Tax Amount" />
+						</label>
+						<label class="form-label" for="total">
+							Total
+							<input
+								type="number"
+								key="total"
+								id="total"
+								class="form-control"
+								aria-label="Total Amount" />
+						</label>
+						<label class="form-label" for="status">
+							Status
+							<select
+								key="status"
+								id="status"
+								class="form-select"
+								aria-label="Purchase Order Status">
+								<option value="draft">Draft</option>
+								<option value="ordered">Ordered</option>
+								<option value="received">Received</option>
+								<option value="cancelled">Cancelled</option>
+							</select>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="w-100" src="components/form-buttons.html"></div>
+		</div>
+	</div>
+</form>

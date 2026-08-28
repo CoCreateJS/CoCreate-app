@@ -1,0 +1,100 @@
+<form
+    class="card mb-0"
+    array="webhooks"
+    object
+    state-id="offcanvas-app-form"
+    state-overwrite>
+    
+    <div
+        class="card-header text-center border-bottom-0"
+        input-query=".details-view-btn[]"
+        input.state.src="/apps/apis/webhooks/details.html"
+        src="components/offcanvas-header.html"
+        aria-label="Webhook Configuration Header"></div>
+
+    <div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+        <div class="card-body d-flex flex-wrap gap-4">
+            
+            <div class="text-center w-100 mb-2">
+                <div class="avatar-lg rounded-circle d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24 m-auto" style="width: 80px; height: 80px;">
+                    <i class="ri-bubble-chart-line"></i>
+                </div>
+                <p class="text-muted mt-2 fs-13">Configure Inbound Webhook Handlers</p>
+            </div>
+
+            <!-- Relational dropdown list pointing directly to our parent API credentials collection -->
+            <label class="form-label w-100" id="webhook-api-label">
+                API Provider Connection
+                <select
+                    class="form-select text-capitalize"
+                    key="api_id"
+                    name="api_id"
+                    required
+                    aria-labelledby="webhook-api-label">
+                    <option value="">Select Provider Connection...</option>
+                    <!-- CoCreate Dynamic Render Option Loop -->
+                    <option template value="{{object._id}}">{{object.name}}</option>
+                </select>
+                <div array="apis" render-query="$previous"></div>
+            </label>
+
+            <label class="form-label w-100" id="webhook-route-label">
+                Webhook Path Suffix (Appended to domain root)
+                <div class="input-group">
+                    <span class="input-group-text font-monospace fs-12 bg-light">/webhooks/</span>
+                    <input
+                        type="text"
+                        id="webhook-path"
+                        key="path"
+                        name="path"
+                        class="form-control font-monospace"
+                        placeholder="e.g. stripe/payments"
+                        required
+                        aria-labelledby="webhook-route-label" />
+                </div>
+            </label>
+
+            <label class="form-label w-100" id="webhook-action-locator-label">
+                Event Locator Key (Target query or body payload parameter)
+                <input
+                    type="text"
+                    id="webhook-locator"
+                    key="action"
+                    name="action"
+                    class="form-control font-monospace"
+                    placeholder="e.g. $event.type or $header.x-shopify-topic"
+                    required
+                    aria-labelledby="webhook-action-locator-label" />
+            </label>
+
+            <label class="form-label w-100" id="webhook-desc-label">
+                Description / Purpose
+                <textarea
+                    key="description"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Describe what transactions this inbound webhook parses..."
+                    aria-labelledby="webhook-desc-label"></textarea>
+            </label>
+
+            <label class="form-label w-100" id="webhook-status-label">
+                Connection Status
+                <select
+                    class="form-select"
+                    key="status"
+                    name="status"
+                    aria-labelledby="webhook-status-label">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </label>
+
+            <!-- Unified Standard Action Control Buttons -->
+            <div
+                src="/components/form-buttons.html"
+                role="region"
+                aria-label="Configuration Form Actions"></div>
+        </div>
+    </div>
+</form>

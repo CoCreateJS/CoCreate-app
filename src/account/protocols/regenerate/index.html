@@ -1,0 +1,216 @@
+<div class="container-fluid pb-5">
+  <!-- Header Card -->
+  <div class="d-flex flex-wrap gap-4 mb-4 w-100">
+    <div class="w-100">
+      <div class="card bg-secondary-subtle bg-opacity-10 border-secondary-subtle position-relative overflow-hidden shadow-sm">
+        <div class="position-absolute top-0 end-0 p-3  opacity:.2 z-index:-1">
+          <i class="" style="font-size: 130px;" src="../../../assets/svg/dna.svg"></i>
+        </div>
+        <div class="card-body p-4 position-relative z-1">
+          <div class="d-flex flex-column flex-sm-row gap-3 mb-3">
+            <div>
+              <h4 class="fs-24 fw-bold text-muted mb-2">Regenerate</h4>
+              <p class="lh-base mb-0" style="max-width: 800px;">
+                Cellular Growth Factors are the third generation of regenerative medicine, providing the critical biological signaling to trigger the rapid multiplication of your own cells. This initiates accelerated healing and biological restoration that rejuvenates your core systems and maximizes your longevity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap gap-4 mb-4 align-items-stretch w-100">
+    <div class="w-300 flex-grow-1">
+            
+      <!-- Option A: Available Status -->
+      <div class="card border-secondary border-opacity-50 mb-4">
+        <div class="card-body p-4">
+          <div class="text-center mb-4">
+            <i class="ri-sparkling-line display-4 text-secondary mb-3 d-block"></i>
+            <h4 class="fs-20 fw-bold text-muted mb-2">Configure Protocol Subscription</h4>
+            <p class="mx-auto" style="max-width: 450px;">Select your delivery systems and quantities to maintain your regenerative signaling protocol.</p>
+          </div>
+          
+          <form class="d-flex flex-column gap-3" array="contacts" object="$user_id">
+            <!-- 0.5ML Sub-Q -->
+            <div class="d-flex align-items-center justify-content-between p-3 border border-secondary rounded-subtle">
+              <div>
+                <h5 class="fs-15 fw-semibold text-muted mb-1">0.5ml Sub-Q</h5>
+                <p class="fs-12 mb-0">A slow-release application that utilizes fat deposits as a natural biological reservoir for sustained support.</p>
+              </div>
+              <div class="input-step input-step-sm">
+                <button type="button" class="minus text-white" aria-label="Decrease quantity" calculate="$eval(Number($query($next).value) - Number(1))" click-query="$next" click.value="$value" click.if=">=0" value>-</button>
+                <input type="number" class="quantity align-center bg-transparent text-white border-0" key="regenerate.sub_q" value="0" min="0" readonly />
+                <button type="button" class="plus text-white" aria-label="Increase quantity" calculate="$eval(Number($query($previous).value) + Number(1))" click-query="$previous" click.value="$value" value>+</button>
+              </div>
+            </div>
+
+            <!-- 1ML Intramuscular -->
+            <div class="d-flex align-items-center justify-content-between p-3 border border-secondary rounded-subtle">
+              <div>
+                <h5 class="fs-15 fw-semibold text-muted mb-1">1ml Intramuscular</h5>
+                <p class="fs-12 mb-0">Provides deep systemic distribution with high bioavailability for immediate biological signaling.</p>
+              </div>
+              <div class="input-step input-step-sm">
+                <button type="button" class="minus text-white" aria-label="Decrease quantity" calculate="$eval(Number($query($next).value) - Number(1))" click-query="$next" click.value="$value" click.if=">=0" value>-</button>
+                <input type="number" class="quantity align-center bg-transparent text-white border-0" key="regenerate.intramuscular" value="0" min="0" readonly />
+                <button type="button" class="plus text-white" aria-label="Increase quantity" calculate="$eval(Number($query($previous).value) + Number(1))" click-query="$previous" click.value="$value" value>+</button>
+              </div>
+            </div>
+            
+            <!-- 0.5 ML Dropper / Nasal -->
+            <div class="d-flex align-items-center justify-content-between p-3 border border-secondary rounded-subtle">
+              <div>
+                <h5 class="fs-15 fw-semibold text-muted mb-1">0.5ml Dropper / Nasal</h5>
+                <p class="fs-12 mb-0">Designed for pulmonary inhalation, nasal, and topical application for micro-needling.</p>
+              </div>
+              <div class="input-step input-step-sm">
+                <button type="button" class="minus text-white" aria-label="Decrease quantity" calculate="$eval(Number($query($next).value) - Number(1))" click-query="$next" click.value="$value" click.if=">=0" value>-</button>
+                <input type="number" class="quantity align-center bg-transparent text-white border-0" key="regenerate.dropper" value="0" min="0" readonly />
+                <button type="button" class="plus text-white" aria-label="Increase quantity" calculate="$eval(Number($query($previous).value) + Number(1))" click-query="$previous" click.value="$value" value>+</button>
+              </div>
+            </div>
+            <!-- 1ML Dropper / Nasal -->
+            <div class="d-flex align-items-center justify-content-between p-3 border border-secondary rounded-subtle">
+              <div>
+                <h5 class="fs-15 fw-semibold text-muted mb-1">1ml Dropper / Nasal</h5>
+                <p class="fs-12 mb-0">Designed for pulmonary inhalation, nasal, and topical application for micro-needling.</p>
+              </div>
+              <div class="input-step input-step-sm">
+                <button type="button" class="minus text-white" aria-label="Decrease quantity" calculate="$eval(Number($query($next).value) - Number(1))" click-query="$next" click.value="$value" click.if=">=0" value>-</button>
+                <input type="number" class="quantity align-center bg-transparent text-white border-0" key="regenerate.dropper" value="0" min="0" readonly />
+                <button type="button" class="plus text-white" aria-label="Increase quantity" calculate="$eval(Number($query($previous).value) + Number(1))" click-query="$previous" click.value="$value" value>+</button>
+              </div>
+            </div>
+
+            <hr class="border-secondary my-2">
+
+            <!-- Order Action -->
+            <div class="mt-4 text-center">
+              <button type="button" actions="save" class="btn btn-secondary btn-lg px-5 shadow-sm d-inline-flex align-items-center justify-content-center gap-2 fw-medium w-100">
+                Submit Order
+                <i class="ri-arrow-right-line"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar / Logistics & Logic -->
+    <div class="w-300 flex-grow-1">
+      
+      <!-- Subscription -->
+      <div class="card border-secondary overflow-hidden mb-4">
+        <div class="card-body p-4">
+          <h5 class="fs-16 fw-semibold text-muted mb-4">Subscription</h5>
+          <div class="mb-3">
+            <p class="fs-12 text-uppercase tracking-widest mb-1 d-flex justify-content-between align-items-center">
+              Auto-Refill
+              <span class="form-check form-switch form-switch-secondary form-switch-sm mb-0 d-inline-block">
+                <input class="form-check-input cursor-pointer" type="checkbox" role="switch" checked
+                  id="autoRefillToggle">
+              </span>
+            </p>
+          </div>
+          
+          <div class="mb-0" show="#autoRefillToggle:checked">
+            <p class="fs-12 text-uppercase tracking-widest mb-1">Frequency</p>
+            <select class="form-select text-white border-secondary fw-medium fs-14" 
+              array="contacts" 
+              object="$user_id" 
+              key="regenerate.frequency" 
+              value-type="number" 
+              realtime="true">
+              <option value="1" type="number">Weekly</option>
+              <option value="2" type="number">Bi-weekly</option>
+              <option value="4" type="number" selected>Monthly</option>
+              <option value="12" type="number">Quarterly</option>
+              <option value="26" type="number">Bi-annually</option>
+              <option value="52" type="number">Annually</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="card border-secondary overflow-hidden mb-4">
+        <div class="card-body p-4">
+          <h5 class="fs-16 fw-semibold text-muted mb-4">Status</h5>
+          
+          <div class="mb-4">
+            <p class="fs-12 text-uppercase tracking-widest mb-1">Next Delivery</p>
+            <div class="d-flex align-items-center gap-2">
+              <i class="ri-calendar-check-line text-secondary fs-20"></i>
+              <span class="fs-15 fw-semibold">Calculated based on frequency</span>
+            </div>
+          </div>
+          
+          <div class="mb-0">
+            <p class="fs-12 text-uppercase tracking-widest mb-1">Previous Delivery</p>
+            <div class="d-flex align-items-center gap-2">
+              <i class="ri-truck-line text-muted fs-20"></i>
+              <span class="fs-15" key="regenerate.previous_delivery">N/A</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Protocol Logic -->
+      <div class="card border-secondary overflow-hidden mb-4">
+        <div class="card-body p-4">
+          <h5 class="fs-16 fw-semibold text-muted mb-3">Protocol Logic</h5>
+          
+          <div class="d-flex gap-3 mb-3">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white fw-bold fs-10 flex-shrink-0" style="width: 24px; height: 24px;">1</div>
+            <p class="fs-12 lh-base mb-0 mt-1">Pulse on Day 1.</p>
+          </div>
+          
+          <div class="d-flex gap-3">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white fw-bold fs-10 flex-shrink-0" style="width: 24px; height: 24px;">2</div>
+            <p class="fs-12 lh-base mb-0 mt-1">Systemic rest on Day 2.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap gap-4 w-100">
+    <div class="w-100">
+      <div class="mb-4">
+        <h5 class="fs-16 fw-semibold text-muted mb-3 ps-1">Fulfillment History</h5>
+        <div class="card border-secondary shadow-sm">
+          <div class="table-responsive">
+            <table class="table table-dark table-borderless table-hover align-middle mb-0 text-start">
+              <thead class="table-light table-active text-muted fs-11 text-uppercase">
+                <tr>
+                  <th scope="col" class="py-3 px-4">Date</th>
+                  <th scope="col" class="py-3 px-4">Order ID</th>
+                  <th scope="col" class="py-3 px-4">Amount</th>
+                  <th scope="col" class="py-3 px-4">Method</th>
+                  <th scope="col" class="py-3 px-4">Status</th>
+                </tr>
+              </thead>
+              <tbody array="regenerateOrderHistory">
+                <template>
+                  <tr>
+                    <td class="px-4 py-3 fs-14" key="date">2025-11-05</td>
+                    <td class="px-4 py-3 text-muted fs-12 font-monospace" key="id">ORD-REGEN-1</td>
+                    <td class="px-4 py-3 fw-semibold text-white fs-14" key="amount">$625.00</td>
+                    <td class="px-4 py-3 text-muted fs-12" key="method">Nasal Atomizer</td>
+                    <td class="px-4 py-3">
+                      <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 fs-10" key="status">
+                        Completed
+                      </span>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html
+	state-id="theme"
+	lang="en"
+	data-layout="vertical"
+	data-topbar-color="defualt"
+	data-sidebar-color="dark"
+	data-sidebar-size="sm-hover"
+	data-sidebar-image="none"
+	data-preloader="disable"
+	data-theme="default"
+	data-theme-colors="default"
+	data-bs-theme=""
+	session>
+	<head>
+		<meta charset="utf-8" />
+		<title>Geneomes - Regenerative Health Dashboard</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Regenerative Health & Longevity product catalog for discover, optimize, and regenerate care pathways." />
+
+		<meta content="CoCreate" name="author" />
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+
+		<!-- Bootstrap -->
+		<link
+			href="/assets/css/bootstrap.min.css"
+			rel="stylesheet"
+			type="text/css" />
+
+		<!-- Icons -->
+		<link
+			href="/assets/css/icons.min.css"
+			rel="stylesheet"
+			type="text/css" />
+
+		<!-- Menu Icon -->
+		<link
+			href="/assets/css/menu-icon.css"
+			rel="stylesheet"
+			type="text/css" />
+
+		<!-- App -->
+		<link href="/assets/css/app.css" rel="stylesheet" type="text/css" />
+
+		<!-- Custom -->
+		<link
+			href="/assets/css/custom.css"
+			rel="stylesheet"
+			type="text/css"
+			parse="true"
+			save="false" />
+
+		<!-- Manifest -->
+		<link rel="manifest" href="/manifest.webmanifest" />
+
+		<!-- Remix Icon -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+			rel="stylesheet" />
+	</head>
+
+	<body id="layout-wrapper">
+		<a href="/auth/" session="false" hidden></a>
+		<a state-to="authRedirect" state.href="/account/" onload onload.click onload-on="stateLoaded" hidden></a>
+
+		<!-- Header Start -->
+		<header
+			id="page-topbar"
+			src="/account/components/header.html"
+			scroll="topbar-shadow"
+			scroll-attribute="class"
+			scroll-top="50"></header>
+		<!-- Header End -->
+
+		<!-- Menu Start -->
+		<menu class="app-menu navbar-menu" src="/account/components/menu.html"></menu>
+		<!-- Menu End -->
+
+		<!-- Main Content Start-->
+		<main class="main-content pt-5">
+			<!-- start page title -->
+			<!-- <div src="../portal/components/breadcrumbs.html"></div> -->
+			<!-- end page title -->
+
+			<!-- TODO: use the src change to mark the the navigation menu item as active -->
+			<!-- Page Content Start -->
+			<div class="page-content d-flex gap-4 pt-5 padding:0px@xxs&xs">
+				
+				<div
+					id="main-view"
+					class="display:flex flex-direction:column flex-grow-1 gap-3 min-width:200px"
+					src=""
+					state-id="accountView"
+					state.onstoragechange="false"
+					state-overwrite>
+					<div
+						onload.src="/account/components/dashboard.html"
+						onload-query="$parent"
+						onload-setTimeout="3000"></div>
+				</div>
+
+				<div
+					id="offcanvas-app"
+					resizable
+					role="dialog"
+					class="card offcanvas offcanvas-end flex-grow-1 mb-0"
+					tabindex="-1"
+					aria-labelledby="offcanvas-app-label"
+					aria-close-on="button">
+					<div
+						id="offcanvas-app-view"
+						state-id="offcanvas-app-view"
+						state-overwrite
+						src=""
+						input-query="$closest .page-content #main-view"></div>
+					<div resize="left"></div>
+				</div>
+			</div>
+			<!-- Page Content End -->
+		</main>
+		<!-- Main Content End -->
+
+		<!-- Footer Start -->
+		<!-- <footer class="footer" src="/account/components/footer.html"></footer> -->
+		<!-- Footer End -->
+
+		<!-- Preloader Start -->
+		<div id="preloader">
+			<div id="status">
+				<div
+					class="spinner-border text-primary avatar-sm"
+					role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+		</div>
+		<!-- Preloader End -->
+		 
+		<!-- Theme Settings Start -->
+		<div src="/components/theme-settings.html"></div>
+		<!-- Theme Settings End -->
+
+		<!-- Remove Item Start -->
+		<div src="/components/remove-item.html"></div>
+		<!-- Remove Item End -->
+
+		<!-- Members Start -->
+		<!-- <div src="/components/members.html"></div> -->
+		<!-- Members End -->
+
+		<!-- Notification Start -->
+		<div
+			class="position:fixed!important bottom:15px right:15px"
+			aria-live="polite"
+			role="status"
+			aria-atomic="true">
+			<div
+				template="notification"
+				class="card position:relative margin-top:10px padding:20px {{status}}">
+				<span class="{{type}} font-weight:400">{{message}}</span>
+				<a
+					actions="remove"
+					class="position:absolute top:4px right:4px"
+					aria-label="Dismiss notification">
+					<i src="/assets/svg/times.svg" aria-hidden="true"></i>
+				</a>
+			</div>
+		</div>
+		<!-- Notification End -->
+
+		<!-- Back To Top Start -->
+		<div src="/components/scroll-to-top.html"></div>
+		<!-- Back To Top End -->
+
+		<!-- Vertical Overlay Start -->
+		<div
+			class="vertical-overlay"
+			click.class="vertical-sidebar-enable,"
+			click-query="$document body"></div>
+		<!-- Vertical Overlay End -->
+
+		<!-- JAVASCRIPT -->
+		<script src="/dist/CoCreate.js"></script>
+		<script src="/assets/js/lord-icon-2.1.0.js"></script>
+	</body>
+</html>

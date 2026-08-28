@@ -1,0 +1,105 @@
+<div
+	class="attributes-container accordion-item w-100 display:flex flex-direction:column"
+	aria-label="Attributes Container"
+	title="Manage attributes for this field. Drag and drop to reorder attributes.">
+	<div
+		class="accordion-header display:flex align-items:center p-2 bg-light rounded">
+		<span
+			class="flex-grow:1"
+			aria-label="Attributes Section"
+			title="Click to expand or collapse attributes.">
+			Attributes
+		</span>
+		<button
+			class="btn btn-sm accordion-toggle"
+			aria-controls="attributes-section-{{fields.label}}"
+			aria-expanded="false"
+			aria-haspopup="true"
+			title="Expand or collapse the attributes section.">
+			<i class="ri-arrow-down-s-line"></i>
+		</button>
+	</div>
+
+	<div
+		id="attributes-section-{{fields.label}}"
+		class="accordion-collapse collapse p-3"
+		aria-hidden="true"
+		title="Attributes Section"
+		sortable
+		dnd-group-name="attributes">
+		<div
+			class="attribute-item display:flex gap:10px align-items:center height:30px"
+			render="fields.attributes"
+			render-as="fieldAttr"
+			template
+			draggable
+			aria-label="Attribute Item"
+			title="Drag to reorder this attribute.">
+			<span
+				class="cursor:move px-1 bg-light rounded"
+				aria-label="Drag Handle"
+				title="Drag handle for reordering."
+				drag-handle
+				>: :</span
+			>
+			<span>
+				<span
+					contenteditable="true"
+					placeholder="Attribute Name (e.g., id)"
+					key="fields[].attributes[].name"
+					class="p-1"
+					aria-label="Attribute Name"
+					title="Click to edit the attribute name.">
+					{{fieldAttr.name}}
+				</span>
+				=
+				<span
+					contenteditable="true"
+					placeholder="Attribute Value"
+					key="fields[].attributes[].value"
+					class="p-1"
+					aria-label="Attribute Value"
+					title="Click to edit the attribute value.">
+					{{fieldAttr.value}}
+				</span>
+			</span>
+			<button
+				class="btn btn-sm ms-auto delete-btn"
+				actions="remove"
+				remove-query="$parent"
+				aria-label="Remove Attribute"
+				title="Click to remove this attribute.">
+				<i class="ri-delete-bin-line"></i>
+			</button>
+		</div>
+		<div
+			class="attribute-item display:flex gap:10px align-items:center new-attribute-row"
+			aria-label="New Attribute Row"
+			title="Add a new attribute."
+			draggable="false">
+			<span
+				class="px-1 bg-light rounded"
+				role="button"
+				tabindex="0"
+				aria-label="Add new attribute"
+				title="Add a new attribute to this field. Click or press Enter to add.">
+				<i class="ri-add-line"></i>
+			</span>
+			<span
+				contenteditable="true"
+				placeholder="Attribute Name (e.g., id)"
+				class="p-1 min-width:50px"
+				aria-label="New Attribute Name"
+				title="Enter the name for the new attribute.">
+			</span>
+			=
+			<span
+				contenteditable="true"
+				placeholder="Attribute Value"
+				class="p-1 min-width:50px"
+				aria-label="New Attribute Value"
+				title="Enter the value for the new attribute.">
+			</span>
+		</div>
+	</div>
+</div>

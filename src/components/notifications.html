@@ -1,0 +1,223 @@
+<div class="dropdown-head bg-primary bg-pattern rounded-top">
+	<div class="p-3">
+		<div class="row align-items-center">
+			<div class="col">
+				<h6
+					class="m-0 fs-16 fw-semibold text-white"
+					id="notifications-label">
+					Notifications
+				</h6>
+			</div>
+			<div class="col-auto dropdown-tabs">
+				<span class="badge bg-light text-body fs-13"><span>4</span> New</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="px-2 pt-2">
+		<ul
+			class="nav nav-tabs dropdown-tabs nav-tabs-custom"
+			id="notificationItemsTab"
+			role="tablist"
+			aria-labelledby="notifications-label">
+			<li class="nav-item waves-effect waves-light">
+				<a
+					class="nav-link"
+					id="tab-all"
+					role="tab"
+					aria-selected="true"
+					aria-controls="all-noti-tab">
+					All 
+					<!-- <span>(4)</span> -->
+				</a>
+			</li>
+			<li class="nav-item waves-effect waves-light">
+				<a
+					class="nav-link"
+					id="tab-messages"
+					role="tab"
+					aria-selected="false"
+					aria-controls="messages-tab">
+					Messages
+				</a>
+			</li>
+			<li class="nav-item waves-effect waves-light">
+				<a
+					class="nav-link"
+					id="tab-alerts"
+					role="tab"
+					aria-selected="false"
+					aria-controls="alerts-tab">
+					Alerts
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- TODO: Apply CoCreate Attribtes to toggle tabs, check items, display delete button if checked, display are you sure modal -->
+<div class="tab-content position-relative" id="notificationItemsTabContent">
+	<div
+		class="tab-pane fade show py-2 ps-2"
+		id="all-noti-tab"
+		role="tabpanel"
+		aria-labelledby="tab-all"
+		tabindex="0">
+		<div plugin='{"SimpleBar": ["$this", {}]}' style="max-height: 300px" class="pe-2">
+			<div 
+				array="notifications"
+				object
+				render-query="[template]"
+				filter-limit="20">
+				<div template class="text-reset notification-item d-block dropdown-item position-relative">
+					<div class="d-flex">
+						<div class="avatar-xs me-3 flex-shrink-0">
+							<span class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
+								<i class="{{object.icon}}"></i>
+							</span>
+						</div>
+						<div class="flex-grow-1">
+							<a href="#!" class="stretched-link">
+								<h6 class="mt-0 mb-2 lh-base">
+									{{object.title}}
+								</h6>
+							</a>
+							<p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+								<span>
+									<i class="mdi mdi-clock-outline"></i>
+									<span>{{object.time}}</span>
+								</span>
+							</p>
+						</div>
+						<div class="px-2 fs-15">
+							<div class="form-check notification-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									value="{{object._id}}"
+									toggle.class="active"
+									toggle-query="$closest .notification-item"
+									id="notification-check-{{object._id}}" />
+								<label
+									class="form-check-label"
+									for="notification-check-{{object._id}}"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="my-3 text-center view-all">
+				<button
+					type="button"
+					class="btn btn-soft-success waves-effect waves-light">
+					View All Notifications
+					<i class="ri-arrow-right-line align-middle"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="tab-pane fade py-2 ps-2"
+		id="messages-tab"
+		role="tabpanel"
+		aria-labelledby="tab-messages"
+		tabindex="0">
+		<div plugin='{"SimpleBar": ["$this", {}]}' style="max-height: 300px" class="pe-2">
+			<div 
+				array="notifications"
+				object
+				filter-query-key="type"
+				filter-query-value="message"
+				render-query="[template]"
+				filter-limit="20">
+				<div template class="text-reset notification-item d-block dropdown-item">
+					<div class="d-flex">
+						<img
+							src="{{object.image}}"
+							class="me-3 rounded-circle avatar-xs"
+							alt="user-pic" />
+						<div class="flex-grow-1">
+							<a href="#!" class="stretched-link">
+								<h6 class="mt-0 mb-1 fs-13 fw-semibold">
+									{{object.title}}
+								</h6>
+							</a>
+							<div class="fs-13 text-muted">
+								<p class="mb-1">
+									{{object.message}}
+								</p>
+							</div>
+							<p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+								<span>
+									<i class="mdi mdi-clock-outline"></i> {{object.time}}
+								</span>
+							</p>
+						</div>
+						<div class="px-2 fs-15">
+							<div class="form-check notification-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									value="{{object._id}}"
+									toggle.class="active"
+									toggle-query="$closest .notification-item"
+									id="messages-notification-check-{{object._id}}" />
+								<label
+									class="form-check-label"
+									for="messages-notification-check-{{object._id}}"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="my-3 text-center view-all">
+				<button
+					type="button"
+					class="btn btn-soft-success waves-effect waves-light">
+					View All Messages
+					<i class="ri-arrow-right-line align-middle"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div
+		class="tab-pane fade p-4"
+		id="alerts-tab"
+		role="tabpanel"
+		aria-labelledby="tab-alerts"
+		tabindex="0">
+		<!-- TODO: dynamically add empty-notification-elem if panel empty -->
+		<div class="empty-notification-elem">
+			<div class="w-25 w-sm-50 pt-3 mx-auto">
+				<img
+					src="/assets/images/svg/bell.svg"
+					class="img-fluid"
+					alt="user-pic" />
+			</div>
+			<div class="text-center pb-5 mt-2">
+				<h6 class="fs-18 fw-semibold lh-base">
+					Hey! You have no any notifications
+				</h6>
+			</div>
+		</div>
+	</div>
+
+	<div class="notification-actions" id="notification-actions">
+		<div class="d-flex text-muted justify-content-center">
+			Select
+			<!-- TODO: Dynamically get length of messages and alerts -->
+			<div id="select-content" class="text-body fw-semibold px-1">0</div>
+			Result
+			<button
+				type="button"
+				class="btn btn-link link-danger p-0 ms-3"
+				data-bs-toggle="modal"
+				data-bs-target="#confim-delete">
+				Remove
+			</button>
+		</div>
+	</div>
+</div>

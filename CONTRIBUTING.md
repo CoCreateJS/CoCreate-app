@@ -1,19 +1,19 @@
-# Contributing to CoCreateJS
+# Contributing to Geneomes
 
-This project is work of [many contributors](https://github.com/CoCreate-app/CoCreate-admin/graphs/contributors).
-You're encouraged to submit [pull requests](https://github.com/CoCreate-app/CoCreate-admin/pulls),
-[propose features and discuss issues](https://github.com/CoCreate-app/CoCreate-admin/issues).
+This project is work of [many contributors](https://github.com/frankpagan/Geneomes/graphs/contributors).
+You're encouraged to submit [pull requests](https://github.com/frankpagan/Geneomes/pulls),
+[propose features and discuss issues](https://github.com/frankpagan/Geneomes/issues).
 
 In the examples below, substitute your Github username for `contributor` in URLs.
 
 ## Fork the Project
 
-Fork the [project on Github](https://github.com/CoCreate-app/CoCreateJS) and check out your copy.
+Fork the [project on Github](https://github.com/frankpagan/Geneomes) and check out your copy.
 
 ```
-git clone https://github.com/contributor/CoCreateJS.git
-cd CoCreateJS
-git remote add upstream https://github.com/CoCreate-app/CoCreateJS.git
+git clone https://github.com/contributor/Geneomes.git
+cd Geneomes
+git remote add upstream https://github.com/frankpagan/Geneomes.git
 ```
 
 ## Create a Topic Branch
@@ -43,7 +43,7 @@ Document any external behavior in the [README](README.md).
 
 ## Update Changelog
 
-Add a line to [CHANGELOG](CHANGELOG.md) under *Next Release*.
+Add a line to [CHANGELOG](CHANGELOG.md) under _Next Release_.
 Make it look like every other line, including your name and link to your Github account.
 
 ## Commit Changes
@@ -70,7 +70,7 @@ git push origin my-feature-branch
 
 ## Make a Pull Request
 
-Go to [https://github.com/CoCreate-app/CoCreate-admin](https://github.com/CoCreate-app/CoCreate-admin) and select your feature branch.
+Go to [https://github.com/frankpagan/Geneomes](https://github.com/frankpagan/Geneomes) and select your feature branch.
 Click the 'Pull Request' button and fill out the form. Pull requests are usually reviewed within a few days.
 
 ## Rebase
@@ -88,7 +88,7 @@ git push origin my-feature-branch -f
 Update the [CHANGELOG](CHANGELOG.md) with the pull request number. A typical entry looks as follows.
 
 ```
-* [#123](https://github.com/CoCreate-app/CoCreate-admin/pull/123): Reticulated splines - [@contributor](https://github.com/contributor).
+* [#123](https://github.com/frankpagan/Geneomes/pull/123): Reticulated splines - [@contributor](https://github.com/contributor).
 ```
 
 Amend your previous commit and force push the changes.

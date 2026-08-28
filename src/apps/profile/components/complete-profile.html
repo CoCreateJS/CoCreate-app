@@ -1,0 +1,37 @@
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title mb-5">Complete Your Profile</h5>
+		<!-- TODO: get object keys length -->
+		<div
+			key="{}.$length"
+			value=" / 30"
+			calculate="$value / 30"
+			input-query=".profile-progress[]"
+			input.value="$value"
+			change-query=".progress-bar"
+			progress-attribute="aria-valuenow">
+			<input
+				type="hidden"
+				class="profile-progress"
+				input.style="$value"
+				input-query=".progress-bar"
+				value-prefix="width:"
+				value-suffix="%;" />
+
+			<div
+				class="progress animated-progress custom-progress progress-label">
+				<div
+					class="progress-bar bg-danger profile-progress"
+					role="progressbar"
+					style="width: 30%"
+					aria-valuenow="30"
+					aria-valuemin="0"
+					aria-valuemax="100">
+					<div class="label profile-progress" value-suffix="%">
+						30%
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

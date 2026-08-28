@@ -1,0 +1,63 @@
+<!-- Cardiovascular Group -->
+<input
+	type="hidden"
+	id="concern-cardiovascular"
+	array="contacts"
+	object="$user_id"
+	name="biometrics.cardiovascular.group.status"
+	key="biometrics.cardiovascular.group.status"
+	value="active" />
+
+<div id="sub-cardiovascular" class="d-flex flex-column gap-2">
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="concern-cardio-heart">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				id="concern-cardio-heart"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.cardiovascular.heart.status"
+				key="biometrics.cardiovascular.heart.status"
+				value="active"
+				input-query="$parent $next"
+				input.class="show," />
+			Heart (Myocardium)
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.cardiovascular.heart.details"
+			key="biometrics.cardiovascular.heart.details"
+			placeholder="Details..."
+			class="form-control border border-secondary rounded-2 w-100"
+			rows="2"
+			hidden></textarea>
+	</div>
+
+	<div class="form-check form-check-secondary">
+		<label class="form-check-label" for="concern-cardio-vessels">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				id="concern-cardio-vessels"
+				array="contacts"
+				object="$user_id"
+				name="biometrics.cardiovascular.vessels.status"
+				key="biometrics.cardiovascular.vessels.status"
+				value="active"
+				input-query="$parent $next"
+				input.class="show," />
+			Major Vessels
+		</label>
+		<textarea
+			array="contacts"
+			object="$user_id"
+			name="biometrics.cardiovascular.vessels.details"
+			key="biometrics.cardiovascular.vessels.details"
+			placeholder="Details..."
+			class="form-control border border-secondary rounded-2 w-100"
+			rows="2"
+			hidden></textarea>
+	</div>
+</div>

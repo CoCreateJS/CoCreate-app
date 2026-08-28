@@ -1,0 +1,2468 @@
+                                    <style>
+                                        /* 1. Hide every node detail group by default */
+                                        g[id^="node-"] {
+                                            display: none;
+                                            pointer-events: none; /* Prevents visual items from blocking clicks to the hitbox below */
+                                        }
+										g[id^="node-"] text {
+											pointer-events: auto;
+										}
+
+                                        /* 2. Generic declarative rule: If the foreignObject has a checked input inside it, show the immediately next <g> */
+                                        foreignObject:has(input:checked) + g {
+                                            display: block !important;
+                                        }
+
+                                        /* Allow mobile scrolling through the overall SVG layer */
+                                        svg {
+                                            pointer-events: none;
+                                            touch-action: pan-y;
+                                        }
+
+                                        .svg-hitbox {
+                                            overflow: visible;
+                                            pointer-events: auto;
+                                        }
+
+                                        /* Invisible hitboxes */
+                                        .svg-input-hitbox {
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                            margin: 0;
+                                            padding: 0;
+                                            opacity: 0;
+                                            cursor: pointer;
+                                            z-index: 100;
+                                            appearance: none;
+                                            -webkit-appearance: none;
+                                            display: block;
+                                            pointer-events: auto;
+                                        }
+                                        .health-form {
+                                            overflow: visible;
+                                            pointer-events: auto; /* Restores clicks to the form popup */
+                                        }
+                                        /* JS-free Declarative Form Card Responsive Logic */
+                                        .form-card {
+                                            /* Base styling */
+                                            position: relative;
+                                            width: 220px !important;
+                                        }
+
+                                        .open-right {
+                                            transform: scale(0.3);
+                                            transform-origin: top left;
+                                        }
+
+                                        .open-left {
+                                            transform: scale(0.3) translateX(-100%);
+                                            transform-origin: top left;
+                                        }
+
+                                        @media screen and (max-width: 600px) {
+                                            .open-right {
+                                                transform: scale(0.23);
+                                            }
+                                            .open-left {
+                                                transform: scale(0.23) translateX(-100%);
+                                            }
+                                        }
+
+                                        .svg-hitbox > div {
+                                            position: relative;
+                                            width: 100%;
+                                            height: 100%;
+                                        }
+                                    </style>
+
+
+
+<svg
+	viewBox="0 0 100 200"
+	width="100%"
+	height="100%"
+	xmlns="http://www.w3.org/2000/svg"
+	style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+                                        
+	<!-- Neurology Sub-Nodes -->
+	<g id="group-neuro-right">
+		<!-- x, y, width, height maps roughly to your old circle cx, cy, r -->
+		<foreignObject x="50" y="8" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.neuro-right.status"
+					key="biometrics.neuro-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+
+		<g id="node-neuro-right">
+			<circle
+				cx="53"
+				cy="11"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="55"
+				y1="11"
+				x2="85"
+				y2="9"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="10"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-neuro-right"
+				aria-expanded="false">
+				Hemisphere
+			</text>
+			<foreignObject
+				id="fo-concern-neuro-right"
+				aria-close-on="outside"
+				x="87"
+				y="13"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/neurology/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-neuro-left">
+		<foreignObject x="44" y="8" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.neuro-left.status"
+					key="biometrics.neuro-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+
+		<g id="node-neuro-left">
+			<circle
+				cx="47"
+				cy="11"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="45"
+				y1="11"
+				x2="15"
+				y2="9"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="10"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-neuro-left"
+				aria-expanded="false">
+				Hemisphere
+			</text>
+			<foreignObject
+				id="fo-concern-neuro-left"
+				x="13"
+				y="13"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/neurology/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-neuro-stem">
+		<foreignObject x="47" y="13" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.neuro-stem.status"
+					key="biometrics.neuro-stem.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+
+		<g id="node-neuro-stem">
+			<circle
+				cx="50"
+				cy="16"
+				r="1.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="52"
+				y1="16"
+				x2="85"
+				y2="13"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="14"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-neuro-stem"
+				aria-expanded="false">
+				Brainstem
+			</text>
+			<foreignObject
+				id="fo-concern-neuro-stem"
+				x="87"
+				y="17"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/neurology/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Respiratory Sub-Nodes -->
+	<g id="group-resp-right">
+		<foreignObject x="53" y="36" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.resp-right.status"
+					key="biometrics.resp-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-resp-right">
+			<circle
+				cx="57"
+				cy="40"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="59"
+				y1="40"
+				x2="85"
+				y2="38"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="39"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-resp-right"
+				aria-expanded="false">
+				Lung
+			</text>
+			<foreignObject
+				id="fo-concern-resp-right"
+				x="87"
+				y="42"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/respiratory/lungs/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-resp-left">
+		<foreignObject x="39" y="36" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.resp-left.status"
+					key="biometrics.resp-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-resp-left">
+			<circle
+				cx="43"
+				cy="40"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="41"
+				y1="40"
+				x2="15"
+				y2="39"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="40"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-resp-left"
+				aria-expanded="false">
+				Lung
+			</text>
+			<foreignObject
+				id="fo-concern-resp-left"
+				x="13"
+				y="43"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/respiratory/lungs/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-resp-trachea">
+		<foreignObject x="47" y="25" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.resp-trachea.status"
+					key="biometrics.resp-trachea.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-resp-trachea">
+			<circle
+				cx="50"
+				cy="28"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="48"
+				y1="28"
+				x2="15"
+				y2="25"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="26"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-resp-trachea"
+				aria-expanded="false">
+				TRACHEA
+			</text>
+			<foreignObject
+				id="fo-concern-resp-trachea"
+				x="13"
+				y="29"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/respiratory/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Cardiovascular Sub-Nodes -->
+	<g id="group-cardio-heart">
+		<foreignObject x="49" y="40" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.cardio-heart.status"
+					key="biometrics.cardio-heart.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-cardio-heart">
+			<circle
+				cx="53"
+				cy="44"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="55"
+				y1="44"
+				x2="85"
+				y2="45"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="46"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-cardio-heart"
+				aria-expanded="false">
+				HEART
+			</text>
+			<foreignObject
+				id="fo-concern-cardio-heart"
+				x="87"
+				y="49"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/cardiovascular/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-cardio-vessels">
+		<foreignObject x="47" y="35" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.cardio-vessels.status"
+					key="biometrics.cardio-vessels.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-cardio-vessels">
+			<circle
+				cx="50"
+				cy="38"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="48"
+				y1="38"
+				x2="15"
+				y2="35"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="36"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-cardio-vessels"
+				aria-expanded="false">
+				VESSELS
+			</text>
+			<foreignObject
+				id="fo-concern-cardio-vessels"
+				x="13"
+				y="39"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/cardiovascular/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Gastrointestinal Sub-Nodes -->
+	<g id="group-gi-liver">
+		<foreignObject x="41" y="57" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.gi-liver.status"
+					key="biometrics.gi-liver.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-gi-liver">
+			<circle
+				cx="45"
+				cy="61"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="43"
+				y1="61"
+				x2="15"
+				y2="58"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="59"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-gi-liver"
+				aria-expanded="false">
+				LIVER
+			</text>
+			<foreignObject
+				id="fo-concern-gi-liver"
+				x="13"
+				y="62"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/gastrointestinal/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-gi-stomach">
+		<foreignObject x="51" y="57" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.gi-stomach.status"
+					key="biometrics.gi-stomach.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-gi-stomach">
+			<circle
+				cx="55"
+				cy="61"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="57"
+				y1="61"
+				x2="85"
+				y2="62"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="63"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-gi-stomach"
+				aria-expanded="false">
+				STOMACH
+			</text>
+			<foreignObject
+				id="fo-concern-gi-stomach"
+				x="87"
+				y="66"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/gastrointestinal/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-gi-intestines">
+		<foreignObject x="45" y="69" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.gi-intestines.status"
+					key="biometrics.gi-intestines.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-gi-intestines">
+			<circle
+				cx="50"
+				cy="74"
+				r="3"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="47"
+				y1="74"
+				x2="15"
+				y2="77"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="78"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-gi-intestines"
+				aria-expanded="false">
+				INTESTINE
+			</text>
+			<foreignObject
+				id="fo-concern-gi-intestines"
+				x="13"
+				y="81"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/gastrointestinal/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Reproductive Sub-Nodes (Female) -->
+	<g id="group-repro-ovaries">
+		<foreignObject x="42" y="84" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.repro-ovaries.status"
+					key="biometrics.repro-ovaries.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<foreignObject x="52" y="84" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.repro-ovaries.status"
+					key="biometrics.repro-ovaries.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-repro-ovaries">
+			<circle
+				cx="45"
+				cy="87"
+				r="1.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<circle
+				cx="55"
+				cy="87"
+				r="1.5"
+				fill="#f06548"
+				filter="url(#glow)" />
+			<line
+				x1="57"
+				y1="87"
+				x2="85"
+				y2="82"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="83"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-repro-ovaries"
+				aria-expanded="false">
+				OVARIES
+			</text>
+			<foreignObject
+				id="fo-concern-repro-ovaries"
+				x="87"
+				y="86"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/reproductive/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-repro-uterus">
+		<foreignObject x="47" y="87" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.repro-uterus.status"
+					key="biometrics.repro-uterus.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-repro-uterus">
+			<circle
+				cx="50"
+				cy="90"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="48"
+				y1="90"
+				x2="15"
+				y2="86"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="87"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-repro-uterus"
+				aria-expanded="false">
+				UTERUS
+			</text>
+			<foreignObject
+				id="fo-concern-repro-uterus"
+				x="13"
+				y="90"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/reproductive/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Reproductive Sub-Nodes (Male) -->
+	<g id="group-repro-prostate">
+		<foreignObject x="47" y="91" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.repro-prostate.status"
+					key="biometrics.repro-prostate.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-repro-prostate">
+			<circle
+				cx="50"
+				cy="94"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="48"
+				y1="94"
+				x2="15"
+				y2="86"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="87"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-repro-prostate"
+				aria-expanded="false">
+				PROSTATE
+			</text>
+			<foreignObject
+				id="fo-concern-repro-prostate"
+				x="13"
+				y="90"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/reproductive/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-repro-testes">
+		<foreignObject x="46" y="95" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.repro-testes.status"
+					key="biometrics.repro-testes.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-repro-testes">
+			<circle
+				cx="48"
+				cy="99"
+				r="1.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<circle
+				cx="52"
+				cy="99"
+				r="1.5"
+				fill="#f06548"
+				filter="url(#glow)" />
+			<line
+				x1="54"
+				y1="99"
+				x2="85"
+				y2="94"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="95"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-repro-testes"
+				aria-expanded="false">
+				TESTES
+			</text>
+			<foreignObject
+				id="fo-concern-repro-testes"
+				x="87"
+				y="98"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/reproductive/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Dermatology Sub-Nodes -->
+	<g id="group-skin-face">
+		<foreignObject x="41" y="11" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.skin-face.status"
+					key="biometrics.skin-face.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-skin-face">
+			<circle
+				cx="44"
+				cy="14"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="42"
+				y1="14"
+				x2="15"
+				y2="13"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="14"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-skin-face"
+				aria-expanded="false">
+				F. SKIN
+			</text>
+			<foreignObject
+				id="fo-concern-skin-face"
+				x="13"
+				y="17"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/dermatology/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-skin-torso">
+		<foreignObject x="34" y="48" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.skin-torso.status"
+					key="biometrics.skin-torso.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-skin-torso">
+			<circle
+				cx="38"
+				cy="52"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="36"
+				y1="52"
+				x2="15"
+				y2="52"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="53"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-skin-torso"
+				aria-expanded="false">
+				T. SKIN
+			</text>
+			<foreignObject
+				id="fo-concern-skin-torso"
+				x="13"
+				y="56"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/dermatology/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-skin-limbs">
+		<foreignObject x="68" y="48" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.skin-limbs.status"
+					key="biometrics.skin-limbs.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<foreignObject x="24" y="48" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.skin-limbs.status"
+					key="biometrics.skin-limbs.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-skin-limbs">
+			<circle
+				cx="72"
+				cy="52"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<circle
+				cx="28"
+				cy="52"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)" />
+			<line
+				x1="74"
+				y1="52"
+				x2="85"
+				y2="55"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="56"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-skin-limbs"
+				aria-expanded="false">
+				L. SKIN
+			</text>
+			<foreignObject
+				id="fo-concern-skin-limbs"
+				x="87"
+				y="59"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/dermatology/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Hair Sub-Nodes -->
+	<g id="group-hair-scalp">
+		<foreignObject x="46" y="1" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.hair-scalp.status"
+					key="biometrics.hair-scalp.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-hair-scalp">
+			<circle
+				cx="50"
+				cy="5"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="52"
+				y1="5"
+				x2="85"
+				y2="4"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="5"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-hair-scalp"
+				aria-expanded="false">
+				SCALP
+			</text>
+			<foreignObject
+				id="fo-concern-hair-scalp"
+				x="87"
+				y="8"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/follicle/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-hair-face">
+		<foreignObject x="47" y="16" width="6" height="6" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.hand-left.status"
+					key="biometrics.hand-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-hair-face">
+			<circle
+				cx="50"
+				cy="19"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="52"
+				y1="19"
+				x2="85"
+				y2="18"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="19"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-hair-face"
+				aria-expanded="false">
+				F. HAIR
+			</text>
+			<foreignObject
+				id="fo-concern-hair-face"
+				x="87"
+				y="22"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/follicle/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Spine Segments -->
+	<g id="group-spine-cervical">
+		<foreignObject x="46" y="21" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.spine-cervical.status"
+					key="biometrics.spine-cervical.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-spine-cervical">
+			<circle
+				cx="50"
+				cy="25"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="48"
+				y1="25"
+				x2="15"
+				y2="20"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="21"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-spine-cervical"
+				aria-expanded="false">
+				CERVICAL
+			</text>
+			<foreignObject
+				id="fo-concern-spine-cervical"
+				x="13"
+				y="24"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/spine/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-spine-thoracic">
+		<foreignObject x="46" y="41" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.spine-thoracic.status"
+					key="biometrics.spine-thoracic.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-spine-thoracic">
+			<circle
+				cx="50"
+				cy="45"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="48"
+				y1="45"
+				x2="15"
+				y2="48"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="49"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-spine-thoracic"
+				aria-expanded="false">
+				THORACIC
+			</text>
+			<foreignObject
+				id="fo-concern-spine-thoracic"
+				x="13"
+				y="52"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/spine/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-spine-lumbar">
+		<foreignObject x="46" y="61" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.spine-lumbar.status"
+					key="biometrics.spine-lumbar.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-spine-lumbar">
+			<circle
+				cx="50"
+				cy="65"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="48"
+				y1="65"
+				x2="15"
+				y2="63"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="64"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-spine-lumbar"
+				aria-expanded="false">
+				LUMBAR
+			</text>
+			<foreignObject
+				id="fo-concern-spine-lumbar"
+				x="13"
+				y="67"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/spine/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-spine-sacral">
+		<foreignObject x="46" y="81" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.spine-sacral.status"
+					key="biometrics.spine-sacral.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-spine-sacral">
+			<circle
+				cx="50"
+				cy="85"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="48"
+				y1="85"
+				x2="15"
+				y2="82"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="83"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-spine-sacral"
+				aria-expanded="false">
+				SACRAL
+			</text>
+			<foreignObject
+				id="fo-concern-spine-sacral"
+				x="13"
+				y="86"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/spine/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- Bilateral Joints / Organs -->
+	<g id="group-shoulder-left">
+		<foreignObject x="26" y="28" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.shoulder-left.status"
+					key="biometrics.shoulder-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-shoulder-left">
+			<circle
+				cx="31"
+				cy="33"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="28"
+				y1="33"
+				x2="15"
+				y2="29"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="30"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-shoulder-left"
+				aria-expanded="false">
+				Shoulder
+			</text>
+			<foreignObject
+				id="fo-concern-shoulder-left"
+				x="13"
+				y="33"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/shoulders/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-shoulder-right">
+		<foreignObject x="64" y="28" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.shoulder-right.status"
+					key="biometrics.shoulder-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-shoulder-right">
+			<circle
+				cx="69"
+				cy="33"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="72"
+				y1="33"
+				x2="85"
+				y2="29"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="30"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-shoulder-right"
+				aria-expanded="false">
+				Shoulder
+			</text>
+			<foreignObject
+				id="fo-concern-shoulder-right"
+				x="87"
+				y="33"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/shoulders/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-elbow-left">
+		<foreignObject x="23" y="63" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.elbow-left.status"
+					key="biometrics.elbow-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-elbow-left">
+			<circle
+				cx="28"
+				cy="68"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="26"
+				y1="68"
+				x2="15"
+				y2="70"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="71"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-elbow-left"
+				aria-expanded="false">
+				Elbow
+			</text>
+			<foreignObject
+				id="fo-concern-elbow-left"
+				x="13"
+				y="74"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/elbows/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-elbow-right">
+		<foreignObject x="67" y="63" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.elbow-right.status"
+					key="biometrics.elbow-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-elbow-right">
+			<circle
+				cx="72"
+				cy="68"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="74"
+				y1="68"
+				x2="85"
+				y2="68"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="69"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-elbow-right"
+				aria-expanded="false">
+				Elbow
+			</text>
+			<foreignObject
+				id="fo-concern-elbow-right"
+				x="87"
+				y="72"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/elbows/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-wrist-left">
+		<foreignObject x="19.5" y="91" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.wrist-left.status"
+					key="biometrics.wrist-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-wrist-left">
+			<circle
+				cx="23.5"
+				cy="95"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="21"
+				y1="95"
+				x2="15"
+				y2="96"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="97"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-wrist-left"
+				aria-expanded="false">
+				Wrist
+			</text>
+			<foreignObject
+				id="fo-concern-wrist-left"
+				x="13"
+				y="100"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/wrists/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<!-- L. WRIST -->
+	<g id="group-wrist-right">
+		<foreignObject x="72.5" y="91" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.wrist-right.status"
+					key="biometrics.wrist-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-wrist-right">
+			<circle
+				cx="76.5"
+				cy="95"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="78"
+				y1="95"
+				x2="85"
+				y2="96"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="97"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-wrist-right"
+				aria-expanded="false">
+				Wrist
+			</text>
+			<foreignObject
+				id="fo-concern-wrist-right"
+				x="87"
+				y="100"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/wrists/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+	<g id="group-hand-left">
+		<foreignObject
+			x="16.5"
+			y="103"
+			width="10"
+			height="10"
+			class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.hair-face.status"
+					key="biometrics.hair-face.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-hand-left">
+			<circle
+				cx="21.5"
+				cy="108"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="19"
+				y1="108"
+				x2="15"
+				y2="108"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="109"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-hand-left"
+				aria-expanded="false">
+				Hand
+			</text>
+			<foreignObject
+				id="fo-concern-hand-left"
+				x="13"
+				y="112"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/hands/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-hand-right">
+		<foreignObject
+			x="73.5"
+			y="103"
+			width="10"
+			height="10"
+			class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.hand-right.status"
+					key="biometrics.hand-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-hand-right">
+			<circle
+				cx="78.5"
+				cy="108"
+				r="2"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="80"
+				y1="108"
+				x2="85"
+				y2="108"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="109"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-hand-right"
+				aria-expanded="false">
+				Hand
+			</text>
+			<foreignObject
+				id="fo-concern-hand-right"
+				x="87"
+				y="112"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/hands/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-hip-left">
+		<foreignObject x="34" y="83" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.hip-left.status"
+					key="biometrics.hip-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-hip-left">
+			<circle
+				cx="39"
+				cy="88"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="37"
+				y1="88"
+				x2="15"
+				y2="88"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="89"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-hip-left"
+				aria-expanded="false">
+				Hip
+			</text>
+			<foreignObject
+				id="fo-concern-hip-left"
+				x="13"
+				y="92"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/hips/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-hip-right">
+		<foreignObject x="56" y="83" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.hip-right.status"
+					key="biometrics.hip-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-hip-right">
+			<circle
+				cx="61"
+				cy="88"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="63"
+				y1="88"
+				x2="85"
+				y2="86"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="87"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-hip-right"
+				aria-expanded="false">
+				Hip
+			</text>
+			<foreignObject
+				id="fo-concern-hip-right"
+				x="87"
+				y="90"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/hips/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-knee-left">
+		<foreignObject x="37" y="130" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.knee-left.status"
+					key="biometrics.knee-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-knee-left">
+			<circle
+				cx="42"
+				cy="135"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="40"
+				y1="135"
+				x2="15"
+				y2="131"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="132"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-knee-left"
+				aria-expanded="false">
+				Knee
+			</text>
+			<foreignObject
+				id="fo-concern-knee-left"
+				x="13"
+				y="135"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/knees/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-knee-right">
+		<foreignObject x="53" y="130" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.knee-right.status"
+					key="biometrics.knee-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-knee-right">
+			<circle
+				cx="58"
+				cy="135"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="60"
+				y1="135"
+				x2="85"
+				y2="131"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="132"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-knee-right"
+				aria-expanded="false">
+				Knee
+			</text>
+			<foreignObject
+				id="fo-concern-knee-right"
+				x="87"
+				y="135"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/knees/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-ankle-left">
+		<foreignObject x="39" y="176" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.ankle-left.status"
+					key="biometrics.ankle-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-ankle-left">
+			<circle
+				cx="43"
+				cy="180"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="41"
+				y1="180"
+				x2="15"
+				y2="126"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="127"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-ankle-left"
+				aria-expanded="false">
+				Ankle
+			</text>
+			<foreignObject
+				id="fo-concern-ankle-left"
+				x="13"
+				y="130"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/ankles/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-ankle-right">
+		<foreignObject x="53" y="176" width="8" height="8" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.ankle-right.status"
+					key="biometrics.ankle-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-ankle-right">
+			<circle
+				cx="57"
+				cy="180"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="59"
+				y1="180"
+				x2="85"
+				y2="126"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="127"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-ankle-right"
+				aria-expanded="false">
+				Ankle
+			</text>
+			<foreignObject
+				id="fo-concern-ankle-right"
+				x="87"
+				y="130"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/ankles/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-foot-left">
+		<foreignObject x="37" y="187" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.foot-left.status"
+					key="biometrics.foot-left.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-foot-left">
+			<circle
+				cx="42"
+				cy="192"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="40"
+				y1="192"
+				x2="15"
+				y2="136"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="13"
+				y="137"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="end"
+				role="button"
+				aria-controls="fo-concern-foot-left"
+				aria-expanded="false">
+				Foot
+			</text>
+			<foreignObject
+				id="fo-concern-foot-left"
+				x="13"
+				y="140"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-right">
+					<div
+						src="/components/health-journal/form/feet/right/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+	<g id="group-foot-right">
+		<foreignObject x="53" y="187" width="10" height="10" class="svg-hitbox">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<input
+					type="checkbox"
+					realtime="true"
+					array="contacts"
+					object="$user_id"
+					name="biometrics.foot-right.status"
+					key="biometrics.foot-right.status"
+					value="active"
+					class="svg-input-hitbox" />
+			</div>
+		</foreignObject>
+		<g id="node-foot-right">
+			<circle
+				cx="58"
+				cy="192"
+				r="2.5"
+				fill="#f06548"
+				filter="url(#glow)"
+				class="animate-svg-pulse" />
+			<line
+				x1="60"
+				y1="192"
+				x2="85"
+				y2="136"
+				stroke="#f06548"
+				stroke-width="0.5" />
+			<text
+				x="87"
+				y="137"
+				fill="#f06548"
+				font-size="3.5"
+				font-family="monospace"
+				letter-spacing="0.5"
+				text-anchor="start"
+				role="button"
+				aria-controls="fo-concern-foot-right"
+				aria-expanded="false">
+				Foot
+			</text>
+			<foreignObject
+				id="fo-concern-foot-right"
+				x="87"
+				y="140"
+				class="health-form"
+				hidden>
+				<div
+					xmlns="http://www.w3.org/1999/xhtml"
+					class="card p-3 form-card open-left">
+					<div
+						src="/components/health-journal/form/feet/left/index.html"></div>
+				</div>
+			</foreignObject>
+		</g>
+	</g>
+
+
+	<!-- Animated Scanning Bar -->
+	<rect x="5" y="0" width="90" height="1.5" fill="#818cf8">
+		<animate
+			attributeName="y"
+			values="5;195;5"
+			dur="3.5s"
+			repeatCount="indefinite" />
+		<animate
+			attributeName="opacity"
+			values="0;1;0"
+			dur="3.5s"
+			repeatCount="indefinite" />
+	</rect>
+
+	<!-- Interactive Hitboxes -->
+</svg>

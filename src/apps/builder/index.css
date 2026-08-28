@@ -1,0 +1,35 @@
+.left-panel.active, .right-panel.active, .blocks.active, .components.active, .editor-panel.active {
+    display: block
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.selected {
+    margin: 0;
+    padding: 0;
+    height: 25px;
+    min-height: 25px;
+}
+
+.tab[selected] {
+    background: whitesmoke;
+}
+
+li[selected-group="screen-size"][selected] {
+    background: gainsboro;
+}
+
+.card:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+[image-type*="image"] {
+   display: block!important; 
+}
+
+[video-type*="video"] {
+   display: block!important; 
+}

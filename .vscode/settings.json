@@ -1,0 +1,5 @@
+{
+  "livePreview.portNumber": 4001,
+  "livePreview.serverRoot": "./src",
+  "prettier.configPath": "./prettier.config.js"
+}
