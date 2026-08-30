@@ -4,7 +4,6 @@
  * CoCreate native CSS entry point.
  * This parallel migration does not replace /assets/css/app.css yet.
  */
-@import url("./app.css");
 @import url("./core/index.css");
 @import url("./themes/index.css");
 @import url("./components/index.css");
