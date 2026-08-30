@@ -1,0 +1,5 @@
+/* Payment-card integration overrides extracted from the legacy bundle. */
+.card-wrapper .jp-card .jp-card-back,
+.card-wrapper .jp-card .jp-card-front {
+	background-color: var(--coc-success);
+}

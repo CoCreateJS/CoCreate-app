@@ -1,0 +1,80 @@
+/* Faithfully extracted from /assets/css/app.css. */
+.badge {
+	line-height: 0.95;
+}
+.badge-label.bg-primary:before {
+	border-right-color: var(--coc-primary);
+}
+.badge-label.bg-secondary:before {
+	border-right-color: var(--coc-secondary);
+}
+.badge-label.bg-success:before {
+	border-right-color: var(--coc-success);
+}
+.badge-label.bg-info:before {
+	border-right-color: var(--coc-info);
+}
+.badge-label.bg-warning:before {
+	border-right-color: var(--coc-warning);
+}
+.badge-label.bg-danger:before {
+	border-right-color: var(--coc-danger);
+}
+.badge-label.bg-light:before {
+	border-right-color: var(--coc-light);
+}
+.badge-label.bg-dark:before {
+	border-right-color: var(--coc-dark);
+}
+.badge-border {
+	border-left: 2px solid;
+}
+.badge-label {
+	margin-left: 8px;
+	position: relative;
+}
+.badge-label:before {
+	content: "";
+	position: absolute;
+	border: 8px solid transparent;
+	border-right-color: var(--coc-primary);
+	left: -14px;
+	top: 0;
+}
+.badge-gradient-primary {
+	background: linear-gradient(
+		135deg,
+		var(--coc-primary) 0,
+		var(--coc-success) 100%
+	);
+}
+.badge-gradient-secondary {
+	background: linear-gradient(
+		135deg,
+		var(--coc-secondary) 0,
+		var(--coc-info) 100%
+	);
+}
+.badge-gradient-success {
+	background: linear-gradient(135deg, var(--coc-success) 0, #f7b84b 100%);
+}
+.badge-gradient-danger {
+	background: linear-gradient(
+		135deg,
+		var(--coc-danger) 0,
+		var(--coc-secondary) 100%
+	);
+}
+.badge-gradient-warning {
+	background: linear-gradient(135deg, #f7b84b 0, #eb990a 100%);
+}
+.badge-gradient-info {
+	background: linear-gradient(
+		135deg,
+		var(--coc-info) 0,
+		var(--coc-success) 100%
+	);
+}
+.badge-gradient-dark {
+	background: linear-gradient(135deg, #212529 0, var(--coc-primary) 100%);
+}

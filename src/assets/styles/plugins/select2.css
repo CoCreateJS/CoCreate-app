@@ -1,0 +1,141 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.select2.select2-container {
+	width: 100% !important;
+}
+.select2-container .select2-selection--single {
+	border: var(--coc-border-width) solid var(--coc-input-border-custom);
+	height: calc(1.5em + 1rem + calc(var(--coc-border-width) * 2));
+	background-color: var(--coc-input-bg-custom);
+	outline: 0;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+	line-height: 36px;
+	padding-left: 12px;
+	color: var(--coc-body-color);
+}
+.select2-container .select2-selection--single .select2-selection__arrow {
+	height: 34px;
+	width: 34px;
+	right: 3px;
+}
+.select2-container .select2-selection--single .select2-selection__arrow b {
+	border-color: var(--coc-input-border-custom) transparent transparent
+		transparent;
+	border-width: 6px 6px 0 6px;
+}
+.select2-container--open
+	.select2-selection--single
+	.select2-selection__arrow
+	b {
+	border-color: transparent transparent var(--coc-input-border-custom)
+		transparent !important;
+	border-width: 0 6px 6px 6px !important;
+}
+.select2-results__option {
+	padding: 6px 12px;
+}
+.select2-dropdown {
+	border: var(--coc-dropdown-border-width) solid var(--coc-border-color);
+	-webkit-box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+	box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+	background-color: var(--coc-secondary-bg);
+	z-index: 1056;
+}
+.select2-container--default .select2-results__option--selected {
+	background-color: var(--coc-tertiary-bg);
+}
+.select2-container--default .select2-search--dropdown {
+	padding: 10px;
+	background-color: var(--coc-secondary-bg);
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+	outline: 0;
+	border: 1px solid var(--coc-input-border-custom);
+	background-color: var(--coc-input-bg-custom);
+	color: var(--coc-body-color);
+	border-radius: var(--coc-border-radius);
+}
+.select2-container--default
+	.select2-results__option--highlighted[aria-selected] {
+	background-color: var(--coc-primary);
+}
+.select2-container--default .select2-results__option[aria-selected="true"] {
+	background-color: var(--coc-secondary-bg);
+	color: var(--coc-dropdown-link-active-color);
+}
+.select2-container--default
+	.select2-results__option[aria-selected="true"]:hover {
+	background-color: var(--coc-primary);
+	color: #fff;
+}
+.select2-container--default
+	.select2-selection--multiple
+	.select2-selection__choice__display {
+	padding-left: 36px;
+}
+.select2-container--default
+	.select2-selection--single
+	.select2-selection__arrow {
+	left: auto;
+}
+.select2-container .select2-selection--multiple {
+	min-height: calc(1.5em + 1rem + calc(var(--coc-border-width) * 2));
+	border: var(--coc-border-width) solid var(--coc-input-border-custom) !important;
+	background-color: var(--coc-input-bg-custom);
+}
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+	padding: 1px 4px;
+}
+.select2-container .select2-selection--multiple .select2-search__field {
+	border: 0;
+	color: var(--coc-body-color);
+}
+.select2-container .select2-selection--multiple .select2-selection__choice {
+	background-color: var(--coc-primary);
+	border: none;
+	color: #fff;
+	border-radius: 3px;
+	padding: 3px;
+	margin-top: 6px;
+}
+.select2-container
+	.select2-selection--multiple
+	.select2-selection__choice__remove {
+	color: #fff;
+	margin-right: 7px;
+	border-color: var(--coc-primary-text-emphasis);
+	padding: 0 8px;
+	top: 3px;
+}
+.select2-container
+	.select2-selection--multiple
+	.select2-selection__choice__remove:hover {
+	color: #fff;
+	background-color: var(--coc-primary);
+}
+.select2-container .select2-search--inline .select2-search__field {
+	margin-top: 7px;
+	height: 22px;
+	font-family: var(--coc-font-sans-serif);
+}
+.select2-container .select2-search textarea::-webkit-input-placeholder {
+	color: var(--coc-secondary-color);
+}
+.select2-container .select2-search textarea::-moz-placeholder {
+	color: var(--coc-secondary-color);
+}
+.select2-container .select2-search textarea:-ms-input-placeholder {
+	color: var(--coc-secondary-color);
+}
+.select2-container .select2-search textarea::-ms-input-placeholder {
+	color: var(--coc-secondary-color);
+}
+.select2-container .select2-search textarea::placeholder {
+	color: var(--coc-secondary-color);
+}
+.select2-container--default.select2-container--disabled
+	.select2-selection--multiple,
+.select2-container--default.select2-container--disabled
+	.select2-selection--single {
+	background-color: var(--coc-tertiary-bg);
+}

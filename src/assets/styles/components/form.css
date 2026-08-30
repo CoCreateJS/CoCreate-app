@@ -1,0 +1,494 @@
+/* Form component styles extracted from the residual legacy bundle. */
+.img-switch .card-radio .form-check-input {
+	display: none;
+}
+.img-switch .card-radio .form-check-input:checked + .form-check-label::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(var(--coc-primary-rgb), 0.5);
+}
+.img-switch .card-radio .form-check-input:checked + .form-check-label::after {
+	content: "\eb80";
+	font-family: remixicon;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateY(-50%) translateX(-50%);
+	transform: translateY(-50%) translateX(-50%);
+	font-size: 18px;
+	color: #fff;
+}
+.form-check {
+	position: relative;
+	text-align: left;
+}
+.form-check .form-check-input {
+	cursor: pointer;
+}
+.form-check label {
+	cursor: pointer;
+}
+.form-check-label {
+	cursor: pointer;
+	margin-bottom: 0;
+}
+.form-check-right {
+	padding-left: 0;
+	display: inline-block;
+}
+.form-check-right .form-check-input {
+	float: right;
+	margin-left: 0;
+	margin-right: -1.6em;
+}
+.form-check-right .form-check-label {
+	display: block;
+}
+.form-check-right.form-switch .form-check-input {
+	margin-right: -2.56em;
+}
+.form-check-outline .form-check-input {
+	position: relative;
+}
+.form-check-outline .form-check-input:checked[type="checkbox"] {
+	background-image: none;
+}
+.form-check-outline .form-check-input:checked[type="checkbox"]::before {
+	content: "\f012c";
+	font-family: "Material Design Icons";
+	top: -2px;
+	position: absolute;
+	font-weight: 700;
+	font-size: 11px;
+	left: 1px;
+}
+.form-radio-outline .form-check-input {
+	position: relative;
+}
+.form-radio-outline .form-check-input:checked[type="radio"] {
+	background-image: none;
+}
+.form-radio-outline .form-check-input:checked[type="radio"]::before {
+	content: "\f0765";
+	font-family: "Material Design Icons";
+	top: 1px;
+	position: absolute;
+	font-size: 8px;
+	left: 2.7px;
+}
+.form-switch-md {
+	padding-left: 2.5rem;
+	min-height: 22px;
+	line-height: 22px;
+}
+.form-switch-md .form-check-input {
+	width: 40px;
+	height: 20px;
+	left: -0.5rem;
+	position: relative;
+}
+.form-switch-md .form-check-label {
+	vertical-align: middle;
+}
+.form-switch-lg {
+	padding-left: 2.75rem;
+	min-height: 28px;
+	line-height: 28px;
+}
+.form-switch-lg .form-check-input {
+	width: 48px;
+	height: 24px;
+	left: -0.75rem;
+	position: relative;
+}
+.form-switch-custom .form-check-input {
+	position: relative;
+	background-image: none;
+}
+.form-switch-custom .form-check-input::before {
+	content: "\f0765";
+	font-family: "Material Design Icons";
+	top: -8.3px;
+	position: absolute;
+	font-size: 20px;
+	left: -3px;
+	color: var(--coc-secondary-color);
+	-webkit-transition: background-position 0.15s ease-in-out;
+	transition: background-position 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+	.form-switch-custom .form-check-input::before {
+		-webkit-transition: none;
+		transition: none;
+	}
+}
+.form-switch-custom .form-check-input:checked {
+	background-image: none;
+	background-color: var(--coc-input-bg-custom) !important;
+	-webkit-transition: background-position 0.15s ease-in-out;
+	transition: background-position 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+	.form-switch-custom .form-check-input:checked {
+		-webkit-transition: none;
+		transition: none;
+	}
+}
+.form-switch-custom .form-check-input:checked::before {
+	right: -3px;
+	left: auto;
+}
+.form-switch-custom .form-check-input:focus {
+	background-image: none;
+}
+.form-switch-right {
+	display: inline-block;
+	padding-right: 0.8em;
+	margin-bottom: 0;
+	padding-left: 0 !important;
+}
+.form-switch-right .form-check-input {
+	float: right;
+	margin-left: 0;
+	margin-right: -1.6em;
+	margin-top: 0.1em !important;
+}
+.form-switch-right label {
+	margin-bottom: 0;
+	margin-right: 1rem;
+}
+.card-radio .form-check-label {
+	background-color: var(--coc-secondary-bg);
+	border: 1px solid var(--coc-border-color);
+	border-radius: 0.25rem;
+	padding: 1rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+	position: relative;
+	padding-right: 32px;
+}
+.card-radio .form-check-label:hover {
+	cursor: pointer;
+}
+.card-radio .form-check-input {
+	display: none;
+}
+.card-radio .form-check-input:checked + .form-check-label {
+	border-color: var(--coc-primary) !important;
+}
+.card-radio .form-check-input:checked + .form-check-label:before {
+	content: "\eb80";
+	font-family: remixicon;
+	position: absolute;
+	top: 2px;
+	right: 6px;
+	font-size: 16px;
+	color: var(--coc-primary);
+}
+.card-radio.dark .form-check-input:checked + .form-check-label:before {
+	color: #fff;
+}
+.form-radio-outline.form-radio-primary .form-check-input:checked[type="radio"] {
+	color: var(--coc-primary);
+	background-color: transparent;
+	border-color: var(--coc-primary);
+}
+.form-check-primary .form-check-input:checked {
+	background-color: var(--coc-primary);
+	border-color: var(--coc-primary);
+}
+.form-radio-primary .form-check-input:checked {
+	border-color: var(--coc-primary);
+	background-color: var(--coc-primary);
+}
+.form-radio-primary .form-check-input:checked:after {
+	background-color: var(--coc-primary);
+}
+.form-check-outline.form-check-primary
+	.form-check-input:checked[type="checkbox"] {
+	color: var(--coc-primary);
+	background-color: transparent;
+	border-color: var(--coc-primary);
+}
+.form-switch-primary .form-check-input:checked {
+	background-color: var(--coc-primary);
+	border-color: var(--coc-primary);
+}
+.form-switch-custom.form-switch-primary .form-check-input:checked::before {
+	color: var(--coc-primary);
+}
+.form-radio-outline.form-radio-secondary
+	.form-check-input:checked[type="radio"] {
+	color: var(--coc-secondary);
+	background-color: transparent;
+	border-color: var(--coc-secondary);
+}
+.form-check-secondary .form-check-input:checked {
+	background-color: var(--coc-secondary);
+	border-color: var(--coc-secondary);
+}
+.form-radio-secondary .form-check-input:checked {
+	border-color: var(--coc-secondary);
+	background-color: var(--coc-secondary);
+}
+.form-radio-secondary .form-check-input:checked:after {
+	background-color: var(--coc-secondary);
+}
+.form-check-outline.form-check-secondary
+	.form-check-input:checked[type="checkbox"] {
+	color: var(--coc-secondary);
+	background-color: transparent;
+	border-color: var(--coc-secondary);
+}
+.form-switch-secondary .form-check-input:checked {
+	background-color: var(--coc-secondary);
+	border-color: var(--coc-secondary);
+}
+.form-switch-custom.form-switch-secondary .form-check-input:checked::before {
+	color: var(--coc-secondary);
+}
+.form-radio-outline.form-radio-success .form-check-input:checked[type="radio"] {
+	color: var(--coc-success);
+	background-color: transparent;
+	border-color: var(--coc-success);
+}
+.form-check-success .form-check-input:checked {
+	background-color: var(--coc-success);
+	border-color: var(--coc-success);
+}
+.form-radio-success .form-check-input:checked {
+	border-color: var(--coc-success);
+	background-color: var(--coc-success);
+}
+.form-radio-success .form-check-input:checked:after {
+	background-color: var(--coc-success);
+}
+.form-check-outline.form-check-success
+	.form-check-input:checked[type="checkbox"] {
+	color: var(--coc-success);
+	background-color: transparent;
+	border-color: var(--coc-success);
+}
+.form-switch-success .form-check-input:checked {
+	background-color: var(--coc-success);
+	border-color: var(--coc-success);
+}
+.form-switch-custom.form-switch-success .form-check-input:checked::before {
+	color: var(--coc-success);
+}
+.form-radio-outline.form-radio-info .form-check-input:checked[type="radio"] {
+	color: var(--coc-info);
+	background-color: transparent;
+	border-color: var(--coc-info);
+}
+.form-check-info .form-check-input:checked {
+	background-color: var(--coc-info);
+	border-color: var(--coc-info);
+}
+.form-radio-info .form-check-input:checked {
+	border-color: var(--coc-info);
+	background-color: var(--coc-info);
+}
+.form-radio-info .form-check-input:checked:after {
+	background-color: var(--coc-info);
+}
+.form-check-outline.form-check-info .form-check-input:checked[type="checkbox"] {
+	color: var(--coc-info);
+	background-color: transparent;
+	border-color: var(--coc-info);
+}
+.form-switch-info .form-check-input:checked {
+	background-color: var(--coc-info);
+	border-color: var(--coc-info);
+}
+.form-switch-custom.form-switch-info .form-check-input:checked::before {
+	color: var(--coc-info);
+}
+.form-radio-outline.form-radio-warning .form-check-input:checked[type="radio"] {
+	color: var(--coc-warning);
+	background-color: transparent;
+	border-color: var(--coc-warning);
+}
+.form-check-warning .form-check-input:checked {
+	background-color: var(--coc-warning);
+	border-color: var(--coc-warning);
+}
+.form-radio-warning .form-check-input:checked {
+	border-color: var(--coc-warning);
+	background-color: var(--coc-warning);
+}
+.form-radio-warning .form-check-input:checked:after {
+	background-color: var(--coc-warning);
+}
+.form-check-outline.form-check-warning
+	.form-check-input:checked[type="checkbox"] {
+	color: var(--coc-warning);
+	background-color: transparent;
+	border-color: var(--coc-warning);
+}
+.form-switch-warning .form-check-input:checked {
+	background-color: var(--coc-warning);
+	border-color: var(--coc-warning);
+}
+.form-switch-custom.form-switch-warning .form-check-input:checked::before {
+	color: var(--coc-warning);
+}
+.form-radio-outline.form-radio-danger .form-check-input:checked[type="radio"] {
+	color: var(--coc-danger);
+	background-color: transparent;
+	border-color: var(--coc-danger);
+}
+.form-check-danger .form-check-input:checked {
+	background-color: var(--coc-danger);
+	border-color: var(--coc-danger);
+}
+.form-radio-danger .form-check-input:checked {
+	border-color: var(--coc-danger);
+	background-color: var(--coc-danger);
+}
+.form-radio-danger .form-check-input:checked:after {
+	background-color: var(--coc-danger);
+}
+.form-check-outline.form-check-danger
+	.form-check-input:checked[type="checkbox"] {
+	color: var(--coc-danger);
+	background-color: transparent;
+	border-color: var(--coc-danger);
+}
+.form-switch-danger .form-check-input:checked {
+	background-color: var(--coc-danger);
+	border-color: var(--coc-danger);
+}
+.form-switch-custom.form-switch-danger .form-check-input:checked::before {
+	color: var(--coc-danger);
+}
+.form-radio-outline.form-radio-light .form-check-input:checked[type="radio"] {
+	color: var(--coc-light);
+	background-color: transparent;
+	border-color: var(--coc-light);
+}
+.form-check-light .form-check-input:checked {
+	background-color: var(--coc-light);
+	border-color: var(--coc-light);
+}
+.form-radio-light .form-check-input:checked {
+	border-color: var(--coc-light);
+	background-color: var(--coc-light);
+}
+.form-radio-light .form-check-input:checked:after {
+	background-color: var(--coc-light);
+}
+.form-check-outline.form-check-light
+	.form-check-input:checked[type="checkbox"] {
+	color: var(--coc-light);
+	background-color: transparent;
+	border-color: var(--coc-light);
+}
+.form-switch-light .form-check-input:checked {
+	background-color: var(--coc-light);
+	border-color: var(--coc-light);
+}
+.form-switch-custom.form-switch-light .form-check-input:checked::before {
+	color: var(--coc-light);
+}
+.form-radio-outline.form-radio-dark .form-check-input:checked[type="radio"] {
+	color: var(--coc-dark);
+	background-color: transparent;
+	border-color: var(--coc-dark);
+}
+.form-check-dark .form-check-input:checked {
+	background-color: var(--coc-dark);
+	border-color: var(--coc-dark);
+}
+.form-radio-dark .form-check-input:checked {
+	border-color: var(--coc-dark);
+	background-color: var(--coc-dark);
+}
+.form-radio-dark .form-check-input:checked:after {
+	background-color: var(--coc-dark);
+}
+.form-check-outline.form-check-dark .form-check-input:checked[type="checkbox"] {
+	color: var(--coc-dark);
+	background-color: transparent;
+	border-color: var(--coc-dark);
+}
+.form-switch-dark .form-check-input:checked {
+	background-color: var(--coc-dark);
+	border-color: var(--coc-dark);
+}
+.form-switch-custom.form-switch-dark .form-check-input:checked::before {
+	color: var(--coc-dark);
+}
+.form-icon {
+	position: relative;
+}
+.form-icon .form-control-icon {
+	padding-left: calc(0.9rem * 3);
+	position: relative;
+}
+.form-icon i {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 18px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.form-icon.right .form-control-icon {
+	padding-right: calc(0.9rem * 3);
+	padding-left: 0.9rem;
+	position: relative;
+}
+.form-icon.right i {
+	left: auto;
+	right: 18px;
+}
+
+:is(
+		[type="tel"],
+		[type="url"],
+		[type="email"],
+		[type="number"]
+	)::-webkit-input-placeholder {
+	text-align: left;
+}
+:is(
+		[type="tel"],
+		[type="url"],
+		[type="email"],
+		[type="number"]
+	)::-moz-placeholder {
+	text-align: left;
+}
+:is(
+		[type="tel"],
+		[type="url"],
+		[type="email"],
+		[type="number"]
+	):-ms-input-placeholder {
+	text-align: left;
+}
+:is(
+		[type="tel"],
+		[type="url"],
+		[type="email"],
+		[type="number"]
+	)::-ms-input-placeholder {
+	text-align: left;
+}
+:is([type="tel"], [type="url"], [type="email"], [type="number"])::placeholder {
+	text-align: left;
+}
+.input-group-text {
+	margin-bottom: 0;
+}

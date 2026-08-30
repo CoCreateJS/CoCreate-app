@@ -1,0 +1,46 @@
+/* CoCreate overrides for SimpleBar's externally loaded stylesheet. */
+.custom-scroll {
+	height: 100%;
+}
+
+[data-simplebar-track="primary"] .simplebar-scrollbar:before {
+	background: var(--coc-primary);
+}
+[data-simplebar-track="secondary"] .simplebar-scrollbar:before {
+	background: var(--coc-secondary);
+}
+[data-simplebar-track="success"] .simplebar-scrollbar:before {
+	background: var(--coc-success);
+}
+[data-simplebar-track="info"] .simplebar-scrollbar:before {
+	background: var(--coc-info);
+}
+[data-simplebar-track="warning"] .simplebar-scrollbar:before {
+	background: var(--coc-warning);
+}
+[data-simplebar-track="danger"] .simplebar-scrollbar:before {
+	background: var(--coc-danger);
+}
+[data-simplebar-track="light"] .simplebar-scrollbar:before {
+	background: var(--coc-light);
+}
+[data-simplebar-track="dark"] .simplebar-scrollbar:before {
+	background: var(--coc-dark);
+}
+
+.chat-conversation .simplebar-content-wrapper {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.chat-conversation .simplebar-content-wrapper .simplebar-content {
+	margin-top: auto;
+}
+.file-manager-content-scroll .simplebar-content,
+.file-detail-content-scroll .simplebar-content {
+	height: 100%;
+}

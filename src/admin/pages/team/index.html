@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/admin/pages/team/index.css" />
+
 <div class="container-fluid">
 	<div class="card">
 		<div class="card-body">
@@ -38,15 +40,33 @@
 						<ul
 							class="dropdown-menu"
 							aria-labelledby="dropdownMenuLink1">
-							<li><a class="dropdown-item" href="#">All</a></li>
 							<li>
-								<a class="dropdown-item" href="#">Last Week</a>
+								<a
+									class="dropdown-item"
+									href="#"
+									>All</a
+								>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#">Last Month</a>
+								<a
+									class="dropdown-item"
+									href="#"
+									>Last Week</a
+								>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#">Last Year</a>
+								<a
+									class="dropdown-item"
+									href="#"
+									>Last Month</a
+								>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#"
+									>Last Year</a
+								>
 							</li>
 						</ul>
 						<button
@@ -69,10 +89,13 @@
 			<div>
 				<div id="teamlist">
 					<div
-						class="team-list grid-view-filter row"
-						id="team-member-list"></div>
+						class="grid-view-filter row"
+						id="team-member-list"
+						src="/admin/components/member-invite-list/index.html"></div>
 					<div class="text-center mb-3">
-						<a href="javascript:void(0);" class="text-success"
+						<a
+							href="javascript:void(0);"
+							class="text-success"
 							><i
 								class="mdi mdi-loading mdi-spin fs-20 align-middle me-2"></i>
 							Load More

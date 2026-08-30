@@ -1,0 +1,168 @@
+/* Member invite list grid and list presentation. */
+.team-list.grid-view-filter {
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+.team-list.grid-view-filter .col {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	width: 25%;
+}
+.team-list.grid-view-filter .team-box {
+	overflow: hidden;
+}
+.team-list.grid-view-filter .team-box .team-row {
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: start;
+}
+.team-list.grid-view-filter .team-box .team-row .col {
+	width: 100%;
+}
+.team-list.grid-view-filter .team-box .team-cover {
+	display: block;
+}
+.team-list.grid-view-filter .team-box .team-settings .col {
+	width: 50% !important;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+}
+.team-list.grid-view-filter .team-box .team-settings .btn-star {
+	color: #fff;
+}
+.team-list.grid-view-filter .team-box .team-settings .dropdown > a {
+	color: #fff;
+}
+.team-list.grid-view-filter .team-box .team-profile-img {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	margin-bottom: 25px;
+	margin-top: 36px;
+}
+.team-list.grid-view-filter .team-box .team-profile-img .avatar-lg {
+	font-size: 22px;
+}
+.team-list.grid-view-filter .team-box .team-profile-img .team-content {
+	margin-left: 0;
+	margin-top: 25px;
+	text-align: center;
+}
+.team-list.grid-view-filter .team-box .view-btn {
+	width: 100%;
+	margin-top: 25px;
+}
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+	.team-list.grid-view-filter .col {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 auto;
+		flex: 0 0 auto;
+		width: 33.33%;
+	}
+}
+@media (max-width: 1199.98px) {
+	.team-list.grid-view-filter .col {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 auto;
+		flex: 0 0 auto;
+		width: 50%;
+	}
+}
+@media (max-width: 767.98px) {
+	.team-list.grid-view-filter .col {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 auto;
+		flex: 0 0 auto;
+		width: 100%;
+	}
+}
+.team-list.list-view-filter {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.team-list.list-view-filter .team-box {
+	margin-bottom: 10px;
+}
+.team-list.list-view-filter .team-box .team-row {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+.team-list.list-view-filter .team-box .team-profile-img {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.team-list.list-view-filter .team-box .team-profile-img .avatar-lg {
+	height: 4rem;
+	width: 4rem;
+	font-size: 16px;
+}
+.team-list.list-view-filter .team-box .team-profile-img .team-content {
+	margin-left: 15px;
+}
+.team-list.list-view-filter .team-box .team-settings {
+	width: auto;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	-webkit-box-ordinal-group: 7;
+	-ms-flex-order: 6;
+	order: 6;
+}
+.team-list.list-view-filter .team-box .btn-star {
+	color: var(--coc-primary);
+}
+@media (max-width: 767.98px) {
+	.team-list.list-view-filter {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+	}
+	.team-list.list-view-filter .col {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 auto;
+		flex: 0 0 auto;
+		width: 100%;
+	}
+	.team-list.list-view-filter .team-box .team-settings {
+		width: 100%;
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 auto;
+		flex: 0 0 auto;
+		-webkit-box-ordinal-group: 0;
+		-ms-flex-order: -1;
+		order: -1;
+		margin-bottom: 10px;
+	}
+	.team-list.list-view-filter .team-box .team-settings .col {
+		width: 50%;
+	}
+	.team-list.list-view-filter .team-box .team-profile-img {
+		margin-bottom: 25px;
+	}
+	.team-list.list-view-filter .team-box .view-btn {
+		width: 100%;
+		margin-top: 25px;
+	}
+}

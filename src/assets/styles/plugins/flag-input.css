@@ -1,0 +1,50 @@
+/* CoCreate overrides and integrations for plugin styles. */
+[data-input-flag] {
+	position: relative;
+}
+[data-input-flag] .dropdown-menu .dropdown-menu-list {
+	max-height: 158px;
+	overflow-y: auto;
+}
+[data-input-flag] .dropdown-menu .dropdown-menu-list::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+[data-input-flag]
+	.dropdown-menu
+	.dropdown-menu-list::-webkit-scrollbar:vertical {
+	width: 8px;
+}
+[data-input-flag]
+	.dropdown-menu
+	.dropdown-menu-list::-webkit-scrollbar:horizontal {
+	height: 10px;
+}
+[data-input-flag] .dropdown-menu .dropdown-menu-list::-webkit-scrollbar-thumb {
+	background-color: rgba(var(--coc-dark-rgb), 0.075);
+	border-radius: 8px;
+}
+[data-input-flag] .dropdown-menu .dropdown-menu-list::-webkit-scrollbar-track {
+	border-radius: 8px;
+}
+[data-option-flag-img-name] .flag-input {
+	padding-left: 45px;
+	background-image: url(../../images/flags/us.svg);
+	background-repeat: no-repeat;
+	background-position: 14px 8px;
+	background-size: 18px;
+}
+[data-option-flag-img-name]::before,
+[data-option-flag-name]::before {
+	content: "\f0140";
+	font-family: "Material Design Icons";
+	position: absolute;
+	right: 0.9rem;
+	top: 0.5rem;
+	font-size: 16px;
+}
+[data-option-countrycode="false"] .country-codeno {
+	display: none;
+}
+[data-search-input="false"] .searchlist-input {
+	display: none;
+}

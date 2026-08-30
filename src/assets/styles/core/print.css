@@ -1,0 +1,28 @@
+/* Shared print styles extracted from the legacy bundle. */
+@media print {
+	.card-body,
+.main-content,
+.page-content,
+.right-bar,
+body {
+		padding: 0;
+		margin: 0;
+	}
+	.card {
+		border: 0;
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+	}
+	.invoice-details .d-sm-flex {
+		display: -webkit-box !important;
+		display: -ms-flexbox !important;
+		display: flex !important;
+	}
+	.address.col-sm-6 {
+		-webkit-box-flex: 0 !important;
+		-ms-flex: 0 0 auto !important;
+		flex: 0 0 auto !important;
+		width: 50% !important;
+		max-width: 100% !important;
+	}
+}

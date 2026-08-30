@@ -1,0 +1,19 @@
+/* Theme settings component styles extracted from the legacy bundle. */
+.customizer-setting {
+	position: fixed;
+	bottom: 40px;
+	right: 20px;
+	z-index: 1000;
+}
+[data-bs-target="#collapseBgGradient"].active {
+	border-color: var(--coc-primary-rgb) !important;
+}
+[data-bs-target="#collapseBgGradient"].active::before {
+	content: "\eb80";
+	font-family: remixicon;
+	position: absolute;
+	top: 2px;
+	right: 6px;
+	font-size: 16px;
+	color: var(--coc-primary-rgb);
+}

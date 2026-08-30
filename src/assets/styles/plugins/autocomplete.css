@@ -1,0 +1,90 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.autoComplete_wrapper {
+	display: block;
+}
+.autoComplete_wrapper > input {
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 0.5rem 0.9rem;
+	font-size: var(--coc-font-base);
+	font-weight: var(--coc-font-weight-normal);
+	line-height: 1.5;
+	color: var(--coc-body-color);
+	background-color: var(--coc-input-bg-custom);
+	background-clip: padding-box;
+	border: var(--coc-border-width) solid var(--coc-input-border-custom);
+	border-radius: var(--coc-border-radius);
+	background-image: none;
+}
+.autoComplete_wrapper > input::-webkit-input-placeholder {
+	padding: 0 !important;
+	color: var(--coc-secondary-color) !important;
+	font-size: var(--coc-font-base) !important;
+}
+.autoComplete_wrapper > input::-moz-placeholder {
+	padding: 0 !important;
+	color: var(--coc-secondary-color) !important;
+	font-size: var(--coc-font-base) !important;
+}
+.autoComplete_wrapper > input:-ms-input-placeholder {
+	padding: 0 !important;
+	color: var(--coc-secondary-color) !important;
+	font-size: var(--coc-font-base) !important;
+}
+.autoComplete_wrapper > input::-ms-input-placeholder {
+	padding: 0 !important;
+	color: var(--coc-secondary-color) !important;
+	font-size: var(--coc-font-base) !important;
+}
+.autoComplete_wrapper > input::placeholder {
+	padding: 0 !important;
+	color: var(--coc-secondary-color) !important;
+	font-size: var(--coc-font-base) !important;
+}
+.autoComplete_wrapper > input:focus {
+	border: var(--coc-border-width) solid var(--coc-primary-border-subtle);
+	color: var(--coc-body-color);
+}
+.autoComplete_wrapper > input:hover {
+	color: var(--coc-body-color);
+}
+.autoComplete_wrapper > ul {
+	border-radius: 0.25rem;
+	border-color: var(--coc-border-color);
+	background-color: var(--coc-secondary-bg);
+	-webkit-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	overflow: auto;
+	max-height: 160px;
+	margin: 0;
+	-webkit-animation-name: DropDownSlide;
+	animation-name: DropDownSlide;
+	-webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.autoComplete_wrapper > ul > li {
+	font-size: var(--coc-font-base);
+	margin: 0;
+	padding: 0.35rem 1.2rem;
+	border-radius: 0;
+	background-color: var(--coc-secondary-bg);
+	color: var(--coc-body-color);
+}
+.autoComplete_wrapper > ul > li mark {
+	color: var(--coc-danger);
+	font-weight: var(--coc-font-weight-semibold);
+	padding: 1px;
+}
+.autoComplete_wrapper > ul > li:hover,
+.autoComplete_wrapper > ul > li[aria-selected="true"] {
+	color: var(--coc-body-color);
+	background-color: var(--coc-tertiary-bg);
+}
+.autoComplete_wrapper > ul .no_result {
+	padding: 0.7rem 1.2rem;
+	font-style: italic;
+	font-weight: var(--coc-font-weight-medium);
+}

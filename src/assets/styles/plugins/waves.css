@@ -1,0 +1,19 @@
+/* CoCreate color variants for Waves' externally loaded stylesheet. */
+.waves-effect.waves-light .waves-ripple {
+	background-color: rgba(255, 255, 255, 0.4);
+}
+.waves-effect.waves-primary .waves-ripple {
+	background-color: rgba(64, 81, 137, 0.4);
+}
+.waves-effect.waves-success .waves-ripple {
+	background-color: rgba(10, 179, 156, 0.4);
+}
+.waves-effect.waves-info .waves-ripple {
+	background-color: rgba(41, 156, 219, 0.4);
+}
+.waves-effect.waves-warning .waves-ripple {
+	background-color: rgba(247, 184, 75, 0.4);
+}
+.waves-effect.waves-danger .waves-ripple {
+	background-color: rgba(240, 101, 72, 0.4);
+}

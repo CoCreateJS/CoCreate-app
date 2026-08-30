@@ -1,0 +1,84 @@
+/* Menu component styles extracted from the residual legacy bundle. */
+[data-layout="horizontal"] .menu-dropdown {
+	position: absolute;
+	min-width: 12rem;
+	padding: 0.5rem 0;
+	-webkit-box-shadow: 0 0 5px rgba(15, 34, 58, 0.15);
+	box-shadow: 0 0 5px rgba(15, 34, 58, 0.15);
+	-webkit-animation-name: DropDownSlide;
+	animation-name: DropDownSlide;
+	-webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	margin: 0;
+	z-index: 1000;
+	background-color: var(--coc-topnav-bg);
+	background-clip: padding-box;
+	border: 0 solid var(--coc-border-color);
+	border-radius: var(--coc-border-radius-lg);
+	display: none;
+}
+[data-layout="horizontal"] .menu-dropdown .menu-dropdown {
+	top: 0;
+	left: 100%;
+}
+[data-layout="horizontal"] .menu-title {
+	display: none;
+}
+@media (max-width: 1024px) {
+	[data-layout="horizontal"] .menu .menu-dropdown {
+		position: relative;
+		min-width: 100%;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		padding-left: 28px;
+		left: 0;
+		-webkit-animation: none;
+		animation: none;
+		padding-top: 0;
+	}
+	[data-layout="horizontal"] .menu .menu-dropdown.show {
+		display: block;
+	}
+}
+
+[data-layout="twocolumn"] .app-menu {
+	padding-bottom: 0;
+	width: 220px;
+	left: 70px;
+}
+[data-layout="twocolumn"] .app-menu .menu-link {
+	letter-spacing: 0.05em;
+	cursor: default;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: var(--coc-font-weight-semibold);
+}
+[data-layout="twocolumn"] .app-menu .menu-link:after {
+	display: none !important;
+}
+[data-layout="twocolumn"] .app-menu .menu-link i {
+	display: none;
+}
+[data-layout="twocolumn"] .app-menu .container-fluid {
+	padding: 0;
+}
+[data-layout="twocolumn"] .menu-title {
+	display: none;
+}
+[data-layout="twocolumn"] .twocolumn-panel .app-menu {
+	width: 0;
+	border-right: 0;
+}
+@media (max-width: 575.98px) {
+	[data-layout="twocolumn"] .twocolumn-panel .app-menu {
+		display: none;
+	}
+}
+@media (max-width: 767.98px) {
+	[data-layout="twocolumn"] .app-menu {
+		left: 0;
+		margin-left: 100%;
+	}
+}

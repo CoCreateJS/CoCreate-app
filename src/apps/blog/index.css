@@ -1,0 +1,11 @@
+/* Blog page styles extracted from the legacy bundle. */
+.blog-grid-card .blog-img {
+	height: 230px;
+	width: 100%;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+}
+.blog-grid-card:hover .blog-img {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}

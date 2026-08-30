@@ -1,0 +1,36 @@
+/* Bootstrap toast component overrides and CoCreate color variants. */
+.toast:not(:last-child) {
+	margin-bottom: 0.75rem;
+}
+.toast-border-primary .toast-body {
+	color: var(--coc-primary);
+	border-bottom: 3px solid var(--coc-primary);
+}
+.toast-border-secondary .toast-body {
+	color: var(--coc-secondary);
+	border-bottom: 3px solid var(--coc-secondary);
+}
+.toast-border-success .toast-body {
+	color: var(--coc-success);
+	border-bottom: 3px solid var(--coc-success);
+}
+.toast-border-info .toast-body {
+	color: var(--coc-info);
+	border-bottom: 3px solid var(--coc-info);
+}
+.toast-border-warning .toast-body {
+	color: var(--coc-warning);
+	border-bottom: 3px solid var(--coc-warning);
+}
+.toast-border-danger .toast-body {
+	color: var(--coc-danger);
+	border-bottom: 3px solid var(--coc-danger);
+}
+.toast-border-light .toast-body {
+	color: var(--coc-light);
+	border-bottom: 3px solid var(--coc-light);
+}
+.toast-border-dark .toast-body {
+	color: var(--coc-dark);
+	border-bottom: 3px solid var(--coc-dark);
+}

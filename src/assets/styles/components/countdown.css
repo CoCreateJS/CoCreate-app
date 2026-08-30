@@ -1,0 +1,80 @@
+/* Countdown and coming-soon styles extracted from the legacy bundle. */
+.countdownlist {
+	text-align: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	gap: 24px;
+}
+.countdownlist .countdownlist-item {
+	width: 25%;
+}
+.countdownlist .countdownlist-item:last-of-type .count-num::after {
+	display: none;
+}
+.countdownlist .count-title {
+	font-size: 13px;
+	font-weight: var(--coc-font-weight-medium);
+	display: block;
+	margin-bottom: 8px;
+	color: rgba(var(--coc-body-color-rgb), 0.5);
+	text-transform: uppercase;
+}
+.countdownlist .count-num {
+	background-color: var(--coc-secondary-bg);
+	padding: 16px 8px;
+	position: relative;
+	border-radius: var(--coc-border-radius);
+	-webkit-box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+	box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+	font-weight: var(--coc-font-weight-semibold);
+	font-size: 32px;
+}
+@media (max-width: 575.98px) {
+	.countdownlist .count-num {
+		font-size: 18px;
+	}
+}
+.countdownlist .count-num::after {
+	content: ":";
+	font-size: 20px;
+	position: absolute;
+	right: -16px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	color: var(--coc-body-color);
+}
+.move-animation {
+	-webkit-animation: mover 1s infinite alternate;
+	animation: mover 1s infinite alternate;
+}
+@-webkit-keyframes mover {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+	100% {
+		-webkit-transform: translateY(-16px);
+		transform: translateY(-16px);
+	}
+}
+@keyframes mover {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+	100% {
+		-webkit-transform: translateY(-16px);
+		transform: translateY(-16px);
+	}
+}
+.coming-soon-text {
+	font-weight: var(--coc-font-weight-semibold);
+	text-transform: uppercase;
+	color: #fff;
+	text-shadow: 3px 4px var(--coc-success);
+}
+.countdown-input-group {
+	max-width: 400px;
+}

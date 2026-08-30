@@ -1,0 +1,21 @@
+/* Pagination component styles extracted from the legacy bundle. */
+.pagination-separated .page-item .page-link {
+	margin-left: 0.35rem;
+	border-radius: var(--coc-border-radius);
+}
+.pagination-rounded .page-link {
+	border-radius: 30px !important;
+	margin: 0 3px !important;
+	border: none;
+	min-width: 32px;
+	min-height: 32px;
+	text-align: center;
+}
+.pagination-rounded.pagination-sm .page-link {
+	min-width: 25px;
+	min-height: 25px;
+}
+.page-item[aria-expanded="true"] .page-link {
+	-webkit-box-shadow: var(--coc-element-shadow);
+	box-shadow: var(--coc-element-shadow);
+}

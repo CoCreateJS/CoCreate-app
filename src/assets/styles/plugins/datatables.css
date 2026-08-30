@@ -1,0 +1,144 @@
+/* CoCreate overrides and integrations for plugin styles. */
+table.dataTable td.dataTables_empty,
+table.dataTable th.dataTables_empty {
+	text-align: center;
+	padding: 50px;
+	font-weight: var(--coc-font-weight-semibold);
+	--coc-table-accent-bg: var(--coc-secondary-bg);
+}
+table.dataTable > thead .sorting:before,
+table.dataTable > thead .sorting_asc:before,
+table.dataTable > thead .sorting_asc_disabled:before,
+table.dataTable > thead .sorting_desc:before,
+table.dataTable > thead .sorting_desc_disabled:before {
+	content: "\f0360";
+	position: absolute;
+	right: 0.5rem;
+	top: 12px;
+	font-size: 0.8rem;
+	font-family: "Material Design Icons";
+}
+table.dataTable > thead .sorting:after,
+table.dataTable > thead .sorting_asc:after,
+table.dataTable > thead .sorting_asc_disabled:after,
+table.dataTable > thead .sorting_desc:after,
+table.dataTable > thead .sorting_desc_disabled:after {
+	content: "\f035d";
+	position: absolute;
+	right: 0.5rem;
+	top: 18px;
+	font-size: 0.8rem;
+	font-family: "Material Design Icons";
+}
+table.dataTable > tbody > tr.child span.dtr-title {
+	font-weight: var(--coc-font-weight-semibold);
+	min-width: 150px;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control::before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control::before {
+	background-color: var(--coc-primary);
+	border-color: var(--coc-secondary-bg);
+}
+table.dataTable.dtr-inline.collapsed
+	> tbody
+	> tr.parent.parent
+	> th.dtr-control::before {
+	background-color: var(--coc-danger);
+}
+table.dataTable.dtr-inline.collapsed
+	> tbody
+	> tr.parent
+	> td.dtr-control::before {
+	background-color: var(--coc-danger);
+}
+table.dataTable > tbody > tr.child span.dtr-title {
+	min-width: 135px;
+}
+.table-card .dataTables_filter,
+.table-card .dataTables_length {
+	padding: 1rem 1rem;
+	padding-bottom: 0;
+}
+.table-card .dataTables_info,
+.table-card .dataTables_paginate {
+	padding: 1rem 1rem;
+}
+.table-card div.dataTables_wrapper .col-md-6 {
+	width: 100%;
+}
+.table-card div.dataTables_wrapper div.dataTables_filter input {
+	width: calc(100% - 52px);
+}
+.table-card div.dataTables_wrapper div.dataTables_filter label {
+	display: block;
+}
+div.dtr-modal div.dtr-modal-display {
+	background-color: var(--coc-secondary-bg);
+	border-color: var(--coc-border-color);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	height: 70%;
+}
+div.dtr-modal div.dtr-modal-content {
+	padding: 1.25rem;
+}
+div.dtr-modal div.dtr-modal-content h2 {
+	font-size: calc(var(--coc-font-base) * 1.25);
+	font-weight: var(--coc-font-weight-semibold);
+	margin-bottom: 15px;
+}
+div.dtr-modal div.dtr-modal-content .dtr-details tr td {
+	padding: 0.75rem 0.6rem;
+}
+div.dtr-modal div.dtr-modal-close {
+	font-size: 24px;
+	top: 9px;
+	right: 11px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	background-color: var(--coc-secondary-bg);
+	border-color: var(--coc-border-color);
+}
+div.dtr-modal div.dtr-modal-close:hover {
+	background-color: var(--coc-light);
+}
+.dt-buttons :is(button.dt-button, div.dt-button, a.dt-button, input.dt-button) {
+	border-color: var(--coc-border-color);
+	background: var(--coc-light);
+	color: var(--coc-body-color);
+}
+:is(button, div, a, input):is(.dt-button:hover:not(.disabled)) {
+	border-color: var(--coc-border-color);
+	background: var(--coc-light);
+	color: var(--coc-body-color);
+}
+:is(button, div, a, input):is(.dt-button.active:not(.disabled)),
+:is(button, div, a, input):is(.dt-button:active:not(.disabled)) {
+	border-color: var(--coc-border-color);
+	background: var(--coc-light);
+	color: var(--coc-body-color);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+:is(button, div, a, input):is(.dt-button:focus:not(.disabled)) {
+	border-color: var(--coc-border-color);
+	background: var(--coc-light);
+	color: var(--coc-body-color);
+	text-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+:is(button, div, a, input):is(
+		.dt-button.active:not(.disabled):hover:not(.disabled)
+	),
+:is(button, div, a, input):is(
+		.dt-button:active:not(.disabled):hover:not(.disabled)
+	) {
+	border-color: var(--coc-border-color);
+	background: var(--coc-light);
+	color: var(--coc-body-color);
+	text-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}

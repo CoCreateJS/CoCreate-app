@@ -1,0 +1,38 @@
+/* Scroll-to-top component styles extracted from the legacy bundle. */
+#back-to-top {
+	position: fixed;
+	bottom: 28px;
+	right: 28px;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	display: none;
+	z-index: 1000;
+}
+#back-to-top:hover {
+	-webkit-animation: fade-up 1.5s infinite linear;
+	animation: fade-up 1.5s infinite linear;
+}
+@-webkit-keyframes fade-up {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+	}
+	75% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+}
+@keyframes fade-up {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+	}
+	75% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+}

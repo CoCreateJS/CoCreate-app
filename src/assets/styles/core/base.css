@@ -1,0 +1,28 @@
+/* Shared base element styles extracted from the legacy bundle. */
+html {
+	position: relative;
+	min-height: 100%;
+}
+label {
+	font-weight: var(--coc-font-weight-medium);
+	margin-bottom: 0.5rem;
+}
+b,
+strong {
+	font-weight: var(--coc-font-weight-semibold);
+}
+@media (min-width: 1200px) {
+	:is(
+			.container,
+			.container-lg,
+			.container-md,
+			.container-sm,
+			.container-xl,
+			.container-xxl
+		) {
+		max-width: 1140px;
+	}
+}
+.row > * {
+	position: relative;
+}

@@ -1,0 +1,7 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.e-charts {
+	height: 350px;
+}
+.e-charts-height {
+	height: 300px;
+}

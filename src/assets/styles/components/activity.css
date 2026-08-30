@@ -1,0 +1,70 @@
+/* Activity panel and feed styles extracted from the legacy bundle. */
+.layout-rightside {
+	width: 280px;
+	margin-right: calc(var(--coc-grid-gutter-width) * -0.9);
+	margin-top: calc(1px - var(--coc-grid-gutter-width) * 1.1);
+	height: calc(100% + var(--coc-grid-gutter-width) * 1.1);
+}
+@media (max-width: 1699.98px) {
+	.layout-rightside-col {
+		display: none;
+		position: fixed !important;
+		height: 100vh;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 1004;
+	}
+	.layout-rightside-col .overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(33, 37, 41, 0.2);
+	}
+	.layout-rightside-col .layout-rightside {
+		margin-top: 0;
+		height: 100%;
+		margin-left: auto;
+	}
+	.layout-rightside-col .card-body {
+		overflow-y: auto;
+		padding-bottom: 1rem !important;
+	}
+}
+@media (min-width: 1700px) {
+	:is([data-layout="horizontal"], [data-layout-style="detached"])
+		.layout-rightside {
+		margin-top: calc(28px - var(--coc-grid-gutter-width));
+		margin-right: 0;
+		height: calc(100% - var(--coc-grid-gutter-width) * 0.5);
+	}
+}
+[data-layout="semibox"] .layout-rightside {
+	margin-right: 0;
+}
+.activity-feed {
+	list-style: none;
+}
+.activity-feed .feed-item {
+	position: relative;
+	padding-bottom: 27px;
+	padding-left: 16px;
+	border-left: 2px solid var(--coc-border-color);
+}
+.activity-feed .feed-item:after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 4px;
+	left: -6px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 2px solid var(--coc-primary);
+	background-color: var(--coc-secondary-bg);
+}
+.activity-feed .feed-item:last-child {
+	border-color: transparent;
+}

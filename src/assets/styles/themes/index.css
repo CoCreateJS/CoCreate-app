@@ -1,0 +1,12 @@
+/* Theme presets currently extracted from the legacy bundle. */
+@import url("./default.css");
+@import url("./corporate.css");
+@import url("./creative.css");
+@import url("./galaxy.css");
+@import url("./interactive.css");
+@import url("./material.css");
+@import url("./minimal.css");
+@import url("./modern.css");
+@import url("./saas.css");
+@import url("./classic.css");
+@import url("./vintage.css");

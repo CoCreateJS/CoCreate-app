@@ -1,0 +1,4 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.chartjs-chart {
+	max-height: 320px;
+}

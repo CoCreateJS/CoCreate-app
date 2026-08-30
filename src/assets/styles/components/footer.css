@@ -1,0 +1,296 @@
+/* Application footer styles extracted from the legacy bundle. */
+.footer {
+	bottom: 0;
+	padding: 20px calc(var(--coc-grid-gutter-width) * 0.5);
+	position: absolute;
+	right: 0;
+	color: var(--coc-footer-color);
+	left: var(--coc-vertical-menu-width);
+	height: 60px;
+	background-color: var(--coc-footer-bg);
+	}
+@media (max-width: 991.98px) {
+	.footer {
+		left: 0;
+	}
+}
+[data-layout="vertical"]:is(
+		[data-sidebar-size="sm"],
+		[data-sidebar-size="sm-hover"]
+	)
+	.footer {
+	left: var(--coc-vertical-menu-width-sm);
+}
+@media (max-width: 767.98px) {
+	[data-layout="vertical"]:is(
+			[data-sidebar-size="sm"],
+			[data-sidebar-size="sm-hover"]
+		)
+		.footer {
+		left: 0;
+	}
+}
+[data-layout="vertical"][data-sidebar-size="md"] .footer {
+	left: var(--coc-vertical-menu-width-md);
+}
+@media (max-width: 991.98px) {
+	[data-layout="vertical"][data-sidebar-size="md"] .footer {
+		left: 0;
+	}
+}
+[data-layout="horizontal"] .footer {
+	left: 0 !important;
+}
+@media (min-width: 1024.1px) {
+	[data-layout="vertical"][data-layout-style="detached"] .footer {
+		left: 0 !important;
+		background-color: transparent;
+	}
+}
+@media (min-width: 768.1px) {
+	[data-layout="twocolumn"] .footer {
+		left: calc(70px + 220px);
+	}
+}
+[data-layout="twocolumn"] .twocolumn-panel .footer {
+	left: 70px;
+}
+@media (max-width: 575.98px) {
+	[data-layout="twocolumn"] .twocolumn-panel .footer {
+		left: 0;
+	}
+}
+@media (max-width: 767.98px) {
+	[data-layout="twocolumn"] .footer {
+		left: 70px;
+	}
+}
+@media (max-width: 575.98px) {
+	[data-layout="twocolumn"] .footer {
+		left: 0;
+	}
+}
+@media (max-width: 767.98px) {
+	[data-layout="twocolumn"] .footer {
+		left: 0 !important;
+	}
+}
+[data-layout-width="boxed"] .footer {
+	max-width: var(--coc-boxed-layout-width);
+	margin: 0 auto;
+	left: 0 !important;
+}
+[data-layout-width="boxed"][data-sidebar-size="sm-hover"] .footer,
+[data-layout-width="boxed"][data-sidebar-size="sm"] .footer {
+	left: 0 !important;
+	max-width: calc(
+		var(--coc-boxed-layout-width) - var(--coc-vertical-menu-width-sm)
+	);
+}
+@media (min-width: 768px) {
+	[data-layout-width="boxed"][data-sidebar-size="sm-hover"] .footer,
+[data-layout-width="boxed"][data-sidebar-size="sm"] .footer {
+		left: var(--coc-vertical-menu-width-sm) !important;
+	}
+}
+[data-layout-width="boxed"][data-sidebar-size="lg"] .footer,
+[data-layout-width="boxed"][data-sidebar-size="sm-hover-active"] .footer {
+	max-width: calc(
+		var(--coc-boxed-layout-width) - var(--coc-vertical-menu-width)
+	);
+}
+@media (min-width: 768px) {
+	[data-layout-width="boxed"][data-sidebar-size="lg"] .footer,
+[data-layout-width="boxed"][data-sidebar-size="sm-hover-active"] .footer {
+		left: var(--coc-vertical-menu-width) !important;
+	}
+}
+[data-layout-width="boxed"][data-sidebar-size="md"] .footer {
+	max-width: calc(
+		var(--coc-boxed-layout-width) - var(--coc-vertical-menu-width-md)
+	);
+}
+@media (min-width: 768px) {
+	[data-layout-width="boxed"][data-sidebar-size="md"] .footer {
+		left: var(--coc-vertical-menu-width-md) !important;
+	}
+}
+[data-layout-width="boxed"][data-layout="vertical"][data-layout-style="detached"][data-sidebar-size="lg"]
+	.footer,
+[data-layout-width="boxed"][data-layout="vertical"][data-layout-style="detached"][data-sidebar-size="md"]
+	.footer,
+[data-layout-width="boxed"][data-layout="vertical"][data-layout-style="detached"][data-sidebar-size="sm-hover"]
+	.footer,
+[data-layout-width="boxed"][data-layout="vertical"][data-layout-style="detached"][data-sidebar-size="sm"]
+	.footer {
+	max-width: 100%;
+	left: 0 !important;
+}
+[data-layout="horizontal"][data-layout-width="boxed"] .footer {
+	max-width: 100%;
+}
+[data-layout="horizontal"][data-layout-width="boxed"][data-sidebar-size="lg"]
+	.footer,
+[data-layout="horizontal"][data-layout-width="boxed"][data-sidebar-size="sm-hover"]
+	.footer,
+[data-layout="horizontal"][data-layout-width="boxed"][data-sidebar-size="sm"]
+	[data-layout="horizontal"][data-layout-width="boxed"][data-sidebar-size="sm-hover-active"]
+	.footer {
+	left: 0 !important;
+}
+@media (min-width: 768px) {
+	[data-layout="semibox"][data-sidebar-visibility="hidden"] .footer {
+		left: 0;
+	}
+}
+@media (min-width: 1440px) {
+	[data-layout="semibox"][data-sidebar-visibility="hidden"] .footer {
+		left: calc(var(--coc-semibox-width) + var(--coc-grid-gutter-width));
+	}
+}
+.auth-page-wrapper .footer {
+	left: 0;
+	background-color: transparent;
+	color: var(--coc-body-color);
+}
+.auth-bg-cover .footer {
+	color: rgba(255, 255, 255, 0.5);
+}
+:is(
+		[data-layout="vertical"],
+		[data-layout="semibox"]
+	)[data-layout-style="detached"]
+	.footer {
+	border-top: 1px dashed var(--coc-border-color);
+}
+:is(
+		[data-layout="vertical"],
+		[data-layout="semibox"]
+	)[data-layout-style="detached"]
+	.auth-page-wrapper
+	.footer {
+	border-top: none;
+}
+@media (min-width: 768px) {
+	[data-layout="semibox"][data-sidebar-size="sm-hover"] .footer,
+[data-layout="semibox"][data-sidebar-size="sm"] .footer {
+		left: var(--coc-vertical-menu-width-sm);
+	}
+	[data-layout="semibox"][data-sidebar-size="md"] .footer {
+		left: var(--coc-vertical-menu-width-md);
+	}
+}
+@media (min-width: 1440px) {
+	[data-layout="semibox"] .footer {
+		left: calc(
+			var(--coc-vertical-menu-width) + var(--coc-semibox-width) +
+				var(--coc-grid-gutter-width) + 25px
+		);
+		right: calc(var(--coc-semibox-width) + var(--coc-grid-gutter-width));
+	}
+	[data-layout="semibox"][data-sidebar-size="md"] .footer {
+		left: calc(
+			var(--coc-vertical-menu-width-md) + var(--coc-semibox-width) +
+				var(--coc-grid-gutter-width) + 25px
+		);
+	}
+	[data-layout="semibox"][data-sidebar-size="sm"] .footer {
+		left: calc(
+			var(--coc-vertical-menu-width-sm) + var(--coc-semibox-width) +
+				var(--coc-grid-gutter-width) + 25px
+		);
+	}
+	[data-layout="semibox"][data-sidebar-size="sm-hover"] .footer {
+		left: calc(
+			var(--coc-vertical-menu-width-sm) + var(--coc-semibox-width) +
+				var(--coc-grid-gutter-width) + 25px
+		);
+	}
+}
+@media print {
+	.footer {
+		display: none !important;
+	}
+}
+
+/* Landing footer */
+.custom-footer {
+	color: #9ba7b3;
+}
+
+.footer-list li a {
+	color: #9ba7b3;
+	padding: 7px 0;
+	display: block;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.footer-list li a:hover {
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-social-link .avatar-title {
+	color: #778089;
+	background-color: rgba(255, 255, 255, 0.05);
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.footer-social-link .avatar-title:hover {
+	color: #fff;
+	background-color: var(--coc-primary);
+}
+
+[data-bs-theme="dark"] .layout-wrapper.landing footer.bg-dark {
+	background-color: var(--coc-secondary-bg) !important;
+}
+
+/* Blockquote footer variants */
+.custom-blockquote.blockquote.blockquote-primary .blockquote-footer,
+.custom-blockquote.blockquote.blockquote-outline.blockquote-primary
+	.blockquote-footer {
+	color: var(--coc-primary-text-emphasis);
+}
+
+.custom-blockquote.blockquote.blockquote-secondary .blockquote-footer,
+.custom-blockquote.blockquote.blockquote-outline.blockquote-secondary
+	.blockquote-footer {
+	color: var(--coc-secondary-text-emphasis);
+}
+
+.custom-blockquote.blockquote.blockquote-success .blockquote-footer,
+.custom-blockquote.blockquote.blockquote-outline.blockquote-success
+	.blockquote-footer {
+	color: var(--coc-success-text-emphasis);
+}
+
+.custom-blockquote.blockquote.blockquote-info .blockquote-footer,
+.custom-blockquote.blockquote.blockquote-outline.blockquote-info
+	.blockquote-footer {
+	color: var(--coc-info-text-emphasis);
+}
+
+.custom-blockquote.blockquote.blockquote-warning .blockquote-footer,
+.custom-blockquote.blockquote.blockquote-outline.blockquote-warning
+	.blockquote-footer {
+	color: var(--coc-warning-text-emphasis);
+}
+
+.custom-blockquote.blockquote.blockquote-danger .blockquote-footer,
+.custom-blockquote.blockquote.blockquote-outline.blockquote-danger
+	.blockquote-footer {
+	color: var(--coc-danger-text-emphasis);
+}
+
+.custom-blockquote.blockquote.blockquote-light .blockquote-footer,
+.custom-blockquote.blockquote.blockquote-outline.blockquote-light
+	.blockquote-footer {
+	color: var(--coc-light-text-emphasis);
+}
+
+.custom-blockquote.blockquote.blockquote-dark .blockquote-footer,
+.custom-blockquote.blockquote.blockquote-outline.blockquote-dark
+	.blockquote-footer {
+	color: var(--coc-dark-text-emphasis);
+}

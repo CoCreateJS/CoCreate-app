@@ -1,0 +1,8 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.leaflet-map {
+	height: 300px;
+}
+.leaflet-map.leaflet-container {
+	z-index: 0;
+	font-family: var(--coc-font-family-primary);
+}

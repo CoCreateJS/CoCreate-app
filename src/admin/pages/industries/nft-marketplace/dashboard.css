@@ -1,0 +1,43 @@
+/* NFT dashboard styles extracted from the legacy bundle. */
+.bg-marketplace {
+	background-image: url(/assets/images/nft/marketplace.png);
+	background-size: cover;
+}
+.dash-countdown .countdownlist .count-num {
+	background-color: var(--coc-secondary-bg);
+	padding: 16px 8px;
+	font-size: 22px;
+}
+@media (max-width: 575.98px) {
+	.dash-countdown .countdownlist .count-num {
+		font-size: 16px;
+		padding: 8px 6px;
+	}
+}
+@media (max-width: 575.98px) {
+	.dash-countdown .countdownlist .count-title {
+		font-size: 10px;
+	}
+}
+[data-layout-width="boxed"] .dash-countdown .countdownlist {
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.marketplace-icon {
+	position: absolute;
+	float: right;
+	top: 30px;
+	left: 30px;
+}
+.dash-collection .content {
+	background-color: rgba(255, 255, 255, 0.25);
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
+}
+@media (max-width: 1441.98px) {
+	.dash-nft .col-xxl-3,
+.dash-nft .col-xxl-9 {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+}

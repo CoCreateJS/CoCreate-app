@@ -1,0 +1,71 @@
+/* Breadcrumb and page-title component styles extracted from the legacy bundle. */
+.page-title-box {
+	padding: 10px var(--coc-grid-gutter-width);
+	padding-top: 85px;
+	background-color: var(--coc-secondary-bg);
+	-webkit-box-shadow: var(--coc-page-title-box-shadow);
+	box-shadow: var(--coc-page-title-box-shadow);
+	border-bottom: 1px solid var(--coc-page-title-border);
+	/* margin: -23px calc(var(--coc-grid-gutter-width) * -1)
+		var(--coc-grid-gutter-width) calc(var(--coc-grid-gutter-width) * -1); */
+}
+.page-title-box .breadcrumb {
+	background-color: transparent;
+	padding: 0;
+}
+.page-title-box h4 {
+	font-weight: 700;
+	font-size: 15px !important;
+	text-transform: uppercase;
+}
+[data-layout="horizontal"] .page-title-box {
+	margin-top: 90px;
+	padding: 1.2rem var(--coc-grid-gutter-width);
+	background-color: transparent !important;
+	border-bottom: none;
+	border-top: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	/* margin: 0; */
+}
+@media (min-width: 1024.1px) {
+	[data-layout="horizontal"] .page-title-box {
+		max-width: 90%;
+        margin: 0 auto;
+		margin-top: 150px;
+	}
+}
+[data-layout="vertical"][data-layout-style="detached"] .page-title-box {
+	padding: 1.2rem 0;
+	background-color: transparent !important;
+	border-bottom: none;
+	border-top: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	/* margin: 0; */
+}
+@media (min-width: 1024.1px) {
+	[data-layout="vertical"][data-layout-style="detached"] .page-title-box {
+		margin: -19px 0 0 0;
+	}
+}
+.breadcrumb-item > a {
+	color: var(--coc-body-color);
+}
+.breadcrumb-item + .breadcrumb-item::before {
+	font-family: "Material Design Icons";
+	font-size: 15px;
+	line-height: 20px;
+}
+[data-layout="semibox"] .page-title-box {
+	padding: 10px 0;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	margin: -15px 0 1.5rem 0;
+}
+@media print {
+	.page-title-box {
+		display: none !important;
+	}
+}

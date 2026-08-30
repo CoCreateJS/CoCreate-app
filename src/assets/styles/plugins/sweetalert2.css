@@ -1,0 +1,109 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.swal2-container .swal2-title {
+	padding: 24px 24px 0;
+	font-size: 20px;
+	font-weight: var(--coc-font-weight-medium);
+}
+.swal2-popup {
+	padding-bottom: 24px;
+	border-radius: var(--coc-border-radius-lg);
+	background-color: var(--coc-secondary-bg);
+	color: var(--coc-body-color);
+}
+.swal2-popup .swal2-title {
+	color: var(--coc-heading-color);
+}
+.swal2-popup .swal2-html-container {
+	color: var(--coc-body-color);
+}
+.swal2-footer {
+	border-top: 1px solid var(--coc-border-color);
+	color: var(--coc-body-color);
+}
+.swal2-html-container {
+	font-size: 16px;
+}
+.swal2-icon.swal2-question {
+	border-color: var(--coc-info);
+	color: var(--coc-info);
+}
+.swal2-icon.swal2-success [class^="swal2-success-line"] {
+	background-color: var(--coc-success);
+}
+.swal2-icon.swal2-success .swal2-success-ring {
+	border-color: rgba(var(--coc-success-rgb), 0.3);
+}
+.swal2-icon.swal2-warning {
+	border-color: var(--coc-warning);
+	color: var(--coc-warning);
+}
+.swal2-styled:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.swal2-loader {
+	border-color: var(--coc-primary) transparent var(--coc-primary) transparent;
+}
+.swal2-timer-progress-bar {
+	background-color: rgba(var(--coc-success-rgb), 0.4);
+}
+.swal2-progress-steps .swal2-progress-step {
+	background: var(--coc-primary);
+}
+.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step {
+	background: var(--coc-primary);
+}
+.swal2-progress-steps
+	.swal2-progress-step.swal2-active-progress-step
+	~ .swal2-progress-step,
+.swal2-progress-steps
+	.swal2-progress-step.swal2-active-progress-step
+	~ .swal2-progress-step-line {
+	background: rgba(var(--coc-primary-rgb), 0.3);
+}
+.swal2-progress-steps .swal2-progress-step-line {
+	background: var(--coc-primary);
+}
+.swal2-actions.swal2-loading .swal2-styled.swal2-confirm {
+	border-left-color: var(--coc-primary) !important;
+	border-right-color: var(--coc-primary) !important;
+}
+.swal2-file,
+.swal2-input,
+.swal2-textarea {
+	border: 1px solid var(--coc-input-border-custom);
+}
+.swal2-file:focus,
+.swal2-input:focus,
+.swal2-textarea:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-color: var(--coc-primary-border-subtle);
+}
+.swal2-input {
+	height: auto;
+	display: block;
+	padding: 0.5rem 0.9rem;
+	font-size: var(--coc-font-base);
+	font-weight: var(--coc-font-weight-normal);
+	line-height: 1.5;
+	color: var(--coc-body-color);
+	background-color: var(--coc-input-bg-custom);
+	background-clip: padding-box;
+	border: var(--coc-border-width) solid var(--coc-input-border-custom);
+}
+.swal2-close {
+	font-family: var(--coc-font-sans-serif);
+	font-weight: var(--coc-font-weight-light);
+	font-size: 28px;
+}
+.swal2-close:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.swal2-close:hover {
+	color: var(--coc-primary);
+}
+.swal2-validation-message {
+	background-color: transparent;
+}

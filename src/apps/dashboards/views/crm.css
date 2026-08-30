@@ -1,0 +1,8 @@
+/* CRM dashboard view styles extracted from the legacy bundle. */
+.main-chart .chart-border-left {
+	border-left: 1.4px solid var(--coc-border-color);
+	padding: 2px 20px;
+}
+.main-chart .chart-border-left:last-child {
+	margin-right: 0;
+}

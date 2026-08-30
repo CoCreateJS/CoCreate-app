@@ -1,0 +1,178 @@
+/* Faithfully extracted from /assets/css/app.css. */
+.dropdown-toggle::after {
+	display: inline-block;
+	margin-left: 0.255em;
+	font-size: 15px;
+	line-height: 15px;
+	content: "\f0140";
+	font-family: "Material Design Icons";
+}
+.dropdown-menu {
+	-webkit-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	-webkit-animation-name: DropDownSlide;
+	animation-name: DropDownSlide;
+	-webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	position: absolute;
+	z-index: 1000;
+}
+.dropdown-menu.dropdown-megamenu {
+	padding: 20px;
+	left: 0 !important;
+	right: 0 !important;
+}
+.dropdown-menu[data-popper-placement="top-start"] {
+	-webkit-animation-name: DropDownSlideDown;
+	animation-name: DropDownSlideDown;
+}
+@-webkit-keyframes DropDownSlide {
+	100% {
+		margin-top: -1px;
+	}
+	0% {
+		margin-top: 8px;
+	}
+}
+@keyframes DropDownSlide {
+	100% {
+		margin-top: -1px;
+	}
+	0% {
+		margin-top: 8px;
+	}
+}
+@-webkit-keyframes DropDownSlideDown {
+	100% {
+		margin-bottom: 0;
+	}
+	0% {
+		margin-bottom: 8px;
+	}
+}
+@keyframes DropDownSlideDown {
+	100% {
+		margin-bottom: 0;
+	}
+	0% {
+		margin-bottom: 8px;
+	}
+}
+@media (min-width: 600px) {
+	.dropdown-menu-xl {
+		width: 420px;
+	}
+	.dropdown-menu-lg {
+		width: 320px;
+	}
+	.dropdown-menu-md {
+		width: 240px;
+	}
+}
+.dropdown-toggle-split {
+	border-left: none;
+}
+.dropdown-toggle-split::after {
+	margin-left: 0;
+}
+.dropdown-toggle-split:before {
+	content: "";
+	position: absolute;
+	background-color: rgba(255, 255, 255, 0.12);
+	top: calc(var(--coc-border-width) * -1);
+	bottom: calc(var(--coc-border-width) * -1);
+	right: calc(var(--coc-border-width) * -1);
+	left: 0;
+	border-radius: 0 var(--coc-border-radius) var(--coc-border-radius) 0;
+}
+.dropdown-mega {
+	position: static !important;
+}
+.dropdown-mega-menu-xl {
+	width: 38rem;
+}
+.dropdown-mega-menu-lg {
+	width: 26rem;
+}
+[dir="ltr"] .dropdown-menu-start {
+	--coc-position: end;
+}
+[dir="ltr"] .dropdown-menu-end {
+	--coc-position: start;
+}
+.nav-link[aria-selected="true"] {
+	color: var(--coc-nav-tabs-link-active-color);
+	background-color: var(--coc-nav-tabs-link-active-bg);
+	border-color: var(--coc-nav-tabs-link-active-border-color);
+}
+
+.nav-pills .nav-link[aria-selected="true"] {
+	color: var(--coc-nav-pills-link-active-color);
+	background-color: var(--coc-nav-pills-link-active-bg);
+}
+.dropdown-head .nav-tabs-custom {
+	border: 0;
+}
+.dropdown-head .nav-tabs-custom .nav-link {
+	color: rgba(255, 255, 255, 0.6);
+}
+.dropdown-head .nav-tabs-custom .nav-link::after {
+	display: none;
+}
+.dropdown-head .nav-tabs-custom .nav-link[aria-selected="true"] {
+	background-color: var(--coc-dropdown-bg);
+}
+.dropdown-head .nav-tabs-custom .nav-link:hover {
+	color: #fff;
+}
+.dropdownmenu-primary .dropdown-item:is(:focus, :hover, [aria-expanded="true"]) {
+	background-color: rgba(64, 81, 137, 0.07);
+	color: #405189;
+}
+.dropdownmenu-secondary .dropdown-item:is(:focus, :hover, [aria-expanded="true"]) {
+	background-color: rgba(53, 119, 241, 0.07);
+	color: #3577f1;
+}
+.dropdownmenu-success .dropdown-item:is(:focus, :hover, [aria-expanded="true"]) {
+	background-color: rgba(10, 179, 156, 0.07);
+	color: #0ab39c;
+}
+.dropdownmenu-info .dropdown-item:is(:focus, :hover, [aria-expanded="true"]) {
+	background-color: rgba(41, 156, 219, 0.07);
+	color: #299cdb;
+}
+.dropdownmenu-warning .dropdown-item:is(:focus, :hover, [aria-expanded="true"]) {
+	background-color: rgba(247, 184, 75, 0.07);
+	color: #f7b84b;
+}
+.dropdownmenu-danger .dropdown-item:is(:focus, :hover, [aria-expanded="true"]) {
+	background-color: rgba(240, 101, 72, 0.07);
+	color: #f06548;
+}
+.dropdownmenu-light .dropdown-item:is(:focus, :hover, [aria-expanded="true"]) {
+	background-color: rgba(243, 246, 249, 0.07);
+	color: #f3f6f9;
+}
+.dropdownmenu-dark .dropdown-item:is(:focus, :hover, [aria-expanded="true"]) {
+	background-color: rgba(33, 37, 41, 0.07);
+	color: #212529;
+}
+
+/* Layout and page integrations migrated from the residual legacy bundle. */
+[data-layout="horizontal"] .mega-dropdown-menu {
+	width: 40rem;
+}
+[data-layout="horizontal"] .dropdown-custom-right {
+	left: -100% !important;
+	right: 100%;
+}
+@media (max-width: 1024px) {
+	[data-layout="horizontal"] .menu .dropdown-custom-right {
+		left: 0 !important;
+	}
+	[data-layout="horizontal"] .menu .mega-dropdown-menu {
+		width: 100%;
+	}
+}

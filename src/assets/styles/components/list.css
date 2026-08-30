@@ -1,0 +1,86 @@
+/* List component styles extracted from the residual legacy bundle. */
+.list-group-fill-primary.list-group-item {
+	color: #fff;
+	background-color: var(--coc-primary) !important;
+	border-color: var(--coc-primary);
+}
+.list-group-fill-secondary.list-group-item {
+	color: #fff;
+	background-color: var(--coc-secondary) !important;
+	border-color: var(--coc-secondary);
+}
+.list-group-fill-success.list-group-item {
+	color: #fff;
+	background-color: var(--coc-success) !important;
+	border-color: var(--coc-success);
+}
+.list-group-fill-info.list-group-item {
+	color: #fff;
+	background-color: var(--coc-info) !important;
+	border-color: var(--coc-info);
+}
+.list-group-fill-warning.list-group-item {
+	color: #fff;
+	background-color: var(--coc-warning) !important;
+	border-color: var(--coc-warning);
+}
+.list-group-fill-danger.list-group-item {
+	color: #fff;
+	background-color: var(--coc-danger) !important;
+	border-color: var(--coc-danger);
+}
+.list-group-fill-light.list-group-item {
+	color: #000;
+	background-color: var(--coc-light) !important;
+	border-color: var(--coc-light);
+}
+.list-group-fill-dark.list-group-item {
+	color: #fff;
+	background-color: var(--coc-dark) !important;
+	border-color: var(--coc-dark);
+}
+.list-group-item {
+	margin-bottom: 0;
+}
+.list-group-item .list-text {
+	color: var(--coc-secondary-color);
+}
+.list-group-item[aria-expanded="true"] {
+	-webkit-box-shadow: var(--coc-element-shadow);
+	box-shadow: var(--coc-element-shadow);
+}
+.list-group-item[aria-expanded="true"] .list-title {
+	color: #fff;
+}
+.list-group-item.active .list-text {
+	color: rgba(255, 255, 255, 0.5);
+}
+.list-grid-nav .nav-link.active {
+	background-color: var(--coc-info);
+	color: #fff;
+}
+.video-list .list-element {
+	display: none;
+}
+.video-list .list-element:nth-child(1) {
+	display: block;
+}
+.video-list .list-element:nth-child(2) {
+	display: block;
+}
+.video-list .list-element:nth-child(3) {
+	display: block;
+}
+#explorecard-list .list-element {
+	display: none;
+}
+#explorecard-list .list-element:nth-child(-n + 10) {
+	display: block;
+}
+
+.filter-list a.active .listname {
+	color: var(--coc-success);
+}
+#remove-actions {
+	display: none;
+}

@@ -1,0 +1,121 @@
+/* CoCreate overrides and integrations for plugin styles. */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	height: auto;
+}
+.input-step {
+	border: 1px solid var(--coc-input-border-custom);
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	overflow: visible;
+	height: 37.5px;
+	border-radius: var(--coc-border-radius);
+	background: var(--coc-input-bg-custom);
+	padding: 4px;
+}
+.input-step input {
+	width: 4em;
+	height: 100%;
+	text-align: center;
+	border: 0;
+	background: 0 0;
+	color: var(--coc-body-color);
+	border-radius: var(--coc-border-radius);
+}
+.input-step input:focus-visible {
+	outline: 0;
+}
+/* Modern Browsers (Chrome, Safari, Edge) */
+.input-step input::placeholder {
+	text-align: center;
+}
+
+/* Firefox */
+.input-step input::-moz-placeholder {
+	text-align: center;
+	opacity: 1;
+	/* Firefox lowers opacity by default */
+}
+
+/* Internet Explorer / Edge Legacy */
+input:-ms-input-placeholder {
+	text-align: center;
+}
+
+/* Microsoft Edge (older versions) */
+.input-stepinput::-ms-input-placeholder {
+	text-align: center;
+}
+.input-step button {
+	width: 1.4em;
+	font-weight: 300;
+	height: 100%;
+	line-height: 0.1em;
+	font-size: 1.4em;
+	padding: 0.2em !important;
+	background: var(--coc-light);
+	color: var(--coc-body-color);
+	border: none;
+	border-radius: var(--coc-border-radius);
+}
+.input-step.light {
+	background: var(--coc-light);
+}
+.input-step.light button {
+	background-color: var(--coc-input-bg-custom);
+}
+.input-step.light-input {
+	background: var(--coc-light);
+}
+.input-step.light-input input {
+	background-color: var(--coc-input-bg-custom);
+}
+.input-step.full-width {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	width: 100%;
+}
+.input-step.full-width button {
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+}
+.input-step.full-width input {
+	-webkit-box-flex: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+}
+.input-step.step-primary button {
+	background-color: var(--coc-primary);
+	color: #fff;
+}
+.input-step.step-secondary button {
+	background-color: var(--coc-secondary);
+	color: #fff;
+}
+.input-step.step-success button {
+	background-color: var(--coc-success);
+	color: #fff;
+}
+.input-step.step-info button {
+	background-color: var(--coc-info);
+	color: #fff;
+}
+.input-step.step-warning button {
+	background-color: var(--coc-warning);
+	color: #fff;
+}
+.input-step.step-danger button {
+	background-color: var(--coc-danger);
+	color: #fff;
+}
+.input-step.step-light button {
+	background-color: var(--coc-light);
+	color: #fff;
+}
+.input-step.step-dark button {
+	background-color: var(--coc-dark);
+	color: #fff;
+}

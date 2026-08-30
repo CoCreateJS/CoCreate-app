@@ -1,0 +1,52 @@
+/* Shared utility styles extracted from the legacy bundle. */
+a {
+	fill: rgba(var(--coc-link-color-rgb), var(--coc-link-opacity, 1));
+}
+.ff-base {
+	font-family: var(--coc-font-family-primary);
+}
+.ff-secondary {
+	font-family: var(--coc-font-family-secondary);
+}
+.bg-pattern {
+	background: url(/assets/images/modal-bg.png) var(--coc-secondary-bg);
+}
+.w-xs {
+	min-width: 80px;
+}
+.w-sm {
+	min-width: 95px;
+}
+.w-md {
+	min-width: 110px;
+}
+.w-lg {
+	min-width: 140px;
+}
+.w-xl {
+	min-width: 160px;
+}
+.bg-overlay {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	top: 0;
+	opacity: 0.7;
+	background-color: #000;
+}
+code {
+	-webkit-user-select: all;
+	-moz-user-select: all;
+	user-select: all;
+}
+.text-truncate-two-lines {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+}

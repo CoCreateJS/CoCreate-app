@@ -1,0 +1,44 @@
+/* Tasks app styles extracted from the legacy bundle. */
+.to-do-menu li .nav-link {
+	color: var(--coc-body-color);
+	padding-left: 0;
+	font-weight: var(--coc-font-weight-medium);
+	background-color: var(--coc-light);
+	padding: 10px 12px;
+	border-radius: 4px;
+	display: block;
+	margin-bottom: 8px;
+}
+.to-do-menu li .nav-link.active,
+.to-do-menu li .nav-link:hover {
+	color: var(--coc-success);
+}
+.todo-content {
+	height: calc(100vh - 362px);
+	overflow-y: auto;
+}
+.todo-content::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+.todo-content::-webkit-scrollbar:vertical {
+	width: 8px;
+}
+.todo-content::-webkit-scrollbar:horizontal {
+	height: 10px;
+}
+.todo-content::-webkit-scrollbar-thumb {
+	background-color: rgba(var(--coc-body-color-rgb), 0.075);
+	border-radius: 8px;
+}
+.todo-content::-webkit-scrollbar-track {
+	border-radius: 8px;
+}
+.todo-task table .form-check .form-check-input:checked + .form-check-label {
+	text-decoration: line-through;
+}
+.task-handle {
+	cursor: move;
+}
+#task-error-msg {
+	display: none;
+}

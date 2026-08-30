@@ -1,0 +1,32 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.nested-list .list-group-item {
+	background-color: rgba(var(--coc-primary-rgb), 0.05);
+	border-color: rgba(var(--coc-primary-rgb), 0.05);
+}
+.nested-1,
+.nested-2,
+.nested-3,
+.nested-list {
+	margin-top: 5px;
+}
+.nested-sortable-handle .handle {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 42px;
+	height: 42px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	cursor: -webkit-grab;
+	cursor: grab;
+}
+.nested-sortable-handle .list-group-item {
+	padding-left: 42px;
+}

@@ -1,0 +1,75 @@
+/* Blockquote component styles extracted from the legacy bundle. */
+.blockquote {
+	padding: 10px 20px;
+	border-left: 4px solid var(--coc-border-color);
+}
+.blockquote-reverse {
+	border-left: 0;
+	border-right: 4px solid var(--coc-border-color);
+	text-align: right;
+}
+.custom-blockquote.blockquote {
+	padding: 16px;
+	border-left: 3px solid;
+}
+.custom-blockquote.blockquote.blockquote-outline {
+	background-color: var(--coc-secondary-bg) !important;
+	border: 1px solid;
+	border-left: 3px solid;
+}
+.custom-blockquote.blockquote.blockquote-primary {
+	border-color: var(--coc-primary);
+	background-color: var(--coc-primary-bg-subtle);
+}
+.custom-blockquote.blockquote.blockquote-outline.blockquote-primary {
+	border-color: var(--coc-primary);
+}
+.custom-blockquote.blockquote.blockquote-secondary {
+	border-color: var(--coc-secondary);
+	background-color: var(--coc-secondary-bg-subtle);
+}
+.custom-blockquote.blockquote.blockquote-outline.blockquote-secondary {
+	border-color: var(--coc-secondary);
+}
+.custom-blockquote.blockquote.blockquote-success {
+	border-color: var(--coc-success);
+	background-color: var(--coc-success-bg-subtle);
+}
+.custom-blockquote.blockquote.blockquote-outline.blockquote-success {
+	border-color: var(--coc-success);
+}
+.custom-blockquote.blockquote.blockquote-info {
+	border-color: var(--coc-info);
+	background-color: var(--coc-info-bg-subtle);
+}
+.custom-blockquote.blockquote.blockquote-outline.blockquote-info {
+	border-color: var(--coc-info);
+}
+.custom-blockquote.blockquote.blockquote-warning {
+	border-color: var(--coc-warning);
+	background-color: var(--coc-warning-bg-subtle);
+}
+.custom-blockquote.blockquote.blockquote-outline.blockquote-warning {
+	border-color: var(--coc-warning);
+}
+.custom-blockquote.blockquote.blockquote-danger {
+	border-color: var(--coc-danger);
+	background-color: var(--coc-danger-bg-subtle);
+}
+.custom-blockquote.blockquote.blockquote-outline.blockquote-danger {
+	border-color: var(--coc-danger);
+}
+.custom-blockquote.blockquote.blockquote-light {
+	border-color: var(--coc-light);
+	background-color: var(--coc-light-bg-subtle);
+}
+.custom-blockquote.blockquote.blockquote-outline.blockquote-light {
+	border-color: var(--coc-light);
+}
+.custom-blockquote.blockquote.blockquote-dark {
+	border-color: var(--coc-dark);
+	background-color: var(--coc-dark-bg-subtle);
+}
+.custom-blockquote.blockquote.blockquote-outline.blockquote-dark {
+	border-color: var(--coc-dark);
+}

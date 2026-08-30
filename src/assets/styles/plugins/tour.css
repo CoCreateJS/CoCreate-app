@@ -1,0 +1,62 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.shepherd-element {
+	background: var(--coc-secondary-bg);
+	-webkit-box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+	box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+}
+.shepherd-has-title .shepherd-content .shepherd-header {
+	background-color: var(--coc-light);
+	padding: 0.5rem 0.75rem;
+}
+.shepherd-has-title .shepherd-content .shepherd-cancel-icon {
+	color: rgba(var(--coc-body-color-rgb), 0.75);
+}
+.shepherd-has-title .shepherd-content .shepherd-cancel-icon:hover {
+	color: rgba(var(--coc-body-color-rgb), 1);
+}
+.shepherd-element.shepherd-has-title[data-popper-placement^="bottom"]
+	> .shepherd-arrow:before {
+	background-color: var(--coc-light);
+}
+.shepherd-title {
+	font-size: 15px;
+	font-weight: var(--coc-font-weight-medium);
+	color: var(--coc-body-color);
+}
+.shepherd-text {
+	padding: 0.75rem;
+	font-size: var(--coc-font-base);
+	color: var(--coc-body-color);
+}
+.shepherd-button.btn-success:not(:disabled):hover {
+	background: var(--coc-success-text-emphasis);
+	color: #fff;
+}
+.shepherd-button.btn-light:not(:disabled):hover {
+	background: rgba(var(--coc-light-rgb), 0.75);
+	color: var(--coc-body-color);
+}
+.shepherd-button.btn-primary:not(:disabled):hover {
+	background: var(--coc-primary-text-emphasis);
+	color: #fff;
+}
+.shepherd-footer {
+	padding: 0 0.75rem 0.75rem;
+}
+.shepherd-arrow,
+.shepherd-arrow:before {
+	content: "\ea75";
+	font-family: remixicon;
+	font-size: 24px;
+	z-index: 1;
+	background-color: transparent !important;
+	-webkit-transform: rotate(0);
+	transform: rotate(0);
+	color: var(--coc-primary);
+}
+.shepherd-element[data-popper-placement^="bottom"] > .shepherd-arrow {
+	top: -18px;
+}
+.shepherd-button {
+	margin-right: 0.5rem;
+}

@@ -1,0 +1,4 @@
+/* Shared dashboard styles extracted from the legacy bundle. */
+.dash-filter-picker {
+	min-width: 210px !important;
+}

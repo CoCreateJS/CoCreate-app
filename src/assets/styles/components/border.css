@@ -1,0 +1,172 @@
+/* Border utilities and component integrations extracted from the modular CSS tree. */
+.border-double {
+	border-style: double !important;
+}
+.border-top-double {
+	border-top-style: double !important;
+}
+.border-bottom-double {
+	border-bottom-style: double !important;
+}
+.border-end-double {
+	border-right-style: double !important;
+}
+.border-start-double {
+	border-left-style: double !important;
+}
+.border-dashed {
+	border-style: dashed !important;
+}
+.border-top-dashed {
+	border-top-style: dashed !important;
+}
+.border-bottom-dashed {
+	border-bottom-style: dashed !important;
+}
+.border-end-dashed {
+	border-right-style: dashed !important;
+}
+.border-start-dashed {
+	border-left-style: dashed !important;
+}
+.border-groove {
+	border-style: groove !important;
+}
+.border-top-groove {
+	border-top-style: groove !important;
+}
+.border-bottom-groove {
+	border-bottom-style: groove !important;
+}
+.border-end-groove {
+	border-right-style: groove !important;
+}
+.border-start-groove {
+	border-left-style: groove !important;
+}
+.border-outset {
+	border-style: outset !important;
+}
+.border-top-outset {
+	border-top-style: outset !important;
+}
+.border-bottom-outset {
+	border-bottom-style: outset !important;
+}
+.border-end-outset {
+	border-right-style: outset !important;
+}
+.border-start-outset {
+	border-left-style: outset !important;
+}
+.border-ridge {
+	border-style: ridge !important;
+}
+.border-top-ridge {
+	border-top-style: ridge !important;
+}
+.border-bottom-ridge {
+	border-bottom-style: ridge !important;
+}
+.border-end-ridge {
+	border-right-style: ridge !important;
+}
+.border-start-ridge {
+	border-left-style: ridge !important;
+}
+.border-dotted {
+	border-style: dotted !important;
+}
+.border-top-dotted {
+	border-top-style: dotted !important;
+}
+.border-bottom-dotted {
+	border-bottom-style: dotted !important;
+}
+.border-end-dotted {
+	border-right-style: dotted !important;
+}
+.border-start-dotted {
+	border-left-style: dotted !important;
+}
+.border-inset {
+	border-style: inset !important;
+}
+.border-top-inset {
+	border-top-style: inset !important;
+}
+.border-bottom-inset {
+	border-bottom-style: inset !important;
+}
+.border-end-inset {
+	border-right-style: inset !important;
+}
+.border-start-inset {
+	border-left-style: inset !important;
+}
+.list-group-flush.border-double {
+	border: none !important;
+}
+.list-group-flush.border-double .list-group-item {
+	border-style: double !important;
+}
+.list-group-flush.border-dashed {
+	border: none !important;
+}
+.list-group-flush.border-dashed .list-group-item {
+	border-style: dashed !important;
+}
+.list-group-flush.border-groove {
+	border: none !important;
+}
+.list-group-flush.border-groove .list-group-item {
+	border-style: groove !important;
+}
+.list-group-flush.border-outset {
+	border: none !important;
+}
+.list-group-flush.border-outset .list-group-item {
+	border-style: outset !important;
+}
+.list-group-flush.border-ridge {
+	border: none !important;
+}
+.list-group-flush.border-ridge .list-group-item {
+	border-style: ridge !important;
+}
+.list-group-flush.border-dotted {
+	border: none !important;
+}
+.list-group-flush.border-dotted .list-group-item {
+	border-style: dotted !important;
+}
+.list-group-flush.border-inset {
+	border: none !important;
+}
+.list-group-flush.border-inset .list-group-item {
+	border-style: inset !important;
+}
+.border-primary.table > thead {
+	border-color: var(--coc-primary) !important;
+}
+.border-secondary.table > thead {
+	border-color: var(--coc-secondary) !important;
+}
+.border-success.table > thead {
+	border-color: var(--coc-success) !important;
+}
+.border-info.table > thead {
+	border-color: var(--coc-info) !important;
+}
+.border-warning.table > thead {
+	border-color: var(--coc-warning) !important;
+}
+.border-danger.table > thead {
+	border-color: var(--coc-danger) !important;
+}
+.border-light.table > thead {
+	border-color: var(--coc-light) !important;
+}
+.border-dark.table > thead {
+	border-color: var(--coc-dark) !important;
+}

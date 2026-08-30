@@ -1,0 +1,27 @@
+/* Shared presentation for the admin icon catalogs. */
+.icon-demo-content {
+	color: var(--coc-gray-500);
+}
+.icon-demo-content i {
+	font-size: 24px;
+	margin-right: 10px;
+	color: var(--coc-gray-600);
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+	vertical-align: middle;
+}
+.icon-demo-content svg {
+	margin-right: 10px;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+	height: 20px;
+}
+.icon-demo-content .col-lg-4 {
+	margin-top: 24px;
+}
+.icon-demo-content .col-lg-4:hover i,
+.icon-demo-content .col-lg-4:hover svg {
+	color: var(--coc-primary);
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+}

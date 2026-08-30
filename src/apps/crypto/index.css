@@ -1,0 +1,4 @@
+/* Shared crypto view styles extracted from the legacy bundle. */
+.crypto-widget {
+	max-width: 130px !important;
+}

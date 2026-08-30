@@ -1,0 +1,58 @@
+/* Shared widget styles extracted from the legacy bundle. */
+.crm-widget .col {
+	border-right: 1px solid var(--coc-border-color);
+}
+.crm-widget .col:last-child {
+	border: 0;
+}
+@media (min-width: 768px) and (max-width: 1399.98px) {
+	.crm-widget .col:nth-child(3) {
+		border-right: 0;
+	}
+	.crm-widget .col:last-child {
+		border-right: 1px solid var(--coc-border-color);
+	}
+}
+@media (max-width: 767.98px) {
+	.crm-widget .col {
+		border-right: 0;
+		border-bottom: 1px solid var(--coc-border-color);
+	}
+}
+
+.notification-elem {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: var(--coc-secondary-bg);
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	visibility: hidden;
+	opacity: 0;
+}
+.clothes-size li input[type="radio"] {
+	display: none;
+}
+.clothes-size li label {
+	display: inline-block;
+	font-size: 14px;
+	border-radius: 5px;
+	border: 1px solid var(--coc-border-color);
+	text-transform: none;
+	letter-spacing: 0;
+	color: var(--coc-primary);
+}
+.clothes-size li input[type="radio"]:checked + label {
+	background-color: var(--coc-primary);
+	border-color: var(--coc-primary);
+	color: #fff;
+}

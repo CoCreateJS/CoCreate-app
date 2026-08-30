@@ -1,0 +1,116 @@
+/* Shared authentication-page styles extracted from the legacy bundle. */
+.auth-page-wrapper .auth-page-content {
+	padding-bottom: 60px;
+	position: relative;
+	z-index: 2;
+	width: 100%;
+}
+.auth-one-bg-position {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 380px;
+}
+@media (max-width: 575.98px) {
+	.auth-one-bg-position {
+		height: 280px;
+	}
+}
+.auth-one-bg {
+	background-image: url(/assets/images/auth-one-bg.jpg);
+	background-position: center;
+	background-size: cover;
+}
+.auth-one-bg .bg-overlay {
+	background: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		from(var(--coc-primary-text-emphasis)),
+		to(var(--coc-primary))
+	);
+	background: linear-gradient(
+		to right,
+		var(--coc-primary-text-emphasis),
+		var(--coc-primary)
+	);
+	opacity: 0.9;
+}
+.shape {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	pointer-events: none;
+}
+.shape > svg {
+	width: 100%;
+	height: auto;
+	fill: var(--coc-body-bg);
+}
+.auth-pass-inputgroup input[type="text"] + .btn .ri-eye-fill:before {
+	content: "\ecb6";
+}
+.particles-js-canvas-el {
+	position: relative;
+}
+.signin-other-title {
+	position: relative;
+}
+.signin-other-title:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	left: 0;
+	right: 0;
+	border-top: 1px dashed var(--coc-border-color);
+	top: 10px;
+}
+.signin-other-title .title {
+	display: inline-block;
+	position: relative;
+	z-index: 9;
+	background-color: var(--coc-secondary-bg);
+	padding: 2px 16px;
+}
+.auth-bg-cover {
+	background: linear-gradient(
+		-45deg,
+		var(--coc-primary) 50%,
+		var(--coc-success)
+	);
+}
+.auth-bg-cover > .bg-overlay {
+	background-image: url(/assets/images/cover-pattern.png);
+	background-position: center;
+	background-size: cover;
+	opacity: 1;
+	background-color: transparent;
+}
+/* #password-contains {
+	display: none;
+}
+*/
+#password-contains p {
+	padding-left: 13px;
+}
+#password-contains p.valid {
+	color: var(--coc-success);
+}
+#password-contains p.valid::before {
+	position: relative;
+	left: -8px;
+	content: "✔";
+}
+#password-contains p.invalid {
+	color: var(--coc-danger);
+}
+#password-contains p.invalid::before {
+	position: relative;
+	left: -8px;
+	content: "✖";
+}

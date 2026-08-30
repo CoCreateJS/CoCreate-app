@@ -1,0 +1,178 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.ck {
+	font-family: var(--coc-font-sans-serif) !important;
+}
+.ck.ck-reset_all,
+.ck.ck-reset_all * {
+	color: var(--coc-body-color) !important;
+}
+.ck.ck-toolbar {
+	background: rgba(var(--coc-light-rgb), 0.75) !important;
+}
+.ck p {
+	margin-bottom: 0;
+}
+.ck.ck-toolbar {
+	border: 1px solid var(--coc-input-border-custom) !important;
+}
+.ck.ck-toolbar.ck-toolbar_grouping > .ck-toolbar__items {
+	-ms-flex-wrap: wrap !important;
+	flex-wrap: wrap !important;
+}
+.ck.ck-toolbar .ck.ck-toolbar__separator {
+	background: 0 0 !important;
+}
+.ck.ck-editor__main > .ck-editor__editable {
+	border-top: 0 !important;
+	background-color: var(--coc-secondary-bg) !important;
+	border-color: var(--coc-input-border-custom) !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+.ck.ck-dropdown__panel {
+	background: var(--coc-secondary-bg) !important;
+	-webkit-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	-webkit-animation-name: DropDownSlide;
+	animation-name: DropDownSlide;
+	-webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	border-radius: var(--coc-border-radius-lg);
+}
+.ck.ck-list {
+	background: var(--coc-secondary-bg) !important;
+}
+.ck.ck-dropdown .ck-dropdown__panel.ck-dropdown__panel_ne,
+.ck.ck-dropdown .ck-dropdown__panel.ck-dropdown__panel_se {
+	left: 0;
+	right: auto !important;
+}
+.ck.ck-editor__editable_inline[dir="ltr"] {
+	text-align: left !important;
+}
+.ck.ck-dropdown__panel {
+	-webkit-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12) !important;
+	box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12) !important;
+	border-radius: var(--coc-border-radius-lg) !important;
+	border: 1px solid var(--coc-border-color) !important;
+}
+.ck.ck-button:active,
+.ck.ck-button:focus,
+a.ck.ck-button:active,
+a.ck.ck-button:focus {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: 1px solid var(--coc-light) !important;
+}
+.ck.ck-button:not(.ck-disabled):hover,
+a.ck.ck-button:not(.ck-disabled):hover {
+	background: var(--coc-light) !important;
+}
+.ck.ck-button.ck-on,
+a.ck.ck-button.ck-on {
+	background: var(--coc-light) !important;
+}
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar,
+.ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners {
+	border-radius: 0.25rem !important;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+.ck-rounded-corners .ck.ck-editor__main > .ck-editor__editable,
+.ck.ck-editor__main > .ck-editor__editable.ck-rounded-corners {
+	border-radius: 0.25rem !important;
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+.ck-editor__editable {
+	min-height: 245px !important;
+}
+.ck[class*="ck-heading_heading"] {
+	font-weight: var(--coc-font-weight-medium) !important;
+}
+.ck.ck-button.ck-on:not(.ck-disabled):active,
+.ck.ck-button.ck-on:not(.ck-disabled):hover,
+a.ck.ck-button.ck-on:not(.ck-disabled):active,
+a.ck.ck-button.ck-on:not(.ck-disabled):hover {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+.ck.ck-tooltip .ck-tooltip__text {
+	background: var(--coc-dark) !important;
+	color: var(--coc-light) !important;
+}
+.ck.ck-input-text {
+	background: var(--coc-input-bg-custom) !important;
+	border: 1px solid var(--coc-input-border-custom) !important;
+}
+.ck.ck-input-text:focus {
+	border: 1px solid var(--coc-primary-border-subtle) !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+.ck.ck-balloon-panel {
+	background: var(--coc-secondary-bg) !important;
+	border: 1px solid var(--coc-border-color) !important;
+}
+.ck.ck-balloon-panel[class*="arrow_n"]:after {
+	border-bottom-color: var(--coc-secondary-bg) !important;
+}
+.ck.ck-balloon-panel[class*="arrow_n"]::before {
+	border-bottom-color: var(--coc-border-color) !important;
+}
+.ck.ck-labeled-field-view
+	> .ck.ck-labeled-field-view__input-wrapper
+	> .ck.ck-label {
+	background: var(--coc-secondary-bg) !important;
+}
+.ck-editor-reverse .ck-editor {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: reverse;
+	-ms-flex-direction: column-reverse;
+	flex-direction: column-reverse;
+}
+.ck-editor-reverse .ck.ck-editor__main > .ck-editor__editable {
+	border: 1px solid var(--coc-input-border-custom) !important;
+	border-bottom: 0 !important;
+}
+.ck-editor-reverse
+	.ck-rounded-corners
+	.ck.ck-editor__main
+	> .ck-editor__editable,
+.ck-editor-reverse
+	.ck.ck-editor__main
+	> .ck-editor__editable.ck-rounded-corners {
+	border-radius: 0.25rem !important;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+.ck-editor-reverse
+	.ck-rounded-corners
+	.ck.ck-editor__top
+	.ck-sticky-panel
+	.ck-toolbar,
+.ck-editor-reverse
+	.ck.ck-editor__top
+	.ck-sticky-panel
+	.ck-toolbar.ck-rounded-corners {
+	border-radius: 0.25rem !important;
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+[dir="rtl"] .ck.ck-toolbar > .ck-toolbar__items {
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	-ms-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+}
+
+
+/* Contextual ckeditor overrides migrated from the residual legacy bundle. */
+.email-editor .ck-editor__editable_inline {
+	min-height: 200px !important;
+}

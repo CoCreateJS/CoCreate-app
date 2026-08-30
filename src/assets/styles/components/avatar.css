@@ -1,0 +1,88 @@
+/* Faithfully extracted from /assets/css/app.css. */
+.avatar-xxs {
+	height: 1.5rem;
+	width: 1.5rem;
+	min-height: 1.5rem;
+		min-width: 1.5rem;
+}
+.avatar-xs {
+	height: 2rem;
+	width: 2rem;
+	min-height: 2rem;
+		min-width: 2rem;
+}
+.avatar-sm {
+	height: 3rem;
+	width: 3rem;
+	min-height: 3rem;
+		min-width: 3rem;
+}
+.avatar-md {
+	height: 4.5rem;
+	width: 4.5rem;
+	min-height: 4.5rem;
+		min-width: 4.5rem;
+}
+.avatar-lg {
+	height: 6rem;
+	width: 6rem;
+	min-height: 6rem;
+		min-width: 6rem;
+}
+.avatar-xl {
+	height: 7.5rem;
+	width: 7.5rem;
+	min-height: 7.5rem;
+		min-width: 7.5rem;
+}
+.avatar-title {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	background-color: var(--coc-primary);
+	color: #fff;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	font-weight: var(--coc-font-weight-medium);
+	height: 100%;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	width: 100%;
+}
+.avatar-group {
+	padding-left: 12px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.avatar-group .avatar-group-item {
+	margin-left: -12px;
+	border: 2px solid var(--coc-secondary-bg);
+	border-radius: 50%;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.avatar-group .avatar-group-item:hover {
+	position: relative;
+	-webkit-transform: translateY(-2px);
+	transform: translateY(-2px);
+	z-index: 1;
+}
+.icon-effect {
+    position: relative;
+}
+
+.icon-effect::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(var(--coc-success-rgb), 0.2);
+    border-radius: 50%;
+    bottom: 0;
+    left: 0;
+}

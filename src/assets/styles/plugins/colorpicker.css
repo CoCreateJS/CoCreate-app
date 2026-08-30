@@ -1,0 +1,57 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.pcr-app {
+	background: var(--coc-secondary-bg);
+	-webkit-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	border-radius: 4px;
+	border: 1px solid var(--coc-border-color);
+}
+.pickr .pcr-button {
+	border: 4px solid var(--coc-secondary-bg);
+	-webkit-box-shadow: 0 0 0 2px var(--coc-border-color);
+	box-shadow: 0 0 0 2px var(--coc-border-color);
+	border-radius: 50%;
+	-webkit-box-shadow: var(--coc-element-shadow);
+	box-shadow: var(--coc-element-shadow);
+}
+.pickr .pcr-button::after,
+.pickr .pcr-button::before {
+	border-radius: 50%;
+}
+.pcr-app[data-theme="classic"] .pcr-selection .pcr-color-preview {
+	margin-right: 0.75em;
+	margin-left: 0;
+}
+.pcr-app[data-theme="classic"] .pcr-selection .pcr-color-chooser,
+.pcr-app[data-theme="classic"] .pcr-selection .pcr-color-opacity {
+	margin-left: 0.75em;
+	margin-right: 0;
+}
+.pcr-app[data-theme="monolith"] .pcr-result {
+	min-width: 100%;
+}
+.pcr-app .pcr-interaction .pcr-type.active {
+	background: var(--coc-primary);
+}
+.pcr-app .pcr-interaction .pcr-result {
+	background-color: var(--coc-input-bg-custom);
+	color: var(--coc-body-color);
+	border: 1px solid var(--coc-input-border-custom);
+	border-radius: var(--coc-border-radius);
+}
+.pcr-app .pcr-interaction input {
+	border-radius: var(--coc-border-radius) !important;
+}
+.pcr-app .pcr-interaction input:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background-color: var(--coc-input-bg-custom);
+	border-color: var(--coc-primary-border-subtle);
+}
+.pcr-app .pcr-interaction .pcr-save {
+	background: var(--coc-success) !important;
+}
+.pcr-app .pcr-interaction .pcr-cancel,
+.pcr-app .pcr-interaction .pcr-clear {
+	background: var(--coc-danger) !important;
+}

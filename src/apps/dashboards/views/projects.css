@@ -1,0 +1,48 @@
+/* Projects dashboard view styles extracted from the legacy bundle. */
+.mini-stats-wid {
+	position: relative;
+}
+.mini-stats-wid .mini-stat-icon {
+	overflow: hidden;
+	position: relative;
+}
+.mini-stats-wid .mini-stat-icon:after,
+.mini-stats-wid .mini-stat-icon:before {
+	content: "";
+	position: absolute;
+	width: 8px;
+	height: 69px;
+	background-color: rgba(var(--coc-success-rgb), 0.1);
+	left: 3px;
+	-webkit-transform: rotate(32deg);
+	transform: rotate(32deg);
+	top: -8px;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+.mini-stats-wid .mini-stat-icon::after {
+	left: 27px;
+	width: 8px;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.mini-stats-wid:hover .mini-stat-icon::after {
+	left: 60px;
+}
+.mini-stats-wid:hover .mini-stat-icon::before {
+	left: 50px;
+}
+.upcoming-scheduled {
+	position: relative;
+}
+@media (max-width: 575.98px) {
+	.upcoming-scheduled {
+		top: 35px !important;
+	}
+}
+@media (min-width: 1400px) and (max-width: 1599.98px) {
+	.project-wrapper .col-xxl-4,
+.project-wrapper > .col-xxl-8 {
+		width: 100%;
+	}
+}

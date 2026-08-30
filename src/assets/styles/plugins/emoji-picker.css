@@ -1,0 +1,66 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.fg-emoji-picker {
+	width: 250px !important;
+	-webkit-box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15) !important;
+	box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15) !important;
+	top: auto !important;
+	bottom: 130px;
+}
+.fg-emoji-picker * {
+	font-family: var(--coc-font-sans-serif) !important;
+	color: var(--coc-body-color) !important;
+}
+@media (max-width: 991.98px) {
+	.fg-emoji-picker {
+		left: 14px !important;
+		top: auto !important;
+		bottom: 118px;
+	}
+}
+.fg-emoji-picker .fg-emoji-picker-container-title {
+	color: #212529 !important;
+}
+.fg-emoji-picker .fg-emoji-picker-search {
+	height: 40px !important;
+}
+.fg-emoji-picker .fg-emoji-picker-search input {
+	background-color: var(--coc-input-bg-custom) !important;
+	color: var(--coc-body-color) !important;
+	padding: 0.5rem 0.9rem !important;
+	font-size: var(--coc-font-base) !important;
+}
+.fg-emoji-picker .fg-emoji-picker-search input::-webkit-input-placeholder {
+	color: var(--coc-secondary-color) !important;
+}
+.fg-emoji-picker .fg-emoji-picker-search input::-moz-placeholder {
+	color: var(--coc-secondary-color) !important;
+}
+.fg-emoji-picker .fg-emoji-picker-search input:-ms-input-placeholder {
+	color: var(--coc-secondary-color) !important;
+}
+.fg-emoji-picker .fg-emoji-picker-search input::-ms-input-placeholder {
+	color: var(--coc-secondary-color) !important;
+}
+.fg-emoji-picker .fg-emoji-picker-search input::placeholder {
+	color: var(--coc-secondary-color) !important;
+}
+.fg-emoji-picker .fg-emoji-picker-search svg {
+	fill: var(--coc-body-color) !important;
+	right: 11px;
+	top: 12px;
+}
+.fg-emoji-picker .fg-emoji-picker-categories {
+	background-color: #f3f6f9 !important;
+}
+.fg-emoji-picker .fg-emoji-picker-categories li.active {
+	background-color: rgba(var(--coc-primary-rgb), 0.2);
+}
+.fg-emoji-picker .fg-emoji-picker-categories a:hover {
+	background-color: rgba(var(--coc-primary-rgb), 0.2);
+}
+.fg-emoji-picker-grid > li:hover {
+	background-color: rgba(var(--coc-primary-rgb), 0.2) !important;
+}
+a.fg-emoji-picker-close-button {
+	background-color: #e5ecf2 !important;
+}

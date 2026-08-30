@@ -1,0 +1,23 @@
+/* CoCreate overrides and integrations for plugin styles. */
+.jvm-tooltip {
+	background-color: var(--coc-primary);
+	font-family: var(--coc-font-sans-serif);
+	-webkit-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	padding: 5px 9px;
+}
+.jvm-container text {
+	font-family: var(--coc-font-sans-serif);
+	font-size: var(--coc-font-base);
+	fill: var(--coc-body-color);
+}
+.jvm-zoom-btn {
+	background-color: var(--coc-primary);
+}
+
+.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	vertical-align: middle;
+}

@@ -1,0 +1,24 @@
+/* Activities app styles extracted from the legacy bundle. */
+.profile-timeline .accordion-item {
+	position: relative;
+}
+.profile-timeline .accordion-item .accordion-button {
+	background-color: transparent;
+}
+.profile-timeline .accordion-item .accordion-button::after {
+	background: 0 0;
+}
+.profile-timeline .accordion-item::before {
+	content: "";
+	border-left: 2px dashed var(--coc-border-color);
+	position: absolute;
+	height: 100%;
+	left: 23px;
+}
+.profile-timeline .accordion-item:first-child::before {
+	top: 8px;
+}
+.profile-timeline .accordion-item:last-child::before {
+	height: 20px;
+	top: 3px;
+}
