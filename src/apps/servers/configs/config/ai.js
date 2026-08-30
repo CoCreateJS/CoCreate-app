@@ -45,7 +45,7 @@ export const aiSystemConfigSeed = {
                 "publicPath": "/public",
                 "tools": {
                     "server_crud": {
-                        "description": "Executes CoCreate server.crud.send using the unified CRUD payload contract. Use method=\"object.create\" with object as an array to create documents. Use method=\"object.read\" with $filter.query, limit, sort, or projection to read documents. Use method=\"object.update\" with object as an array to update documents. Use method=\"object.delete\" with object identifiers or $filter.query to delete documents. The authenticated organization_id is injected by the server and cannot be selected by the model.",
+                        "description": "The standard and only database interface for CoCreate application and system data. Use this tool immediately when a user asks about records in our database or system, records we have, registered records, lists, or counts. Never generate SQL or ask for a database type, table, ORM, or driver. Infer array from the named resource, such as organizations -> array=\"organizations\", and use the unified CRUD payload. The method prefix defines the response payload key: object.read, object.create, object.update, and object.delete return response.object; if that method-derived key is unavailable, use response.data. Use method=\"object.create\" with object as an array. Use method=\"object.read\" with $filter.query, $filter.limit, $filter.sort, and $filter.key. $filter.key is the native field-selection object, for example {\"name\":1,\"_id\":0}; do not use $filter.projection. Request only the fields needed instead of asking for confirmation because unrelated fields may be sensitive. Use method=\"object.update\" with object as an array. Use method=\"object.delete\" with object identifiers or a query. Do not supply socket or request-context fields; the authenticated organization_id is injected by the server.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -66,7 +66,7 @@ export const aiSystemConfigSeed = {
                                 },
                                 "$filter": {
                                     "type": "object",
-                                    "description": "Query, paging, sorting, and projection controls used primarily by read and filtered operations."
+                                    "description": "Native query controls. Use query for matching, key for field selection, limit for page size, index for offset, and sort as [{key, direction}]."
                                 },
                                 "storage": {
                                     "description": "Optional storage adapter name or array of adapter names."
@@ -81,6 +81,27 @@ export const aiSystemConfigSeed = {
                                 "array"
                             ],
                             "additionalProperties": true
+                        }
+                    },
+                    "search_conversation_history": {
+                        "description": "Retrieves older messages from the current conversation when the automatically supplied recent context is insufficient. The server fixes organization_id and conversation_id internally; never ask the user for either value. Use query for a case-insensitive content search, or skip and limit to page backward through history. Results contain only role and content. Use this tool only when earlier context is genuinely needed.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "query": {
+                                    "type": "string",
+                                    "description": "Optional word or phrase to find in older message content."
+                                },
+                                "skip": {
+                                    "type": "number",
+                                    "description": "Number of newest matching messages to skip for pagination."
+                                },
+                                "limit": {
+                                    "type": "number",
+                                    "description": "Messages to return, from 1 through 20."
+                                }
+                            },
+                            "additionalProperties": false
                         }
                     },
                     "execute_server_api": {
@@ -472,7 +493,7 @@ export const aiSystemConfigSeed = {
                         }
                     }
                 },
-                "systemInstructions": "TENANT SECURITY MANDATE: All database, file, and server operations are strictly locked to the requesting organization_id. Never switch organizations based on a prompt.\n\nUse the configured tools for CRUD, files, APIs, sockets, server routing, storage, routes, cluster topology, and autoscaling. Platform tools are restricted to requests whose organization_id matches server.organization_id.\n\nDo not read credentials from keys or apis; execute integrations through execute_server_api. Use virtual file storage by default. Conversation headers belong in ai-conversations and turns belong in ai-messages."
+                "systemInstructions": "TENANT SECURITY MANDATE: All database, file, and server operations are strictly locked to the requesting organization_id. Never switch organizations based on a prompt.\n\nAll CoCreate application and system data lives in the database and is accessed through server_crud using the unified data object. If a user asks what is in our database or system, what records we have, what is registered, how many records exist, or requests a list, execute the appropriate object.read request. Never respond with SQL or ask for the database type, table, ORM, or driver. Infer the array from the resource named by the user. When fields are clear, select only those fields with $filter.key and answer without asking for confirmation because unrelated fields may be sensitive.\n\nRecent conversation turns are supplied automatically. If a follow-up depends on older context that is not present, use search_conversation_history to retrieve only the relevant older messages or a bounded page. Do not ask the user to repeat information before checking conversation history.\n\nUse each tool's method to determine its response payload key: for example, object.read returns response.object; fall back to response.data only when the method-derived key is absent. Do not add or reason about request context in tool payloads. Context is injected internally; only the socket tool uses delivery context to target a client.\n\nUse the configured tools for CRUD, files, APIs, sockets, server routing, storage, routes, cluster topology, and autoscaling. Platform tools are restricted to requests whose organization_id matches server.organization_id.\n\nDo not read credentials from keys or apis; execute integrations through execute_server_api. Use virtual file storage by default. Conversation headers belong in ai-conversations and turns belong in ai-messages."
             }
         },
         {
@@ -510,6 +531,7 @@ export const aiSystemConfigSeed = {
                 "providers.openai": {
                     "api": "openai",
                     "type": "openai",
+                    "wireApi": "responses",
                     "models": {
                         "default": "gpt-5-mini",
                         "allowed": [

@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
+		<title>CoCreate AI Chat</title>
+		<style>
+			:root {
+				color-scheme: light;
+				--background: #f5f6f2;
+				--surface: #ffffff;
+				--sidebar: #171916;
+				--sidebar-soft: #252822;
+				--text: #20231e;
+				--muted: #72786e;
+				--line: #e2e5dc;
+				--accent: #b6f16a;
+				--accent-strong: #76ad31;
+				--danger: #a23a3a;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+			}
+			body {
+				font-family:
+					Inter,
+					ui-sans-serif,
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					"Segoe UI",
+					sans-serif;
+				color: var(--text);
+				background: var(--background);
+			}
+
+			.ai-shell {
+				display: flex;
+				width: 100%;
+				height: 100dvh;
+				overflow: hidden;
+			}
+			.ai-sidebar {
+				display: flex;
+				flex: 0 0 278px;
+				flex-direction: column;
+				gap: 8px;
+				padding: 20px 14px;
+				color: #f4f6f0;
+				background: var(--sidebar);
+			}
+			.ai-brand {
+				display: flex;
+				align-items: center;
+				gap: 11px;
+				padding: 2px 8px 22px;
+			}
+			.ai-logo {
+				display: grid;
+				place-items: center;
+				width: 36px;
+				height: 36px;
+				border-radius: 12px;
+				color: #18200f;
+				background: var(--accent);
+				font-weight: 850;
+			}
+			.ai-brand strong,
+			.ai-brand small {
+				display: block;
+			}
+			.ai-brand strong {
+				font-size: 14px;
+			}
+			.ai-brand small {
+				margin-top: 2px;
+				color: #a8aea1;
+				font-size: 11px;
+			}
+			.ai-new-chat {
+				width: 100%;
+				padding: 11px 13px;
+				border: 1px solid #3c4037;
+				border-radius: 11px;
+				color: inherit;
+				background: transparent;
+				text-align: left;
+				cursor: pointer;
+			}
+			.ai-new-chat:hover {
+				border-color: var(--accent);
+				background: var(--sidebar-soft);
+			}
+			.ai-sidebar-label {
+				padding: 16px 10px 5px;
+				color: #858c80;
+				font-size: 10px;
+				font-weight: 750;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+			}
+			.ai-thread-list {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+				overflow-y: auto;
+			}
+			.ai-thread {
+				padding: 10px 11px;
+				border: 0;
+				border-radius: 9px;
+				color: #e9ece5;
+				background: transparent;
+				font-size: 13px;
+				text-align: left;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				cursor: pointer;
+			}
+			.ai-thread:hover,
+			.ai-thread.active {
+				background: var(--sidebar-soft);
+			}
+
+			.ai-main {
+				display: flex;
+				flex: 1 1 auto;
+				min-width: 0;
+				flex-direction: column;
+				position: relative;
+			}
+			.ai-header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 16px;
+				min-height: 70px;
+				padding: 0 26px;
+				border-bottom: 1px solid var(--line);
+				background: rgba(245, 246, 242, 0.88);
+				backdrop-filter: blur(14px);
+			}
+			.ai-heading strong,
+			.ai-heading small {
+				display: block;
+			}
+			.ai-heading strong {
+				font-size: 15px;
+			}
+			.ai-heading small {
+				margin-top: 3px;
+				color: var(--muted);
+				font-size: 11px;
+			}
+			.ai-settings {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+			.ai-settings select {
+				height: 36px;
+				padding: 0 30px 0 11px;
+				border: 1px solid var(--line);
+				border-radius: 10px;
+				color: var(--text);
+				background: var(--surface);
+			}
+			.ai-status {
+				display: inline-flex;
+				align-items: center;
+				gap: 7px;
+				color: var(--muted);
+				font-size: 11px;
+			}
+			.ai-status::before {
+				content: "";
+				width: 7px;
+				height: 7px;
+				border-radius: 50%;
+				background: #a9afa4;
+			}
+			.ai-status.connected::before {
+				background: var(--accent-strong);
+				box-shadow: 0 0 0 4px rgba(118, 173, 49, 0.12);
+			}
+			.ai-status.error::before {
+				background: var(--danger);
+			}
+
+			.ai-messages {
+				display: flex;
+				flex: 1 1 auto;
+				flex-direction: column;
+				gap: 23px;
+				width: min(100%, 920px);
+				margin: 0 auto;
+				padding: 38px 30px 145px;
+				overflow-y: auto;
+			}
+			.ai-empty {
+				margin: auto;
+				max-width: 540px;
+				padding-bottom: 80px;
+				text-align: center;
+			}
+			.ai-empty-mark {
+				display: grid;
+				place-items: center;
+				width: 52px;
+				height: 52px;
+				margin: 0 auto 16px;
+				border-radius: 17px;
+				background: var(--accent);
+				font-weight: 850;
+			}
+			.ai-empty h1 {
+				margin: 0;
+				font-size: clamp(24px, 4vw, 38px);
+				letter-spacing: -0.04em;
+			}
+			.ai-empty p {
+				margin: 10px 0 0;
+				color: var(--muted);
+				line-height: 1.6;
+			}
+			.ai-message {
+				display: flex;
+				gap: 12px;
+				max-width: 82%;
+				line-height: 1.65;
+				white-space: pre-wrap;
+				overflow-wrap: anywhere;
+			}
+			.ai-message.user {
+				align-self: flex-end;
+				padding: 12px 15px;
+				border-radius: 17px 17px 5px 17px;
+				background: #e5e8dc;
+			}
+			.ai-message.assistant {
+				align-self: flex-start;
+			}
+			.ai-message.assistant::before {
+				content: "C";
+				display: grid;
+				flex: 0 0 34px;
+				place-items: center;
+				width: 34px;
+				height: 34px;
+				border-radius: 11px;
+				background: var(--accent);
+				font-size: 12px;
+				font-weight: 850;
+			}
+			.ai-message.error {
+				color: var(--danger);
+			}
+			.ai-message.pending .ai-message-content::after {
+				content: "";
+				display: inline-block;
+				width: 7px;
+				height: 15px;
+				margin-left: 3px;
+				background: currentColor;
+				vertical-align: -2px;
+				animation: blink 1s steps(1) infinite;
+			}
+			@keyframes blink {
+				50% {
+					opacity: 0;
+				}
+			}
+
+			.ai-composer {
+				display: flex;
+				position: absolute;
+				left: 50%;
+				bottom: 22px;
+				width: min(calc(100% - 48px), 850px);
+				transform: translateX(-50%);
+				padding: 8px;
+				border: 1px solid var(--line);
+				border-radius: 20px;
+				background: rgba(255, 255, 255, 0.95);
+				box-shadow: 0 18px 50px rgba(38, 44, 31, 0.13);
+			}
+			.ai-prompt {
+				flex: 1 1 auto;
+				min-height: 48px;
+				max-height: 170px;
+				padding: 13px 14px;
+				border: 0;
+				outline: 0;
+				resize: none;
+				color: var(--text);
+				background: transparent;
+				font: inherit;
+			}
+			.ai-send {
+				align-self: flex-end;
+				width: 46px;
+				height: 46px;
+				border: 0;
+				border-radius: 14px;
+				color: #16200d;
+				background: var(--accent);
+				font-size: 20px;
+				cursor: pointer;
+			}
+			.ai-send:disabled {
+				cursor: wait;
+				opacity: 0.55;
+			}
+
+			@media (max-width: 760px) {
+				.ai-sidebar {
+					flex-basis: 72px;
+					padding-inline: 10px;
+				}
+				.ai-brand {
+					justify-content: center;
+					padding-inline: 0;
+				}
+				.ai-brand div:last-child,
+				.ai-sidebar-label,
+				.ai-thread-list {
+					display: none;
+				}
+				.ai-new-chat {
+					width: 48px;
+					height: 48px;
+					margin: 0 auto;
+					padding: 0;
+					font-size: 0;
+					text-align: center;
+				}
+				.ai-new-chat::after {
+					content: "+";
+					font-size: 23px;
+				}
+				.ai-header {
+					padding: 0 14px;
+				}
+				.ai-heading small,
+				.ai-status {
+					display: none;
+				}
+				.ai-settings select {
+					max-width: 120px;
+				}
+				.ai-messages {
+					padding-inline: 17px;
+				}
+				.ai-message {
+					max-width: 92%;
+				}
+				.ai-composer {
+					bottom: 12px;
+					width: calc(100% - 22px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="ai-shell">
+			<aside class="ai-sidebar">
+				<div class="ai-brand">
+					<div class="ai-logo">C</div>
+					<div>
+						<strong>CoCreate AI</strong
+						><small>Server playground</small>
+					</div>
+				</div>
+				<button
+					class="ai-new-chat"
+					type="button">
+					+&nbsp;&nbsp; New conversation
+				</button>
+				<div class="ai-sidebar-label">This session</div>
+				<div class="ai-thread-list"></div>
+			</aside>
+
+			<main class="ai-main">
+				<header class="ai-header">
+					<div class="ai-heading">
+						<strong>AI playground</strong
+						><small>Direct WebSocket test client</small>
+					</div>
+					<div class="ai-settings">
+						<span class="ai-status">Connecting</span>
+						<select
+							class="ai-provider"
+							aria-label="Provider">
+							<option value="copilot">Copilot</option>
+							<option value="openai">OpenAI</option>
+							<option value="gemini">Gemini</option>
+						</select>
+						<select
+							class="ai-model"
+							aria-label="Model"></select>
+					</div>
+				</header>
+
+				<section
+					class="ai-messages"
+					aria-live="polite">
+					<div class="ai-empty">
+						<div class="ai-empty-mark">AI</div>
+						<h1>What should we test?</h1>
+						<p>
+							Send a prompt through
+							<code>CoCreate.socket</code> and watch the server
+							response stream into this page.
+						</p>
+					</div>
+				</section>
+
+				<form class="ai-composer">
+					<textarea
+						class="ai-prompt"
+						rows="1"
+						placeholder="Message CoCreate AI…"
+						aria-label="Prompt"
+						required></textarea>
+					<button
+						class="ai-send"
+						type="submit"
+						aria-label="Send message">
+						&#8593;
+					</button>
+				</form>
+			</main>
+		</div>
+		<script src="./dist/CoCreate.js"></script>
+
+		<script>
+			(() => {
+				const models = {
+					copilot: ["gpt-5-mini"],
+					openai: ["gpt-5-mini", "gpt-4.1", "gpt-5"],
+					gemini: ["gemini-1.5-flash", "gemini-1.5-pro"]
+				};
+				const messages = document.querySelector(".ai-messages");
+				const form = document.querySelector(".ai-composer");
+				const prompt = document.querySelector(".ai-prompt");
+				const send = document.querySelector(".ai-send");
+				const provider = document.querySelector(".ai-provider");
+				const model = document.querySelector(".ai-model");
+				const status = document.querySelector(".ai-status");
+				const threadList = document.querySelector(".ai-thread-list");
+				const streams = new Map();
+				const threads = new Map();
+				let socket;
+				let conversationId;
+
+				const makeId = () =>
+					crypto.randomUUID?.() ||
+					`ai-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+				const scrollDown = () => {
+					messages.scrollTop = messages.scrollHeight;
+				};
+				const setStatus = (label, state = "") => {
+					status.textContent = label;
+					status.className = `ai-status ${state}`;
+				};
+				const setBusy = (busy) => {
+					send.disabled = busy;
+					prompt.disabled = busy;
+				};
+
+				const updateModels = () => {
+					model.replaceChildren(
+						...models[provider.value].map((name) => {
+							const option = document.createElement("option");
+							option.value = option.textContent = name;
+							return option;
+						})
+					);
+				};
+
+				const addMessage = (role, content = "") => {
+					document.querySelector(".ai-empty")?.remove();
+					const element = document.createElement("article");
+					element.className = `ai-message ${role}`;
+					const body = document.createElement("div");
+					body.className = "ai-message-content";
+					body.textContent = content;
+					element.append(body);
+					messages.append(element);
+					scrollDown();
+					return { element, body };
+				};
+
+				const rememberThread = (id, title) => {
+					if (!id || threads.has(id)) return;
+					const button = document.createElement("button");
+					button.type = "button";
+					button.className = "ai-thread active";
+					button.textContent = title;
+					button.addEventListener("click", () => {
+						conversationId = id;
+						for (const item of threadList.children)
+							item.classList.toggle("active", item === button);
+						prompt.focus();
+					});
+					for (const item of threadList.children)
+						item.classList.remove("active");
+					threadList.prepend(button);
+					threads.set(id, button);
+				};
+
+				const onChat = (data = {}) => {
+					const stream = streams.get(data.stream_id);
+					if (!stream || !data.ai) return;
+					if (data.ai.status === "streaming") {
+						stream.content += data.ai.delta || "";
+						stream.body.textContent = stream.content;
+						scrollDown();
+						return;
+					}
+					stream.element.classList.remove("pending");
+					if (data.ai.status === "complete") {
+						stream.body.textContent =
+							data.ai.content || stream.content;
+						conversationId =
+							data.ai.conversation_id || conversationId;
+						rememberThread(
+							conversationId,
+							stream.prompt.slice(0, 42)
+						);
+						setStatus("Connected", "connected");
+					} else if (data.ai.status === "error") {
+						stream.element.classList.add("error");
+						stream.body.textContent =
+							data.ai.message || "AI request failed.";
+						setStatus("Request failed", "error");
+					}
+					streams.delete(data.stream_id);
+					setBusy(false);
+					prompt.focus();
+				};
+
+				const connect = () => {
+					socket = window.CoCreate?.socket;
+					if (!socket?.send || !socket?.listen) return false;
+					socket.listen("ai.chat", onChat);
+					setStatus("Connected", "connected");
+					return true;
+				};
+
+				provider.addEventListener("change", updateModels);
+				updateModels();
+
+				form.addEventListener("submit", async (event) => {
+					event.preventDefault();
+					const text = prompt.value.trim();
+					if (!text || send.disabled || !socket) return;
+					const streamId = makeId();
+					addMessage("user", text);
+					const assistant = addMessage("assistant", "");
+					assistant.element.classList.add("pending");
+					streams.set(streamId, {
+						...assistant,
+						content: "",
+						prompt: text
+					});
+					prompt.value = "";
+					setBusy(true);
+					setStatus("Generating…", "connected");
+					try {
+						await socket.send({
+							method: "ai.chat",
+							uuid: streamId,
+							ai: {
+								prompt: text,
+								conversation_id: conversationId,
+								provider: provider.value,
+								model: model.value
+							}
+						});
+					} catch (error) {
+						onChat({
+							stream_id: streamId,
+							ai: { status: "error", message: error.message }
+						});
+					}
+				});
+
+				prompt.addEventListener("keydown", (event) => {
+					if (event.key === "Enter" && !event.shiftKey) {
+						event.preventDefault();
+						form.requestSubmit();
+					}
+				});
+
+				document
+					.querySelector(".ai-new-chat")
+					.addEventListener("click", () => {
+						conversationId = undefined;
+						messages.replaceChildren();
+						for (const item of threadList.children)
+							item.classList.remove("active");
+						addMessage(
+							"assistant",
+							"New conversation ready. What would you like to test?"
+						);
+						prompt.focus();
+					});
+
+				if (!connect()) {
+					let attempts = 0;
+					const timer = setInterval(() => {
+						if (connect() || ++attempts >= 40) {
+							clearInterval(timer);
+							if (!socket) {
+								setStatus("Socket unavailable", "error");
+								send.disabled = true;
+							}
+						}
+					}, 250);
+				}
+			})();
+		</script>
+	</body>
+</html>

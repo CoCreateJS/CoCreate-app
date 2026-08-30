@@ -1,8 +1,9 @@
 <div class="chat-content d-flex">
 	<div class="w-100 overflow-hidden position-relative">
-		<div class="position-relative" id="users-chat">
-			<div
-				src="/apps/chat/components/topbar/index.html"></div>
+		<div
+			class="position-relative"
+			id="users-chat">
+			<div src="/apps/chat/components/topbar/index.html"></div>
 
 			<div
 				class="chat-conversation p-3 p-lg-4"
@@ -15,7 +16,7 @@
 					id="chat-conversation"
 					state-id="selected-chat"
 					state-overwrite
-					array="messages"
+					array=""
 					object
 					filter-query-key="chat_id"
 					filter-query-value
@@ -23,7 +24,9 @@
 					filter-sort-direction="desc"
 					render-query="[template='chat-message-template']"
 					render-reverse>
-					<div filter-on="scroll" filter-query="$parent"></div>
+					<div
+						filter-on="scroll"
+						filter-query="$parent"></div>
 					<li
 						template="chat-message-template"
 						class="chat-list {{ '$user_id' === '{{object.created.by}}' ? 'right' : '' }}"
@@ -48,7 +51,7 @@
 											src="/assets/images/transparent.png"
 											alt=""
 											class="position-absolute object-fit-cover"
-											array="contacts"
+											array=""
 											object="{{object.created.by}}"
 											key="avatar[0].src"
 											width="100%"
@@ -66,7 +69,7 @@
 									<div class="ctext-wrap-content">
 										<span
 											class="fs-6 text-secondary message-name"
-											array="contacts"
+											array=""
 											object="{{object.created.by}}"
 											key="name">
 										</span>
@@ -74,13 +77,13 @@
 											{{object.content}}
 										</p>
 										<div class="message-info">
-											<input
+											<!-- <input
 												type="time"
 												value-type="getTime"
 												onload.value="$value"
 												onload-query="$next"
 												value="{{object.created.on}}"
-												hidden />
+												hidden /> -->
 											<small
 												class="text-muted message-time"></small>
 
@@ -115,7 +118,9 @@
 													class="ri-reply-line me-2 text-muted align-bottom"></i>
 												Reply
 											</a>
-											<a class="dropdown-item" href="#">
+											<a
+												class="dropdown-item"
+												href="#">
 												<i
 													class="ri-share-line me-2 text-muted align-bottom"></i>
 												Forward
@@ -127,7 +132,9 @@
 													class="ri-file-copy-line me-2 text-muted align-bottom"></i>
 												Copy
 											</a>
-											<a class="dropdown-item" href="#">
+											<a
+												class="dropdown-item"
+												href="#">
 												<i
 													class="ri-bookmark-line me-2 text-muted align-bottom"></i>
 												Bookmark
@@ -140,7 +147,7 @@
 												role="menuitem"
 												state-to="delete-record"
 												state-overwrite
-												state.array="messages"
+												state.array=""
 												state.object="{{object._id}}">
 												<i
 													class="ri-delete-bin-5-line me-2 text-muted align-bottom"></i>
@@ -163,7 +170,10 @@
 		</div>
 
 		<div class="chat-input-section p-3 border-top">
-			<form id="chatinput-form" array="messages" object>
+			<form
+				id="chatinput-form"
+				array=""
+				object>
 				<input
 					type="hidden"
 					key="_id"
@@ -174,7 +184,7 @@
 					form-attributes="false"
 					state-id="selected-chat_id"
 					state-overwrite
-					array="chats"
+					array=""
 					object
 					key="last_message_id"
 					reset="value" />
@@ -183,13 +193,16 @@
 					form-attributes="false"
 					state-id="selected-chat_id"
 					state-overwrite
-					array="chats"
+					array=""
 					object
 					key="_id"
 					reset="false"
 					input-query="$next"
 					input.value="$value" />
-				<input type="hidden" key="chat_id" reset="object" />
+				<input
+					type="hidden"
+					key="chat_id"
+					reset="object" />
 				<div class="row g-0 align-items-center">
 					<div class="col-auto">
 						<div class="chat-input-links me-2">
@@ -208,7 +221,7 @@
 						<div class="chat-input-feedback">
 							Please Enter a Message
 						</div>
-						<input
+						<!-- <input
 							type="text"
 							class="form-control chat-input bg-light border-light"
 							id="chat-input"
@@ -223,7 +236,7 @@
 									document
 										.getElementById('chat-message-send')
 										.click();
-							" />
+							" /> -->
 					</div>
 					<div class="col-auto">
 						<div class="chat-input-links ms-2">
