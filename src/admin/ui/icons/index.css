@@ -16,11 +16,11 @@
 	transition: all 0.4s;
 	height: 20px;
 }
-.icon-demo-content .col-lg-4 {
+.icon-demo-content > div {
 	margin-top: 24px;
 }
-.icon-demo-content .col-lg-4:hover i,
-.icon-demo-content .col-lg-4:hover svg {
+.icon-demo-content > div:hover i,
+.icon-demo-content > div:hover svg {
 	color: var(--coc-primary);
 	-webkit-transform: scale(1.5);
 	transform: scale(1.5);

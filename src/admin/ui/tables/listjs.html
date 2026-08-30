@@ -5,8 +5,8 @@
 
 <div class="container-fluid" plugin='{"$Prism.highlightAllUnder":["$this"]}'>
 
-	<div class="row">
-		<div class="col-lg-12">
+	<div class="d-flex flex-wrap gap-4">
+		<div class="w-100">
 			<div class="card" show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Add, Edit & Remove</h4>
@@ -15,8 +15,8 @@
 
 				<div class="card-body">
 					<div class="listjs-table" id="customerList">
-						<div class="row g-4 mb-3">
-							<div class="col-sm-auto">
+						<div class="d-flex flex-wrap gap-4 mb-3">
+							<div class="w-auto flex-shrink-0">
 								<div>
 									<button
 										type="button"
@@ -35,7 +35,7 @@
 									</button>
 								</div>
 							</div>
-							<div class="col-sm">
+							<div class="w-400 flex-grow-1">
 								<div class="d-flex justify-content-sm-end">
 									<div class="search-box ms-2">
 										<input
@@ -181,14 +181,14 @@
 				</div>
 				<!-- end card -->
 			</div>
-			<!-- end col -->
+			<!-- end flex item -->
 		</div>
-		<!-- end col -->
+		<!-- end flex item -->
 	</div>
-	<!-- end row -->
+	<!-- end flex layout -->
 
-	<div class="row">
-		<div class="col-xl-4">
+	<div class="d-flex flex-wrap gap-4">
+		<div class="w-300 flex-grow-1">
 			<div class="card" show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Data Attributes + Custom</h4>
@@ -200,15 +200,15 @@
 						Use data attributes and other custom attributes as keys
 					</p>
 					<div id="users">
-						<div class="row mb-2">
-							<div class="col">
+						<div class="d-flex flex-wrap gap-4 mb-2">
+							<div class="w-400 flex-grow-1">
 								<div>
 									<input
 										class="search form-control"
 										placeholder="Search" />
 								</div>
 							</div>
-							<div class="col-auto">
+							<div class="w-auto flex-shrink-0">
 								<button
 									class="btn btn-light sort"
 									data-sort="name">
@@ -336,9 +336,9 @@
 			</div>
 			<!-- end card -->
 		</div>
-		<!-- end col -->
+		<!-- end flex item -->
 
-		<div class="col-xl-4">
+		<div class="w-300 flex-grow-1">
 			<div class="card" show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Existing List</h4>
@@ -348,15 +348,15 @@
 				<div class="card-body">
 					<p class="text-muted">Basic Example with Existing List</p>
 					<div id="contact-existing-list">
-						<div class="row mb-2">
-							<div class="col">
+						<div class="d-flex flex-wrap gap-4 mb-2">
+							<div class="w-400 flex-grow-1">
 								<div>
 									<input
 										class="search form-control"
 										placeholder="Search" />
 								</div>
 							</div>
-							<div class="col-auto">
+							<div class="w-auto flex-shrink-0">
 								<button
 									class="btn btn-light sort"
 									data-sort="contact-name">
@@ -502,11 +502,11 @@
 				</div>
 				<!-- end card -->
 			</div>
-			<!-- end col -->
+			<!-- end flex item -->
 		</div>
-		<!-- end col -->
+		<!-- end flex item -->
 
-		<div class="col-xl-4">
+		<div class="w-300 flex-grow-1">
 			<div class="card" show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Fuzzy Search</h4>
@@ -573,12 +573,12 @@
 			</div>
 			<!-- end card -->
 		</div>
-		<!-- end col -->
+		<!-- end flex item -->
 	</div>
-	<!-- end row -->
+	<!-- end flex layout -->
 
-	<div class="row">
-		<div class="col-xl-4">
+	<div class="d-flex flex-wrap gap-4">
+		<div class="w-300 flex-grow-1">
 			<div class="card" show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Pagination</h4>
@@ -859,11 +859,11 @@
 				</div>
 				<!-- end card -->
 			</div>
-			<!-- end col -->
+			<!-- end flex item -->
 		</div>
-		<!-- end col -->
+		<!-- end flex item -->
 	</div>
-	<!-- end row -->
+	<!-- end flex layout -->
 
 	<div
 		class="modal fade"

@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="/admin/ui/scrollspy/index.css" />
 
 <div class="container-fluid" plugin='{"$Prism.highlightAllUnder":["$this"]}'>
-	<div class="row">
-		<div class="col-lg-12">
+	<div class="d-flex flex-wrap gap-4">
+		<div class="w-100">
 			<div class="card" show="preview">
 				<div class="card-header align-items-center d-flex">
 					<h4 class="card-title mb-0 flex-grow-1">
@@ -212,12 +212,12 @@
 			</div>
 			<!-- end card -->
 		</div>
-		<!-- end col -->
+		<!-- end flex item -->
 	</div>
-	<!-- end row -->
+	<!-- end flex layout -->
 
-	<div class="row">
-		<div class="col-lg-12">
+	<div class="d-flex flex-wrap gap-4">
+		<div class="w-100">
 			<div class="card" show="preview">
 				<div class="card-header align-items-center d-flex">
 					<h4 class="card-title mb-0 flex-grow-1">
@@ -250,8 +250,8 @@
 						next to the navbar and watch the active class change-
 					</p>
 					<div class="live-preview">
-						<div class="row gy-4">
-							<div class="col-xxl-3">
+						<div class="d-flex flex-wrap gap-4 row-gap-4">
+							<div class="w-300 flex-grow-1">
 								<nav
 									id="navbar-examplenested"
 									class="navbar navbar-dark bg-light flex-column">
@@ -313,8 +313,8 @@
 									</nav>
 								</nav>
 							</div>
-							<!-- end col -->
-							<div class="col-xxl-9">
+							<!-- end flex item -->
+							<div class="w-400 flex-grow-1">
 								<div
 									data-bs-spy="scroll"
 									data-bs-target="#navbar-examplenested"
@@ -453,15 +453,15 @@
 									</div>
 								</div>
 							</div>
-							<!-- end col -->
+							<!-- end flex item -->
 						</div>
-						<!-- end row -->
+						<!-- end flex layout -->
 					</div>
 					<!-- end live preview -->
 
 					<div class="code-view">
-						<pre><code class="language-markup">&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-xxl-3&quot;&gt;
+						<pre><code class="language-markup">&lt;div class=&quot;d-flex flex-wrap gap-4&quot;&gt;
+    &lt;div class=&quot;w-300 flex-grow-1&quot;&gt;
         &lt;nav id=&quot;navbar-examplenested&quot; class=&quot;navbar navbar-dark bg-light flex-column&quot;&gt;
             &lt;a class=&quot;navbar-brand mb-2&quot; href=&quot;#&quot;&gt;
                 &lt;img src=&quot;...&quot; alt=&quot;...&quot;&gt;
@@ -481,8 +481,8 @@
             &lt;/nav&gt;
         &lt;/nav&gt;
     &lt;/div&gt;
-    &lt;!-- end col --&gt;
-    &lt;div class=&quot;col-xxl-9&quot;&gt;
+    &lt;!-- end flex item --&gt;
+    &lt;div class=&quot;w-400 flex-grow-1&quot;&gt;
         &lt;div data-bs-spy=&quot;scroll&quot; data-bs-target=&quot;#navbar-examplenested&quot; data-bs-offset=&quot;0&quot; class=&quot;scrollspy-example-2&quot;&gt;
             &lt;div class=&quot;text-muted&quot;&gt;
                 &lt;h5 id=&quot;item-1&quot;&gt;Item 1&lt;/h5&gt;
@@ -508,21 +508,21 @@
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-    &lt;!-- end col --&gt;
+    &lt;!-- end flex item --&gt;
 &lt;/div&gt;
-&lt;!-- end row --&gt;</code></pre>
+&lt;!-- end flex layout --&gt;</code></pre>
 					</div>
 				</div>
 				<!-- end card-body -->
 			</div>
 			<!-- end card -->
 		</div>
-		<!-- end col -->
+		<!-- end flex item -->
 	</div>
-	<!-- end row -->
+	<!-- end flex layout -->
 
-	<div class="row">
-		<div class="col-lg-12">
+	<div class="d-flex flex-wrap gap-4">
+		<div class="w-100">
 			<div class="card" show="preview">
 				<div class="card-header align-items-center d-flex">
 					<h4 class="card-title mb-0 flex-grow-1">
@@ -555,8 +555,8 @@
 						change-
 					</p>
 					<div class="live-preview">
-						<div class="row gy-4">
-							<div class="col-xxl-3">
+						<div class="d-flex flex-wrap gap-4 row-gap-4">
+							<div class="w-300 flex-grow-1">
 								<div id="list-example" class="list-group">
 									<a
 										class="list-group-item list-group-item-action"
@@ -580,7 +580,7 @@
 									>
 								</div>
 							</div>
-							<div class="col-xxl-9">
+							<div class="w-400 flex-grow-1">
 								<div
 									data-bs-spy="scroll"
 									data-bs-target="#list-example"
@@ -659,8 +659,8 @@
 					<!-- end live preview -->
 
 					<div class="code-view">
-						<pre><code class="language-markup">&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-xxl-3&quot;&gt;
+						<pre><code class="language-markup">&lt;div class=&quot;d-flex flex-wrap gap-4&quot;&gt;
+    &lt;div class=&quot;w-300 flex-grow-1&quot;&gt;
         &lt;div id=&quot;list-example&quot; class=&quot;list-group&quot;&gt;
             &lt;a class=&quot;list-group-item list-group-item-action&quot; href=&quot;#list-item-1&quot;&gt;Item 1&lt;/a&gt;
             &lt;a class=&quot;list-group-item list-group-item-action active&quot; href=&quot;#list-item-2&quot;&gt;Item 2&lt;/a&gt;
@@ -668,7 +668,7 @@
             &lt;a class=&quot;list-group-item list-group-item-action&quot; href=&quot;#list-item-4&quot;&gt;Item 4&lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;col-xxl-9&quot;&gt;
+    &lt;div class=&quot;w-400 flex-grow-1&quot;&gt;
         &lt;div data-bs-spy=&quot;scroll&quot; data-bs-target=&quot;#list-example&quot; data-bs-offset=&quot;0&quot; class=&quot;scrollspy-example mt-0&quot;&gt;
             &lt;div class=&quot;text-muted&quot;&gt;
                 &lt;h5 id=&quot;list-item-1&quot;&gt;Item 1&lt;/h5&gt;
@@ -692,9 +692,9 @@
 			</div>
 			<!-- end card -->
 		</div>
-		<!-- end col -->
+		<!-- end flex item -->
 	</div>
-	<!-- end row -->
+	<!-- end flex layout -->
 </div>
 <!-- container-fluid -->
 
