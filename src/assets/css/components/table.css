@@ -1,0 +1,86 @@
+/* Faithfully extracted from the legacy SCSS build. */
+.table > thead {
+	border-color: var(--coc-border-color);
+}
+.table > :not(:first-child) {
+	border-top-width: var(--coc-border-width);
+}
+.table-nowrap td,
+.table-nowrap th {
+	white-space: nowrap;
+}
+.table-card {
+	margin: -1rem -1rem;
+}
+.table-card td:first-child,
+.table-card th:first-child {
+	padding-left: 16px;
+}
+.table-card td:last-child,
+.table-card th:last-child {
+	padding-right: 16px;
+}
+.table-card .table > :not(:first-child) {
+	border-top-width: var(--coc-border-width);
+}
+.table-primary.table > thead {
+	border-bottom-color: var(--coc-primary-border-subtle) !important;
+}
+.table-secondary.table > thead {
+	border-bottom-color: var(--coc-secondary-border-subtle) !important;
+}
+.table-success.table > thead {
+	border-bottom-color: var(--coc-success-border-subtle) !important;
+}
+.table-info.table > thead {
+	border-bottom-color: var(--coc-info-border-subtle) !important;
+}
+.table-warning.table > thead {
+	border-bottom-color: var(--coc-warning-border-subtle) !important;
+}
+.table-danger.table > thead {
+	border-bottom-color: var(--coc-danger-border-subtle) !important;
+}
+.table-light.table > thead {
+	border-bottom-color: var(--coc-light-border-subtle) !important;
+}
+.table-dark.table > thead {
+	border-bottom-color: var(--coc-dark-border-subtle) !important;
+}
+.table > :not(caption) > * > * {
+	color: var(--coc-table-color-state),
+		var(--coc-table-color-type, var(--coc-table-color));
+}
+.table .form-check {
+	padding-left: 0;
+	margin-bottom: 0;
+}
+.table .form-check .form-check-input {
+	margin-left: 0;
+	margin-top: 0;
+	float: none;
+	vertical-align: middle;
+}
+.table .sort {
+	position: relative;
+}
+.table .sort::before {
+	content: "\f035d";
+	position: absolute;
+	right: 0.5rem;
+	top: 18px;
+	font-size: 0.8rem;
+	font-family: "Material Design Icons";
+}
+.table .sort::after {
+	position: absolute;
+	right: 0.5rem;
+	content: "\f0360";
+	font-family: "Material Design Icons";
+	font-size: 0.8rem;
+	top: 12px;
+}
+
+.invoice-table tbody:last-child {
+	border: none;
+}

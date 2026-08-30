@@ -1,0 +1,132 @@
+/* Faithfully extracted from the legacy SCSS build. */
+.categories-filter .list-inline-item {
+	position: relative;
+	margin-right: 0;
+}
+.categories-filter .list-inline-item a {
+	display: block;
+	color: var(--coc-body-color);
+	font-weight: var(--coc-font-weight-semibold);
+	padding: 8px 15px;
+	margin: 5px;
+	cursor: pointer;
+}
+.gallery-box {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid transparent;
+	margin-bottom: 10px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background-color: transparent;
+	padding: 8px;
+}
+.gallery-box::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 0;
+	background-color: var(--coc-secondary-bg);
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+.gallery-box .gallery-container {
+	position: relative;
+	overflow: hidden;
+	border-radius: 4px;
+}
+.gallery-box .gallery-container a {
+	display: block;
+}
+.gallery-box .gallery-container .gallery-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	opacity: 0;
+	background: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(10%, rgba(0, 0, 0, 0)),
+		color-stop(60%, rgba(0, 0, 0, 0)),
+		to(rgba(0, 0, 0, 0.5))
+	);
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0) 10%,
+		rgba(0, 0, 0, 0) 60%,
+		rgba(0, 0, 0, 0.5) 100%
+	);
+	visibility: hidden;
+	overflow: hidden;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	width: 100%;
+	-webkit-box-align: end;
+	-ms-flex-align: end;
+	align-items: flex-end;
+	padding: 16px;
+}
+.gallery-box .gallery-container .gallery-overlay .overlay-caption {
+	color: #fff;
+	margin: 0;
+	font-size: 16px;
+}
+.gallery-box .gallery-img {
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.gallery-box .box-content {
+	position: relative;
+}
+.gallery-box .box-content .title {
+	font-size: 14px;
+	margin-bottom: 4px;
+	display: none;
+}
+.gallery-box .box-content .post {
+	margin: 0;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+	color: var(--coc-secondary-color);
+}
+.gallery-box:hover::before {
+	height: 100%;
+}
+.gallery-box:hover .box-content {
+	bottom: 0;
+}
+.gallery-box:hover .box-content .post {
+	opacity: 1;
+}
+.gallery-box:hover .gallery-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+.gallery-light .gallery-box::before {
+	background-color: var(--coc-light);
+}
+
+#selection-element {
+	display: none;
+}
+@media (min-width: 992px) {
+	.sticky-side-div {
+		position: sticky;
+		top: calc(70px + var(--coc-grid-gutter-width));
+	}
+}
+.product-img-slider .product-nav-slider .nav-slide-item {
+	border: 1px solid var(--coc-border-color);
+	border-radius: 0.25rem;
+	padding: 0.5rem;
+	cursor: pointer;
+}

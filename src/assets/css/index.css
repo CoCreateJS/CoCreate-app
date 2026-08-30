@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+/*
+ * CoCreate native CSS entry point.
+ * Modular application styles organized by ownership.
+ */
+@import url("./core/index.css");
+@import url("./themes/index.css");
+@import url("./components/index.css");
+@import url("./plugins/index.css");

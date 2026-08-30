@@ -1,0 +1,299 @@
+/* Faithfully extracted from the legacy SCSS build. */
+.card {
+	margin-bottom: var(--coc-grid-gutter-width);
+	-webkit-box-shadow: var(--coc-card-shadow);
+	box-shadow: var(--coc-card-shadow);
+}
+.card-header {
+	border-bottom: var(--coc-card-header-border-width) solid
+		var(--coc-border-color);
+}
+.card-header-dropdown .dropdown-btn {
+	padding: 1rem 0;
+}
+.card-footer {
+	border-top: 1px solid var(--coc-border-color);
+}
+.card-title {
+	font-size: 16px;
+	margin: 0 0 7px 0;
+}
+.card-height-100 {
+	height: calc(100% - var(--coc-grid-gutter-width));
+}
+.card-animate {
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+.card-animate:hover {
+	-webkit-transform: translateY(calc(var(--coc-grid-gutter-width) * -0.15));
+	transform: translateY(calc(var(--coc-grid-gutter-width) * -0.15));
+	-webkit-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+}
+.card-primary {
+	color: #fff;
+}
+.card-primary .card-footer,
+.card-primary .card-header {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	border-color: transparent;
+}
+.card-primary .card-title {
+	color: #fff;
+}
+.card-secondary {
+	color: #fff;
+}
+.card-secondary .card-footer,
+.card-secondary .card-header {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	border-color: transparent;
+}
+.card-secondary .card-title {
+	color: #fff;
+}
+.card-success {
+	color: #fff;
+}
+.card-success .card-footer,
+.card-success .card-header {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	border-color: transparent;
+}
+.card-success .card-title {
+	color: #fff;
+}
+.card-info {
+	color: #fff;
+}
+.card-info .card-footer,
+.card-info .card-header {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	border-color: transparent;
+}
+.card-info .card-title {
+	color: #fff;
+}
+.card-warning {
+	color: #fff;
+}
+.card-warning .card-footer,
+.card-warning .card-header {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	border-color: transparent;
+}
+.card-warning .card-title {
+	color: #fff;
+}
+.card-danger {
+	color: #fff;
+}
+.card-danger .card-footer,
+.card-danger .card-header {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	border-color: transparent;
+}
+.card-danger .card-title {
+	color: #fff;
+}
+.card-light {
+	color: #000;
+}
+.card-light .card-footer,
+.card-light .card-header {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #000;
+	border-color: transparent;
+}
+.card-light .card-title {
+	color: #000;
+}
+.card-dark {
+	color: #fff;
+}
+.card-dark .card-footer,
+.card-dark .card-header {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	border-color: transparent;
+}
+.card-dark .card-title {
+	color: #fff;
+}
+.card-primary {
+	background-color: var(--coc-primary);
+}
+.card-border-primary {
+	border-color: var(--coc-primary) !important;
+}
+.card-border-primary .card-footer,
+.card-border-primary .card-header {
+	border-color: var(--coc-primary);
+}
+.card-secondary {
+	background-color: var(--coc-secondary);
+}
+.card-border-secondary {
+	border-color: var(--coc-secondary) !important;
+}
+.card-border-secondary .card-footer,
+.card-border-secondary .card-header {
+	border-color: var(--coc-secondary);
+}
+.card-success {
+	background-color: var(--coc-success);
+}
+.card-border-success {
+	border-color: var(--coc-success) !important;
+}
+.card-border-success .card-footer,
+.card-border-success .card-header {
+	border-color: var(--coc-success);
+}
+.card-info {
+	background-color: var(--coc-info);
+}
+.card-border-info {
+	border-color: var(--coc-info) !important;
+}
+.card-border-info .card-footer,
+.card-border-info .card-header {
+	border-color: var(--coc-info);
+}
+.card-warning {
+	background-color: var(--coc-warning);
+}
+.card-border-warning {
+	border-color: var(--coc-warning) !important;
+}
+.card-border-warning .card-footer,
+.card-border-warning .card-header {
+	border-color: var(--coc-warning);
+}
+.card-danger {
+	background-color: var(--coc-danger);
+}
+.card-border-danger {
+	border-color: var(--coc-danger) !important;
+}
+.card-border-danger .card-footer,
+.card-border-danger .card-header {
+	border-color: var(--coc-danger);
+}
+.card-light {
+	background-color: var(--coc-light);
+}
+.card-border-light {
+	border-color: var(--coc-light) !important;
+}
+.card-border-light .card-footer,
+.card-border-light .card-header {
+	border-color: var(--coc-light);
+}
+.card-dark {
+	background-color: var(--coc-dark);
+}
+.card-border-dark {
+	border-color: var(--coc-dark) !important;
+}
+.card-border-dark .card-footer,
+.card-border-dark .card-header {
+	border-color: var(--coc-dark);
+}
+.card-light {
+	background-color: var(--coc-light);
+}
+.card-light .card-footer,
+.card-light .card-header {
+	color: var(--coc-body-color) !important;
+	background-color: rgba(var(--coc-dark-rgb), 0.1);
+}
+.card-light .card-text,
+.card-light .card-title {
+	color: var(--coc-body-color) !important;
+}
+.card-preloader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(var(--coc-light-rgb), 0.6);
+	z-index: 9999;
+}
+.card-status {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%) !important;
+	transform: translate(-50%, -50%) !important;
+}
+.custom-loader {
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes spin {
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+.card-overlay {
+	position: relative;
+	overflow: hidden;
+}
+.card-overlay:before {
+	content: "";
+	background-color: rgba(var(--coc-primary-rgb), 0.2);
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+.card-overlay :is(.card-header, .card-footer) {
+	border-color: rgba(255, 255, 255, 0.15) !important;
+}
+.card-toolbar-menu {
+	line-height: 0.8;
+}
+.card-toolbar-menu a {
+	font-size: 17px;
+}
+.card-toolbar-menu .minimize-card .plus {
+	display: none;
+}
+.card-toolbar-menu .minimize-card .minus {
+	display: block;
+}
+.card-toolbar-menu .minimize-card.collapsed .plus {
+	display: block;
+}
+.card-toolbar-menu .minimize-card.collapsed .minus {
+	display: none;
+}
+
+.card-logo-light {
+	display: var(--coc-card-logo-light);
+}
+.card-logo-dark {
+	display: var(--coc-card-logo-dark);
+}
+.card-radio {
+	padding: 0;
+}
