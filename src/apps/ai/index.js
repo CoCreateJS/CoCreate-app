@@ -9,6 +9,7 @@
 		gemini: ["gemini-1.5-flash", "gemini-1.5-pro"]
 	};
 	const messages = shell.querySelector(".ai-messages");
+	const emptyView = messages.querySelector(".ai-empty").cloneNode(true);
 	const form = shell.querySelector(".ai-composer");
 	const prompt = shell.querySelector(".ai-prompt");
 	const send = shell.querySelector(".ai-send");
@@ -17,9 +18,9 @@
 	const status = shell.querySelector(".ai-status");
 	const threadList = shell.querySelector(".ai-thread-list");
 	const streams = new Map();
-	const threads = new Map();
 	let socket;
 	let conversationId;
+	let conversationLoadId;
 
 	const makeId = () =>
 		crypto.randomUUID?.() ||
@@ -67,24 +68,98 @@
 		return { element, body };
 	};
 
-	const rememberThread = (id, title) => {
-		if (!id || threads.has(id)) return;
-		const button = document.createElement("button");
-		button.type = "button";
-		button.className = "ai-thread active";
-		button.textContent = title;
-		button.addEventListener("click", () => {
-			conversationId = id;
-			for (const item of threadList.children) {
-				item.classList.toggle("active", item === button);
-			}
-			prompt.focus();
-		});
-		for (const item of threadList.children) {
-			item.classList.remove("active");
+	const getConversationContext = () =>
+		Array.from(messages.querySelectorAll(".ai-message"))
+			.map((element) => ({
+				role: element.classList.contains("user") ? "user" : "assistant",
+				content: element.querySelector(".ai-message-content")?.textContent || ""
+			}))
+			.filter((message) => message.content)
+			.slice(-12);
+
+	const activateThread = (id) => {
+		for (const item of threadList.querySelectorAll(".ai-thread")) {
+			item.classList.toggle(
+				"active",
+				item.dataset.conversationId === id
+			);
 		}
-		threadList.prepend(button);
-		threads.set(id, button);
+	};
+
+	const readObjects = async (array, $filter) => {
+		const crud = window.CoCreate?.crud;
+		if (!crud?.send) throw new Error("CoCreate CRUD is unavailable.");
+		const data = await crud.send({
+			method: "object.read",
+			array,
+			object: [],
+			$filter
+		});
+		const objects = data?.object || data?.data || [];
+		return Array.isArray(objects) ? objects : [objects];
+	};
+
+	const unwrapObject = (object) => {
+		const nested = object?.object;
+		return Array.isArray(nested) ? nested[0] || object : nested || object;
+	};
+
+	const readConversationMessages = async (id, userId) => {
+		const createFilter = (nested = false) => {
+			const prefix = nested ? "object." : "";
+			return {
+				query: {
+					[`${prefix}conversation_id`]: id,
+					...(userId && { [`${prefix}user_id`]: userId })
+				},
+				sort: [{ key: `${prefix}created.on`, direction: "asc" }],
+				limit: 200
+			};
+		};
+
+		let history = await readObjects("ai-messages", createFilter());
+		if (!history.length) {
+			history = await readObjects("ai-messages", createFilter(true));
+		}
+
+		return history.filter((item) => {
+			const message = unwrapObject(item);
+			return String(message.conversation_id) === String(id);
+		});
+	};
+
+	const loadConversation = async (button) => {
+		const id = button.dataset.conversationId;
+		if (!id) return;
+		const loadId = (conversationLoadId = makeId());
+		conversationId = id;
+		activateThread(id);
+		if (button.dataset.provider && models[button.dataset.provider]) {
+			provider.value = button.dataset.provider;
+			updateModels();
+		}
+		if (button.dataset.model) model.value = button.dataset.model;
+		messages.replaceChildren();
+		setStatus("Loading conversation…", "connected");
+
+		try {
+			const userId = localStorage.getItem("user_id");
+			const history = await readConversationMessages(id, userId);
+			if (conversationLoadId !== loadId) return;
+			for (const item of history) {
+				const message = unwrapObject(item);
+				addMessage(message.role || "assistant", message.content || "");
+			}
+			if (!history.length) {
+				addMessage("assistant", "This conversation has no saved messages.");
+			}
+			setStatus("Connected", "connected");
+			prompt.focus();
+		} catch (error) {
+			if (conversationLoadId !== loadId) return;
+			addMessage("assistant", error.message).element.classList.add("error");
+			setStatus("History failed", "error");
+		}
 	};
 
 	const onChat = (data = {}) => {
@@ -102,7 +177,7 @@
 		if (data.ai.status === "complete") {
 			stream.body.textContent = data.ai.content || stream.content;
 			conversationId = data.ai.conversation_id || conversationId;
-			rememberThread(conversationId, stream.prompt.slice(0, 42));
+			activateThread(conversationId);
 			setStatus("Connected", "connected");
 		} else if (data.ai.status === "error") {
 			stream.element.classList.add("error");
@@ -131,6 +206,7 @@
 		if (!text || send.disabled || !socket) return;
 
 		const streamId = makeId();
+		const context = { messages: getConversationContext() };
 		addMessage("user", text);
 		const assistant = addMessage("assistant");
 		assistant.element.classList.add("pending");
@@ -152,7 +228,8 @@
 					prompt: text,
 					conversation_id: conversationId,
 					provider: provider.value,
-					model: model.value
+					model: model.value,
+					context
 				}
 			});
 		} catch (error) {
@@ -164,6 +241,13 @@
 	});
 
 	prompt.addEventListener("input", resizePrompt);
+	threadList.addEventListener("click", (event) => {
+		const button = event.target.closest(".ai-thread[data-conversation-id]");
+		if (button) loadConversation(button);
+	});
+	new MutationObserver(() => {
+		if (conversationId) activateThread(conversationId);
+	}).observe(threadList, { childList: true, subtree: true });
 	prompt.addEventListener("keydown", (event) => {
 		if (event.key === "Enter" && !event.shiftKey) {
 			event.preventDefault();
@@ -172,15 +256,12 @@
 	});
 
 	shell.querySelector(".ai-new-chat").addEventListener("click", () => {
+		conversationLoadId = undefined;
 		conversationId = undefined;
-		messages.replaceChildren();
-		for (const item of threadList.children) {
+		messages.replaceChildren(emptyView.cloneNode(true));
+		for (const item of threadList.querySelectorAll(".ai-thread")) {
 			item.classList.remove("active");
 		}
-		addMessage(
-			"assistant",
-			"New conversation ready. What would you like to test?"
-		);
 		prompt.focus();
 	});
 

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" plugin='{"$Prism.highlightAllUnder":["$this"]}'>
 	<div class="row">
 		<div class="col-xxl-6">
 			<div class="card" show="preview">
@@ -154,7 +154,7 @@
 										<select
 											id="ForminputState"
 											class="form-select"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-sorting="true">
 											<option selected>Choose...</option>
 											<option>...</option>
@@ -352,7 +352,7 @@
 								<select
 									id="inputState"
 									class="form-select"
-									plugin="choices"
+									plugin='{"$Choices":["$this",{}]}'
 									data-choices-sorting="true">
 									<option selected>Choose...</option>
 									<option>...</option>
@@ -1108,7 +1108,7 @@
 									>
 									<select
 										class="form-select"
-										plugin="choices"
+										plugin='{"$Choices":["$this",{}]}'
 										data-choices-sorting="true"
 										id="autoSizingSelect">
 										<option selected>Choose...</option>
@@ -1183,7 +1183,7 @@
 									>
 									<select
 										class="form-select"
-										plugin="choices"
+										plugin='{"$Choices":["$this",{}]}'
 										data-choices-sorting="true"
 										id="specificSizeSelect">
 										<option selected>Choose...</option>
@@ -1355,7 +1355,7 @@
 									>
 									<select
 										class="form-select"
-										plugin="choices"
+										plugin='{"$Choices":["$this",{}]}'
 										data-choices-sorting="true"
 										id="inlineFormSelectPref">
 										<option selected>Choose...</option>
@@ -1650,5 +1650,3 @@
 </div>
 <!-- container-fluid -->
 
-<!-- prismjs plugin -->
-<script src="/assets/libs/prismjs/prism.js"></script>

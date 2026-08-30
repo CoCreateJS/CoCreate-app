@@ -5,6 +5,16 @@
 .accordion {
     .accordion-button {
         font-weight: $font-weight-medium;
+
+        &[aria-expanded="false"]::after {
+            background-image: var(--#{$prefix}accordion-btn-icon);
+            transform: none;
+        }
+
+        &:not([aria-expanded="false"])::after {
+            background-image: var(--#{$prefix}accordion-btn-active-icon);
+            transform: var(--#{$prefix}accordion-btn-icon-transform);
+        }
     }
 
     .accordion-body {

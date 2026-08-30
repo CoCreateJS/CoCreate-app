@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
 		<div class="card-body border-bottom border-bottom-dashed p-4">
 			<div style="flex: 1;">
 				<div class="profile-user mx-auto mb-3">
@@ -76,7 +76,7 @@
 				<div style="flex: 1; min-width: 200px;">
 					<label for="choices-payment-status" class="form-label">Payment Status</label>
 					<div class="input-light">
-						<select class="form-control bg-light border-0" plugin="choices" data-choices-search-false id="choices-payment-status"  aria-label="Payment Status">
+						<select class="form-control bg-light border-0" plugin='{"$Choices":["$this",{}]}' data-choices-search-false id="choices-payment-status"  aria-label="Payment Status">
 							<option value="">Select Payment Status</option>
 							<option value="Paid">Paid</option>
 							<option value="Unpaid">Unpaid</option>
@@ -157,7 +157,7 @@
 							<th scope="col">Product Details</th>
 							<th scope="col" style="width: 120px;">
 								<div class="d-flex currency-select input.light align-items-center">Rate
-									<select class="form-select border-0 bg-light" plugin="choices" data-choices-search-false id="choices-payment-currency" onchange="otherPayment()" aria-label="Currency Selection">
+									<select class="form-select border-0 bg-light" plugin='{"$Choices":["$this",{}]}' data-choices-search-false id="choices-payment-currency" onchange="otherPayment()" aria-label="Currency Selection">
 										<option value="$">($)</option>
 										<option value="£">(£)</option>
 										<option value="₹">(₹)</option>
@@ -272,7 +272,7 @@
 					<div class="mb-2">
 						<label for="choices-payment-type" class="form-label">Payment Method</label>
 						<div class="input-light">
-							<select class="form-control bg-light border-0" plugin="choices" data-choices-search-false data-choices-removeItem id="choices-payment-type" aria-label="Payment Method">
+							<select class="form-control bg-light border-0" plugin='{"$Choices":["$this",{}]}' data-choices-search-false data-choices-removeItem id="choices-payment-type" aria-label="Payment Method">
 								<option value="">Payment Method</option>
 								<option value="Mastercard">Mastercard</option>
 								<option value="Credit Card">Credit Card</option>

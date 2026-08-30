@@ -23,7 +23,7 @@
 		<div class="card-header">
 			<h5 class="card-title mb-0">Create Job</h5>
 		</div>
-		<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+		<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
 			<div class="card-body d-flex flex-wrap gap-4">
 				<form action="#" class="form-container">
 					<div class="form-group">
@@ -39,7 +39,7 @@
 					<div class="form-group">
 						<label for="job-category-Input" class="form-label">Job Category
 							<span class="text-danger">*</span></label>
-						<select class="form-control" plugin="choices" name="job-category-Input"  aria-label="Job Category">
+						<select class="form-control" plugin='{"$Choices":["$this",{}]}' name="job-category-Input"  aria-label="Job Category">
 							<option value="">Select Category</option>
 							<option value="Accounting & Finance">Accounting & Finance</option>
 							<option value="Purchasing Manager">Purchasing Manager</option>
@@ -54,7 +54,7 @@
 					<div class="form-group">
 						<label for="job-type-Input" class="form-label">Job Type
 							<span class="text-danger">*</span></label>
-						<select class="form-control" plugin="choices" name="job-type-Input"  aria-label="Job Type">
+						<select class="form-control" plugin='{"$Choices":["$this",{}]}' name="job-type-Input"  aria-label="Job Type">
 							<option value="">Select job type</option>
 							<option value="Full Time">Full Time</option>
 							<option value="Part Time">Part Time</option>
@@ -75,7 +75,7 @@
 					<div class="form-group">
 						<label for="experience-Input" class="form-label">Experience
 							<span class="text-danger">*</span></label>
-						<select class="form-control" plugin="choices" name="experience-Input" aria-label="Experience ">
+						<select class="form-control" plugin='{"$Choices":["$this",{}]}' name="experience-Input" aria-label="Experience ">
 							<option value="">Select Experience</option>
 							<option value="0 Year">0 Year</option>
 							<option value="2 Years">2 Years</option>
@@ -114,7 +114,7 @@
 					</div>
 					<div class="form-group">
 						<label for="website-field" class="form-label">Tags</label>
-						<input class="form-control" id="choices-text-unique-values" plugin="choices" data-choices-text-unique-true type="text" value="Design, Remote"  aria-label="Tags" />
+						<input class="form-control" id="choices-text-unique-values" plugin='{"$Choices":["$this",{}]}' data-choices-text-unique-true type="text" value="Design, Remote"  aria-label="Tags" />
 					</div>
 					<div class="button-group">
 						<button type="button" class="btn btn-ghost-danger material-shadow-none" aria-label="Cancel">

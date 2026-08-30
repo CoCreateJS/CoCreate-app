@@ -3,7 +3,7 @@
 	rel="stylesheet"
 	type="text/css" />
 
-<div class="container-fluid">
+<div class="container-fluid" plugin='{"$Prism.highlightAllUnder":["$this"]}'>
 
 	<div class="row">
 		<div class="col-lg-12">
@@ -217,7 +217,7 @@
 							</div>
 						</div>
 
-						<div plugin='{"SimpleBar": ["$this", {}]}' style="height: 242px" class="mx-n3">
+						<div plugin='{"$SimpleBar": ["$this", {}]}' style="height: 242px" class="mx-n3">
 							<ul class="list list-group list-group-flush mb-0">
 								<li class="list-group-item" data-id="1">
 									<div class="d-flex">
@@ -365,7 +365,7 @@
 							</div>
 						</div>
 
-						<div plugin='{"SimpleBar": ["$this", {}]}' style="height: 242px" class="mx-n3">
+						<div plugin='{"$SimpleBar": ["$this", {}]}' style="height: 242px" class="mx-n3">
 							<ul class="list list-group list-group-flush mb-0">
 								<li class="list-group-item" data-id="01">
 									<div class="d-flex align-items-start">
@@ -522,7 +522,7 @@
 							class="fuzzy-search form-control mb-2"
 							placeholder="Search" />
 
-						<div plugin='{"SimpleBar": ["$this", {}]}' style="height: 242px">
+						<div plugin='{"$SimpleBar": ["$this", {}]}' style="height: 242px">
 							<ul class="list mb-0">
 								<li>
 									<p class="name">Guybrush Threepwood</p>
@@ -1044,8 +1044,6 @@
 </div>
 <!-- container-fluid -->
 
-<!-- prismjs plugin -->
-<script src="/assets/libs/prismjs/prism.js"></script>
 <script src="/assets/libs/list.js/list.min.js"></script>
 <script src="/assets/libs/list.pagination.js/list.pagination.min.js"></script>
 

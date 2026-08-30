@@ -1,4 +1,6 @@
-<div class="card height:calc(100vh_-_110px) mb-0" plugin='{"SimpleBar": ["$this", {}]}'>
+<div
+	class="card height:calc(100vh_-_110px) mb-0"
+	plugin='{"$SimpleBar": ["$this", {}]}'>
 	<div class="card-body">
 		<div class="table-card">
 			<table
@@ -16,7 +18,10 @@
 				<thead>
 					<tr>
 						<!-- Render each column header dynamically -->
-						<th template="column" render-as="column" scope="col">
+						<th
+							template="column"
+							render-as="column"
+							scope="col">
 							<div
 								class="d-flex align-items-center justify-content-between gap-2">
 								<span>{{column.label}}</span>
@@ -44,21 +49,21 @@
 					array=""
 					object
 					filter-limit="20"
-					
 					render-query="tr[template]">
 					<tr template>
-						<td 
+						<td
 							template="column"
 							render-as="column"
-							value-type="html"
-							>
+							value-type="html">
 							{{column.tableTemplate}}
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<div class="noresult" style="display: none">
+			<div
+				class="noresult"
+				style="display: none">
 				<div class="text-center">
 					<lord-icon
 						src="https://cdn.lordicon.com/msoeawqm.json"

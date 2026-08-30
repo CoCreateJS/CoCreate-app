@@ -182,6 +182,10 @@ pre[class*="language-"] {
         border-radius: 10px;
         background-color: var(--#{$prefix}light)
     }
+
+    &::-webkit-scrollbar-corner {
+        background-color: var(--#{$prefix}prism-bg);
+    }
 }
 
 
@@ -229,4 +233,112 @@ div.code-toolbar > .toolbar {
             color: $white !important;
         }
     }
+}
+
+// CoCreate theme-aware Prism palette
+:root {
+    --#{$prefix}prism-bg: var(--#{$prefix}tertiary-bg);
+    --#{$prefix}prism-color: #495057;
+    --#{$prefix}prism-comment: #6c757d;
+    --#{$prefix}prism-punctuation: #5c6370;
+    --#{$prefix}prism-property: #d63384;
+    --#{$prefix}prism-string: #198754;
+    --#{$prefix}prism-operator: #b45309;
+    --#{$prefix}prism-keyword: #0d6efd;
+    --#{$prefix}prism-function: #6f42c1;
+    --#{$prefix}prism-regex: #dc6b00;
+    --#{$prefix}prism-selection: rgba(var(--#{$prefix}primary-rgb), 0.2);
+}
+
+[data-bs-theme="dark"] {
+    --#{$prefix}prism-bg: var(--#{$prefix}tertiary-bg);
+    --#{$prefix}prism-color: #ced4da;
+    --#{$prefix}prism-comment: #878a99;
+    --#{$prefix}prism-punctuation: #adb5bd;
+    --#{$prefix}prism-property: #ff7ab2;
+    --#{$prefix}prism-string: #7ee787;
+    --#{$prefix}prism-operator: #e5c07b;
+    --#{$prefix}prism-keyword: #79c0ff;
+    --#{$prefix}prism-function: #d2a8ff;
+    --#{$prefix}prism-regex: #ffa657;
+    --#{$prefix}prism-selection: rgba(var(--#{$prefix}primary-rgb), 0.35);
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: var(--#{$prefix}prism-bg) !important;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: var(--#{$prefix}prism-color);
+    text-shadow: none;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection,
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+    background: var(--#{$prefix}prism-selection);
+    text-shadow: none;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--#{$prefix}prism-comment);
+}
+
+.token.punctuation {
+    color: var(--#{$prefix}prism-punctuation);
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: var(--#{$prefix}prism-property);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: var(--#{$prefix}prism-string);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: var(--#{$prefix}prism-operator);
+    background: transparent;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: var(--#{$prefix}prism-keyword);
+}
+
+.token.function,
+.token.class-name {
+    color: var(--#{$prefix}prism-function);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: var(--#{$prefix}prism-regex);
 }

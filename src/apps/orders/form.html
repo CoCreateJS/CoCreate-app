@@ -9,8 +9,8 @@
     <div class="card-header">
       <h4 class="card-title mb-0">Order Information</h4>
     </div>
-    <div class="card-body d-flex flex-wrap gap-4" plugin='{"SimpleBar": ["$this", {}]}'>
-      <div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+    <div class="card-body d-flex flex-wrap gap-4" plugin='{"$SimpleBar": ["$this", {}]}'>
+      <div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
         <div class="card-body d-flex flex-wrap gap-4">
           <label class="form-label" for="orderId">
             Order ID
@@ -33,7 +33,7 @@
               key="customer_name"
               class="form-control"
               placeholder="Enter name"
-              
+
               aria-label="Customer Name"
             />
           </label>
@@ -44,7 +44,7 @@
               class="form-control"
               key="product_name"
               id="productname-field"
-              
+
               aria-label="Product"
             >
               <option value="">Select Product</option>
@@ -88,7 +88,7 @@
               data-date-format="d M, Y"
               data-enable-time
               placeholder="Select date"
-              
+
               aria-label="Order Date"
             />
           </label>
@@ -102,7 +102,7 @@
                 key="amount"
                 class="form-control"
                 placeholder="Total amount"
-                
+
                 aria-label="Amount"
               />
             </label>
@@ -113,7 +113,7 @@
                 class="form-control"
                 key="payment_method"
                 id="payment-field"
-                
+
                 aria-label="Payment Method"
               >
                 <option value="">Select Payment Method</option>
@@ -131,7 +131,7 @@
               class="form-control"
               key="delivery_status"
               id="delivered-status"
-              
+
               aria-label="Delivery Status"
             >
               <option value="">Select Delivery Status</option>

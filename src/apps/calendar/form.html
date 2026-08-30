@@ -10,14 +10,14 @@
 		input.state.src="/apps/calendar/details.html"
 		src="components/offcanvas-header.html"
 		aria-label="Calendar Form Header"></div>
-	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
 		<div class="card-body d-flex flex-wrap gap-4">
 			<label class="form-label" id="type-label w-100">
 				Type
 				<select
 					class="form-select d-block"
-					plugin="Choices"
-					choices='["$this",{"searchEnabled":false}]'
+					plugin='{"$Choices":["$this",{"searchEnabled":false}]}'
+
 					name="category"
 					id="event-category"
 					key="category"
@@ -54,8 +54,8 @@
 				Event Date
 				<div class="input-group">
 					<input
-						plugin="flatpickr"
-						flatpickr='["$this",{"mode":"range","minDate":"today","enableTime":false}]'
+						plugin='{"$flatpickr":["$this",{"mode":"range","minDate":"today","enableTime":false}]}'
+
 						type="text"
 						id="event-start-date"
 						key="start_date"
@@ -77,8 +77,8 @@
 					Start Time
 					<div class="input-group">
 						<input
-							plugin="flatpickr"
-							flatpickr='["$this",{"enableTime":true,"noCalendar":true}]'
+							plugin='{"$flatpickr":["$this",{"enableTime":true,"noCalendar":true}]}'
+
 							id="timepicker1"
 							key="start_time"
 							type="text"
@@ -97,8 +97,8 @@
 					End Time
 					<div class="input-group">
 						<input
-							plugin="flatpickr"
-							flatpickr='["$this",{"enableTime":true,"noCalendar":true}]'
+							plugin='{"$flatpickr":["$this",{"enableTime":true,"noCalendar":true}]}'
+
 							id="timepicker2"
 							key="end_time"
 							type="text"

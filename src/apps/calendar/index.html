@@ -54,7 +54,7 @@
 						<p class="text-muted">Don't miss scheduled events</p>
 						<div
 							class="pe-2 me-n1 mb-3"
-							plugin='{"SimpleBar": ["$this", {}]}'
+							plugin='{"$SimpleBar": ["$this", {}]}'
 							style="height: 400px">
 							<div id="upcoming-event-list"></div>
 						</div>
@@ -85,7 +85,7 @@
 								component
 								filter-limit
 								plugin='{
-									"FullCalendar": {
+									"$FullCalendar": {
 										"Calendar": [
 											"$this",
 											{
@@ -107,9 +107,7 @@
 											}
 										]
 									},
-									"FullCalendar.render": [],
-									"getValue": "$FullCalendar.getEvents",
-									"setValue": { "$FullCalendar.addEvent": "$event.value" }
+									"$FullCalendar.render": []
 								}'>
 							</div>
 						</div>

@@ -1,22 +1,53 @@
-<link rel="stylesheet" href="/apps/ai/index.css" />
+<link
+	rel="stylesheet"
+	href="/apps/ai/index.css" />
 
-<div class="ai-shell" data-ai-chat>
+<div
+	class="ai-shell"
+	data-ai-chat>
 	<aside class="ai-sidebar">
 		<div class="ai-brand">
-			<div class="ai-logo" aria-hidden="true">AI</div>
+			<div
+				class="ai-logo"
+				aria-hidden="true">
+				AI
+			</div>
 			<div class="ai-brand-copy">
 				<strong>CoCreate AI</strong>
 				<small>Server playground</small>
 			</div>
 		</div>
 
-		<button class="ai-new-chat" type="button">
-			<i class="ri-add-line" aria-hidden="true"></i>
+		<button
+			class="ai-new-chat"
+			type="button">
+			<i
+				class="ri-add-line"
+				aria-hidden="true"></i>
 			<span>New conversation</span>
 		</button>
 
-		<div class="ai-sidebar-label">This session</div>
-		<div class="ai-thread-list"></div>
+		<div class="ai-sidebar-label">Conversations</div>
+		<div
+			class="ai-thread-list"
+			array="ai-conversations"
+			object
+			render-query="[template='ai-conversation-template']"
+			filter-query-key="user_id"
+			filter-query-value="$user_id"
+			filter-sort-key="modified.on"
+			filter-sort-direction="desc">
+			<button
+				template="ai-conversation-template"
+				type="button"
+				class="ai-thread"
+				data-conversation-id="{{object._id}}"
+				data-provider="{{object.provider}}"
+				data-model="{{object.model}}">
+				<span>{{object.title}}</span>
+				<small>{{object.model}}</small>
+			</button>
+		</div>
 	</aside>
 
 	<main class="ai-main">
@@ -28,22 +59,32 @@
 
 			<div class="ai-settings">
 				<span class="ai-status">Connecting</span>
-				<select class="ai-provider" aria-label="Provider">
+				<select
+					class="ai-provider"
+					aria-label="Provider">
 					<option value="copilot">Copilot</option>
-					<option value="openai">OpenAI</option>
+					<option value="openai" selected>OpenAI</option>
 					<option value="gemini">Gemini</option>
 				</select>
-				<select class="ai-model" aria-label="Model"></select>
+				<select
+					class="ai-model"
+					aria-label="Model"></select>
 			</div>
 		</header>
 
-		<section class="ai-messages" aria-live="polite">
+		<section
+			class="ai-messages"
+			aria-live="polite">
 			<div class="ai-empty">
-				<div class="ai-empty-mark" aria-hidden="true">AI</div>
+				<div
+					class="ai-empty-mark"
+					aria-hidden="true">
+					AI
+				</div>
 				<h1>What should we test?</h1>
 				<p>
-					Send a prompt through <code>CoCreate.socket</code> and watch the
-					server response stream into this page.
+					Send a prompt through <code>CoCreate.socket</code> and watch
+					the server response stream into this page.
 				</p>
 			</div>
 		</section>
@@ -55,8 +96,13 @@
 				placeholder="Message CoCreate AI…"
 				aria-label="Prompt"
 				required></textarea>
-			<button class="ai-send" type="submit" aria-label="Send message">
-				<i class="ri-arrow-up-line" aria-hidden="true"></i>
+			<button
+				class="ai-send"
+				type="submit"
+				aria-label="Send message">
+				<i
+					class="ri-arrow-up-line"
+					aria-hidden="true"></i>
 			</button>
 		</form>
 	</main>

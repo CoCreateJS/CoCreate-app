@@ -1,61 +1,6 @@
 <div class="container-fluid"
-     plugin="Shepherd"
-     shepherd='{
-        "Tour": {
-            "defaultStepOptions": {
-                "cancelIcon": { "enabled": true },
-                "classes": "shadow-md bg-purple-dark",
-                "scrollTo": { "behavior": "smooth", "block": "center" }
-            },
-            "useModalOverlay": { "enabled": true },
-            "steps": [
-                {
-                    "title": "Welcome Back !",
-                    "text": "This is Step 1",
-                    "attachTo": { "element": "#logo-tour", "on": "bottom" },
-                    "buttons": [
-                        { "text": "Next", "classes": "btn btn-success", "action": "$this.Shepherd.Tour.next" }
-                    ]
-                },
-                {
-                    "title": "Register your account",
-                    "text": "Get your Free CoCreate account now.",
-                    "attachTo": { "element": "#register-tour", "on": "bottom" },
-                    "buttons": [
-                        { "text": "Back", "classes": "btn btn-light", "action": "$this.Shepherd.Tour.back" },
-                        { "text": "Next", "classes": "btn btn-success", "action": "$this.Shepherd.Tour.next" }
-                    ]
-                },
-                {
-                    "title": "Login your account",
-                    "text": "Sign in to continue to CoCreate.",
-                    "attachTo": { "element": "#login-tour", "on": "bottom" },
-                    "buttons": [
-                        { "text": "Back", "classes": "btn btn-light", "action": "$this.Shepherd.Tour.back" },
-                        { "text": "Next", "classes": "btn btn-success", "action": "$this.Shepherd.Tour.next" }
-                    ]
-                },
-                {
-                    "title": "Get your Product",
-                    "text": "Sign in to continue to CoCreate.",
-                    "attachTo": { "element": "#getproduct-tour", "on": "bottom" },
-                    "buttons": [
-                        { "text": "Back", "classes": "btn btn-light", "action": "$this.Shepherd.Tour.back" },
-                        { "text": "Next", "classes": "btn btn-success", "action": "$this.Shepherd.Tour.next" }
-                    ]
-                },
-                {
-                    "title": "Thank you !",
-                    "text": "Sign in to continue to CoCreate.",
-                    "attachTo": { "element": "#thankyou-tour", "on": "bottom" },
-                    "buttons": [
-                        { "text": "Back", "classes": "btn btn-light", "action": "$this.Shepherd.Tour.back" },
-                        { "text": "Thank you !", "classes": "btn btn-primary", "action": "$this.Shepherd.Tour.complete" }
-                    ]
-                }
-            ]
-        }
-     }'
+     plugin='{"$Shepherd":{"Tour":{"defaultStepOptions":{"cancelIcon":{"enabled":true},"classes":"shadow-md bg-purple-dark","scrollTo":{"behavior":"smooth","block":"center"}},"useModalOverlay":{"enabled":true},"steps":[{"title":"Welcome Back !","text":"This is Step 1","attachTo":{"element":"#logo-tour","on":"bottom"},"buttons":[{"text":"Next","classes":"btn btn-success","action":"$this.Shepherd.Tour.next"}]},{"title":"Register your account","text":"Get your Free CoCreate account now.","attachTo":{"element":"#register-tour","on":"bottom"},"buttons":[{"text":"Back","classes":"btn btn-light","action":"$this.Shepherd.Tour.back"},{"text":"Next","classes":"btn btn-success","action":"$this.Shepherd.Tour.next"}]},{"title":"Login your account","text":"Sign in to continue to CoCreate.","attachTo":{"element":"#login-tour","on":"bottom"},"buttons":[{"text":"Back","classes":"btn btn-light","action":"$this.Shepherd.Tour.back"},{"text":"Next","classes":"btn btn-success","action":"$this.Shepherd.Tour.next"}]},{"title":"Get your Product","text":"Sign in to continue to CoCreate.","attachTo":{"element":"#getproduct-tour","on":"bottom"},"buttons":[{"text":"Back","classes":"btn btn-light","action":"$this.Shepherd.Tour.back"},{"text":"Next","classes":"btn btn-success","action":"$this.Shepherd.Tour.next"}]},{"title":"Thank you !","text":"Sign in to continue to CoCreate.","attachTo":{"element":"#thankyou-tour","on":"bottom"},"buttons":[{"text":"Back","classes":"btn btn-light","action":"$this.Shepherd.Tour.back"},{"text":"Thank you !","classes":"btn btn-primary","action":"$this.Shepherd.Tour.complete"}]}]}}}'
+
      Shepherd.Tour.start
      >
     <div class="row">

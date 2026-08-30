@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" plugin='{"$Prism.highlightAllUnder":["$this"]}'>
     <div class="row">
         <div class="col-lg-12">
             <div class="card" show="preview">
@@ -28,36 +28,36 @@
                                         <th scope="row">Basic Rater</th>
                                         <td>
                                             <div id="basic-rater" dir="ltr" class="star-rating"
-                                                 plugin="raterJs" 
-                                                 raterjs='[{ "element": "$this", "starSize": 22, "rating": 3, "rateCallback": "$raterJs.handlers.simple" }]'>
+                                                 plugin='{"$raterJs":[{"element":"$this","starSize":22,"rating":3,"rateCallback":"$raterJs.handlers.simple"}]}'
+                                                >
                                             </div>
                                         </td>
                                         <td>
-                                            <pre><code class="language-markup">&lt;div id="basic-rater" dir="ltr" plugin="raterJs" raterjs='[{ "element": "$this", "starSize": 22, "rating": 3, "rateCallback": "$raterJs.handlers.simple" }]'&gt;&lt;/div&gt;</code></pre>
+                                            <pre><code class="language-markup">&lt;div id="basic-rater" dir="ltr" plugin='{"$raterJs":[{ "element": "$this", "starSize": 22, "rating": 3, "rateCallback": "$raterJs.handlers.simple" }]}'&gt;&lt;/div&gt;</code></pre>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Rater with Step</th>
                                         <td>
-                                            <div id="rater-step" dir="ltr" 
-                                                 plugin="raterJs" 
-                                                 raterjs='[{ "element": "$this", "starSize": 22, "rating": 1.5, "step": 0.5, "rateCallback": "$raterJs.handlers.simple" }]'>
+                                            <div id="rater-step" dir="ltr"
+                                                 plugin='{"$raterJs":[{"element":"$this","starSize":22,"rating":1.5,"step":0.5,"rateCallback":"$raterJs.handlers.simple"}]}'
+                                                >
                                             </div>
                                         </td>
                                         <td>
-                                            <pre><code class="language-markup">&lt;div id="rater-step" dir="ltr" plugin="raterJs" raterjs='[{ "element": "$this", "starSize": 22, "rating": 1.5, "step": 0.5, "rateCallback": "$raterJs.handlers.simple" }]'&gt;&lt;/div&gt;</code></pre>
+                                            <pre><code class="language-markup">&lt;div id="rater-step" dir="ltr" plugin='{"$raterJs":[{ "element": "$this", "starSize": 22, "rating": 1.5, "step": 0.5, "rateCallback": "$raterJs.handlers.simple" }]}'&gt;&lt;/div&gt;</code></pre>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Custom Messages</th>
                                         <td>
-                                            <div id="rater-message" dir="ltr" 
-                                                 plugin="raterJs" 
-                                                 raterjs='[{ "element": "$this", "starSize": 22, "rating": 4, "isBusyText": "Rating in progress. Please wait...", "rateCallback": "$raterJs.handlers.serverSim" }]'>
+                                            <div id="rater-message" dir="ltr"
+                                                 plugin='{"$raterJs":[{"element":"$this","starSize":22,"rating":4,"isBusyText":"Rating in progress. Please wait...","rateCallback":"$raterJs.handlers.serverSim"}]}'
+                                                >
                                             </div>
                                         </td>
                                         <td>
-                                            <pre><code class="language-markup">&lt;div id="rater-message" dir="ltr" plugin="raterJs" raterjs='[{ "element": "$this", "starSize": 22, "rating": 4, "isBusyText": "Rating in progress. Please wait...", "rateCallback": "$raterJs.handlers.serverSim" }]'&gt;&lt;/div&gt;</code></pre>
+                                            <pre><code class="language-markup">&lt;div id="rater-message" dir="ltr" plugin='{"$raterJs":[{ "element": "$this", "starSize": 22, "rating": 4, "isBusyText": "Rating in progress. Please wait...", "rateCallback": "$raterJs.handlers.serverSim" }]}'&gt;&lt;/div&gt;</code></pre>
                                         </td>
                                     </tr>
                                     <tr>
@@ -67,29 +67,29 @@
                                             true.
                                         </th>
                                         <td>
-                                            <div id="rater-unlimitedstar" dir="ltr" 
-                                                 plugin="raterJs" 
-                                                 raterjs='[{ "element": "$this", "max": 16, "readOnly": true, "rating": 4.4, "starSize": 22 }]'>
+                                            <div id="rater-unlimitedstar" dir="ltr"
+                                                 plugin='{"$raterJs":[{"element":"$this","max":16,"readOnly":true,"rating":4.4,"starSize":22}]}'
+                                                >
                                             </div>
                                         </td>
                                         <td>
-                                            <pre><code class="language-markup">&lt;div id="rater-unlimitedstar" dir="ltr" plugin="raterJs" raterjs='[{ "element": "$this", "max": 16, "readOnly": true, "rating": 4.4, "starSize": 22 }]'&gt;&lt;/div&gt;</code></pre>
+                                            <pre><code class="language-markup">&lt;div id="rater-unlimitedstar" dir="ltr" plugin='{"$raterJs":[{ "element": "$this", "max": 16, "readOnly": true, "rating": 4.4, "starSize": 22 }]}'&gt;&lt;/div&gt;</code></pre>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">On Hover Event</th>
                                         <td>
                                             <div dir="ltr">
-                                                <div id="rater-onhover" class="align-middle" 
-                                                     plugin="raterJs" 
-                                                     raterjs='[{ "element": "$this", "starSize": 22, "rating": 1, "rateCallback": "$raterJs.handlers.simple", "onHover": "$raterJs.handlers.hover", "onLeave": "$raterJs.handlers.leave" }]'>
+                                                <div id="rater-onhover" class="align-middle"
+                                                     plugin='{"$raterJs":[{"element":"$this","starSize":22,"rating":1,"rateCallback":"$raterJs.handlers.simple","onHover":"$raterJs.handlers.hover","onLeave":"$raterJs.handlers.leave"}]}'
+                                                    >
                                                 </div>
                                                 <span class="ratingnum badge bg-info align-middle ms-2"></span>
                                             </div>
                                         </td>
                                         <td>
                                             <pre><code class="language-markup">&lt;div dir=&quot;ltr&quot;&gt;
-    &lt;div id=&quot;rater-onhover&quot; class=&quot;align-middle&quot; plugin=&quot;raterJs&quot; raterjs='[{ "element": "$this", "starSize": 22, "rating": 1, "rateCallback": "$raterJs.handlers.simple", "onHover": "$raterJs.handlers.hover", "onLeave": "$raterJs.handlers.leave" }]'&gt;&lt;/div&gt;
+    &lt;div id=&quot;rater-onhover&quot; class=&quot;align-middle&quot; plugin='{"$raterJs":[{ "element": "$this", "starSize": 22, "rating": 1, "rateCallback": "$raterJs.handlers.simple", "onHover": "$raterJs.handlers.hover", "onLeave": "$raterJs.handlers.leave" }]}'&gt;&lt;/div&gt;
     &lt;span class=&quot;ratingnum badge bg-info align-middle ms-2&quot;&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
                                         </td>
@@ -99,9 +99,9 @@
                                         <th scope="row">Clear/Reset Rater</th>
                                         <td>
                                             <div dir="ltr">
-                                                <div id="raterreset" class="align-middle" 
-                                                     plugin="raterJs" 
-                                                     raterjs='[{ "element": "$this", "starSize": 22, "rating": 2, "rateCallback": "$raterJs.handlers.simple" }]'>
+                                                <div id="raterreset" class="align-middle"
+                                                     plugin='{"$raterJs":[{"element":"$this","starSize":22,"rating":2,"rateCallback":"$raterJs.handlers.simple"}]}'
+                                                    >
                                                 </div>
                                                 <span class="clear-rating"></span>
                                                 <button id="raterreset-button" class="btn btn-light btn-sm ms-2" onclick="raterJs.handlers.reset('raterreset')">
@@ -111,7 +111,7 @@
                                         </td>
                                         <td>
                                             <pre><code class="language-markup">&lt;div dir=&quot;ltr&quot;&gt;
-    &lt;div id=&quot;raterreset&quot; class=&quot;align-middle&quot; plugin=&quot;raterJs&quot; raterjs='[{ "element": "$this", "starSize": 22, "rating": 2, "rateCallback": "$raterJs.handlers.simple" }]'&gt;&lt;/div&gt;
+    &lt;div id=&quot;raterreset&quot; class=&quot;align-middle&quot; plugin='{"$raterJs":[{ "element": "$this", "starSize": 22, "rating": 2, "rateCallback": "$raterJs.handlers.simple" }]}'&gt;&lt;/div&gt;
     &lt;span class=&quot;clear-rating&quot;&gt;&lt;/span&gt;
     &lt;button id=&quot;raterreset-button&quot; class=&quot;btn btn-light btn-sm ms-2&quot; onclick="raterJs.handlers.reset('raterreset')"&gt;Reset&lt;/button&gt;
 &lt;/div&gt;</code></pre>
@@ -125,7 +125,7 @@
                     </div>
 
                     <div class="code-view">
-                        <pre><code class="language-markup">&lt;div plugin='{"SimpleBar": ["$this", {}]}' style=&quot;max-height: 220px;&quot;&gt;
+                        <pre><code class="language-markup">&lt;div plugin='{"$SimpleBar": ["$this", {}]}' style=&quot;max-height: 220px;&quot;&gt;
     ...
 &lt;/div&gt;</code></pre>
                     </div>

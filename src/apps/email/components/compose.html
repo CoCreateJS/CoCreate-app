@@ -21,8 +21,8 @@
 					<input
 						type="text"
 						class="form-control email-compose-input"
-						plugin="Choices"
-						data-Choices='["$this", {"limit":15, "removeItem":true}]'
+						plugin='{"$Choices":["$this",{"limit":15,"removeItem":true}]}'
+
 						value="support@themesbrand.com"
 						placeholder="To" />
 					<div class="position-absolute top-0 end-0">
@@ -54,8 +54,8 @@
 						<input
 							type="text"
 							class="form-control"
-							plugin="Choices"
-							data-Choices='["$this", {"limit":15, "removeItem":true}]'
+							plugin='{"$Choices":["$this",{"limit":15,"removeItem":true}]}'
+
 							placeholder="Cc recipients" />
 					</div>
 				</div>
@@ -65,8 +65,8 @@
 						<input
 							type="text"
 							class="form-control"
-							plugin="Choices"
-							data-Choices='["$this", {"limit":15, "removeItem":true}]'
+							plugin='{"$Choices":["$this",{"limit":15,"removeItem":true}]}'
+
 							placeholder="Bcc recipients" />
 					</div>
 				</div>
@@ -80,8 +80,7 @@
 				<div class="ck-editor-reverse">
 					<div
 						id="email-editor"
-						plugin="ClassicEditor"
-						data-ClassicEditor-$create="$this"></div>
+						plugin='{"$ClassicEditor.create":["$this"]}'></div>
 				</div>
 			</div>
 		</div>

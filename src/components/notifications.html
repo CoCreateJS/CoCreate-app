@@ -27,7 +27,7 @@
 					role="tab"
 					aria-selected="true"
 					aria-controls="all-noti-tab">
-					All 
+					All
 					<!-- <span>(4)</span> -->
 				</a>
 			</li>
@@ -63,8 +63,8 @@
 		role="tabpanel"
 		aria-labelledby="tab-all"
 		tabindex="0">
-		<div plugin='{"SimpleBar": ["$this", {}]}' style="max-height: 300px" class="pe-2">
-			<div 
+		<div plugin='{"$SimpleBar": ["$this", {}]}' style="max-height: 300px" class="pe-2">
+			<div
 				array="notifications"
 				object
 				render-query="[template]"
@@ -124,8 +124,8 @@
 		role="tabpanel"
 		aria-labelledby="tab-messages"
 		tabindex="0">
-		<div plugin='{"SimpleBar": ["$this", {}]}' style="max-height: 300px" class="pe-2">
-			<div 
+		<div plugin='{"$SimpleBar": ["$this", {}]}' style="max-height: 300px" class="pe-2">
+			<div
 				array="notifications"
 				object
 				filter-query-key="type"

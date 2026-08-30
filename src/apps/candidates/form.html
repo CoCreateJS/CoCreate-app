@@ -9,7 +9,7 @@
 		input-query=".details-view-btn[]"
 		input.state.src="/apps/candidates/details.html"
 		src="components/offcanvas-header.html"></div>
-	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
 		<div class="card-body d-flex flex-wrap gap-4">
 			<div class="flex-grow-1" style="flex-basis: 400px">
 				<div class="card">
@@ -100,7 +100,7 @@
 								key="tags"
 								class="form-select"
 								multiple
-								plugin="choices"
+								plugin='{"$Choices":["$this",{}]}'
 								aria-label="Tags"></select>
 						</label>
 					</div>

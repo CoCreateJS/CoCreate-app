@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" plugin='{"$Prism.highlightAllUnder":["$this"]}'>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="card" show="preview">
@@ -292,7 +292,7 @@
 
 					<div class="code-view">
 						<pre class="language-markup" style="height: 275px">
-<code>&lt;!-- Default Toast --&gt; 
+<code>&lt;!-- Default Toast --&gt;
 &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
     data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot;&gt;
     &lt;div class=&quot;toast-header&quot;&gt;
@@ -308,7 +308,7 @@
     &lt;/div&gt;
 &lt;/div&gt;</code>
 
-<code>&lt;!-- Translucent Toast --&gt; 
+<code>&lt;!-- Translucent Toast --&gt;
 &lt;div class=&quot;p-3 bg-light&quot;&gt;
     &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
         data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot;&gt;
@@ -326,7 +326,7 @@
     &lt;/div&gt;
 &lt;/div&gt;</code>
 
-<code>&lt;!-- Stacking Toast --&gt; 
+<code>&lt;!-- Stacking Toast --&gt;
 &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
     data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot;&gt;
     &lt;div class=&quot;toast-header&quot;&gt;
@@ -342,7 +342,7 @@
     &lt;/div&gt;
 &lt;/div&gt;</code>
 
-<code>&lt;!-- Placement Toast --&gt; 
+<code>&lt;!-- Placement Toast --&gt;
 &lt;div class=&quot;bg-light&quot; aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot;
     style=&quot;position: relative; min-height: 200px;&quot;&gt;
     &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
@@ -802,7 +802,7 @@
 
 				<div class="card-body">
 					<p class="text-muted">
-						You can use <code>plugin="Toastify"</code> with
+						You can use <code>plugin='{"$Toastify":[{...}]}'</code> with
 						<code>data-toastify</code> (as a JSON object for all
 						options), or use individual
 						<code>data-toastify-*</code> attributes to define each
@@ -812,21 +812,21 @@
 						<div class="hstack flex-wrap gap-2">
 							<button
 								type="button"
-								plugin="Toastify"
-								data-toastify='{"text":"Welcome Back! This is a Toast Notification","gravity":"top","position":"right","className":"bg-primary","duration":3000,"close":true}'
+								plugin='{"$Toastify":[{"text":"Welcome Back! This is a Toast Notification","gravity":"top","position":"right","className":"bg-primary","duration":3000,"close":true}]}'
+
 								class="btn btn-light w-xs">
 								JSON Options
 							</button>
 							<button
 								type="button"
-								plugin="Toastify"
+								plugin='{"$Toastify":[{"text":"Welcome Back! This is a Toast Notification","gravity":"top","position":"right","className":"bg-primary","duration":3000,"close":true}]}'
 								data-toastify-text="Welcome Back! This is a Toast Notification"
 								data-toastify-gravity="top"
 								data-toastify-position="right"
 								data-toastify-className="bg-primary"
 								data-toastify-duration="3000"
 								data-toastify-close="$true"
-																
+
 								class="btn btn-light w-xs">
 								Individual Options
 							</button>
@@ -836,78 +836,78 @@
 							<div class="hstack flex-wrap gap-2">
 								<button
 									type="button"
-									plugin="Toastify"
+									plugin='{"$Toastify":[{"text":"Welcome Back ! This is a Toast Notification","gravity":"top","position":"left","duration":3000,"close":true}]}'
 									data-toastify-text="Welcome Back ! This is a Toast Notification"
 									data-toastify-gravity="top"
 									data-toastify-position="left"
 									data-toastify-duration="3000"
 									data-toastify-close="$true"
-																
+
 
 									class="btn btn-light w-xs">
 									Top Left
 								</button>
 								<button
 									type="button"
-									plugin="Toastify"
+									plugin='{"$Toastify":[{"text":"Welcome Back ! This is a Toast Notification","gravity":"top","position":"center","duration":3000,"close":true}]}'
 									data-toastify-text="Welcome Back ! This is a Toast Notification"
 									data-toastify-gravity="top"
 									data-toastify-position="center"
 									data-toastify-duration="3000"
 									data-toastify-close="$true"
-																
+
 
 									class="btn btn-light w-xs">
 									Top Center
 								</button>
 								<button
 									type="button"
-									plugin="Toastify"
+									plugin='{"$Toastify":[{"text":"Welcome Back ! This is a Toast Notification","gravity":"top","position":"right","duration":3000,"close":true}]}'
 									data-toastify-text="Welcome Back ! This is a Toast Notification"
 									data-toastify-gravity="top"
 									data-toastify-position="right"
 									data-toastify-duration="3000"
 									data-toastify-close="$true"
-																
+
 
 									class="btn btn-light w-xs">
 									Top Right
 								</button>
 								<button
 									type="button"
-									plugin="Toastify"
+									plugin='{"$Toastify":[{"text":"Welcome Back ! This is a Toast Notification","gravity":"bottom","position":"left","duration":3000,"close":true}]}'
 									data-toastify-text="Welcome Back ! This is a Toast Notification"
 									data-toastify-gravity="bottom"
 									data-toastify-position="left"
 									data-toastify-duration="3000"
 									data-toastify-close="$true"
-																
+
 
 									class="btn btn-light w-xs">
 									Bottom Left
 								</button>
 								<button
 									type="button"
-									plugin="Toastify"
+									plugin='{"$Toastify":[{"text":"Welcome Back ! This is a Toast Notification","gravity":"bottom","position":"center","duration":3000,"close":true}]}'
 									data-toastify-text="Welcome Back ! This is a Toast Notification"
 									data-toastify-gravity="bottom"
 									data-toastify-position="center"
 									data-toastify-duration="3000"
 									data-toastify-close="$true"
-																
+
 
 									class="btn btn-light w-xs">
 									Bottom Center
 								</button>
 								<button
 									type="button"
-									plugin="Toastify"
+									plugin='{"$Toastify":[{"text":"Welcome Back ! This is a Toast Notification","gravity":"bottom","position":"right","duration":3000,"close":true}]}'
 									data-toastify-text="Welcome Back ! This is a Toast Notification"
 									data-toastify-gravity="bottom"
 									data-toastify-position="right"
 									data-toastify-duration="3000"
 									data-toastify-close="$true"
-																
+
 
 									class="btn btn-light w-xs">
 									Bottom Right
@@ -923,14 +923,14 @@
 										class="d-flex align-items-center flex-wrap gap-2">
 										<button
 											type="button"
-											plugin="Toastify"
+											plugin='{"$Toastify":[{"text":"Welcome Back ! This is a Toast Notification","gravity":"top","position":"right","duration":3000,"close":true}]}'
 											data-toastify-text="Welcome Back ! This is a Toast Notification"
 											data-toastify-gravity="top"
 											data-toastify-position="right"
 											data-toastify-duration="3000"
 											data-toastify-offset
 											data-toastify-close="$true"
-																
+
 
 											class="btn btn-light w-xs">
 											Click Me
@@ -948,12 +948,12 @@
 										class="d-flex align-items-center flex-wrap gap-2">
 										<button
 											type="button"
-											plugin="Toastify"
+											plugin='{"$Toastify":[{"text":"Welcome Back ! This is a Toast Notification","position":"right","duration":3000,"close":true}]}'
 											data-toastify-text="Welcome Back ! This is a Toast Notification"
 											data-toastify-position="right"
 											data-toastify-duration="3000"
 											data-toastify-close="$true"
-																
+
 
 											class="btn btn-light w-xs">
 											Click Me
@@ -969,7 +969,7 @@
 										class="d-flex align-items-center flex-wrap gap-2">
 										<button
 											type="button"
-											plugin="Toastify"
+											plugin='{"$Toastify":[{"text":"Toast Duration 5s","gravity":"top","position":"right","duration":5000}]}'
 											data-toastify-text="Toast Duration 5s"
 											data-toastify-gravity="top"
 											data-toastify-position="right"
@@ -987,10 +987,10 @@
 					<div class="code-view">
 						<pre class="language-markup" style="height: 275px">
 <code>&lt;!-- Toastify with JSON options --&gt;
-&lt;button type="button" plugin="Toastify" data-toastify='{"text":"Welcome Back! This is a Toast Notification","gravity":"top","position":"right","className":"bg-primary","duration":3000,"close":true}' class="btn btn-light w-xs"&gt;JSON Options&lt;/button&gt;
+&lt;button type="button" plugin='{"$Toastify":[{"text":"Welcome Back! This is a Toast Notification","gravity":"top","position":"right","className":"bg-primary","duration":3000,"close":true}]}' class="btn btn-light w-xs"&gt;JSON Options&lt;/button&gt;
 
 &lt;!-- Toastify with individual options --&gt;
-&lt;button type="button" plugin="Toastify" data-toastify-text="Welcome Back! This is a Toast Notification" data-toastify-gravity="top" data-toastify-position="right" data-toastify-className="bg-primary" data-toastify-duration="3000" data-toastify-close="$true" 								 class="btn btn-light w-xs"&gt;Individual Options&lt;/button&gt;
+&lt;button type="button" plugin='{"$Toastify":[{"text":"Welcome Back! This is a Toast Notification","gravity":"top","position":"right","className":"bg-primary","duration":3000,"close":true}]}' 								 class="btn btn-light w-xs"&gt;Individual Options&lt;/button&gt;
 	<!-- end row -->
 
 					</div>
@@ -1006,8 +1006,6 @@
 
 <!-- container-fluid -->
 
-<!-- prismjs plugin -->
-<script src="/assets/libs/prismjs/prism.js"></script>
 
 <!-- notifications init -->
 <script>

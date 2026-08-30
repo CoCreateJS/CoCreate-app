@@ -3,6 +3,7 @@
 	--ai-sidebar-color: var(--coc-white);
 	--ai-sidebar-muted: rgba(var(--coc-white-rgb), 0.6);
 	--ai-sidebar-soft: rgba(var(--coc-white-rgb), 0.08);
+	--ai-sidebar-width: 278px;
 	--ai-accent: var(--coc-primary);
 	--ai-accent-rgb: var(--coc-primary-rgb);
 	display: flex;
@@ -22,7 +23,10 @@
 
 .ai-sidebar {
 	display: flex;
-	flex: 0 0 278px;
+	flex: 0 0 var(--ai-sidebar-width);
+	width: var(--ai-sidebar-width);
+	min-width: var(--ai-sidebar-width);
+	max-width: var(--ai-sidebar-width);
 	flex-direction: column;
 	gap: 8px;
 	padding: 20px 14px;
@@ -106,12 +110,19 @@
 
 .ai-thread-list {
 	display: flex;
+	min-width: 0;
 	flex-direction: column;
 	gap: 4px;
+	overflow-x: hidden;
 	overflow-y: auto;
 }
 
 .ai-thread {
+	display: flex;
+	width: 100%;
+	min-width: 0;
+	flex-direction: column;
+	gap: 2px;
 	padding: 10px 11px;
 	border: 0;
 	border-radius: var(--coc-border-radius);
@@ -124,6 +135,21 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	cursor: pointer;
+}
+
+.ai-thread span,
+.ai-thread small {
+	display: block;
+	max-width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ai-thread small {
+	color: var(--ai-sidebar-muted);
+	font-size: var(--coc-font-10);
+	text-transform: none;
 }
 
 .ai-thread:hover,
@@ -346,6 +372,9 @@
 
 	.ai-sidebar {
 		flex-basis: 72px;
+		width: 72px;
+		min-width: 72px;
+		max-width: 72px;
 		padding-inline: 10px;
 	}
 

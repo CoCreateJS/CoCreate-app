@@ -9,7 +9,7 @@
 		input-query=".details-view-btn[]"
 		input.state.src="/apps/payments/details.html"
 		src="components/offcanvas-header.html"></div>
-	    <div class="form-container"  plugin='{"SimpleBar": ["$this", {}]}'>
+	    <div class="form-container"  plugin='{"$SimpleBar": ["$this", {}]}'>
 			<div class="card-body d-flex flex-wrap gap-4">
 				<input type="hidden" id="id-field" key="_id" aria-label="Hidden ID field" />
 
@@ -42,7 +42,7 @@
 									id="customername-field"
 									class="form-control"
 									placeholder="Enter name"
-									
+
 									key="customer_name"
 									aria-label="Customer Name" />
 							</div>
@@ -56,7 +56,7 @@
 									data-trigger
 									name="productname-field"
 									id="productname-field"
-									
+
 									key="product_name"
 									aria-label="Product Name">
 									<option value="">Product</option>
@@ -107,7 +107,7 @@
 									id="date-field"
 									class="form-control"
 									date-picker="flatpickr"
-									
+
 									data-date-format="d M, Y"
 									data-enable-time
 									placeholder="Select date"
@@ -125,7 +125,7 @@
 										id="amount-field"
 										class="form-control"
 										placeholder="Total amount"
-										
+
 										key="amount"
 										aria-label="Amount" />
 								</div>
@@ -139,7 +139,7 @@
 										class="form-control"
 										data-trigger
 										name="payment-method"
-										
+
 										id="payment-field"
 										key="payment_method"
 										aria-label="Payment Method">
@@ -162,7 +162,7 @@
 									class="form-control"
 									data-trigger
 									name="payment-status"
-									
+
 									id="payment-status"
 									key="status"
 									aria-label="Payment Status">

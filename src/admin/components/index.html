@@ -68,7 +68,7 @@
             position: relative;
             padding: 0.25rem 1rem 0 1rem;
             border: none;
-    
+
         }
         /* Show submenu only when .show class added (for JS toggling) */
         .dropdown-submenu.show > .dropdown-menu {
@@ -152,8 +152,8 @@
                 aria-close-on="anywhere">
                 <div
                     class="max-height:425px d-flex flex-column gap-2"
-                    plugin="SimpleBar"
-                    simplebar='["$this", {}]'>
+                    plugin='{"$SimpleBar":["$this",{}]}'
+                   >
 
                     <div class="d-flex gap-3">
                         <div class="d-flex flex-column gap-2 width:160px">
@@ -547,8 +547,8 @@
                 aria-close-on="anywhere">
                 <div
                     class="max-height:425px"
-                    plugin="SimpleBar"
-                    simplebar='["$this", {}]'>
+                    plugin='{"$SimpleBar":["$this",{}]}'
+                   >
                 <li>
                     <a
                         class="dropdown-item"
@@ -747,7 +747,7 @@
                 aria-labelledby="uiDropdown"
                 aria-close-on="anywhere"
                 aria-hidden="true">
-                <div class="max-height:425px" plugin='{"SimpleBar": ["$this", {}]}'>
+                <div class="max-height:425px" plugin='{"$SimpleBar": ["$this", {}]}'>
                     <div class=" d-flex flex-wrap ">
                         <div class="flex-grow-1 width:140px">
                             <li>
@@ -1377,7 +1377,7 @@
                                         Swiper</a
                                 >
                             </li>
-                
+
                             <li class="dropdown-submenu">
                                 <a
                                     class="dropdown-item dropdown-toggle"

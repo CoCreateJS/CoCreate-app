@@ -8,8 +8,7 @@
 			<div
 				class="chat-conversation p-3 p-lg-4"
 				id="chat-conversation"
-				plugin="SimpleBar"
-				simplebar='["$this", {}]'>
+				plugin='{"$SimpleBar": ["$this", {}]}'>
 				<div></div>
 				<ul
 					class="list-unstyled chat-conversation-list"
@@ -226,8 +225,8 @@
 							class="form-control chat-input bg-light border-light"
 							id="chat-input"
 							key="content"
-							plugin="FgEmojiPicker"
-							fgemojipicker='{"trigger":[".emoji-btn"],"removeOnSelection":false,"closeButton":true,"position":["top","right"],"preFetch":true,"dir":"https://cdn.jsdelivr.net/npm/fg-emoji-picker/fgEmojiPicker.js","insertInto":"$this"}'
+							plugin='{"$FgEmojiPicker":[{"trigger":[".emoji-btn"],"removeOnSelection":false,"closeButton":true,"position":["top","right"],"preFetch":true,"dir":"https://cdn.jsdelivr.net/npm/fg-emoji-picker/fgEmojiPicker.js","insertInto":"$this"}]}'
+
 							placeholder="Message..."
 							autocomplete="off"
 							required

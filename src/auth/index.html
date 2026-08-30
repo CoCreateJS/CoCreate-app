@@ -15,10 +15,10 @@
 	parse="true">
 	<head>
 		<meta charset="utf-8" />
-		<title>Sign In · Geneomes</title>
+		<title>Sign In · CoCreate</title>
 		<meta
 			name="description"
-			content="Secure sign in / sign up for Geneomes — access your dashboard and projects." />
+			content="Secure sign in / sign up for CoCreate — access your dashboard and projects." />
 		<meta name="robots" content="noindex, nofollow" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,13 +65,13 @@
 
 	<body id="layout-wrapper">
 		<a href="/account/" session="true" state-id="authRedirect" state-overwrite hidden></a>
-		
+
 		<!-- auth page bg -->
 		<div
 			class="auth-one-bg-position"
 			id="auth-particles"
-			plugin="particlesJS"
-			particlesJS='[
+			plugin='{
+			"$particlesJS": [
 			"auth-particles",
 			{
 				"particles": {
@@ -135,7 +135,7 @@
 				"background_size": "cover"
 				}
 			}
-		]'>
+		]}'>
 			<div class="bg-overlay"></div>
 
 			<div class="shape">
@@ -180,10 +180,10 @@
 		<!-- end auth page content -->
 		<p
 			class="position-fixed w-100 mb-3 mt-3 text-muted mx-auto text-center bottom-0 z-index:1">
-            <input 
+            <input
 				type="date" value-type="getYear" onload.value="$value" onload-query="$next" now hidden>
             © <span>2026</span>
-            Geneomes
+            CoCreate
 		</p>
 
 		<!-- Preloader Start -->

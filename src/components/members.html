@@ -28,7 +28,7 @@
 					key="members"
 					render-query="[template='member-avatar-template']">
 					<div
-						
+
 						template="member-avatar-template"
 						class="avatar-group-item"
 						data-bs-toggle="tooltip"
@@ -49,7 +49,7 @@
 									array="contacts"
 									object="{{members}}"
 									key="avatar[0].src"
-									width="100%" 
+									width="100%"
 									height="100%"
 									onerror="this.onerror=null; this.src='../assets/images/transparent.png';" />
 							</div>
@@ -68,16 +68,16 @@
 
 			<div
 				class="simplebar-scrollable-y"
-				plugin='{"SimpleBar": ["$this", {}]}'
+				plugin='{"$SimpleBar": ["$this", {}]}'
 				style="max-height: 225px">
-				
-				<div 
+
+				<div
 					id="members-list"
-					class="vstack gap-3" 
-					array="contacts" 
-					object 
-					filter-sort-key="first_name" 
-					filter-sort-direction="asc"  
+					class="vstack gap-3"
+					array="contacts"
+					object
+					filter-sort-key="first_name"
+					filter-sort-direction="asc"
 					filter-limit
 					render-query="div[template]">
 					<div class="d-flex align-items-center" template>
@@ -89,12 +89,12 @@
 									<span class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem">{{object.last_name}}</span>
 									<img
 										class="position-absolute object-fit-cover"
-										src="/assets/images/transparent.png"								
+										src="/assets/images/transparent.png"
 										array="contacts"
 										object="{{object._id}}"
 										key="avatar[0].src"
-										alt="Member Avatar" 
-										width="100%" 
+										alt="Member Avatar"
+										width="100%"
 										height="100%"/>
 								</div>
 							</div>

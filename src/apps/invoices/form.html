@@ -10,7 +10,7 @@
 		input.state.src="/apps/invoices/details.html"
 		src="components/offcanvas-header.html"
 		key="invoiceHeader"></div>
-	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
 		<div class="max-width:1000px margin:auto">
 			<div
 				class="card-body border-bottom border-bottom-dashed p-4 display:flex flex-wrap:wrap gap:1rem">
@@ -138,7 +138,7 @@
 						Payment Status
 						<select
 							class="form-control bg-light border-0"
-							plugin="choices"
+							plugin='{"$Choices":["$this",{}]}'
 							data-choices-search-false
 							id="choices-payment-status"
 							aria-labelledby="choices-payment-status"
@@ -281,7 +281,7 @@
 										Rate
 										<select
 											class="form-select border-0 bg-light"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-search-false
 											id="choices-payment-currency"
 											onchange="otherPayment()"
@@ -602,7 +602,7 @@
 							<div class="input-light">
 								<select
 									class="form-control bg-light border-0"
-									plugin="choices"
+									plugin='{"$Choices":["$this",{}]}'
 									data-choices-search-false
 									data-choices-removeItem
 									id="choices-payment-type"

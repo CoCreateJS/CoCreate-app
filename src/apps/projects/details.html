@@ -9,7 +9,7 @@
 		input-query=".form-view-btn[]"
 		input.state.src="/apps/projects/form.html"
 		src="components/offcanvas-header.html"></div>
-	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
 		<div class="card-body d-flex flex-wrap gap-4">
 			<div class="bg-warning-subtle flex-grow-1 height:250px">
 				<div class="card-body pb-0 px-4">
@@ -493,8 +493,8 @@
 								</div>
 								<div class="card-body">
 									<div
-										plugin="SimpleBar"
-										simplebar='["$this", {}]'
+										plugin='{"$SimpleBar":["$this",{}]}'
+
 										style="height: 235px"
 										class="mx-n3 px-3">
 										<div class="vstack gap-3">

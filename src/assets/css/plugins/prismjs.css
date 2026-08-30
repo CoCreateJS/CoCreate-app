@@ -1,13 +1,109 @@
-/* CoCreate overrides for Prism's externally loaded default theme. */
+/* CoCreate theme-aware overrides for Prism's externally loaded theme. */
+:root {
+	--coc-prism-bg: var(--coc-tertiary-bg);
+	--coc-prism-color: #495057;
+	--coc-prism-comment: #6c757d;
+	--coc-prism-punctuation: #5c6370;
+	--coc-prism-property: #d63384;
+	--coc-prism-string: #198754;
+	--coc-prism-operator: #b45309;
+	--coc-prism-keyword: #0d6efd;
+	--coc-prism-function: #6f42c1;
+	--coc-prism-regex: #dc6b00;
+	--coc-prism-selection: rgba(var(--coc-primary-rgb), 0.2);
+}
+
+[data-bs-theme="dark"] {
+	--coc-prism-bg: var(--coc-tertiary-bg);
+	--coc-prism-color: #ced4da;
+	--coc-prism-comment: #878a99;
+	--coc-prism-punctuation: #adb5bd;
+	--coc-prism-property: #ff7ab2;
+	--coc-prism-string: #7ee787;
+	--coc-prism-operator: #e5c07b;
+	--coc-prism-keyword: #79c0ff;
+	--coc-prism-function: #d2a8ff;
+	--coc-prism-regex: #ffa657;
+	--coc-prism-selection: rgba(var(--coc-primary-rgb), 0.35);
+}
+
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #eff2f7;
+	background: var(--coc-prism-bg) !important;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: #878a99;
+	color: var(--coc-prism-color);
 	text-shadow: none;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection,
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+	background: var(--coc-prism-selection);
+	text-shadow: none;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: var(--coc-prism-comment);
+}
+
+.token.punctuation {
+	color: var(--coc-prism-punctuation);
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: var(--coc-prism-property);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: var(--coc-prism-string);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: var(--coc-prism-operator);
+	background: transparent;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: var(--coc-prism-keyword);
+}
+
+.token.function,
+.token.class-name {
+	color: var(--coc-prism-function);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: var(--coc-prism-regex);
 }
 
 .language-markup::-webkit-scrollbar {
@@ -27,6 +123,9 @@ pre[class*="language-"] {
 .language-markup::-webkit-scrollbar-track {
 	border-radius: 10px;
 	background-color: var(--coc-light);
+}
+.language-markup::-webkit-scrollbar-corner {
+	background-color: var(--coc-prism-bg);
 }
 
 #scroll-top {

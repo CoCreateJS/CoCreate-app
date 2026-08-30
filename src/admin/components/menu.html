@@ -92,7 +92,7 @@
 		src="/components/user-dropdown.html"></div>
 </div>
 <div
-	plugin='{"SimpleBar": ["$this", {}]}'
+	plugin='{"$SimpleBar": ["$this", {}]}'
 	class="h-100">
 	<div
 		class="container-fluid"
@@ -102,15 +102,19 @@
 		<ul
 			class="navbar-nav"
 			id="navbar-nav">
+			<!-- Workspace Section -->
+			<li class="menu-title">
+				<span>Workspace</span>
+			</li>
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="chat-list-btn"
+					id="ai-chat-list-btn"
 					class="nav-link menu-link"
 					state-to="adminView"
 					state.src="/apps/ai/index.html">
 					<i class="ri-robot-2-line"></i>
-					<span>AI</span>
+					<span>AI Chat</span>
 				</a>
 			</li>
 
@@ -149,49 +153,6 @@
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="apps-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i class="ri-apps-2-line"></i>
-					<span>Apps</span>
-					<div
-						state-to="app"
-						state.object="68e736cc0615d8268cc50fd6"
-						state.input.array="apps"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.array="apps"
-						state.filter-query-value=""></div>
-				</a>
-				<a
-					id="apps-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/apps/form.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Add new app">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="apps"></div>
-					<i class="ri-add-line"></i>
-				</a>
-			</li>
-
-			<!-- Workspace Section -->
-			<li class="menu-title">
-				<span>Workspace</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
 					id="email-list-btn"
 					class="nav-link menu-link"
 					state-to="adminView"
@@ -224,17 +185,6 @@
 						class="sidebar-notification fs-10 badge rounded-pill bg-danger ms-2"
 						>5</span
 					>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="ai-chat-btn"
-					class="nav-link menu-link"
-					state-to="adminView"
-					state.src="/apps/ai/index.html">
-					<i class="ri-robot-2-line"></i>
-					<span>AI Chat</span>
 				</a>
 			</li>
 			<li
@@ -1016,6 +966,49 @@
 						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="contacts"></div>
+					<i class="ri-add-line"></i>
+				</a>
+			</li>
+
+			<!-- Settings Section -->
+			<li class="menu-title">
+				<span>Settings</span>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="apps-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-settings-3-line"></i>
+					<span>App Management</span>
+					<div
+						state-to="app"
+						state.object="68e736cc0615d8268cc50fd6"
+						state.input.array="apps"></div>
+					<div
+						state-to="table"
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="apps"
+						state.filter-query-value=""></div>
+				</a>
+				<a
+					id="apps-create-btn"
+					state-to="offcanvas-app-view"
+					state.src="/apps/apps/form.html"
+					aria-controls="offcanvas-app"
+					aria-open
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					class="nav-link nav-action"
+					title="Add new app">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="apps"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>

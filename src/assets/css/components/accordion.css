@@ -2,6 +2,11 @@
 .accordion .accordion-button {
 	font-weight: var(--coc-font-weight-medium);
 }
+.accordion .accordion-button[aria-expanded="false"]::after {
+	background-image: var(--coc-accordion-btn-icon);
+	-webkit-transform: none;
+	transform: none;
+}
 .accordion .accordion-button:not([aria-expanded="false"])::after {
 	background-image: var(--coc-accordion-btn-active-icon);
 	-webkit-transform: var(--coc-accordion-btn-icon-transform);

@@ -4,7 +4,7 @@
 		input-query=".details-view-btn[]"
 		input.state.src="/apps/projects/details.html"
 		src="components/offcanvas-header.html"></div>
-	<div class="form-container" plugin='{"SimpleBar": ["$this", {}]}'>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
 		<div class="d-flex flex-wrap gap-3">
 			<section class="flex-grow-1 width:500px max-width:800px">
 				<div class="card-body">
@@ -31,8 +31,7 @@
 					<label class="form-label" for="project-description-editor">
 						Project Description
 						<div
-							plugin="ckeditor"
-							data-ckeditor="$param(this)"
+							plugin='{"$ClassicEditor.create":["$this"]}'
 							key="description"
 							id="project-description-editor"
 							aria-label="Project description editor">
@@ -66,7 +65,7 @@
 							Priority
 							<select
 								class="form-select"
-								plugin="choices"
+								plugin='{"$Choices":["$this",{}]}'
 								data-choices-search-false
 								id="choices-priority-input"
 								key="priority"
@@ -80,7 +79,7 @@
 							Status
 							<select
 								class="form-select"
-								plugin="choices"
+								plugin='{"$Choices":["$this",{}]}'
 								data-choices-search-false
 								id="choices-status-input"
 								key="status"
@@ -100,7 +99,7 @@
 								class="form-control"
 								id="datepicker-deadline-input"
 								placeholder="Enter due date"
-								plugin="flatpickr"
+								plugin='{"$flatpickr":["$this",{}]}'
 								key="deadline"
 								aria-label="Select project deadline" />
 						</label>
@@ -113,7 +112,7 @@
 					<div class="card-body">
 						<p class="text-muted">Add Attached files here.</p>
 						<div
-							plugin="dropzone"
+							plugin='{"$Dropzone":["$this",{}]}'
 							class="dropzone"
 							key="attachments"
 							aria-label="File attachment dropzone">
@@ -192,7 +191,7 @@
 							Status
 							<select
 								class="form-select"
-								plugin="choices"
+								plugin='{"$Choices":["$this",{}]}'
 								data-choices-search-false
 								id="choices-privacy-status-input"
 								aria-label="Select privacy status">
@@ -217,7 +216,7 @@
 							Categories
 							<select
 								class="form-select"
-								plugin="choices"
+								plugin='{"$Choices":["$this",{}]}'
 								data-choices-search-false
 								id="choices-categories-input"
 								aria-label="Select project categories">
@@ -232,7 +231,7 @@
 							<input
 								class="form-control"
 								id="choices-text-input"
-								plugin="choices"
+								plugin='{"$Choices":["$this",{}]}'
 								data-choices-limit=" Limit"
 								placeholder="Enter Skills"
 								type="text"
@@ -250,7 +249,7 @@
 							Team Lead
 							<select
 								class="form-select"
-								plugin="choices"
+								plugin='{"$Choices":["$this",{}]}'
 								data-choices-search-false
 								id="choices-lead-input"
 								aria-label="Select team lead">

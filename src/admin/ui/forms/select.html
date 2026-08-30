@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" plugin='{"$Prism.highlightAllUnder":["$this"]}'>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="card" show="preview">
@@ -325,7 +325,7 @@
 										</p>
 										<select
 											class="form-control"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											name="choices-single-default"
 											id="choices-single-default">
 											<option value="">
@@ -354,7 +354,7 @@
 										<p class="text-muted">
 											Set
 											<code
-												>plugin="choices"
+												>plugin='{"$Choices":["$this",{}]}'
 												data-choices-groups</code
 											>
 											attribute to set option group
@@ -362,7 +362,7 @@
 										<select
 											class="form-control"
 											id="choices-single-groups"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-groups
 											data-placeholder="Select City"
 											name="choices-single-groups">
@@ -452,7 +452,7 @@
 										<p class="text-muted">
 											Set
 											<code
-												>plugin="choices"
+												>plugin='{"$Choices":["$this",{}]}'
 												data-choices-search-false
 												data-choices-removeItem</code
 											>
@@ -461,7 +461,7 @@
 											class="form-control"
 											id="choices-single-no-search"
 											name="choices-single-no-search"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-search-false
 											data-choices-removeItem>
 											<option value="Zero">Zero</option>
@@ -486,7 +486,7 @@
 										<p class="text-muted">
 											Set
 											<code
-												>plugin="choices"
+												>plugin='{"$Choices":["$this",{}]}'
 												data-choices-sorting-false</code
 											>
 											attribute.
@@ -495,7 +495,7 @@
 											class="form-control"
 											id="choices-single-no-sorting"
 											name="choices-single-no-sorting"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-sorting-false>
 											<option value="Madrid">
 												Madrid
@@ -574,7 +574,7 @@
 										<select
 											class="form-control"
 											id="choices-multiple-default"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											name="choices-multiple-default"
 											multiple>
 											<option value="Choice 1" selected>
@@ -603,7 +603,7 @@
 										<p class="text-muted">
 											Set
 											<code
-												>plugin="choices"
+												>plugin='{"$Choices":["$this",{}]}'
 												data-choices-removeItem
 												multiple</code
 											>
@@ -612,7 +612,7 @@
 										<select
 											class="form-control"
 											id="choices-multiple-remove-button"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-removeItem
 											name="choices-multiple-remove-button"
 											multiple>
@@ -642,7 +642,7 @@
 										<p class="text-muted">
 											Set
 											<code
-												>plugin="choices"
+												>plugin='{"$Choices":["$this",{}]}'
 												data-choices-multiple-groups="true"
 												multiple</code
 											>
@@ -652,7 +652,7 @@
 											class="form-control"
 											id="choices-multiple-groups"
 											name="choices-multiple-groups"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-multiple-groups="true"
 											multiple>
 											<option value="">
@@ -749,7 +749,7 @@
 										<p class="text-muted">
 											Set
 											<code
-												>plugin="choices"
+												>plugin='{"$Choices":["$this",{}]}'
 												data-choices-limit="Required
 												Limit"
 												data-choices-removeItem</code
@@ -759,7 +759,7 @@
 										<input
 											class="form-control"
 											id="choices-text-remove-button"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-limit="3"
 											data-choices-removeItem
 											type="text"
@@ -779,7 +779,7 @@
 										<p class="text-muted">
 											Set
 											<code
-												>plugin="choices"
+												>plugin='{"$Choices":["$this",{}]}'
 												data-choices-text-unique-true</code
 											>
 											attribute.
@@ -787,7 +787,7 @@
 										<input
 											class="form-control"
 											id="choices-text-unique-values"
-											plugin="choices"
+											plugin='{"$Choices":["$this",{}]}'
 											data-choices-text-unique-true
 											type="text"
 											value="Project-A, Project-B" />
@@ -806,7 +806,7 @@
 								<p class="text-muted">
 									Set
 									<code
-										>plugin="choices"
+										>plugin='{"$Choices":["$this",{}]}'
 										data-choices-text-disabled-true</code
 									>
 									attribute.
@@ -814,7 +814,7 @@
 								<input
 									class="form-control"
 									id="choices-text-disabled"
-									plugin="choices"
+									plugin='{"$Choices":["$this",{}]}'
 									data-choices-text-disabled-true
 									type="text"
 									value="josh@joshuajohnson.co.uk, joe@bloggs.co.uk" />
@@ -833,5 +833,3 @@
 </div>
 <!-- container-fluid -->
 
-<!-- prismjs plugin -->
-<script src="/assets/libs/prismjs/prism.js"></script>

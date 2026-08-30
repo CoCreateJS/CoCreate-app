@@ -36,8 +36,8 @@
         aria-expanded="false"
         aria-label="Cart">
         <i class="mdi mdi-cart-outline fs-20"></i>
-        <span 
-            class="cart-invoice position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger display:none:empty" 
+        <span
+            class="cart-invoice position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger display:none:empty"
             array="invoices"
             key="items.$length"
             style="font-size:10px;"></span>
@@ -60,7 +60,7 @@
             </span>
         </div>
 
-        <div plugin="SimpleBar" simplebar='$parse(["$this", {}])' style="max-height: 420px;">
+        <div plugin='{"$SimpleBar":["$this",{}]}' style="max-height: 420px;">
             <div class="vstack gap-3">
                 <div
                     class="vstack gap-3 cart-invoice"
@@ -68,7 +68,7 @@
                     object
                     key="items"
                     render-query="[template]">
-                    <div 
+                    <div
                         class="border-bottom pb-3"
                         render-as="item"
                         template>
@@ -81,7 +81,7 @@
                                 alt="image"
                                 class="avatar-md rounded img-thumbnail material-shadow"
                                 onerror="this.onerror=null; this.src='/assets/svg/boxes.svg';" />
-                    
+
                             <div class="" >
                                 <a
                                     class="fw-medium text-decoration-none"
@@ -117,7 +117,7 @@
                                     id="quantity{{index}}"
                                     type="number"
                                     class="quantity align-center cart-invoice"
-                                    array="invoices" 
+                                    array="invoices"
                                     key="items[{{index}}].quantity"
                                     readonly
                                     min="0"
@@ -136,24 +136,24 @@
                                     value
                                 >+</button>
                             </div>
-                        
+
                             <input
                                 type="text"
                                 class="form-control bg-light border-0 lineAmounts width:100px cart-invoice"
-                                array="invoices" 
+                                array="invoices"
                                 key="items[{{index}}].amount"
                                 readonly
                                 placeholder="$0.00"
                                 aria-label="Item amount"
                                 calculate="$eval(Number($query($document #price{{index}}).value) * Number($query($document #quantity{{index}}).value))"/>
                         </div>
-                    </div>		
+                    </div>
                 </div>
 
                 <div class="border rounded-3 p-3">
                     <div class="d-flex justify-content-between small mb-2">
                         <span class="text-muted">Subtotal</span>
-                        <div>  
+                        <div>
                             <span class="cart-invoice" array="invoices" key="currency">$</span>
                             <span class="cart-invoice" array="invoices" key="subtotal">0</span>
                         </div>
