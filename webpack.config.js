@@ -12,6 +12,19 @@ import CoCreateConfig from "./CoCreate.config.js";
 import cocreateWebpack from "@cocreate/webpack";
 const { ModuleGenerator, FileUploader, UnicodeLoader } = cocreateWebpack;
 
+const workspaceAliases = Object.values(CoCreateConfig.modules || {}).reduce(
+    (aliases, moduleConfig) => {
+        if (moduleConfig.import && moduleConfig.path) {
+            aliases[`${moduleConfig.import}$`] = path.resolve(
+                __dirname,
+                moduleConfig.path
+            );
+        }
+        return aliases;
+    },
+    {}
+);
+
 export default async (env, argv) => {
     const isProduction = argv.mode === "production";
     
@@ -40,8 +53,10 @@ export default async (env, argv) => {
         resolve: {
             // Prioritize browser fields/conditions when resolving package exports
             conditionNames: ["browser", "import", "require"],
-            
+
             alias: {
+                // Resolve every configured CoCreate dependency to one workspace module
+                ...workspaceAliases,
                 // Force @cocreate/utils to resolve directly to the browser entry point
                 "@cocreate/utils$": path.resolve(__dirname, "node_modules/@cocreate/utils/src/browser.js")
             },
