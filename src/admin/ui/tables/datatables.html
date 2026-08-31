@@ -1,12 +1,16 @@
-<div class="container-fluid">
-	<div class="alert alert-danger" role="alert">
+<div>
+	<div
+		class="alert alert-danger"
+		role="alert">
 		This is <strong>Datatable</strong> page in wihch we have used
 		<b>jQuery</b> with cnd link!
 	</div>
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Basic Datatables</h5>
 				</div>
@@ -17,7 +21,9 @@
 						style="width: 100%">
 						<thead>
 							<tr>
-								<th scope="col" style="width: 10px">
+								<th
+									scope="col"
+									style="width: 10px">
 									<div class="form-check">
 										<input
 											class="form-check-input fs-15"
@@ -1033,7 +1039,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Scroll - Vertical</h5>
 				</div>
@@ -1807,7 +1815,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Scroll - Horizontal</h5>
 				</div>
@@ -1818,7 +1828,9 @@
 						style="width: 100%">
 						<thead>
 							<tr>
-								<th scope="col" style="width: 10px">
+								<th
+									scope="col"
+									style="width: 10px">
 									<div class="form-check">
 										<input
 											class="form-check-input fs-15"
@@ -2834,7 +2846,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Alternative Pagination</h5>
 				</div>
@@ -3310,11 +3324,15 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header d-flex align-items-center">
 					<h5 class="card-title mb-0 flex-grow-1">Add Rows</h5>
 					<div>
-						<button id="addRow" class="btn btn-primary">
+						<button
+							id="addRow"
+							class="btn btn-primary">
 							Add New Row
 						</button>
 					</div>
@@ -3343,7 +3361,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Fixed Header Datatables</h5>
 				</div>
@@ -3354,7 +3374,9 @@
 						style="width: 100%">
 						<thead>
 							<tr>
-								<th scope="col" style="width: 10px">
+								<th
+									scope="col"
+									style="width: 10px">
 									<div class="form-check">
 										<input
 											class="form-check-input fs-15"
@@ -4369,7 +4391,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Modal Data Datatables</h5>
 				</div>
@@ -5260,7 +5284,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Buttons Datatables</h5>
 				</div>
@@ -5509,7 +5535,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Ajax Datatables</h5>
 				</div>
@@ -5583,17 +5611,17 @@
 
 		new DataTable("#model-datatables", {
 			responsive: {
-			details: {
-				display: $.fn.dataTable.Responsive.display.modal({
-				header: function (row) {
-					var data = row.data();
-					return "Details for " + data[0] + " " + data[1];
+				details: {
+					display: $.fn.dataTable.Responsive.display.modal({
+						header: function (row) {
+							var data = row.data();
+							return "Details for " + data[0] + " " + data[1];
+						}
+					}),
+					renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+						tableClass: "table"
+					})
 				}
-				}),
-				renderer: $.fn.dataTable.Responsive.renderer.tableAll({
-				tableClass: "table"
-				})
-			}
 			}
 		});
 
@@ -5610,20 +5638,22 @@
 		var rowIndex = 1;
 
 		$("#addRow").on("click", function () {
-			table.row.add([
-			rowIndex + ".1",
-			rowIndex + ".2",
-			rowIndex + ".3",
-			rowIndex + ".4",
-			rowIndex + ".5",
-			rowIndex + ".6",
-			rowIndex + ".7",
-			rowIndex + ".8",
-			rowIndex + ".9",
-			rowIndex + ".10",
-			rowIndex + ".11",
-			rowIndex + ".12"
-			]).draw(false);
+			table.row
+				.add([
+					rowIndex + ".1",
+					rowIndex + ".2",
+					rowIndex + ".3",
+					rowIndex + ".4",
+					rowIndex + ".5",
+					rowIndex + ".6",
+					rowIndex + ".7",
+					rowIndex + ".8",
+					rowIndex + ".9",
+					rowIndex + ".10",
+					rowIndex + ".11",
+					rowIndex + ".12"
+				])
+				.draw(false);
 
 			rowIndex++;
 		});

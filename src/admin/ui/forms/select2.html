@@ -2,15 +2,19 @@
 	href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
 	rel="stylesheet" />
 
-<div class="container-fluid">
-	<div class="alert alert-danger" role="alert">
+<div>
+	<div
+		class="alert alert-danger"
+		role="alert">
 		This is <strong>Select2</strong> page in wihch we have used
 		<b>jQuery</b> with cdn link!
 	</div>
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Basic Select2</h5>
 				</div>
@@ -45,7 +49,9 @@
 								multiple="multiple">
 								<optgroup label="UK">
 									<option value="London">London</option>
-									<option value="Manchester" selected>
+									<option
+										value="Manchester"
+										selected>
 										Manchester
 									</option>
 									<option value="Liverpool">Liverpool</option>
@@ -56,7 +62,9 @@
 									<option value="Marseille">Marseille</option>
 								</optgroup>
 								<optgroup label="SP">
-									<option value="Madrid" selected>
+									<option
+										value="Madrid"
+										selected>
 										Madrid
 									</option>
 									<option value="Barcelona">Barcelona</option>
@@ -119,7 +127,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h5 class="card-title mb-0">Disabling a Select2 Control</h5>
 				</div>
@@ -131,7 +141,9 @@
 						true to get the same effect.
 					</p>
 					<div class="vstack gap-3">
-						<select class="js-example-disabled" name="state">
+						<select
+							class="js-example-disabled"
+							name="state">
 							<option value="AL">Alabama</option>
 							<option value="MA">Madrid</option>
 							<option value="TO">Toronto</option>
@@ -144,7 +156,9 @@
 							multiple="multiple">
 							<optgroup label="UK">
 								<option value="London">London</option>
-								<option value="Manchester" selected>
+								<option
+									value="Manchester"
+									selected>
 									Manchester
 								</option>
 								<option value="Liverpool">Liverpool</option>
@@ -155,7 +169,11 @@
 								<option value="Marseille">Marseille</option>
 							</optgroup>
 							<optgroup label="SP">
-								<option value="Madrid" selected>Madrid</option>
+								<option
+									value="Madrid"
+									selected>
+									Madrid
+								</option>
 								<option value="Barcelona">Barcelona</option>
 								<option value="Malaga">Malaga</option>
 							</optgroup>
@@ -197,59 +215,60 @@
 
 <script>
 	function formatState(e) {
-	return e.id
-		? $(
-				'<span><img src="assets/svg/flags/' +
-					e.element.value.toLowerCase() +
-					'.png" class="img-flag rounded" height="18" /> ' +
-					e.text +
-					"</span>"
-		  )
-		: e.text;
-}
-function formatState(e) {
-	var t;
-	return e.id
-		? ((t = $(
-				'<span><img class="img-flag rounded" height="18" /> <span></span></span>'
-		  ))
-				.find("span")
-				.text(e.text),
-		  t
-				.find("img")
-				.attr(
-					"src",
-					"assets/svg/flags/" +
+		return e.id
+			? $(
+					'<span><img src="assets/svg/flags/' +
 						e.element.value.toLowerCase() +
-						".png"
-				),
-		  t)
-		: e.text;
-}
-$(document).ready(function () {
-	$(".js-example-basic-single").select2(),
-		$(".js-example-basic-multiple").select2();
-	$(".js-example-data-array").select2({
-		data: [
-			{ id: 0, text: "enhancement" },
-			{ id: 1, text: "bug" },
-			{ id: 2, text: "duplicate" },
-			{ id: 3, text: "invalid" },
-			{ id: 4, text: "wontfix" }
-		]
-	});
-}),
-	$(".js-example-templating").select2({ templateResult: formatState }),
-	$(".select-flag-templating").select2({ templateSelection: formatState }),
-	$(".js-example-disabled").select2(),
-	$(".js-example-disabled-multi").select2(),
-	$(".js-programmatic-enable").on("click", function () {
-		$(".js-example-disabled").prop("disabled", !1),
-			$(".js-example-disabled-multi").prop("disabled", !1);
+						'.png" class="img-flag rounded" height="18" /> ' +
+						e.text +
+						"</span>"
+				)
+			: e.text;
+	}
+	function formatState(e) {
+		var t;
+		return e.id
+			? ((t = $(
+					'<span><img class="img-flag rounded" height="18" /> <span></span></span>'
+				))
+					.find("span")
+					.text(e.text),
+				t
+					.find("img")
+					.attr(
+						"src",
+						"assets/svg/flags/" +
+							e.element.value.toLowerCase() +
+							".png"
+					),
+				t)
+			: e.text;
+	}
+	($(document).ready(function () {
+		($(".js-example-basic-single").select2(),
+			$(".js-example-basic-multiple").select2());
+		$(".js-example-data-array").select2({
+			data: [
+				{ id: 0, text: "enhancement" },
+				{ id: 1, text: "bug" },
+				{ id: 2, text: "duplicate" },
+				{ id: 3, text: "invalid" },
+				{ id: 4, text: "wontfix" }
+			]
+		});
 	}),
-	$(".js-programmatic-disable").on("click", function () {
-		$(".js-example-disabled").prop("disabled", !0),
-			$(".js-example-disabled-multi").prop("disabled", !0);
-	});
-
+		$(".js-example-templating").select2({ templateResult: formatState }),
+		$(".select-flag-templating").select2({
+			templateSelection: formatState
+		}),
+		$(".js-example-disabled").select2(),
+		$(".js-example-disabled-multi").select2(),
+		$(".js-programmatic-enable").on("click", function () {
+			($(".js-example-disabled").prop("disabled", !1),
+				$(".js-example-disabled-multi").prop("disabled", !1));
+		}),
+		$(".js-programmatic-disable").on("click", function () {
+			($(".js-example-disabled").prop("disabled", !0),
+				$(".js-example-disabled-multi").prop("disabled", !0));
+		}));
 </script>

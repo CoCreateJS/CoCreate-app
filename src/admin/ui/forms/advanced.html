@@ -8,11 +8,12 @@
 	rel="stylesheet"
 	href="/assets/libs/@tarekraafat/autocomplete.js/css/autoComplete.css" />
 
-<div class="container-fluid">
-
+<div>
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Custom country select input</h4>
 				</div>
@@ -23,7 +24,9 @@
 								<label class="form-label"
 									>Simple select example</label
 								>
-								<div data-input-flag data-option-flag-name>
+								<div
+									data-input-flag
+									data-option-flag-name>
 									<input
 										type="text"
 										class="form-control rounded-end flag-input"
@@ -49,7 +52,9 @@
 								<label class="form-label"
 									>Select input flag with img & name</label
 								>
-								<div data-input-flag data-option-flag-img-name>
+								<div
+									data-input-flag
+									data-option-flag-img-name>
 									<input
 										type="text"
 										class="form-control rounded-end flag-input"
@@ -109,7 +114,9 @@
 									>Select input with buttons & Flag with
 									number</label
 								>
-								<div class="input-group" data-input-flag>
+								<div
+									class="input-group"
+									data-input-flag>
 									<button
 										class="btn btn-light border"
 										type="button"
@@ -129,7 +136,11 @@
 										class="form-control rounded-end flag-input"
 										value=""
 										placeholder="Enter number"
-										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+										oninput="
+											this.value = this.value
+												.replace(/[^0-9.]/g, '')
+												.replace(/(\..*?)\..*/g, '$1')
+										" />
 									<div class="dropdown-menu w-100">
 										<div
 											class="p-2 px-3 pt-1 searchlist-input">
@@ -170,7 +181,11 @@
 										class="form-control rounded-end flag-input"
 										value=""
 										placeholder="Enter number"
-										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+										oninput="
+											this.value = this.value
+												.replace(/[^0-9.]/g, '')
+												.replace(/(\..*?)\..*/g, '$1')
+										" />
 									<div class="dropdown-menu w-100">
 										<div
 											class="p-2 px-3 pt-1 searchlist-input">
@@ -197,7 +212,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Form Input Spin</h4>
 				</div>
@@ -455,7 +472,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Auto Complete</h4>
 				</div>
@@ -512,7 +531,9 @@
 
 	<div class="d-flex flex-wrap gap-4">
 		<div class="w-100">
-			<div class="card" show="preview">
+			<div
+				class="card"
+				show="preview">
 				<div class="card-header">
 					<h4 class="card-title mb-0">Multi Select</h4>
 				</div>
@@ -634,156 +655,272 @@
 
 <!-- init js -->
 <script>
-	var multiSelectBasic=document.getElementById("multiselect-basic"),multiSelectHeader=(multiSelectBasic&&multi(multiSelectBasic,{enable_search:!1}),document.getElementById("multiselect-header")),multiSelectOptGroup=(multiSelectHeader&&multi(multiSelectHeader,{non_selected_header:"Cars",selected_header:"Favorite Cars"}),document.getElementById("multiselect-optiongroup")),autoCompleteFruit=(multiSelectOptGroup&&multi(multiSelectOptGroup,{enable_search:!0}),new autoComplete({selector:"#autoCompleteFruit",placeHolder:"Search for Fruits...",data:{src:["Apple","Banana","Blueberry","Cherry","Coconut","Kiwi","Lemon","Lime","Mango","Orange"],cache:!0},resultsList:{element:function(e,t){var l;t.results.length||((l=document.createElement("div")).setAttribute("class","no_result"),l.innerHTML='<span>Found No Results for "'+t.query+'"</span>',e.prepend(l))},noResults:!0},resultItem:{highlight:!0},events:{input:{selection:function(e){e=e.detail.selection.value;autoCompleteFruit.input.value=e}}}})),autoCompleteCars=new autoComplete({selector:"#autoCompleteCars",placeHolder:"Search for Cars...",data:{src:["Chevrolet","Fiat","Ford","Honda","Hyundai","Hyundai","Kia","Mahindra","Maruti","Mitsubishi","MG","Nissan","Renault","Skoda","Tata","Toyato","Volkswagen"],cache:!0},resultsList:{element:function(e,t){var l;t.results.length||((l=document.createElement("div")).setAttribute("class","no_result"),l.innerHTML='<span>Found No Results for "'+t.query+'"</span>',e.prepend(l))},noResults:!0},resultItem:{highlight:!0},events:{input:{selection:function(e){e=e.detail.selection.value;autoCompleteCars.input.value=e}}}});
+	var multiSelectBasic = document.getElementById("multiselect-basic"),
+		multiSelectHeader =
+			(multiSelectBasic && multi(multiSelectBasic, { enable_search: !1 }),
+			document.getElementById("multiselect-header")),
+		multiSelectOptGroup =
+			(multiSelectHeader &&
+				multi(multiSelectHeader, {
+					non_selected_header: "Cars",
+					selected_header: "Favorite Cars"
+				}),
+			document.getElementById("multiselect-optiongroup")),
+		autoCompleteFruit =
+			(multiSelectOptGroup &&
+				multi(multiSelectOptGroup, { enable_search: !0 }),
+			new autoComplete({
+				selector: "#autoCompleteFruit",
+				placeHolder: "Search for Fruits...",
+				data: {
+					src: [
+						"Apple",
+						"Banana",
+						"Blueberry",
+						"Cherry",
+						"Coconut",
+						"Kiwi",
+						"Lemon",
+						"Lime",
+						"Mango",
+						"Orange"
+					],
+					cache: !0
+				},
+				resultsList: {
+					element: function (e, t) {
+						var l;
+						t.results.length ||
+							((l = document.createElement("div")).setAttribute(
+								"class",
+								"no_result"
+							),
+							(l.innerHTML =
+								'<span>Found No Results for "' +
+								t.query +
+								'"</span>'),
+							e.prepend(l));
+					},
+					noResults: !0
+				},
+				resultItem: { highlight: !0 },
+				events: {
+					input: {
+						selection: function (e) {
+							e = e.detail.selection.value;
+							autoCompleteFruit.input.value = e;
+						}
+					}
+				}
+			})),
+		autoCompleteCars = new autoComplete({
+			selector: "#autoCompleteCars",
+			placeHolder: "Search for Cars...",
+			data: {
+				src: [
+					"Chevrolet",
+					"Fiat",
+					"Ford",
+					"Honda",
+					"Hyundai",
+					"Hyundai",
+					"Kia",
+					"Mahindra",
+					"Maruti",
+					"Mitsubishi",
+					"MG",
+					"Nissan",
+					"Renault",
+					"Skoda",
+					"Tata",
+					"Toyato",
+					"Volkswagen"
+				],
+				cache: !0
+			},
+			resultsList: {
+				element: function (e, t) {
+					var l;
+					t.results.length ||
+						((l = document.createElement("div")).setAttribute(
+							"class",
+							"no_result"
+						),
+						(l.innerHTML =
+							'<span>Found No Results for "' +
+							t.query +
+							'"</span>'),
+						e.prepend(l));
+				},
+				noResults: !0
+			},
+			resultItem: { highlight: !0 },
+			events: {
+				input: {
+					selection: function (e) {
+						e = e.detail.selection.value;
+						autoCompleteCars.input.value = e;
+					}
+				}
+			}
+		});
 </script>
 <!-- input spin init -->
 <script src="/assets/js/form-input-spin.init.js"></script>
 <!-- input flag init -->
-<script>!(function () {
-	var e,
-		r,
-		t,
-		l = "";
-	function a(n) {
-		var e;
-		n.querySelector(".country-flagimg") &&
-			(e = n.querySelector(".country-flagimg").getAttribute("src")),
-			Array.from(n.querySelectorAll(".dropdown-menu li")).forEach(
-				function (r) {
-					var t = r
-						.querySelector(".options-flagimg")
-						.getAttribute("src");
-					r.addEventListener("click", function () {
-						var e = r.querySelector(
-							".countrylist-codeno"
-						).innerHTML;
-						n.querySelector("button") &&
-							(n
-								.querySelector("button img")
-								.setAttribute("src", t),
-							n.querySelector("button span")) &&
-							(n.querySelector("button span").innerHTML = e);
-					}),
-						e == t && r.classList.add("active");
-				}
-			),
-			Array.from(
-				document.querySelectorAll("[data-option-flag-img-name]")
-			).forEach(function (n) {
-				var e = getComputedStyle(
-						n.querySelector(".flag-input")
-					).backgroundImage,
-					o = e.substring(e.indexOf("/as") + 1, e.lastIndexOf('"'));
+<script>
+	!(function () {
+		var e,
+			r,
+			t,
+			l = "";
+		function a(n) {
+			var e;
+			(n.querySelector(".country-flagimg") &&
+				(e = n.querySelector(".country-flagimg").getAttribute("src")),
 				Array.from(n.querySelectorAll(".dropdown-menu li")).forEach(
 					function (r) {
 						var t = r
 							.querySelector(".options-flagimg")
 							.getAttribute("src");
-						r.addEventListener("click", function () {
-							var e = r.querySelector(".country-name").innerHTML;
-							(n.querySelector(
-								".flag-input"
-							).style.backgroundImage = "url(" + t + ")"),
-								(n.querySelector(".flag-input").value = e);
+						(r.addEventListener("click", function () {
+							var e = r.querySelector(
+								".countrylist-codeno"
+							).innerHTML;
+							n.querySelector("button") &&
+								(n
+									.querySelector("button img")
+									.setAttribute("src", t),
+								n.querySelector("button span")) &&
+								(n.querySelector("button span").innerHTML = e);
 						}),
-							o == t &&
-								(r.classList.add("active"),
-								(n.querySelector(".flag-input").value =
-									r.querySelector(
-										".country-name"
-									).innerHTML));
+							e == t && r.classList.add("active"));
 					}
-				);
+				),
+				Array.from(
+					document.querySelectorAll("[data-option-flag-img-name]")
+				).forEach(function (n) {
+					var e = getComputedStyle(
+							n.querySelector(".flag-input")
+						).backgroundImage,
+						o = e.substring(
+							e.indexOf("/as") + 1,
+							e.lastIndexOf('"')
+						);
+					Array.from(n.querySelectorAll(".dropdown-menu li")).forEach(
+						function (r) {
+							var t = r
+								.querySelector(".options-flagimg")
+								.getAttribute("src");
+							(r.addEventListener("click", function () {
+								var e =
+									r.querySelector(".country-name").innerHTML;
+								((n.querySelector(
+									".flag-input"
+								).style.backgroundImage = "url(" + t + ")"),
+									(n.querySelector(".flag-input").value = e));
+							}),
+								o == t &&
+									(r.classList.add("active"),
+									(n.querySelector(".flag-input").value =
+										r.querySelector(
+											".country-name"
+										).innerHTML)));
+						}
+					);
+				}),
+				Array.from(
+					document.querySelectorAll("[data-option-flag-name]")
+				).forEach(function (t) {
+					var n = t.querySelector(".flag-input").value;
+					Array.from(t.querySelectorAll(".dropdown-menu li")).forEach(
+						function (e) {
+							var r = e.querySelector(".country-name").innerHTML;
+							(e.addEventListener("click", function () {
+								t.querySelector(".flag-input").value = r;
+							}),
+								n == r &&
+									(e.classList.add("active"),
+									(t.querySelector(".flag-input").value =
+										e.querySelector(
+											".country-name"
+										).innerHTML)));
+						}
+					);
+				}));
+		}
+		((e = "country-list.json"),
+			(r = function (e, r) {
+				if (null !== e) console.log("Something went wrong: " + e);
+				else {
+					var e = (l = r),
+						t = Array.from(
+							document.querySelectorAll("[data-input-flag]")
+						),
+						n = "",
+						o = Array.from(e);
+					for (let e = 0; e < o.length; e++)
+						n +=
+							'<li class="dropdown-item d-flex">            <div class="flex-shrink-0 me-2"><img src="' +
+							o[e].flagImg +
+							'" alt="country flag" class="options-flagimg" height="20"></div>                <div class="flex-grow-1">                <div class="d-flex"><div class="country-name me-1">' +
+							o[e].countryName +
+							'</div><span class="countrylist-codeno text-muted">' +
+							o[e].countryCode +
+							"</span></div>            </div>            </li>";
+					for (let e = 0; e < t.length; e++)
+						((t[e].querySelector(".dropdown-menu-list").innerHTML =
+							""),
+							(t[e].querySelector(
+								".dropdown-menu-list"
+							).innerHTML = n),
+							a(t[e]));
+				}
 			}),
-			Array.from(
-				document.querySelectorAll("[data-option-flag-name]")
-			).forEach(function (t) {
-				var n = t.querySelector(".flag-input").value;
-				Array.from(t.querySelectorAll(".dropdown-menu li")).forEach(
-					function (e) {
-						var r = e.querySelector(".country-name").innerHTML;
-						e.addEventListener("click", function () {
-							t.querySelector(".flag-input").value = r;
-						}),
-							n == r &&
-								(e.classList.add("active"),
-								(t.querySelector(".flag-input").value =
-									e.querySelector(
-										".country-name"
-									).innerHTML));
-					}
-				);
-			});
-	}
-	(e = "country-list.json"),
-		(r = function (e, r) {
-			if (null !== e) console.log("Something went wrong: " + e);
-			else {
-				var e = (l = r),
-					t = Array.from(
-						document.querySelectorAll("[data-input-flag]")
-					),
-					n = "",
-					o = Array.from(e);
-				for (let e = 0; e < o.length; e++)
-					n +=
-						'<li class="dropdown-item d-flex">            <div class="flex-shrink-0 me-2"><img src="' +
-						o[e].flagImg +
-						'" alt="country flag" class="options-flagimg" height="20"></div>                <div class="flex-grow-1">                <div class="d-flex"><div class="country-name me-1">' +
-						o[e].countryName +
-						'</div><span class="countrylist-codeno text-muted">' +
-						o[e].countryCode +
-						"</span></div>            </div>            </li>";
-				for (let e = 0; e < t.length; e++)
-					(t[e].querySelector(".dropdown-menu-list").innerHTML = ""),
-						(t[e].querySelector(".dropdown-menu-list").innerHTML =
-							n),
-						a(t[e]);
-			}
-		}),
-		(t = new XMLHttpRequest()).open("GET", "assets/json/" + e, !0),
-		(t.responseType = "json"),
-		(t.onload = function () {
-			var e = t.status;
-			r(200 === e ? null : e, t.response);
-		}),
-		t.send(),
-		Array.from(document.querySelectorAll("[data-input-flag]")).forEach(
-			function (n) {
-				var o = n.querySelector(".search-countryList");
-				o &&
-					o.addEventListener("keyup", function () {
-						var e = o.value.toLowerCase();
-						r = e;
-						var r,
-							t = l.filter(function (e) {
-								return (
-									-1 !==
-										e.countryName
-											.toLowerCase()
-											.indexOf(r.toLowerCase()) ||
-									-1 !== e.countryCode.indexOf(r)
-								);
-							});
-						setTimeout(function () {
-							(n.querySelector(".dropdown-menu-list").innerHTML =
-								""),
-								Array.from(t).forEach(function (e) {
-									n.querySelector(
-										".dropdown-menu-list"
-									).innerHTML +=
-										'<li class="dropdown-item d-flex">                        <div class="flex-shrink-0 me-2"><img src="' +
-										e.flagImg +
-										'" alt="country flag" class="options-flagimg" height="20"></div>                        <div class="flex-grow-1">                        <div class="d-flex"><div class="country-name me-1">' +
-										e.countryName +
-										'</div><span class="countrylist-codeno text-muted">' +
-										e.countryCode +
-										"</span></div>                        </div>                        </li>";
-								}),
-								a(n);
-						}, 350);
-					});
-			}
-		);
-})();
+			(t = new XMLHttpRequest()).open("GET", "assets/json/" + e, !0),
+			(t.responseType = "json"),
+			(t.onload = function () {
+				var e = t.status;
+				r(200 === e ? null : e, t.response);
+			}),
+			t.send(),
+			Array.from(document.querySelectorAll("[data-input-flag]")).forEach(
+				function (n) {
+					var o = n.querySelector(".search-countryList");
+					o &&
+						o.addEventListener("keyup", function () {
+							var e = o.value.toLowerCase();
+							r = e;
+							var r,
+								t = l.filter(function (e) {
+									return (
+										-1 !==
+											e.countryName
+												.toLowerCase()
+												.indexOf(r.toLowerCase()) ||
+										-1 !== e.countryCode.indexOf(r)
+									);
+								});
+							setTimeout(function () {
+								((n.querySelector(
+									".dropdown-menu-list"
+								).innerHTML = ""),
+									Array.from(t).forEach(function (e) {
+										n.querySelector(
+											".dropdown-menu-list"
+										).innerHTML +=
+											'<li class="dropdown-item d-flex">                        <div class="flex-shrink-0 me-2"><img src="' +
+											e.flagImg +
+											'" alt="country flag" class="options-flagimg" height="20"></div>                        <div class="flex-grow-1">                        <div class="d-flex"><div class="country-name me-1">' +
+											e.countryName +
+											'</div><span class="countrylist-codeno text-muted">' +
+											e.countryCode +
+											"</span></div>                        </div>                        </li>";
+									}),
+									a(n));
+							}, 350);
+						});
+				}
+			));
+	})();
 </script>
