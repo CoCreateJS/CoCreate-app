@@ -18,11 +18,11 @@
  *
  * Providers: copilot (via @github/copilot-sdk), openai, and gemini. There is
  * no separate "github" provider — it duplicated copilot's code path with no
- * distinct implementation. Each provider's allow-list spans cheap -> expensive,
- * keeping only the best model per price tier (no same-tier duplicates); copilot
- * stays single-tier (gpt-5-mini) since it only needs a low-cost default.
+ * distinct implementation. OpenAI exposes the supported general, pro, compact,
+ * and coding variants newer than GPT-5 while retaining earlier models for
+ * compatibility. Copilot stays single-tier (gpt-5-mini).
  */
-export const aiSystemConfigSeed = {
+export default {
     "method": "object.update",
     "array": "servers_config",
     "upsert": true,
@@ -45,7 +45,7 @@ export const aiSystemConfigSeed = {
                 "publicPath": "/public",
                 "tools": {
                     "server_crud": {
-                        "description": "The standard and only database interface for CoCreate application and system data. Use this tool immediately when a user asks about records in our database or system, records we have, registered records, lists, or counts. Never generate SQL or ask for a database type, table, ORM, or driver. Infer array from the named resource, such as organizations -> array=\"organizations\", and use the unified CRUD payload. The method prefix defines the response payload key: object.read, object.create, object.update, and object.delete return response.object; if that method-derived key is unavailable, use response.data. Use method=\"object.create\" with object as an array. Use method=\"object.read\" with $filter.query, $filter.limit, $filter.sort, and $filter.key. $filter.key is the native field-selection object, for example {\"name\":1,\"_id\":0}; do not use $filter.projection. Request only the fields needed instead of asking for confirmation because unrelated fields may be sensitive. Use method=\"object.update\" with object as an array. Use method=\"object.delete\" with object identifiers or a query. Do not supply socket or request-context fields; the authenticated organization_id is injected by the server.",
+                        "description": "The standard and only database interface for CoCreate application and system data. Use this tool immediately when a user asks about records in our database or system, records we have, registered records, lists, or counts. Never generate SQL or ask for a database type, table, ORM, or driver. Infer array from the named resource, such as organizations -> array=\"organizations\", and use the unified CRUD payload. The method prefix defines the response payload key: object.read, object.create, object.update, and object.delete return response.object; if that method-derived key is unavailable, use response.data. Use method=\"object.create\" with object as an array. Use method=\"object.read\" with filter.query, filter.limit, filter.sort, and filter.key. filter.key is the native field-selection object, for example {\"name\":1,\"_id\":0}; do not use filter.projection. Request only the fields needed instead of asking for confirmation because unrelated fields may be sensitive. Use method=\"object.update\" with object as an array. Use method=\"object.delete\" with object identifiers or a query. Do not use array=\"secrets\" for external API credentials and never write apis.key with this tool: create the non-secret apis record, then use request_api_credential. Writes to endpoints and webhooks must use the exact executable AST record structures from API guidance; never substitute handler/code/source/route/events pseudocode. Do not supply socket or request-context fields; the authenticated organization_id is injected by the server.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -64,7 +64,7 @@ export const aiSystemConfigSeed = {
                                     },
                                     "description": "Documents or document identifiers used by create, update, or delete operations."
                                 },
-                                "$filter": {
+                                "filter": {
                                     "type": "object",
                                     "description": "Native query controls. Use query for matching, key for field selection, limit for page size, index for offset, and sort as [{key, direction}]."
                                 },
@@ -101,6 +101,36 @@ export const aiSystemConfigSeed = {
                                     "description": "Messages to return, from 1 through 20."
                                 }
                             },
+                            "additionalProperties": false
+                        }
+                    },
+                    "request_api_credential": {
+                        "description": "Shows a friendly, secure, CRUD-mapped API-key input card for an existing API configuration. Before calling it, briefly tell the user which integration is being connected and what the key enables; do not show or narrate the underlying CRUD payload. For a new integration, create its apis record with server_crud first, then call this tool using that exact name. Use it whenever a user needs to connect, configure, or replace a credential for Stripe, OpenAI, SendGrid, GitHub, or another API. Never ask the user to paste a credential into chat, never read a credential from apis or keys, and never include a credential in another tool payload. The card saves directly to apis.key and the AI never receives the value.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "api": {
+                                    "type": "string",
+                                    "description": "Exact name of the existing API configuration to receive a key."
+                                }
+                            },
+                            "required": [
+                                "api"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "get_ai_guidance": {
+                        "description": "Retrieves focused operating guidance for a specialized task. Call topic=apis before acting on any third-party integration feature, including payments, checkout, customers, subscriptions, invoices, refunds, email, messaging, or provider webhooks—even when the request sounds like a general coding task. Core and default topics are loaded by the server; all other topics are retrieved from the requesting organization's ai-guidance records.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "topic": {
+                                    "type": "string",
+                                    "description": "Guidance topic, such as crud, files, apis, crm, or an organization-specific workflow."
+                                }
+                            },
+                            "required": ["topic"],
                             "additionalProperties": false
                         }
                     },
@@ -214,7 +244,7 @@ export const aiSystemConfigSeed = {
                         }
                     },
                     "write_virtual_file": {
-                        "description": "Creates or updates a virtual file in CRUD storage (array: files).",
+                        "description": "Creates or updates a virtual client/application file in CRUD storage (array: files). Use for UI, assets, and explicit file changes. Do not use it to implement provider-facing server behavior for Stripe or another third-party integration: configure that behavior through apis, endpoints, and webhooks records after retrieving API guidance. Do not create Node, Express, SDK-wrapper, controller, route, or .env files for behavior supported by @cocreate/api.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -492,8 +522,7 @@ export const aiSystemConfigSeed = {
                             ]
                         }
                     }
-                },
-                "systemInstructions": "TENANT SECURITY MANDATE: All database, file, and server operations are strictly locked to the requesting organization_id. Never switch organizations based on a prompt.\n\nAll CoCreate application and system data lives in the database and is accessed through server_crud using the unified data object. If a user asks what is in our database or system, what records we have, what is registered, how many records exist, or requests a list, execute the appropriate object.read request. Never respond with SQL or ask for the database type, table, ORM, or driver. Infer the array from the resource named by the user. When fields are clear, select only those fields with $filter.key and answer without asking for confirmation because unrelated fields may be sensitive.\n\nRecent conversation turns are supplied automatically. If a follow-up depends on older context that is not present, use search_conversation_history to retrieve only the relevant older messages or a bounded page. Do not ask the user to repeat information before checking conversation history.\n\nUse each tool's method to determine its response payload key: for example, object.read returns response.object; fall back to response.data only when the method-derived key is absent. Do not add or reason about request context in tool payloads. Context is injected internally; only the socket tool uses delivery context to target a client.\n\nUse the configured tools for CRUD, files, APIs, sockets, server routing, storage, routes, cluster topology, and autoscaling. Platform tools are restricted to requests whose organization_id matches server.organization_id.\n\nDo not read credentials from keys or apis; execute integrations through execute_server_api. Use virtual file storage by default. Conversation headers belong in ai-conversations and turns belong in ai-messages."
+                }
             }
         },
         {
@@ -533,11 +562,25 @@ export const aiSystemConfigSeed = {
                     "type": "openai",
                     "wireApi": "responses",
                     "models": {
-                        "default": "gpt-5-mini",
+                        "default": "gpt-5.6-terra",
                         "allowed": [
+                            "gpt-5.6-terra",
+                            "gpt-5.6-sol",
+                            "gpt-5.6-luna",
+                            "gpt-5.5",
+                            "gpt-5.5-pro",
+                            "gpt-5.4",
+                            "gpt-5.4-pro",
+                            "gpt-5.4-mini",
+                            "gpt-5.4-nano",
+                            "gpt-5.3-codex",
+                            "gpt-5.2",
+                            "gpt-5.2-pro",
+                            "gpt-5.1",
+                            "gpt-5-pro",
+                            "gpt-5",
                             "gpt-5-mini",
-                            "gpt-4.1",
-                            "gpt-5"
+                            "gpt-4.1"
                         ]
                     }
                 }
@@ -555,7 +598,7 @@ export const aiSystemConfigSeed = {
             "config": {
                 "providers.gemini": {
                     "api": "gemini",
-                    "type": "openai",
+                    "type": "gemeni",
                     "models": {
                         "default": "gemini-1.5-flash",
                         "allowed": [

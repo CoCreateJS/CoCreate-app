@@ -18,7 +18,7 @@ server.routes.set("/health", (req, res) =&gt; {
 await server.crud.send({
   method: "object.read",
   array: "users",
-  $filter: { limit: 1 }
+  filter: { limit: 1 }
 });
 
 server.wsManager.on("message", callback);</code></pre></div></div>

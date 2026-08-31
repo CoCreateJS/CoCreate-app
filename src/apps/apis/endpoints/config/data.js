@@ -22,7 +22,7 @@
  * (AWS, GCP, Azure, DigitalOcean, OCI, Hetzner, Vultr, and Equinix).
  */
 
-export const seedEndpointsPayload = {
+export default {
     "method": "object.update",
     "array": "endpoints",
     "upsert": true,

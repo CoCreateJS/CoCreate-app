@@ -5,7 +5,7 @@
  * is consumed by the configuration itself, parsed into an event, processed,
  * and answered through the native response object.
  */
-export const seedWebhooksPayload = {
+export default {
     "method": "object.update",
     "array": "webhooks",
     "upsert": true,

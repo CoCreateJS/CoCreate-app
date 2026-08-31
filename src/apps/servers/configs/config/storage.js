@@ -13,7 +13,7 @@
  * Note: Storage drivers that act as wire-protocol wrappers or API compatibility layers
  * reference their primary core driver pathname directly (e.g. SQLite, MongoDB, MySQL, PostgreSQL).
  */
-export const seedStorageConfigs = {
+export default {
     "method": "object.update",
     "array": "servers_config",
     "upsert": true,

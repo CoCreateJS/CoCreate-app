@@ -4,7 +4,7 @@
 		<div class="w-400 flex-grow-1"><div class="card bg-dark border-0 shadow-sm h-100"><div class="card-header border-secondary text-white"><i class="ri-database-2-line text-info me-2"></i>Unified CRUD payload</div><div class="card-body p-0"><pre class="language-javascript cocreate-code mb-0"><code>await server.crud.send({
   method: "object.read",
   array: "users",
-  $filter: {
+  filter: {
     query: {
       email: "user@example.com"
     },

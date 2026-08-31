@@ -22,11 +22,20 @@
  * provider metadata (project IDs, subscription IDs, account SIDs, image IDs) bound
  * to $config in AST execution contexts.
  */
-export const seedApisPayload = {
+export default {
     "method": "object.update",
     "array": "apis",
     "upsert": true,
     "object": [
+        {
+            "_id": "65f8ca227b39a3c1a8904dfd",
+            "name": "mongodb",
+            "type": "storage",
+            "provider": "mongodb",
+            "description": "Default CoCreate platform MongoDB storage connection.",
+            "enabled": true
+        },
+
         {
             "_id": "65f8ca227b39a3c1a8904dfe",
             "name": "stripe",
@@ -364,5 +373,3 @@ export const seedApisPayload = {
         }
     ]
 };
-
-export default seedApisPayload;

@@ -14,7 +14,7 @@
  * Note: Telemetry-related settings are represented as individual objects
  * within the 'servers_config' array.
  */
-export const seedTelemetryConfigs = {
+export default {
     "method": "object.update",
     "array": "servers_config",
     "upsert": true,

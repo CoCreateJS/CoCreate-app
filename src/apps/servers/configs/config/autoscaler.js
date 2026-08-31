@@ -10,7 +10,7 @@
  * Autoscaler configurations for cloud providers, instance types, regions,
  * and cluster autoscaling policies stored in the 'servers_config' array.
  */
-export const seedAutoscalerConfigs = {
+export default {
     "method": "object.update",
     "array": "servers_config",
     "upsert": true,

@@ -5,7 +5,7 @@
  * Outbound responses rely entirely on native Node stream execution (res.writableEnded),
  * completely bypassing proprietary "defer" parameters.
  */
-export const seedWebhooksPayload = {
+export default {
   "method": "object.update",
   "array": "webhooks",
   "upsert": true,
