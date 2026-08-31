@@ -6,6 +6,10 @@
 	line-height: 15px;
 	content: "\f0140";
 	font-family: "Material Design Icons";
+	transition: transform 0.2s ease;
+}
+.dropdown-toggle[aria-expanded="true"]::after {
+	transform: rotate(180deg);
 }
 .dropdown-menu {
 	-webkit-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
