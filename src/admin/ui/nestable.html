@@ -11,13 +11,16 @@
 
 				<div class="card-body">
 					<p class="text-muted">
-						Use <code>nested-list nested-sortable</code> class to
-						list-group class to set a nested list with sortable
-						items.
+						Add <code>sortable</code> and <code>nested</code> to the
+						root list to make every level sortable with
+						CoCreate-dnd.
 					</p>
 
 					<div
-						class="list-group nested-list nested-sortable w-400 flex-grow-1">
+						class="list-group nested-list nested-sortable w-400 flex-grow-1"
+						sortable
+						nested
+						dnd-group-name="nested-list">
 						<div class="list-group-item nested-1">Item 1.1</div>
 						<div class="list-group-item nested-1">
 							Item 1.2
@@ -71,14 +74,16 @@
 
 				<div class="card-body">
 					<p class="text-muted">
-						Use
-						<code>nested-list nested-sortable-handle</code> class to
-						list-group class to set a nested list with sortable
-						items.
+						Add <code>drag-handle=".handle"</code> to begin dragging
+						from the handle while retaining nested sorting.
 					</p>
 
 					<div
-						class="list-group nested-list nested-sortable-handle w-400 flex-grow-1">
+						class="list-group nested-list nested-sortable-handle w-400 flex-grow-1"
+						sortable
+						nested
+						drag-handle=".handle"
+						dnd-group-name="nested-handles">
 						<div class="list-group-item nested-1">
 							<i class="ri-drag-move-fill align-bottom handle"></i
 							>Item 1.1
@@ -153,13 +158,15 @@
 
 				<div class="card-body">
 					<p class="text-muted">
-						Use <code>nested-list nested-sortable</code> class to
-						list-group class to set a nested list with sortable
-						items where icons are given within list-group-item.
+						The same <code>sortable nested</code> attributes support
+						folder trees whose items contain icons and child lists.
 					</p>
 
 					<div
-						class="list-group nested-list nested-sortable w-400 flex-grow-1">
+						class="list-group nested-list nested-sortable w-400 flex-grow-1"
+						sortable
+						nested
+						dnd-group-name="folder-tree">
 						<div class="list-group-item nested-1">
 							<i
 								class="mdi mdi-folder fs-16 align-middle text-warning me-2"></i>
@@ -235,12 +242,15 @@
 
 				<div class="card-body">
 					<p class="text-muted">
-						Use <code>nested-list nested-sortable</code> class to
-						list-group class to set a nested list with sortable
-						items where the list is shown with navigation.
+						Navigation trees use the same declarative
+						<code>sortable nested</code> configuration.
 					</p>
 
-					<div class="list-group nested-list nested-sortable">
+					<div
+						class="list-group nested-list nested-sortable"
+						sortable
+						nested
+						dnd-group-name="navigation-tree">
 						<div class="list-group-item nested-1">
 							<i
 								class="ri-dashboard-2-line fs-16 align-middle text-primary me-2"></i>
@@ -300,12 +310,14 @@
 
 				<div class="card-body">
 					<p class="text-muted">
-						Use <code>nested-list nested-sortable</code> class to
-						list-group class to set a nested list with sortable
-						items where images are attached within a list-group-item
-						div element.
+						Nested sorting also works when each item contains richer
+						content such as avatars, names, and roles.
 					</p>
-					<div class="list-group nested-list nested-sortable">
+					<div
+						class="list-group nested-list nested-sortable"
+						sortable
+						nested
+						dnd-group-name="team-tree">
 						<div class="list-group-item nested-1">
 							<div class="d-flex align-items-center">
 								<div class="avatar-xs flex-shrink-0 me-3">

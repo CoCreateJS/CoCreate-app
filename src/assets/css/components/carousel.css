@@ -1,0 +1,40 @@
+/* Maps CoCreate event state attributes to the existing carousel classes. */
+.carousel[data-carousel-state] .carousel-item {
+	display: none;
+	transform: none;
+}
+
+.carousel[data-carousel-state="1"] .carousel-item[data-carousel-item="1"],
+.carousel[data-carousel-state="2"] .carousel-item[data-carousel-item="2"],
+.carousel[data-carousel-state="3"] .carousel-item[data-carousel-item="3"] {
+	display: block;
+}
+
+.carousel[data-carousel-state].carousel-fade .carousel-item {
+	opacity: 0;
+}
+
+.carousel[data-carousel-state="1"].carousel-fade
+	.carousel-item[data-carousel-item="1"],
+.carousel[data-carousel-state="2"].carousel-fade
+	.carousel-item[data-carousel-item="2"],
+.carousel[data-carousel-state="3"].carousel-fade
+	.carousel-item[data-carousel-item="3"] {
+	opacity: 1;
+}
+
+.carousel[data-carousel-state] .carousel-indicators button {
+	opacity: 0.5;
+}
+
+.carousel[data-carousel-state="1"]
+	.carousel-indicators
+	button[click\.data-carousel-state="1"],
+.carousel[data-carousel-state="2"]
+	.carousel-indicators
+	button[click\.data-carousel-state="2"],
+.carousel[data-carousel-state="3"]
+	.carousel-indicators
+	button[click\.data-carousel-state="3"] {
+	opacity: 1;
+}

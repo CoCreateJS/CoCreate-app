@@ -36,26 +36,31 @@
 						<div
 							id="carouselExampleSlidesOnly"
 							class="carousel slide"
-							data-bs-ride="carousel"
-							data-bs-interval="3000">
+							data-carousel-state="3"
+							onload-set-interval="3000"
+							onload.data-carousel-state="1, 2, 3">
 							<div
 								class="carousel-inner"
 								role="listbox">
 								<div
-									class="carousel-item carousel-item-next carousel-item-start">
+									class="carousel-item carousel-item-next carousel-item-start"
+									data-carousel-item="1">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-1.jpg"
 										alt="First slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="2">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-2.jpg"
 										alt="Second slide" />
 								</div>
 								<div
-									class="carousel-item active carousel-item-start">
+									class="carousel-item active carousel-item-start"
+									data-carousel-item="3">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-3.jpg"
@@ -67,15 +72,15 @@
 					<div class="code-view">
 						<pre class="language-markup">
 <code>&lt;!-- Slides Only --&gt;
-&lt;div id=&quot;carouselExampleSlidesOnly&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot; data-bs-interval=&quot;3000&quot;&gt;
+&lt;div id=&quot;carouselExampleSlidesOnly&quot; class=&quot;carousel slide&quot; data-carousel-state=&quot;3&quot; onload-set-interval=&quot;3000&quot; onload.data-carousel-state=&quot;1, 2, 3&quot;&gt;
     &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
-        &lt;div class=&quot;carousel-item carousel-item-next carousel-item-start&quot;&gt;
+        &lt;div class=&quot;carousel-item carousel-item-next carousel-item-start&quot; data-carousel-item=&quot;1&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;First slide&quot;&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;2&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;Second slide&quot;&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item active carousel-item-start&quot;&gt;
+        &lt;div class=&quot;carousel-item active carousel-item-start&quot; data-carousel-item=&quot;3&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;Third slide&quot;&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -122,23 +127,31 @@
 						<div
 							id="carouselExampleControls"
 							class="carousel slide"
-							data-bs-ride="carousel">
+							data-carousel-state="3"
+							onload-set-interval="5000"
+							onload.data-carousel-state="1, 2, 3">
 							<div
 								class="carousel-inner"
 								role="listbox">
-								<div class="carousel-item active">
+								<div
+									class="carousel-item active"
+									data-carousel-item="1">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-4.jpg"
 										alt="First slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="2">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-5.jpg"
 										alt="Second slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="3">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-6.jpg"
@@ -149,7 +162,8 @@
 								class="carousel-control-prev"
 								href="#carouselExampleControls"
 								role="button"
-								data-bs-slide="prev">
+								click-query="$closest .carousel"
+								click.data-carousel-state="3, 2, 1">
 								<span
 									class="carousel-control-prev-icon"
 									aria-hidden="true"></span>
@@ -159,7 +173,8 @@
 								class="carousel-control-next"
 								href="#carouselExampleControls"
 								role="button"
-								data-bs-slide="next">
+								click-query="$closest .carousel"
+								click.data-carousel-state="1, 2, 3">
 								<span
 									class="carousel-control-next-icon"
 									aria-hidden="true"></span>
@@ -173,23 +188,23 @@
 							class="language-markup"
 							style="height: 375px">
 <code>&lt;!-- With Controls --&gt;
-&lt;div id=&quot;carouselExampleControls&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot;&gt;
+&lt;div id=&quot;carouselExampleControls&quot; class=&quot;carousel slide&quot; data-carousel-state=&quot;3&quot; onload-set-interval=&quot;5000&quot; onload.data-carousel-state=&quot;1, 2, 3&quot;&gt;
     &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
-        &lt;div class=&quot;carousel-item active&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot; data-carousel-item=&quot;1&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;First slide&quot;&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;2&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;Second slide&quot;&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;3&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;Third slide&quot;&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-    &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExampleControls&quot; role=&quot;button&quot; data-bs-slide=&quot;prev&quot;&gt;
+    &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExampleControls&quot; role=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3, 2, 1&quot;&gt;
         &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
     &lt;/a&gt;
-    &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExampleControls&quot; role=&quot;button&quot; data-bs-slide=&quot;next&quot;&gt;
+    &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExampleControls&quot; role=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1, 2, 3&quot;&gt;
         &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
     &lt;/a&gt;
@@ -238,42 +253,50 @@
 						<div
 							id="carouselExampleIndicators"
 							class="carousel slide"
-							data-bs-ride="carousel">
+							data-carousel-state="3"
+							onload-set-interval="5000"
+							onload.data-carousel-state="1, 2, 3">
 							<div class="carousel-indicators">
 								<button
 									type="button"
-									data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="0"
 									class="active"
 									aria-current="true"
-									aria-label="Slide 1"></button>
+									aria-label="Slide 1"
+									click-query="$closest .carousel"
+									click.data-carousel-state="1"></button>
 								<button
 									type="button"
-									data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="1"
-									aria-label="Slide 2"></button>
+									aria-label="Slide 2"
+									click-query="$closest .carousel"
+									click.data-carousel-state="2"></button>
 								<button
 									type="button"
-									data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="2"
-									aria-label="Slide 3"></button>
+									aria-label="Slide 3"
+									click-query="$closest .carousel"
+									click.data-carousel-state="3"></button>
 							</div>
 							<div
 								class="carousel-inner"
 								role="listbox">
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="1">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-3.jpg"
 										alt="First slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="2">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-2.jpg"
 										alt="Second slide" />
 								</div>
-								<div class="carousel-item active">
+								<div
+									class="carousel-item active"
+									data-carousel-item="3">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-1.jpg"
@@ -284,7 +307,8 @@
 								class="carousel-control-prev"
 								href="#carouselExampleIndicators"
 								role="button"
-								data-bs-slide="prev">
+								click-query="$closest .carousel"
+								click.data-carousel-state="3, 2, 1">
 								<span
 									class="carousel-control-prev-icon"
 									aria-hidden="true"></span>
@@ -294,7 +318,8 @@
 								class="carousel-control-next"
 								href="#carouselExampleIndicators"
 								role="button"
-								data-bs-slide="next">
+								click-query="$closest .carousel"
+								click.data-carousel-state="1, 2, 3">
 								<span
 									class="carousel-control-next-icon"
 									aria-hidden="true"></span>
@@ -308,28 +333,28 @@
 							class="language-markup"
 							style="height: 375px">
 <code>&lt;!-- With Indicators --&gt;
-&lt;div id=&quot;carouselExampleIndicators&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot;&gt;
+&lt;div id=&quot;carouselExampleIndicators&quot; class=&quot;carousel slide&quot; data-carousel-state=&quot;3&quot; onload-set-interval=&quot;5000&quot; onload.data-carousel-state=&quot;1, 2, 3&quot;&gt;
     &lt;div class=&quot;carousel-indicators&quot;&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;0&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot;&gt;&lt;/button&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;1&quot; aria-label=&quot;Slide 2&quot;&gt;&lt;/button&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;2&quot; aria-label=&quot;Slide 3&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; aria-label=&quot;Slide 2&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;2&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; aria-label=&quot;Slide 3&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;1&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;First slide&quot;&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;2&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;Second slide&quot;&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item active&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot; data-carousel-item=&quot;3&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;Third slide&quot;&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-    &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExampleIndicators&quot; role=&quot;button&quot; data-bs-slide=&quot;prev&quot;&gt;
+    &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExampleIndicators&quot; role=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3, 2, 1&quot;&gt;
         &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
     &lt;/a&gt;
-    &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExampleIndicators&quot; role=&quot;button&quot; data-bs-slide=&quot;next&quot;&gt;
+    &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExampleIndicators&quot; role=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1, 2, 3&quot;&gt;
         &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
     &lt;/a&gt;
@@ -375,11 +400,15 @@
 						<div
 							id="carouselExampleCaption"
 							class="carousel slide"
-							data-bs-ride="carousel">
+							data-carousel-state="3"
+							onload-set-interval="5000"
+							onload.data-carousel-state="1, 2, 3">
 							<div
 								class="carousel-inner"
 								role="listbox">
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="1">
 									<img
 										src="/assets/images/small/img-7.jpg"
 										alt=""
@@ -397,7 +426,9 @@
 										</p>
 									</div>
 								</div>
-								<div class="carousel-item active">
+								<div
+									class="carousel-item active"
+									data-carousel-item="2">
 									<img
 										src="/assets/images/small/img-2.jpg"
 										alt=""
@@ -414,7 +445,9 @@
 										</p>
 									</div>
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="3">
 									<img
 										src="/assets/images/small/img-9.jpg"
 										alt=""
@@ -437,7 +470,8 @@
 								class="carousel-control-prev"
 								href="#carouselExampleCaption"
 								role="button"
-								data-bs-slide="prev">
+								click-query="$closest .carousel"
+								click.data-carousel-state="3, 2, 1">
 								<span
 									class="carousel-control-prev-icon"
 									aria-hidden="true"></span>
@@ -447,7 +481,8 @@
 								class="carousel-control-next"
 								href="#carouselExampleCaption"
 								role="button"
-								data-bs-slide="next">
+								click-query="$closest .carousel"
+								click.data-carousel-state="1, 2, 3">
 								<span
 									class="carousel-control-next-icon"
 									aria-hidden="true"></span>
@@ -460,23 +495,23 @@
 							class="language-markup"
 							style="height: 375px">
 <code>&lt;!-- With Captions --&gt;
-&lt;div id=&quot;carouselExampleCaption&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot;&gt;
+&lt;div id=&quot;carouselExampleCaption&quot; class=&quot;carousel slide&quot; data-carousel-state=&quot;3&quot; onload-set-interval=&quot;5000&quot; onload.data-carousel-state=&quot;1, 2, 3&quot;&gt;
     &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;1&quot;&gt;
             &lt;img src=&quot;...&quot; alt=&quot;&quot; class=&quot;d-block img-fluid mx-auto&quot;&gt;
             &lt;div class=&quot;carousel-caption d-none d-md-block text-white-50&quot;&gt;
                 &lt;h5 class=&quot;text-white&quot;&gt;Sunrise above a beach&lt;/h5&gt;
                 &lt;p&gt;You've probably heard that opposites attract. The same is true for fonts. Don't be afraid to combine font styles that are different but complementary.&lt;/p&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item active&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot; data-carousel-item=&quot;2&quot;&gt;
             &lt;img src=&quot;...&quot; alt=&quot;&quot; class=&quot;d-block img-fluid mx-auto&quot;&gt;
             &lt;div class=&quot;carousel-caption d-none d-md-block text-white-50&quot;&gt;
                 &lt;h5 class=&quot;text-white&quot;&gt;Working from home little spot&lt;/h5&gt;
                 &lt;p&gt;Consistency piques people’s interest is that it has become more and more popular over the years, which is excellent.&lt;/p&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;3&quot;&gt;
             &lt;img src=&quot;...&quot; alt=&quot;&quot; class=&quot;d-block img-fluid mx-auto&quot;&gt;
             &lt;div class=&quot;carousel-caption d-none d-md-block text-white-50&quot;&gt;
                 &lt;h5 class=&quot;text-white&quot;&gt;Dramatic clouds at the Golden Gate Bridge&lt;/h5&gt;
@@ -484,11 +519,11 @@
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-    &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExampleCaption&quot; role=&quot;button&quot; data-bs-slide=&quot;prev&quot;&gt;
+    &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExampleCaption&quot; role=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3, 2, 1&quot;&gt;
         &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
     &lt;/a&gt;
-    &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExampleCaption&quot; role=&quot;button&quot; data-bs-slide=&quot;next&quot;&gt;
+    &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExampleCaption&quot; role=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1, 2, 3&quot;&gt;
         &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
     &lt;/a&gt;
@@ -542,40 +577,48 @@
 						<div
 							id="carouselExampleFade"
 							class="carousel slide carousel-fade"
-							data-ride="carousel">
+							data-carousel-state="3"
+							onload-set-interval="5000"
+							onload.data-carousel-state="1, 2, 3">
 							<div class="carousel-indicators">
 								<button
 									type="button"
-									data-bs-target="#carouselExampleFade"
-									data-bs-slide-to="0"
 									class="active"
 									aria-current="true"
-									aria-label="Slide 1"></button>
+									aria-label="Slide 1"
+									click-query="$closest .carousel"
+									click.data-carousel-state="1"></button>
 								<button
 									type="button"
-									data-bs-target="#carouselExampleFade"
-									data-bs-slide-to="1"
-									aria-label="Slide 2"></button>
+									aria-label="Slide 2"
+									click-query="$closest .carousel"
+									click.data-carousel-state="2"></button>
 								<button
 									type="button"
-									data-bs-target="#carouselExampleFade"
-									data-bs-slide-to="2"
-									aria-label="Slide 3"></button>
+									aria-label="Slide 3"
+									click-query="$closest .carousel"
+									click.data-carousel-state="3"></button>
 							</div>
 							<div class="carousel-inner">
-								<div class="carousel-item active">
+								<div
+									class="carousel-item active"
+									data-carousel-item="1">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-1.jpg"
 										alt="First slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="2">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-2.jpg"
 										alt="Second slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="3">
 									<img
 										class="d-block img-fluid mx-auto"
 										src="/assets/images/small/img-3.jpg"
@@ -586,7 +629,8 @@
 								class="carousel-control-prev"
 								href="#carouselExampleFade"
 								role="button"
-								data-bs-slide="prev">
+								click-query="$closest .carousel"
+								click.data-carousel-state="3, 2, 1">
 								<span
 									class="carousel-control-prev-icon"
 									aria-hidden="true"></span>
@@ -596,7 +640,8 @@
 								class="carousel-control-next"
 								href="#carouselExampleFade"
 								role="button"
-								data-bs-slide="next">
+								click-query="$closest .carousel"
+								click.data-carousel-state="1, 2, 3">
 								<span
 									class="carousel-control-next-icon"
 									aria-hidden="true"></span>
@@ -608,28 +653,28 @@
 					<div class="code-view">
 						<pre>
 <code class="language-markup">&lt;!-- With Crossfade Animation --&gt;
-&lt;div id=&quot;carouselExampleFade&quot; class=&quot;carousel slide carousel-fade&quot; data-ride=&quot;carousel&quot;&gt;
+&lt;div id=&quot;carouselExampleFade&quot; class=&quot;carousel slide carousel-fade&quot; data-carousel-state=&quot;3&quot; onload-set-interval=&quot;5000&quot; onload.data-carousel-state=&quot;1, 2, 3&quot;&gt;
     &lt;div class=&quot;carousel-indicators&quot;&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleFade&quot; data-bs-slide-to=&quot;0&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot;&gt;&lt;/button&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleFade&quot; data-bs-slide-to=&quot;1&quot; aria-label=&quot;Slide 2&quot;&gt;&lt;/button&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleFade&quot; data-bs-slide-to=&quot;2&quot; aria-label=&quot;Slide 3&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; aria-label=&quot;Slide 2&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;2&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; aria-label=&quot;Slide 3&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;carousel-inner&quot;&gt;
-        &lt;div class=&quot;carousel-item active&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot; data-carousel-item=&quot;1&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;First slide&quot;&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;2&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;Second slide&quot;&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
+        &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;3&quot;&gt;
             &lt;img class=&quot;d-block img-fluid mx-auto&quot; src=&quot;...&quot; alt=&quot;Third slide&quot;&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-    &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExampleFade&quot; role=&quot;button&quot; data-bs-slide=&quot;prev&quot;&gt;
+    &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExampleFade&quot; role=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3, 2, 1&quot;&gt;
         &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
     &lt;/a&gt;
-    &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExampleFade&quot; role=&quot;button&quot; data-bs-slide=&quot;next&quot;&gt;
+    &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExampleFade&quot; role=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1, 2, 3&quot;&gt;
         &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
     &lt;/a&gt;
@@ -671,19 +716,20 @@
 				<!-- end card header -->
 				<div class="card-body">
 					<p class="text-muted">
-						Use <code>data-bs-interval=" "</code> to a carousel-item
-						to change the amount of time to delay between
-						automatically cycling to the next item.
+						Use <code>onload-set-interval="3000"</code> to rotate
+						the carousel state every three seconds.
 					</p>
 					<div class="live-preview">
 						<div
 							id="carouselExampleInterval"
 							class="carousel slide"
-							data-bs-ride="carousel">
+							data-carousel-state="3"
+							onload-set-interval="3000"
+							onload.data-carousel-state="1, 2, 3">
 							<div class="carousel-inner">
 								<div
 									class="carousel-item active"
-									data-bs-interval="10000">
+									data-carousel-item="1">
 									<img
 										src="/assets//images/small/img-12.jpg"
 										class="d-block w-100"
@@ -691,13 +737,15 @@
 								</div>
 								<div
 									class="carousel-item"
-									data-bs-interval="2000">
+									data-carousel-item="2">
 									<img
 										src="/assets/images/small/img-11.jpg"
 										class="d-block w-100"
 										alt="two slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="3">
 									<img
 										src="/assets/images/small/img-10.jpg"
 										class="d-block w-100"
@@ -707,8 +755,8 @@
 							<button
 								class="carousel-control-prev"
 								type="button"
-								data-bs-target="#carouselExampleInterval"
-								data-bs-slide="prev">
+								click-query="$closest .carousel"
+								click.data-carousel-state="3, 2, 1">
 								<span
 									class="carousel-control-prev-icon"
 									aria-hidden="true"></span>
@@ -717,8 +765,8 @@
 							<button
 								class="carousel-control-next"
 								type="button"
-								data-bs-target="#carouselExampleInterval"
-								data-bs-slide="next">
+								click-query="$closest .carousel"
+								click.data-carousel-state="1, 2, 3">
 								<span
 									class="carousel-control-next-icon"
 									aria-hidden="true"></span>
@@ -732,23 +780,23 @@
 							class="language-markup"
 							style="height: 375px">
 <code>&lt;!-- Individual Slide --&gt;
-&lt;div id=&quot;carouselExampleInterval&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot;&gt;
+&lt;div id=&quot;carouselExampleInterval&quot; class=&quot;carousel slide&quot; data-carousel-state=&quot;3&quot; onload-set-interval=&quot;3000&quot; onload.data-carousel-state=&quot;1, 2, 3&quot;&gt;
     &lt;div class=&quot;carousel-inner&quot;&gt;
-      &lt;div class=&quot;carousel-item active&quot; data-bs-interval=&quot;10000&quot;&gt;
+      &lt;div class=&quot;carousel-item active&quot; data-carousel-item=&quot;1&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
       &lt;/div&gt;
-      &lt;div class=&quot;carousel-item&quot; data-bs-interval=&quot;2000&quot;&gt;
+      &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;2&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
       &lt;/div&gt;
-      &lt;div class=&quot;carousel-item&quot;&gt;
+      &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;3&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleInterval&quot; data-bs-slide=&quot;prev&quot;&gt;
+    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3, 2, 1&quot;&gt;
       &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
       &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
     &lt;/button&gt;
-    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleInterval&quot; data-bs-slide=&quot;next&quot;&gt;
+    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1, 2, 3&quot;&gt;
       &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
       &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
     &lt;/button&gt;
@@ -769,9 +817,7 @@
 				class="card"
 				show="preview">
 				<div class="card-header align-items-center d-flex">
-					<h4 class="card-title mb-0 flex-grow-1">
-						Disable Touch Swiping
-					</h4>
+					<h4 class="card-title mb-0 flex-grow-1">Manual Carousel</h4>
 					<div class="flex-shrink-0">
 						<div
 							class="form-check form-switch form-switch-right form-switch-md">
@@ -792,34 +838,34 @@
 				<!-- end card header -->
 				<div class="card-body">
 					<p class="text-muted">
-						Carousels support swiping left/right on touchscreen
-						devices to move between slides. This can be disabled
-						using the <code>data-bs-touch</code> attribute. The
-						example below also does not include the
-						<code>data-bs-ride attribute</code> and has
-						<code>data-bs-interval="false"</code> so it doesn’t
-						autoplay.
+						Omit <code>onload-set-interval</code> for a carousel that
+						only changes through its declarative controls.
 					</p>
 					<div class="live-preview">
 						<div
 							id="carouselExampleControlsNoTouching"
 							class="carousel slide"
-							data-bs-touch="false"
-							data-bs-interval="false">
+							data-carousel-state="1">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
+								<div
+									class="carousel-item active"
+									data-carousel-item="1">
 									<img
 										src="/assets/images/small/img-9.jpg"
 										class="d-block w-100"
 										alt="One Slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="2">
 									<img
 										src="/assets/images/small/img-8.jpg"
 										class="d-block w-100"
 										alt="Two Slide" />
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="3">
 									<img
 										src="/assets/images/small/img-7.jpg"
 										class="d-block w-100"
@@ -829,8 +875,8 @@
 							<button
 								class="carousel-control-prev"
 								type="button"
-								data-bs-target="#carouselExampleControlsNoTouching"
-								data-bs-slide="prev">
+								click-query="$closest .carousel"
+								click.data-carousel-state="3, 2, 1">
 								<span
 									class="carousel-control-prev-icon"
 									aria-hidden="true"></span>
@@ -839,8 +885,8 @@
 							<button
 								class="carousel-control-next"
 								type="button"
-								data-bs-target="#carouselExampleControlsNoTouching"
-								data-bs-slide="next">
+								click-query="$closest .carousel"
+								click.data-carousel-state="1, 2, 3">
 								<span
 									class="carousel-control-next-icon"
 									aria-hidden="true"></span>
@@ -853,24 +899,24 @@
 						<pre
 							class="language-markup"
 							style="height: 375px">
-<code>&lt;!-- Disable Touch Swiping --&gt;
-&lt;div id=&quot;carouselExampleControlsNoTouching&quot; class=&quot;carousel slide&quot; data-bs-touch=&quot;false&quot; data-bs-interval=&quot;false&quot;&gt;
+<code>&lt;!-- Manual Carousel --&gt;
+&lt;div id=&quot;carouselExampleControlsNoTouching&quot; class=&quot;carousel slide&quot; data-carousel-state=&quot;1&quot;&gt;
     &lt;div class=&quot;carousel-inner&quot;&gt;
-      &lt;div class=&quot;carousel-item active&quot;&gt;
+      &lt;div class=&quot;carousel-item active&quot; data-carousel-item=&quot;1&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
       &lt;/div&gt;
-      &lt;div class=&quot;carousel-item&quot;&gt;
+      &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;2&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
       &lt;/div&gt;
-      &lt;div class=&quot;carousel-item&quot;&gt;
+      &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;3&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleControlsNoTouching&quot; data-bs-slide=&quot;prev&quot;&gt;
+    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3, 2, 1&quot;&gt;
       &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
       &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
     &lt;/button&gt;
-    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleControlsNoTouching&quot; data-bs-slide=&quot;next&quot;&gt;
+    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1, 2, 3&quot;&gt;
       &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
       &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
     &lt;/button&gt;
@@ -916,30 +962,32 @@
 						<div
 							id="carouselExampleDark"
 							class="carousel carousel-dark slide"
-							data-bs-ride="carousel">
+							data-carousel-state="3"
+							onload-set-interval="5000"
+							onload.data-carousel-state="1, 2, 3">
 							<div class="carousel-indicators">
 								<button
 									type="button"
-									data-bs-target="#carouselExampleDark"
-									data-bs-slide-to="0"
 									class="active"
 									aria-current="true"
-									aria-label="Slide 1"></button>
+									aria-label="Slide 1"
+									click-query="$closest .carousel"
+									click.data-carousel-state="1"></button>
 								<button
 									type="button"
-									data-bs-target="#carouselExampleDark"
-									data-bs-slide-to="1"
-									aria-label="Slide 2"></button>
+									aria-label="Slide 2"
+									click-query="$closest .carousel"
+									click.data-carousel-state="2"></button>
 								<button
 									type="button"
-									data-bs-target="#carouselExampleDark"
-									data-bs-slide-to="2"
-									aria-label="Slide 3"></button>
+									aria-label="Slide 3"
+									click-query="$closest .carousel"
+									click.data-carousel-state="3"></button>
 							</div>
 							<div class="carousel-inner">
 								<div
 									class="carousel-item active"
-									data-bs-interval="10000">
+									data-carousel-item="1">
 									<img
 										src="/assets/images/small/img-4.jpg"
 										class="d-block w-100"
@@ -956,7 +1004,7 @@
 								</div>
 								<div
 									class="carousel-item"
-									data-bs-interval="2000">
+									data-carousel-item="2">
 									<img
 										src="/assets/images/small/img-5.jpg"
 										class="d-block w-100"
@@ -974,7 +1022,9 @@
 										</p>
 									</div>
 								</div>
-								<div class="carousel-item">
+								<div
+									class="carousel-item"
+									data-carousel-item="3">
 									<img
 										src="/assets/images/small/img-6.jpg"
 										class="d-block w-100"
@@ -993,8 +1043,8 @@
 							<button
 								class="carousel-control-prev"
 								type="button"
-								data-bs-target="#carouselExampleDark"
-								data-bs-slide="prev">
+								click-query="$closest .carousel"
+								click.data-carousel-state="3, 2, 1">
 								<span
 									class="carousel-control-prev-icon"
 									aria-hidden="true"></span>
@@ -1003,8 +1053,8 @@
 							<button
 								class="carousel-control-next"
 								type="button"
-								data-bs-target="#carouselExampleDark"
-								data-bs-slide="next">
+								click-query="$closest .carousel"
+								click.data-carousel-state="1, 2, 3">
 								<span
 									class="carousel-control-next-icon"
 									aria-hidden="true"></span>
@@ -1017,28 +1067,28 @@
 							class="language-markup"
 							style="height: 375px">
 <code>&lt;!-- Dark Variant --&gt;
-&lt;div id=&quot;carouselExampleDark&quot; class=&quot;carousel carousel-dark slide&quot; data-bs-ride=&quot;carousel&quot;&gt;
+&lt;div id=&quot;carouselExampleDark&quot; class=&quot;carousel carousel-dark slide&quot; data-carousel-state=&quot;3&quot; onload-set-interval=&quot;5000&quot; onload.data-carousel-state=&quot;1, 2, 3&quot;&gt;
     &lt;div class=&quot;carousel-indicators&quot;&gt;
-      &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleDark&quot; data-bs-slide-to=&quot;0&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot;&gt;&lt;/button&gt;
-      &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleDark&quot; data-bs-slide-to=&quot;1&quot; aria-label=&quot;Slide 2&quot;&gt;&lt;/button&gt;
-      &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleDark&quot; data-bs-slide-to=&quot;2&quot; aria-label=&quot;Slide 3&quot;&gt;&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1&quot;&gt;&lt;/button&gt;
+      &lt;button type=&quot;button&quot; aria-label=&quot;Slide 2&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;2&quot;&gt;&lt;/button&gt;
+      &lt;button type=&quot;button&quot; aria-label=&quot;Slide 3&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;carousel-inner&quot;&gt;
-      &lt;div class=&quot;carousel-item active&quot; data-bs-interval=&quot;10000&quot;&gt;
+      &lt;div class=&quot;carousel-item active&quot; data-carousel-item=&quot;1&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
         &lt;div class=&quot;carousel-caption d-none d-md-block&quot;&gt;
           &lt;h5&gt;First slide label&lt;/h5&gt;
           &lt;p&gt;Some representative placeholder content for the first slide.&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;div class=&quot;carousel-item&quot; data-bs-interval=&quot;2000&quot;&gt;
+      &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;2&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
         &lt;div class=&quot;carousel-caption d-none d-md-block&quot;&gt;
           &lt;h5&gt;Second slide label&lt;/h5&gt;
           &lt;p&gt;Some representative placeholder content for the second slide.&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;div class=&quot;carousel-item&quot;&gt;
+      &lt;div class=&quot;carousel-item&quot; data-carousel-item=&quot;3&quot;&gt;
         &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
         &lt;div class=&quot;carousel-caption d-none d-md-block&quot;&gt;
           &lt;h5&gt;Third slide label&lt;/h5&gt;
@@ -1046,11 +1096,11 @@
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleDark&quot; data-bs-slide=&quot;prev&quot;&gt;
+    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;3, 2, 1&quot;&gt;
       &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
       &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
     &lt;/button&gt;
-    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleDark&quot; data-bs-slide=&quot;next&quot;&gt;
+    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; click-query=&quot;$closest .carousel&quot; click.data-carousel-state=&quot;1, 2, 3&quot;&gt;
       &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
       &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
     &lt;/button&gt;
