@@ -155,6 +155,7 @@ export default async (env, argv) => {
             minimizer: [
                 new EsbuildPlugin({
                     target: "es2017",
+                    minify: true,
                     css: true,
                     charset: "utf8" // Prevents esbuild from stripping/mangling unicode escapes
                 })

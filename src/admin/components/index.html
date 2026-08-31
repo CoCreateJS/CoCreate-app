@@ -101,6 +101,10 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 		}
+		.pages-dropdown-row > .flex-grow-1 {
+			flex-basis: 0;
+			min-width: 0;
+		}
 
 		/* Tweak for narrower screens */
 		@media (max-width: 768px) {
@@ -151,541 +155,360 @@
 			</button>
 			<ul
 				id="pagesDropdownMenu"
-				class="dropdown-menu dropdown-menu-xl dropdown-menu-end"
+				class="dropdown-menu dropdown-menu-xl"
 				aria-labelledby="pagesDropdown"
 				aria-close-on="anywhere">
 				<div
 					class="max-height:425px"
 					plugin='{"$SimpleBar":["$this",{}]}'>
 					<div class="d-flex flex-wrap">
-						<div class="flex-grow-1 width:140px">
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/industries/">
-									<i class="ri-home-4-line me-2"></i> Landing
-									Page
-								</a>
-							</li>
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/industries/admin-dashboard/">
-									<i class="ri-admin-line me-2"></i> Admin
-								</a>
-							</li>
+						<div class="d-flex w-100 pages-dropdown-row">
+							<div class="flex-grow-1 width:140px">
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/industries/">
+										<i class="ri-home-4-line me-2"></i>
+										Landing Page
+									</a>
+								</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/industries/admin-dashboard/">
+										<i class="ri-admin-line me-2"></i> Admin
+									</a>
+								</li>
+							</div>
+							<div class="flex-grow-1 width:140px">
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/industries/job-board/">
+										<i class="ri-briefcase-line me-2"></i>
+										Job
+									</a>
+								</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/industries/nft-marketplace/">
+										<i class="ri-nft-line me-2"></i> NFT
+									</a>
+								</li>
+							</div>
 						</div>
-						<div class="flex-grow-1 width:140px">
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/industries/job-board/">
-									<i class="ri-briefcase-line me-2"></i> Job
-								</a>
-							</li>
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/industries/nft-marketplace/">
-									<i class="ri-nft-line me-2"></i> NFT
-								</a>
-							</li>
-						</div>
-						<div class="flex-grow-1 width:140px">
-							<!-- root-level pages -->
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/404-alt.html">
-									404 Alt
-								</a>
-							</li>
+						<div class="d-flex w-100 pages-dropdown-row">
+							<div class="flex-grow-1 width:140px">
+								<!-- root-level pages -->
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/404-alt.html">
+										404 Alt
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/404-basic.html">
-									404 Basic
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/404-basic.html">
+										404 Basic
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/404-cover.html">
-									404 Cover
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/404-cover.html">
+										404 Cover
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/500.html">
-									500
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/500.html">
+										500
+									</a>
+								</li>
 
-							<!-- auth folder (submenu) -->
-							<li class="dropdown-submenu">
-								<a
-									class="dropdown-item dropdown-toggle"
-									href="#"
-									id="authSubmenuToggle"
-									aria-haspopup="menu"
-									aria-expanded="false"
-									aria-controls="authSubmenu"
-									aria-close="false">
-									Authentication
-								</a>
-								<ul
-									class="dropdown-menu"
-									id="authSubmenu"
-									aria-labelledby="authSubmenuToggle">
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/index.html">
-											Overview
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/lockscreen.html">
-											Lock Screen
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/pass-change.html">
-											Change Password
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/pass-reset.html">
-											Reset Password
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/signin.html">
-											Sign In
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/signout.html">
-											Sign Out
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/signup.html">
-											Sign Up
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/success-msg.html">
-											Success Message
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/auth/twostep.html">
-											Two-Step Verification
-										</a>
-									</li>
-								</ul>
-							</li>
+								<!-- auth folder (submenu) -->
+								<li class="dropdown-submenu">
+									<a
+										class="dropdown-item dropdown-toggle"
+										href="#"
+										id="authSubmenuToggle"
+										aria-haspopup="menu"
+										aria-expanded="false"
+										aria-controls="authSubmenu"
+										aria-close="false">
+										Authentication
+									</a>
+									<ul
+										class="dropdown-menu"
+										id="authSubmenu"
+										aria-labelledby="authSubmenuToggle">
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/index.html">
+												Overview
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/lockscreen.html">
+												Lock Screen
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/pass-change.html">
+												Change Password
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/pass-reset.html">
+												Reset Password
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/signin.html">
+												Sign In
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/signout.html">
+												Sign Out
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/signup.html">
+												Sign Up
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/success-msg.html">
+												Success Message
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/auth/twostep.html">
+												Two-Step Verification
+											</a>
+										</li>
+									</ul>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/coming-soon.html">
-									Coming Soon
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/coming-soon.html">
+										Coming Soon
+									</a>
+								</li>
 
-							<!-- ecommerce folder (submenu) -->
-							<li class="dropdown-submenu">
-								<a
-									class="dropdown-item dropdown-toggle"
-									href="#"
-									id="ecommerceSubmenuToggle"
-									aria-haspopup="menu"
-									aria-expanded="false"
-									aria-controls="ecommerceSubmenu"
-									aria-close="false">
-									Ecommerce
-								</a>
-								<ul
-									class="dropdown-menu"
-									id="ecommerceSubmenu"
-									aria-labelledby="ecommerceSubmenuToggle">
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/ecommerce/cart.html">
-											Cart
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/ecommerce/checkout.html">
-											Checkout
-										</a>
-									</li>
-									<li>
-										<a
-											class="dropdown-item"
-											href="#"
-											state-to="component-view"
-											state.src="/admin/pages/ecommerce/customers.html">
-											Customers
-										</a>
-									</li>
-								</ul>
-							</li>
+								<!-- ecommerce folder (submenu) -->
+								<li class="dropdown-submenu">
+									<a
+										class="dropdown-item dropdown-toggle"
+										href="#"
+										id="ecommerceSubmenuToggle"
+										aria-haspopup="menu"
+										aria-expanded="false"
+										aria-controls="ecommerceSubmenu"
+										aria-close="false">
+										Ecommerce
+									</a>
+									<ul
+										class="dropdown-menu"
+										id="ecommerceSubmenu"
+										aria-labelledby="ecommerceSubmenuToggle">
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/ecommerce/cart.html">
+												Cart
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/ecommerce/checkout.html">
+												Checkout
+											</a>
+										</li>
+										<li>
+											<a
+												class="dropdown-item"
+												href="#"
+												state-to="component-view"
+												state.src="/admin/pages/ecommerce/customers.html">
+												Customers
+											</a>
+										</li>
+									</ul>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/faqs.html">
-									FAQs
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/faqs.html">
+										FAQs
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/gallery.html">
-									Gallery
-								</a>
-							</li>
-						</div>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/gallery.html">
+										Gallery
+									</a>
+								</li>
+							</div>
 
-						<div class="flex-grow-1 width:140px">
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/maintenance.html">
-									Maintenance
-								</a>
-							</li>
+							<div class="flex-grow-1 width:140px">
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/maintenance.html">
+										Maintenance
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/offline.html">
-									Offline
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/offline.html">
+										Offline
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/pricing.html">
-									Pricing
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/pricing.html">
+										Pricing
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/privacy-policy.html">
-									Privacy Policy
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/privacy-policy.html">
+										Privacy Policy
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/sitemap/index.html">
-									Sitemap
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/sitemap/index.html">
+										Sitemap
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/team/index.html">
-									Team
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/team/index.html">
+										Team
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/term-conditions.html">
-									Terms &amp; Conditions
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/term-conditions.html">
+										Terms &amp; Conditions
+									</a>
+								</li>
 
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/pages/timeline.html">
-									Timeline
-								</a>
-							</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="#"
+										state-to="component-view"
+										state.src="/admin/pages/timeline.html">
+										Timeline
+									</a>
+								</li>
+							</div>
 						</div>
 					</div>
-				</div>
-			</ul>
-		</div>
-
-		<!-- UI Dropdown -->
-		<div class="dropdown">
-			<button
-				class="btn btn-outline-info dropdown-toggle"
-				type="button"
-				id="componentsDropdown"
-				aria-expanded="false"
-				aria-controls="componentsDropdownMenu"
-				aria-haspopup="menu">
-				<i class="ri-stack-line"></i>
-				<span class="d-none d-sm-inline ms-1">UI</span>
-			</button>
-			<ul
-				id="componentsDropdownMenu"
-				class="dropdown-menu"
-				aria-labelledby="componentsDropdown"
-				aria-close-on="anywhere">
-				<div
-					class="max-height:425px"
-					plugin='{"$SimpleBar":["$this",{}]}'>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/animation.html">
-							Animation</a
-						>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/badges.html">
-							Badges</a
-						>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/buttons.html">
-							Buttons</a
-						>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/colors.html">
-							Colors</a
-						>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/general.html">
-							General</a
-						>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/grid.html">
-							Grid</a
-						>
-					</li>
-
-					<li class="dropdown-submenu">
-						<a
-							class="dropdown-item dropdown-toggle"
-							href="#"
-							id="iconsSubmenuToggle"
-							aria-haspopup="menu"
-							aria-expanded="false"
-							aria-controls="iconsSubmenu"
-							aria-close="false">
-							Icons
-						</a>
-						<ul
-							class="dropdown-menu"
-							id="iconsSubmenu"
-							aria-labelledby="iconsSubmenuToggle">
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/ui/icons/boxicons.html">
-									Boxicons
-								</a>
-							</li>
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/ui/icons/crypto.html">
-									Crypto
-								</a>
-							</li>
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/ui/icons/feather.html">
-									Feather
-								</a>
-							</li>
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/ui/icons/lineawesome.html">
-									Line Awesome
-								</a>
-							</li>
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/ui/icons/materialdesign.html">
-									Material Design
-								</a>
-							</li>
-							<li>
-								<a
-									class="dropdown-item"
-									href="#"
-									state-to="component-view"
-									state.src="/admin/ui/icons/remix.html">
-									Remix
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/links.html">
-							Links</a
-						>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/media.html">
-							Media</a
-						>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/typography.html">
-							Typography</a
-						>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							href="#"
-							state-to="component-view"
-							state.src="/admin/ui/utilities.html">
-							Utilities</a
-						>
-					</li>
 				</div>
 			</ul>
 		</div>
@@ -1381,6 +1204,192 @@
 							</li>
 						</div>
 					</div>
+				</div>
+			</ul>
+		</div>
+
+		<!-- UI Dropdown -->
+		<div class="dropdown">
+			<button
+				class="btn btn-outline-info dropdown-toggle"
+				type="button"
+				id="componentsDropdown"
+				aria-expanded="false"
+				aria-controls="componentsDropdownMenu"
+				aria-haspopup="menu">
+				<i class="ri-stack-line"></i>
+				<span class="d-none d-sm-inline ms-1">UI</span>
+			</button>
+			<ul
+				id="componentsDropdownMenu"
+				class="dropdown-menu dropdown-menu-end"
+				aria-labelledby="componentsDropdown"
+				aria-close-on="anywhere">
+				<div
+					class="max-height:425px"
+					plugin='{"$SimpleBar":["$this",{}]}'>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/animation.html">
+							Animation</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/badges.html">
+							Badges</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/buttons.html">
+							Buttons</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/colors.html">
+							Colors</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/general.html">
+							General</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/grid.html">
+							Grid</a
+						>
+					</li>
+
+					<li class="dropdown-submenu">
+						<a
+							class="dropdown-item dropdown-toggle"
+							href="#"
+							id="iconsSubmenuToggle"
+							aria-haspopup="menu"
+							aria-expanded="false"
+							aria-controls="iconsSubmenu"
+							aria-close="false">
+							Icons
+						</a>
+						<ul
+							class="dropdown-menu"
+							id="iconsSubmenu"
+							aria-labelledby="iconsSubmenuToggle">
+							<li>
+								<a
+									class="dropdown-item"
+									href="#"
+									state-to="component-view"
+									state.src="/admin/ui/icons/boxicons.html">
+									Boxicons
+								</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#"
+									state-to="component-view"
+									state.src="/admin/ui/icons/crypto.html">
+									Crypto
+								</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#"
+									state-to="component-view"
+									state.src="/admin/ui/icons/feather.html">
+									Feather
+								</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#"
+									state-to="component-view"
+									state.src="/admin/ui/icons/lineawesome.html">
+									Line Awesome
+								</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#"
+									state-to="component-view"
+									state.src="/admin/ui/icons/materialdesign.html">
+									Material Design
+								</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="#"
+									state-to="component-view"
+									state.src="/admin/ui/icons/remix.html">
+									Remix
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/links.html">
+							Links</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/media.html">
+							Media</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/typography.html">
+							Typography</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							href="#"
+							state-to="component-view"
+							state.src="/admin/ui/utilities.html">
+							Utilities</a
+						>
+					</li>
 				</div>
 			</ul>
 		</div>

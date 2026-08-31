@@ -33,18 +33,14 @@
 						<div>
 							<button
 								type="button"
-								class="btn btn-primary"
-								data-bs-toggle="modal"
-								data-bs-target="#myModal">
+								class="btn btn-primary" aria-controls="myModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 								Standard Modal
 							</button>
 							<div
-								id="myModal"
 								class="modal fade"
 								tabindex="-1"
 								aria-labelledby="myModalLabel"
-								aria-hidden="true"
-								style="display: none">
+								id="myModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -56,8 +52,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="myModal" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-15">
@@ -95,8 +90,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="myModal" aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -118,13 +112,13 @@
 							class="language-markup"
 							style="height: 275px">
 <code>&lt;!-- Default Modals --&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary &quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#myModal&quot;&gt;Standard Modal&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary &quot; aria-controls=&quot;myModal&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot;&gt;Standard Modal&lt;/button&gt;
 &lt;div id=&quot;myModal&quot; class=&quot;modal fade&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;myModalLabel&quot; aria-hidden=&quot;true&quot; style=&quot;display: none;&quot;&gt;
     &lt;div class=&quot;modal-dialog&quot;&gt;
         &lt;div class=&quot;modal-content&quot;&gt;
             &lt;div class=&quot;modal-header&quot;&gt;
                 &lt;h5 class=&quot;modal-title&quot; id=&quot;myModalLabel&quot;&gt;Modal Heading&lt;/h5&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt; &lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;myModal&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot;&gt; &lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-body&quot;&gt;
                 &lt;h5 class=&quot;fs-15&quot;&gt;
@@ -135,7 +129,7 @@
                 &lt;p class=&quot;text-muted&quot;&gt;It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.&lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-footer&quot;&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;myModal&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
                 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary &quot;&gt;Save Changes&lt;/button&gt;
             &lt;/div&gt;
 
@@ -184,17 +178,13 @@
 							<!-- center modal -->
 							<button
 								type="button"
-								class="btn btn-primary"
-								data-bs-toggle="modal"
-								data-bs-target=".bs-example-modal-center">
+								class="btn btn-primary" aria-controls="bs-example-modal-center" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 								Center Modal
 							</button>
 							<div
 								class="modal fade bs-example-modal-center"
 								tabindex="-1"
-								role="dialog"
-								aria-labelledby="mySmallModalLabel"
-								aria-hidden="true">
+								aria-labelledby="mySmallModalLabel" id="bs-example-modal-center" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-body text-center p-5">
@@ -220,8 +210,7 @@
 													class="hstack gap-2 justify-content-center">
 													<button
 														type="button"
-														class="btn btn-light"
-														data-bs-dismiss="modal">
+														class="btn btn-light" aria-controls="bs-example-modal-center" aria-expanded="true">
 														Close
 													</button>
 													<a
@@ -290,16 +279,13 @@
 					<div class="live-preview">
 						<button
 							type="button"
-							class="btn btn-primary"
-							data-bs-toggle="modal"
-							data-bs-target="#exampleModalgrid">
+							class="btn btn-primary" aria-controls="exampleModalgrid" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 							Launch Demo Modal
 						</button>
 						<div
 							class="modal fade"
-							id="exampleModalgrid"
 							tabindex="-1"
-							aria-labelledby="exampleModalgridLabel">
+							aria-labelledby="exampleModalgridLabel" id="exampleModalgrid" role="dialog" aria-modal="true" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -311,8 +297,7 @@
 										<button
 											type="button"
 											class="btn-close"
-											data-bs-dismiss="modal"
-											aria-label="Close"></button>
+											aria-label="Close" aria-controls="exampleModalgrid" aria-expanded="true"></button>
 									</div>
 									<div class="modal-body">
 										<form action="javascript:void(0);">
@@ -429,8 +414,7 @@
 														class="hstack gap-2 justify-content-end">
 														<button
 															type="button"
-															class="btn btn-light"
-															data-bs-dismiss="modal">
+															class="btn btn-light" aria-controls="exampleModalgrid" aria-expanded="true">
 															Close
 														</button>
 														<button
@@ -454,7 +438,7 @@
 							class="language-markup"
 							style="height: 275px">
 <code>&lt;!-- Grids in modals --&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#exampleModalgrid&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; aria-controls=&quot;exampleModalgrid&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot;&gt;
     Launch Demo Modal
 &lt;/button&gt;
 &lt;div class=&quot;modal fade&quot; id=&quot;exampleModalgrid&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;exampleModalgridLabel&quot; aria-modal=&quot;true&quot;&gt;
@@ -462,7 +446,7 @@
         &lt;div class=&quot;modal-content&quot;&gt;
             &lt;div class=&quot;modal-header&quot;&gt;
                 &lt;h5 class=&quot;modal-title&quot; id=&quot;exampleModalgridLabel&quot;&gt;Grid Modals&lt;/h5&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;exampleModalgrid&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-body&quot;&gt;
                 &lt;form action=&quot;javascript:void(0);&quot;&gt;
@@ -510,7 +494,7 @@
                         &lt;/div&gt;&lt;!-- end flex item --&gt;
                         &lt;div class=&quot;w-100&quot;&gt;
                             &lt;div class=&quot;hstack gap-2 justify-content-end&quot;&gt;
-                                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+                                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;exampleModalgrid&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
                                 &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;&lt;!-- end flex item --&gt;
@@ -564,20 +548,13 @@
 							<!-- Button trigger modal -->
 							<button
 								type="button"
-								class="btn btn-primary"
-								data-bs-toggle="modal"
-								data-bs-target="#staticBackdrop">
+								class="btn btn-primary" aria-controls="staticBackdrop" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 								Static Backdrop Modal
 							</button>
 							<!-- staticBackdrop Modal -->
 							<div
 								class="modal fade"
-								id="staticBackdrop"
-								data-bs-backdrop="static"
-								data-bs-keyboard="false"
-								tabindex="-1"
-								role="dialog"
-								aria-hidden="true">
+								tabindex="-1" id="staticBackdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-close-on="button">
 								<div
 									class="modal-dialog modal-dialog-centered"
 									role="document">
@@ -606,9 +583,7 @@
 													class="hstack gap-2 justify-content-center">
 													<a
 														href="javascript:void(0);"
-														class="btn btn-link link-success fw-medium material-shadow-none"
-														data-bs-dismiss="modal"
-														><i
+														class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="staticBackdrop" aria-expanded="true"><i
 															class="ri-close-line me-1 align-middle"></i>
 														Close</a
 													>
@@ -630,7 +605,7 @@
 							class="language-markup"
 							style="height: 275px">
 <code>&lt;!-- Static Backdrop --&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#staticBackdrop&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; aria-controls=&quot;staticBackdrop&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot;&gt;
     Static Backdrop Modal
 &lt;/button&gt;
 &lt;!-- staticBackdrop Modal --&gt;
@@ -649,7 +624,7 @@
                     &lt;h4 class=&quot;mb-3&quot;&gt;You've made it!&lt;/h4&gt;
                     &lt;p class=&quot;text-muted mb-4&quot;&gt; The transfer was not successfully received by us. the email of the recipient wasn't correct.&lt;/p&gt;
                     &lt;div class=&quot;hstack gap-2 justify-content-center&quot;&gt;
-                        &lt;a href=&quot;javascript:void(0);&quot; class=&quot;btn btn-link link-success fw-medium material-shadow-none&quot; data-bs-dismiss=&quot;modal&quot;&gt;&lt;i class=&quot;ri-close-line me-1 align-middle&quot;&gt;&lt;/i&gt; Close&lt;/a&gt;
+                        &lt;a href=&quot;javascript:void(0);&quot; class=&quot;btn btn-link link-success fw-medium material-shadow-none&quot; aria-controls=&quot;staticBackdrop&quot; aria-expanded=&quot;true&quot;&gt;&lt;i class=&quot;ri-close-line me-1 align-middle&quot;&gt;&lt;/i&gt; Close&lt;/a&gt;
                         &lt;a href=&quot;javascript:void(0);&quot; class=&quot;btn btn-success&quot;&gt;Completed&lt;/a&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
@@ -706,17 +681,13 @@
 						<div>
 							<button
 								type="button"
-								class="btn btn-primary"
-								data-bs-toggle="modal"
-								data-bs-target="#firstmodal">
+								class="btn btn-primary" aria-controls="firstmodal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 								Open First Modal
 							</button>
 							<!-- First modal dialog -->
 							<div
 								class="modal fade"
-								id="firstmodal"
-								aria-hidden="true"
-								tabindex="-1">
+								tabindex="-1" id="firstmodal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-body text-center p-5">
@@ -740,10 +711,7 @@
 												</p>
 												<!-- Toogle to second dialog -->
 												<button
-													class="btn btn-warning"
-													data-bs-target="#secondmodal"
-													data-bs-toggle="modal"
-													data-bs-dismiss="modal">
+													class="btn btn-warning" aria-controls="secondmodal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 													Continue
 												</button>
 											</div>
@@ -754,9 +722,7 @@
 							<!-- Second modal dialog -->
 							<div
 								class="modal fade"
-								id="secondmodal"
-								aria-hidden="true"
-								tabindex="-1">
+								tabindex="-1" id="secondmodal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-body text-center p-5">
@@ -782,16 +748,12 @@
 													class="hstack gap-2 justify-content-center">
 													<!-- Toogle to first dialog, `data-bs-dismiss` attribute can be omitted - clicking on link will close dialog anyway -->
 													<button
-														class="btn btn-soft-danger"
-														data-bs-target="#firstmodal"
-														data-bs-toggle="modal"
-														data-bs-dismiss="modal">
+														class="btn btn-soft-danger" aria-controls="firstmodal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 														Back to First
 													</button>
 													<button
 														type="button"
-														class="btn btn-light"
-														data-bs-dismiss="modal">
+														class="btn btn-light" aria-controls="secondmodal" aria-expanded="true">
 														Close
 													</button>
 												</div>
@@ -808,7 +770,7 @@
 							class="language-markup"
 							style="height: 275px">
 <code>&lt;!-- Toggle Between Modals --&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary &quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#firstmodal&quot;&gt;Open First Modal&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary &quot; aria-controls=&quot;firstmodal&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot;&gt;Open First Modal&lt;/button&gt;
 &lt;!-- First modal dialog --&gt;
 &lt;div class=&quot;modal fade&quot; id=&quot;firstmodal&quot; aria-hidden=&quot;true&quot; aria-labelledby=&quot;...&quot; tabindex=&quot;-1&quot;&gt;
     &lt;div class=&quot;modal-dialog modal-dialog-centered&quot;&gt;
@@ -824,7 +786,7 @@
                     &lt;h4&gt;Uh oh, something went wrong!&lt;/h4&gt;
                     &lt;p class=&quot;text-muted&quot;&gt; The transfer was not successfully received by us. the email of the recipient wasn't correct.&lt;/p&gt;
                     &lt;!-- Toogle to second dialog --&gt;
-                    &lt;button class=&quot;btn btn-warning&quot; data-bs-target=&quot;#secondmodal&quot; data-bs-toggle=&quot;modal&quot; data-bs-dismiss=&quot;modal&quot;&gt;
+                    &lt;button class=&quot;btn btn-warning&quot; aria-controls=&quot;secondmodal&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot;&gt;
                         Continue
                     &lt;/button&gt;
                 &lt;/div&gt;
@@ -848,10 +810,10 @@
                     &lt;p class=&quot;text-muted mb-4&quot;&gt;Hide this modal and show the first with the button below Automatically Send your invitees a follow -Up email.&lt;/p&gt;
                     &lt;div class=&quot;hstack gap-2 justify-content-center&quot;&gt;
                         &lt;!-- Toogle to first dialog, `data-bs-dismiss` attribute can be omitted - clicking on link will close dialog anyway --&gt;
-                        &lt;button class=&quot;btn btn-soft-danger&quot; data-bs-target=&quot;#firstmodal&quot; data-bs-toggle=&quot;modal&quot; data-bs-dismiss=&quot;modal&quot;&gt;Back to
+                        &lt;button class=&quot;btn btn-soft-danger&quot; aria-controls=&quot;firstmodal&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot;&gt;Back to
                             First
                         &lt;/button&gt;
-                        &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;secondmodal&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
@@ -912,18 +874,14 @@
 					<div class="live-preview">
 						<button
 							type="button"
-							class="btn btn-primary"
-							data-bs-toggle="modal"
-							data-bs-target="#exampleModalPopovers">
+							class="btn btn-primary" aria-controls="exampleModalPopovers" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 							Launch Demo Modal
 						</button>
 
 						<!-- tooltips and popovers modal -->
 						<div
 							class="modal fade"
-							id="exampleModalPopovers"
-							tabindex="-1"
-							aria-hidden="true">
+							tabindex="-1" id="exampleModalPopovers" role="dialog" aria-modal="true" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -935,8 +893,7 @@
 										<button
 											type="button"
 											class="btn-close"
-											data-bs-dismiss="modal"
-											aria-label="Close"></button>
+											aria-label="Close" aria-controls="exampleModalPopovers" aria-expanded="true"></button>
 									</div>
 									<div class="modal-body">
 										<h5 class="fs-16">
@@ -1012,7 +969,7 @@
 							class="language-markup"
 							style="height: 275px">
 <code>&lt;!-- Tooltips and Popovers --&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#exampleModalPopovers&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; aria-controls=&quot;exampleModalPopovers&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot;&gt;
     Launch demo modal
 &lt;/button&gt;
 
@@ -1022,7 +979,7 @@
         &lt;div class=&quot;modal-content&quot;&gt;
             &lt;div class=&quot;modal-header&quot;&gt;
                 &lt;h5 class=&quot;modal-title&quot; id=&quot;exampleModalPopoversLabel&quot;&gt;Modal title&lt;/h5&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;exampleModalPopovers&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-body&quot;&gt;
                 &lt;h5&gt;Popover in a modal&lt;/h5&gt;
@@ -1035,7 +992,7 @@
                     hover-&lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-footer&quot;&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;exampleModalPopovers&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
                 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Save changes&lt;/button&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -1090,19 +1047,14 @@
 							<!-- Scrollable modal -->
 							<button
 								type="button"
-								class="btn btn-primary"
-								data-bs-toggle="modal"
-								data-bs-target="#exampleModalScrollable">
+								class="btn btn-primary" aria-controls="exampleModalScrollable" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 								Scrollable Modal
 							</button>
 
 							<div
 								class="modal fade"
-								id="exampleModalScrollable"
 								tabindex="-1"
-								role="dialog"
-								aria-labelledby="exampleModalScrollableTitle"
-								aria-hidden="true">
+								aria-labelledby="exampleModalScrollableTitle" id="exampleModalScrollable" role="dialog" aria-modal="true" aria-hidden="true">
 								<div
 									class="modal-dialog modal-dialog-scrollable">
 									<div class="modal-content">
@@ -1115,8 +1067,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="exampleModalScrollable" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -1318,8 +1269,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light material-shadow-none"
-												data-bs-dismiss="modal">
+												class="btn btn-light material-shadow-none" aria-controls="exampleModalScrollable" aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -1390,25 +1340,19 @@
 								<button
 									type="button"
 									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#varyingcontentModal"
-									data-bs-whatever="Mary">
+									data-bs-whatever="Mary" aria-controls="varyingcontentModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Open Modal for Mary
 								</button>
 								<button
 									type="button"
 									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#varyingcontentModal"
-									data-bs-whatever="Jennifer">
+									data-bs-whatever="Jennifer" aria-controls="varyingcontentModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Open Modal for Jennifer
 								</button>
 								<button
 									type="button"
 									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#varyingcontentModal"
-									data-bs-whatever="Roderick">
+									data-bs-whatever="Roderick" aria-controls="varyingcontentModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Open Modal for Roderick
 								</button>
 							</div>
@@ -1416,10 +1360,8 @@
 							<!-- Varying modal content -->
 							<div
 								class="modal fade"
-								id="varyingcontentModal"
 								tabindex="-1"
-								aria-labelledby="varyingcontentModalLabel"
-								aria-hidden="true">
+								aria-labelledby="varyingcontentModalLabel" id="varyingcontentModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -1431,8 +1373,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="varyingcontentModal" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<form>
@@ -1463,8 +1404,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="varyingcontentModal" aria-expanded="true">
 												Back
 											</button>
 											<button
@@ -1485,9 +1425,9 @@
 							style="height: 275px">
 <code>&lt;!-- Varying Modal Content --&gt;
 &lt;div class=&quot;hstack gap-2 flex-wrap&quot;&gt;
-    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#varyingcontentModal&quot; data-bs-whatever=&quot;@mdo&quot;&gt;Open modal for @mdo&lt;/button&gt;
-    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#varyingcontentModal&quot; data-bs-whatever=&quot;@fat&quot;&gt;Open modal for @fat&lt;/button&gt;
-    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#varyingcontentModal&quot; data-bs-whatever=&quot;@getbootstrap&quot;&gt;Open modal for @getbootstrap&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot; data-bs-whatever=&quot;@mdo&quot;&gt;Open modal for @mdo&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot; data-bs-whatever=&quot;@fat&quot;&gt;Open modal for @fat&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot; data-bs-whatever=&quot;@getbootstrap&quot;&gt;Open modal for @getbootstrap&lt;/button&gt;
 &lt;/div&gt;</code>
 
 <code>&lt;!-- Varying modal content --&gt;
@@ -1496,7 +1436,7 @@
         &lt;div class=&quot;modal-content&quot;&gt;
             &lt;div class=&quot;modal-header&quot;&gt;
                 &lt;h5 class=&quot;modal-title&quot; id=&quot;varyingcontentModalLabel&quot;&gt;New message&lt;/h5&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-body&quot;&gt;
                 &lt;form&gt;
@@ -1511,7 +1451,7 @@
                 &lt;/form&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-footer&quot;&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
                 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Send message&lt;/button&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -1566,36 +1506,28 @@
 								<!-- Fullscreen modal -->
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target=".exampleModalFullscreen">
+									class="btn btn-primary" aria-controls="exampleModalFullscreen" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Fullscreen Modal
 								</button>
 
 								<!-- Extra Large modal -->
 								<button
 									type="button"
-									class="btn btn-info"
-									data-bs-toggle="modal"
-									data-bs-target=".bs-example-modal-xl">
+									class="btn btn-info" aria-controls="bs-example-modal-xl" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Extra large Modal
 								</button>
 
 								<!-- Large modal -->
 								<button
 									type="button"
-									class="btn btn-success"
-									data-bs-toggle="modal"
-									data-bs-target=".bs-example-modal-lg">
+									class="btn btn-success" aria-controls="bs-example-modal-lg" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Large Modal
 								</button>
 
 								<!-- Small modal -->
 								<button
 									type="button"
-									class="btn btn-danger"
-									data-bs-toggle="modal"
-									data-bs-target=".bs-example-modal-sm">
+									class="btn btn-danger" aria-controls="bs-example-modal-sm" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Small Modal
 								</button>
 							</div>
@@ -1604,8 +1536,7 @@
 							<div
 								class="modal fade exampleModalFullscreen"
 								tabindex="-1"
-								aria-labelledby="exampleModalFullscreenLabel"
-								aria-hidden="true">
+								aria-labelledby="exampleModalFullscreenLabel" id="exampleModalFullscreen" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-fullscreen">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -1617,8 +1548,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreen" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -1820,9 +1750,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="exampleModalFullscreen" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -1843,9 +1771,7 @@
 							<div
 								class="modal fade bs-example-modal-xl"
 								tabindex="-1"
-								role="dialog"
-								aria-labelledby="myExtraLargeModalLabel"
-								aria-hidden="true">
+								aria-labelledby="myExtraLargeModalLabel" id="bs-example-modal-xl" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-xl">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -1857,8 +1783,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="bs-example-modal-xl" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2060,9 +1985,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="bs-example-modal-xl" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -2083,9 +2006,7 @@
 							<div
 								class="modal fade bs-example-modal-lg"
 								tabindex="-1"
-								role="dialog"
-								aria-labelledby="myLargeModalLabel"
-								aria-hidden="true">
+								aria-labelledby="myLargeModalLabel" id="bs-example-modal-lg" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-lg">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -2097,8 +2018,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="bs-example-modal-lg" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2300,9 +2220,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="bs-example-modal-lg" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -2323,9 +2241,7 @@
 							<div
 								class="modal fade bs-example-modal-sm"
 								tabindex="-1"
-								role="dialog"
-								aria-labelledby="mySmallModalLabel"
-								aria-hidden="true">
+								aria-labelledby="mySmallModalLabel" id="bs-example-modal-sm" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-sm">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -2337,8 +2253,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="bs-example-modal-sm" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2399,9 +2314,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="bs-example-modal-sm" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -2476,53 +2389,39 @@
 							<div class="hstack gap-2 flex-wrap">
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#fullscreeexampleModal">
+									class="btn btn-primary" aria-controls="fullscreeexampleModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Fullscreen modal
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#exampleModalFullscreenSm">
+									class="btn btn-primary" aria-controls="exampleModalFullscreenSm" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Full Screen Below sm
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#exampleModalFullscreenMd">
+									class="btn btn-primary" aria-controls="exampleModalFullscreenMd" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Full Screen Below md
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#exampleModalFullscreenLg">
+									class="btn btn-primary" aria-controls="exampleModalFullscreenLg" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Full Screen Below lg
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#exampleModalFullscreenXl">
+									class="btn btn-primary" aria-controls="exampleModalFullscreenXl" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Full Screen Below xl
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#exampleModalFullscreenXxl">
+									class="btn btn-primary" aria-controls="exampleModalFullscreenXxl" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Full Screen Below xxl
 								</button>
 							</div>
 							<div
 								class="modal fade"
-								id="fullscreeexampleModal"
 								tabindex="-1"
-								aria-labelledby="fullscreeexampleModalLabel"
-								aria-hidden="true">
+								aria-labelledby="fullscreeexampleModalLabel" id="fullscreeexampleModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-fullscreen">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -2534,8 +2433,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="fullscreeexampleModal" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2657,9 +2555,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="fullscreeexampleModal" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -2676,10 +2572,8 @@
 							<!-- Modal -->
 							<div
 								class="modal fade"
-								id="exampleModalFullscreenSm"
 								tabindex="-1"
-								aria-labelledby="exampleModalFullscreenSmLabel"
-								aria-hidden="true">
+								aria-labelledby="exampleModalFullscreenSmLabel" id="exampleModalFullscreenSm" role="dialog" aria-modal="true" aria-hidden="true">
 								<div
 									class="modal-dialog modal-fullscreen-sm-down">
 									<div class="modal-content">
@@ -2692,8 +2586,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenSm" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2754,9 +2647,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="exampleModalFullscreenSm" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -2773,10 +2664,8 @@
 							<!-- Modal -->
 							<div
 								class="modal fade"
-								id="exampleModalFullscreenMd"
 								tabindex="-1"
-								aria-labelledby="exampleModalFullscreenMdLabel"
-								aria-hidden="true">
+								aria-labelledby="exampleModalFullscreenMdLabel" id="exampleModalFullscreenMd" role="dialog" aria-modal="true" aria-hidden="true">
 								<div
 									class="modal-dialog modal-fullscreen-md-down">
 									<div class="modal-content">
@@ -2789,8 +2678,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenMd" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2851,9 +2739,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="exampleModalFullscreenMd" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -2870,10 +2756,8 @@
 							<!-- Modal -->
 							<div
 								class="modal fade"
-								id="exampleModalFullscreenLg"
 								tabindex="-1"
-								aria-labelledby="exampleModalFullscreenLgLabel"
-								aria-hidden="true">
+								aria-labelledby="exampleModalFullscreenLgLabel" id="exampleModalFullscreenLg" role="dialog" aria-modal="true" aria-hidden="true">
 								<div
 									class="modal-dialog modal-fullscreen-lg-down">
 									<div class="modal-content">
@@ -2886,8 +2770,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenLg" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2948,9 +2831,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="exampleModalFullscreenLg" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -2967,10 +2848,8 @@
 							<!-- Modal -->
 							<div
 								class="modal fade"
-								id="exampleModalFullscreenXl"
 								tabindex="-1"
-								aria-labelledby="exampleModalFullscreenXlLabel"
-								aria-hidden="true">
+								aria-labelledby="exampleModalFullscreenXlLabel" id="exampleModalFullscreenXl" role="dialog" aria-modal="true" aria-hidden="true">
 								<div
 									class="modal-dialog modal-fullscreen-sm-down">
 									<div class="modal-content">
@@ -2983,8 +2862,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenXl" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -3045,9 +2923,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="exampleModalFullscreenXl" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -3064,10 +2940,8 @@
 							<!-- Modal -->
 							<div
 								class="modal fade"
-								id="exampleModalFullscreenXxl"
 								tabindex="-1"
-								aria-labelledby="exampleModalFullscreenXxlLabel"
-								aria-hidden="true">
+								aria-labelledby="exampleModalFullscreenXxlLabel" id="exampleModalFullscreenXxl" role="dialog" aria-modal="true" aria-hidden="true">
 								<div
 									class="modal-dialog modal-fullscreen-xxl-down">
 									<div class="modal-content">
@@ -3080,8 +2954,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenXxl" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -3142,9 +3015,7 @@
 										<div class="modal-footer">
 											<a
 												href="javascript:void(0);"
-												class="btn btn-link link-success fw-medium material-shadow-none"
-												data-bs-dismiss="modal"
-												><i
+												class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="exampleModalFullscreenXxl" aria-expanded="true"><i
 													class="ri-close-line me-1 align-middle"></i>
 												Close</a
 											>
@@ -3222,47 +3093,35 @@
 							<div class="hstack gap-2 flex-wrap">
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#fadeInRightModal">
+									class="btn btn-primary" aria-controls="fadeInRightModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Fade In Right Modal
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#fadeInleftModal">
+									class="btn btn-primary" aria-controls="fadeInleftModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Fade In Left Modal
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#fadeInUpModal">
+									class="btn btn-primary" aria-controls="fadeInUpModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Fade In Up Modal
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#flipModal">
+									class="btn btn-primary" aria-controls="flipModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Flip Modal
 								</button>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#zoomInModal">
+									class="btn btn-primary" aria-controls="zoomInModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Zoom In Modal
 								</button>
 							</div>
 							<div
-								id="fadeInRightModal"
 								class="modal fade fadeInRight"
 								tabindex="-1"
 								aria-labelledby="fadeInRightModalLabel"
-								aria-hidden="true"
-								style="display: none">
+								id="fadeInRightModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -3274,8 +3133,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="fadeInRightModal" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3307,8 +3165,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="fadeInRightModal" aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -3324,12 +3181,10 @@
 							</div>
 							<!-- /.modal -->
 							<div
-								id="fadeInleftModal"
 								class="modal fade fadeInLeft"
 								tabindex="-1"
 								aria-labelledby="fadeInleftModalLabel"
-								aria-hidden="true"
-								style="display: none">
+								id="fadeInleftModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -3341,8 +3196,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="fadeInleftModal" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3374,8 +3228,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="fadeInleftModal" aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -3392,12 +3245,10 @@
 							<!-- /.modal -->
 							<!-- Modal fadeInUp -->
 							<div
-								id="fadeInUpModal"
 								class="modal fade fadeInUp"
 								tabindex="-1"
 								aria-labelledby="fadeInUpModalLabel"
-								aria-hidden="true"
-								style="display: none">
+								id="fadeInUpModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -3409,8 +3260,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="fadeInUpModal" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3442,8 +3292,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="fadeInUpModal" aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -3461,12 +3310,10 @@
 
 							<!-- Modal flip -->
 							<div
-								id="flipModal"
 								class="modal fade flip"
 								tabindex="-1"
 								aria-labelledby="flipModalLabel"
-								aria-hidden="true"
-								style="display: none">
+								id="flipModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -3478,8 +3325,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="flipModal" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3511,8 +3357,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="flipModal" aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -3530,12 +3375,10 @@
 
 							<!-- Modal Blur -->
 							<div
-								id="zoomInModal"
 								class="modal fade zoomIn"
 								tabindex="-1"
 								aria-labelledby="zoomInModalLabel"
-								aria-hidden="true"
-								style="display: none">
+								id="zoomInModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -3547,8 +3390,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"></button>
+												aria-label="Close" aria-controls="zoomInModal" aria-expanded="true"></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3580,8 +3422,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="zoomInModal" aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -3657,39 +3498,29 @@
 							<div class="hstack gap-2 flex-wrap">
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#topmodal">
+									class="btn btn-primary" aria-controls="topmodal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Top Modal
 								</button>
 								<button
 									type="button"
-									class="btn btn-secondary"
-									data-bs-toggle="modal"
-									data-bs-target="#top-rightmodal">
+									class="btn btn-secondary" aria-controls="top-rightmodal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Top Right Modal
 								</button>
 								<button
 									type="button"
-									class="btn btn-success"
-									data-bs-toggle="modal"
-									data-bs-target="#bottomModal">
+									class="btn btn-success" aria-controls="bottomModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Bottom Modal
 								</button>
 								<button
 									type="button"
-									class="btn btn-danger"
-									data-bs-toggle="modal"
-									data-bs-target="#bottom-rightModal">
+									class="btn btn-danger" aria-controls="bottom-rightModal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Bottom Right Modal
 								</button>
 							</div>
 							<div
-								id="topmodal"
 								class="modal fade"
 								tabindex="-1"
-								aria-hidden="true"
-								style="display: none">
+								id="topmodal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-body text-center p-5">
@@ -3716,9 +3547,7 @@
 													class="hstack gap-2 justify-content-center">
 													<a
 														href="javascript:void(0);"
-														class="btn btn-link link-success fw-medium material-shadow-none"
-														data-bs-dismiss="modal"
-														><i
+														class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="topmodal" aria-expanded="true"><i
 															class="ri-close-line me-1 align-middle"></i>
 														Close</a
 													>
@@ -3737,11 +3566,9 @@
 							</div>
 							<!-- /.modal -->
 							<div
-								id="top-rightmodal"
 								class="modal fade"
 								tabindex="-1"
-								aria-hidden="true"
-								style="display: none">
+								id="top-rightmodal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-right">
 									<div class="modal-dialog">
 										<div class="modal-content">
@@ -3771,9 +3598,7 @@
 														class="hstack gap-2 justify-content-center">
 														<a
 															href="javascript:void(0);"
-															class="btn btn-link link-success fw-medium material-shadow-none"
-															data-bs-dismiss="modal"
-															><i
+															class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="top-rightmodal" aria-expanded="true"><i
 																class="ri-close-line me-1 align-middle"></i>
 															Close</a
 														>
@@ -3795,11 +3620,9 @@
 							<!-- /.modal -->
 							<!-- Modal fadeInUp -->
 							<div
-								id="bottomModal"
 								class="modal fade"
 								tabindex="-1"
-								aria-hidden="true"
-								style="display: none">
+								id="bottomModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-bottom">
 									<div class="modal-content">
 										<div class="modal-body text-center p-5">
@@ -3825,9 +3648,7 @@
 													class="hstack gap-2 justify-content-center">
 													<a
 														href="javascript:void(0);"
-														class="btn btn-link link-success fw-medium material-shadow-none"
-														data-bs-dismiss="modal"
-														><i
+														class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="bottomModal" aria-expanded="true"><i
 															class="ri-close-line me-1 align-middle"></i>
 														Close</a
 													>
@@ -3848,11 +3669,9 @@
 
 							<!-- Modal flip -->
 							<div
-								id="bottom-rightModal"
 								class="modal fade"
 								tabindex="-1"
-								aria-hidden="true"
-								style="display: none">
+								id="bottom-rightModal" role="dialog" aria-modal="true" aria-hidden="true">
 								<div
 									class="modal-dialog modal-dialog-bottom-right">
 									<div class="modal-content">
@@ -3879,9 +3698,7 @@
 													class="hstack gap-2 justify-content-center">
 													<a
 														href="javascript:void(0);"
-														class="btn btn-link link-success fw-medium material-shadow-none"
-														data-bs-dismiss="modal"
-														><i
+														class="btn btn-link link-success fw-medium material-shadow-none" aria-controls="bottom-rightModal" aria-expanded="true"><i
 															class="ri-close-line me-1 align-middle"></i>
 														Close</a
 													>
@@ -3939,9 +3756,7 @@
 							<div>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#success-Payment">
+									class="btn btn-primary" aria-controls="success-Payment" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Click me
 								</button>
 							</div>
@@ -3962,11 +3777,9 @@
 					</div>
 					<!-- end card -->
 					<div
-						id="success-Payment"
 						class="modal fade"
 						tabindex="-1"
-						aria-hidden="true"
-						style="display: none">
+						id="success-Payment" role="dialog" aria-modal="true" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content">
 								<div class="modal-body text-center p-5">
@@ -3974,8 +3787,7 @@
 										<button
 											type="button"
 											class="btn-close text-end"
-											data-bs-dismiss="modal"
-											aria-label="Close"></button>
+											aria-label="Close" aria-controls="success-Payment" aria-expanded="true"></button>
 									</div>
 									<div class="mt-2">
 										<lord-icon
@@ -4037,9 +3849,7 @@
 							<div>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#loginModals">
+									class="btn btn-primary" aria-controls="loginModals" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Click me
 								</button>
 							</div>
@@ -4060,11 +3870,9 @@
 					</div>
 					<!-- end card -->
 					<div
-						id="loginModals"
 						class="modal fade"
 						tabindex="-1"
-						aria-hidden="true"
-						style="display: none">
+						id="loginModals" role="dialog" aria-modal="true" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content border-0 overflow-hidden">
 								<div class="modal-body login-modal p-5">
@@ -4142,9 +3950,7 @@
 							<div>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#subscribeModals">
+									class="btn btn-primary" aria-controls="subscribeModals" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Click me
 								</button>
 							</div>
@@ -4166,11 +3972,9 @@
 					<!-- end card -->
 
 					<div
-						id="subscribeModals"
 						class="modal fade"
 						tabindex="-1"
-						aria-hidden="true"
-						style="display: none">
+						id="subscribeModals" role="dialog" aria-modal="true" aria-hidden="true">
 						<div
 							class="modal-dialog modal-dialog-centered modal-lg">
 							<div class="modal-content border-0 overflow-hidden">
@@ -4264,9 +4068,7 @@
 							<div>
 								<button
 									type="button"
-									class="btn btn-primary"
-									data-bs-toggle="modal"
-									data-bs-target="#signupModals">
+									class="btn btn-primary" aria-controls="signupModals" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 									Click me
 								</button>
 							</div>
@@ -4287,11 +4089,9 @@
 					</div>
 					<!-- end card -->
 					<div
-						id="signupModals"
 						class="modal fade"
 						tabindex="-1"
-						aria-hidden="true"
-						style="display: none">
+						id="signupModals" role="dialog" aria-modal="true" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content border-0 overflow-hidden">
 								<div class="modal-header p-3">
@@ -4299,8 +4099,7 @@
 									<button
 										type="button"
 										class="btn-close"
-										data-bs-dismiss="modal"
-										aria-label="Close"></button>
+										aria-label="Close" aria-controls="signupModals" aria-expanded="true"></button>
 								</div>
 								<div class="alert alert-success rounded-0 mb-0">
 									<p class="mb-0">

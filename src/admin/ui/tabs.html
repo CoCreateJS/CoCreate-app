@@ -192,7 +192,7 @@
 						</div>
 						<div
 							class="tab-pane"
-							id="product"
+							id="base-justified-product"
 							role="tabpanel">
 							<h6>Product</h6>
 							<p class="mb-0">
@@ -1750,12 +1750,16 @@
 					</p>
 				</div>
 				<div class="border">
-					<ul class="nav nav-pills custom-hover-nav-tabs">
+					<ul
+						class="nav nav-pills custom-hover-nav-tabs"
+						role="tablist">
 						<li class="nav-item">
 							<a
 								aria-expanded="false"
 								class="nav-link show"
-								aria-selected="true">
+								aria-selected="true"
+								aria-controls="custom-hover-customer"
+								role="tab">
 								<i
 									class="ri-user-fill nav-icon nav-tab-position"></i>
 								<h5 class="nav-titl nav-tab-position m-0">
@@ -1767,7 +1771,9 @@
 							<a
 								aria-expanded="true"
 								class="nav-link"
-								aria-selected="false">
+								aria-selected="false"
+								aria-controls="custom-hover-description"
+								role="tab">
 								<i
 									class="ri-file-text-line nav-icon nav-tab-position"></i>
 								<h5 class="nav-titl nav-tab-position m-0">
@@ -1779,7 +1785,9 @@
 							<a
 								aria-expanded="false"
 								class="nav-link"
-								aria-selected="false">
+								aria-selected="false"
+								aria-controls="custom-hover-reviews"
+								role="tab">
 								<i
 									class="ri-star-half-line nav-icon nav-tab-position"></i>
 								<h5 class="nav-titl nav-tab-position m-0">
@@ -1793,7 +1801,8 @@
 					<div class="tab-content text-muted">
 						<div
 							class="tab-pane show"
-							id="custom-hover-customere">
+							id="custom-hover-customer"
+							role="tabpanel">
 							<h6>Customer Details</h6>
 							<div class="table-responsive">
 								<table class="table mb-0">
@@ -1827,7 +1836,8 @@
 						</div>
 						<div
 							class="tab-pane"
-							id="custom-hover-description">
+							id="custom-hover-description"
+							role="tabpanel">
 							<h6>Description</h6>
 							<div class="table-responsive">
 								<table class="table mb-0">
@@ -1857,7 +1867,8 @@
 						</div>
 						<div
 							class="tab-pane"
-							id="custom-hover-reviews">
+							id="custom-hover-reviews"
+							role="tabpanel">
 							<h6>Customer Reviews</h6>
 							<div class="table-responsive">
 								<table class="table mb-0">

@@ -510,6 +510,10 @@ export default {
             js: [{ src: "https://cdn.jsdelivr.net/npm/prismjs/prism.min.js", crossOrigin: "anonymous" }],
             css: ["https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css"]
         },
+        AOS: {
+            js: [{ src: "https://unpkg.com/aos@2.3.4/dist/aos.js", crossOrigin: "anonymous" }],
+            css: ["https://unpkg.com/aos@2.3.4/dist/aos.css"]
+        },
         Isotope: {
             js: [{ src: "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js", crossOrigin: "anonymous" }]
         },

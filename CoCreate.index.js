@@ -274,6 +274,17 @@ if (typeof window !== 'undefined') {
             "https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css"
         ]
     },
+    "AOS": {
+        "js": [
+            {
+                "src": "https://unpkg.com/aos@2.3.4/dist/aos.js",
+                "crossOrigin": "anonymous"
+            }
+        ],
+        "css": [
+            "https://unpkg.com/aos@2.3.4/dist/aos.css"
+        ]
+    },
     "Isotope": {
         "js": [
             {
