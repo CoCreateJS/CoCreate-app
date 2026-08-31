@@ -102,7 +102,7 @@ Built with complete framework independence, the UI relies on **pure HTML templat
 
 ```html
 <!-- Fetches records from the "blog" array and renders each item using a template -->
-<div array="blog" $filter='{"$limit": 10}'>
+<div array="blog" filter='{"$limit": 10}'>
   
   <div template class="card">
     <h3 key="title">Post Title Placeholder</h3>
