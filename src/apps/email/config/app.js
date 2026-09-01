@@ -2,7 +2,7 @@ export default {
   "method": "object.update",
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a037d0d6d00ef0",
+    "_id": "6a96308f0bc023f23881e962",
     "name": "Email",
     "singularName": "Email",
     "path": "apps/email",

@@ -1,0 +1,78 @@
+{
+  "method": "object.update",
+  "array": "sales_orders",
+  "upsert": true,
+  "object": [
+    {
+      "_id": "68b6e8290000000000000001",
+      "order_number": "SO-0001",
+      "customer": "James Price",
+      "items": [
+        "Growth Platform Implementation",
+        "Team Onboarding"
+      ],
+      "order_date": "2026-08-25",
+      "shipping_address": "120 Biscayne Blvd, Miami, FL 33132",
+      "billing_address": "120 Biscayne Blvd, Miami, FL 33132",
+      "subtotal": 18500,
+      "tax": 1295,
+      "shipping_cost": 0,
+      "total": 19795,
+      "payment_method": "Credit Card",
+      "status": "processing",
+      "tags": [
+        "priority"
+      ],
+      "modified": {
+        "on": "2026-08-25T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": "68b6e8290000000000000002",
+      "order_number": "SO-0002",
+      "customer": "Morgan Ellis",
+      "items": [
+        "CRM Sales Automation"
+      ],
+      "order_date": "2026-08-27",
+      "shipping_address": "910 Sunset Blvd, Los Angeles, CA 90028",
+      "billing_address": "910 Sunset Blvd, Los Angeles, CA 90028",
+      "subtotal": 9200,
+      "tax": 644,
+      "shipping_cost": 0,
+      "total": 9844,
+      "payment_method": "Paypal",
+      "status": "pending",
+      "tags": [
+        "new"
+      ],
+      "modified": {
+        "on": "2026-08-27T14:30:00.000Z"
+      }
+    },
+    {
+      "_id": "68b6e8290000000000000003",
+      "order_number": "SO-0003",
+      "customer": "Casey Morgan",
+      "items": [
+        "Managed Server Infrastructure",
+        "Monitoring and Scaling"
+      ],
+      "order_date": "2026-08-29",
+      "shipping_address": "85 East Oak St, Chicago, IL 60611",
+      "billing_address": "85 East Oak St, Chicago, IL 60611",
+      "subtotal": 24000,
+      "tax": 1680,
+      "shipping_cost": 0,
+      "total": 25680,
+      "payment_method": "Bank Transfer",
+      "status": "delivered",
+      "tags": [
+        "infrastructure"
+      ],
+      "modified": {
+        "on": "2026-08-29T09:15:00.000Z"
+      }
+    }
+  ]
+}

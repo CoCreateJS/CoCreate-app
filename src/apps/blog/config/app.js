@@ -25,7 +25,7 @@ export default {
         "label": "Title",
         "tagName": "input",
         "filterTemplate": "<input id=\"title-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter blog title\" filter-query=\"$document .list-view\" filter-query-key=\"title\" />",
-        "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/blog/details.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t  <div state-to=\"offcanvas-app-form\" state.array=\"blog\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.title}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+        "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/blog/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"blog\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.title}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
         "attributes": [
           {
             "name": "class",

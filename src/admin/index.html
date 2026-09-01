@@ -73,7 +73,9 @@
 			href="/manifest.webmanifest" />
 	</head>
 
-	<body id="layout-wrapper">
+	<body
+		id="layout-wrapper"
+		class="height:100dvh overflow:hidden">
 		<a
 			href="/auth/"
 			session="false"
@@ -102,17 +104,21 @@
 		<!-- Menu End -->
 
 		<!-- Main Content Start-->
-		<main class="main-content">
+		<main
+			class="main-content display:flex flex-direction:column height:100dvh overflow:hidden">
 			<!-- start page title -->
-			<div src="/components/breadcrumbs.html"></div>
+			<div
+				class="flex-shrink-0"
+				src="/components/breadcrumbs.html"></div>
 			<!-- end page title -->
 
 			<!-- TODO: use the src change to mark the the navigation menu item as active -->
 			<!-- Page Content Start -->
-			<div class="page-content d-flex gap-4">
+			<div
+				class="page-content d-flex flex-grow-1 min-height:0 overflow:hidden">
 				<div
 					id="main-view"
-					class="display:flex flex-direction:column flex-grow-1 gap-3 min-width:200px"
+					class="display:flex flex-direction:column flex-grow-1 min-height:0 overflow:hidden min-width:200px"
 					src=""
 					state-id="adminView"
 					state.onstoragechange="false"
@@ -127,7 +133,7 @@
 					id="offcanvas-app"
 					resizable
 					role="dialog"
-					class="card offcanvas offcanvas-end flex-grow-1 mb-0"
+					class="card offcanvas offcanvas-end flex-grow-1 min-height:0 mb-0 overflow:hidden"
 					tabindex="-1"
 					aria-labelledby="offcanvas-app-label"
 					aria-close-on="button">
@@ -144,11 +150,38 @@
 		</main>
 		<!-- Main Content End -->
 
-		<!-- Footer Start -->
-		<footer
-			class="footer"
-			src="/admin/components/footer.html"></footer>
-		<!-- Footer End -->
+		<!-- AI Chat Start -->
+		<aside
+			id="ai-chat-panel"
+			class="ai-chat-panel"
+			open="false"
+			state-id="ai-chat-panel-drawer"
+			state-overwrite
+			aria-label="CoCreate AI"
+			resizable
+			resize
+			resize-query="$document #page-topbar, $document .main-content"
+			resize.style="margin-right:$width">
+			<button
+				type="button"
+				class="ai-chat-panel-close"
+				aria-label="Close AI chat"
+				aria-controls="ai-chat-panel"
+				aria-close
+				aria-expanded="false"
+				state-id="ai-chat-panel-drawer"
+				state-to="ai-chat-panel-drawer"
+				state-overwrite
+				state.open="false"
+				state.aria-expanded="false">
+				<i class="ri-close-line" aria-hidden="true"></i>
+			</button>
+			<div
+				class="ai-chat-panel-content"
+				src="/apps/ai/index.html"></div>
+			<div resize="left"></div>
+		</aside>
+		<!-- AI Chat End -->
 
 		<!-- Preloader Start -->
 		<div id="preloader">

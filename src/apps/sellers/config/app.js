@@ -2,7 +2,7 @@ export default {
   "method": "object.update",
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a037d0d6d00eef",
+    "_id": "6a96308f79df2000df2ee4b3",
     "name": "Sellers",
     "singularName": "Seller",
     "path": "apps/sellers",

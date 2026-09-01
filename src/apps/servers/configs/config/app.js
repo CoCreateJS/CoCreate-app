@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (C) 2023 CoCreate and Contributors.
+ * Copyright (C) 2026 CoCreate and Contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -21,176 +21,120 @@ export default {
   "upsert": true,
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a037d0d6d00eef",
-    "name": "Endpoints",
-    "singularName": "Endpoint",
-    "path": "apps/apis/endpoints",
-    "array": "endpoints",
-    "category": "Integrations",
+    "_id": "6a96308fbe321a28ad3edec1",
+    "name": "Server Configs",
+    "singularName": "Server Config",
+    "path": "apps/servers/configs",
+    "array": "servers_config",
+    "category": "Settings",
     "mainViews": [
       "table",
       "grid"
     ],
     "secondaryViews": [
-      "details",
       "form"
     ],
-    "icon": "ri-terminal-box-line",
-    "description": "Configure individual outbound REST API endpoints, paths, parameter configurations, and system action flows.",
+    "icon": "ri-settings-3-line",
+    "description": "Manage scoped runtime configuration for servers, workers, storage drivers, telemetry, autoscaling, and AI.",
     "status": "active",
     "fields": [
       {
-        "label": "API Provider",
-        "tagName": "select",
-        "filterTemplate": "<select id=\"provider-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"api_id\"><option value=\"\">Filter by Provider</option><option template value=\"{{object._id}}\">{{object.name}}</option></select><div array=\"apis\" render-query=\"$previous\"></div>",
-        "tableTemplate": "<span class=\"text-uppercase fw-semibold text-primary\" array=\"apis\" object=\"{{object.api_id}}\" key=\"name\"></span>",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "form-select"
-          },
-          {
-            "name": "id",
-            "value": "endpoint-provider-field"
-          },
-          {
-            "name": "key",
-            "value": "api_id"
-          },
-          {
-            "name": "required",
-            "value": true
-          }
-        ]
-      },
-      {
-        "label": "Endpoint",
+        "label": "Name",
         "tagName": "input",
-        "filterTemplate": "<input id=\"endpoint-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by route (e.g. POST /customers)\" filter-query=\"$document .list-view\" filter-query-key=\"endpoint.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 font-monospace fs-13\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/endpoints/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"endpoints\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<code>{{object.endpoint}}</code>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
+        "filterTemplate": "<input id=\"server-config-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/servers/configs/form.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"servers_config\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
         "attributes": [
-          {
-            "name": "class",
-            "value": "form-control font-monospace"
-          },
-          {
-            "name": "id",
-            "value": "endpoint-route-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "e.g. POST /customers"
-          },
-          {
-            "name": "required",
-            "value": true
-          },
-          {
-            "name": "key",
-            "value": "endpoint"
-          },
-          {
-            "name": "type",
-            "value": "text"
-          }
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-config-name" },
+          { "name": "key", "value": "name" },
+          { "name": "type", "value": "text" },
+          { "name": "required", "value": true }
         ]
       },
       {
-        "label": "Path Override",
+        "label": "Type",
         "tagName": "input",
-        "filterTemplate": "<input id=\"path-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by path override\" filter-query=\"$document .list-view\" filter-query-key=\"path.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "<code class=\"text-muted\">{{object.path}}</code>",
+        "filterTemplate": "<select id=\"server-config-type-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"type\"><option value=\"\">All types</option><option value=\"ai\">AI</option><option value=\"autoscaler\">Autoscaler</option><option value=\"storage\">Storage</option><option value=\"telemetry\">Telemetry</option></select>",
+        "tableTemplate": "<span class=\"badge bg-primary-subtle text-primary text-uppercase\">{{object.type}}</span>",
         "attributes": [
-          {
-            "name": "class",
-            "value": "form-control"
-          },
-          {
-            "name": "id",
-            "value": "endpoint-path-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "e.g. /customers"
-          },
-          {
-            "name": "required",
-            "value": false
-          },
-          {
-            "name": "key",
-            "value": "path"
-          },
-          {
-            "name": "type",
-            "value": "text"
-          }
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-config-type" },
+          { "name": "key", "value": "type" },
+          { "name": "type", "value": "text" },
+          { "name": "required", "value": true }
         ]
       },
       {
-        "label": "Description",
-        "tagName": "textarea",
-        "filterTemplate": "<input id=\"endpoint-description-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search descriptions...\" filter-query=\"$document .list-view\" filter-query-key=\"description.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "<span class=\"text-truncate d-inline-block\" style=\"max-width: 200px;\">{{object.description}}</span>",
+        "label": "Provider",
+        "tagName": "input",
+        "filterTemplate": "<input id=\"server-config-provider-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by provider\" filter-query=\"$document .list-view\" filter-query-key=\"provider.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "{{object.provider}}",
         "attributes": [
-          {
-            "name": "class",
-            "value": "form-control"
-          },
-          {
-            "name": "id",
-            "value": "endpoint-description-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "Describe this endpoint's transaction..."
-          },
-          {
-            "name": "key",
-            "value": "description"
-          }
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-config-provider" },
+          { "name": "key", "value": "provider" },
+          { "name": "type", "value": "text" }
         ]
       },
       {
-        "label": "Status",
-        "tagName": "select",
-        "filterTemplate": "\n\t\t\t\t\t<select id=\"endpoint-status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"status\">\n\t\t\t\t\t\t<option value=\"\">Select Status</option>\n\t\t\t\t\t\t<option value=\"active\">Active</option>\n\t\t\t\t\t\t<option value=\"inactive\">Inactive</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
-        "tableTemplate": "<span class=\"badge {{#if (eq object.status 'active')}}bg-success-subtle text-success{{else}}bg-danger-subtle text-danger{{/if}}\">{{object.status}}</span>",
+        "label": "Cluster",
+        "tagName": "input",
+        "filterTemplate": "<input id=\"server-config-cluster-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by cluster\" filter-query=\"$document .list-view\" filter-query-key=\"cluster\" />",
+        "tableTemplate": "<code>{{object.cluster}}</code>",
         "attributes": [
-          {
-            "name": "class",
-            "value": "form-select"
-          },
-          {
-            "name": "id",
-            "value": "endpoint-status-field"
-          },
-          {
-            "name": "key",
-            "value": "status"
-          }
-        ],
-        "children": [
-          {
-            "tagName": "option",
-            "attributes": [
-              {
-                "name": "value",
-                "value": "active"
-              }
-            ],
-            "innerText": "Active"
-          },
-          {
-            "tagName": "option",
-            "attributes": [
-              {
-                "name": "value",
-                "value": "inactive"
-              }
-            ],
-            "innerText": "Inactive"
-          }
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-config-cluster" },
+          { "name": "key", "value": "cluster" },
+          { "name": "type", "value": "text" }
+        ]
+      },
+      {
+        "label": "Server",
+        "tagName": "input",
+        "filterTemplate": "<input id=\"server-config-server-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by server\" filter-query=\"$document .list-view\" filter-query-key=\"server\" />",
+        "tableTemplate": "<code>{{object.server}}</code>",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-config-server" },
+          { "name": "key", "value": "server" },
+          { "name": "type", "value": "text" }
+        ]
+      },
+      {
+        "label": "Worker",
+        "tagName": "input",
+        "filterTemplate": "<input id=\"server-config-worker-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by worker\" filter-query=\"$document .list-view\" filter-query-key=\"worker\" />",
+        "tableTemplate": "<code>{{object.worker}}</code>",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-config-worker" },
+          { "name": "key", "value": "worker" },
+          { "name": "type", "value": "text" }
+        ]
+      },
+      {
+        "label": "Enabled",
+        "tagName": "input",
+        "filterTemplate": "<select id=\"server-config-enabled-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\">Enabled</option><option value=\"false\">Disabled</option></select>",
+        "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.enabled}}</span>",
+        "attributes": [
+          { "name": "class", "value": "form-check-input" },
+          { "name": "id", "value": "server-config-enabled" },
+          { "name": "key", "value": "enabled" },
+          { "name": "type", "value": "checkbox" }
+        ]
+      },
+      {
+        "label": "Modified",
+        "tagName": "input",
+        "filterTemplate": "",
+        "tableTemplate": "{{object.modified.on}}",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-config-modified" },
+          { "name": "key", "value": "modified.on" },
+          { "name": "type", "value": "date" },
+          { "name": "readonly", "value": true }
         ]
       }
     ]

@@ -1042,10 +1042,11 @@
       "phone": "",
       "lead_score": "",
       "type": [
-        "Candidate"
+		"candidate"
       ],
       "status": "applicant",
       "tags": [],
+      "skills": ["javascript", "node.js", "mongodb"],
       "availability": "Full Time",
       "modified": {
         "on": "2025-07-20T19:45:59.915Z",
@@ -1084,10 +1085,11 @@
       "phone": "",
       "lead_score": "",
       "type": [
-        "Candidate"
+		"candidate"
       ],
       "status": "applicant",
       "tags": [],
+      "skills": ["customer support", "administration"],
       "availability": "Part Time",
       "modified": {
         "on": "2025-07-20T19:45:59.915Z",
@@ -1130,6 +1132,7 @@
       ],
       "status": "applicant",
       "tags": [],
+      "skills": ["marketing", "communications"],
       "availability": "Part Time",
       "modified": {
         "on": "2025-07-20T19:45:59.915Z",
@@ -1172,6 +1175,7 @@
       ],
       "status": "applicant",
       "tags": [],
+      "skills": ["graphic design", "css", "html"],
       "availability": "Freelancer",
       "modified": {
         "on": "2025-07-20T19:45:59.915Z",
@@ -1214,6 +1218,7 @@
       ],
       "status": "applicant",
       "tags": [],
+      "skills": ["pharmaceutical sales", "client relations"],
       "availability": "Part Time",
       "modified": {
         "on": "2025-07-20T19:45:59.915Z",
@@ -1256,6 +1261,7 @@
       ],
       "status": "applicant",
       "tags": [],
+      "skills": ["javascript", "react", "mobile development"],
       "availability": "Full Time",
       "modified": {
         "on": "2025-07-20T19:45:59.915Z",

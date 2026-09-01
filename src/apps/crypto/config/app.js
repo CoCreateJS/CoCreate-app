@@ -2,7 +2,7 @@ export default {
   "method": "object.update",
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a037d0d6d00eef",
+    "_id": "6a96308f23efb4e2a9ef34e6",
     "name": "Crypto",
     "singularName": "Crypto Asset",
     "path": "apps/crypto",

@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (C) 2023 CoCreate and Contributors.
+ * Copyright (C) 2026 CoCreate and Contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -21,12 +21,12 @@ export default {
   "upsert": true,
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a037d0d6d00eee",
-    "name": "APIs",
-    "singularName": "API",
-    "path": "apps/apis",
-    "array": "apis",
-    "category": "Integrations",
+    "_id": "6a96308ff9a6bb732ce54723",
+    "name": "Servers",
+    "singularName": "Server",
+    "path": "apps/servers",
+    "array": "servers",
+    "category": "Infrastructure",
     "mainViews": [
       "table",
       "grid"
@@ -35,178 +35,140 @@ export default {
       "details",
       "form"
     ],
-    "icon": "ri-key-2-line",
-    "description": "App to manage and configure third-party API integration keys, base URLs, and connection protocols.",
+    "icon": "ri-server-line",
+    "description": "Monitor server topology and manage worker control state.",
     "status": "active",
     "fields": [
       {
-        "label": "Name",
+        "label": "Host",
         "tagName": "input",
-        "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by provider (e.g. stripe)\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\n\t\t\t\t\t\t\t\t<div class=\"avatar-xs rounded-circle position-relative overflow-hidden\" state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\">\n\t\t\t\t\t\t\t\t\t<div class=\"avatar-title bg-primary-subtle text-primary material-shadow\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"overflow-hidden width:1ch letter-spacing:1em text-uppercase\">{{object.name}}</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 ms-2 name text-capitalize\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n              \t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
+        "filterTemplate": "<input id=\"server-host-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by host\" filter-query=\"$document .list-view\" filter-query-key=\"host.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/servers/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"servers\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.host}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
         "attributes": [
-          {
-            "name": "class",
-            "value": "form-control"
-          },
-          {
-            "name": "id",
-            "value": "api-name-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "Enter API provider name"
-          },
-          {
-            "name": "required",
-            "value": true
-          },
-          {
-            "name": "key",
-            "value": "name"
-          },
-          {
-            "name": "type",
-            "value": "text"
-          }
-        ]
-      },
-      {
-        "label": "Base URL",
-        "tagName": "input",
-        "filterTemplate": "<input id=\"url-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by URL\" filter-query=\"$document .list-view\" filter-query-key=\"url.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "<code>{{object.url}}</code>",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "form-control"
-          },
-          {
-            "name": "id",
-            "value": "api-url-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "https://api.provider.com/v1"
-          },
-          {
-            "name": "required",
-            "value": true
-          },
-          {
-            "name": "key",
-            "value": "url"
-          },
-          {
-            "name": "type",
-            "value": "url"
-          }
-        ]
-      },
-      {
-        "label": "API Secret Key",
-        "tagName": "input",
-        "filterTemplate": "",
-        "tableTemplate": "<span class=\"text-muted\">●●●●●●●●●●●●</span>",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "form-control"
-          },
-          {
-            "name": "id",
-            "value": "api-key-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "sk_live_..."
-          },
-          {
-            "name": "required",
-            "value": true
-          },
-          {
-            "name": "key",
-            "value": "key"
-          },
-          {
-            "name": "type",
-            "value": "password"
-          }
-        ]
-      },
-      {
-        "label": "Description",
-        "tagName": "textarea",
-        "filterTemplate": "<input id=\"description-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search description\" filter-query=\"$document .list-view\" filter-query-key=\"description.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "<span class=\"text-truncate d-inline-block\" style=\"max-width: 250px;\">{{object.description}}</span>",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "form-control"
-          },
-          {
-            "name": "id",
-            "value": "api-description-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "Describe this integration..."
-          },
-          {
-            "name": "required",
-            "value": false
-          },
-          {
-            "name": "key",
-            "value": "description"
-          },
-          {
-            "name": "type",
-            "value": "text"
-          }
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-host" },
+          { "name": "key", "value": "host" },
+          { "name": "type", "value": "text" },
+          { "name": "required", "value": true }
         ]
       },
       {
         "label": "Status",
         "tagName": "select",
-        "filterTemplate": "\n\t\t\t\t\t<select id=\"status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"status\">\n\t\t\t\t\t\t<option value=\"\">Select Status</option>\n\t\t\t\t\t\t<option value=\"active\">Active</option>\n\t\t\t\t\t\t<option value=\"inactive\">Inactive</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
-        "tableTemplate": "<span class=\"badge {{#if (eq object.status 'active')}}bg-success-subtle text-success{{else}}bg-danger-subtle text-danger{{/if}}\">{{object.status}}</span>",
+        "filterTemplate": "<select id=\"server-status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"status\"><option value=\"\">All statuses</option><option value=\"running\">Running</option><option value=\"stopped\">Stopped</option><option value=\"draining\">Draining</option><option value=\"error\">Error</option></select>",
+        "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.status}}</span>",
         "attributes": [
-          {
-            "name": "class",
-            "value": "form-select"
-          },
-          {
-            "name": "id",
-            "value": "api-status-field"
-          },
-          {
-            "name": "key",
-            "value": "status"
-          }
-        ],
-        "children": [
-          {
-            "tagName": "option",
-            "attributes": [
-              {
-                "name": "value",
-                "value": "active"
-              }
-            ],
-            "innerText": "Active"
-          },
-          {
-            "tagName": "option",
-            "attributes": [
-              {
-                "name": "value",
-                "value": "inactive"
-              }
-            ],
-            "innerText": "Inactive"
-          }
+          { "name": "class", "value": "form-select" },
+          { "name": "id", "value": "server-status" },
+          { "name": "key", "value": "status" }
+        ]
+      },
+      {
+        "label": "IP Address",
+        "tagName": "input",
+        "filterTemplate": "<input id=\"server-ip-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by IP\" filter-query=\"$document .list-view\" filter-query-key=\"ip.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "<code>{{object.ip}}</code>",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-ip" },
+          { "name": "key", "value": "ip" },
+          { "name": "type", "value": "text" }
+        ]
+      },
+      {
+        "label": "Provider",
+        "tagName": "input",
+        "filterTemplate": "<input id=\"server-provider-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by provider\" filter-query=\"$document .list-view\" filter-query-key=\"infrastructure.provider.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "{{object.infrastructure.provider}}",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-provider" },
+          { "name": "key", "value": "infrastructure.provider" },
+          { "name": "type", "value": "text" }
+        ]
+      },
+      {
+        "label": "Region",
+        "tagName": "input",
+        "filterTemplate": "<input id=\"server-region-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by region\" filter-query=\"$document .list-view\" filter-query-key=\"infrastructure.region.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "{{object.infrastructure.region}}",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-region" },
+          { "name": "key", "value": "infrastructure.region" },
+          { "name": "type", "value": "text" }
+        ]
+      },
+      {
+        "label": "Workers",
+        "tagName": "input",
+        "filterTemplate": "<input id=\"server-workers-filter\" class=\"form-control\" type=\"number\" placeholder=\"Worker count\" filter-query=\"$document .list-view\" filter-query-key=\"totalWorkers\" />",
+        "tableTemplate": "{{object.totalWorkers}}",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-total-workers" },
+          { "name": "key", "value": "totalWorkers" },
+          { "name": "type", "value": "number" }
+        ]
+      },
+      {
+        "label": "Worker Status",
+        "tagName": "select",
+        "filterTemplate": "<select id=\"worker-status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"worker1.status\"><option value=\"\">All worker statuses</option><option value=\"running\">Running</option><option value=\"stopped\">Stopped</option><option value=\"draining\">Draining</option><option value=\"error\">Error</option></select>",
+        "tableTemplate": "{{object.worker1.status}}",
+        "attributes": [
+          { "name": "class", "value": "form-select" },
+          { "name": "id", "value": "worker-status" },
+          { "name": "key", "value": "worker1.status" }
+        ]
+      },
+      {
+        "label": "Cordoned",
+        "tagName": "input",
+        "filterTemplate": "",
+        "tableTemplate": "{{object.worker1.isCordoned}}",
+        "attributes": [
+          { "name": "class", "value": "form-check-input" },
+          { "name": "id", "value": "worker-cordoned" },
+          { "name": "key", "value": "worker1.isCordoned" },
+          { "name": "type", "value": "checkbox" }
+        ]
+      },
+      {
+        "label": "Shedding",
+        "tagName": "input",
+        "filterTemplate": "",
+        "tableTemplate": "{{object.worker1.isShedding}}",
+        "attributes": [
+          { "name": "class", "value": "form-check-input" },
+          { "name": "id", "value": "worker-shedding" },
+          { "name": "key", "value": "worker1.isShedding" },
+          { "name": "type", "value": "checkbox" }
+        ]
+      },
+      {
+        "label": "Draining",
+        "tagName": "input",
+        "filterTemplate": "",
+        "tableTemplate": "{{object.worker1.isDraining}}",
+        "attributes": [
+          { "name": "class", "value": "form-check-input" },
+          { "name": "id", "value": "worker-draining" },
+          { "name": "key", "value": "worker1.isDraining" },
+          { "name": "type", "value": "checkbox" }
+        ]
+      },
+      {
+        "label": "Modified",
+        "tagName": "input",
+        "filterTemplate": "",
+        "tableTemplate": "{{object.modified.on}}",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "server-modified" },
+          { "name": "key", "value": "modified.on" },
+          { "name": "type", "value": "date" },
+          { "name": "readonly", "value": true }
         ]
       }
     ]

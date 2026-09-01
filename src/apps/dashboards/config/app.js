@@ -2,7 +2,7 @@ export default {
   "method": "object.update",
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a037d0d6d80dh5",
+    "_id": "6a96308fea6decf4bea7a277",
     "name": "Dashboards",
     "singularName": "Dashboard",
     "path": "apps/dashboards",

@@ -1,20 +1,17 @@
-<div class="hstack gap-2 justify-content-end mt-4">
-	<!-- <button
+<div class="hstack gap-2 justify-content-end">
+	<button
 		type="button"
 		class="btn btn-light"
 		title="Cancel"
-		aria-label="Cancel"
+		aria-label="Cancel form"
 		aria-controls="offcanvas-app"
-		aria-expanded="true"
-		actions="state"
-		state-to="offcanvas-app-view"
-		state.src="$back">
+		aria-expanded="true">
 		Cancel
-	</button> -->
+	</button>
 	<button
-		type="submit"
 		class="btn btn-success btn-spinner"
 		id="save-btn"
+		aria-label="Save form"
 		actions="validate, disabled, save, timeout(2000), disabled">
 		<span
 			class="spinner-border spinner-border-sm display:none"

@@ -1,5 +1,5 @@
 <div
-	class="card height:calc(100vh_-_110px) mb-0"
+	class="card h-100 mb-0"
 	plugin='{"$SimpleBar": ["$this", {}]}'>
 	<div class="card-body">
 		<div class="table-card">
@@ -58,6 +58,10 @@
 							{{column.tableTemplate}}
 						</td>
 					</tr>
+					<tr
+						style="height: 20px"
+						filter-on="scroll"
+						filter-query="$parent"></tr>
 				</tbody>
 			</table>
 

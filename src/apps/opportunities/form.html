@@ -9,114 +9,120 @@
 		input-query=".details-view-btn[]"
 		input.state.src="/apps/opportunities/details.html"
 		src="components/offcanvas-header.html"></div>
-	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="card-body d-flex flex-wrap gap-4">
-			<div class="form-container">
-				<div class="d-flex flex-wrap gap-4">
-					<div class="flex-grow-1 d-flex flex-column gap-3">
-						<label class="form-label" for="opportunity-name-field">
-							Opportunity Name
-							<input
-								type="text"
-								id="opportunity-name-field"
-								class="form-control"
-								placeholder="Enter opportunity name"
-								key="name"
-								aria-describedby="opportunity-name-field-description" />
-						</label>
-						<div
-							id="opportunity-name-field-description"
-							class="sr-only">
-							The name of the opportunity.
-						</div>
-						<label class="form-label" for="company-name-field">
-							Company Name
-							<input
-								type="text"
-								id="company-name-field"
-								class="form-control"
-								placeholder="Enter company name"
-								key="company"
-								aria-describedby="company-name-field-description" />
-						</label>
-						<div
-							id="company-name-field-description"
-							class="sr-only">
-							The name of the company associated with the
-							opportunity.
-						</div>
-						<label class="form-label" for="amount-field">
-							Amount
-							<input
-								type="number"
-								id="amount-field"
-								class="form-control"
-								placeholder="Enter amount"
-								key="amount"
-								aria-describedby="amount-field-description" />
-						</label>
-						<div id="amount-field-description" class="sr-only">
-							The monetary value of the opportunity.
-						</div>
-						<label class="form-label" for="closing-date-field">
-							Closing Date
-							<input
-								type="date"
-								id="closing-date-field"
-								class="form-control"
-								key="closing_date"
-								aria-describedby="closing-date-field-description" />
-						</label>
-						<div
-							id="closing-date-field-description"
-							class="sr-only">
-							The expected date of opportunity closure.
-						</div>
-						<label class="form-label" for="assigned-contact-field">
-							Assigned Contact
-							<select
-								class="form-select"
-								id="assigned-contact-field"
-								key="contact_id"
-								aria-label="Select an assigned contact"
-								aria-describedby="assigned-contact-field-description">
-								<option value="">Select Contact</option>
-								<option
-									array="contacts"
-									object="{{_id}}"
-									key="name"
-									template>
-									{{name}}
-								</option>
-							</select>
-						</label>
-						<div
-							id="assigned-contact-field-description"
-							class="sr-only">
-							Choose a contact person from the list.
-						</div>
-					</div>
-				</div>
-				<div class="d-flex justify-content-end gap-2 mt-4">
-					<button
-						type="button"
-						class="btn btn-light"
-						title="Cancel"
-						aria-label="Cancel form"
-						aria-controls="offcanvas-app"
-						aria-expanded="true">
-						Cancel
-					</button>
-					<button
-						type="submit"
-						class="btn btn-success"
-						id="save-btn"
-						actions="validate, save"
-						aria-label="Save the current opportunity">
-						Save
-					</button>
-				</div>
+	<div
+		class="form-container"
+		plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap align-items:flex-start">
+			<label
+				class="form-label flex-grow:2 flex-basis:280px min-width:220px"
+				for="opportunity-name-field">
+				Opportunity Name
+				<input
+					type="text"
+					id="opportunity-name-field"
+					class="form-control"
+					placeholder="Enter opportunity name"
+					key="name"
+					aria-describedby="opportunity-name-field-description" />
+			</label>
+			<div
+				id="opportunity-name-field-description"
+				class="sr-only">
+				The name of the opportunity.
+			</div>
+			<label
+				class="form-label flex-grow:2 flex-basis:260px min-width:220px"
+				for="company-name-field">
+				Company Name
+				<input
+					type="text"
+					id="company-name-field"
+					class="form-control"
+					placeholder="Enter company name"
+					key="company"
+					aria-describedby="company-name-field-description" />
+			</label>
+			<div
+				id="company-name-field-description"
+				class="sr-only">
+				The name of the company associated with the opportunity.
+			</div>
+			<label
+				class="form-label flex-grow-1 flex-basis:160px min-width:140px"
+				for="amount-field">
+				Amount
+				<input
+					type="number"
+					id="amount-field"
+					class="form-control"
+					placeholder="Enter amount"
+					key="amount"
+					aria-describedby="amount-field-description" />
+			</label>
+			<div
+				id="amount-field-description"
+				class="sr-only">
+				The monetary value of the opportunity.
+			</div>
+			<label
+				class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+				for="closing-date-field">
+				Closing Date
+				<input
+					type="date"
+					id="closing-date-field"
+					class="form-control"
+					key="closing_date"
+					aria-describedby="closing-date-field-description" />
+			</label>
+			<div
+				id="closing-date-field-description"
+				class="sr-only">
+				The expected date of opportunity closure.
+			</div>
+			<label
+				class="form-label flex-grow:2 flex-basis:240px min-width:200px"
+				for="assigned-contact-field">
+				Assigned Contact
+				<select
+					class="form-select"
+					id="assigned-contact-field"
+					key="contact_id"
+					aria-label="Select an assigned contact"
+					aria-describedby="assigned-contact-field-description">
+					<option value="">Select Contact</option>
+					<option
+						array="contacts"
+						object="{{_id}}"
+						key="name"
+						template>
+						{{name}}
+					</option>
+				</select>
+			</label>
+			<div
+				id="assigned-contact-field-description"
+				class="sr-only">
+				Choose a contact person from the list.
 			</div>
 		</div>
+	</div>
+	<div class="card-footer d-flex flex-shrink-0 justify-content-end gap-2">
+		<button
+			type="button"
+			class="btn btn-light"
+			title="Cancel"
+			aria-label="Cancel form"
+			aria-controls="offcanvas-app"
+			aria-expanded="true">
+			Cancel
+		</button>
+		<button
+			class="btn btn-success"
+			id="save-btn"
+			actions="validate, save"
+			aria-label="Save the current opportunity">
+			Save
+		</button>
 	</div>
 </form>

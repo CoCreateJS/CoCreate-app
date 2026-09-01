@@ -1,6 +1,6 @@
 <form
 	class="card mb-0"
-	array
+	array="invoices"
 	object
 	state-id="offcanvas-app-form"
 	state-overwrite>
@@ -13,11 +13,11 @@
 		<div
 			class="card-body d-flex flex-wrap gap-4 min-width:300px width:100% max-width:911px margin:auto">
 			<div
-				class="card-header border-bottom-dashed p-4 d-flex flex-wrap gap-3 justify-content:space-between width:100%">
+				class="border-bottom border-bottom-dashed d-flex flex-wrap gap-3 py-3 justify-content:space-between width:100%">
 				<div class="flex-grow-1">
 					<!-- show company logo from invoice.company.logo (string path) -->
 					<img
-						src="{{company.logo}}"
+						src=""
 						key="company.logo"
 						class="card-logo card-logo-dark"
 						alt="company logo"
@@ -61,6 +61,7 @@
 						<a
 							href=""
 							key="company.website"
+							input.href="$value"
 							class="link-primary"
 							target="_blank"
 							id="website"
@@ -75,7 +76,7 @@
 			</div>
 
 			<div class="flex-grow-1 d-flex flex-column gap-4">
-				<div class="d-flex flex-wrap justify-content-between gap-3 p-4">
+				<div class="d-flex flex-wrap justify-content-between gap-3 py-3">
 					<div
 						class="display:flex flex-wrap gap-4 flex-grow-1 width:400px">
 						<div class="flex-grow-1 width:150px">
@@ -138,7 +139,7 @@
 				</div>
 			</div>
 
-			<div class="p-4 border-top border-top-dashed width:100%">
+			<div class="border-top border-top-dashed py-3 width:100%">
 				<div class="d-flex flex-wrap gap-4">
 					<div class="flex-grow-1 width:300px">
 						<h6 class="text-muted text-uppercase fw-semibold mb-3">
@@ -189,7 +190,7 @@
 				</div>
 			</div>
 
-			<div class="p-4">
+			<div class="py-3 width:100%">
 				<div class="table-responsive">
 					<table
 						class="table table-borderless text-center table-nowrap align-middle mb-0">
@@ -233,7 +234,6 @@
 							<tr>
 								<td>Sub Total</td>
 								<td class="text-end" key="cart.subtotal"></td>
-							</tr>
 							<tr>
 								<td>Estimated Tax (12.5%)</td>
 								<td class="text-end" key="cart.tax"></td>
@@ -303,23 +303,22 @@
 			</div>
 
 			<div class="w-100" src="components/activities.html"></div>
-
-			<div
-				class="hstack gap-2 justify-content-end d-print-none mt-4 w-100">
-				<a
-					href="javascript:window.print()"
-					class="btn btn-success"
-					aria-label="Print Invoice">
-					<i class="ri-printer-line align-bottom me-1"></i> Print
-				</a>
-				<a
-					href="javascript:void(0);"
-					class="btn btn-primary"
-					aria-label="Download Invoice">
-					<i class="ri-download-2-line align-bottom me-1"></i>
-					Download
-				</a>
-			</div>
+		</div>
+	</div>
+	<div class="card-footer flex-shrink-0 d-print-none">
+		<div class="hstack gap-2 justify-content-end">
+			<a
+				href="javascript:window.print()"
+				class="btn btn-success"
+				aria-label="Print Invoice">
+				<i class="ri-printer-line align-bottom me-1"></i> Print
+			</a>
+			<a
+				href="javascript:void(0);"
+				class="btn btn-primary"
+				aria-label="Download Invoice">
+				<i class="ri-download-2-line align-bottom me-1"></i> Download
+			</a>
 		</div>
 	</div>
 </form>

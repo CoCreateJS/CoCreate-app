@@ -1,6 +1,6 @@
 <form
 	class="card mb-0"
-	array
+	array="invoices"
 	object
 	state-id="offcanvas-app-form"
 	state-overwrite>
@@ -11,12 +11,13 @@
 		src="components/offcanvas-header.html"
 		key="invoiceHeader"></div>
 	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="max-width:1000px margin:auto">
+		<div class="card-body d-flex flex-column gap-3">
+			<input type="hidden" key="type" value="invoice" />
 			<div
-				class="card-body border-bottom border-bottom-dashed p-4 display:flex flex-wrap:wrap gap:1rem">
+				class="d-flex flex-wrap gap-3 align-items-start border-bottom border-bottom-dashed pb-3">
 				<div
-					class="display:flex flex-grow:1 flex-column width:300px gap-4">
-					<label class="form-label">
+					class="d-flex flex-column gap-4 flex-grow-1 flex-basis:320px min-width:280px">
+					<label class="form-label d-flex flex-column gap-1 align-self-start">
 						<div>Upload Company Logo</div>
 						<div
 							type="file"
@@ -36,7 +37,7 @@
 							</div>
 						</div>
 					</label>
-					<label class="form-label">
+					<label class="form-label d-flex flex-column gap-1 w-100">
 						Address
 						<textarea
 							class="form-control bg-light border-0"
@@ -47,7 +48,7 @@
 							key="company.address">
 						</textarea>
 					</label>
-					<label class="form-label">
+					<label class="form-label d-flex flex-column gap-1 w-100">
 						Postal Code
 						<input
 							type="text"
@@ -60,8 +61,9 @@
 							key="company.postalCode" />
 					</label>
 				</div>
-				<div class="display:flex flex-grow:1 flex-column width:300px">
-					<label class="form-label">
+				<div
+					class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:260px">
+					<label class="form-label d-flex flex-column gap-1">
 						Legal Registration No
 						<input
 							type="text"
@@ -72,7 +74,7 @@
 							aria-labelledby="registrationNumber"
 							key="company.registrationNumber" />
 					</label>
-					<label class="form-label">
+					<label class="form-label d-flex flex-column gap-1">
 						Email Address
 						<input
 							type="email"
@@ -82,7 +84,7 @@
 							aria-labelledby="companyEmail"
 							key="company.email" />
 					</label>
-					<label class="form-label">
+					<label class="form-label d-flex flex-column gap-1">
 						Website
 						<input
 							type="text"
@@ -92,7 +94,7 @@
 							aria-labelledby="companyWebsite"
 							key="company.website" />
 					</label>
-					<label class="form-label">
+					<label class="form-label d-flex flex-column gap-1">
 						Contact No
 						<input
 							type="text"
@@ -106,9 +108,9 @@
 				</div>
 			</div>
 			<div
-				class="card-body p-4 display:flex flex-wrap gap:1rem width:100%">
-				<div class="form-row flex-grow:1 gap-4 width:300px">
-					<label class="form-label min-width:150px">
+				class="d-flex flex-wrap gap-3 w-100">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 						Invoice No
 						<input
 							type="text"
@@ -120,7 +122,8 @@
 							aria-labelledby="invoicenoInput"
 							key="invoice.number" />
 					</label>
-					<label class="form-label min-width:150px">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 						Date
 						<input
 							type="text"
@@ -132,9 +135,8 @@
 							aria-labelledby="date-field"
 							key="date" />
 					</label>
-				</div>
-				<div class="form-row flex-grow:1 gap-4 width:300px">
-					<label class="form-label min-width:150px">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 						Payment Status
 						<select
 							class="form-control bg-light border-0"
@@ -149,7 +151,8 @@
 							<option value="Refund">Refund</option>
 						</select>
 					</label>
-					<label class="form-label min-width:150px">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 						Total Amount
 						<input
 							type="text"
@@ -160,13 +163,15 @@
 							aria-labelledby="totalamountInput"
 							key="cart.total" />
 					</label>
-				</div>
 			</div>
 			<div
-				class="card-body display:flex gap-4 flex-wrap p-4 border-top border-top-dashed">
+				class="d-flex flex-wrap gap-3 pt-3 border-top border-top-dashed">
 				<div
-					class="display:flex flex-grow:1 flex-wrap:wrap width:300px gap-4 align-items:start">
-					<label class="form-label w-100">
+					class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+					<div class="text-muted text-uppercase fw-semibold">
+						Billing Address
+					</div>
+					<label class="form-label d-flex flex-column gap-1 w-100">
 						Full Name
 						<input
 							type="text"
@@ -176,7 +181,7 @@
 							aria-labelledby="billingName"
 							key="billing.fullName" />
 					</label>
-					<label class="form-label w-100">
+					<label class="form-label d-flex flex-column gap-1 w-100">
 						Address
 						<textarea
 							class="form-control bg-light border-0"
@@ -186,7 +191,7 @@
 							aria-labelledby="billingAddress"
 							key="billing.address"></textarea>
 					</label>
-					<label class="form-label w-100">
+					<label class="form-label d-flex flex-column gap-1 w-100">
 						Phone Number
 						<input
 							type="text"
@@ -197,7 +202,7 @@
 							aria-labelledby="billingPhoneno"
 							key="billing.phoneNumber" />
 					</label>
-					<label class="form-label w-100">
+					<label class="form-label d-flex flex-column gap-1 w-100">
 						Tax Number
 						<input
 							type="text"
@@ -220,9 +225,12 @@
 				</div>
 
 				<div
-					class="display:flex flex-grow:1 flex-wrap:wrap width:300px gap-4 align-items:start">
-					<label class="form-label w-100">
-						Shipping Full Name
+					class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+					<div class="text-muted text-uppercase fw-semibold">
+						Shipping Address
+					</div>
+					<label class="form-label d-flex flex-column gap-1 w-100">
+						Full Name
 						<input
 							type="text"
 							class="form-control bg-light border-0"
@@ -231,8 +239,8 @@
 							aria-labelledby="shippingName"
 							key="shipping.fullName" />
 					</label>
-					<label class="form-label w-100">
-						Shipping Address
+					<label class="form-label d-flex flex-column gap-1 w-100">
+						Address
 						<textarea
 							class="form-control bg-light border-0"
 							id="shippingAddress"
@@ -241,8 +249,8 @@
 							aria-labelledby="shippingAddress"
 							key="shipping.address"></textarea>
 					</label>
-					<label class="form-label w-100">
-						Shipping Phone Number
+					<label class="form-label d-flex flex-column gap-1 w-100">
+						Phone Number
 						<input
 							type="text"
 							class="form-control bg-light border-0"
@@ -252,8 +260,8 @@
 							aria-labelledby="shippingPhoneno"
 							key="shipping.phoneNumber" />
 					</label>
-					<label class="form-label w-100">
-						Shipping Tax Number
+					<label class="form-label d-flex flex-column gap-1 w-100">
+						Tax Number
 						<input
 							type="text"
 							class="form-control bg-light border-0"
@@ -262,20 +270,22 @@
 							aria-labelledby="shippingTaxno"
 							key="shipping.taxNumber" />
 					</label>
-					<div class="height:19.5px"></div>
 				</div>
 			</div>
-			<div class="card-body p-4">
+			<div class="pt-3">
 				<div class="table-responsive">
 					<table
 						class="invoice-table table table-borderless table-nowrap mb-0">
 						<thead class="align-middle">
 							<tr class="table-active">
 								<th scope="col" style="width: 50px">#</th>
-								<th scope="col" class="min-width:250px">
+								<th scope="col" class="min-width:280px">
 									Item Details
 								</th>
-								<th scope="col" style="width: 120px">
+								<th
+									scope="col"
+									class="min-width:150px"
+									style="width: 150px">
 									<div
 										class="d-flex currency-select input.light align-items-center">
 										Rate
@@ -294,19 +304,22 @@
 										</select>
 									</div>
 								</th>
-								<th scope="col" style="width: 120px">
+								<th
+									scope="col"
+									class="min-width:140px"
+									style="width: 140px">
 									Quantity
 								</th>
 								<th
 									scope="col"
-									class="text-end"
-									style="width: 150px">
+									class="text-end min-width:160px"
+									style="width: 160px">
 									Amount
 								</th>
 								<th
 									scope="col"
-									class="text-end"
-									style="width: 50px"></th>
+									class="text-end text-nowrap"
+									style="width: 1%"></th>
 							</tr>
 						</thead>
 						<tbody
@@ -316,7 +329,7 @@
 							filter-limit>
 							<tr template>
 								<th scope="row" class="item-id">{{index}}</th>
-								<td class="text-start">
+								<td class="text-start min-width:280px">
 									<input
 										type="text"
 										class="form-control bg-light border-0 mb-2"
@@ -330,7 +343,7 @@
 										placeholder="Item description"
 										aria-label="Item description"></textarea>
 								</td>
-								<td>
+								<td class="min-width:150px">
 									<input
 										id="rate{{index}}"
 										type="number"
@@ -340,7 +353,7 @@
 										placeholder="0.00"
 										aria-label="Rate per unit" />
 								</td>
-								<td>
+								<td class="min-width:140px">
 									<div class="input-step">
 										<!-- minus: update quantity value on click via CoCreate attributes -->
 										<button
@@ -378,7 +391,7 @@
 										</button>
 									</div>
 								</td>
-								<td>
+								<td class="min-width:160px">
 									<input
 										type="text"
 										class="form-control bg-light border-0 lineAmounts"
@@ -388,7 +401,9 @@
 										aria-label="Line item amount"
 										calculate="($document #rate{{index}}[]) * ($document #quantity{{index}}[])" />
 								</td>
-								<td class="product-actions">
+								<td
+									class="product-actions text-nowrap"
+									style="width: 1%">
 									<button
 										class="btn btn-soft-danger delete-btn"
 										remove-query="$parent"
@@ -411,7 +426,7 @@
 									</button>
 								</th>
 
-								<td class="text-start">
+								<td class="text-start min-width:280px">
 									<input
 										id="quick-name"
 										type="text"
@@ -428,7 +443,7 @@
 										aria-label="Quick add item description"></textarea>
 								</td>
 
-								<td>
+								<td class="min-width:150px">
 									<input
 										id="quick-rate"
 										type="number"
@@ -439,7 +454,7 @@
 										aria-label="Quick add rate" />
 								</td>
 
-								<td>
+								<td class="min-width:140px">
 									<div class="input-step">
 										<button
 											type="button"
@@ -474,7 +489,7 @@
 									</div>
 								</td>
 
-								<td>
+								<td class="min-width:160px">
 									<input
 										id="quick-amount"
 										type="text"
@@ -484,7 +499,9 @@
 										aria-label="Quick add line amount" />
 								</td>
 
-								<td class="product-actions">
+								<td
+									class="product-actions text-nowrap"
+									style="width: 1%">
 									<!-- optional: clear quick inputs -->
 									<button
 										type="button"
@@ -591,13 +608,17 @@
 					</table>
 					<!--end table-->
 				</div>
-				<div class="row mt-3">
-					<div class="col-lg-4">
-						<div class="mb-2">
+				<div class="d-flex flex-wrap gap-3 mt-4">
+					<div
+						class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+						<div class="text-muted text-uppercase fw-semibold">
+							Payment Details
+						</div>
+						<div class="d-flex flex-column gap-1">
 							<label
 								for="choices-payment-type"
-								class="form-label text-muted text-uppercase fw-semibold"
-								>Payment Details</label
+								class="form-label"
+								>Payment Method</label
 							>
 							<div class="input-light">
 								<select
@@ -620,7 +641,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="mb-2">
+						<div class="d-flex flex-column gap-1">
 							<label for="cardholderName" class="form-label"
 								>Card Holder Name</label
 							>
@@ -634,7 +655,7 @@
 									key="payment.cardholderName" />
 							</div>
 						</div>
-						<div class="mb-2">
+						<div class="d-flex flex-column gap-1">
 							<label for="cardNumber" class="form-label"
 								>Card Number</label
 							>
@@ -648,7 +669,7 @@
 									key="payment.cardNumber" />
 							</div>
 						</div>
-						<div>
+						<div class="d-flex flex-column gap-1">
 							<label for="amountTotalPay" class="form-label"
 								>Total Amount to Pay</label
 							>
@@ -667,7 +688,7 @@
 					<!--end col-->
 				</div>
 				<!--end row-->
-				<div class="mt-4">
+				<div class="d-flex flex-column gap-1 mt-4">
 					<label
 						for="notesTextarea"
 						class="form-label text-muted text-uppercase fw-semibold"
@@ -683,32 +704,24 @@
         All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above.</textarea
 					>
 				</div>
-				<div class="hstack gap-2 justify-content-end d-print-none mt-4">
-					<button
-						type="button"
-						class="btn btn-success"
-						aria-label="Save invoice"
-						actions="save">
-						<i class="ri-printer-line align-bottom me-1"></i>
-						Save
-					</button>
-					<a
-						href="javascript:void(0);"
-						class="btn btn-primary"
-						aria-label="Download invoice"
-						><i class="ri-download-2-line align-bottom me-1"></i>
-						Download Invoice</a
-					>
-					<a
-						href="javascript:void(0);"
-						class="btn btn-danger"
-						aria-label="Send invoice"
-						><i class="ri-send-plane-fill align-bottom me-1"></i>
-						Send Invoice</a
-					>
-				</div>
 			</div>
 		</div>
+	</div>
+	<div class="card-footer d-flex flex-shrink-0 justify-content-end gap-2 d-print-none">
+		<button
+			type="button"
+			class="btn btn-light"
+			title="Cancel"
+			aria-label="Cancel form"
+			aria-controls="offcanvas-app"
+			aria-expanded="true">
+			Cancel
+		</button>
+		<button class="btn btn-success" aria-label="Save invoice" actions="save">
+			<i class="ri-printer-line align-bottom me-1"></i> Save
+		</button>
+		<a href="javascript:void(0);" class="btn btn-primary" aria-label="Download invoice"><i class="ri-download-2-line align-bottom me-1"></i> Download</a>
+		<a href="javascript:void(0);" class="btn btn-danger" aria-label="Send invoice"><i class="ri-send-plane-fill align-bottom me-1"></i> Send</a>
 	</div>
 </form>
 

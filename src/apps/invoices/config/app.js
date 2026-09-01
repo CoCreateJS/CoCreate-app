@@ -2,11 +2,14 @@ export default {
   "method": "object.update",
   "array": "apps",
   "object": {
-    "_id": "686ecb750cb20318c29a050e",
+    "_id": "6a96308f1cbed14a0983e2e1",
     "name": "Invoices",
     "singularName": "Invoice",
     "path": "apps/invoices",
     "array": "invoices",
+    "filter": {
+      "type": "invoice"
+    },
     "category": "Sales & Billing",
     "icon": "ri-file-list-3-line",
     "description": "App to manage and track Invoices.",

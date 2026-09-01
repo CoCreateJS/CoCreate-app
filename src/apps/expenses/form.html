@@ -1,6 +1,6 @@
 <form
 	class="card mb-0"
-	array
+	array="transactions"
 	object
 	state-id="offcanvas-app-form"
 	state-overwrite>
@@ -11,8 +11,9 @@
 		src="components/offcanvas-header.html"></div>
 	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
 		<div class="card-body gap-3">
-			<div class="row g-3">
-				<div class="col-md-6">
+				<input type="hidden" key="type" value="expense" />
+				<div class="d-flex flex-wrap align-items:flex-start gap-3">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-name">Name</label>
 					<input
 						type="text"
@@ -22,7 +23,7 @@
 						placeholder="Enter name"
 						aria-label="Expense Name" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-id"
 						>Expense ID</label
 					>
@@ -35,7 +36,7 @@
 						readonly
 						aria-label="Expense ID" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-date">Date</label>
 					<input
 						type="date"
@@ -45,7 +46,7 @@
 						placeholder="Select date"
 						aria-label="Expense Date" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-category"
 						>Category</label
 					>
@@ -64,7 +65,7 @@
 						<option value="Other">Other</option>
 					</select>
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-vendor"
 						>Vendor</label
 					>
@@ -76,7 +77,7 @@
 						placeholder="Enter vendor/supplier"
 						aria-label="Expense Vendor" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-reference"
 						>Reference #</label
 					>
@@ -88,7 +89,7 @@
 						placeholder="Enter reference or invoice number"
 						aria-label="Expense Reference Number" />
 				</div>
-				<div class="col-12">
+				<div class="d-flex flex-column width:100%">
 					<label class="form-label" for="expense-description"
 						>Description</label
 					>
@@ -100,7 +101,7 @@
 						placeholder="Enter description"
 						aria-label="Expense Description"></textarea>
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-amount"
 						>Amount</label
 					>
@@ -114,7 +115,7 @@
 						step="0.01"
 						aria-label="Expense Amount" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-tax">Tax</label>
 					<input
 						type="number"
@@ -126,7 +127,7 @@
 						step="0.01"
 						aria-label="Expense Tax Amount" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-currency"
 						>Currency</label
 					>
@@ -144,7 +145,7 @@
 						<option value="Other">Other</option>
 					</select>
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-status"
 						>Status</label
 					>
@@ -160,7 +161,7 @@
 						<option value="Paid">Paid</option>
 					</select>
 				</div>
-				<div class="col-12">
+				<div class="d-flex flex-column width:100%">
 					<label class="form-check-label" for="expense-reimbursable">
 						<input
 							type="checkbox"
@@ -170,7 +171,7 @@
 						Reimbursable
 					</label>
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-paid-by"
 						>Paid By</label
 					>
@@ -182,7 +183,7 @@
 						placeholder="Who paid for this expense?"
 						aria-label="Paid By" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-project"
 						>Project/Department</label
 					>
@@ -194,7 +195,7 @@
 						placeholder="Project or department (optional)"
 						aria-label="Project or Department" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-due-date"
 						>Due Date</label
 					>
@@ -206,7 +207,7 @@
 						placeholder="Due date (optional)"
 						aria-label="Due Date" />
 				</div>
-				<div class="col-md-6">
+				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
 					<label class="form-label" for="expense-approved-by"
 						>Approval By</label
 					>
@@ -218,7 +219,7 @@
 						placeholder="Person who approved (optional)"
 						aria-label="Approved By" />
 				</div>
-				<div class="col-12">
+				<div class="d-flex flex-column width:100%">
 					<label class="form-label" for="expense-receipt"
 						>Receipt Upload</label
 					>
@@ -231,7 +232,7 @@
 						actions="upload, save"
 						aria-label="Receipt Upload" />
 				</div>
-				<div class="col-12">
+				<div class="d-flex flex-column width:100%">
 					<label class="form-label" for="expense-notes">Notes</label>
 					<textarea
 						id="expense-notes"
@@ -242,7 +243,7 @@
 						aria-label="Additional Notes"></textarea>
 				</div>
 			</div>
-			<div src="/components/form-buttons.html"></div>
 		</div>
 	</div>
+	<div class="card-footer flex-shrink-0" src="/components/form-buttons.html"></div>
 </form>

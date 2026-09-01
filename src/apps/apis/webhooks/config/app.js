@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (C) 2023 CoCreate and Contributors.
+ * Copyright (C) 2023-2026 CoCreate and Contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -26,147 +26,79 @@ export default {
     "singularName": "Webhook",
     "path": "apps/apis/webhooks",
     "array": "webhooks",
-    "category": "Integrations",
+    "category": "Settings",
     "mainViews": [
       "table",
       "grid"
     ],
     "secondaryViews": [
-      "details",
       "form"
     ],
     "icon": "ri-bubble-chart-line",
-    "description": "Configure inbound webhooks, paths, dynamic signatures, and sequential event handlers natively using JSON AST.",
+    "description": "Manage inbound provider routes, signature verification, event processing, and response AST pipelines.",
     "status": "active",
     "fields": [
       {
-        "label": "API Provider",
-        "tagName": "select",
-        "filterTemplate": "<select id=\"provider-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"api_id\"><option value=\"\">Filter by Provider</option><option template value=\"{{object._id}}\">{{object.name}}</option></select><div array=\"apis\" render-query=\"$previous\"></div>",
-        "tableTemplate": "<span class=\"text-uppercase fw-semibold text-primary\" array=\"apis\" object=\"{{object.api_id}}\" key=\"name\"></span>",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "form-select"
-          },
-          {
-            "name": "id",
-            "value": "webhook-provider-field"
-          },
-          {
-            "name": "key",
-            "value": "api_id"
-          },
-          {
-            "name": "required",
-            "value": true
-          }
-        ]
-      },
-      {
         "label": "Webhook Path",
         "tagName": "input",
-        "filterTemplate": "<input id=\"path-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by path (e.g. stripe/payments)\" filter-query=\"$document .list-view\" filter-query-key=\"path.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 font-monospace fs-13\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/webhooks/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"webhooks\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<code>/webhooks/{{object.path}}</code>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
+        "filterTemplate": "<input id=\"webhook-path-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by path\" filter-query=\"$document .list-view\" filter-query-key=\"path.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name font-monospace\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/webhooks/form.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"webhooks\" state.object=\"{{object._id}}\"></div>\n            <code>/webhooks/{{object.path}}</code>\n          </a>\n        ",
         "attributes": [
-          {
-            "name": "class",
-            "value": "form-control font-monospace"
-          },
-          {
-            "name": "id",
-            "value": "webhook-path-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "e.g. stripe/payments"
-          },
-          {
-            "name": "required",
-            "value": true
-          },
-          {
-            "name": "key",
-            "value": "path"
-          },
-          {
-            "name": "type",
-            "value": "text"
-          }
+          { "name": "class", "value": "form-control font-monospace" },
+          { "name": "id", "value": "webhook-path" },
+          { "name": "key", "value": "path" },
+          { "name": "type", "value": "text" },
+          { "name": "required", "value": true }
         ]
       },
       {
-        "label": "Event Locator (Action)",
-        "tagName": "input",
-        "filterTemplate": "<input id=\"action-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by locator\" filter-query=\"$document .list-view\" filter-query-key=\"action.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "<code class=\"text-muted\">{{object.action}}</code>",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "form-control font-monospace"
-          },
-          {
-            "name": "id",
-            "value": "webhook-action-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "e.g. $event.type"
-          },
-          {
-            "name": "required",
-            "value": true
-          },
-          {
-            "name": "key",
-            "value": "action"
-          },
-          {
-            "name": "type",
-            "value": "text"
-          }
-        ]
-      },
-      {
-        "label": "Status",
+        "label": "API Provider",
         "tagName": "select",
-        "filterTemplate": "\n\t\t\t\t\t<select id=\"webhook-status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"status\">\n\t\t\t\t\t\t<option value=\"\">Select Status</option>\n\t\t\t\t\t\t<option value=\"active\">Active</option>\n\t\t\t\t\t\t<option value=\"inactive\">Inactive</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
-        "tableTemplate": "<span class=\"badge {{#if (eq object.status 'active')}}bg-success-subtle text-success{{else}}bg-danger-subtle text-danger{{/if}}\">{{object.status}}</span>",
+        "filterTemplate": "<select id=\"webhook-api-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"api_id\"><option value=\"\">All providers</option><option template value=\"{{object._id}}\">{{object.name}}</option></select><div array=\"apis\" render-query=\"$previous\"></div>",
+        "tableTemplate": "<span class=\"text-uppercase fw-semibold text-primary\" array=\"apis\" object=\"{{object.api_id}}\" key=\"name\"></span>",
         "attributes": [
-          {
-            "name": "class",
-            "value": "form-select"
-          },
-          {
-            "name": "id",
-            "value": "webhook-status-field"
-          },
-          {
-            "name": "key",
-            "value": "status"
-          }
-        ],
-        "children": [
-          {
-            "tagName": "option",
-            "attributes": [
-              {
-                "name": "value",
-                "value": "active"
-              }
-            ],
-            "innerText": "Active"
-          },
-          {
-            "tagName": "option",
-            "attributes": [
-              {
-                "name": "value",
-                "value": "inactive"
-              }
-            ],
-            "innerText": "Inactive"
-          }
+          { "name": "class", "value": "form-select" },
+          { "name": "id", "value": "webhook-api" },
+          { "name": "key", "value": "api_id" },
+          { "name": "required", "value": true }
+        ]
+      },
+      {
+        "label": "Enabled",
+        "tagName": "input",
+        "filterTemplate": "<select id=\"webhook-enabled-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\">Enabled</option><option value=\"false\">Disabled</option></select>",
+        "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.enabled}}</span>",
+        "attributes": [
+          { "name": "class", "value": "form-check-input" },
+          { "name": "id", "value": "webhook-enabled" },
+          { "name": "key", "value": "enabled" },
+          { "name": "type", "value": "checkbox" }
+        ]
+      },
+      {
+        "label": "Description",
+        "tagName": "textarea",
+        "filterTemplate": "<input id=\"webhook-description-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search descriptions\" filter-query=\"$document .list-view\" filter-query-key=\"description.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "<span class=\"text-truncate d-inline-block\" style=\"max-width: 300px\">{{object.description}}</span>",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "webhook-description" },
+          { "name": "key", "value": "description" },
+          { "name": "type", "value": "text" },
+          { "name": "required", "value": true }
+        ]
+      },
+      {
+        "label": "Modified",
+        "tagName": "input",
+        "filterTemplate": "",
+        "tableTemplate": "{{object.modified.on}}",
+        "attributes": [
+          { "name": "class", "value": "form-control" },
+          { "name": "id", "value": "webhook-modified" },
+          { "name": "key", "value": "modified.on" },
+          { "name": "type", "value": "date" },
+          { "name": "readonly", "value": true }
         ]
       }
     ]

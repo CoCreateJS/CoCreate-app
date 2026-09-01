@@ -1,100 +1,140 @@
 <form
-    class="card mb-0"
-    array="webhooks"
-    object
-    state-id="offcanvas-app-form"
-    state-overwrite>
+	class="card mb-0"
+	array="webhooks"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".details-view-btn[]"
+		input.hidden="true"
+		src="components/offcanvas-header.html"
+		aria-label="Webhook Form Header"></div>
 
-    <div
-        class="card-header text-center border-bottom-0"
-        input-query=".details-view-btn[]"
-        input.state.src="/apps/apis/webhooks/details.html"
-        src="components/offcanvas-header.html"
-        aria-label="Webhook Configuration Header"></div>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-column gap-4">
+			<input type="hidden" key="_id" />
 
-    <div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-        <div class="card-body d-flex flex-wrap gap-4">
+			<section>
+				<h5 class="text-uppercase fw-semibold mb-3">Webhook identity</h5>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:320px min-width:240px">
+						API Provider
+						<select
+							id="webhook-api"
+							class="form-select text-capitalize"
+							key="api_id"
+							required>
+							<option value="">Select an API provider</option>
+							<option template value="{{object._id}}">{{object.name}}</option>
+						</select>
+						<div array="apis" render-query="$previous"></div>
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:360px min-width:260px">
+						Webhook Path
+						<div class="input-group">
+							<span class="input-group-text font-monospace">/webhooks/</span>
+							<input
+								type="text"
+								id="webhook-path"
+								key="path"
+								class="form-control font-monospace"
+								placeholder="stripe/payments"
+								required />
+						</div>
+					</label>
+					<label class="form-check form-switch d-flex align-items-center gap-2 flex-grow-1 flex-basis:140px min-width:130px mt-4">
+						<input
+							class="form-check-input"
+							type="checkbox"
+							role="switch"
+							id="webhook-enabled"
+							key="enabled" />
+						<span class="form-check-label">Enabled</span>
+					</label>
+				</div>
+			</section>
 
-            <div class="text-center w-100 mb-2">
-                <div class="avatar-lg rounded-circle d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24 m-auto" style="width: 80px; height: 80px;">
-                    <i class="ri-bubble-chart-line"></i>
-                </div>
-                <p class="text-muted mt-2 fs-13">Configure Inbound Webhook Handlers</p>
-            </div>
+			<section class="border-top border-top-dashed pt-3">
+				<label class="form-label d-flex flex-column gap-1">
+					Description
+					<textarea
+						id="webhook-description"
+						key="description"
+						class="form-control"
+						rows="4"
+						placeholder="Describe the provider event, verification, and resulting action"
+						required></textarea>
+				</label>
+			</section>
 
-            <!-- Relational dropdown list pointing directly to our parent API credentials collection -->
-            <label class="form-label w-100" id="webhook-api-label">
-                API Provider Connection
-                <select
-                    class="form-select text-capitalize"
-                    key="api_id"
-                    name="api_id"
-                    required
-                    aria-labelledby="webhook-api-label">
-                    <option value="">Select Provider Connection...</option>
-                    <!-- CoCreate Dynamic Render Option Loop -->
-                    <option template value="{{object._id}}">{{object.name}}</option>
-                </select>
-                <div array="apis" render-query="$previous"></div>
-            </label>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-2">Request stream</h5>
+				<p class="text-muted mb-3">Collect incoming chunks and assemble the raw request body before parsing or signature verification.</p>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:240px min-width:220px">
+						Initial Chunks
+						<textarea
+							id="webhook-chunks"
+							key="chunks"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="8"
+							spellcheck="false">[]</textarea>
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px">
+						Receive
+						<textarea
+							id="webhook-receive"
+							key="receive"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="12"
+							spellcheck="false"
+							required></textarea>
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">
+						Raw Body
+						<textarea
+							id="webhook-raw-body"
+							key="rawBody"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="8"
+							spellcheck="false"
+							required></textarea>
+					</label>
+				</div>
+			</section>
 
-            <label class="form-label w-100" id="webhook-route-label">
-                Webhook Path Suffix (Appended to domain root)
-                <div class="input-group">
-                    <span class="input-group-text font-monospace fs-12 bg-light">/webhooks/</span>
-                    <input
-                        type="text"
-                        id="webhook-path"
-                        key="path"
-                        name="path"
-                        class="form-control font-monospace"
-                        placeholder="e.g. stripe/payments"
-                        required
-                        aria-labelledby="webhook-route-label" />
-                </div>
-            </label>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-2">Signature verification</h5>
+				<p class="text-muted mb-3">These stages are optional and provider-specific. Preserve all dollar-prefixed AST operators exactly.</p>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:280px min-width:240px">Signature Parts<textarea id="webhook-signature-parts" key="signatureParts" value-type="json" class="form-control font-monospace" rows="8" spellcheck="false"></textarea></label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:280px min-width:240px">Timestamp Parts<textarea id="webhook-timestamp-parts" key="timestampParts" value-type="json" class="form-control font-monospace" rows="8" spellcheck="false"></textarea></label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:280px">Expected Signature<textarea id="webhook-expected-signature" key="expectedSignature" value-type="json" class="form-control font-monospace" rows="10" spellcheck="false"></textarea></label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:280px">Authenticated<textarea id="webhook-authenticated" key="authenticated" value-type="json" class="form-control font-monospace" rows="10" spellcheck="false"></textarea></label>
+				</div>
+			</section>
 
-            <label class="form-label w-100" id="webhook-action-locator-label">
-                Event Locator Key (Target query or body payload parameter)
-                <input
-                    type="text"
-                    id="webhook-locator"
-                    key="action"
-                    name="action"
-                    class="form-control font-monospace"
-                    placeholder="e.g. $event.type or $header.x-shopify-topic"
-                    required
-                    aria-labelledby="webhook-action-locator-label" />
-            </label>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-2">Event processing</h5>
+				<p class="text-muted mb-3">Use a combined process pipeline or the individual event, action, status, and response stages supported by the runtime.</p>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:480px min-width:300px">Process<textarea id="webhook-process" key="process" value-type="json" class="form-control font-monospace" rows="18" spellcheck="false"></textarea></label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">Event<textarea id="webhook-event" key="event" value-type="json" class="form-control font-monospace" rows="10" spellcheck="false"></textarea></label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px">Action<textarea id="webhook-action" key="action" value-type="json" class="form-control font-monospace" rows="14" spellcheck="false"></textarea></label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">Response Status<textarea id="webhook-status" key="status" value-type="json" class="form-control font-monospace" rows="10" spellcheck="false"></textarea></label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px">Response Body<textarea id="webhook-response" key="response" value-type="json" class="form-control font-monospace" rows="12" spellcheck="false"></textarea></label>
+				</div>
+			</section>
+		</div>
+	</div>
 
-            <label class="form-label w-100" id="webhook-desc-label">
-                Description / Purpose
-                <textarea
-                    key="description"
-                    name="description"
-                    class="form-control"
-                    rows="3"
-                    placeholder="Describe what transactions this inbound webhook parses..."
-                    aria-labelledby="webhook-desc-label"></textarea>
-            </label>
-
-            <label class="form-label w-100" id="webhook-status-label">
-                Connection Status
-                <select
-                    class="form-select"
-                    key="status"
-                    name="status"
-                    aria-labelledby="webhook-status-label">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
-            </label>
-
-            <!-- Unified Standard Action Control Buttons -->
-            <div
-                src="/components/form-buttons.html"
-                role="region"
-                aria-label="Configuration Form Actions"></div>
-        </div>
-    </div>
+	<div
+		class="card-footer flex-shrink-0"
+		src="/components/form-buttons.html"
+		role="region"
+		aria-label="Webhook form actions"></div>
 </form>

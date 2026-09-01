@@ -10,11 +10,14 @@
 		input.state.src="/apps/candidates/details.html"
 		src="components/offcanvas-header.html"></div>
 	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="card-body d-flex flex-wrap gap-4">
-			<div class="flex-grow-1" style="flex-basis: 400px">
-				<div class="card">
-					<div class="card-header">Candidate Information</div>
-					<div class="card-body d-flex flex-column gap-3">
+		<div class="card-body d-flex flex-wrap align-items:flex-start gap-3">
+			<input type="hidden" key="type[0]" value="candidate" />
+			<section
+				class="d-flex flex-column flex-grow-1 flex-basis:400px min-width:280px">
+				<div class="mb-3">
+					<h5 class="card-title mb-0">Candidate Information</h5>
+				</div>
+				<div class="d-flex flex-column gap-3">
 						<label class="form-label"
 							>First Name
 							<input
@@ -69,13 +72,14 @@
 								placeholder="e.g., Software Engineer"
 								aria-label="Title" />
 						</label>
-					</div>
 				</div>
-			</div>
-			<div class="flex-grow-1" style="flex-basis: 400px">
-				<div class="card">
-					<div class="card-header">Additional Details</div>
-					<div class="card-body d-flex flex-column gap-3">
+			</section>
+			<section
+				class="d-flex flex-column flex-grow-1 flex-basis:400px min-width:280px">
+				<div class="mb-3">
+					<h5 class="card-title mb-0">Additional Details</h5>
+				</div>
+				<div class="d-flex flex-column gap-3">
 						<label class="form-label"
 							>Website
 							<input
@@ -103,10 +107,9 @@
 								plugin='{"$Choices":["$this",{}]}'
 								aria-label="Tags"></select>
 						</label>
-					</div>
 				</div>
-			</div>
-			<div class="w-100" src="/components/form-buttons.html"></div>
+			</section>
 		</div>
 	</div>
+	<div class="card-footer flex-shrink-0" src="/components/form-buttons.html"></div>
 </form>

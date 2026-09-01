@@ -7,18 +7,11 @@
 		#form-btn {
 			display: none;
 		}
-		#save-btn {
-			display: none;
-		}
 		#details-btn {
 			display: none;
 		}
 		/* Show Details button if src ends with /details.html */
 		[src$="/details.html"] #form-btn {
-			display: inline;
-		}
-		/* Show Form button if src ends with /form.html */
-		[src$="/form.html"] #save-btn {
 			display: inline;
 		}
 		/* Show Form button if src ends with /form.html */
@@ -28,7 +21,10 @@
 	</style>
 
 	<li class="list-inline-item">
-		<div class="dropdown d-inline-block" role="region" aria-label="More actions">
+		<div
+			class="dropdown d-inline-block"
+			role="region"
+			aria-label="More actions">
 			<a
 				class="dropdown"
 				role="button"
@@ -39,7 +35,12 @@
 				class="text-muted d-inline-block">
 				<i class="ri-more-2-fill align-middle fs-18"></i>
 			</a>
-			<ul id="offcanvas-header-dropdown" class="dropdown-menu dropdown-menu-start" aria-close-on="anywhere" role="menu" aria-label="Header actions menu">
+			<ul
+				id="offcanvas-header-dropdown"
+				class="dropdown-menu dropdown-menu-start"
+				aria-close-on="anywhere"
+				role="menu"
+				aria-label="Header actions menu">
 				<li>
 					<a
 						class="dropdown-item details-view-btn"
@@ -83,11 +84,14 @@
 		</div>
 
 		<!-- Details button outside dropdown, next to three-dot icon -->
-		<div role="group" aria-label="Primary header actions" class="d-inline-block align-middle">
+		<div
+			role="group"
+			aria-label="Primary header actions"
+			class="d-inline-block align-middle">
 			<button
 				id="details-btn"
 				type="button"
-				state-to="offcanvas-app-view" 
+				state-to="offcanvas-app-view"
 				state.src=""
 				class="btn btn-sm btn-outline-primary ms-2 details-view-btn"
 				title="Details"
@@ -95,24 +99,11 @@
 				<i class="ri-eye-fill align-bottom"></i>
 				<span>Details</span>
 			</button>
-			<button
-				type="submit"
-				class="btn btn-sm ms-2 btn-success btn-spinner"
-				id="save-btn"
-				actions="disabled, save, timeout(2000), disabled"
-				aria-label="Save">
-				<span
-					class="spinner-border spinner-border-xs display:none"
-					role="status"
-					aria-hidden="true">
-				</span>
-				<span class="button-text">Save</span>
-			</button>
 
 			<button
 				id="form-btn"
 				type="button"
-				state-to="offcanvas-app-view" 
+				state-to="offcanvas-app-view"
 				state.src=""
 				class="btn btn-sm btn-outline-primary ms-2 form-view-btn"
 				title="Edit"
@@ -122,8 +113,10 @@
 			</button>
 		</div>
 	</li>
-	
-	<div role="group" aria-label="Window controls">
+
+	<div
+		role="group"
+		aria-label="Window controls">
 		<li class="list-inline-item d-none d-lg-inline">
 			<!-- Dock icon button -->
 			<a

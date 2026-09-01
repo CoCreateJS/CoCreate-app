@@ -5,6 +5,7 @@
   "object": [
     {
       "_id": "688492c10a05c1699c350900",
+      "type": "expense",
       "expenseId": "EXP-001",
       "name": "Office Supplies",
       "description": "Purchased printer ink and paper.",
@@ -28,6 +29,7 @@
     },
     {
       "_id": "688492c105e2797580f70901",
+      "type": "expense",
       "expenseId": "EXP-002",
       "name": "Travel Expenses",
       "description": "Flight and hotel for conference.",
@@ -51,6 +53,7 @@
     },
     {
       "_id": "688492c103b273187bbf0902",
+      "type": "expense",
       "expenseId": "EXP-003",
       "name": "Software Subscription",
       "description": "Annual subscription for design software.",

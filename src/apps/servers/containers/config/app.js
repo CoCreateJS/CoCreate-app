@@ -21,7 +21,7 @@ export default {
   "upsert": true,
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a037d0d6d00ef0",
+    "_id": "6a96308ff61f2151c78cac95",
     "name": "Webhooks",
     "singularName": "Webhook",
     "path": "apps/apis/webhooks",

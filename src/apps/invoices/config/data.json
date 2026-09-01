@@ -321,6 +321,231 @@
       "modified": {
         "on": "2026-03-22T16:45:00.000Z"
       }
+    },
+    {
+      "_id": "68b6e6c10000000000000001",
+      "estimate_no": "EST-25001",
+      "title": "Growth Platform Implementation",
+      "contact_id": "68765ca00960f12deb7f050f",
+      "client_name": "James Price",
+      "date": "2026-08-25T10:00:00.000Z",
+      "total_amount": 18500,
+      "amount_total_pay": 18500,
+      "payment_status": "Pending",
+      "payment_method": "Awaiting Approval",
+      "description": "Implementation and onboarding for the growth platform.",
+      "notes": "Estimate valid for 30 days.",
+      "status": "Sent",
+      "stage": "sent",
+      "type": "estimate",
+      "tags": ["platform", "implementation"],
+      "registration_number": "EST-25001",
+      "company_email": "sales@CoCreateJS.com",
+      "company_website": "https://CoCreateJS.com",
+      "company_contact_no": "(800) 555-2400",
+      "billing_name": "James Price",
+      "billing_address": "Miami, Florida, United States",
+      "billing_phone_no": "(305) 555-0142",
+      "billing_tax_no": "TAX-25001",
+      "shipping_name": "James Price",
+      "shipping_address": "Miami, Florida, United States",
+      "shipping_phone_no": "(305) 555-0142",
+      "shipping_tax_no": "TAX-25001",
+      "company": {
+        "logo": "/assets/images/logos/dark.png",
+        "address": "Miami, Florida, United States",
+        "postalCode": "33101",
+        "registrationNumber": "EST-25001",
+        "email": "sales@CoCreateJS.com",
+        "website": "https://CoCreateJS.com",
+        "contactNo": "(800) 555-2400"
+      },
+      "billing": {
+        "fullName": "James Price",
+        "address": "Miami, Florida, United States",
+        "phoneNumber": "(305) 555-0142",
+        "taxNumber": "TAX-25001"
+      },
+      "shipping": {
+        "fullName": "James Price",
+        "address": "Miami, Florida, United States",
+        "phoneNumber": "(305) 555-0142",
+        "taxNumber": "TAX-25001"
+      },
+      "items": [
+        {
+          "name": "Growth Platform Implementation",
+          "description": "Implementation and onboarding for the growth platform.",
+          "rate": 18500,
+          "quantity": 1,
+          "amount": 18500
+        }
+      ],
+      "cart": {
+        "subtotal": 18500,
+        "tax": 0,
+        "discount": 0,
+        "shipping": 0,
+        "total": 18500
+      },
+      "payment": {
+        "status": "Pending",
+        "method": "Awaiting Approval",
+        "cardholderName": "James Price",
+        "cardNumber": "Pending",
+        "amount": 18500
+      },
+      "modified": { "on": "2026-08-25T10:00:00.000Z" }
+    },
+    {
+      "_id": "68b6e6c10000000000000002",
+      "estimate_no": "EST-25002",
+      "title": "CRM Sales Automation",
+      "contact_id": "68765ca00960f12deb7f050f",
+      "client_name": "James Price",
+      "date": "2026-08-27T14:30:00.000Z",
+      "total_amount": 9200,
+      "amount_total_pay": 9200,
+      "payment_status": "Unpaid",
+      "payment_method": "Bank Transfer",
+      "description": "CRM setup, workflow automation, and team training.",
+      "notes": "Includes 60 days of implementation support.",
+      "status": "Draft",
+      "stage": "draft",
+      "type": "estimate",
+      "tags": ["crm", "automation"],
+      "registration_number": "EST-25002",
+      "company_email": "sales@CoCreateJS.com",
+      "company_website": "https://CoCreateJS.com",
+      "company_contact_no": "(800) 555-2400",
+      "billing_name": "James Price",
+      "billing_address": "Miami, Florida, United States",
+      "billing_phone_no": "(305) 555-0142",
+      "billing_tax_no": "TAX-25002",
+      "shipping_name": "James Price",
+      "shipping_address": "Miami, Florida, United States",
+      "shipping_phone_no": "(305) 555-0142",
+      "shipping_tax_no": "TAX-25002",
+      "company": {
+        "logo": "/assets/images/logos/dark.png",
+        "address": "Miami, Florida, United States",
+        "postalCode": "33101",
+        "registrationNumber": "EST-25002",
+        "email": "sales@CoCreateJS.com",
+        "website": "https://CoCreateJS.com",
+        "contactNo": "(800) 555-2400"
+      },
+      "billing": {
+        "fullName": "James Price",
+        "address": "Miami, Florida, United States",
+        "phoneNumber": "(305) 555-0142",
+        "taxNumber": "TAX-25002"
+      },
+      "shipping": {
+        "fullName": "James Price",
+        "address": "Miami, Florida, United States",
+        "phoneNumber": "(305) 555-0142",
+        "taxNumber": "TAX-25002"
+      },
+      "items": [
+        {
+          "name": "CRM Sales Automation",
+          "description": "CRM setup, workflow automation, and team training.",
+          "rate": 9200,
+          "quantity": 1,
+          "amount": 9200
+        }
+      ],
+      "cart": {
+        "subtotal": 9200,
+        "tax": 0,
+        "discount": 0,
+        "shipping": 0,
+        "total": 9200
+      },
+      "payment": {
+        "status": "Unpaid",
+        "method": "Bank Transfer",
+        "cardholderName": "James Price",
+        "cardNumber": "Pending",
+        "amount": 9200
+      },
+      "modified": { "on": "2026-08-27T14:30:00.000Z" }
+    },
+    {
+      "_id": "68b6e6c10000000000000003",
+      "estimate_no": "EST-25003",
+      "title": "Managed Server Infrastructure",
+      "contact_id": "68765ca00960f12deb7f050f",
+      "client_name": "James Price",
+      "date": "2026-08-29T09:15:00.000Z",
+      "total_amount": 24000,
+      "amount_total_pay": 24000,
+      "payment_status": "Pending",
+      "payment_method": "Credit Card",
+      "description": "Managed server deployment, monitoring, and scaling.",
+      "notes": "Annual infrastructure estimate.",
+      "status": "Accepted",
+      "stage": "accepted",
+      "type": "estimate",
+      "tags": ["servers", "infrastructure"],
+      "registration_number": "EST-25003",
+      "company_email": "sales@CoCreateJS.com",
+      "company_website": "https://CoCreateJS.com",
+      "company_contact_no": "(800) 555-2400",
+      "billing_name": "James Price",
+      "billing_address": "Miami, Florida, United States",
+      "billing_phone_no": "(305) 555-0142",
+      "billing_tax_no": "TAX-25003",
+      "shipping_name": "James Price",
+      "shipping_address": "Miami, Florida, United States",
+      "shipping_phone_no": "(305) 555-0142",
+      "shipping_tax_no": "TAX-25003",
+      "company": {
+        "logo": "/assets/images/logos/dark.png",
+        "address": "Miami, Florida, United States",
+        "postalCode": "33101",
+        "registrationNumber": "EST-25003",
+        "email": "sales@CoCreateJS.com",
+        "website": "https://CoCreateJS.com",
+        "contactNo": "(800) 555-2400"
+      },
+      "billing": {
+        "fullName": "James Price",
+        "address": "Miami, Florida, United States",
+        "phoneNumber": "(305) 555-0142",
+        "taxNumber": "TAX-25003"
+      },
+      "shipping": {
+        "fullName": "James Price",
+        "address": "Miami, Florida, United States",
+        "phoneNumber": "(305) 555-0142",
+        "taxNumber": "TAX-25003"
+      },
+      "items": [
+        {
+          "name": "Managed Server Infrastructure",
+          "description": "Managed server deployment, monitoring, and scaling.",
+          "rate": 24000,
+          "quantity": 1,
+          "amount": 24000
+        }
+      ],
+      "cart": {
+        "subtotal": 24000,
+        "tax": 0,
+        "discount": 0,
+        "shipping": 0,
+        "total": 24000
+      },
+      "payment": {
+        "status": "Pending",
+        "method": "Credit Card",
+        "cardholderName": "James Price",
+        "cardNumber": "Pending",
+        "amount": 24000
+      },
+      "modified": { "on": "2026-08-29T09:15:00.000Z" }
     }
   ]
 }

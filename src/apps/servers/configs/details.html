@@ -1,116 +1,83 @@
 <form
-    class="card mb-0"
-    array="endpoints"
-    object
-    state-id="offcanvas-app-form"
-    state-overwrite>
+	class="card mb-0"
+	array="servers_config"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".form-view-btn[]"
+		input.state.src="/apps/servers/configs/form.html"
+		src="components/offcanvas-header.html"
+		aria-label="Server Configuration Details Header"></div>
 
-    <div
-        class="card-header text-center border-bottom-0"
-        input-query=".form-view-btn[]"
-        input.state.src="/apps/apis/endpoints/form.html"
-        src="components/offcanvas-header.html"
-        aria-label="Endpoint Details Header"></div>
+	<div
+		class="form-container"
+		plugin='{"$SimpleBar": ["$this", {}]}'
+		aria-label="Server Configuration Details Container">
+		<div class="card-body d-flex flex-column gap-4">
+			<section class="d-flex flex-wrap align-items-center gap-3">
+				<div
+					class="avatar-lg rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24">
+					<i class="ri-settings-3-line"></i>
+				</div>
+				<div class="flex-grow-1" style="min-width: 220px">
+					<div class="d-flex flex-wrap align-items-center gap-2">
+						<h4 class="mb-0" key="name" aria-label="Configuration Name"></h4>
+						<span class="badge bg-primary-subtle text-primary text-uppercase" key="type"></span>
+					</div>
+					<div class="d-flex flex-wrap gap-3 mt-2 text-muted">
+						<span><i class="ri-cloud-line me-1"></i><span key="provider"></span></span>
+						<span><i class="ri-database-2-line me-1"></i><span key="driver"></span></span>
+					</div>
+				</div>
+				<div class="d-flex align-items-center gap-2">
+					<span class="text-muted">Enabled</span>
+					<input class="form-check-input" type="checkbox" role="switch" key="enabled" disabled />
+				</div>
+			</section>
 
-    <div
-        class="form-container"
-        plugin='{"$SimpleBar":["$this",{}]}'
+			<section class="border-top border-top-dashed pt-3">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">Runtime scope</h6>
+				<div class="d-flex flex-wrap gap-3">
+					<div class="border border-dashed rounded p-3 flex-grow-1" style="flex-basis: 200px; min-width: 180px">
+						<span class="text-muted d-block mb-1">Cluster</span>
+						<code class="text-break" key="cluster"></code>
+					</div>
+					<div class="border border-dashed rounded p-3 flex-grow-1" style="flex-basis: 240px; min-width: 210px">
+						<span class="text-muted d-block mb-1">Server</span>
+						<code class="text-break" key="server"></code>
+					</div>
+					<div class="border border-dashed rounded p-3 flex-grow-1" style="flex-basis: 200px; min-width: 180px">
+						<span class="text-muted d-block mb-1">Worker</span>
+						<code class="text-break" key="worker"></code>
+					</div>
+				</div>
+			</section>
 
-        aria-label="Endpoint Metadata Container">
+			<section class="border-top border-top-dashed pt-3">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">Configuration</h6>
+				<pre class="bg-light border rounded p-3 mb-0 text-wrap"><code key="config"></code></pre>
+			</section>
 
-        <div class="card-body d-flex flex-wrap gap-4">
+			<section class="border-top border-top-dashed pt-3">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">Record information</h6>
+				<div class="d-flex flex-wrap gap-4">
+					<div>
+						<span class="text-muted d-block">Record ID</span>
+						<code key="_id"></code>
+					</div>
+					<div>
+						<span class="text-muted d-block">Last modified</span>
+						<span key="modified.on"></span>
+					</div>
+				</div>
+			</section>
 
-            <div class="flex-shrink-0 d-flex flex-column align-items-center width:100% m-2">
-
-                <div class="avatar-lg rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24" style="width: 80px; height: 80px;">
-                    <i class="ri-terminal-box-line"></i>
-                </div>
-
-                <h5 class="mt-4 mb-1 text-dark fw-bold font-monospace" key="endpoint" aria-label="Route Identifier"></h5>
-
-                <!-- Dynamic lookup pointing directly to the parent APIs provider metadata table -->
-                <code>
-                    <span
-                        class="text-uppercase fw-bold fs-12 text-primary bg-primary-subtle px-2 py-1 rounded"
-                        array="apis"
-                        object="{{object.api_id}}"
-                        key="name"
-                        aria-label="API Provider Name"></span>
-                </code>
-
-                <!-- Quick developer sandbox actions -->
-                <ul class="list-inline mb-0 d-flex gap-2 mt-3" aria-label="Integration Operations">
-                    <li class="avatar-xs">
-                        <button
-                            type="button"
-                            class="avatar-title bg-info-subtle text-info fs-15 rounded border-0"
-                            aria-label="Export API Schema Draft">
-                            <i class="ri-download-2-line"></i>
-                        </button>
-                    </li>
-                    <li class="avatar-xs">
-                        <button
-                            type="button"
-                            class="avatar-title bg-success-subtle text-success fs-15 rounded border-0"
-                            aria-label="Execute Direct Postman Ping Handshake">
-                            <i class="ri-pulse-line"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="flex-grow-1" style="flex-basis: 0; min-width: 300px">
-                <h6
-                    class="text-muted text-uppercase fw-semibold mb-3"
-                    aria-label="Endpoint Specifications Profile">
-                    Endpoint Specifications
-                </h6>
-
-                <p
-                    class="text-muted mb-4 fs-14"
-                    key="description"
-                    aria-describedby="endpoint-specs-heading"></p>
-
-                <div class="table-responsive table-card">
-                    <table
-                        class="table table-borderless mb-0"
-                        aria-label="Endpoint Config Registry Parameters">
-                        <tbody>
-                            <tr>
-                                <td class="fw-medium text-muted" scope="row" style="width: 35%;">API Provider</td>
-                                <td>
-                                    <!-- Relational dynamic database link inside details panel -->
-                                    <span
-                                        class="fw-bold text-dark text-capitalize"
-                                        array="apis"
-                                        object="{{object.api_id}}"
-                                        key="name"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium text-muted" scope="row">Target Route</td>
-                                <td><code class="text-danger" key="endpoint" aria-label="Base End Route"></code></td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium text-muted" scope="row">Path Override</td>
-                                <td><code class="text-dark" key="path" aria-label="Internal Path Override"></code></td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium text-muted" scope="row">System Status</td>
-                                <td aria-label="Routing Status">
-                                    <span key="status" class="badge bg-success-subtle text-success text-uppercase">Active</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Outbound Activity and Execution Logs -->
-            <div
-                class="w-100"
-                src="components/activities.html"
-                aria-label="API Transaction Event History Logs"></div>
-        </div>
-    </div>
+			<div
+				class="w-100"
+				src="components/activities.html"
+				aria-label="Server Configuration Activities"></div>
+		</div>
+	</div>
 </form>

@@ -17,7 +17,8 @@
       "notes": "Payment for office supplies.",
       "due_date": "2024-07-05",
       "approval_by": "Bob Johnson",
-      "type": "partial",
+      "type": "payment",
+      "payment_type": "partial",
       "currency": "USD",
       "remaining_due": null,
       "partial": true,
@@ -38,7 +39,8 @@
       "notes": "Payment for travel expenses.",
       "due_date": "2024-07-12",
       "approval_by": "Eva Green",
-      "type": "cancelled",
+      "type": "payment",
+      "payment_type": "cancelled",
       "currency": "USD",
       "remaining_due": null,
       "partial": false,
@@ -59,7 +61,8 @@
       "notes": "Payment for software subscription.",
       "due_date": "2024-07-20",
       "approval_by": "David Kim",
-      "type": "partial",
+      "type": "payment",
+      "payment_type": "partial",
       "currency": "USD",
       "remaining_due": null,
       "partial": true,
@@ -77,7 +80,8 @@
       "status": "paid",
       "currency": "USD",
       "partial": false,
-      "type": "paid",
+      "type": "payment",
+      "payment_type": "paid",
       "created": { "on": "2025-07-26T08:15:00.000Z" }
     },
     {
@@ -91,7 +95,8 @@
       "status": "paid",
       "currency": "USD",
       "partial": false,
-      "type": "paid",
+      "type": "payment",
+      "payment_type": "paid",
       "created": { "on": "2025-07-26T08:15:00.000Z" }
     },
     {
@@ -105,7 +110,8 @@
       "status": "paid",
       "currency": "USD",
       "partial": false,
-      "type": "paid",
+      "type": "payment",
+      "payment_type": "paid",
       "created": { "on": "2025-07-26T08:15:00.000Z" }
     },
     {
@@ -119,7 +125,8 @@
       "status": "paid",
       "currency": "USD",
       "partial": false,
-      "type": "paid",
+      "type": "payment",
+      "payment_type": "paid",
       "created": { "on": "2025-07-26T08:20:00.000Z" }
     },
     {
@@ -133,7 +140,8 @@
       "status": "paid",
       "currency": "USD",
       "partial": false,
-      "type": "paid",
+      "type": "payment",
+      "payment_type": "paid",
       "created": { "on": "2025-07-26T08:20:00.000Z" }
     },
     {
@@ -147,7 +155,8 @@
       "status": "paid",
       "currency": "USD",
       "partial": false,
-      "type": "paid",
+      "type": "payment",
+      "payment_type": "paid",
       "created": { "on": "2025-07-26T08:20:00.000Z" }
     },
     {
@@ -161,7 +170,8 @@
       "status": "refund",
       "currency": "USD",
       "partial": false,
-      "type": "refund",
+      "type": "payment",
+      "payment_type": "refund",
       "created": { "on": "2025-07-26T08:25:00.000Z" }
     },
     {
@@ -175,7 +185,8 @@
       "status": "refund",
       "currency": "USD",
       "partial": false,
-      "type": "refund",
+      "type": "payment",
+      "payment_type": "refund",
       "created": { "on": "2025-07-26T08:25:00.000Z" }
     },
     {
@@ -189,7 +200,8 @@
       "status": "refund",
       "currency": "USD",
       "partial": false,
-      "type": "refund",
+      "type": "payment",
+      "payment_type": "refund",
       "created": { "on": "2025-07-26T08:25:00.000Z" }
     }
   ]

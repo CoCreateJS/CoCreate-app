@@ -1,210 +1,139 @@
 <form
 	class="card mb-0"
-	array
+	array="invoices"
 	object
 	state-id="offcanvas-app-form"
 	state-overwrite>
 	<div
 		class="card-header text-center border-bottom-0"
 		input-query=".form-view-btn[]"
-		input.state.src="/apps/contacts/form.html"
+		input.state.src="/apps/estimates/form.html"
 		src="components/offcanvas-header.html"></div>
 	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="card-body d-flex flex-wrap gap-4">
+		<div
+			class="card-body d-flex flex-wrap gap-4 min-width:300px width:100% max-width:911px margin:auto">
 			<div
-				class="text-center flex-shrink-0"
-				style="margin-bottom: 2rem; flex-basis: 250px">
-				<div class="position-relative d-inline-block">
+				class="border-bottom border-bottom-dashed d-flex flex-wrap gap-3 py-3 justify-content:space-between width:100%">
+				<div class="flex-grow-1">
 					<img
-						src="/assets/images/logos/dark.png"
-						class="avatar-xl rounded-circle img-thumbnail material-shadow"
-						alt="CoCreate Company Logo" />
+						src=""
+						key="company.logo"
+						class="card-logo card-logo-dark"
+						alt="Company logo"
+						height="40" />
+					<img
+						src="/assets/images/logos/light.png"
+						class="card-logo card-logo-light"
+						alt="Company logo"
+						height="40" />
+					<div class="mt-sm-5 mt-4">
+						<h6 class="text-muted text-uppercase fw-semibold">Address</h6>
+						<p
+							class="text-muted mb-1"
+							id="address-details"
+							key="company.address"></p>
+						<p
+							class="text-muted mb-0"
+							id="zip-code"
+							key="company.postalCode"></p>
+					</div>
 				</div>
-				<h5 class="mt-4 mb-1" key="name">CoCreate Company</h5>
-				<p class="text-muted" key="company">CoCreate.app</p>
-				<ul class="list-inline mb-0">
-					<li class="list-inline-item avatar-xs">
+				<div class="flex-shrink-0">
+					<h6>
+						<span class="text-muted fw-normal">Legal Registration No:</span>
+						<span id="legal-register-no" key="company.registrationNumber"></span>
+					</h6>
+					<h6>
+						<span class="text-muted fw-normal">Email:</span>
+						<span id="email" key="company.email"></span>
+					</h6>
+					<h6>
+						<span class="text-muted fw-normal">Website:</span>
 						<a
-							href="mailto:CoCreate@CoCreate.app"
+							href=""
+							key="company.website"
 							input.href="$value"
-							value-prefix="mailto:"
-							value=""
-							class="avatar-title bg-danger-subtle text-danger fs-15 rounded"
-							aria-label="Email CoCreate Company">
-							<i class="ri-mail-line"></i>
-						</a>
-					</li>
-					<li class="list-inline-item avatar-xs">
-						<a
-							href="tel:+(01) 234 6789"
-							input.href="$value"
-							value-prefix="tel:"
-							value=""
-							class="avatar-title bg-success-subtle text-success fs-15 rounded"
-							aria-label="Call CoCreate Company">
-							<i class="ri-phone-line"></i>
-						</a>
-					</li>
-					<li class="list-inline-item avatar-xs">
-						<a
-							href="sms:+(01) 234 6789"
-							input.href="$value"
-							value-prefix="sms:"
-							value=""
-							class="avatar-title bg-warning-subtle text-warning fs-15 rounded"
-							aria-label="Text CoCreate Company">
-							<i class="ri-question-answer-line"></i>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div class="flex-grow-1" style="flex-basis: 600px">
-				<h6 class="text-muted text-uppercase fw-semibold mb-3">
-					Company Information
-				</h6>
-				<div class="row g-3">
-					<div class="col-lg-4 col-md-6" style="flex-basis: 33.33%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Legal Registration No
-						</p>
-						<h5 class="fs-14 mb-0" id="legal-register-no">
-							987654
-						</h5>
-					</div>
-					<div class="col-lg-4 col-md-6" style="flex-basis: 33.33%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Email
-						</p>
-						<h5 class="fs-14 mb-0" id="email">
-							CoCreate@CoCreate.app
-						</h5>
-					</div>
-					<div class="col-lg-4 col-md-6" style="flex-basis: 33.33%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Website
-						</p>
-						<a
-							href="https://CoCreate.app/"
 							class="link-primary"
 							target="_blank"
 							id="website"
-							aria-label="CoCreate Company Website"
-							>www.CoCreate.app</a
-						>
+							aria-label="Company website"></a>
+					</h6>
+					<h6 class="mb-0">
+						<span class="text-muted fw-normal">Contact No: </span>
+						<span id="contact-no" key="company.contactNo"></span>
+					</h6>
+				</div>
+			</div>
+
+			<div class="flex-grow-1 d-flex flex-column gap-4">
+				<div class="d-flex flex-wrap justify-content-between gap-3 py-3">
+					<div class="display:flex flex-wrap gap-4 flex-grow-1 width:400px">
+						<div class="flex-grow-1 width:150px">
+							<p class="text-muted mb-2 text-uppercase fw-semibold">Estimate No</p>
+							<h5 class="fs-14 mb-0">
+								<span id="estimate-no" key="estimate_no"></span>
+							</h5>
+						</div>
+						<div class="flex-grow-1 width:150px">
+							<p class="text-muted mb-2 text-uppercase fw-semibold">Date</p>
+							<h5 class="fs-14 mb-0">
+								<span id="estimate-date" key="date"></span>
+							</h5>
+						</div>
 					</div>
-					<div class="col-lg-4 col-md-6" style="flex-basis: 33.33%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Contact No
-						</p>
-						<h5 class="fs-14 mb-0" id="contact-no">
-							+(01) 234 6789
-						</h5>
-					</div>
-					<div class="col-lg-4 col-md-6" style="flex-basis: 33.33%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Address
-						</p>
-						<h5 class="fs-14 mb-0" id="address-details">
-							California, United States
-						</h5>
-					</div>
-					<div class="col-lg-4 col-md-6" style="flex-basis: 33.33%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Zip-code
-						</p>
-						<h5 class="fs-14 mb-0" id="zip-code">90201</h5>
+					<div class="display:flex flex-wrap gap-4 flex-grow-1 width:400px">
+						<div class="flex-grow-1 width:150px">
+							<p class="text-muted mb-2 text-uppercase fw-semibold">Status</p>
+							<span
+								class="badge bg-success-subtle text-success fs-11"
+								id="estimate-status"
+								key="status"
+								role="status"></span>
+						</div>
+						<div class="flex-grow-1 width:150px">
+							<p class="text-muted mb-2 text-uppercase fw-semibold">Total Amount</p>
+							<h5 class="fs-14 mb-0">
+								<span id="total-amount" key="cart.total"></span>
+							</h5>
+						</div>
 					</div>
 				</div>
+			</div>
 
-				<h6 class="text-muted text-uppercase fw-semibold mb-3 mt-4">
-					Estimate Details
-				</h6>
-				<div class="row g-3">
-					<div class="col-lg-3 col-6" style="flex-basis: 25%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Estimate No
-						</p>
-						<h5 class="fs-14 mb-0">
-							#ES<span id="estimate-no">25000355</span>
-						</h5>
-					</div>
-					<div class="col-lg-3 col-6" style="flex-basis: 25%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Date
-						</p>
-						<h5 class="fs-14 mb-0">
-							<span id="estimate-date">23 Nov, 2021</span>
-							<small class="text-muted" id="estimate-time"
-								>02:36PM</small
-							>
-						</h5>
-					</div>
-					<div class="col-lg-3 col-6" style="flex-basis: 25%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Estimate Status
-						</p>
-						<span
-							class="badge bg-success-subtle text-success fs-11"
-							id="estimate-status"
-							>Active</span
-						>
-					</div>
-					<div class="col-lg-3 col-6" style="flex-basis: 25%">
-						<p class="text-muted mb-2 text-uppercase fw-semibold">
-							Total Amount
-						</p>
-						<h5 class="fs-14 mb-0">
-							$<span id="total-amount">755.96</span>
-						</h5>
-					</div>
-				</div>
-
-				<h6 class="text-muted text-uppercase fw-semibold mb-3 mt-4">
-					Billing & Shipping Address
-				</h6>
-				<div class="row g-3">
-					<div class="col-6" style="flex-basis: 50%">
-						<h6 class="text-muted text-uppercase fw-semibold mb-3">
-							Billing Address
-						</h6>
-						<p class="fw-medium mb-2" id="billing-name">
-							David Nichols
-						</p>
-						<p class="text-muted mb-1" id="billing-address-line-1">
-							305 S San Gabriel Blvd
-						</p>
+			<div class="border-top border-top-dashed py-3 width:100%">
+				<div class="d-flex flex-wrap gap-4">
+					<div class="flex-grow-1 width:300px">
+						<h6 class="text-muted text-uppercase fw-semibold mb-3">Billing Address</h6>
+						<p class="fw-medium mb-2" id="billing-name" key="billing.fullName"></p>
+						<p class="text-muted mb-1" id="billing-address" key="billing.address"></p>
 						<p class="text-muted mb-1">
-							<span>Phone: +</span
-							><span id="billing-phone-no">(123) 456-7890</span>
+							<span>Phone: </span>
+							<span id="billing-phone" key="billing.phoneNumber"></span>
 						</p>
 						<p class="text-muted mb-0">
-							<span>Tax: </span
-							><span id="billing-tax-no">12-3456789</span>
+							<span>Tax: </span>
+							<span id="billing-tax" key="billing.taxNumber"></span>
 						</p>
 					</div>
-					<div class="col-6" style="flex-basis: 50%">
-						<h6 class="text-muted text-uppercase fw-semibold mb-3">
-							Shipping Address
-						</h6>
-						<p class="fw-medium mb-2" id="shipping-name">
-							David Nichols
-						</p>
-						<p class="text-muted mb-1" id="shipping-address-line-1">
-							305 S San Gabriel Blvd
-						</p>
+					<div class="flex-grow-1 width:300px">
+						<h6 class="text-muted text-uppercase fw-semibold mb-3">Shipping Address</h6>
+						<p class="fw-medium mb-2" id="shipping-name" key="shipping.fullName"></p>
+						<p class="text-muted mb-1" id="shipping-address" key="shipping.address"></p>
 						<p class="text-muted mb-1">
-							<span>Phone: +</span
-							><span id="shipping-phone-no">(123) 456-7890</span>
+							<span>Phone: </span>
+							<span id="shipping-phone" key="shipping.phoneNumber"></span>
+						</p>
+						<p class="text-muted mb-0">
+							<span>Tax: </span>
+							<span id="shipping-tax" key="shipping.taxNumber"></span>
 						</p>
 					</div>
 				</div>
+			</div>
 
-				<h6 class="text-muted text-uppercase fw-semibold mb-3 mt-4">
-					Products
-				</h6>
+			<div class="py-3 width:100%">
 				<div class="table-responsive">
-					<table
-						class="table table-borderless text-center table-nowrap align-middle mb-0">
+					<table class="table table-borderless text-center table-nowrap align-middle mb-0">
 						<thead>
 							<tr class="table-active">
 								<th scope="col" style="width: 50px">#</th>
@@ -214,145 +143,91 @@
 								<th scope="col" class="text-end">Amount</th>
 							</tr>
 						</thead>
-						<tbody id="products-list">
-							<tr>
-								<th scope="row">01</th>
+						<tbody
+							id="products-list"
+							key="items"
+							filter-limit
+							render-query="[template]">
+							<tr template>
+								<th scope="row">{{index}}</th>
 								<td class="text-start">
-									<span class="fw-medium"
-										>Sweatshirt for Men (Pink)</span
-									>
-									<p class="text-muted mb-0">
-										Graphic Print Men & Women Sweatshirt
-									</p>
+									<span class="fw-medium">{{items.name}}</span>
+									<p class="text-muted mb-0">{{items.description}}</p>
 								</td>
-								<td>$119.99</td>
-								<td>02</td>
-								<td class="text-end">$239.98</td>
-							</tr>
-							<tr>
-								<th scope="row">02</th>
-								<td class="text-start">
-									<span class="fw-medium"
-										>Noise NoiseFit Endure Smart Watch</span
-									>
-									<p class="text-muted mb-0">
-										32.5mm (1.28 Inch) TFT Color Touch
-										Display
-									</p>
-								</td>
-								<td>$94.99</td>
-								<td>01</td>
-								<td class="text-end">$94.99</td>
-							</tr>
-							<tr>
-								<th scope="row">03</th>
-								<td class="text-start">
-									<span class="fw-medium"
-										>350 ml Glass Grocery Container</span
-									>
-									<p class="text-muted mb-0">
-										Glass Grocery Container (Pack of 3,
-										White)
-									</p>
-								</td>
-								<td>$24.99</td>
-								<td>01</td>
-								<td class="text-end">$24.99</td>
-							</tr>
-							<tr>
-								<th scope="row">04</th>
-								<td class="text-start">
-									<span class="fw-medium"
-										>Fabric Dual Tone Living Room
-										Chair</span
-									>
-									<p class="text-muted mb-0">Chair (White)</p>
-								</td>
-								<td>$340.00</td>
-								<td>01</td>
-								<td class="text-end">$340.00</td>
+								<td>{{items.rate}}</td>
+								<td>{{items.quantity}}</td>
+								<td class="text-end">{{items.amount}}</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="border-top border-top-dashed mt-2">
-					<table
-						class="table table-borderless table-nowrap align-middle mb-0 ms-auto"
-						style="width: 250px">
+					<table class="table table-borderless table-nowrap align-middle mb-0 ms-auto" style="width: 250px">
 						<tbody>
 							<tr>
 								<td>Sub Total</td>
-								<td class="text-end">$699.96</td>
+								<td class="text-end" key="cart.subtotal"></td>
 							</tr>
 							<tr>
-								<td>Estimated Tax (12.5%)</td>
-								<td class="text-end">$44.99</td>
+								<td>Estimated Tax</td>
+								<td class="text-end" key="cart.tax"></td>
 							</tr>
 							<tr>
-								<td>
-									Discount
-									<small class="text-muted"
-										>(CoCreate15)</small
-									>
-								</td>
-								<td class="text-end">- $53.99</td>
+								<td>Discount</td>
+								<td class="text-end" key="cart.discount"></td>
 							</tr>
 							<tr>
 								<td>Shipping Charge</td>
-								<td class="text-end">$65.00</td>
+								<td class="text-end" key="cart.shipping"></td>
 							</tr>
 							<tr class="border-top border-top-dashed fs-15">
 								<th scope="row">Total Amount</th>
-								<th class="text-end">$755.96</th>
+								<th class="text-end" key="cart.total"></th>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+
 				<div class="mt-3">
-					<h6 class="text-muted text-uppercase fw-semibold mb-3">
-						Estimate Notes:
-					</h6>
-					<p class="mb-0">
-						<span class="fw-semibold">NOTES:</span>
-						<span id="note"
-							>All accounts are to be paid within 7 days from
-							receipt of estimate. To be paid by cheque or credit
-							card or direct payment online. If account is not
-							paid within 7 days the credits details supplied as
-							confirmation of work undertaken will be charged the
-							agreed quoted fee noted above.
-						</span>
+					<h6 class="text-muted text-uppercase fw-semibold mb-3">Payment Details:</h6>
+					<p class="text-muted mb-1">
+						Payment Method:
+						<span class="fw-medium" id="payment-method" key="payment.method"></span>
+					</p>
+					<p class="text-muted mb-1">
+						Card Holder:
+						<span class="fw-medium" id="card-holder-name" key="payment.cardholderName"></span>
+					</p>
+					<p class="text-muted mb-1">
+						Card Number:
+						<span class="fw-medium" id="card-number" key="payment.cardNumber"></span>
+					</p>
+					<p class="text-muted">
+						Total Amount:
+						<span id="payment-amount" key="payment.amount"></span>
 					</p>
 				</div>
-			</div>
-			<div class="w-100" src="components/activities.html"></div>
-			<div class="mt-4 w-100">
-				<div class="hstack gap-2 justify-content-end d-print-none mt-4">
-					<a
-						href="javascript:window.print()"
-						class="btn btn-success"
-						aria-label="Print Estimate"
-						><i class="ri-printer-line align-bottom me-1"></i>
-						Print</a
-					>
-					<a
-						href="javascript:void(0);"
-						class="btn btn-primary"
-						aria-label="Download Estimate"
-						><i class="ri-download-2-line align-bottom me-1"></i>
-						Download</a
-					>
-					<button
-						type="button"
-						class="btn btn-danger"
-						aria-haspopup="dialog"
-						aria-label="Delete Estimate"
-						aria-controls="removeItemModal">
-						<i class="ri-delete-bin-line align-bottom me-1"></i>
-						Delete Estimate
-					</button>
+				<div class="mt-4">
+					<div class="alert alert-info">
+						<p class="mb-0">
+							<span class="fw-semibold">NOTES:</span>
+							<span id="note" key="notes"></span>
+						</p>
+					</div>
 				</div>
 			</div>
+
+			<div class="w-100" src="components/activities.html"></div>
+		</div>
+	</div>
+	<div class="card-footer flex-shrink-0 d-print-none">
+		<div class="hstack gap-2 justify-content-end">
+			<a href="javascript:window.print()" class="btn btn-success" aria-label="Print Estimate">
+				<i class="ri-printer-line align-bottom me-1"></i> Print
+			</a>
+			<a href="javascript:void(0);" class="btn btn-primary" aria-label="Download Estimate">
+				<i class="ri-download-2-line align-bottom me-1"></i> Download
+			</a>
 		</div>
 	</div>
 </form>

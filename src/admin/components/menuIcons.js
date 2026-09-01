@@ -1,6 +1,12 @@
 export const menuIcons = [
   { name: "Dashboards", icon: "ri-dashboard-2-line" },
   { name: "Apps", icon: "ri-apps-2-line" },
+  { name: "Servers", icon: "ri-server-line" },
+  { name: "Server Configs", icon: "ri-settings-3-line" },
+  { name: "APIs", icon: "ri-key-2-line" },
+  { name: "Endpoints", icon: "ri-terminal-box-line" },
+  { name: "Webhooks", icon: "ri-bubble-chart-line" },
+  { name: "AI Instructions", icon: "ri-file-list-3-line" },
   { name: "Email", icon: "ri-mail-line" },
   { name: "Chat", icon: "ri-chat-3-line" },
   { name: "Calendar", icon: "ri-calendar-line" },

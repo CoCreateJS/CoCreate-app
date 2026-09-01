@@ -21,7 +21,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e10",
             "type": "storage",
-            "driver": "amazon-redshift",
+            "provider": "amazon-redshift",
             "name": "Amazon Redshift Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -34,7 +34,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e11",
             "type": "storage",
-            "driver": "auroradb",
+            "provider": "auroradb",
             "name": "AWS Aurora DB Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -47,7 +47,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e12",
             "type": "storage",
-            "driver": "cockroachdb",
+            "provider": "cockroachdb",
             "name": "CockroachDB Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -60,7 +60,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e13",
             "type": "storage",
-            "driver": "cosmosdb",
+            "provider": "cosmosdb",
             "name": "Azure Cosmos DB Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -73,7 +73,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e14",
             "type": "storage",
-            "driver": "documentdb",
+            "provider": "documentdb",
             "name": "Amazon DocumentDB Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -86,7 +86,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e15",
             "type": "storage",
-            "driver": "dqlite",
+            "provider": "dqlite",
             "name": "DQlite Distributed SQLite Driver",
             "enabled": true,
             "cluster": "*",
@@ -99,7 +99,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e16",
             "type": "storage",
-            "driver": "dynamodb",
+            "provider": "dynamodb",
             "name": "Amazon DynamoDB Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -112,7 +112,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e17",
             "type": "storage",
-            "driver": "ferretdb",
+            "provider": "ferretdb",
             "name": "FerretDB Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -125,7 +125,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e18",
             "type": "storage",
-            "driver": "firestore",
+            "provider": "firestore",
             "name": "Google Cloud Firestore Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -138,7 +138,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e19",
             "type": "storage",
-            "driver": "mariadb",
+            "provider": "mariadb",
             "name": "MariaDB Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -151,7 +151,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e00",
             "type": "storage",
-            "driver": "mongodb",
+            "provider": "mongodb",
             "name": "MongoDB Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -164,7 +164,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e02",
             "type": "storage",
-            "driver": "mysql",
+            "provider": "mysql",
             "name": "MySQL Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -177,7 +177,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e1a",
             "type": "storage",
-            "driver": "oracledb",
+            "provider": "oracledb",
             "name": "Oracle Database Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -190,7 +190,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e1b",
             "type": "storage",
-            "driver": "planetscale",
+            "provider": "planetscale",
             "name": "PlanetScale Serverless Driver",
             "enabled": true,
             "cluster": "*",
@@ -203,7 +203,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e01",
             "type": "storage",
-            "driver": "postgresql",
+            "provider": "postgresql",
             "name": "PostgreSQL Relational Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -216,7 +216,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e1c",
             "type": "storage",
-            "driver": "rqlite",
+            "provider": "rqlite",
             "name": "rqlite Distributed SQLite Driver",
             "enabled": true,
             "cluster": "*",
@@ -229,7 +229,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e1d",
             "type": "storage",
-            "driver": "qdrant",
+            "provider": "qdrant",
             "name": "Qdrant Vector Database Driver",
             "enabled": true,
             "cluster": "*",
@@ -242,7 +242,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e03",
             "type": "storage",
-            "driver": "sqlite",
+            "provider": "sqlite",
             "name": "SQLite Embedded Storage Driver",
             "enabled": true,
             "cluster": "*",
@@ -255,7 +255,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e1e",
             "type": "storage",
-            "driver": "tidb",
+            "provider": "tidb",
             "name": "TiDB Distributed Database Driver",
             "enabled": true,
             "cluster": "*",
@@ -268,7 +268,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e1f",
             "type": "storage",
-            "driver": "timescaledb",
+            "provider": "timescaledb",
             "name": "TimescaleDB Time-Series Driver",
             "enabled": true,
             "cluster": "*",
@@ -281,7 +281,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e20",
             "type": "storage",
-            "driver": "turso",
+            "provider": "turso",
             "name": "Turso / libSQL Distributed Driver",
             "enabled": true,
             "cluster": "*",
@@ -294,7 +294,7 @@ export default {
         {
             "_id": "65f8cb447b39a3c1a8904e21",
             "type": "storage",
-            "driver": "yugabytedb",
+            "provider": "yugabytedb",
             "name": "YugabyteDB Distributed SQL Driver",
             "enabled": true,
             "cluster": "*",

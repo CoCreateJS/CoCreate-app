@@ -1,8 +1,6 @@
-<link rel="stylesheet" href="/apps/activities/index.css" />
-
 <form
 	class="card mb-0"
-	array
+	array="transactions"
 	object
 	state-id="offcanvas-app-form"
 	state-overwrite>
@@ -11,578 +9,129 @@
 		input-query=".form-view-btn[]"
 		input.state.src="/apps/payments/form.html"
 		src="components/offcanvas-header.html"></div>
+
 	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="card-body d-flex flex-wrap gap-3">
-			<div class="flex-grow-1" style="flex-basis: 75%">
-				<div class="card">
-					<div class="card-header">
-						<div class="d-flex align-items-center">
-							<h5
-								class="card-title flex-grow-1 mb-0"
-								key="order_id"
-								value-prefix="Order #"
-								aria-label="Order ID"></h5>
-							<div class="flex-shrink-0">
-								<a
-									state-to="adminView"
-									state.src="/apps/invoices/details.html"
-									state.object="{{invoice_id}}"
-									class="btn btn-success btn-sm"
-									aria-label="View Invoice">
-									<i
-										class="ri-download-2-fill align-middle me-1"></i>
-									Invoice
-								</a>
-							</div>
+		<div class="card-body d-flex flex-column gap-4">
+			<section class="bg-success-subtle rounded p-4">
+				<div class="d-flex flex-wrap align-items-center gap-3">
+					<div class="avatar-lg flex-shrink-0">
+						<div class="avatar-title rounded-circle bg-white text-success fs-28">
+							<i class="ri-wallet-3-line"></i>
 						</div>
 					</div>
-					<div class="card-body">
-						<div class="table-responsive table-card">
-							<table
-								class="table table-nowrap align-middle table-borderless mb-0"
-								aria-label="Order Items">
-								<thead class="table-light text-muted">
-									<tr>
-										<th scope="col">Product Details</th>
-										<th scope="col">Item Price</th>
-										<th scope="col">Quantity</th>
-										<th scope="col">Rating</th>
-										<th scope="col" class="text-end">
-											Total Amount
-										</th>
-									</tr>
-								</thead>
-								<tbody key="items" render-query="[template]">
-									<tr template>
-										<td>
-											<div class="d-flex">
-												<div
-													class="flex-shrink-0 avatar-md bg-light rounded p-1">
-													<img
-														src=""
-														key="image"
-														alt="Product Image"
-														class="img-fluid d-block" />
-												</div>
-												<div class="flex-grow-1 ms-3">
-													<h5 class="fs-15">
-														<a
-															state-to="adminView"
-															state.src="/apps/catalog/details.html"
-															state.object="{{product_id}}"
-															class="link-primary"
-															key="name"
-															aria-label="View Product Details"></a>
-													</h5>
-													<p
-														class="text-muted mb-0"
-														key="attributes"
-														render-query="[template]"
-														aria-label="Product Attributes">
-														<span template
-															>{{key}}:
-															<span
-																class="fw-medium"
-																>{{value}}</span
-															></span
-														>
-													</p>
-												</div>
-											</div>
-										</td>
-										<td
-											key="price"
-											aria-label="Item Price"></td>
-										<td
-											key="quantity"
-											aria-label="Item Quantity"></td>
-										<td>
-											<div
-												class="text-warning fs-15"
-												key="rating"
-												aria-label="Item Rating">
-												<!-- Dynamic stars based on rating value -->
-											</div>
-										</td>
-										<td
-											class="fw-medium text-end"
-											key="total"
-											aria-label="Item Total"></td>
-									</tr>
-									<tr class="border-top border-top-dashed">
-										<td colspan="3"></td>
-										<td colspan="2" class="fw-medium p-0">
-											<table
-												class="table table-borderless mb-0"
-												aria-label="Order Summary">
-												<tbody>
-													<tr>
-														<td>Sub Total :</td>
-														<td
-															class="text-end"
-															key="sub_total"></td>
-													</tr>
-													<tr>
-														<td>
-															Discount
-															<span
-																class="text-muted"
-																key="discount_code"
-																value-prefix="("
-																value-suffix=")"></span>
-															:
-														</td>
-														<td
-															class="text-end"
-															key="discount_amount"></td>
-													</tr>
-													<tr>
-														<td>
-															Shipping Charge :
-														</td>
-														<td
-															class="text-end"
-															key="shipping_charge"></td>
-													</tr>
-													<tr>
-														<td>Estimated Tax :</td>
-														<td
-															class="text-end"
-															key="tax"></td>
-													</tr>
-													<tr
-														class="border-top border-top-dashed">
-														<th scope="row">
-															Total (USD) :
-														</th>
-														<th
-															class="text-end"
-															key="total_amount"></th>
-													</tr>
-												</tbody>
-											</table>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<div class="d-sm-flex align-items-center">
-							<h5 class="card-title flex-grow-1 mb-0">
-								Order Status
-							</h5>
-							<div class="flex-shrink-0 mt-2 mt-sm-0">
-								<a
-									href="javascript:void(0);"
-									class="btn btn-soft-info material-shadow-none btn-sm mt-2 mt-sm-0"
-									aria-label="Change Shipping Address">
-									<i
-										class="ri-map-pin-line align-middle me-1"></i>
-									Change Address
-								</a>
-								<a
-									href="javascript:void(0);"
-									class="btn btn-soft-danger material-shadow-none btn-sm mt-2 mt-sm-0"
-									aria-label="Cancel Order">
-									<i
-										class="mdi mdi-archive-remove-outline align-middle me-1"></i>
-									Cancel Order
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="card-body">
-						<div class="profile-timeline">
-							<div
-								class="accordion accordion-flush"
-								id="accordionFlushExample"
-								key="status_history"
-								render-query="[template]"
-								aria-label="Order Status History">
-								<div class="accordion-item border-0" template>
-									<div class="accordion-header">
-										<a
-											class="accordion-button p-2 shadow-none"
-											role="button"
-											tabindex="0"
-											aria-expanded="true"
-											aria-label="Order Status">
-											<div
-												class="d-flex align-items-center">
-												<div
-													class="flex-shrink-0 avatar-xs">
-													<div
-														class="avatar-title bg-success rounded-circle material-shadow">
-														<i
-															class=""
-															key="icon"></i>
-													</div>
-												</div>
-												<div class="flex-grow-1 ms-3">
-													<h6
-														class="fs-15 mb-0 fw-semibold"
-														key="status_title"></h6>
-												</div>
-											</div>
-										</a>
-									</div>
-									<div
-										class="accordion-collapse collapse show">
-										<div
-											class="accordion-body ms-2 ps-5 pt-0">
-											<h6 class="mb-1" key="message"></h6>
-											<p
-												class="text-muted mb-0"
-												key="date"></p>
-										</div>
-									</div>
-								</div>
-								<div class="accordion-item border-0">
-									<div
-										class="accordion-header"
-										id="headingThree">
-										<a
-											class="accordion-button p-2 shadow-none"
-											data-bs-toggle="collapse"
-											href="#collapseThree"
-											aria-expanded="false"
-											aria-controls="collapseThree"
-											aria-label="Shipping Details">
-											<div
-												class="d-flex align-items-center">
-												<div
-													class="flex-shrink-0 avatar-xs">
-													<div
-														class="avatar-title bg-success rounded-circle material-shadow">
-														<i
-															class="ri-truck-line"></i>
-													</div>
-												</div>
-												<div class="flex-grow-1 ms-3">
-													<h6
-														class="fs-15 mb-1 fw-semibold">
-														Shipping -
-														<span class="fw-normal"
-															>Thu, 16 Dec
-															2021</span
-														>
-													</h6>
-												</div>
-											</div>
-										</a>
-									</div>
-									<div
-										id="collapseThree"
-										class="accordion-collapse collapse show"
-										aria-labelledby="headingThree"
-										data-bs-parent="#accordionFlushExample">
-										<div
-											class="accordion-body ms-2 ps-5 pt-0">
-											<h6 class="fs-14">
-												RQK Logistics - MFDS1400457854
-											</h6>
-											<h6 class="mb-1">
-												Your item has been shipped.
-											</h6>
-											<p class="text-muted mb-0">
-												Sat, 18 Dec 2021 - 4.54PM
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="accordion-item border-0">
-									<div
-										class="accordion-header"
-										id="headingFour">
-										<a
-											class="accordion-button p-2 shadow-none"
-											data-bs-toggle="collapse"
-											href="#collapseFour"
-											aria-expanded="false"
-											aria-label="Out For Delivery Status">
-											<div
-												class="d-flex align-items-center">
-												<div
-													class="flex-shrink-0 avatar-xs">
-													<div
-														class="avatar-title bg-light text-success rounded-circle material-shadow">
-														<i
-															class="mdi mdi-package-variant"></i>
-													</div>
-												</div>
-												<div class="flex-grow-1 ms-3">
-													<h6
-														class="fs-14 mb-0 fw-semibold">
-														Out For Delivery
-													</h6>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>
-								<div class="accordion-item border-0">
-									<div
-										class="accordion-header"
-										id="headingFive">
-										<a
-											class="accordion-button p-2 shadow-none"
-											data-bs-toggle="collapse"
-											href="#collapseFile"
-											aria-expanded="false"
-											aria-label="Delivered Status">
-											<div
-												class="d-flex align-items-center">
-												<div
-													class="flex-shrink-0 avatar-xs">
-													<div
-														class="avatar-title bg-light text-success rounded-circle material-shadow">
-														<i
-															class="mdi mdi-package-variant"></i>
-													</div>
-												</div>
-												<div class="flex-grow-1 ms-3">
-													<h6
-														class="fs-14 mb-0 fw-semibold">
-														Delivered
-													</h6>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="flex-shrink-0" style="flex-basis: 25%">
-				<div class="card">
-					<div class="card-header">
-						<div class="d-flex">
-							<h5 class="card-title flex-grow-1 mb-0">
-								<i
-									class="mdi mdi-truck-fast-outline align-middle me-1 text-muted"></i>
-								Logistics Details
-							</h5>
-							<div class="flex-shrink-0">
-								<a
-									href="javascript:void(0);"
-									class="badge bg-primary-subtle text-primary fs-11"
-									aria-label="Track Order"
-									>Track Order
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="card-body">
-						<div class="text-center">
-							<lord-icon
-								src="https://cdn.lordicon.com/uetqnvvg.json"
-								trigger="loop"
-								colors="primary:#405189,secondary:#0ab39c"
-								style="width: 80px; height: 80px"
-								aria-label="Logistics Animation">
-							</lord-icon>
-							<h5
-								class="fs-16 mt-2"
-								key="logistics_name"
-								aria-label="Logistics Name"></h5>
-							<p
-								class="text-muted mb-0"
-								key="logistics_id"
-								value-prefix="ID: "
-								aria-label="Logistics ID"></p>
-							<p
-								class="text-muted mb-0"
-								key="payment_mode"
-								value-prefix="Payment Mode : "
-								aria-label="Payment Mode"></p>
-						</div>
-					</div>
-				</div>
 
-				<div class="card" array="contacts" object="{{contact_id}}">
-					<div class="card-header">
-						<div class="d-flex">
-							<h5 class="card-title flex-grow-1 mb-0">
-								Customer Details
-							</h5>
-							<div class="flex-shrink-0">
-								<a
-									href="javascript:void(0);"
-									class="link-secondary"
-									aria-label="View Customer Profile"
-									>View Profile</a
-								>
-							</div>
+					<div class="d-flex flex-column gap-2 flex-grow-1 min-width:220px">
+						<div class="text-muted text-uppercase fw-semibold">Payment</div>
+						<h4 class="mb-0 text-break" key="_id" aria-label="Payment ID"></h4>
+						<div class="d-flex flex-wrap align-items-center gap-2">
+							<span
+								class="badge rounded-pill bg-success text-uppercase"
+								key="status"
+								aria-label="Payment status"></span>
+							<span
+								class="badge rounded-pill bg-primary-subtle text-primary text-uppercase"
+								key="type"
+								aria-label="Transaction type"></span>
+							<span
+								class="badge rounded-pill bg-info-subtle text-info text-uppercase"
+								key="payment_type"
+								aria-label="Payment type"></span>
 						</div>
 					</div>
-					<div class="card-body">
-						<ul class="list-unstyled mb-0 vstack gap-3">
-							<li>
-								<div class="d-flex align-items-center">
-									<div class="flex-shrink-0">
-										<img
-											src=""
-											key="avatar[0].src"
-											alt="Customer Avatar"
-											class="avatar-sm rounded material-shadow" />
-									</div>
-									<div class="flex-grow-1 ms-3">
-										<h6
-											class="fs-14 mb-1"
-											key="name"
-											aria-label="Customer Name"></h6>
-										<p class="text-muted mb-0">Customer</p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<i
-									class="ri-mail-line me-2 align-middle text-muted fs-16"></i
-								><span
-									key="email"
-									aria-label="Customer Email"></span>
-							</li>
-							<li>
-								<i
-									class="ri-phone-line me-2 align-middle text-muted fs-16"></i
-								><span
-									key="phone"
-									aria-label="Customer Phone"></span>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<h5 class="card-title mb-0">
-							<i
-								class="ri-map-pin-line align-middle me-1 text-muted"></i>
-							Billing Address
-						</h5>
-					</div>
-					<div class="card-body">
-						<ul class="list-unstyled vstack gap-2 fs-13 mb-0">
-							<li
-								class="fw-medium fs-14"
-								key="billing_address.name"
-								aria-label="Billing Address Name"></li>
-							<li
-								key="billing_address.phone"
-								aria-label="Billing Address Phone"></li>
-							<li
-								key="billing_address.line1"
-								aria-label="Billing Address Line 1"></li>
-							<li
-								key="billing_address.city_zip"
-								aria-label="Billing Address City and ZIP"></li>
-							<li
-								key="billing_address.country"
-								aria-label="Billing Address Country"></li>
-						</ul>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<h5 class="card-title mb-0">
-							<i
-								class="ri-map-pin-line align-middle me-1 text-muted"></i>
-							Shipping Address
-						</h5>
-					</div>
-					<div class="card-body">
-						<ul class="list-unstyled vstack gap-2 fs-13 mb-0">
-							<li
-								class="fw-medium fs-14"
-								key="shipping_address.name"
-								aria-label="Shipping Address Name"></li>
-							<li
-								key="shipping_address.phone"
-								aria-label="Shipping Address Phone"></li>
-							<li
-								key="shipping_address.line1"
-								aria-label="Shipping Address Line 1"></li>
-							<li
-								key="shipping_address.city_zip"
-								aria-label="Shipping Address City and ZIP"></li>
-							<li
-								key="shipping_address.country"
-								aria-label="Shipping Address Country"></li>
-						</ul>
-					</div>
-				</div>
 
-				<div class="card">
-					<div class="card-header">
-						<h5 class="card-title mb-0">
-							<i
-								class="ri-secure-payment-line align-bottom me-1 text-muted"></i>
-							Payment Details
-						</h5>
-					</div>
-					<div class="card-body">
-						<div class="d-flex align-items-center mb-2">
-							<div class="flex-shrink-0">
-								<p class="text-muted mb-0">Transactions:</p>
-							</div>
-							<div class="flex-grow-1 ms-2">
-								<h6
-									class="mb-0"
-									key="transaction_id"
-									aria-label="Transaction ID"></h6>
-							</div>
-						</div>
-						<div class="d-flex align-items-center mb-2">
-							<div class="flex-shrink-0">
-								<p class="text-muted mb-0">Payment Method:</p>
-							</div>
-							<div class="flex-grow-1 ms-2">
-								<h6
-									class="mb-0"
-									key="payment_method"
-									aria-label="Payment Method"></h6>
-							</div>
-						</div>
-						<div class="d-flex align-items-center mb-2">
-							<div class="flex-shrink-0">
-								<p class="text-muted mb-0">Card Holder Name:</p>
-							</div>
-							<div class="flex-grow-1 ms-2">
-								<h6
-									class="mb-0"
-									key="card_holder_name"
-									aria-label="Card Holder Name"></h6>
-							</div>
-						</div>
-						<div class="d-flex align-items-center mb-2">
-							<div class="flex-shrink-0">
-								<p class="text-muted mb-0">Card Number:</p>
-							</div>
-							<div class="flex-grow-1 ms-2">
-								<h6
-									class="mb-0"
-									key="card_number"
-									aria-label="Card Number"></h6>
-							</div>
-						</div>
-						<div class="d-flex align-items-center">
-							<div class="flex-shrink-0">
-								<p class="text-muted mb-0">Total Amount:</p>
-							</div>
-							<div class="flex-grow-1 ms-2">
-								<h6
-									class="mb-0"
-									key="total_amount"
-									aria-label="Total Amount"></h6>
-							</div>
+					<div class="text-end flex-shrink-0">
+						<div class="text-muted mb-1">Amount</div>
+						<div class="fs-24 fw-bold">
+							<span key="currency"></span>
+							<span key="amount"></span>
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
+
+			<section>
+				<h5 class="text-uppercase fw-semibold mb-3">Payment information</h5>
+				<div class="d-flex flex-wrap gap-3">
+					<div class="border border-dashed rounded p-3 flex-grow-1 flex-basis:240px min-width:220px">
+						<div class="text-muted mb-1">Customer</div>
+						<div class="fw-medium" key="customer_id"></div>
+					</div>
+					<div class="border border-dashed rounded p-3 flex-grow-1 flex-basis:240px min-width:220px">
+						<div class="text-muted mb-1">Product</div>
+						<div class="fw-medium" key="product"></div>
+					</div>
+					<div class="border border-dashed rounded p-3 flex-grow-1 flex-basis:240px min-width:220px">
+						<div class="text-muted mb-1">Payment Date</div>
+						<div class="fw-medium" key="date"></div>
+					</div>
+					<div class="border border-dashed rounded p-3 flex-grow-1 flex-basis:240px min-width:220px">
+						<div class="text-muted mb-1">Payment Method</div>
+						<div class="fw-medium" key="method"></div>
+					</div>
+				</div>
+			</section>
+
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-3">Related records</h5>
+				<div class="table-responsive">
+					<table class="table table-borderless mb-0">
+						<tbody>
+							<tr>
+								<td class="fw-medium text-muted">Invoice ID</td>
+								<td>
+									<a
+										role="button"
+										tabindex="0"
+										class="link-primary"
+										state-to="offcanvas-app-view"
+										state.src="/apps/invoices/details.html"
+										state.array="invoices"
+										state.object="{{invoice_id}}"
+										key="invoice_id"
+										aria-label="View related invoice"></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="fw-medium text-muted">Reference</td>
+								<td key="reference"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium text-muted">Due Date</td>
+								<td key="due_date"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium text-muted">Approved By</td>
+								<td key="approval_by"></td>
+							</tr>
+							<tr>
+								<td class="fw-medium text-muted">Remaining Due</td>
+								<td>
+									<span key="currency"></span>
+									<span key="remaining_due"></span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-3">Tags</h5>
+				<div class="d-flex flex-wrap gap-2" key="tags" render-query="[template]">
+					<span template class="badge bg-primary-subtle text-primary">{{tags}}</span>
+				</div>
+			</section>
+
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-3">Notes</h5>
+				<p class="text-muted mb-2" key="notes"></p>
+				<p class="text-muted mb-0" key="note"></p>
+			</section>
+
+			<div
+				class="border-top border-top-dashed pt-3"
+				src="components/activities.html"
+				aria-label="Payment activities"></div>
 		</div>
 	</div>
 </form>

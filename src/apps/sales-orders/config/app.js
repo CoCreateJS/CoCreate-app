@@ -6,7 +6,7 @@ export default {
     "name": "Orders",
     "singularName": "Order",
     "path": "apps/orders",
-    "array": "orders",
+    "array": "sales_orders",
     "icon": "ri-shopping-cart-line",
     "description": "App to manage and track Orders.",
     "status": "active",
@@ -25,7 +25,7 @@ export default {
         "label": "Order Number",
         "tagName": "input",
         "filterTemplate": "<input class=\"form-control\" type=\"text\" placeholder=\"Order number\" filter-query=\"$document .list-view\" filter-query-key=\"order_number\" />",
-        "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/tasks/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"tasks\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+        "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/sales-orders/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"sales_orders\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.order_number}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
         "attributes": [
           {
             "name": "class",

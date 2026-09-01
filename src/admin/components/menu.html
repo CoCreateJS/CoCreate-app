@@ -25,7 +25,7 @@
 				alt=""
 				height="40" />
 		</span>
-		<span class="logo-lg">
+		<span class="logo-lg ps-4">
 			<img
 				array="organizations"
 				object="$organization_id"
@@ -44,7 +44,7 @@
 				alt=""
 				height="40" />
 		</span>
-		<span class="logo-lg">
+		<span class="logo-lg ps-4">
 			<img
 				src="/assets/images/logos/logo.png"
 				alt=""
@@ -54,7 +54,7 @@
 	<span array=""></span>
 	<button
 		type="button"
-		class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+		class="btn btn-sm p-0 px-2 fs-20 header-item float-end btn-vertical-sm-hover"
 		id="vertical-hover"
 		click-query="$document html"
 		click.data-sidebar-size="sm-hover, sm-hover-active">
@@ -109,18 +109,6 @@
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="ai-chat-list-btn"
-					class="nav-link menu-link"
-					state-to="adminView"
-					state.src="/apps/ai/index.html">
-					<i class="ri-robot-2-line"></i>
-					<span>AI Chat</span>
-				</a>
-			</li>
-
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
 					id="dashboards-btn"
 					state-to="adminView"
 					state.src="/apps/dashboards/"
@@ -129,24 +117,8 @@
 					<span>Dashboards</span>
 					<div
 						state-to="app"
-						state.object="68741e1d07a037d0d6d80dh5"
+						state.object="6a96308fea6decf4bea7a277"
 						state.input.array="apps"></div>
-				</a>
-				<a
-					id="dashboards-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/dashboards/form.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Add new app">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="dashboards"></div>
-					<i class="ri-add-line"></i>
 				</a>
 			</li>
 
@@ -161,7 +133,7 @@
 					<span>Email</span>
 					<div
 						state-to="app"
-						state.object="68741e1d07a037d0d6d00ef0"></div>
+						state.object="6a96308f0bc023f23881e962"></div>
 
 					<span
 						class="sidebar-notification fs-10 badge rounded-pill bg-danger ms-2"
@@ -223,6 +195,44 @@
 						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="calendar"></div>
+					<i class="ri-add-line"></i>
+				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="projects-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-briefcase-line"></i>
+					<span data-key="t-projects-main">Projects</span>
+					<div
+						state-to="app"
+						state.object="68741e1d07a037d0d6d00ee4"
+						state.input.array="projects"></div>
+					<div
+						state-to="table"
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="projects"
+						state.filter-query-value="project"></div>
+				</a>
+				<a
+					id="projects-create-btn"
+					state-to="offcanvas-app-view"
+					state.src="/apps/projects/form.html"
+					aria-controls="offcanvas-app"
+					aria-open
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					class="nav-link nav-action"
+					title="Create new project">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="projects"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -305,7 +315,6 @@
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
-
 			<!-- CRM Section: Core customer and sales management -->
 			<li class="menu-title">
 				<span>CRM</span>
@@ -397,7 +406,7 @@
 					<span>Contacts</span>
 					<div
 						state-to="app"
-						state.object="68741e1d07a037d0d6d00eee"
+						state.object="6a96308f28d8dece819be2d4"
 						state.input.array="contacts"></div>
 					<div
 						state-to="table"
@@ -448,10 +457,13 @@
 				<a
 					id="companies-create-btn"
 					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/companies/form.html"
 					aria-controls="offcanvas-app"
 					aria-haspopup="dialog"
 					aria-expanded="false"
 					aria-open
+					aria-label="Create new company"
 					title="Add new company">
 					<div
 						state-to="offcanvas-app-form"
@@ -552,15 +564,15 @@
 					<span>Estimates</span>
 					<div
 						state-to="app"
-						state.object="68741e1d07a037d0d6d00ef1"
-						state.input.array="invoice"></div>
+						state.object="686ecb750cb20318c29a050e"
+						state.input.array="invoices"></div>
 					<div
 						state-to="table"
-						state.filter-query-value="Estimate"></div>
+						state.filter-query-value="estimate"></div>
 					<div
 						state-to="list"
 						state.array="invoices"
-						state.filter-query-value="Estimate"></div>
+						state.filter-query-value="estimate"></div>
 				</a>
 				<a
 					state-to="offcanvas-app-view"
@@ -590,14 +602,14 @@
 					<div
 						state-to="app"
 						state.object="68741e1d07a037d0d6d00efb"
-						state.input.array="invoices"></div>
+						state.input.array="sales_orders"></div>
 					<div
 						state-to="table"
-						state.filter-query-value="Sales Order"></div>
+						state.filter-query-value=""></div>
 					<div
 						state-to="list"
-						state.array="invoices"
-						state.filter-query-value="Sales Order"></div>
+						state.array="sales_orders"
+						state.filter-query-value=""></div>
 				</a>
 				<a
 					id="sales-orders-create-btn"
@@ -612,7 +624,7 @@
 					<div
 						state-to="offcanvas-app-form"
 						state.$reset
-						state.array="invoices"></div>
+						state.array="sales_orders"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -627,15 +639,15 @@
 					<span>Invoices</span>
 					<div
 						state-to="app"
-						state.object="686ecb750cb20318c29a050e"
+						state.object="6a96308f1cbed14a0983e2e1"
 						state.input.array="invoices"></div>
 					<div
 						state-to="table"
-						state.filter-query-value=""></div>
+						state.filter-query-value="invoice"></div>
 					<div
 						state-to="list"
 						state.array="invoices"
-						state.filter-query-value="Invoice"></div>
+						state.filter-query-value="invoice"></div>
 				</a>
 				<a
 					id="invoices-create-btn"
@@ -668,11 +680,13 @@
 						state.input.array="transactions"></div>
 					<div
 						state-to="table"
-						state.filter-query-value="Payments"></div>
+						state.filter-query-key="type"
+						state.filter-query-value="payment"></div>
 					<div
 						state-to="list"
 						state.array="transactions"
-						state.filter-query-value="Payments"></div>
+						state.filter-query-key="type"
+						state.filter-query-value="payment"></div>
 				</a>
 				<a
 					state-to="offcanvas-app-view"
@@ -747,11 +761,13 @@
 						state.input.array="transactions"></div>
 					<div
 						state-to="table"
-						state.filter-query-value="Expenses"></div>
+						state.filter-query-key="type"
+						state.filter-query-value="expense"></div>
 					<div
 						state-to="list"
 						state.array="transactions"
-						state.filter-query-value="Expenses"></div>
+						state.filter-query-key="type"
+						state.filter-query-value="expense"></div>
 				</a>
 				<a
 					state-to="offcanvas-app-view"
@@ -766,49 +782,6 @@
 						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="transactions"></div>
-					<i class="ri-add-line"></i>
-				</a>
-			</li>
-
-			<!-- Project Management Section -->
-			<li class="menu-title">
-				<span>Project Management</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="projects-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i class="ri-briefcase-line"></i>
-					<span data-key="t-projects-main">Projects</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00ee4"
-						state.input.array="projects"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.array="projects"
-						state.filter-query-value="project"></div>
-				</a>
-				<a
-					id="projects-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/projects/form.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new project">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="projects"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -828,7 +801,7 @@
 					<span>Blog</span>
 					<div
 						state-to="app"
-						state.object="68741e1d07a037d0d6d00e99"
+						state.object="68741e1d07a037d0d6d00ee7"
 						state.input.array="posts"></div>
 					<div
 						state-to="table"
@@ -855,6 +828,7 @@
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
+
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
@@ -866,7 +840,7 @@
 					<span>Social</span>
 					<div
 						state-to="app"
-						state.object="68741e1d07a037d0d6d00e99"
+						state.object="6a96308fe438a005aaa9a967"
 						state.input.array="posts"></div>
 					<div
 						state-to="table"
@@ -879,11 +853,12 @@
 				<a
 					id="social-create-btn"
 					state-to="offcanvas-app-view"
-					state.src="/apps/social/form.html"
+					state.src="/apps/blog/form.html"
 					aria-controls="offcanvas-app"
 					aria-open
 					aria-haspopup="dialog"
 					aria-expanded="false"
+					aria-label="Create new social post"
 					class="nav-link nav-action"
 					title="Create new social post">
 					<div
@@ -892,6 +867,11 @@
 						state.array="posts"></div>
 					<i class="ri-add-line"></i>
 				</a>
+			</li>
+
+			<!-- Human Resources Section -->
+			<li class="menu-title">
+				<span>Human Resources</span>
 			</li>
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
@@ -902,32 +882,34 @@
 					class="nav-link"
 					data-key="t-job-postings">
 					<i class="ri-briefcase-2-line"></i>
-					<span>Job Postings</span>
+					<span>Jobs</span>
 					<div
 						state-to="app"
-						state.object="68741e1d07a037d0d6d00ef5"></div>
+						state.object="68741e1d07a037d0d6d00ef5"
+						state.input.array="jobPosts"></div>
 					<div
 						state-to="table"
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
-						state.array="jobs"
+						state.array="jobPosts"
 						state.filter-query-value=""></div>
 				</a>
 				<a
 					id="job-postings-create-btn"
 					state-to="offcanvas-app-view"
-					state.src="/apps/job/form.html"
+					state.src="/apps/jobs/form.html"
 					aria-controls="offcanvas-app"
 					aria-open
 					aria-haspopup="dialog"
 					aria-expanded="false"
+					aria-label="Post a new job"
 					class="nav-link nav-action"
 					title="Post a new job">
 					<div
 						state-to="offcanvas-app-form"
 						state.$reset
-						state.array="jobs"></div>
+						state.array="jobPosts"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -943,14 +925,15 @@
 					<span>Candidates</span>
 					<div
 						state-to="app"
-						state.object="68741e1d07a037d0d6d00eee"></div>
+						state.object="6a96308f88ce2e69559ce874"
+						state.input.array="contacts"></div>
 					<div
 						state-to="table"
-						state.filter-query-value=""></div>
+						state.filter-query-value="candidate"></div>
 					<div
 						state-to="list"
 						state.array="contacts"
-						state.filter-query-value=""></div>
+						state.filter-query-value="candidate"></div>
 				</a>
 				<a
 					id="candidates-create-btn"
@@ -981,35 +964,189 @@
 					state-to="adminView"
 					state.src="/components/list/index.html"
 					class="nav-link">
-					<i class="ri-settings-3-line"></i>
-					<span>App Management</span>
+					<i class="ri-apps-2-line"></i>
+					<span>Apps</span>
 					<div
 						state-to="app"
 						state.object="68e736cc0615d8268cc50fd6"
 						state.input.array="apps"></div>
 					<div
 						state-to="table"
+						state.filter-query-key=""
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
 						state.array="apps"
+						state.filter-query-key=""
 						state.filter-query-value=""></div>
 				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="apps-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/apps/form.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Add new app">
+					id="servers-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-server-line"></i>
+					<span>Servers</span>
 					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="apps"></div>
-					<i class="ri-add-line"></i>
+						state-to="app"
+						state.object="6a96308ff9a6bb732ce54723"
+						state.input.array="servers"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="servers"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="server-configs-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-settings-3-line"></i>
+					<span>Server Configs</span>
+					<div
+						state-to="app"
+						state.object="6a96308fbe321a28ad3edec1"
+						state.input.array="servers_config"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="servers_config"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="apis-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-key-2-line"></i>
+					<span>APIs</span>
+					<div
+						state-to="app"
+						state.object="68741e1d07a037d0d6d00eee"
+						state.input.array="apis"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="apis"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="api-keys-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-key-line"></i>
+					<span>API Keys</span>
+					<div
+						state-to="app"
+						state.object="68741e1d07a037d0d6d00ee6"
+						state.input.array="keys"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="keys"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="endpoints-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-terminal-box-line"></i>
+					<span>Endpoints</span>
+					<div
+						state-to="app"
+						state.object="68741e1d07a037d0d6d00eef"
+						state.input.array="endpoints"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="endpoints"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="webhooks-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-bubble-chart-line"></i>
+					<span>Webhooks</span>
+					<div
+						state-to="app"
+						state.object="68741e1d07a037d0d6d00ef0"
+						state.input.array="webhooks"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="webhooks"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="ai-instructions-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-file-list-3-line"></i>
+					<span>AI Instructions</span>
+					<div
+						state-to="app"
+						state.object="db642be613418dda0ef345a1"
+						state.input.array="ai-guidance"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.array="ai-guidance"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
 				</a>
 			</li>
 		</ul>

@@ -4,8 +4,12 @@
 
 <div
 	class="ai-shell"
+	plugin='{"$Prism.highlightAllUnder":["$this"]}'
 	data-ai-chat>
-	<aside class="ai-sidebar">
+	<aside
+		id="ai-conversations-sidebar"
+		class="ai-sidebar"
+		aria-hidden="true">
 		<div class="ai-sidebar-heading">
 			<div class="ai-sidebar-label">Conversations</div>
 			<button
@@ -19,91 +23,66 @@
 			</button>
 		</div>
 		<div
-			class="ai-thread-list"
-			array="ai-conversations"
-			object
-			render-query="[template='ai-conversation-template']"
-			filter-query-key="user_id"
-			filter-query-value="$user_id"
-			filter-sort-key="modified.on"
-			filter-sort-direction="desc">
-			<button
-				template="ai-conversation-template"
-				type="button"
-				class="ai-thread"
-				data-conversation-id="{{object._id}}"
-				data-provider="{{object.provider}}"
-				data-model="{{object.model}}">
-				<div class="ai-thread-title">
-					<span>{{object.title}}</span>
-					<small>
-						<input
-							type="date"
-							value="{{object.modified.on}}"
-							value-type="timeAgo"
-							time-ago-units="week, day"
-							onload-query="$next"
-							onload.value="$value"
-							hidden />
-						<span></span>
-					</small>
-				</div>
-			</button>
+			class="ai-thread-scroll"
+			plugin='{"$SimpleBar": ["$this", {}]}'>
+			<div
+				class="ai-thread-list"
+				array="ai-conversations"
+				object
+				render-query="[template='ai-conversation-template']"
+				filter-query-key="user_id"
+				filter-query-value="$user_id"
+				filter-sort-key="modified.on"
+				filter-sort-direction="desc">
+				<button
+					template="ai-conversation-template"
+					type="button"
+					class="ai-thread"
+					data-conversation-id="{{object._id}}"
+					data-provider="{{object.provider}}"
+					data-model="{{object.model}}">
+					<div class="ai-thread-title">
+						<span>{{object.title}}</span>
+					</div>
+				</button>
+			</div>
 		</div>
 	</aside>
+	<button
+		type="button"
+		tabindex="-1"
+		class="ai-sidebar-backdrop"
+		aria-label="Close conversations"
+		aria-controls="ai-conversations-sidebar"
+		aria-close
+		aria-expanded="false"></button>
 
 	<main class="ai-main">
-		<header class="ai-header">
-			<div class="ai-brand">
-				<div
-					class="ai-logo"
-					aria-hidden="true">
-					AI
-				</div>
-				<div class="ai-brand-copy">
-					<strong>CoCreate AI</strong>
-					<div class="ai-model-picker">
-						<button
-							class="ai-model-trigger"
-							type="button"
-							aria-controls="ai-model-options"
-							aria-expanded="false"
-							aria-haspopup="listbox">
-							<span class="ai-model-value">OpenAI · gpt-5.6-terra</span>
-						</button>
-						<div
-							id="ai-model-options"
-							class="ai-model-options"
-							role="listbox"
-							aria-hidden="true"
-							aria-close-on="inside, outside"
-							aria-label="AI model"></div>
-					</div>
-					<input
-						class="ai-provider"
-						type="hidden"
-						value="openai" />
-					<input
-						class="ai-model"
-						type="hidden"
-						value="gpt-5.6-terra" />
-				</div>
-			</div>
-
-			<div class="ai-settings">
-				<span class="ai-status">Connecting</span>
-			</div>
-		</header>
+		<button
+			class="ai-sidebar-toggle"
+			type="button"
+			aria-label="Toggle conversations"
+			aria-controls="ai-conversations-sidebar"
+			aria-expanded="false">
+			<i
+				class="ri-chat-history-line"
+				aria-hidden="true"></i>
+		</button>
 
 		<section
-			class="ai-messages"
-			aria-live="polite">
-			<div class="ai-empty">
-				<h1>What will you build today?</h1>
-				<p>
-					Build apps and websites, manage servers, organize CRM work, and
-					turn your next business task into action—without leaving CoCreate.
-				</p>
+			class="ai-message-scroll"
+			plugin='{"$SimpleBar": ["$this", {}]}'>
+			<div
+				class="ai-messages"
+				aria-live="polite">
+				<div class="ai-empty">
+					<h1>What will you build today?</h1>
+					<p>
+						Build apps and websites, manage servers, organize CRM work,
+						and turn your next business task into action—without leaving
+						CoCreate.
+					</p>
+				</div>
 			</div>
 		</section>
 
@@ -114,14 +93,77 @@
 				placeholder="Message CoCreate AI…"
 				aria-label="Prompt"
 				required></textarea>
-			<button
-				class="ai-send"
-				type="submit"
-				aria-label="Send message">
-				<i
-					class="ri-arrow-up-line"
-					aria-hidden="true"></i>
-			</button>
+			<div class="ai-composer-toolbar">
+				<div class="ai-attach-picker">
+					<button
+						class="ai-attach"
+						type="button"
+						aria-label="Add to message"
+						aria-controls="ai-attach-options"
+						aria-expanded="false"
+						aria-haspopup="menu"
+						title="Add to message">
+						<i
+							class="ri-add-line"
+							aria-hidden="true"></i>
+					</button>
+					<div
+						id="ai-attach-options"
+						class="ai-attach-options"
+						role="menu"
+						aria-label="Add to message"
+						aria-hidden="true"
+						aria-close-on="inside, outside">
+						<button
+							class="ai-attach-option"
+							type="button"
+							role="menuitem">
+							<i
+								class="ri-attachment-2"
+								aria-hidden="true"></i>
+							<span>Upload</span>
+						</button>
+					</div>
+				</div>
+				<div class="ai-composer-actions">
+					<span class="ai-status">Connecting</span>
+					<div class="ai-model-picker">
+						<button
+							class="ai-model-trigger"
+							type="button"
+							aria-controls="ai-model-options"
+							aria-expanded="false"
+							aria-haspopup="listbox">
+							<span class="ai-model-value"
+								>OpenAI · gpt-5.6-terra</span
+							>
+						</button>
+						<div
+							id="ai-model-options"
+							class="ai-model-options"
+							role="listbox"
+							aria-hidden="true"
+							aria-close-on="inside, outside"
+							aria-label="AI model"></div>
+					</div>
+					<button
+						class="ai-send"
+						type="submit"
+						aria-label="Send message">
+						<i
+							class="ri-arrow-up-line"
+							aria-hidden="true"></i>
+					</button>
+				</div>
+				<input
+					class="ai-provider"
+					type="hidden"
+					value="openai" />
+				<input
+					class="ai-model"
+					type="hidden"
+					value="gpt-5.6-terra" />
+			</div>
 		</form>
 	</main>
 </div>

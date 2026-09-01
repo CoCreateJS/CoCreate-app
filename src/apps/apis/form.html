@@ -1,115 +1,179 @@
 <form
-    class="card mb-0"
-    array="apis"
-    object
-    state-id="offcanvas-app-form"
-    state-overwrite>
+	class="card mb-0"
+	array="apis"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".details-view-btn[]"
+		input.hidden="true"
+		src="components/offcanvas-header.html"
+		aria-label="API Form Header"></div>
 
-    <div
-        class="card-header text-center border-bottom-0"
-        input-query=".details-view-btn[]"
-        input.state.src="/apps/apis/details.html"
-        src="components/offcanvas-header.html"
-        aria-label="API Form Header"></div>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-column gap-4">
+			<input type="hidden" key="_id" />
 
-    <div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-        <div class="card-body d-flex flex-wrap gap-4">
+			<section>
+				<h5 class="text-uppercase fw-semibold mb-3">Integration identity</h5>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+						Name
+						<input
+							type="text"
+							id="api-name"
+							key="name"
+							class="form-control text-lowercase"
+							placeholder="stripe"
+							required />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+						Provider
+						<input
+							type="text"
+							id="api-provider"
+							key="provider"
+							class="form-control text-lowercase"
+							placeholder="stripe"
+							required />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:180px min-width:160px">
+						Type
+						<input
+							type="text"
+							id="api-type"
+							key="type"
+							class="form-control"
+							placeholder="storage" />
+					</label>
+					<label class="form-check form-switch d-flex align-items-center gap-2 flex-grow-1 flex-basis:140px min-width:130px mt-4">
+						<input
+							class="form-check-input"
+							type="checkbox"
+							role="switch"
+							id="api-enabled"
+							key="enabled" />
+						<span class="form-check-label">Enabled</span>
+					</label>
+				</div>
+			</section>
 
-            <!-- Dynamic Integration Identity Placeholder Icon -->
-            <div class="text-center w-100 mb-2">
-                <div class="avatar-lg rounded-circle d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24 m-auto" style="width: 80px; height: 80px;">
-                    <i class="ri-key-2-line"></i>
-                </div>
-                <p class="text-muted mt-2 fs-13">Configure Integration Credentials</p>
-            </div>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-3">Connection and credentials</h5>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:360px min-width:260px">
+						Base URL
+						<input
+							type="url"
+							id="api-url"
+							key="url"
+							class="form-control text-lowercase"
+							placeholder="https://api.provider.com/v1" />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:280px min-width:240px">
+						Account SID
+						<input
+							type="text"
+							id="api-account-sid"
+							key="accountSid"
+							class="form-control"
+							placeholder="Provider account SID" />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">
+						API Key / Credential
+						<div class="input-group">
+							<input
+								type="password"
+								id="api-key"
+								key="key"
+								class="form-control"
+								placeholder="API key, token, or credential pair" />
+							<button
+								class="btn btn-outline-secondary"
+								type="button"
+								onclick="
+									const input = this.previousElementSibling;
+									input.type = input.type === 'password' ? 'text' : 'password';
+									this.querySelector('i').className = input.type === 'password' ? 'ri-eye-line' : 'ri-eye-off-line';
+								"
+								aria-label="Toggle API credential visibility">
+								<i class="ri-eye-line"></i>
+							</button>
+						</div>
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">
+						Webhook Signing Secret
+						<input
+							type="password"
+							id="api-webhook-secret"
+							key="webhookSecret"
+							class="form-control"
+							placeholder="Webhook signing secret" />
+					</label>
+				</div>
+			</section>
 
-            <label class="form-label w-100" id="provider-name-label">
-                Provider Name
-                <input
-                    type="text"
-                    id="api-name"
-                    key="name"
-                    name="name"
-                    class="form-control text-capitalize"
-                    placeholder="e.g. stripe, twilio, openai"
-                    required
-                    aria-labelledby="provider-name-label" />
-            </label>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-3">Provider metadata</h5>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+						Project
+						<input type="text" class="form-control" id="api-project" key="project" placeholder="GCP project ID" />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+						Project ID
+						<input type="text" class="form-control" id="api-project-id" key="projectId" placeholder="Provider project ID" />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:240px min-width:220px">
+						Subscription ID
+						<input type="text" class="form-control" id="api-subscription-id" key="subscriptionId" placeholder="Azure subscription ID" />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+						Resource Group
+						<input type="text" class="form-control" id="api-resource-group" key="resourceGroup" placeholder="Azure resource group" />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:300px min-width:260px">
+						Compartment ID
+						<input type="text" class="form-control" id="api-compartment-id" key="compartmentId" placeholder="OCI compartment ID" />
+					</label>
+				</div>
+			</section>
 
-            <label class="form-label w-100" id="endpoint-label">
-                Base URL / Endpoint
-                <input
-                    type="url"
-                    id="api-url"
-                    key="url"
-                    name="url"
-                    class="form-control text-lowercase"
-                    placeholder="https://api.provider.com/v1"
-                    required
-                    aria-labelledby="endpoint-label" />
-            </label>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-3">Request configuration</h5>
+				<label class="form-label d-flex flex-column gap-1">
+					Headers
+					<textarea
+						id="api-headers"
+						key="headers"
+						value-type="json"
+						class="form-control font-monospace"
+						rows="10"
+						spellcheck="false"
+						placeholder='{"Authorization":{"$concat":["Bearer ","$key"]}}'></textarea>
+				</label>
+				<p class="text-muted fs-12 mb-0">Headers are saved as a JSON object and may use CoCreate AST expressions.</p>
+			</section>
 
-            <label class="form-label w-100" id="secret-key-label">
-                Signing Key / API Secret Token
-                <div class="input-group">
-                    <input
-                        type="password"
-                        id="api-key"
-                        key="key"
-                        name="key"
-                        class="form-control"
-                        placeholder="sk_live_..."
-                        required
-                        aria-labelledby="secret-key-label" />
-                    <button
-                        class="btn btn-outline-secondary"
-                        type="button"
-                        id="toggle-secret-visibility"
-                        onclick="
-                            const input = document.getElementById('api-key');
-                            const icon = this.querySelector('i');
-                            if (input.type === 'password') {
-                                input.type = 'text';
-                                icon.className = 'ri-eye-off-line';
-                            } else {
-                                input.type = 'password';
-                                icon.className = 'ri-eye-line';
-                            }
-                        "
-                        aria-label="Toggle signing key visibility">
-                        <i class="ri-eye-line"></i>
-                    </button>
-                </div>
-            </label>
+			<section class="border-top border-top-dashed pt-3">
+				<label class="form-label d-flex flex-column gap-1">
+					Description
+					<textarea
+						id="api-description"
+						key="description"
+						class="form-control"
+						rows="4"
+						placeholder="Describe the integration and how its credentials are used"
+						required></textarea>
+				</label>
+			</section>
+		</div>
+	</div>
 
-            <label class="form-label w-100" id="description-label">
-                Description / Purpose
-                <textarea
-                    key="description"
-                    name="description"
-                    class="form-control"
-                    rows="3"
-                    placeholder="Describe this API's purpose or environment details..."
-                    aria-labelledby="description-label"></textarea>
-            </label>
-
-            <label class="form-label w-100" id="status-label">
-                Connection Status
-                <select
-                    class="form-select"
-                    key="status"
-                    name="status"
-                    aria-labelledby="status-label">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
-            </label>
-
-            <!-- Unified Standard Action Control Buttons -->
-            <div
-                src="/components/form-buttons.html"
-                role="region"
-                aria-label="Form Actions"></div>
-        </div>
-    </div>
+	<div
+		class="card-footer flex-shrink-0"
+		src="/components/form-buttons.html"
+		role="region"
+		aria-label="Form actions"></div>
 </form>

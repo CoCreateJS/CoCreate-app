@@ -110,7 +110,7 @@
 					</a>
 				</li>
 			</ul>
-			<div class="p-0 ms-auto z-index:1 d-flex gap-4">
+				<div class="card-body p-0 ms-auto z-index:1 d-flex gap-4">
 				<label
 					for="cover-foreground-img-file-input"
 					class="btn btn-light mb-0"
@@ -119,9 +119,10 @@
 						id="cover-foreground-img-file-input"
 						type="file"
 						realtime="true"
-						class="cover-foreground-img-file-input"
-						style="display: none"
-						key="cover_image" />
+							class="cover-foreground-img-file-input"
+							style="display: none"
+							key="cover_image"
+							aria-label="Change profile cover image" />
 					<i class="ri-image-edit-line align-bottom me-1"></i>
 					Change Cover
 				</label>
@@ -600,7 +601,10 @@
 								<!--end col-->
 								<div class="col-lg-12">
 									<div
-										src="/components/form-buttons.html"></div>
+										class="card-footer px-0 pb-0 border-top-0"
+										src="/components/form-buttons.html"
+										role="region"
+										aria-label="Profile form actions"></div>
 								</div>
 								<!--end col-->
 							</div>

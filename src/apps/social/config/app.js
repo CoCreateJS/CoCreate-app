@@ -2,7 +2,7 @@ export default {
   "method": "object.update",
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a047d0d6d00efv",
+    "_id": "6a96308fe438a005aaa9a967",
     "name": "Social",
     "singularName": "Post",
     "path": "apps/social",

@@ -1,96 +1,124 @@
 <form
-    class="card mb-0"
-    array="endpoints"
-    object
-    state-id="offcanvas-app-form"
-    state-overwrite>
+	class="card mb-0"
+	array="servers_config"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".details-view-btn[]"
+		input.hidden="true"
+		src="components/offcanvas-header.html"
+		aria-label="Server Configuration Form Header"></div>
 
-    <div
-        class="card-header text-center border-bottom-0"
-        input-query=".details-view-btn[]"
-        input.state.src="/apps/apis/endpoints/details.html"
-        src="components/offcanvas-header.html"
-        aria-label="Endpoint Configuration Header"></div>
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-column gap-4">
+			<input type="hidden" key="_id" />
 
-    <div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-        <div class="card-body d-flex flex-wrap gap-4">
+			<section>
+				<h5 class="text-uppercase fw-semibold mb-3">Configuration identity</h5>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:320px min-width:240px">
+						Name
+						<input
+							type="text"
+							id="server-config-name"
+							key="name"
+							class="form-control"
+							placeholder="Configuration name"
+							required />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:200px min-width:180px">
+						Type
+						<input
+							type="text"
+							id="server-config-type"
+							key="type"
+							list="server-config-types"
+							class="form-control text-lowercase"
+							placeholder="ai, autoscaler, storage, telemetry"
+							required />
+						<datalist id="server-config-types">
+							<option value="ai"></option>
+							<option value="autoscaler"></option>
+							<option value="storage"></option>
+							<option value="telemetry"></option>
+						</datalist>
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:200px min-width:180px">
+						Provider
+						<input
+							type="text"
+							id="server-config-provider"
+							key="provider"
+							class="form-control text-lowercase"
+							placeholder="aws, openai, mongodb" />
+					</label>
+					<label class="form-check form-switch d-flex align-items-center gap-2 flex-grow-1 flex-basis:140px min-width:130px mt-4">
+						<input
+							class="form-check-input"
+							type="checkbox"
+							role="switch"
+							id="server-config-enabled"
+							key="enabled" />
+						<span class="form-check-label">Enabled</span>
+					</label>
+				</div>
+			</section>
 
-            <div class="text-center w-100 mb-2">
-                <div class="avatar-lg rounded-circle d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24 m-auto" style="width: 80px; height: 80px;">
-                    <i class="ri-terminal-box-line"></i>
-                </div>
-                <p class="text-muted mt-2 fs-13">Configure Outbound REST API Parameters</p>
-            </div>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-2">Runtime targeting</h5>
+				<p class="text-muted mb-3">Use <code>*</code> for every target, <code>default</code> for the default scope, or an exact identifier.</p>
+				<div class="d-flex flex-wrap gap-3">
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:190px">
+						Cluster
+						<input
+							type="text"
+							id="server-config-cluster"
+							key="cluster"
+							class="form-control"
+							placeholder="*" />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:260px min-width:220px">
+						Server
+						<input
+							type="text"
+							id="server-config-server"
+							key="server"
+							class="form-control"
+							placeholder="* or server host" />
+					</label>
+					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:200px min-width:180px">
+						Worker
+						<input
+							type="text"
+							id="server-config-worker"
+							key="worker"
+							class="form-control"
+							placeholder="* or worker ID" />
+					</label>
+				</div>
+			</section>
 
-            <!-- Dynamic relational dropdown list connecting to our apis collection -->
-            <label class="form-label w-100" id="parent-api-label">
-                API Provider Connection
-                <select
-                    class="form-select text-capitalize"
-                    key="api_id"
-                    name="api_id"
-                    required
-                    aria-labelledby="parent-api-label">
-                    <option value="">Select Connection...</option>
-                    <!-- CoCreate Dynamic Render Option Loop -->
-                    <option template value="{{object._id}}">{{object.name}}</option>
-                </select>
-                <div array="apis" render-query="$previous"></div>
-            </label>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-2">Runtime configuration</h5>
+				<p class="text-muted mb-3">The object is merged with other enabled records that match the same runtime scope. Dot-notation keys are supported.</p>
+				<textarea
+					id="server-config-json"
+					key="config"
+					value-type="json"
+					class="form-control font-monospace"
+					rows="20"
+					spellcheck="false"
+					placeholder='{"enabled": true}'
+					required></textarea>
+			</section>
+		</div>
+	</div>
 
-            <label class="form-label w-100" id="route-endpoint-label">
-                API Route (Method & Endpoint)
-                <input
-                    type="text"
-                    id="endpoint-route"
-                    key="endpoint"
-                    name="endpoint"
-                    class="form-control font-monospace"
-                    placeholder="e.g. POST /customers"
-                    required
-                    aria-labelledby="route-endpoint-label" />
-            </label>
-
-            <label class="form-label w-100" id="path-override-label">
-                Path Override URL
-                <input
-                    type="text"
-                    id="endpoint-path"
-                    key="path"
-                    name="path"
-                    class="form-control font-monospace"
-                    placeholder="e.g. /customers"
-                    aria-labelledby="path-override-label" />
-            </label>
-
-            <label class="form-label w-100" id="endpoint-desc-label">
-                Description / Purpose
-                <textarea
-                    key="description"
-                    name="description"
-                    class="form-control"
-                    rows="3"
-                    placeholder="Provide developer details explaining this transactional path..."
-                    aria-labelledby="endpoint-desc-label"></textarea>
-            </label>
-
-            <label class="form-label w-100" id="endpoint-status-label">
-                Connection Status
-                <select
-                    class="form-select"
-                    key="status"
-                    name="status"
-                    aria-labelledby="endpoint-status-label">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
-            </label>
-
-            <!-- Standard Layout Control Action Buttons -->
-            <div
-                src="/components/form-buttons.html"
-                role="region"
-                aria-label="Configuration Form Actions"></div>
-        </div>
-    </div>
+	<div
+		class="card-footer flex-shrink-0"
+		src="/components/form-buttons.html"
+		role="region"
+		aria-label="Server configuration form actions"></div>
 </form>

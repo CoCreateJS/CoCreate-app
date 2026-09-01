@@ -11,12 +11,15 @@ export default {
     "status": "active",
     "icon": "ri-apps-2-line",
     "description": "App to manage and track Apps.",
+    "secondaryViews": [
+      "form"
+    ],
     "fields": [
       {
         "label": "Name",
         "tagName": "input",
         "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter Name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apps/details.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"apps\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apps/form.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"apps\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
         "attributes": [
           { "name": "key", "value": "name" },
           { "name": "type", "value": "text" },

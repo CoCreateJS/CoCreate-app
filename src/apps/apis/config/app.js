@@ -32,7 +32,6 @@ export default {
       "grid"
     ],
     "secondaryViews": [
-      "details",
       "form"
     ],
     "icon": "ri-key-2-line",
@@ -43,7 +42,7 @@ export default {
         "label": "Name",
         "tagName": "input",
         "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by provider (e.g. stripe)\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\n\t\t\t\t\t\t\t\t<div class=\"avatar-xs rounded-circle position-relative overflow-hidden\" state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\">\n\t\t\t\t\t\t\t\t\t<div class=\"avatar-title bg-primary-subtle text-primary material-shadow\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"overflow-hidden width:1ch letter-spacing:1em text-uppercase\">{{object.name}}</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 ms-2 name text-capitalize\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n              \t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
+        "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/form.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\n\t\t\t\t\t\t\t\t<div class=\"avatar-xs rounded-circle position-relative overflow-hidden\">\n\t\t\t\t\t\t\t\t\t<div class=\"avatar-title bg-primary-subtle text-primary material-shadow\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"overflow-hidden width:1ch letter-spacing:1em text-uppercase\">{{object.name}}</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 ms-2 name text-capitalize\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/form.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n              \t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
         "attributes": [
           {
             "name": "class",
@@ -168,44 +167,26 @@ export default {
         ]
       },
       {
-        "label": "Status",
-        "tagName": "select",
-        "filterTemplate": "\n\t\t\t\t\t<select id=\"status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"status\">\n\t\t\t\t\t\t<option value=\"\">Select Status</option>\n\t\t\t\t\t\t<option value=\"active\">Active</option>\n\t\t\t\t\t\t<option value=\"inactive\">Inactive</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
-        "tableTemplate": "<span class=\"badge {{#if (eq object.status 'active')}}bg-success-subtle text-success{{else}}bg-danger-subtle text-danger{{/if}}\">{{object.status}}</span>",
+        "label": "Enabled",
+        "tagName": "input",
+        "filterTemplate": "<select id=\"api-enabled-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\">Enabled</option><option value=\"false\">Disabled</option></select>",
+        "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.enabled}}</span>",
         "attributes": [
           {
             "name": "class",
-            "value": "form-select"
+            "value": "form-check-input"
           },
           {
             "name": "id",
-            "value": "api-status-field"
+            "value": "api-enabled-field"
           },
           {
             "name": "key",
-            "value": "status"
-          }
-        ],
-        "children": [
-          {
-            "tagName": "option",
-            "attributes": [
-              {
-                "name": "value",
-                "value": "active"
-              }
-            ],
-            "innerText": "Active"
+            "value": "enabled"
           },
           {
-            "tagName": "option",
-            "attributes": [
-              {
-                "name": "value",
-                "value": "inactive"
-              }
-            ],
-            "innerText": "Inactive"
+            "name": "type",
+            "value": "checkbox"
           }
         ]
       }

@@ -1,0 +1,66 @@
+{
+  "method": "object.update",
+  "array": "purchase_orders",
+  "upsert": true,
+  "object": [
+    {
+      "_id": "68b6e4a10000000000000001",
+      "po_number": "PO-0001",
+      "supplier": "Acme Office Supply",
+      "items": [
+        {
+          "product": "Ergonomic Office Chairs",
+          "qty": 6,
+          "price": 325
+        }
+      ],
+      "order_date": "2026-08-18",
+      "expected_delivery": "2026-09-05",
+      "subtotal": 1950,
+      "tax": 136.5,
+      "total": 2086.5,
+      "status": "ordered"
+    },
+    {
+      "_id": "68b6e4a10000000000000002",
+      "po_number": "PO-0002",
+      "supplier": "Northstar Technology",
+      "items": [
+        {
+          "product": "Developer Laptops",
+          "qty": 3,
+          "price": 1800
+        },
+        {
+          "product": "USB-C Docking Stations",
+          "qty": 3,
+          "price": 220
+        }
+      ],
+      "order_date": "2026-08-22",
+      "expected_delivery": "2026-09-08",
+      "subtotal": 6060,
+      "tax": 424.2,
+      "total": 6484.2,
+      "status": "draft"
+    },
+    {
+      "_id": "68b6e4a10000000000000003",
+      "po_number": "PO-0003",
+      "supplier": "Metro Print & Packaging",
+      "items": [
+        {
+          "product": "Product Shipping Boxes",
+          "qty": 500,
+          "price": 1.45
+        }
+      ],
+      "order_date": "2026-08-11",
+      "expected_delivery": "2026-08-27",
+      "subtotal": 725,
+      "tax": 50.75,
+      "total": 775.75,
+      "status": "received"
+    }
+  ]
+}

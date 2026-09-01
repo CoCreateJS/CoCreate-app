@@ -1,6 +1,6 @@
 <div
 	id="activities-offcanvas"
-	class="col-auto layout-rightside-col"
+	class="flex-shrink-0 layout-rightside-col"
 	aria-close-on="outside"
 	aria-hidden="true">
 	<div class="overlay"></div>
@@ -45,10 +45,10 @@
 						<p class="text-muted mb-2" key="description"></p>
 						
 						<!-- Attachments -->
-						<div class="row" show-key="attachments" show-value="true">
-							<div class="col-xxl-4">
-								<div class="row border border-dashed gx-2 p-2 mb-2" key="attachments" render-query="[template]">
-									<div class="col-4" template>
+						<div class="d-flex flex-wrap gap-2" show-key="attachments" show-value="true">
+							<div class="flex-grow-1 flex-basis:320px min-width:280px">
+								<div class="d-flex flex-wrap gap-2 border border-dashed p-2 mb-2" key="attachments" render-query="[template]">
+									<div class="flex-grow-1 flex-basis:100px min-width:80px" template>
 										<img
 											src=""
 											key="src"

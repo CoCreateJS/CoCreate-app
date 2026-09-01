@@ -169,7 +169,7 @@ export default {
         "label": "Type",
         "tagName": "select",
         "filterTemplate": "<select id=\"type-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"type\"><option value=\"\">Select Type</option><option value=\"internal\">Internal</option><option value=\"external\">External</option><option value=\"test\">Test</option></select>",
-        "tableTemplate": "<span render=\"object.type\" render-as=\"type\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{type}}\n</span>",
+        "tableTemplate": "{{object.type}}",
         "attributes": [
           {
             "name": "class",

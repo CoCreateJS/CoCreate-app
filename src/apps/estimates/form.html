@@ -1,24 +1,22 @@
-<form class="card mb-0" array object state-id="offcanvas-app-form" state-overwrite>
-	<div class="card-header">
-		<div class="d-flex align-items-center">
-			<h5 class="flex-grow-1 mb-0">Estimate Details</h5>
-			<div class="flex-shrink-0">
-				<a href="javascript:void(0);" class="btn btn-primary btn-icon" aria-label="Edit Estimate">
-					<i class="ri-edit-box-line"></i>
-				</a>
-				<a href="javascript:void(0);" class="btn btn-info btn-icon" aria-label="View Estimate">
-					<i class="ri-eye-line"></i>
-				</a>
-				<a href="javascript:void(0);" class="btn btn-danger btn-icon" aria-label="Delete Estimate">
-					<i class="ri-delete-bin-line"></i>
-				</a>
-			</div>
-		</div>
-	</div>
+<form
+	class="card mb-0"
+	array="invoices"
+	object
+	state-id="offcanvas-app-form"
+	state-overwrite>
+	<div
+		class="card-header text-center border-bottom-0"
+		input-query=".details-view-btn[]"
+		input.state.src="/apps/estimates/details.html"
+		src="components/offcanvas-header.html"></div>
 	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="card-body border-bottom border-bottom-dashed p-4">
-			<div style="flex: 1;">
-				<div class="profile-user mx-auto mb-3">
+		<div class="card-body d-flex flex-column gap-3">
+			<input type="hidden" key="type" value="estimate" />
+			<div
+				class="d-flex flex-wrap gap-3 align-items-start border-bottom border-bottom-dashed pb-3">
+				<div
+					class="d-flex flex-column gap-4 flex-grow-1 flex-basis:320px min-width:280px">
+				<div class="profile-user align-self-start">
 					<input id="profile-img-file-input" type="file" class="profile-img-file-input" aria-label="Upload Company Logo"/>
 					<label for="profile-img-file-input" class="d-block" tabindex="0" aria-label="Select Company Logo">
 						<span class="overflow-hidden border border-dashed d-flex align-items-center justify-content-center rounded" style="height: 60px; width: 256px">
@@ -27,53 +25,54 @@
 						</span>
 					</label>
 				</div>
-				<div>
-					<div class="mb-2">
+				<div class="d-flex flex-column gap-3 w-100">
+					<div class="d-flex flex-column gap-1 w-100">
 						<label for="companyAddress" class="form-label">Address</label>
 						<textarea class="form-control bg-light border-0" id="companyAddress" rows="3" placeholder="Company Address"  aria-describedby="companyAddressInvalid"></textarea>
 						<div class="invalid-feedback" id="companyAddressInvalid">Please enter a address</div>
 					</div>
-					<div>
+					<div class="d-flex flex-column gap-1 w-100">
 						<label for="companyaddpostalcode" class="form-label">Postal Code</label>
 						<input type="text" class="form-control bg-light border-0" id="companyaddpostalcode" minlength="5" maxlength="6" placeholder="Enter Postal Code"  aria-describedby="companyaddpostalcodeInvalid"/>
 						<div class="invalid-feedback" id="companyaddpostalcodeInvalid">The US zip code must contain 5 digits, Ex. 45678</div>
 					</div>
 				</div>
 			</div>
-			<div style="flex: 1;">
-				<div class="mb-2">
+				<div
+					class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:260px">
+				<div class="d-flex flex-column gap-1">
 					<label for="registrationNumber" class="form-label">Legal Registration No</label>
 					<input type="text" class="form-control bg-light border-0" id="registrationNumber" maxlength="12" placeholder="Legal Registration No"  aria-describedby="registrationNumberInvalid"/>
 					<div class="invalid-feedback" id="registrationNumberInvalid">Please enter a registration no, Ex., 012345678912</div>
 				</div>
-				<div class="mb-2">
+				<div class="d-flex flex-column gap-1">
 					<label for="companyEmail" class="form-label">Email Address</label>
 					<input type="email" class="form-control bg-light border-0" id="companyEmail" placeholder="Email Address"  aria-describedby="companyEmailInvalid"/>
 					<div class="invalid-feedback" id="companyEmailInvalid">Please enter a valid email, Ex., example@gamil.com</div>
 				</div>
-				<div class="mb-2">
+				<div class="d-flex flex-column gap-1">
 					<label for="companyWebsite" class="form-label">Website</label>
 					<input type="text" class="form-control bg-light border-0" id="companyWebsite" placeholder="Website"  aria-describedby="companyWebsiteInvalid"/>
 					<div class="invalid-feedback" id="companyWebsiteInvalid">Please enter a website, Ex., www.example.com</div>
 				</div>
-				<div>
+				<div class="d-flex flex-column gap-1">
 					<label for="compnayContactno" class="form-label">Contact No</label>
 					<input type="text" class="form-control bg-light border-0" data-plugin="cleave-phone" id="compnayContactno" placeholder="Contact No"  aria-describedby="compnayContactnoInvalid"/>
 					<div class="invalid-feedback" id="compnayContactnoInvalid">Please enter a contact number</div>
 				</div>
 			</div>
-		</div>
-		<div class="card-body p-4">
-			<div class="form-container" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-				<div style="flex: 1; min-width: 200px;">
+				</div>
+			<div class="pt-3">
+			<div class="form-container">
+				<div class="d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 					<label for="invoicenoInput" class="form-label">Invoice No</label>
 					<input type="text" class="form-control bg-light border-0" id="invoicenoInput" placeholder="Invoice No" value="#VL25000355" readonly="readonly" aria-label="Invoice Number"/>
 				</div>
-				<div style="flex: 1; min-width: 200px;">
+				<div class="d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 					<label for="date-field" class="form-label">Date</label>
 					<input type="text" class="form-control bg-light border-0" id="date-field" date-picker="flatpickr" data-time="true" placeholder="Select Date-time" aria-label="Invoice Date"/>
 				</div>
-				<div style="flex: 1; min-width: 200px;">
+				<div class="d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 					<label for="choices-payment-status" class="form-label">Payment Status</label>
 					<div class="input-light">
 						<select class="form-control bg-light border-0" plugin='{"$Choices":["$this",{}]}' data-choices-search-false id="choices-payment-status"  aria-label="Payment Status">
@@ -84,63 +83,63 @@
 						</select>
 					</div>
 				</div>
-				<div style="flex: 1; min-width: 200px;">
+				<div class="d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 					<label for="totalamountInput" class="form-label">Total Amount</label>
 					<input type="text" class="form-control bg-light border-0" id="totalamountInput" placeholder="$0.00" readonly aria-label="Total Amount"/>
 				</div>
 			</div>
 		</div>
-		<div class="card-body p-4 border-top border-top-dashed">
-			<div class="form-container" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-				<div style="flex: 1; min-width: 250px;">
-					<div>
+		<div class="pt-3 border-top border-top-dashed">
+			<div class="form-container">
+				<div class="form-container flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+					<div class="d-flex flex-column gap-1">
 						<label for="billingName" class="text-muted text-uppercase fw-semibold form-label">Billing Address</label>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="billingName" class="form-label">Full Name</label>
 						<input type="text" class="form-control bg-light border-0" id="billingName" placeholder="Full Name"  aria-describedby="billingNameInvalid"/>
 						<div class="invalid-feedback" id="billingNameInvalid">Please enter a full name</div>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="billingAddress" class="form-label">Address</label>
 						<textarea class="form-control bg-light border-0" id="billingAddress" rows="3" placeholder="Address"  aria-describedby="billingAddressInvalid"></textarea>
 						<div class="invalid-feedback" id="billingAddressInvalid">Please enter a address</div>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="billingPhoneno" class="form-label">Phone Number</label>
 						<input type="text" class="form-control bg-light border-0" data-plugin="cleave-phone" id="billingPhoneno" placeholder="(123)456-7890"  aria-describedby="billingPhonenoInvalid"/>
 						<div class="invalid-feedback" id="billingPhonenoInvalid">Please enter a phone number</div>
 					</div>
-					<div class="mb-3">
+					<div class="d-flex flex-column gap-1">
 						<label for="billingTaxno" class="form-label">Tax Number</label>
 						<input type="text" class="form-control bg-light border-0" id="billingTaxno" placeholder="Tax Number"  aria-describedby="billingTaxnoInvalid"/>
 						<div class="invalid-feedback" id="billingTaxnoInvalid">Please enter a tax number</div>
 					</div>
 					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="same" name="same""/>
+						<input type="checkbox" class="form-check-input" id="same" name="same" />
 						<label class="form-check-label" for="same">Will your Billing and Shipping address same?</label>
 					</div>
 				</div>
-				<div style="flex: 1; min-width: 250px;">
-					<div>
+				<div class="form-container flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+					<div class="d-flex flex-column gap-1">
 						<label for="shippingName" class="text-muted text-uppercase fw-semibold form-label">Shipping Address</label>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="shippingName" class="form-label">Full Name</label>
 						<input type="text" class="form-control bg-light border-0" id="shippingName" placeholder="Full Name"  aria-describedby="shippingNameInvalid"/>
 						<div class="invalid-feedback" id="shippingNameInvalid">Please enter a full name</div>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="shippingAddress" class="form-label">Address</label>
 						<textarea class="form-control bg-light border-0" id="shippingAddress" rows="3" placeholder="Address"  aria-describedby="shippingAddressInvalid"></textarea>
 						<div class="invalid-feedback" id="shippingAddressInvalid">Please enter a address</div>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="shippingPhoneno" class="form-label">Phone Number</label>
 						<input type="text" class="form-control bg-light border-0" data-plugin="cleave-phone" id="shippingPhoneno" placeholder="(123)456-7890"  aria-describedby="shippingPhonenoInvalid"/>
 						<div class="invalid-feedback" id="shippingPhonenoInvalid">Please enter a phone number</div>
 					</div>
-					<div>
+					<div class="d-flex flex-column gap-1">
 						<label for="shippingTaxno" class="form-label">Tax Number</label>
 						<input type="text" class="form-control bg-light border-0" id="shippingTaxno" placeholder="Tax Number"  aria-describedby="shippingTaxnoInvalid"/>
 						<div class="invalid-feedback" id="shippingTaxnoInvalid">Please enter a tax number</div>
@@ -148,14 +147,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="card-body p-4">
+		<div class="pt-3">
 			<div class="table-responsive">
 				<table class="invoice-table table table-borderless table-nowrap mb-0">
 					<thead class="align-middle">
 						<tr class="table-active">
 							<th scope="col" style="width: 50px;">#</th>
-							<th scope="col">Product Details</th>
-							<th scope="col" style="width: 120px;">
+							<th scope="col" class="min-width:280px">Product Details</th>
+							<th
+								scope="col"
+								class="min-width:150px"
+								style="width: 150px;">
 								<div class="d-flex currency-select input.light align-items-center">Rate
 									<select class="form-select border-0 bg-light" plugin='{"$Choices":["$this",{}]}' data-choices-search-false id="choices-payment-currency" onchange="otherPayment()" aria-label="Currency Selection">
 										<option value="$">($)</option>
@@ -165,44 +167,59 @@
 									</select>
 								</div>
 							</th>
-							<th scope="col" style="width: 120px;">Quantity</th>
-							<th scope="col" class="text-end" style="width: 150px;">Amount</th>
-							<th scope="col" class="text-end" style="width: 105px;"></th>
+							<th
+								scope="col"
+								class="min-width:140px"
+								style="width: 140px;">
+								Quantity
+							</th>
+							<th
+								scope="col"
+								class="text-end min-width:160px"
+								style="width: 160px;">
+								Amount
+							</th>
+							<th
+								scope="col"
+								class="text-end text-nowrap"
+								style="width: 1%;"></th>
 						</tr>
 					</thead>
 					<tbody id="newlink">
 						<tr id="1" class="product">
 							<th scope="row" class="product-id">1</th>
-							<td class="text-start">
-								<div class="mb-2">
-									<label for="productName-1" class="form-label">Product Name</label>
-									<input type="text" class="form-control bg-light border-0" id="productName-1" placeholder="Product Name"  aria-describedby="productName-1-invalid"/>
-									<div class="invalid-feedback" id="productName-1-invalid">Please enter a product name</div>
-								</div>
-								<label for="productDetails-1" class="form-label">Product Details</label>
-								<textarea class="form-control bg-light border-0" id="productDetails-1" rows="2" placeholder="Product Details"></textarea>
-							</td>
-							<td>
-								<label for="productRate-1" class="form-label">Rate</label>
-								<input type="number" class="form-control product-price bg-light border-0" id="productRate-1" step="0.01" placeholder="0.00"  aria-describedby="productRate-1-invalid"/>
-								<div class="invalid-feedback" id="productRate-1-invalid">Please enter a rate</div>
-							</td>
-							<td>
-								<label class="form-label">Quantity</label>
-								<div class="input-step">
-									<button type="button" class="minus" aria-label="Decrease Quantity">-</button>
-									<input type="number" class="product-quantity" id="product-qty-1" value="0" readonly />
-									<button type="button" class="plus" aria-label="Increase Quantity">+</button>
-								</div>
-							</td>
-							<td class="text-end">
-								<div>
-									<label for="productPrice-1" class="form-label">Amount</label>
-									<input type="text" class="form-control bg-light border-0 product-line-price" id="productPrice-1" placeholder="$0.00" readonly aria-label="Product Line Amount"/>
+								<td class="text-start min-width:280px">
+									<div class="mb-2">
+										<input type="text" class="form-control bg-light border-0" id="productName-1" placeholder="Product Name" aria-label="Product Name" aria-describedby="productName-1-invalid"/>
+										<div class="invalid-feedback" id="productName-1-invalid">Please enter a product name</div>
+									</div>
+									<textarea class="form-control bg-light border-0" id="productDetails-1" rows="2" placeholder="Product Details" aria-label="Product Details"></textarea>
+								</td>
+								<td class="min-width:150px">
+									<input type="number" class="form-control product-price bg-light border-0" id="productRate-1" step="0.01" placeholder="0.00" aria-label="Rate" aria-describedby="productRate-1-invalid"/>
+									<div class="invalid-feedback" id="productRate-1-invalid">Please enter a rate</div>
+								</td>
+								<td class="min-width:140px">
+									<div class="input-step">
+										<button type="button" class="minus" aria-label="Decrease Quantity">-</button>
+										<input type="number" class="product-quantity" id="product-qty-1" value="0" readonly aria-label="Quantity" />
+										<button type="button" class="plus" aria-label="Increase Quantity">+</button>
+									</div>
+								</td>
+								<td class="text-end min-width:160px">
+									<div>
+										<input type="text" class="form-control bg-light border-0 product-line-price" id="productPrice-1" placeholder="$0.00" readonly aria-label="Product Line Amount"/>
 								</div>
 							</td>
-							<td class="product-removal">
-								<a href="javascript:void(0);" class="btn btn-success" aria-label="Delete Product">Delete</a>
+							<td
+								class="product-removal text-end text-nowrap"
+								style="width: 1%;">
+								<a
+									href="javascript:void(0);"
+									class="btn btn-soft-danger"
+									aria-label="Delete Product">
+									<i class="ri-delete-bin-line"></i>
+								</a>
 							</td>
 						</tr>
 					</tbody>
@@ -225,35 +242,30 @@
 										<tr>
 											<th scope="row">Sub Total</th>
 											<td style="width: 150px;">
-												<label for="cart-subtotal" class="form-label">Sub Total</label>
 												<input type="text" class="form-control bg-light border-0" id="cart-subtotal" placeholder="$0.00" readonly aria-label="Sub Total"/>
 											</td>
 										</tr>
 										<tr>
 											<th scope="row">Estimated Tax (12.5%)</th>
 											<td>
-												<label for="cart-tax" class="form-label">Estimated Tax</label>
 												<input type="text" class="form-control bg-light border-0" id="cart-tax" placeholder="$0.00" readonly aria-label="Estimated Tax"/>
 											</td>
 										</tr>
 										<tr>
 											<th scope="row">Discount <small class="text-muted">(CoCreate15)</small></th>
 											<td>
-												<label for="cart-discount" class="form-label">Discount</label>
 												<input type="text" class="form-control bg-light border-0" id="cart-discount" placeholder="$0.00" readonly aria-label="Discount"/>
 											</td>
 										</tr>
 										<tr>
 											<th scope="row">Shipping Charge</th>
 											<td>
-												<label for="cart-shipping" class="form-label">Shipping Charge</label>
 												<input type="text" class="form-control bg-light border-0" id="cart-shipping" placeholder="$0.00" readonly aria-label="Shipping Charge"/>
 											</td>
 										</tr>
 										<tr class="border-top border-top-dashed">
 											<th scope="row">Total Amount</th>
 											<td>
-												<label for="cart-total" class="form-label">Total Amount</label>
 												<input type="text" class="form-control bg-light border-0" id="cart-total" placeholder="$0.00" readonly aria-label="Total Amount"/>
 											</td>
 										</tr>
@@ -264,12 +276,12 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="form-container" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-				<div style="flex: 1; min-width: 250px;">
-					<div>
+			<div class="form-container mt-4">
+				<div class="form-container flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+					<div class="d-flex flex-column gap-1">
 						<label for="choices-payment-type" class="form-label text-muted text-uppercase fw-semibold">Payment Details</label>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="choices-payment-type" class="form-label">Payment Method</label>
 						<div class="input-light">
 							<select class="form-control bg-light border-0" plugin='{"$Choices":["$this",{}]}' data-choices-search-false data-choices-removeItem id="choices-payment-type" aria-label="Payment Method">
@@ -281,30 +293,40 @@
 							</select>
 						</div>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="cardholderName" class="form-label">Card Holder Name</label>
 						<input class="form-control bg-light border-0" type="text" id="cardholderName" placeholder="Card Holder Name" aria-label="Card Holder Name"/>
 					</div>
-					<div class="mb-2">
+					<div class="d-flex flex-column gap-1">
 						<label for="cardNumber" class="form-label">Card Number</label>
 						<input class="form-control bg-light border-0" type="text" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx" aria-label="Card Number"/>
 					</div>
-					<div>
+					<div class="d-flex flex-column gap-1">
 						<label for="amountTotalPay" class="form-label">Total Amount to Pay</label>
 						<input class="form-control bg-light border-0" type="text" id="amountTotalPay" placeholder="$0.00" readonly aria-label="Total Amount to Pay"/>
 					</div>
 				</div>
 			</div>
-			<div class="mt-4">
+			<div class="d-flex flex-column gap-1 mt-4">
 				<label for="exampleFormControlTextarea1" class="form-label text-muted text-uppercase fw-semibold">NOTES</label>
 				<textarea class="form-control alert alert-info" id="exampleFormControlTextarea1" placeholder="Notes" rows="2"  aria-describedby="notesInvalid">All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above.</textarea>
 				<div class="invalid-feedback" id="notesInvalid">Please enter notes</div>
 			</div>
-			<div class="hstack gap-2 justify-content-end d-print-none mt-4">
-				<button type="submit" class="btn btn-success" aria-label="Save Estimate"><i class="ri-printer-line align-bottom me-1"></i> Save</button>
-				<a href="javascript:void(0);" class="btn btn-primary" aria-label="Download Invoice"><i class="ri-download-2-line align-bottom me-1"></i> Download Invoice</a>
-				<a href="javascript:void(0);" class="btn btn-danger" aria-label="Send Invoice"><i class="ri-send-plane-fill align-bottom me-1"></i> Send Invoice</a>
-			</div>
 		</div>
+		</div>
+	</div>
+	<div class="card-footer d-flex flex-shrink-0 justify-content-end gap-2 d-print-none">
+		<button
+			type="button"
+			class="btn btn-light"
+			title="Cancel"
+			aria-label="Cancel form"
+			aria-controls="offcanvas-app"
+			aria-expanded="true">
+			Cancel
+		</button>
+		<button class="btn btn-success" actions="validate, save" aria-label="Save estimate"><i class="ri-printer-line align-bottom me-1"></i> Save</button>
+		<a href="javascript:void(0);" class="btn btn-primary" aria-label="Download estimate"><i class="ri-download-2-line align-bottom me-1"></i> Download</a>
+		<a href="javascript:void(0);" class="btn btn-danger" aria-label="Send estimate"><i class="ri-send-plane-fill align-bottom me-1"></i> Send</a>
 	</div>
 </form>

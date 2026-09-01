@@ -7,6 +7,9 @@ export default {
     "singularName": "Estimate",
     "path": "apps/estimates",
     "array": "invoices",
+    "filter": {
+      "type": "estimate"
+    },
     "category": "Sales & Billing",
     "mainViews": [
       "table",
@@ -376,7 +379,7 @@ export default {
       {
         "label": "Status",
         "tagName": "select",
-        "filterTemplate": "\n          <select id=\"status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"status\">\n            <option value=\"\">Select Status</option>\n            <option template value=\"{{object.key}}\">{{object.label}}</option>\n          </select>\n          <div array=\"estimates\" object=\"statuses\" render-query=\"$previous\"></div>\n        ",
+        "filterTemplate": "\n          <select id=\"status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"status\">\n            <option value=\"\">Select Status</option>\n            <option template value=\"{{object.key}}\">{{object.label}}</option>\n          </select>\n          <div array=\"invoices\" object=\"statuses\" render-query=\"$previous\"></div>\n        ",
         "tableTemplate": "{{object.status}}",
         "attributes": [
           {
@@ -397,7 +400,7 @@ export default {
         "label": "Tags",
         "tagName": "select",
         "filterTemplate": "\n          <select id=\"tags-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"tags\">\n            <option value=\"overdue\">Overdue</option>\n            <option value=\"recurring\">Recurring</option>\n            <option value=\"partial\">Partial</option>\n          </select>\n        ",
-        "tableTemplate": "\n          <span array=\"estimates\" object=\"{{object._id}}\" key=\"tags\" render-query=\"[template]\">\n            <span template class=\"badge bg-primary-subtle text-primary me-1\">\n              {{tags}}\n            </span>\n          </span>\n        ",
+        "tableTemplate": "\n          <span array=\"invoices\" object=\"{{object._id}}\" key=\"tags\" render-query=\"[template]\">\n            <span template class=\"badge bg-primary-subtle text-primary me-1\">\n              {{tags}}\n            </span>\n          </span>\n        ",
         "attributes": [
           {
             "name": "class",

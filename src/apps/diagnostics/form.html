@@ -1,7 +1,7 @@
 <form
 	id="diagnostic-form"
 	autocomplete="off"
-	class="needs-validation"
+	class="card mb-0 needs-validation"
 	array="diagnostics"
 	state-id="offcanvas-app-form"
 	state-overwrite
@@ -12,10 +12,8 @@
 		input.state.src="/apps/diagnostics/details.html"
 		src="components/offcanvas-header.html"></div>
 
-	<div
-		class="form-container p-3"
-		plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="d-flex flex-wrap gap-3">
+	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-3">
 			<div class="d-flex flex-column flex-grow-1 width:500px">
 				<div class="card">
 					<div class="card-header">
@@ -321,4 +319,5 @@
 			</div>
 		</div>
 	</div>
+	<div class="card-footer flex-shrink-0" src="/components/form-buttons.html"></div>
 </form>

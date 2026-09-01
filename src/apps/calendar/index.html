@@ -1,8 +1,10 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-12">
-			<div class="row">
-				<div class="col-xl-3">
+<div
+	class="container-fluid d-flex flex-column flex-grow-1 min-height:0 overflow:hidden">
+	<div class="row flex-grow-1 min-height:0 overflow:hidden">
+		<div
+			class="col-12 d-flex flex-column flex-grow-1 min-height:0 overflow:hidden">
+			<div class="row flex-grow-1 min-height:0 overflow:hidden">
+				<div class="col-xl-3 min-height:0 overflow:auto">
 					<div class="card card-h-100">
 						<div class="card-body">
 							<button
@@ -74,9 +76,11 @@
 				</div>
 				<!-- end col-->
 
-				<div class="col-xl-9">
-					<div class="card card-h-100">
-						<div class="card-body">
+				<div class="col-xl-9 d-flex flex-column min-height:0">
+					<div
+						class="card card-h-100 d-flex flex-column flex-grow-1 min-height:0 mb-0">
+						<div
+							class="card-body d-flex flex-column flex-grow-1 min-height:0 overflow:hidden">
 							<!-- The core FullCalendar element bound to the CoCreate CRUD Ecosystem -->
 							<div
 								id="calendar"
@@ -84,6 +88,7 @@
 								object
 								component
 								filter-limit
+								class="flex-grow-1 min-height:0"
 								plugin='{
 									"$FullCalendar": {
 										"Calendar": [
@@ -92,10 +97,13 @@
 												"timeZone": "local",
 												"editable": true,
 												"droppable": true,
-												"selectable": true,
-												"navLinks": true,
-												"initialView": "dayGridMonth",
-												"themeSystem": "bootstrap",
+													"selectable": true,
+													"navLinks": true,
+													"initialView": "dayGridMonth",
+													"themeSystem": "bootstrap",
+													"height": "100%",
+													"expandRows": true,
+													"stickyHeaderDates": true,
 												"headerToolbar": {
 													"left": "prev,next today",
 													"center": "title",
@@ -124,4 +132,3 @@
 	<!-- end row-->
 </div>
 <!-- container-fluid -->
-

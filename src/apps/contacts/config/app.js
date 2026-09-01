@@ -3,7 +3,7 @@ export default {
   "upsert": true,
   "array": "apps",
   "object": {
-    "_id": "68741e1d07a037d0d6d00eee",
+    "_id": "6a96308f28d8dece819be2d4",
     "name": "Contacts",
     "singularName": "Contact",
     "path": "apps/contacts",
