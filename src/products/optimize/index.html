@@ -58,8 +58,7 @@
 			href="/manifest.webmanifest" />
 	</head>
 	<body
-		data-bs-spy="scroll"
-		data-bs-target="#navbar-example">
+		data-bs-spy="scroll">
 		<div class="layout-wrapper landing">
 			<nav
 				src="/components/nav.html"
@@ -546,10 +545,8 @@
 												<button
 													class="accordion-button fw-semibold rounded text-muted"
 													type="button"
-													data-bs-toggle="collapse"
-													data-bs-target="#collapse-pricing"
 													aria-expanded="true"
-													aria-controls="collapse-pricing">
+													aria-controls="collapse-pricing" aria-controls-group="optimize-accordion">
 													Optimize Daily Formula: 100
 													dollars per month flat
 												</button>
@@ -558,7 +555,7 @@
 												id="collapse-pricing"
 												class="accordion-collapse collapse show"
 												aria-labelledby="heading-pricing"
-												data-bs-parent="#optimize-accordion">
+											>
 												<div class="accordion-body">
 													Zero upcharges, even for
 													loading doses or complex
@@ -575,10 +572,8 @@
 												<button
 													class="accordion-button collapsed fw-semibold rounded text-muted"
 													type="button"
-													data-bs-toggle="collapse"
-													data-bs-target="#collapse-inside"
 													aria-expanded="false"
-													aria-controls="collapse-inside">
+													aria-controls="collapse-inside" aria-controls-group="optimize-accordion">
 													What is inside your custom
 													formula
 												</button>
@@ -587,7 +582,7 @@
 												id="collapse-inside"
 												class="accordion-collapse collapse"
 												aria-labelledby="heading-inside"
-												data-bs-parent="#optimize-accordion">
+											>
 												<div class="accordion-body">
 													Foundational vitamins and
 													minerals, targeted amino
@@ -605,10 +600,8 @@
 												<button
 													class="accordion-button collapsed fw-semibold rounded text-muted"
 													type="button"
-													data-bs-toggle="collapse"
-													data-bs-target="#collapse-pull-from"
 													aria-expanded="false"
-													aria-controls="collapse-pull-from">
+													aria-controls="collapse-pull-from" aria-controls-group="optimize-accordion">
 													A Complete Biological
 													Spectrum
 												</button>
@@ -617,7 +610,7 @@
 												id="collapse-pull-from"
 												class="accordion-collapse collapse"
 												aria-labelledby="heading-pull-from"
-												data-bs-parent="#optimize-accordion">
+											>
 												<div class="accordion-body">
 													<p class="mb-2">
 														We don't limit your
@@ -696,10 +689,8 @@
 												<button
 													class="accordion-button collapsed fw-semibold rounded text-muted"
 													type="button"
-													data-bs-toggle="collapse"
-													data-bs-target="#collapse-discover"
 													aria-expanded="false"
-													aria-controls="collapse-discover">
+													aria-controls="collapse-discover" aria-controls-group="optimize-accordion">
 													If you have not taken
 													Discover
 												</button>
@@ -708,7 +699,7 @@
 												id="collapse-discover"
 												class="accordion-collapse collapse"
 												aria-labelledby="heading-discover"
-												data-bs-parent="#optimize-accordion">
+											>
 												<div class="accordion-body">
 													<div
 														class="d-flex flex-column gap-2 mt-2">

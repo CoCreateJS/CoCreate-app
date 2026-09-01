@@ -43,7 +43,7 @@
 			type="text/css" />
 	</head>
 
-	<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+	<body data-bs-spy="scroll">
 		<!-- Begin page -->
 		<div class="layout-wrapper landing">
 			<nav
@@ -65,8 +65,6 @@
 					<button
 						class="navbar-toggler py-0 fs-20 text-body"
 						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent"
 						aria-expanded="false"
 						aria-label="Toggle navigation">
@@ -124,8 +122,7 @@
 			<!-- end navbar -->
 			<div
 				class="vertical-overlay"
-				data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent.show"></div>
+				aria-controls="navbarSupportedContent" aria-close aria-expanded="false"></div>
 
 			<!-- start hero section -->
 			<section class="section hero-section" id="hero">
@@ -1503,10 +1500,8 @@
 										<button
 											class="accordion-button"
 											type="button"
-											data-bs-toggle="collapse"
-											data-bs-target="#genques-collapseOne"
 											aria-expanded="true"
-											aria-controls="genques-collapseOne">
+											aria-controls="genques-collapseOne" aria-controls-group="genques-accordion">
 											What is the purpose of using themes
 											?
 										</button>
@@ -1515,7 +1510,7 @@
 										id="genques-collapseOne"
 										class="accordion-collapse collapse show"
 										aria-labelledby="genques-headingOne"
-										data-bs-parent="#genques-accordion">
+									>
 										<div
 											class="accordion-body ff-secondary">
 											A theme is a set of colors, fonts,
@@ -1536,10 +1531,8 @@
 										<button
 											class="accordion-button collapsed"
 											type="button"
-											data-bs-toggle="collapse"
-											data-bs-target="#genques-collapseTwo"
 											aria-expanded="false"
-											aria-controls="genques-collapseTwo">
+											aria-controls="genques-collapseTwo" aria-controls-group="genques-accordion">
 											Can a theme have more than one
 											theme?
 										</button>
@@ -1548,7 +1541,7 @@
 										id="genques-collapseTwo"
 										class="accordion-collapse collapse"
 										aria-labelledby="genques-headingTwo"
-										data-bs-parent="#genques-accordion">
+									>
 										<div
 											class="accordion-body ff-secondary">
 											A story can have as many themes as
@@ -1569,10 +1562,8 @@
 										<button
 											class="accordion-button collapsed"
 											type="button"
-											data-bs-toggle="collapse"
-											data-bs-target="#genques-collapseThree"
 											aria-expanded="false"
-											aria-controls="genques-collapseThree">
+											aria-controls="genques-collapseThree" aria-controls-group="genques-accordion">
 											What are theme features?
 										</button>
 									</h2>
@@ -1580,7 +1571,7 @@
 										id="genques-collapseThree"
 										class="accordion-collapse collapse"
 										aria-labelledby="genques-headingThree"
-										data-bs-parent="#genques-accordion">
+									>
 										<div
 											class="accordion-body ff-secondary">
 											Theme features is a set of specific
@@ -1600,10 +1591,8 @@
 										<button
 											class="accordion-button collapsed"
 											type="button"
-											data-bs-toggle="collapse"
-											data-bs-target="#genques-collapseFour"
 											aria-expanded="false"
-											aria-controls="genques-collapseFour">
+											aria-controls="genques-collapseFour" aria-controls-group="genques-accordion">
 											What is simple theme?
 										</button>
 									</h2>
@@ -1611,7 +1600,7 @@
 										id="genques-collapseFour"
 										class="accordion-collapse collapse"
 										aria-labelledby="genques-headingFour"
-										data-bs-parent="#genques-accordion">
+									>
 										<div
 											class="accordion-body ff-secondary">
 											Simple is a free WordPress theme, by
@@ -1651,10 +1640,8 @@
 										<button
 											class="accordion-button collapsed"
 											type="button"
-											data-bs-toggle="collapse"
-											data-bs-target="#privacy-collapseOne"
 											aria-expanded="false"
-											aria-controls="privacy-collapseOne">
+											aria-controls="privacy-collapseOne" aria-controls-group="privacy-accordion">
 											Does Word have night mode?
 										</button>
 									</h2>
@@ -1662,7 +1649,7 @@
 										id="privacy-collapseOne"
 										class="accordion-collapse collapse"
 										aria-labelledby="privacy-headingOne"
-										data-bs-parent="#privacy-accordion">
+									>
 										<div
 											class="accordion-body ff-secondary">
 											You can run Microsoft Word in dark
@@ -1682,10 +1669,8 @@
 										<button
 											class="accordion-button"
 											type="button"
-											data-bs-toggle="collapse"
-											data-bs-target="#privacy-collapseTwo"
 											aria-expanded="true"
-											aria-controls="privacy-collapseTwo">
+											aria-controls="privacy-collapseTwo" aria-controls-group="privacy-accordion">
 											Is theme an opinion?
 										</button>
 									</h2>
@@ -1693,7 +1678,7 @@
 										id="privacy-collapseTwo"
 										class="accordion-collapse collapse show"
 										aria-labelledby="privacy-headingTwo"
-										data-bs-parent="#privacy-accordion">
+									>
 										<div
 											class="accordion-body ff-secondary">
 											A theme is an opinion the author
@@ -1713,10 +1698,8 @@
 										<button
 											class="accordion-button collapsed"
 											type="button"
-											data-bs-toggle="collapse"
-											data-bs-target="#privacy-collapseThree"
 											aria-expanded="false"
-											aria-controls="privacy-collapseThree">
+											aria-controls="privacy-collapseThree" aria-controls-group="privacy-accordion">
 											How do you develop a theme?
 										</button>
 									</h2>
@@ -1724,7 +1707,7 @@
 										id="privacy-collapseThree"
 										class="accordion-collapse collapse"
 										aria-labelledby="privacy-headingThree"
-										data-bs-parent="#privacy-accordion">
+									>
 										<div
 											class="accordion-body ff-secondary">
 											A short story, novella, or novel
@@ -1745,10 +1728,8 @@
 										<button
 											class="accordion-button collapsed"
 											type="button"
-											data-bs-toggle="collapse"
-											data-bs-target="#privacy-collapseFour"
 											aria-expanded="false"
-											aria-controls="privacy-collapseFour">
+											aria-controls="privacy-collapseFour" aria-controls-group="privacy-accordion">
 											Do stories need themes?
 										</button>
 									</h2>
@@ -1756,7 +1737,7 @@
 										id="privacy-collapseFour"
 										class="accordion-collapse collapse"
 										aria-labelledby="privacy-headingFour"
-										data-bs-parent="#privacy-accordion">
+									>
 										<div
 											class="accordion-body ff-secondary">
 											A story can have as many themes as

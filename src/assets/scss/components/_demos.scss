@@ -80,7 +80,7 @@
     }
 }
 
-[data-bs-target="#collapseBgGradient"]{
+[aria-controls="collapseBgGradient"]{
     &.active{
         border-color: var(--#{$prefix}primary-rgb) !important;
         &::before{

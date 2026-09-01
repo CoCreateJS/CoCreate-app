@@ -47,8 +47,7 @@
 						<button
 							type="button"
 							class="btn btn-success btn-sm create-btn"
-							data-bs-toggle="modal"
-							data-bs-target="#api-key-modal">
+							aria-controls="api-key-modal" aria-expanded="false" aria-haspopup="dialog">
 							Create API Key
 						</button>
 					</div>
@@ -148,8 +147,7 @@
 						<button
 							type="button"
 							class="btn btn-success create-btn"
-							data-bs-toggle="modal"
-							data-bs-target="#api-key-modal">
+							aria-controls="api-key-modal" aria-expanded="false" aria-haspopup="dialog">
 							<i class="ri-add-line align-bottom me-1"></i>
 							Add API Key
 						</button>
@@ -259,27 +257,22 @@
 												<button
 													class="btn btn-soft-secondary btn-sm dropdown"
 													type="button"
-													data-bs-toggle="dropdown"
-													aria-expanded="false">
+													aria-expanded="false" aria-haspopup="menu" aria-controls="dropdown-apps-api-keys-index-1">
 													<i
 														class="ri-more-fill align-middle"></i>
 												</button>
 												<ul
-													class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere">
+													class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere" id="dropdown-apps-api-keys-index-1" aria-hidden="true">
 													<li>
 														<a
 															class="dropdown-item edit-item-btn"
-															href="#api-key-modal"
-															data-bs-toggle="modal"
-															>Rename</a
+															href="#api-key-modal" aria-controls="api-key-modal">Rename</a
 														>
 													</li>
 													<li>
 														<a
 															class="dropdown-item regenerate-api-btn"
-															href="#api-key-modal"
-															data-bs-toggle="modal"
-															>Regenerate Key</a
+															href="#api-key-modal" aria-controls="api-key-modal">Regenerate Key</a
 														>
 													</li>
 													<li>
@@ -292,9 +285,7 @@
 													<li>
 														<a
 															class="dropdown-item remove-item-btn"
-															data-bs-toggle="modal"
-															href="#deleteApiKeyModal"
-															>Delete</a
+															href="#deleteApiKeyModal" aria-controls="deleteApiKeyModal">Delete</a
 														>
 													</li>
 												</ul>

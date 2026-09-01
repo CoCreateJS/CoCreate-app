@@ -6652,7 +6652,7 @@ fieldset:disabled .btn {
 	margin-bottom: 1rem;
 	margin-left: 15%;
 }
-.carousel-indicators [data-bs-target] {
+.carousel-indicators [aria-controls] {
 	-webkit-box-sizing: content-box;
 	box-sizing: content-box;
 	-webkit-box-flex: 0;
@@ -6675,7 +6675,7 @@ fieldset:disabled .btn {
 	transition: opacity 0.6s ease;
 }
 @media (prefers-reduced-motion: reduce) {
-	.carousel-indicators [data-bs-target] {
+	.carousel-indicators [aria-controls] {
 		-webkit-transition: none;
 		transition: none;
 	}
@@ -6698,7 +6698,7 @@ fieldset:disabled .btn {
 	-webkit-filter: invert(1) grayscale(100);
 	filter: invert(1) grayscale(100);
 }
-.carousel-dark .carousel-indicators [data-bs-target] {
+.carousel-dark .carousel-indicators [aria-controls] {
 	background-color: #000;
 }
 .carousel-dark .carousel-caption {
@@ -6711,8 +6711,8 @@ fieldset:disabled .btn {
 	-webkit-filter: invert(1) grayscale(100);
 	filter: invert(1) grayscale(100);
 }
-[data-bs-theme="dark"] .carousel .carousel-indicators [data-bs-target],
-[data-bs-theme="dark"].carousel .carousel-indicators [data-bs-target] {
+[data-bs-theme="dark"] .carousel .carousel-indicators [aria-controls],
+[data-bs-theme="dark"].carousel .carousel-indicators [aria-controls] {
 	background-color: #000;
 }
 [data-bs-theme="dark"] .carousel .carousel-caption,

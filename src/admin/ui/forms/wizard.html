@@ -1184,11 +1184,11 @@
 						Array.from(l.querySelectorAll(".nexttab")).forEach(
 							function (t) {
 								var e = l.querySelectorAll(
-									'button[data-bs-toggle="pill"]'
+									'button[role="tab"]'
 								);
 								(Array.from(e).forEach(function (e) {
 									e.addEventListener(
-										"show.bs.tab",
+										"click",
 										function (e) {
 											e.target.classList.add("done");
 										}
@@ -1249,7 +1249,7 @@
 									document.getElementById(e).click();
 								});
 							}));
-					var a = l.querySelectorAll('button[data-bs-toggle="pill"]');
+					var a = l.querySelectorAll('button[role="tab"]');
 					a &&
 						Array.from(a).forEach(function (r, o) {
 							(r.setAttribute("data-position", o),

@@ -45,9 +45,8 @@
         type="button"
         class="btn material-shadow-none"
         id="page-header-user-dropdown"
-        data-bs-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
+        aria-haspopup="menu"
+        aria-expanded="false" aria-controls="page-header-user-dropdown-menu">
         <span class="d-flex align-items-center gap-2">
             <span
                 class="avatar-title bg-primary rounded-circle"
@@ -74,7 +73,7 @@
     </button>
     <div
         class="dropdown-menu dropdown-menu-end"
-        src="/components/user-dropdown.html"></div>
+        src="/components/user-dropdown.html" id="page-header-user-dropdown-menu" aria-hidden="true" aria-close-on="anywhere"></div>
 </div>
 
 <div

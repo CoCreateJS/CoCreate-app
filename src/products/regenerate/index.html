@@ -58,8 +58,7 @@
 			href="/manifest.webmanifest" />
 	</head>
 	<body
-		data-bs-spy="scroll"
-		data-bs-target="#navbar-example">
+		data-bs-spy="scroll">
 		<div class="layout-wrapper landing">
 			<nav
 				src="/components/nav.html"
@@ -744,10 +743,8 @@
 												<button
 													class="accordion-button fw-semibold rounded text-muted"
 													type="button"
-													data-bs-toggle="collapse"
-													data-bs-target="#collapse-protocols"
 													aria-expanded="true"
-													aria-controls="collapse-protocols">
+													aria-controls="collapse-protocols" aria-controls-group="protocol-accordion">
 													Dosing Protocols
 												</button>
 											</h5>
@@ -755,7 +752,7 @@
 												id="collapse-protocols"
 												class="accordion-collapse collapse show"
 												aria-labelledby="heading-protocols"
-												data-bs-parent="#protocol-accordion">
+											>
 												<div class="accordion-body">
 													<ul class="mb-0 ps-3">
 														<li class="mb-2">
@@ -808,10 +805,8 @@
 												<button
 													class="accordion-button collapsed fw-semibold rounded text-muted"
 													type="button"
-													data-bs-toggle="collapse"
-													data-bs-target="#collapse-protocol"
 													aria-expanded="false"
-													aria-controls="collapse-protocol">
+													aria-controls="collapse-protocol" aria-controls-group="protocol-accordion">
 													Dosage Tiers
 												</button>
 											</h5>
@@ -819,7 +814,7 @@
 												id="collapse-protocol"
 												class="accordion-collapse collapse"
 												aria-labelledby="heading-protocol"
-												data-bs-parent="#protocol-accordion">
+											>
 												<div class="accordion-body">
 													<div
 														class="d-flex flex-column gap-3">
@@ -865,10 +860,8 @@
 												<button
 													class="accordion-button collapsed fw-semibold rounded text-muted"
 													type="button"
-													data-bs-toggle="collapse"
-													data-bs-target="#collapse-delivery"
 													aria-expanded="false"
-													aria-controls="collapse-delivery">
+													aria-controls="collapse-delivery" aria-controls-group="protocol-accordion">
 													Included Delivery Formats
 												</button>
 											</h5>
@@ -876,7 +869,7 @@
 												id="collapse-delivery"
 												class="accordion-collapse collapse"
 												aria-labelledby="heading-delivery"
-												data-bs-parent="#protocol-accordion">
+											>
 												<div class="accordion-body">
 													<ul class="mb-0 ps-3">
 														<li class="mb-3">

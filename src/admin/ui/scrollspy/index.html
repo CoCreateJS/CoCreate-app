@@ -75,15 +75,13 @@
 								<li class="nav-item dropdown">
 									<a
 										class="nav-link dropdown-toggle"
-										data-bs-toggle="dropdown"
 										href="#"
 										role="button"
-										aria-haspopup="true"
-										aria-expanded="false"
-										>Dropdown</a
+										aria-haspopup="menu"
+										aria-expanded="false" aria-controls="dropdown-admin-ui-scrollspy-index-1">Dropdown</a
 									>
 									<div
-										class="dropdown-menu dropdown-menu-end">
+										class="dropdown-menu dropdown-menu-end" id="dropdown-admin-ui-scrollspy-index-1" aria-hidden="true" aria-close-on="anywhere">
 										<a
 											class="dropdown-item"
 											href="#one"
@@ -108,7 +106,6 @@
 						</nav>
 						<div
 							data-bs-spy="scroll"
-							data-bs-target="#navbar-example"
 							class="scrollspy-example p-2"
 							data-bs-offset="8">
 							<div class="text-muted">
@@ -198,8 +195,8 @@
             &lt;a class=&quot;nav-link&quot; href=&quot;#mdo&quot;&gt;@mdo&lt;/a&gt;
         &lt;/li&gt;
         &lt;li class=&quot;nav-item dropdown&quot;&gt;
-            &lt;a class=&quot;nav-link dropdown-toggle&quot; data-bs-toggle=&quot;dropdown&quot; href=&quot;#&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/a&gt;
-            &lt;div class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+            &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;#&quot; role=&quot;button&quot; aria-haspopup=&quot;menu&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;dropdown-example-admin-ui-scrollspy-index-1&quot;&gt;Dropdown&lt;/a&gt;
+            &lt;div class=&quot;dropdown-menu dropdown-menu-end&quot; id=&quot;dropdown-example-admin-ui-scrollspy-index-1&quot; aria-hidden=&quot;true&quot; aria-close-on=&quot;anywhere&quot;&gt;
                 &lt;a class=&quot;dropdown-item&quot; href=&quot;#one&quot;&gt;one&lt;/a&gt;
                 &lt;a class=&quot;dropdown-item&quot; href=&quot;#two&quot;&gt;two&lt;/a&gt;
                 &lt;div role=&quot;separator&quot; class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
@@ -209,7 +206,7 @@
     &lt;/ul&gt;
 &lt;/nav&gt;
 </code>
-<code class="language-markup">&lt;div data-bs-spy=&quot;scroll&quot; data-bs-target=&quot;#navbar-example&quot; class=&quot;scrollspy-example p-2&quot; data-bs-offset=&quot;8&quot;&gt;
+<code class="language-markup">&lt;div data-bs-spy=&quot;scroll&quot; class=&quot;scrollspy-example p-2&quot; data-bs-offset=&quot;8&quot;&gt;
     &lt;div class=&quot;text-muted&quot;&gt;
         &lt;h5 id=&quot;fat&quot;&gt;@fat&lt;/h5&gt;
         &lt;p&gt;...&lt;/p&gt;
@@ -353,7 +350,6 @@
 							<div class="w-400 flex-grow-1">
 								<div
 									data-bs-spy="scroll"
-									data-bs-target="#navbar-examplenested"
 									data-bs-offset="0"
 									class="scrollspy-example-2">
 									<div class="text-muted">
@@ -519,7 +515,7 @@
     &lt;/div&gt;
     &lt;!-- end flex item --&gt;
     &lt;div class=&quot;w-400 flex-grow-1&quot;&gt;
-        &lt;div data-bs-spy=&quot;scroll&quot; data-bs-target=&quot;#navbar-examplenested&quot; data-bs-offset=&quot;0&quot; class=&quot;scrollspy-example-2&quot;&gt;
+        &lt;div data-bs-spy=&quot;scroll&quot; data-bs-offset=&quot;0&quot; class=&quot;scrollspy-example-2&quot;&gt;
             &lt;div class=&quot;text-muted&quot;&gt;
                 &lt;h5 id=&quot;item-1&quot;&gt;Item 1&lt;/h5&gt;
                 &lt;p&gt;...&lt;/p&gt;
@@ -623,7 +619,6 @@
 							<div class="w-400 flex-grow-1">
 								<div
 									data-bs-spy="scroll"
-									data-bs-target="#list-example"
 									data-bs-offset="0"
 									class="scrollspy-example mt-0">
 									<div class="text-muted">
@@ -709,7 +704,7 @@
         &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class=&quot;w-400 flex-grow-1&quot;&gt;
-        &lt;div data-bs-spy=&quot;scroll&quot; data-bs-target=&quot;#list-example&quot; data-bs-offset=&quot;0&quot; class=&quot;scrollspy-example mt-0&quot;&gt;
+        &lt;div data-bs-spy=&quot;scroll&quot; data-bs-offset=&quot;0&quot; class=&quot;scrollspy-example mt-0&quot;&gt;
             &lt;div class=&quot;text-muted&quot;&gt;
                 &lt;h5 id=&quot;list-item-1&quot;&gt;Item 1&lt;/h5&gt;
                 &lt;p&gt;...&lt;/p&gt;

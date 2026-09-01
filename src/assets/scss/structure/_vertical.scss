@@ -82,7 +82,7 @@
                 }
             }
 
-            &[data-bs-toggle=collapse] {
+            &[aria-controls] {
                 &:after {
                     display: block;
                     content: "\F0142";
@@ -771,7 +771,7 @@
                         display: none !important;
                     }
 
-                    &[data-bs-toggle=collapse]:after {
+                    &[aria-controls]:after {
                         position: relative;
                         display: inline-block;
                         right: 0;
@@ -779,7 +779,7 @@
                     }
 
                     &.menu-link {
-                        &[data-bs-toggle=collapse]:after {
+                        &[aria-controls]:after {
                             display: none;
                         }
                     }
@@ -972,7 +972,7 @@
 [dir="rtl"] {
     .navbar-menu {
         .navbar-nav {
-            .nav-link[data-bs-toggle=collapse] {
+            .nav-link[aria-controls] {
                 &:after {
                     transform: rotate(180deg);
                 }

@@ -38,8 +38,7 @@
 									<button
 										type="button"
 										class="btn btn-primary"
-										data-bs-toggle="modal"
-										data-bs-target="#exampleModal">
+										aria-controls="exampleModal" aria-expanded="false" aria-haspopup="dialog">
 										Click here for Verification
 									</button>
 								</div>
@@ -80,8 +79,7 @@
 					<button
 						type="button"
 						class="btn-close"
-						data-bs-dismiss="modal"
-						aria-label="Close"></button>
+						aria-label="Close" aria-controls="exampleModal" aria-close aria-expanded="true"></button>
 				</div>
 				<form action="#" class="checkout-tab">
 					<div class="modal-body p-0">
@@ -93,8 +91,6 @@
 									<button
 										class="nav-link p-3 active"
 										id="pills-bill-info-tab"
-										data-bs-toggle="pill"
-										data-bs-target="#pills-bill-info"
 										type="button"
 										role="tab"
 										aria-controls="pills-bill-info"
@@ -106,8 +102,6 @@
 									<button
 										class="nav-link p-3"
 										id="pills-bill-address-tab"
-										data-bs-toggle="pill"
-										data-bs-target="#pills-bill-address"
 										type="button"
 										role="tab"
 										aria-controls="pills-bill-address"
@@ -119,8 +113,6 @@
 									<button
 										class="nav-link p-3"
 										id="pills-payment-tab"
-										data-bs-toggle="pill"
-										data-bs-target="#pills-payment"
 										type="button"
 										role="tab"
 										aria-controls="pills-payment"
@@ -132,8 +124,6 @@
 									<button
 										class="nav-link p-3"
 										id="pills-finish-tab"
-										data-bs-toggle="pill"
-										data-bs-target="#pills-finish"
 										type="button"
 										role="tab"
 										aria-controls="pills-finish"
@@ -652,8 +642,7 @@
 											class="hstack justify-content-center gap-2">
 											<button
 												type="button"
-												class="btn btn-ghost-success material-shadow-none"
-												data-bs-dismiss="modal">
+												class="btn btn-ghost-success material-shadow-none" aria-controls="exampleModal" aria-close aria-expanded="true">
 												Done
 												<i
 													class="ri-thumb-up-fill align-bottom me-1"></i>

@@ -7,8 +7,9 @@
 				<div class="mb-3">
 					<button
 						class="btn btn-success w-100"
-						data-bs-target="#createProjectModal"
-						data-bs-toggle="modal">
+						aria-controls="createProjectModal"
+						aria-expanded="false"
+						aria-haspopup="dialog">
 						<i class="ri-add-line align-bottom"></i> Add Project
 					</button>
 				</div>
@@ -20,10 +21,8 @@
 					<ul class="to-do-menu list-unstyled" id="projectlist-data">
 						<li>
 							<a
-								data-bs-toggle="collapse"
 								href="#CoCreateAdmin"
-								class="nav-link fs-13 active"
-								>CoCreate Admin & Dashboard</a
+								class="nav-link fs-13 active" aria-controls="CoCreateAdmin">CoCreate Admin & Dashboard</a
 							>
 							<div class="collapse show" id="CoCreateAdmin">
 								<ul
@@ -68,10 +67,8 @@
 						</li>
 						<li>
 							<a
-								data-bs-toggle="collapse"
 								href="#projectManagement"
-								class="nav-link fs-13"
-								>Project Management</a
+								class="nav-link fs-13" aria-controls="projectManagement">Project Management</a
 							>
 							<div class="collapse" id="projectManagement">
 								<ul
@@ -109,10 +106,8 @@
 						</li>
 						<li>
 							<a
-								data-bs-toggle="collapse"
 								href="#skoteAdmin"
-								class="nav-link fs-13"
-								>Skote Admin & Dashboard</a
+								class="nav-link fs-13" aria-controls="skoteAdmin">Skote Admin & Dashboard</a
 							>
 							<div class="collapse" id="skoteAdmin">
 								<ul
@@ -136,10 +131,8 @@
 						</li>
 						<li>
 							<a
-								data-bs-toggle="collapse"
 								href="#ecommerceProject"
-								class="nav-link fs-13"
-								>Doot - Chat App Template</a
+								class="nav-link fs-13" aria-controls="ecommerceProject">Doot - Chat App Template</a
 							>
 							<div class="collapse" id="ecommerceProject">
 								<ul
@@ -258,8 +251,7 @@
 						<button
 							class="btn btn-primary createTask"
 							type="button"
-							data-bs-toggle="modal"
-							data-bs-target="#createTask">
+							aria-controls="createTask" aria-expanded="false" aria-haspopup="dialog">
 							<i class="ri-add-fill align-bottom"></i> Add Tasks
 						</button>
 					</div>
@@ -638,9 +630,11 @@ Array.prototype.slice.call(createFolderForms).forEach(function (a) {
 				  (projectlisthtml =
 						'<li id="projectlist-' +
 						s +
-						'">        <a data-bs-toggle="collapse" href="#projectCollapse-' +
+						'">        <a href="#projectCollapse-' +
 						s +
-						'" class="nav-link fs-13">' +
+						'" class="nav-link fs-13" aria-controls="projectCollapse-' +
+						s +
+						'" aria-expanded="false">' +
 						t +
 						'</a>        <div class="collapse" id="projectCollapse-' +
 						s +
@@ -754,7 +748,7 @@ Array.from(document.getElementsByClassName("select-element")).forEach(function (
 				  (folderlisthtml =
 						'<a href="javascript: void(0);" class="avatar-group-item mb-2" data-img="' +
 						s +
-						'"  data-bs-toggle="tooltip" data -bs-placement="top" title="' +
+						'" data -bs-placement="top" title="' +
 						e +
 						'">                <img src="' +
 						s +
@@ -906,7 +900,7 @@ function drawList(e) {
 				a +=
 					'<a href="javascript: void(0);" class="avatar-group-item" data-img="' +
 					e.assigneeImg +
-					'"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="' +
+					'" data-bs-placement="top" data-bs-title="' +
 					e.assigneeName +
 					'">                <img src="' +
 					e.assigneeImg +
@@ -915,7 +909,7 @@ function drawList(e) {
 				3 < s.length &&
 					((s = s.length - 3),
 					(a +=
-						'<a href="javascript: void(0);" class="avatar-group-item"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="' +
+						'<a href="javascript: void(0);" class="avatar-group-item" data-bs-placement="top" data-bs-title="' +
 						s +
 						' More">            <div class="avatar-xxs">            <div class="avatar-title rounded-circle">' +
 						s +
@@ -940,11 +934,11 @@ function drawList(e) {
 					isStatus(e.status) +
 					"</td>            <td>" +
 					isPriority(e.priority) +
-					'</td>            <td>            <div class="hstack gap-2">                <button class="btn btn-sm btn-soft-danger remove-list" data-bs-toggle="modal" data-bs-target="#removeTaskItemModal" data-remove-id=' +
+					'</td>            <td>            <div class="hstack gap-2">                <button class="btn btn-sm btn-soft-danger remove-list" aria-controls="removeTaskItemModal" data-remove-id=' +
 					e.id +
-					'><i class="ri-delete-bin-5-fill align-bottom"></i></button>                <button class="btn btn-sm btn-soft-info edit-list" data-bs-toggle="modal" data-bs-target="#createTask" data-edit-id=' +
+					' aria-expanded="false" aria-haspopup="dialog"><i class="ri-delete-bin-5-fill align-bottom"></i></button>                <button class="btn btn-sm btn-soft-info edit-list" aria-controls="createTask" data-edit-id=' +
 					e.id +
-					'><i class="ri-pencil-fill align-bottom"></i></button>            </div>            </td>        </tr>'),
+					' aria-expanded="false" aria-haspopup="dialog"><i class="ri-pencil-fill align-bottom"></i></button>            </div>            </td>        </tr>'),
 				editTodoList(),
 				removeSingleItem(),
 				checkTaskStatus(),
@@ -954,7 +948,7 @@ function drawList(e) {
 var isShowMenu = !1,
 	todoMenuSidebar = document.getElementsByClassName("file-manager-sidebar");
 function tooltipElm() {
-	[...document.querySelectorAll('[data-bs-toggle="tooltip"]')].map(
+	[...document.querySelectorAll('[title][data-bs-placement]')].map(
 		(e) => new bootstrap.Tooltip(e)
 	);
 }
@@ -1086,7 +1080,7 @@ function editTodoList() {
 											((folderlisthtml =
 												'<a href="javascript: void(0);" class="avatar-group-item mb-2" data-img="' +
 												e.assigneeImg +
-												'"  data-bs-toggle="tooltip" data -bs-placement="top" data-bs-title="' +
+												'" data -bs-placement="top" data-bs-title="' +
 												e.assigneeName +
 												'">                                    <img src="' +
 												e.assigneeImg +

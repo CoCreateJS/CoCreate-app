@@ -1,13 +1,12 @@
 											<button
 												class="btn btn-ghost-primary btn-icon btn-sm dropdown material-shadow-none"
 												type="button"
-												data-bs-toggle="dropdown"
-												aria-expanded="false">
+												aria-expanded="false" aria-haspopup="menu" aria-controls="dropdown-apps-files-components-options-dropdown-1">
 												<i
 													class="ri-more-2-fill fs-16 align-bottom"></i>
 											</button>
 											<ul
-												class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere">
+												class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere" id="dropdown-apps-files-components-options-dropdown-1" aria-hidden="true">
 												<li>
 													<a
 														class="dropdown-item view-item-btn"
@@ -19,18 +18,14 @@
 													<a
 														class="dropdown-item edit-folder-list"
 														href="#createFolderModal"
-														data-bs-toggle="modal"
-														role="button"
-														>Rename</a
+														role="button" aria-controls="createFolderModal">Rename</a
 													>
 												</li>
 												<li>
 													<a
 														class="dropdown-item"
 														href="#removeFolderModal"
-														data-bs-toggle="modal"
-														role="button"
-														>Delete</a
+														role="button" aria-controls="removeFolderModal">Delete</a
 													>
 												</li>
 											</ul>

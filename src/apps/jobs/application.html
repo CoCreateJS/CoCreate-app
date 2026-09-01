@@ -38,9 +38,8 @@
 								<button
 									type="button"
 									class="btn btn-success add-btn"
-									data-bs-toggle="modal"
 									id="create-btn"
-									data-bs-target="#showModal">
+									aria-controls="showModal" aria-expanded="false" aria-haspopup="dialog">
 									<i
 										class="ri-add-line align-bottom me-1"></i>
 									Create Application
@@ -158,7 +157,6 @@
 							<li class="nav-item">
 								<a
 									class="nav-link active All py-3"
-									data-bs-toggle="tab"
 									id="All"
 									href="#"
 									role="tab"
@@ -169,7 +167,6 @@
 							<li class="nav-item">
 								<a
 									class="nav-link py-3 New"
-									data-bs-toggle="tab"
 									id="New"
 									href="#"
 									role="tab"
@@ -180,7 +177,6 @@
 							<li class="nav-item">
 								<a
 									class="nav-link py-3 Pending"
-									data-bs-toggle="tab"
 									id="Pending"
 									href="#"
 									role="tab"
@@ -195,7 +191,6 @@
 							<li class="nav-item">
 								<a
 									class="nav-link py-3 Approved"
-									data-bs-toggle="tab"
 									id="Approved"
 									href="#"
 									role="tab"
@@ -206,7 +201,6 @@
 							<li class="nav-item">
 								<a
 									class="nav-link py-3 Rejected"
-									data-bs-toggle="tab"
 									id="Rejected"
 									href="#"
 									role="tab"
@@ -311,7 +305,6 @@
 												class="list-inline hstack gap-2 mb-0">
 												<li
 													class="list-inline-item"
-													data-bs-toggle="tooltip"
 													data-bs-trigger="hover"
 													data-bs-placement="top"
 													title="View">
@@ -325,28 +318,24 @@
 												</li>
 												<li
 													class="list-inline-item edit"
-													data-bs-toggle="tooltip"
 													data-bs-trigger="hover"
 													data-bs-placement="top"
 													title="Edit">
 													<a
 														href="#showModal"
-														data-bs-toggle="modal"
-														class="text-primary d-inline-block edit-item-btn">
+														class="text-primary d-inline-block edit-item-btn" aria-controls="showModal">
 														<i
 															class="ri-pencil-fill fs-16"></i>
 													</a>
 												</li>
 												<li
 													class="list-inline-item"
-													data-bs-toggle="tooltip"
 													data-bs-trigger="hover"
 													data-bs-placement="top"
 													title="Remove">
 													<a
 														class="text-danger d-inline-block remove-item-btn"
-														data-bs-toggle="modal"
-														href="#deleteOrder">
+														href="#deleteOrder" aria-controls="deleteOrder">
 														<i
 															class="ri-delete-bin-5-fill fs-16"></i>
 													</a>
@@ -406,9 +395,8 @@
 									<button
 										type="button"
 										class="btn-close"
-										data-bs-dismiss="modal"
 										aria-label="Close"
-										id="close-modal"></button>
+										id="close-modal" aria-controls="showModal" aria-close aria-expanded="true"></button>
 								</div>
 								<form class="tablelist-form" autocomplete="off">
 									<div class="modal-body">
@@ -436,7 +424,6 @@
 													<label
 														for="companylogo-image-input"
 														class="mb-0"
-														data-bs-toggle="tooltip"
 														data-bs-placement="right"
 														title="Select Image">
 														<div
@@ -587,8 +574,7 @@
 											class="hstack gap-2 justify-content-end">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="showModal" aria-close aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -635,8 +621,7 @@
 											class="hstack gap-2 justify-content-center remove">
 											<button
 												class="btn btn-link link-success fw-medium text-decoration-none"
-												id="deleteRecord-close"
-												data-bs-dismiss="modal">
+												id="deleteRecord-close" aria-controls="deleteOrder" aria-close aria-expanded="true">
 												<i
 													class="ri-close-line me-1 align-middle"></i>
 												Close

@@ -49,7 +49,7 @@ function loadCandidateListData(e, t) {
 				e[i].rating[1] +
 				'</div>                    </div>                    <div>                        <a href="#!" class="btn btn-soft-success">View Details</a>                        <a href="#!" class="btn btn-ghost-danger btn-icon custom-toggle ' +
 				n +
-				'" data-bs-toggle="button">                            <span class="icon-on"><i class="ri-bookmark-line align-bottom"></i></span>                            <span class="icon-off"><i class="ri-bookmark-3-fill align-bottom"></i></span>                        </a>                    </div>                </div>            </div>        </div>    </div>'));
+				'" aria-pressed="false" toggle.class="active" toggle.aria-pressed="true, false">                            <span class="icon-on"><i class="ri-bookmark-line align-bottom"></i></span>                            <span class="icon-off"><i class="ri-bookmark-3-fill align-bottom"></i></span>                        </a>                    </div>                </div>            </div>        </div>    </div>'));
 	selectedPage(),
 		1 == currentPage
 			? prevButton.parentNode.classList.add("disabled")

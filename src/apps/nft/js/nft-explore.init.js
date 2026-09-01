@@ -23,7 +23,7 @@ function loadProductData(e) {
 				e.productImg +
 				'" alt="" class="card-img-top explore-img" />                    <div class="bg-overlay"></div>                    <div class="place-bid-btn">                        <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>                    </div>                </div>                <div class="bookmark-icon position-absolute top-0 end-0 p-2">                    <button type="button" class="btn btn-icon ' +
 				l +
-				'" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>                </div>                <div class="card-body">                    <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> ' +
+				'" aria-pressed="true" toggle.class="active" toggle.aria-pressed="true, false"><i class="mdi mdi-cards-heart fs-16"></i></button>                </div>                <div class="card-body">                    <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> ' +
 				e.totalLikes +
 				' </p>                    <h5 class="mb-1"><a href="apps/nft/item-details.html">' +
 				e.title +

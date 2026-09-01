@@ -35,19 +35,16 @@
 						<div class="hstack flex-wrap gap-2">
 							<a
 								class="btn btn-secondary"
-								data-bs-toggle="offcanvas"
 								href="#offcanvasExample"
 								role="button"
-								aria-controls="offcanvasExample">
+								aria-controls="offcanvasExample" aria-expanded="false" aria-haspopup="dialog">
 								Link with href
 							</a>
 							<button
 								class="btn btn-secondary"
 								type="button"
-								data-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasExample"
-								aria-controls="offcanvasExample">
-								Button with data-bs-target
+								aria-controls="offcanvasExample" aria-expanded="false" aria-haspopup="dialog">
+								Button with aria-controls
 							</button>
 						</div>
 
@@ -65,8 +62,7 @@
 								<button
 									type="button"
 									class="btn-close text-reset"
-									data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
+									aria-label="Close" aria-controls="offcanvasExample" aria-close aria-expanded="true"></button>
 							</div>
 							<div class="offcanvas-body p-0 overflow-hidden">
 								<div
@@ -123,7 +119,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Christi">
@@ -135,7 +130,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Frank Hook">
@@ -147,7 +141,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title=" Ruby">
@@ -161,7 +154,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="more">
@@ -379,18 +371,18 @@
 							style="height: 275px">
 <code>&lt;!-- Base Examples --&gt;
 &lt;div class=&quot;hstack flex-wrap gap-2&quot;&gt;
-    &lt;a class=&quot;btn btn-light&quot; data-bs-toggle=&quot;offcanvas&quot; href=&quot;#offcanvasExample&quot; role=&quot;button&quot; aria-controls=&quot;offcanvasExample&quot;&gt;
+    &lt;a class=&quot;btn btn-light&quot; href=&quot;#offcanvasExample&quot; role=&quot;button&quot; aria-controls=&quot;offcanvasExample&quot;&gt;
         Link with href
     &lt;/a&gt;
-    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#offcanvasExample&quot; aria-controls=&quot;offcanvasExample&quot;&gt;
-        Button with data-bs-target
+    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; aria-controls=&quot;offcanvasExample&quot;&gt;
+        Button with aria-controls
     &lt;/button&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;offcanvas offcanvas-start&quot; tabindex=&quot;-1&quot; id=&quot;offcanvasExample&quot; aria-labelledby=&quot;offcanvasExampleLabel&quot;&gt;
     &lt;div class=&quot;offcanvas-header&quot;&gt;
         &lt;h5 class=&quot;offcanvas-title&quot; id=&quot;offcanvasExampleLabel&quot;&gt;Offcanvas&lt;/h5&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; aria-label=&quot;Close&quot; aria-controls=&quot;offcanvasExample&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;offcanvas-body&quot;&gt;
         ...
@@ -446,33 +438,25 @@
 							<button
 								class="btn btn-primary"
 								type="button"
-								data-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasTop"
-								aria-controls="offcanvasTop">
+								aria-controls="offcanvasTop" aria-expanded="false" aria-haspopup="dialog">
 								Toggle Top Offcanvas
 							</button>
 							<button
 								class="btn btn-secondary"
 								type="button"
-								data-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasRight"
-								aria-controls="offcanvasRight">
+								aria-controls="offcanvasRight" aria-expanded="false" aria-haspopup="dialog">
 								Toggle Right Offcanvas
 							</button>
 							<button
 								class="btn btn-success"
 								type="button"
-								data-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasBottom"
-								aria-controls="offcanvasBottom">
+								aria-controls="offcanvasBottom" aria-expanded="false" aria-haspopup="dialog">
 								Toggle Bottom Offcanvas
 							</button>
 							<button
 								class="btn btn-danger"
 								type="button"
-								data-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasLeft"
-								aria-controls="offcanvasLeft">
+								aria-controls="offcanvasLeft" aria-expanded="false" aria-haspopup="dialog">
 								Toggle Left Offcanvas
 							</button>
 						</div>
@@ -493,8 +477,7 @@
 								<button
 									type="button"
 									class="btn-close text-reset"
-									data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
+									aria-label="Close" aria-controls="offcanvasTop" aria-close aria-expanded="true"></button>
 							</div>
 							<div class="offcanvas-body">
 								<div
@@ -750,8 +733,7 @@
 								<button
 									type="button"
 									class="btn-close text-reset"
-									data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
+									aria-label="Close" aria-controls="offcanvasRight" aria-close aria-expanded="true"></button>
 							</div>
 							<div class="offcanvas-body p-0 overflow-hidden">
 								<div
@@ -808,7 +790,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Christi">
@@ -820,7 +801,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-itemv material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Frank Hook">
@@ -832,7 +812,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title=" Ruby">
@@ -846,7 +825,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="more">
@@ -1073,8 +1051,7 @@
 								<button
 									type="button"
 									class="btn-close text-reset"
-									data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
+									aria-label="Close" aria-controls="offcanvasBottom" aria-close aria-expanded="true"></button>
 							</div>
 							<div class="offcanvas-body">
 								<div
@@ -1330,8 +1307,7 @@
 								<button
 									type="button"
 									class="btn-close text-reset"
-									data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
+									aria-label="Close" aria-controls="offcanvasLeft" aria-close aria-expanded="true"></button>
 							</div>
 							<div class="offcanvas-body p-0 overflow-hidden">
 								<div
@@ -1388,7 +1364,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Christi">
@@ -1400,7 +1375,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Frank Hook">
@@ -1412,7 +1386,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title=" Ruby">
@@ -1426,7 +1399,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="more">
@@ -1643,17 +1615,17 @@
 							style="height: 275px">
 <code>&lt;!-- Placement Offcanvas --&gt;
 &lt;div class=&quot;d-flex flex-wrap gap-2&quot;&gt;
-    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#offcanvasTop&quot; aria-controls=&quot;offcanvasTop&quot;&gt;Toggle Top offcanvas&lt;/button&gt;
-    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#offcanvasRight&quot; aria-controls=&quot;offcanvasRight&quot;&gt;Toggle Right offcanvas&lt;/button&gt;
-    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#offcanvasBottom&quot; aria-controls=&quot;offcanvasBottom&quot;&gt;Toggle Bottom offcanvas&lt;/button&gt;
-    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#offcanvasLeft&quot; aria-controls=&quot;offcanvasLeft&quot;&gt;Toggle Left offcanvas&lt;/button&gt;
+    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; aria-controls=&quot;offcanvasTop&quot;&gt;Toggle Top offcanvas&lt;/button&gt;
+    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; aria-controls=&quot;offcanvasRight&quot;&gt;Toggle Right offcanvas&lt;/button&gt;
+    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; aria-controls=&quot;offcanvasBottom&quot;&gt;Toggle Bottom offcanvas&lt;/button&gt;
+    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; aria-controls=&quot;offcanvasLeft&quot;&gt;Toggle Left offcanvas&lt;/button&gt;
 &lt;/div&gt;</code>
 
 <code>&lt;!-- top offcanvas --&gt;
 &lt;div class=&quot;offcanvas offcanvas-top&quot; tabindex=&quot;-1&quot; id=&quot;offcanvasTop&quot; aria-labelledby=&quot;offcanvasTopLabel&quot;&gt;
     &lt;div class=&quot;offcanvas-header&quot;&gt;
         &lt;h5 id=&quot;offcanvasTopLabel&quot;&gt;Offcanvas Top&lt;/h5&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; aria-label=&quot;Close&quot; aria-controls=&quot;offcanvasTop&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;offcanvas-body&quot;&gt;
         ...
@@ -1664,7 +1636,7 @@
 &lt;div class=&quot;offcanvas offcanvas-end&quot; tabindex=&quot;-1&quot; id=&quot;offcanvasRight&quot; aria-labelledby=&quot;offcanvasRightLabel&quot;&gt;
     &lt;div class=&quot;offcanvas-header&quot;&gt;
         &lt;h5 id=&quot;offcanvasRightLabel&quot;&gt;Offcanvas Right&lt;/h5&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; aria-label=&quot;Close&quot; aria-controls=&quot;offcanvasRight&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;offcanvas-body&quot;&gt;
         ...
@@ -1675,7 +1647,7 @@
 &lt;div class=&quot;offcanvas offcanvas-bottom&quot; tabindex=&quot;-1&quot; id=&quot;offcanvasBottom&quot; aria-labelledby=&quot;offcanvasBottomLabel&quot;&gt;
     &lt;div class=&quot;offcanvas-header&quot;&gt;
         &lt;h5 id=&quot;offcanvasBottomLabel&quot;&gt;Offcanvas Bottom&lt;/h5&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; aria-label=&quot;Close&quot; aria-controls=&quot;offcanvasBottom&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;offcanvas-body&quot;&gt;
         ...
@@ -1686,7 +1658,7 @@
 &lt;div class=&quot;offcanvas offcanvas-start&quot; tabindex=&quot;-1&quot; id=&quot;offcanvasLeft&quot; aria-labelledby=&quot;offcanvasLeftLabel&quot;&gt;
     &lt;div class=&quot;offcanvas-header&quot;&gt;
         &lt;h5 id=&quot;offcanvasLeftLabel&quot;&gt;Offcanvas Left&lt;/h5&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; aria-label=&quot;Close&quot; aria-controls=&quot;offcanvasLeft&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;offcanvas-body&quot;&gt;
         ...
@@ -1739,25 +1711,19 @@
 							<button
 								class="btn btn-light"
 								type="button"
-								data-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasScrolling"
-								aria-controls="offcanvasScrolling">
+								aria-controls="offcanvasScrolling" aria-expanded="false" aria-haspopup="dialog">
 								Enable Body Scrolling
 							</button>
 							<button
 								class="btn btn-light"
 								type="button"
-								data-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasWithBackdrop"
-								aria-controls="offcanvasWithBackdrop">
+								aria-controls="offcanvasWithBackdrop" aria-expanded="false" aria-haspopup="dialog">
 								Enable Backdrop (Default)
 							</button>
 							<button
 								class="btn btn-light"
 								type="button"
-								data-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasWithBothOptions"
-								aria-controls="offcanvasWithBothOptions">
+								aria-controls="offcanvasWithBothOptions" aria-expanded="false" aria-haspopup="dialog">
 								Enable Both Scrolling & Backdrop
 							</button>
 						</div>
@@ -1778,8 +1744,7 @@
 								<button
 									type="button"
 									class="btn-close text-reset"
-									data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
+									aria-label="Close" aria-controls="offcanvasScrolling" aria-close aria-expanded="true"></button>
 							</div>
 							<div class="offcanvas-body p-0 overflow-hidden">
 								<div
@@ -1836,7 +1801,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Christi">
@@ -1848,7 +1812,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Frank Hook">
@@ -1860,7 +1823,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title=" Ruby">
@@ -1874,7 +1836,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="more">
@@ -2099,8 +2060,7 @@
 								<button
 									type="button"
 									class="btn-close text-reset"
-									data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
+									aria-label="Close" aria-controls="offcanvasWithBackdrop" aria-close aria-expanded="true"></button>
 							</div>
 							<div class="offcanvas-body p-0 overflow-hidden">
 								<div
@@ -2157,7 +2117,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Christi">
@@ -2169,7 +2128,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Frank Hook">
@@ -2181,7 +2139,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title=" Ruby">
@@ -2195,7 +2152,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="more">
@@ -2421,8 +2377,7 @@
 								<button
 									type="button"
 									class="btn-close text-reset"
-									data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
+									aria-label="Close" aria-controls="offcanvasWithBothOptions" aria-close aria-expanded="true"></button>
 							</div>
 							<div class="offcanvas-body p-0 overflow-hidden">
 								<div
@@ -2479,7 +2434,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Christi">
@@ -2491,7 +2445,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="Frank Hook">
@@ -2503,7 +2456,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title=" Ruby">
@@ -2517,7 +2469,6 @@
 													<a
 														href="javascript: void(0);"
 														class="avatar-group-item material-shadow"
-														data-bs-toggle="tooltip"
 														data-bs-placement="top"
 														title=""
 														data-bs-original-title="more">
@@ -2734,15 +2685,15 @@
 							style="height: 275px">
 <code>&lt;!-- Backdrop Offcanvas --&gt;
 &lt;div class=&quot;d-flex flex-wrap gap-2&quot;&gt;
-    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#offcanvasScrolling&quot; aria-controls=&quot;offcanvasScrolling&quot;&gt;Enable body scrolling&lt;/button&gt;
-    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#offcanvasWithBackdrop&quot; aria-controls=&quot;offcanvasWithBackdrop&quot;&gt;Enable backdrop (default)&lt;/button&gt;
-    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#offcanvasWithBothOptions&quot; aria-controls=&quot;offcanvasWithBothOptions&quot;&gt;Enable both scrolling &amp; backdrop&lt;/button&gt;
+    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; aria-controls=&quot;offcanvasScrolling&quot;&gt;Enable body scrolling&lt;/button&gt;
+    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; aria-controls=&quot;offcanvasWithBackdrop&quot;&gt;Enable backdrop (default)&lt;/button&gt;
+    &lt;button class=&quot;btn btn-light&quot; type=&quot;button&quot; aria-controls=&quot;offcanvasWithBothOptions&quot;&gt;Enable both scrolling &amp; backdrop&lt;/button&gt;
 &lt;/div&gt;</code>
 
 <code>&lt;div class=&quot;offcanvas offcanvas-start&quot; data-bs-scroll=&quot;true&quot; data-bs-backdrop=&quot;false&quot; tabindex=&quot;-1&quot; id=&quot;offcanvasScrolling&quot; aria-labelledby=&quot;offcanvasScrollingLabel&quot;&gt;
     &lt;div class=&quot;offcanvas-header&quot;&gt;
       &lt;h5 class=&quot;offcanvas-title&quot; id=&quot;offcanvasScrollingLabel&quot;&gt;Colored with scrolling&lt;/h5&gt;
-      &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; aria-label=&quot;Close&quot; aria-controls=&quot;offcanvasScrolling&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;offcanvas-body&quot;&gt;
         ...
@@ -2752,7 +2703,7 @@
 <code>&lt;div class=&quot;offcanvas offcanvas-start&quot; tabindex=&quot;-1&quot; id=&quot;offcanvasWithBackdrop&quot; aria-labelledby=&quot;offcanvasWithBackdropLabel&quot;&gt;
     &lt;div class=&quot;offcanvas-header&quot;&gt;
       &lt;h5 class=&quot;offcanvas-title&quot; id=&quot;offcanvasWithBackdropLabel&quot;&gt;Offcanvas with backdrop&lt;/h5&gt;
-      &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; aria-label=&quot;Close&quot; aria-controls=&quot;offcanvasWithBackdrop&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;offcanvas-body&quot;&gt;
       ...
@@ -2762,7 +2713,7 @@
 <code>&lt;div class=&quot;offcanvas offcanvas-start&quot; data-bs-scroll=&quot;true&quot; tabindex=&quot;-1&quot; id=&quot;offcanvasWithBothOptions&quot; aria-labelledby=&quot;offcanvasWithBothOptionsLabel&quot;&gt;
     &lt;div class=&quot;offcanvas-header&quot;&gt;
       &lt;h5 class=&quot;offcanvas-title&quot; id=&quot;offcanvasWithBothOptionsLabel&quot;&gt;Backdroped with scrolling&lt;/h5&gt;
-      &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn-close text-reset&quot; aria-label=&quot;Close&quot; aria-controls=&quot;offcanvasWithBothOptions&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;offcanvas-body&quot;&gt;
         ...

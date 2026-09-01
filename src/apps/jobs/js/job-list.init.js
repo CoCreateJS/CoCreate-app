@@ -90,7 +90,7 @@ function loadJobListData(e, t) {
 					e[i].jobTitle +
 					'</h5></a>                        <p class="company-name text-muted mb-0">' +
 					e[i].companyName +
-					'</p>                    </div>                    <div>                        <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">                            <span class="icon-on"><i class="ri-bookmark-line"></i></span>                            <span class="icon-off"><i class="ri-bookmark-fill"></i></span>                        </button>                    </div>                </div>                <p class="text-muted job-description">' +
+					'</p>                    </div>                    <div>                        <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" aria-pressed="false" toggle.class="active" toggle.aria-pressed="true, false">                            <span class="icon-on"><i class="ri-bookmark-line"></i></span>                            <span class="icon-off"><i class="ri-bookmark-fill"></i></span>                        </button>                    </div>                </div>                <p class="text-muted job-description">' +
 					e[i].description +
 					"</p>                <div>" +
 					a +

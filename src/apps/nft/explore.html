@@ -33,9 +33,7 @@
 						<div>
 							<a
 								class="btn btn-success"
-								data-bs-toggle="collapse"
-								href="#collapseExample"
-								><i class="ri-filter-2-line align-bottom"></i>
+								href="#collapseExample" aria-controls="collapseExample"><i class="ri-filter-2-line align-bottom"></i>
 								Filters</a
 							>
 						</div>
@@ -149,13 +147,12 @@
 							href="#"
 							role="button"
 							id="dropdownMenuLink"
-							data-bs-toggle="dropdown"
-							aria-expanded="false">
+							aria-expanded="false" aria-haspopup="menu" aria-controls="dropdownMenuLink-menu">
 							All View
 						</a>
 						<ul
 							class="dropdown-menu"
-							aria-labelledby="dropdownMenuLink" aria-close-on="anywhere">
+							aria-labelledby="dropdownMenuLink" aria-close-on="anywhere" id="dropdownMenuLink-menu" aria-hidden="true">
 							<li>
 								<a class="dropdown-item" href="#">Action</a>
 							</li>

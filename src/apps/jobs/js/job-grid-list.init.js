@@ -52,7 +52,7 @@ function loadJobListData(e, t) {
 			}),
 			e[n] &&
 				(document.querySelector("#job-list").innerHTML +=
-					'<div class="col-lg-3 col-md-6">        <div class="card">            <div class="card-body">                <button type="button" class="btn btn-icon btn-soft-primary float-end" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>                <div class="avatar-sm mb-4">                    <div class="avatar-title bg-light rounded">                        <img src="' +
+					'<div class="col-lg-3 col-md-6">        <div class="card">            <div class="card-body">                <button type="button" class="btn btn-icon btn-soft-primary float-end" aria-pressed="true" toggle.class="active" toggle.aria-pressed="true, false"><i class="mdi mdi-cards-heart fs-16"></i></button>                <div class="avatar-sm mb-4">                    <div class="avatar-title bg-light rounded">                        <img src="' +
 					e[n].companyLogo +
 					'" alt="" class="avatar-xxs" />                    </div>                </div>                <a href="#!"><h5>' +
 					e[n].jobTitle +

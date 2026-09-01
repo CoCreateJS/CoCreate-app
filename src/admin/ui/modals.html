@@ -52,7 +52,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="myModal" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="myModal" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-15">
@@ -90,7 +90,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light" aria-controls="myModal" aria-expanded="true">
+												class="btn btn-light" aria-controls="myModal" aria-expanded="true" aria-close>
 												Close
 											</button>
 											<button
@@ -118,7 +118,7 @@
         &lt;div class=&quot;modal-content&quot;&gt;
             &lt;div class=&quot;modal-header&quot;&gt;
                 &lt;h5 class=&quot;modal-title&quot; id=&quot;myModalLabel&quot;&gt;Modal Heading&lt;/h5&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;myModal&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot;&gt; &lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;myModal&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot; aria-close&gt; &lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-body&quot;&gt;
                 &lt;h5 class=&quot;fs-15&quot;&gt;
@@ -129,7 +129,7 @@
                 &lt;p class=&quot;text-muted&quot;&gt;It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.&lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-footer&quot;&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;myModal&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;myModal&quot; aria-expanded=&quot;true&quot; aria-close&gt;Close&lt;/button&gt;
                 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary &quot;&gt;Save Changes&lt;/button&gt;
             &lt;/div&gt;
 
@@ -210,7 +210,7 @@
 													class="hstack gap-2 justify-content-center">
 													<button
 														type="button"
-														class="btn btn-light" aria-controls="bs-example-modal-center" aria-expanded="true">
+														class="btn btn-light" aria-controls="bs-example-modal-center" aria-expanded="true" aria-close>
 														Close
 													</button>
 													<a
@@ -297,7 +297,7 @@
 										<button
 											type="button"
 											class="btn-close"
-											aria-label="Close" aria-controls="exampleModalgrid" aria-expanded="true"></button>
+											aria-label="Close" aria-controls="exampleModalgrid" aria-expanded="true" aria-close></button>
 									</div>
 									<div class="modal-body">
 										<form action="javascript:void(0);">
@@ -414,7 +414,7 @@
 														class="hstack gap-2 justify-content-end">
 														<button
 															type="button"
-															class="btn btn-light" aria-controls="exampleModalgrid" aria-expanded="true">
+															class="btn btn-light" aria-controls="exampleModalgrid" aria-expanded="true" aria-close>
 															Close
 														</button>
 														<button
@@ -446,7 +446,7 @@
         &lt;div class=&quot;modal-content&quot;&gt;
             &lt;div class=&quot;modal-header&quot;&gt;
                 &lt;h5 class=&quot;modal-title&quot; id=&quot;exampleModalgridLabel&quot;&gt;Grid Modals&lt;/h5&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;exampleModalgrid&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;exampleModalgrid&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot; aria-close&gt;&lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-body&quot;&gt;
                 &lt;form action=&quot;javascript:void(0);&quot;&gt;
@@ -494,7 +494,7 @@
                         &lt;/div&gt;&lt;!-- end flex item --&gt;
                         &lt;div class=&quot;w-100&quot;&gt;
                             &lt;div class=&quot;hstack gap-2 justify-content-end&quot;&gt;
-                                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;exampleModalgrid&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
+                                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;exampleModalgrid&quot; aria-expanded=&quot;true&quot; aria-close&gt;Close&lt;/button&gt;
                                 &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;&lt;!-- end flex item --&gt;
@@ -672,8 +672,8 @@
 				<div class="card-body">
 					<p class="text-muted">
 						Toggle between multiple modals with some clever
-						placement of the <code>data-bs-target</code> and
-						<code>data-bs-toggle</code> attributes. Please note
+						placement of the <code>aria-controls</code> and
+						<code>aria-controls</code> attributes. Please note
 						multiple modals cannot be open at the same time. this
 						method simply toggles between two separate modals.
 					</p>
@@ -746,14 +746,14 @@
 												</p>
 												<div
 													class="hstack gap-2 justify-content-center">
-													<!-- Toogle to first dialog, `data-bs-dismiss` attribute can be omitted - clicking on link will close dialog anyway -->
+													<!-- Toogle to first dialog, `aria-controls` and `aria-close` attributes can be omitted - clicking on link will close dialog anyway -->
 													<button
 														class="btn btn-soft-danger" aria-controls="firstmodal" aria-expanded="false" aria-haspopup="dialog" aria-controls-group="modals">
 														Back to First
 													</button>
 													<button
 														type="button"
-														class="btn btn-light" aria-controls="secondmodal" aria-expanded="true">
+														class="btn btn-light" aria-controls="secondmodal" aria-expanded="true" aria-close>
 														Close
 													</button>
 												</div>
@@ -809,11 +809,11 @@
                     &lt;h4 class=&quot;mb-3&quot;&gt;Follow-Up Email&lt;/h4&gt;
                     &lt;p class=&quot;text-muted mb-4&quot;&gt;Hide this modal and show the first with the button below Automatically Send your invitees a follow -Up email.&lt;/p&gt;
                     &lt;div class=&quot;hstack gap-2 justify-content-center&quot;&gt;
-                        &lt;!-- Toogle to first dialog, `data-bs-dismiss` attribute can be omitted - clicking on link will close dialog anyway --&gt;
+                        &lt;!-- Toogle to first dialog, `aria-controls` and `aria-close` attributes can be omitted - clicking on link will close dialog anyway --&gt;
                         &lt;button class=&quot;btn btn-soft-danger&quot; aria-controls=&quot;firstmodal&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;dialog&quot; aria-controls-group=&quot;modals&quot;&gt;Back to
                             First
                         &lt;/button&gt;
-                        &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;secondmodal&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;secondmodal&quot; aria-expanded=&quot;true&quot; aria-close&gt;Close&lt;/button&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
@@ -893,7 +893,7 @@
 										<button
 											type="button"
 											class="btn-close"
-											aria-label="Close" aria-controls="exampleModalPopovers" aria-expanded="true"></button>
+											aria-label="Close" aria-controls="exampleModalPopovers" aria-expanded="true" aria-close></button>
 									</div>
 									<div class="modal-body">
 										<h5 class="fs-16">
@@ -905,13 +905,11 @@
 											<a
 												href="#"
 												class="popover-test fw-medium text-decoration-underline link-success"
-												data-bs-toggle="popover"
 												title="Common Types of Fonts"
 												data-bs-content="They're a good choice for more traditional projects."
 												data-bs-container="body"
 												data-bs-placement="bottom"
-												data-bs-original-title="Popover Title"
-												>Popover on Click
+												data-bs-original-title="Popover Title">Popover on Click
 											</a>
 											you do every day. So let's get
 											started. First, some common types of
@@ -930,7 +928,6 @@
 												class="tooltip-test text-decoration-underline fw-medium"
 												title="Morton Bayer"
 												data-bs-container="#exampleModalPopovers"
-												data-bs-toggle="tooltip"
 												data-bs-original-title="Tooltip title"
 												>graphic design</a
 											>
@@ -940,7 +937,6 @@
 												href="#"
 												class="tooltip-test text-decoration-underline"
 												title="Web Developers"
-												data-bs-toggle="tooltip"
 												data-bs-container="#exampleModalPopovers"
 												data-bs-original-title="Tooltip title"
 												>design</a
@@ -979,20 +975,20 @@
         &lt;div class=&quot;modal-content&quot;&gt;
             &lt;div class=&quot;modal-header&quot;&gt;
                 &lt;h5 class=&quot;modal-title&quot; id=&quot;exampleModalPopoversLabel&quot;&gt;Modal title&lt;/h5&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;exampleModalPopovers&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;exampleModalPopovers&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot; aria-close&gt;&lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-body&quot;&gt;
                 &lt;h5&gt;Popover in a modal&lt;/h5&gt;
-                &lt;p&gt;This &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn btn-secondary popover-test&quot; title=&quot;&quot; data-bs-toggle=&quot;popover&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&quot; data-bs-container=&quot;body&quot; data-bs-original-title=&quot;Popover Title&quot;&gt;button&lt;/a&gt; triggers a popover on click-
+                &lt;p&gt;This &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn btn-secondary popover-test&quot; title=&quot;&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&quot; data-bs-container=&quot;body&quot; data-bs-original-title=&quot;Popover Title&quot;&gt;button&lt;/a&gt; triggers a popover on click-
                 &lt;/p&gt;
                 &lt;hr&gt;
                 &lt;h5&gt;Tooltips in a modal&lt;/h5&gt;
-                &lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;tooltip-test text-decoration-underline&quot; title=&quot;&quot; data-bs-container=&quot;#exampleModalPopovers&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-original-title=&quot;Tooltip title&quot;&gt;This
-                        link&lt;/a&gt; and &lt;a href=&quot;#&quot; class=&quot;tooltip-test text-decoration-underline&quot; title=&quot;&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-container=&quot;#exampleModalPopovers&quot; data-bs-original-title=&quot;Tooltip title&quot;&gt;that link&lt;/a&gt; have tooltips on
+                &lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;tooltip-test text-decoration-underline&quot; title=&quot;&quot; data-bs-container=&quot;#exampleModalPopovers&quot; data-bs-original-title=&quot;Tooltip title&quot;&gt;This
+                        link&lt;/a&gt; and &lt;a href=&quot;#&quot; class=&quot;tooltip-test text-decoration-underline&quot; title=&quot;&quot; data-bs-container=&quot;#exampleModalPopovers&quot; data-bs-original-title=&quot;Tooltip title&quot;&gt;that link&lt;/a&gt; have tooltips on
                     hover-&lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-footer&quot;&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;exampleModalPopovers&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;exampleModalPopovers&quot; aria-expanded=&quot;true&quot; aria-close&gt;Close&lt;/button&gt;
                 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Save changes&lt;/button&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -1067,7 +1063,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="exampleModalScrollable" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="exampleModalScrollable" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -1269,7 +1265,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light material-shadow-none" aria-controls="exampleModalScrollable" aria-expanded="true">
+												class="btn btn-light material-shadow-none" aria-controls="exampleModalScrollable" aria-expanded="true" aria-close>
 												Close
 											</button>
 											<button
@@ -1373,7 +1369,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="varyingcontentModal" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="varyingcontentModal" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<form>
@@ -1436,7 +1432,7 @@
         &lt;div class=&quot;modal-content&quot;&gt;
             &lt;div class=&quot;modal-header&quot;&gt;
                 &lt;h5 class=&quot;modal-title&quot; id=&quot;varyingcontentModalLabel&quot;&gt;New message&lt;/h5&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Close&quot; aria-close&gt;&lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-body&quot;&gt;
                 &lt;form&gt;
@@ -1451,7 +1447,7 @@
                 &lt;/form&gt;
             &lt;/div&gt;
             &lt;div class=&quot;modal-footer&quot;&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;true&quot;&gt;Close&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot; aria-controls=&quot;varyingcontentModal&quot; aria-expanded=&quot;true&quot; aria-close&gt;Close&lt;/button&gt;
                 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Send message&lt;/button&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -1548,7 +1544,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="exampleModalFullscreen" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreen" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -1783,7 +1779,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="bs-example-modal-xl" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="bs-example-modal-xl" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2018,7 +2014,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="bs-example-modal-lg" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="bs-example-modal-lg" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2253,7 +2249,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="bs-example-modal-sm" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="bs-example-modal-sm" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2433,7 +2429,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="fullscreeexampleModal" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="fullscreeexampleModal" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2586,7 +2582,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="exampleModalFullscreenSm" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenSm" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2678,7 +2674,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="exampleModalFullscreenMd" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenMd" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2770,7 +2766,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="exampleModalFullscreenLg" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenLg" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2862,7 +2858,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="exampleModalFullscreenXl" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenXl" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -2954,7 +2950,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="exampleModalFullscreenXxl" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="exampleModalFullscreenXxl" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h6 class="fs-15">
@@ -3133,7 +3129,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="fadeInRightModal" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="fadeInRightModal" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3165,7 +3161,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light" aria-controls="fadeInRightModal" aria-expanded="true">
+												class="btn btn-light" aria-controls="fadeInRightModal" aria-expanded="true" aria-close>
 												Close
 											</button>
 											<button
@@ -3196,7 +3192,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="fadeInleftModal" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="fadeInleftModal" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3228,7 +3224,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light" aria-controls="fadeInleftModal" aria-expanded="true">
+												class="btn btn-light" aria-controls="fadeInleftModal" aria-expanded="true" aria-close>
 												Close
 											</button>
 											<button
@@ -3260,7 +3256,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="fadeInUpModal" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="fadeInUpModal" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3292,7 +3288,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light" aria-controls="fadeInUpModal" aria-expanded="true">
+												class="btn btn-light" aria-controls="fadeInUpModal" aria-expanded="true" aria-close>
 												Close
 											</button>
 											<button
@@ -3325,7 +3321,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="flipModal" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="flipModal" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3357,7 +3353,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light" aria-controls="flipModal" aria-expanded="true">
+												class="btn btn-light" aria-controls="flipModal" aria-expanded="true" aria-close>
 												Close
 											</button>
 											<button
@@ -3390,7 +3386,7 @@
 											<button
 												type="button"
 												class="btn-close"
-												aria-label="Close" aria-controls="zoomInModal" aria-expanded="true"></button>
+												aria-label="Close" aria-controls="zoomInModal" aria-expanded="true" aria-close></button>
 										</div>
 										<div class="modal-body">
 											<h5 class="fs-16">
@@ -3422,7 +3418,7 @@
 										<div class="modal-footer">
 											<button
 												type="button"
-												class="btn btn-light" aria-controls="zoomInModal" aria-expanded="true">
+												class="btn btn-light" aria-controls="zoomInModal" aria-expanded="true" aria-close>
 												Close
 											</button>
 											<button
@@ -3787,7 +3783,7 @@
 										<button
 											type="button"
 											class="btn-close text-end"
-											aria-label="Close" aria-controls="success-Payment" aria-expanded="true"></button>
+											aria-label="Close" aria-controls="success-Payment" aria-expanded="true" aria-close></button>
 									</div>
 									<div class="mt-2">
 										<lord-icon
@@ -4099,7 +4095,7 @@
 									<button
 										type="button"
 										class="btn-close"
-										aria-label="Close" aria-controls="signupModals" aria-expanded="true"></button>
+										aria-label="Close" aria-controls="signupModals" aria-expanded="true" aria-close></button>
 								</div>
 								<div class="alert alert-success rounded-0 mb-0">
 									<p class="mb-0">

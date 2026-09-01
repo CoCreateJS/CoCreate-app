@@ -39,7 +39,7 @@
 									role="alert"
 									aria-live="assertive"
 									data-bs-autohide="false"
-									aria-atomic="true">
+									aria-atomic="true" id="notifications-toast-1">
 									<div class="toast-header">
 										<img
 											src="/assets/images/icons/180x180.png"
@@ -53,8 +53,7 @@
 										<button
 											type="button"
 											class="btn-close"
-											data-bs-dismiss="toast"
-											aria-label="Close"></button>
+											aria-label="Close" aria-controls="notifications-toast-1" aria-close aria-expanded="true"></button>
 									</div>
 									<div class="toast-body">
 										Hello, world! This is a toast message.
@@ -75,7 +74,7 @@
 											role="alert"
 											aria-live="assertive"
 											data-bs-autohide="false"
-											aria-atomic="true">
+											aria-atomic="true" id="notifications-toast-2">
 											<div class="toast-header">
 												<img
 													src="/assets/images/icons/180x180.png"
@@ -90,8 +89,7 @@
 												<button
 													type="button"
 													class="btn-close"
-													data-bs-dismiss="toast"
-													aria-label="Close"></button>
+													aria-label="Close" aria-controls="notifications-toast-2" aria-close aria-expanded="true"></button>
 											</div>
 											<div class="toast-body">
 												Hello, world! This is a toast
@@ -119,7 +117,7 @@
 											role="alert"
 											aria-live="assertive"
 											data-bs-autohide="false"
-											aria-atomic="true">
+											aria-atomic="true" id="notifications-toast-3">
 											<div class="toast-header">
 												<img
 													src="/assets/images/icons/180x180.png"
@@ -134,8 +132,7 @@
 												<button
 													type="button"
 													class="btn-close"
-													data-bs-dismiss="toast"
-													aria-label="Close"></button>
+													aria-label="Close" aria-controls="notifications-toast-3" aria-close aria-expanded="true"></button>
 											</div>
 											<div class="toast-body">
 												See? Just like this.
@@ -147,7 +144,7 @@
 											role="alert"
 											aria-live="assertive"
 											data-bs-autohide="false"
-											aria-atomic="true">
+											aria-atomic="true" id="notifications-toast-4">
 											<div class="toast-header">
 												<img
 													src="/assets/images/icons/180x180.png"
@@ -162,8 +159,7 @@
 												<button
 													type="button"
 													class="btn-close"
-													data-bs-dismiss="toast"
-													aria-label="Close"></button>
+													aria-label="Close" aria-controls="notifications-toast-4" aria-close aria-expanded="true"></button>
 											</div>
 											<div class="toast-body">
 												Heads up, toasts will stack
@@ -206,12 +202,11 @@
 												role="alert"
 												aria-live="assertive"
 												aria-atomic="true"
-												data-bs-toggle="toast"
 												style="
 													position: absolute;
 													top: 16px;
 													right: 16px;
-												">
+												" id="notifications-toast-5">
 												<div class="toast-header">
 													<img
 														src="/assets/images/icons/180x180.png"
@@ -226,8 +221,7 @@
 													<button
 														type="button"
 														class="btn-close"
-														data-bs-dismiss="toast"
-														aria-label="Close"></button>
+														aria-label="Close" aria-controls="notifications-toast-5" aria-close aria-expanded="true"></button>
 												</div>
 												<div class="toast-body">
 													Hello, world! This is a
@@ -258,7 +252,7 @@
 												role="alert"
 												aria-live="assertive"
 												data-bs-autohide="false"
-												aria-atomic="true">
+												aria-atomic="true" id="notifications-toast-6">
 												<div class="toast-header">
 													<img
 														src="/assets/images/icons/180x180.png"
@@ -273,8 +267,7 @@
 													<button
 														type="button"
 														class="btn-close"
-														data-bs-dismiss="toast"
-														aria-label="Close"></button>
+														aria-label="Close" aria-controls="notifications-toast-6" aria-close aria-expanded="true"></button>
 												</div>
 												<div class="toast-body">
 													Hello, world! This is a
@@ -294,14 +287,13 @@
 						<pre class="language-markup" style="height: 275px">
 <code>&lt;!-- Default Toast --&gt;
 &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
-    data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot;&gt;
+    data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot; id=&quot;notifications-toast-8&quot;&gt;
     &lt;div class=&quot;toast-header&quot;&gt;
         &lt;img src=&quot;/assets/images/icons/180x180.png&quot; class=&quot;rounded me-2&quot;
             alt=&quot;...&quot; height=&quot;20&quot;&gt;
         &lt;span class=&quot;fw-semibold me-auto&quot;&gt;CoCreate&lt;/span&gt;
         &lt;small&gt;06 mins ago&lt;/small&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn-close&quot;
-            data-bs-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-label=&quot;Close&quot; aria-controls=&quot;notifications-toast-8&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;toast-body&quot;&gt;
         Hello, world! This is a toast message.
@@ -311,14 +303,13 @@
 <code>&lt;!-- Translucent Toast --&gt;
 &lt;div class=&quot;p-3 bg-light&quot;&gt;
     &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
-        data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot;&gt;
+        data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot; id=&quot;notifications-toast-9&quot;&gt;
         &lt;div class=&quot;toast-header&quot;&gt;
             &lt;img src=&quot;/assets/images/icons/180x180.png&quot; class=&quot;rounded me-2&quot;
                 alt=&quot;...&quot; height=&quot;20&quot;&gt;
             &lt;span class=&quot;fw-semibold me-auto&quot;&gt;CoCreate&lt;/span&gt;
             &lt;small&gt;11 mins ago&lt;/small&gt;
-            &lt;button type=&quot;button&quot; class=&quot;btn-close&quot;
-                data-bs-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-label=&quot;Close&quot; aria-controls=&quot;notifications-toast-9&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
         &lt;/div&gt;
         &lt;div class=&quot;toast-body&quot;&gt;
             Hello, world! This is a toast message.
@@ -328,14 +319,13 @@
 
 <code>&lt;!-- Stacking Toast --&gt;
 &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
-    data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot;&gt;
+    data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot; id=&quot;notifications-toast-10&quot;&gt;
     &lt;div class=&quot;toast-header&quot;&gt;
         &lt;img src=&quot;/assets/images/icons/180x180.png&quot; class=&quot;rounded me-2&quot;
             alt=&quot;...&quot; height=&quot;20&quot;&gt;
         &lt;span class=&quot;fw-semibold me-auto&quot;&gt;CoCreate&lt;/span&gt;
         &lt;small&gt;Just now&lt;/small&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn-close&quot;
-            data-bs-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-label=&quot;Close&quot; aria-controls=&quot;notifications-toast-10&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;toast-body&quot;&gt;
         See? Just like this.
@@ -346,15 +336,14 @@
 &lt;div class=&quot;bg-light&quot; aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot;
     style=&quot;position: relative; min-height: 200px;&quot;&gt;
     &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
-        aria-atomic=&quot;true&quot; data-bs-toggle=&quot;toast&quot;
-        style=&quot;position: absolute; top: 16px; right: 16px;&quot;&gt;
+        aria-atomic=&quot;true&quot;
+        style=&quot;position: absolute; top: 16px; right: 16px;&quot; id=&quot;notifications-toast-11&quot;&gt;
         &lt;div class=&quot;toast-header&quot;&gt;
             &lt;img src=&quot;/assets/images/icons/180x180.png&quot;
                 class=&quot;rounded me-2&quot; alt=&quot;...&quot; height=&quot;20&quot;&gt;
             &lt;span class=&quot;fw-semibold me-auto&quot;&gt;CoCreate&lt;/span&gt;
             &lt;small&gt;06 mins ago&lt;/small&gt;
-            &lt;button type=&quot;button&quot; class=&quot;btn-close&quot;
-                data-bs-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-label=&quot;Close&quot; aria-controls=&quot;notifications-toast-11&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
         &lt;/div&gt;
         &lt;div class=&quot;toast-body&quot;&gt;
             Hello, world! This is a toast message.
@@ -367,14 +356,13 @@
     class=&quot;bg-light d-flex justify-content-center align-items-center&quot;
     style=&quot;height: 200px;&quot;&gt;
     &lt;div class=&quot;toast fade show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;
-        data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot;&gt;
+        data-bs-autohide=&quot;false&quot; aria-atomic=&quot;true&quot; id=&quot;notifications-toast-12&quot;&gt;
         &lt;div class=&quot;toast-header&quot;&gt;
             &lt;img src=&quot;/assets/images/icons/180x180.png&quot;
                 class=&quot;rounded me-2&quot; alt=&quot;...&quot; height=&quot;20&quot;&gt;
             &lt;span class=&quot;fw-semibold me-auto&quot;&gt;CoCreate&lt;/span&gt;
             &lt;small&gt;11 mins ago&lt;/small&gt;
-            &lt;button type=&quot;button&quot; class=&quot;btn-close&quot;
-                data-bs-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-label=&quot;Close&quot; aria-controls=&quot;notifications-toast-12&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
         &lt;/div&gt;
         &lt;div class=&quot;toast-body&quot;&gt;
             Hello, world! This is a toast message.
@@ -470,7 +458,7 @@
 							<div
 								class="toast-container position-absolute p-3"
 								id="toastPlacement">
-								<div class="toast">
+								<div class="toast" id="notifications-toast-7">
 									<div class="toast-header">
 										<img
 											src="/assets/images/icons/180x180.png"
@@ -484,8 +472,7 @@
 										<button
 											type="button"
 											class="btn-close"
-											data-bs-dismiss="toast"
-											aria-label="Close"></button>
+											aria-label="Close" aria-controls="notifications-toast-7" aria-close aria-expanded="true"></button>
 									</div>
 									<div class="toast-body">
 										Hello, world! This is a toast message.
@@ -516,13 +503,13 @@
 
 <code>&lt;div aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot; class=&quot;bd-example bg-light position-relative&quot; style=&quot;height: 300px;&quot;&gt;
     &lt;div class=&quot;toast-container position-absolute p-3&quot; id=&quot;toastPlacement&quot;&gt;
-        &lt;div class=&quot;toast&quot;&gt;
+        &lt;div class=&quot;toast&quot; id=&quot;notifications-toast-13&quot;&gt;
             &lt;div class=&quot;toast-header&quot;&gt;
                 &lt;img src=&quot;/assets/images/icons/180x180.png&quot; class=&quot;rounded me-2&quot;
                     alt=&quot;...&quot; height=&quot;20&quot;&gt;
                 &lt;strong class=&quot;me-auto&quot;&gt;CoCreate&lt;/strong&gt;
                 &lt;small&gt;11 mins ago&lt;/small&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; aria-label=&quot;Close&quot; aria-controls=&quot;notifications-toast-13&quot; aria-close aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;toast-body&quot;&gt;
                 Hello, world! This is a toast message.

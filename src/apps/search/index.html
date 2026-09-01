@@ -21,10 +21,7 @@
 											value="Admin Dashboard" />
 										<a
 											class="btn btn-link link-success btn-lg position-absolute end-0 top-0 material-shadow-none"
-											data-bs-toggle="offcanvas"
-											data-bs-target="#offcanvasExample"
-											aria-controls="offcanvasExample"
-											><i class="ri-mic-fill"></i
+											aria-controls="offcanvasExample" aria-expanded="false" aria-haspopup="dialog"><i class="ri-mic-fill"></i
 										></a>
 									</div>
 								</div>
@@ -60,8 +57,7 @@
 							<button
 								type="button"
 								class="btn-close text-reset float-end"
-								data-bs-dismiss="offcanvas"
-								aria-label="Close"></button>
+								aria-label="Close" aria-controls="offcanvasExample" aria-close aria-expanded="true"></button>
 							<div
 								class="d-flex flex-column h-100 justify-content-center align-items-center">
 								<div class="search-voice">
@@ -80,10 +76,9 @@
 						<li class="nav-item">
 							<a
 								class="nav-link active"
-								data-bs-toggle="tab"
 								href="#all"
 								role="tab"
-								aria-selected="false">
+								aria-selected="false" aria-controls="all">
 								<i
 									class="ri-search-2-line text-muted align-bottom me-1"></i>
 								All Results
@@ -92,11 +87,10 @@
 						<li class="nav-item">
 							<a
 								class="nav-link"
-								data-bs-toggle="tab"
 								id="images-tab"
 								href="#images"
 								role="tab"
-								aria-selected="true">
+								aria-selected="true" aria-controls="images">
 								<i
 									class="ri-image-fill text-muted align-bottom me-1"></i>
 								Images
@@ -105,10 +99,9 @@
 						<li class="nav-item">
 							<a
 								class="nav-link"
-								data-bs-toggle="tab"
 								href="#news"
 								role="tab"
-								aria-selected="false">
+								aria-selected="false" aria-controls="news">
 								<i
 									class="ri-list-unordered text-muted align-bottom me-1"></i>
 								News
@@ -117,10 +110,9 @@
 						<li class="nav-item">
 							<a
 								class="nav-link"
-								data-bs-toggle="tab"
 								href="#video"
 								role="tab"
-								aria-selected="false">
+								aria-selected="false" aria-controls="video">
 								<i
 									class="ri-video-line text-muted align-bottom me-1"></i>
 								Videos
@@ -133,8 +125,7 @@
 									href="#"
 									role="button"
 									id="dropdownMenuLink1"
-									data-bs-toggle="dropdown"
-									aria-expanded="false">
+									aria-expanded="false" aria-haspopup="menu" aria-controls="dropdownMenuLink1-menu">
 									<i
 										class="ri-settings-4-line align-middle me-1"></i>
 									Settings
@@ -142,7 +133,7 @@
 								<ul
 									class="dropdown-menu"
 									aria-close-on="anywhere"
-									aria-labelledby="dropdownMenuLink1">
+									aria-labelledby="dropdownMenuLink1" id="dropdownMenuLink1-menu" aria-hidden="true">
 									<li>
 										<a class="dropdown-item" href="#"
 											>Search Settings</a

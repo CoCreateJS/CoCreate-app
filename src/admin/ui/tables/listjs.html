@@ -24,9 +24,8 @@
 									<button
 										type="button"
 										class="btn btn-success add-btn"
-										data-bs-toggle="modal"
 										id="create-btn"
-										data-bs-target="#showModal">
+										aria-controls="showModal" aria-expanded="false" aria-haspopup="dialog">
 										<i
 											class="ri-add-line align-bottom me-1"></i>
 										Add
@@ -140,8 +139,7 @@
 												<div class="edit">
 													<button
 														class="btn btn-sm btn-success edit-item-btn"
-														data-bs-toggle="modal"
-														data-bs-target="#showModal">
+														aria-controls="showModal" aria-expanded="false" aria-haspopup="dialog">
 														Edit
 													</button>
 												</div>
@@ -933,9 +931,8 @@
 					<button
 						type="button"
 						class="btn-close"
-						data-bs-dismiss="modal"
 						aria-label="Close"
-						id="close-modal"></button>
+						id="close-modal" aria-controls="showModal" aria-close aria-expanded="true"></button>
 				</div>
 				<form
 					class="tablelist-form"
@@ -1048,8 +1045,7 @@
 						<div class="hstack gap-2 justify-content-end">
 							<button
 								type="button"
-								class="btn btn-light"
-								data-bs-dismiss="modal">
+								class="btn btn-light" aria-controls="showModal" aria-close aria-expanded="true">
 								Close
 							</button>
 							<button
@@ -1078,9 +1074,8 @@
 					<button
 						type="button"
 						class="btn-close"
-						data-bs-dismiss="modal"
 						aria-label="Close"
-						id="btn-close"></button>
+						id="btn-close" aria-controls="removeItemModal" aria-close aria-expanded="true"></button>
 				</div>
 				<div class="modal-body">
 					<div class="mt-2 text-center">
@@ -1099,8 +1094,7 @@
 					<div class="d-flex gap-2 justify-content-center mt-4 mb-2">
 						<button
 							type="button"
-							class="btn w-sm btn-light"
-							data-bs-dismiss="modal">
+							class="btn w-sm btn-light" aria-controls="removeItemModal" aria-close aria-expanded="true">
 							Close
 						</button>
 						<button

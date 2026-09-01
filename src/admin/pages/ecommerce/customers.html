@@ -47,9 +47,8 @@
 								<button
 									type="button"
 									class="btn btn-success add-btn"
-									data-bs-toggle="modal"
 									id="create-btn"
-									data-bs-target="#showModal">
+									aria-controls="showModal" aria-expanded="false" aria-haspopup="dialog">
 									<i
 										class="ri-add-line align-bottom me-1"></i>
 									Add Customer
@@ -211,21 +210,18 @@
 												class="list-inline hstack gap-2 mb-0">
 												<li
 													class="list-inline-item edit"
-													data-bs-toggle="tooltip"
 													data-bs-trigger="hover"
 													data-bs-placement="top"
 													title="Edit">
 													<a
 														href="#showModal"
-														data-bs-toggle="modal"
-														class="text-primary d-inline-block edit-item-btn">
+														class="text-primary d-inline-block edit-item-btn" aria-controls="showModal">
 														<i
 															class="ri-pencil-fill fs-16"></i>
 													</a>
 												</li>
 												<li
 													class="list-inline-item"
-													data-bs-toggle="tooltip"
 													data-bs-trigger="hover"
 													data-bs-placement="top"
 													title="Remove">
@@ -291,9 +287,8 @@
 									<button
 										type="button"
 										class="btn-close"
-										data-bs-dismiss="modal"
 										aria-label="Close"
-										id="close-modal"></button>
+										id="close-modal" aria-controls="showModal" aria-close aria-expanded="true"></button>
 								</div>
 								<form class="tablelist-form" autocomplete="off">
 									<div class="modal-body">
@@ -414,8 +409,7 @@
 											class="hstack gap-2 justify-content-end">
 											<button
 												type="button"
-												class="btn btn-light"
-												data-bs-dismiss="modal">
+												class="btn btn-light" aria-controls="showModal" aria-close aria-expanded="true">
 												Close
 											</button>
 											<button
@@ -445,9 +439,8 @@
 										type="button"
 										class="btn-close"
 										id="deleteRecord-close"
-										data-bs-dismiss="modal"
 										aria-label="Close"
-										id="btn-close"></button>
+										id="btn-close" aria-controls="removeItemModal" aria-close aria-expanded="true"></button>
 								</div>
 								<div class="modal-body">
 									<div class="mt-2 text-center">
@@ -472,8 +465,7 @@
 										class="d-flex gap-2 justify-content-center mt-4 mb-2">
 										<button
 											type="button"
-											class="btn w-sm btn-light"
-											data-bs-dismiss="modal">
+											class="btn w-sm btn-light" aria-controls="removeItemModal" aria-close aria-expanded="true">
 											Close
 										</button>
 										<button

@@ -3,10 +3,9 @@
 		type="button"
 		class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle"
 		id="page-header-cart-dropdown"
-		data-bs-toggle="dropdown"
 		data-bs-auto-close="outside"
-		aria-haspopup="true"
-		aria-expanded="false">
+		aria-haspopup="menu"
+		aria-expanded="false" aria-controls="page-header-cart-dropdown-menu">
 		<i class="bx bx-shopping-bag fs-22"></i>
 		<span
 			class="position-absolute topbar-badge cartitem-badge fs-10 translate-middle badge rounded-pill bg-info"
@@ -15,7 +14,7 @@
 	</button>
 	<div
 		class="dropdown-menu dropdown-menu-xl dropdown-menu-end p-0 dropdown-menu-cart"
-		aria-labelledby="page-header-cart-dropdown">
+		aria-labelledby="page-header-cart-dropdown" id="page-header-cart-dropdown-menu" aria-hidden="true" aria-close-on="anywhere">
 		<div
 			class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
 			<div class="row align-items-center">

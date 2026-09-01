@@ -5,10 +5,10 @@
 	right: 20px;
 	z-index: 1000;
 }
-[data-bs-target="#collapseBgGradient"].active {
+[aria-controls="collapseBgGradient"].active {
 	border-color: var(--coc-primary-rgb) !important;
 }
-[data-bs-target="#collapseBgGradient"].active::before {
+[aria-controls="collapseBgGradient"].active::before {
 	content: "\eb80";
 	font-family: remixicon;
 	position: absolute;

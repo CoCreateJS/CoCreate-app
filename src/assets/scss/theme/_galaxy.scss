@@ -383,7 +383,7 @@
             }
         }
 
-        &[data-layout="horizontal"] .navbar-nav .nav-item .nav-link[data-bs-toggle=collapse]:after {
+        &[data-layout="horizontal"] .navbar-nav .nav-item .nav-link[aria-controls]:after {
             color: currentColor;
         }
 

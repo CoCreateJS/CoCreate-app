@@ -308,6 +308,11 @@ dialog.show {
 	transform: none;
 }
 
+.alert[aria-hidden="true"],
+[data-aria-dismissible][aria-hidden="true"] {
+	display: none !important;
+}
+
 /* Placeholder Effect: Only when the element is empty */
 [contenteditable][placeholder]:empty::before {
 	content: attr(placeholder);

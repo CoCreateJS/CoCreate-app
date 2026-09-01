@@ -1383,11 +1383,10 @@
 										<button
 											class="btn btn-primary dropdown-toggle"
 											type="button"
-											data-bs-toggle="dropdown"
-											aria-expanded="false">
+											aria-expanded="false" aria-haspopup="menu" aria-controls="dropdown-admin-ui-forms-elements-1">
 											Dropdown
 										</button>
-										<ul class="dropdown-menu">
+										<ul class="dropdown-menu" id="dropdown-admin-ui-forms-elements-1" aria-hidden="true" aria-close-on="anywhere">
 											<li>
 												<a
 													class="dropdown-item"
@@ -1435,12 +1434,11 @@
 										<button
 											class="btn btn-success dropdown-toggle"
 											type="button"
-											data-bs-toggle="dropdown"
-											aria-expanded="false">
+											aria-expanded="false" aria-haspopup="menu" aria-controls="dropdown-admin-ui-forms-elements-2">
 											Dropdown
 										</button>
 										<ul
-											class="dropdown-menu dropdown-menu-end">
+											class="dropdown-menu dropdown-menu-end" id="dropdown-admin-ui-forms-elements-2" aria-hidden="true" aria-close-on="anywhere">
 											<li>
 												<a
 													class="dropdown-item"
@@ -1480,11 +1478,10 @@
 										<button
 											class="btn btn-outline-secondary material-shadow-none dropdown-toggle"
 											type="button"
-											data-bs-toggle="dropdown"
-											aria-expanded="false">
+											aria-expanded="false" aria-haspopup="menu" aria-controls="dropdown-admin-ui-forms-elements-3">
 											Dropdown
 										</button>
-										<ul class="dropdown-menu">
+										<ul class="dropdown-menu" id="dropdown-admin-ui-forms-elements-3" aria-hidden="true" aria-close-on="anywhere">
 											<li>
 												<a
 													class="dropdown-item"
@@ -1524,12 +1521,11 @@
 										<button
 											class="btn btn-outline-secondary material-shadow-none dropdown-toggle"
 											type="button"
-											data-bs-toggle="dropdown"
-											aria-expanded="false">
+											aria-expanded="false" aria-haspopup="menu" aria-controls="dropdown-admin-ui-forms-elements-4">
 											Dropdown
 										</button>
 										<ul
-											class="dropdown-menu dropdown-menu-end">
+											class="dropdown-menu dropdown-menu-end" id="dropdown-admin-ui-forms-elements-4" aria-hidden="true" aria-close-on="anywhere">
 											<li>
 												<a
 													class="dropdown-item"
@@ -1574,8 +1570,8 @@
 								height: 275px;
 							"><code>&lt;!-- Buttons with dropdowns --&gt;
 &lt;div class=&quot;input-group&quot;&gt;
-    &lt;button class=&quot;btn btn-primary dropdown-toggle&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/button&gt;
-    &lt;ul class=&quot;dropdown-menu&quot;&gt;
+    &lt;button class=&quot;btn btn-primary dropdown-toggle&quot; type=&quot;button&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;menu&quot; aria-controls=&quot;dropdown-example-admin-ui-forms-elements-1&quot;&gt;Dropdown&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu&quot; id=&quot;dropdown-example-admin-ui-forms-elements-1&quot; aria-hidden=&quot;true&quot; aria-close-on=&quot;anywhere&quot;&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
@@ -1587,8 +1583,8 @@
 
 <code>&lt;div class=&quot;input-group&quot;&gt;
     &lt;input type=&quot;text&quot; class=&quot;form-control&quot; aria-label=&quot;Text input with dropdown button&quot;&gt;
-    &lt;button class=&quot;btn btn-success dropdown-toggle&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/button&gt;
-    &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+    &lt;button class=&quot;btn btn-success dropdown-toggle&quot; type=&quot;button&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;menu&quot; aria-controls=&quot;dropdown-example-admin-ui-forms-elements-2&quot;&gt;Dropdown&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot; id=&quot;dropdown-example-admin-ui-forms-elements-2&quot; aria-hidden=&quot;true&quot; aria-close-on=&quot;anywhere&quot;&gt;
       &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
@@ -1598,8 +1594,8 @@
 &lt;/div&gt;</code>
 
 <code>&lt;div class=&quot;input-group&quot;&gt;
-    &lt;button class=&quot;btn btn-outline-secondary dropdown-toggle&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/button&gt;
-    &lt;ul class=&quot;dropdown-menu&quot;&gt;
+    &lt;button class=&quot;btn btn-outline-secondary dropdown-toggle&quot; type=&quot;button&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;menu&quot; aria-controls=&quot;dropdown-example-admin-ui-forms-elements-3&quot;&gt;Dropdown&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu&quot; id=&quot;dropdown-example-admin-ui-forms-elements-3&quot; aria-hidden=&quot;true&quot; aria-close-on=&quot;anywhere&quot;&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action before&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action before&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
@@ -1607,8 +1603,8 @@
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
     &lt;input type=&quot;text&quot; class=&quot;form-control&quot; aria-label=&quot;Text input with 2 dropdown buttons&quot;&gt;
-    &lt;button class=&quot;btn btn-outline-secondary dropdown-toggle&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/button&gt;
-    &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+    &lt;button class=&quot;btn btn-outline-secondary dropdown-toggle&quot; type=&quot;button&quot; aria-expanded=&quot;false&quot; aria-haspopup=&quot;menu&quot; aria-controls=&quot;dropdown-example-admin-ui-forms-elements-4&quot;&gt;Dropdown&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot; id=&quot;dropdown-example-admin-ui-forms-elements-4&quot; aria-hidden=&quot;true&quot; aria-close-on=&quot;anywhere&quot;&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
