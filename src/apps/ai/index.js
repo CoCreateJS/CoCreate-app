@@ -57,10 +57,20 @@
 
 	const highlightCodeBlocks = (element) => {
 		clearTimeout(highlightTimers.get(element));
-		highlightTimers.set(
-			element,
-			setTimeout(() => globalThis.Prism?.highlightAllUnder(element), 80)
-		);
+		let attempts = 0;
+		const highlight = () => {
+			if (globalThis.Prism?.highlightAllUnder) {
+				globalThis.Prism.highlightAllUnder(element);
+				highlightTimers.delete(element);
+				return;
+			}
+			if (++attempts < 50) {
+				highlightTimers.set(element, setTimeout(highlight, 100));
+			} else {
+				highlightTimers.delete(element);
+			}
+		};
+		highlightTimers.set(element, setTimeout(highlight, 80));
 	};
 
     const setStatus = (label, state = "") => {

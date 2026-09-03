@@ -8,6 +8,8 @@
 	--ai-accent-rgb: var(--coc-primary-rgb);
 	display: flex;
 	position: relative;
+	container-name: ai-chat;
+	container-type: inline-size;
 	width: 100%;
 	height: 100%;
 	min-height: 0;
@@ -537,10 +539,17 @@
 	flex: 1 1 auto;
 }
 
-.ai-message-scroll .simplebar-content-wrapper,
+.ai-message-scroll .simplebar-content-wrapper {
+	display: flex;
+	height: 100%;
+	min-height: 100%;
+	flex-direction: column;
+}
+
 .ai-message-scroll .simplebar-content {
 	display: flex;
 	min-height: 100%;
+	flex: 1 0 auto;
 	flex-direction: column;
 }
 
@@ -776,7 +785,7 @@
 	opacity: 0.55;
 }
 
-@media (max-width: 760px) {
+@container ai-chat (max-width: 768px) {
 	.ai-sidebar.show + .ai-sidebar-backdrop {
 		display: block;
 		position: absolute;

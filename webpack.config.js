@@ -8,6 +8,31 @@ import { EsbuildPlugin } from "esbuild-loader";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+function getUtilsChunkName(module) {
+    const resource = module.nameForCondition?.() || module.resource || "";
+    const normalizedResource = resource.replace(/\\/g, "/");
+    const match = normalizedResource.match(
+        /\/CoCreate-utils\/src\/modules\/(.+?)\.js$/
+    );
+
+    if (!match) {
+        return "utils-shared";
+    }
+
+    const modulePath = match[1];
+    if (modulePath === "ast/index" || modulePath === "ast/operators") {
+        return "utils-ast";
+    }
+
+    const readableName = modulePath
+        .replace(/\/index$/, "")
+        .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+        .replace(/[\/_]+/g, "-")
+        .toLowerCase();
+
+    return `utils-${readableName}`;
+}
+
 import CoCreateConfig from "./CoCreate.config.js";
 import cocreateWebpack from "@cocreate/webpack";
 const { ModuleGenerator, FileUploader, UnicodeLoader } = cocreateWebpack;
@@ -169,7 +194,23 @@ export default async (env, argv) => {
                 maxInitialRequests: 30,
                 enforceSizeThreshold: 50000,
                 cacheGroups: {
-                    defaultVendors: false
+                    defaultVendors: false,
+                    utils: {
+                        test: /[\\/]CoCreate-utils[\\/]src[\\/]modules[\\/]/,
+                        name: getUtilsChunkName,
+                        chunks: "all",
+                        enforce: true,
+                        priority: 30,
+                        reuseExistingChunk: true
+                    },
+                    socketClientBrowserWs: {
+                        test: /[\\/]CoCreate-socket-client[\\/]node_modules[\\/]ws[\\/]browser\.js$/,
+                        name: "socket-client-browser-ws",
+                        chunks: "all",
+                        enforce: true,
+                        priority: 30,
+                        reuseExistingChunk: true
+                    }
                 }
             }
         },

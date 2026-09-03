@@ -25,7 +25,7 @@ export default {
     "name": "AI Instructions",
     "singularName": "AI Instruction",
     "path": "apps/ai/instructions",
-    "array": "ai-guidance",
+    "array": "ai-instructions",
     "category": "Settings",
     "mainViews": [
       "table",
@@ -41,12 +41,12 @@ export default {
       {
         "label": "Title",
         "tagName": "input",
-        "filterTemplate": "<input id=\"ai-instruction-title-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by title\" filter-query=\"$document .list-view\" filter-query-key=\"title.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/ai/instructions/form.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"ai-guidance\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.title}}</span>\n          </a>\n        ",
+        "filterTemplate": "<input id=\"ai-instruction-description-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by description\" filter-query=\"$document .list-view\" filter-query-key=\"description.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/ai/instructions/form.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"ai-instructions\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.description}}</span>\n          </a>\n        ",
         "attributes": [
           { "name": "class", "value": "form-control" },
-          { "name": "id", "value": "ai-instruction-title" },
-          { "name": "key", "value": "title" },
+          { "name": "id", "value": "ai-instruction-description" },
+          { "name": "key", "value": "description" },
           { "name": "type", "value": "text" },
           { "name": "required", "value": true }
         ]

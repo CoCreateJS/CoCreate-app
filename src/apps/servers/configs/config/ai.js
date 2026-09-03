@@ -44,41 +44,42 @@ export default {
                 "allowUnconfirmedLocalWrite": false,
                 "publicPath": "/public",
                 "tools": {
-                    "server_crud": {
-                        "description": "The standard and only database interface for CoCreate application and system data. Use this tool immediately when a user asks about records in our database or system, records we have, registered records, lists, or counts. Never generate SQL or ask for a database type, table, ORM, or driver. Infer array from the named resource, such as organizations -> array=\"organizations\", and use the unified CRUD payload. The method prefix defines the response payload key: object.read, object.create, object.update, and object.delete return response.object; if that method-derived key is unavailable, use response.data. Use method=\"object.create\" with object as an array. Use method=\"object.read\" with filter.query, filter.limit, filter.sort, and filter.key. filter.key is the native field-selection object, for example {\"name\":1,\"_id\":0}; do not use filter.projection. Request only the fields needed instead of asking for confirmation because unrelated fields may be sensitive. Use method=\"object.update\" with object as an array. Use method=\"object.delete\" with object identifiers or a query. Do not use array=\"secrets\" for external API credentials and never write apis.key with this tool: create the non-secret apis record, then use request_api_credential. Writes to endpoints and webhooks must use the exact executable AST record structures from API guidance; never substitute handler/code/source/route/events pseudocode. Do not supply socket or request-context fields; the authenticated organization_id is injected by the server.",
+                    "crud": {
+                        "description": "The database-agnostic interface for CoCreate application and system data. Call get_ai_instructions with name=crud before using database-, array-, or object-level CRUD. Never generate SQL or ask for a database engine. Only method is universally required. Omitted database defaults to the authenticated organization_id. storage, database, and array accept one name or an array of names for multi-target execution through the same unified envelope. The response payload key matches the method target: database.*, array.*, and object.* return database, array, and object respectively. Do not expect the current CRUD payload under data. Do not supply organization_id, socket, or request-context fields because authenticated scope is injected by the server. External API credentials must use request_api_credential, and endpoint or webhook writes must follow the executable structures in the applicable instructions.",
                         "parameters": {
                             "type": "object",
                             "properties": {
                                 "method": {
                                     "type": "string",
-                                    "description": "Dot-notated CRUD operation, such as object.create, object.read, object.update, or object.delete."
+                                    "description": "Dot-notated target and action: database.read/delete; array.create/read/update/delete; or object.create/read/update/delete."
+                                },
+                                "database": {
+                                    "description": "Optional database name or array of database names. Omitted database defaults to the authenticated organization_id."
                                 },
                                 "array": {
-                                    "type": "string",
-                                    "description": "Logical collection or array name."
+                                    "description": "Logical array name, array of names, or old-name to new-name mapping for array.update."
                                 },
                                 "object": {
                                     "type": "array",
                                     "items": {
                                         "type": "object"
                                     },
-                                    "description": "Documents or document identifiers used by create, update, or delete operations."
+                                    "description": "Optional objects or object identifiers used by create, update, or delete operations; object.read does not require it."
                                 },
                                 "filter": {
                                     "type": "object",
                                     "description": "Native query controls. Use query for matching, key for field selection, limit for page size, index for offset, and sort as [{key, direction}]."
                                 },
                                 "storage": {
-                                    "description": "Optional storage adapter name or array of adapter names."
+                                    "description": "Optional configured storage wrapper name or array of names. Multiple names run the unified request across those storage targets."
                                 },
                                 "upsert": {
                                     "type": "boolean",
-                                    "description": "Create the document when an update does not find a match."
+                                    "description": "Create the object when an update does not find a match."
                                 }
                             },
                             "required": [
-                                "method",
-                                "array"
+                                "method"
                             ],
                             "additionalProperties": true
                         }
@@ -105,7 +106,7 @@ export default {
                         }
                     },
                     "request_api_credential": {
-                        "description": "Shows a friendly, secure, CRUD-mapped API-key input card for an existing API configuration. Before calling it, briefly tell the user which integration is being connected and what the key enables; do not show or narrate the underlying CRUD payload. For a new integration, create its apis record with server_crud first, then call this tool using that exact name. Use it whenever a user needs to connect, configure, or replace a credential for Stripe, OpenAI, SendGrid, GitHub, or another API. Never ask the user to paste a credential into chat, never read a credential from apis or keys, and never include a credential in another tool payload. The card saves directly to apis.key and the AI never receives the value.",
+                        "description": "Shows a friendly, secure, CRUD-mapped API-key input card for an existing API configuration. Before calling it, briefly tell the user which integration is being connected and what the key enables; do not show or narrate the underlying CRUD payload. For a new integration, create its apis record with crud first, then call this tool using that exact name. Use it whenever a user needs to connect, configure, or replace a credential for Stripe, OpenAI, SendGrid, GitHub, or another API. Never ask the user to paste a credential into chat, never read a credential from apis or keys, and never include a credential in another tool payload. The card saves directly to apis.key and the AI never receives the value.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -120,17 +121,17 @@ export default {
                             "additionalProperties": false
                         }
                     },
-                    "get_ai_guidance": {
-                        "description": "Retrieves focused operating guidance for a specialized task. Call topic=apis before acting on any third-party integration feature, including payments, checkout, customers, subscriptions, invoices, refunds, email, messaging, or provider webhooks—even when the request sounds like a general coding task. Core and default topics are loaded by the server; all other topics are retrieved from the requesting organization's ai-guidance records.",
+                    "get_ai_instructions": {
+                        "description": "Retrieves focused operating instructions and supporting context by name. Call name=apis before acting on any third-party integration feature, including payments, checkout, customers, subscriptions, invoices, refunds, email, messaging, or provider webhooks—even when the request sounds like a general coding task. Call name=ast before creating, updating, or validating executable AST; its sources include the deployed AST runtime when available. Default instructions are loaded by the server; all others are retrieved from the requesting organization's ai-instructions records.",
                         "parameters": {
                             "type": "object",
                             "properties": {
-                                "topic": {
+                                "name": {
                                     "type": "string",
-                                    "description": "Guidance topic, such as crud, files, apis, crm, or an organization-specific workflow."
+                                    "description": "Instruction name, such as crud, files, apis, crm, or an organization-specific workflow."
                                 }
                             },
-                            "required": ["topic"],
+                            "required": ["name"],
                             "additionalProperties": false
                         }
                     },
@@ -187,13 +188,46 @@ export default {
                                     "description": "Event name emitted to the receiving server or worker handler."
                                 },
                                 "worker": {
-                                    "description": "One worker ID or an array of worker IDs."
+                                    "description": "One worker ID or an array of worker IDs.",
+                                    "oneOf": [
+                                        {
+                                            "type": ["string", "number"]
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": ["string", "number"]
+                                            }
+                                        }
+                                    ]
                                 },
                                 "server": {
-                                    "description": "One server ID or an array of server IDs."
+                                    "description": "One server ID or an array of server IDs.",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
                                 },
                                 "cluster": {
-                                    "description": "One cluster ID or an array of cluster IDs."
+                                    "description": "One cluster ID or an array of cluster IDs.",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
                                 },
                                 "master": {
                                     "type": "boolean",
@@ -202,6 +236,10 @@ export default {
                                 "broadcast": {
                                     "type": "boolean",
                                     "description": "Broadcast across all applicable targets."
+                                },
+                                "broadcastSender": {
+                                    "type": "boolean",
+                                    "description": "Include the originating location in delivery and await its resulting envelope. Set false for fire-and-forget delivery that excludes the origin."
                                 },
                                 "data": {
                                     "description": "Optional event-specific JSON-serializable data."
@@ -387,8 +425,18 @@ export default {
                                     "description": "Message payload object to transmit"
                                 },
                                 "clientId": {
-                                    "type": "string",
-                                    "description": "Stable target client ID. Defaults to the client that initiated the AI request."
+                                    "description": "One stable target client ID or an array of client IDs. Defaults to the client that initiated the AI request.",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
                                 },
                                 "broadcast": {
                                     "type": "boolean",
@@ -466,7 +514,7 @@ export default {
                         }
                     },
                     "manage_server_routes": {
-                        "description": "Registers, lists, or removes custom server routes in server.routes Map. RESTRICTED: Platform-level action reserved exclusively for platform organization matching server.organization_id.",
+                        "description": "Lists, registers, or removes exceptional custom routes in server.routes. Use only when the user explicitly requests custom route handling; normal CoCreate behavior does not require routes or local files. RESTRICTED: Platform-level action reserved exclusively for the platform organization matching server.organization_id.",
                         "parameters": {
                             "type": "object",
                             "properties": {
