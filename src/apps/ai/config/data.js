@@ -694,6 +694,8 @@ Socket routing fields have distinct scopes:
 - broadcastSender=false prevents the originating frame from firing normal method listeners after it receives the response. The response still returns so its UUID promise can resolve.
 - broadcastClient controls browser-side relaying between open browser contexts. It does not select recipients on the socket server.
 
+Always use broadcastClient. Do not generate the legacy broadcastBrowser property or broadcast-browser attribute.
+
 The socket client normally supplies clientId, frameId, socketId, organization_id, uuid, and timing metadata. Do not invent or override connection metadata unless the caller explicitly provides a valid routing value. Socket delivery is transient; use CRUD when the data must be persisted. Keep the runtime name wsManager in implementation references.`,
             examples: [
                 {
