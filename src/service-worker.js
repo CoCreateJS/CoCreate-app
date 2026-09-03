@@ -24,6 +24,8 @@
 
 const cacheName = "CoCreate-v1.0.0";
 const updatedOn = new Date()
+const stateDatabaseName = "system";
+const stateStoreName = "state";
 
 let organization_id = "";
 let storage = true;
@@ -31,6 +33,84 @@ let storage = true;
 const queryString = self.location.search;
 const queryParams = new URLSearchParams(queryString);
 let cacheType = queryParams.get("cache");
+
+function openStateDatabase() {
+	return new Promise((resolve, reject) => {
+		const request = indexedDB.open(stateDatabaseName);
+		request.onsuccess = () => {
+			const database = request.result;
+			if (database.objectStoreNames.contains(stateStoreName)) {
+				resolve(database);
+				return;
+			}
+
+			const version = database.version + 1;
+			database.close();
+			const upgradeRequest = indexedDB.open(stateDatabaseName, version);
+			upgradeRequest.onupgradeneeded = () => {
+				const upgradedDatabase = upgradeRequest.result;
+				if (!upgradedDatabase.objectStoreNames.contains(stateStoreName)) {
+					upgradedDatabase.createObjectStore(stateStoreName, { keyPath: "_id" });
+				}
+			};
+			upgradeRequest.onsuccess = () => resolve(upgradeRequest.result);
+			upgradeRequest.onerror = () => reject(upgradeRequest.error);
+		};
+		request.onerror = () => reject(request.error);
+	});
+}
+
+async function setActiveState(state, theme) {
+	const database = await openStateDatabase();
+	return new Promise((resolve, reject) => {
+		const transaction = database.transaction(stateStoreName, "readwrite");
+		transaction.objectStore(stateStoreName).put({
+			_id: "activeState",
+			state,
+			theme,
+			updatedAt: Date.now()
+		});
+		transaction.oncomplete = () => {
+			database.close();
+			resolve();
+		};
+		transaction.onerror = () => {
+			database.close();
+			reject(transaction.error);
+		};
+	});
+}
+
+async function getActiveState() {
+	const database = await openStateDatabase();
+	return new Promise((resolve, reject) => {
+		const transaction = database.transaction(stateStoreName, "readonly");
+		const request = transaction.objectStore(stateStoreName).get("activeState");
+		request.onsuccess = () => resolve(request.result || null);
+		request.onerror = () => reject(request.error);
+		transaction.oncomplete = () => database.close();
+	});
+}
+
+async function applyActiveState(request) {
+	if (request.mode !== "navigate" || new URL(request.url).origin !== self.location.origin) {
+		return { request, hasState: false };
+	}
+
+	const activeState = await getActiveState();
+	const state = activeState?.state;
+	if (!state || state === "{}") return { request, hasState: false };
+
+	const headers = new Headers(request.headers);
+	headers.set("X-State", state);
+	if (activeState.theme) {
+		headers.set("X-Prefers-Color-Scheme", activeState.theme);
+	}
+	return {
+		request: new Request(request, { headers }),
+		hasState: true
+	};
+}
 
 self.addEventListener("install", (e) => {
 	console.log("Service Worker Installing");
@@ -63,6 +143,8 @@ self.addEventListener("fetch", async (e) => {
 			caches
 				.match(e.request)
 				.then(async (cacheResponse) => {
+					const stateRequest = await applyActiveState(e.request);
+					if (stateRequest.hasState) cacheResponse = null;
 					let fetchedOn;
 					if (cacheResponse && cacheType !== "false") {
 						fetchedOn = cacheResponse.headers.get("fetched-on");
@@ -89,7 +171,7 @@ self.addEventListener("fetch", async (e) => {
 					} else {
 						// console.log('fetching fetchOn less', fetchedOn > updatedOn)
 
-						const networkResponse = await fetch(e.request);
+						const networkResponse = await fetch(stateRequest.request);
 
 						if (!organization_id)
 							organization_id =
@@ -100,6 +182,7 @@ self.addEventListener("fetch", async (e) => {
 						if (storageHeader) storage = storageHeader;
 
 						if (
+							!stateRequest.hasState &&
 							cacheType &&
 							cacheType !== "false" &&
 							networkResponse.status === 200
@@ -179,7 +262,12 @@ self.addEventListener("fetch", async (e) => {
 });
 
 self.addEventListener("message", function (event) {
-	if (event.data.action === "getOrganization")
+	if (event.data.action === "setActiveState") {
+		event.waitUntil(setActiveState(
+			event.data.state || "{}",
+			event.data.theme
+		));
+	} else if (event.data.action === "getOrganization")
 		event.source.postMessage({
 			action: "getOrganization",
 			organization_id
