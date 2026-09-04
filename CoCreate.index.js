@@ -478,7 +478,7 @@ lazyLoad('elementConfig', '[config-query]', () => import(/*webpackChunkName: "el
 lazyLoad('validation', '[actions*="validate"], [required]', () => import(/*webpackChunkName: "validation"*/ '@cocreate/validation'));
 lazyLoad('calculate', '[calculate]', () => import(/*webpackChunkName: "calculate"*/ '@cocreate/calculate'));
 lazyLoad('selection', 'input, textarea, [contenteditable]', () => import(/*webpackChunkName: "selection"*/ '@cocreate/selection'));
-lazyLoad('cursors', 'input, textarea, [contenteditable]', () => import(/*webpackChunkName: "cursors"*/ '@cocreate/cursors'));
+lazyLoad('cursors', '[array][object][key][crdt="true"]', () => import(/*webpackChunkName: "cursors"*/ '@cocreate/cursors'));
 lazyLoad('text', 'input, textarea, [contenteditable]', () => import(/*webpackChunkName: "text"*/ '@cocreate/text'));
 lazyLoad('rich-text', '[actions*="nodeName"], [actions*="cloneElement"], [actions*="deleteElement"], [node-name]', () => import(/*webpackChunkName: "rich-text"*/ '@cocreate/rich-text'));
 lazyLoad('codearea', '[type="code"]', () => import(/*webpackChunkName: "codearea"*/ '@cocreate/codearea'));

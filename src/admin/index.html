@@ -137,12 +137,32 @@
 					tabindex="-1"
 					aria-labelledby="offcanvas-app-label"
 					aria-close-on="button">
-					<div
-						id="offcanvas-app-view"
-						state-id="offcanvas-app-view"
-						state-overwrite
-						src=""
-						input-query="$closest .page-content #main-view"></div>
+					<form
+						class="card mb-0 d-flex flex-column flex-grow-1 min-height:0 h-100 overflow:hidden"
+						array
+						object
+						state-id="offcanvas-app-form"
+						state-overwrite>
+						<div
+							class="card-header text-center border-bottom-0"
+							src="components/offcanvas-header.html"
+							aria-label="App details header"></div>
+						<div
+							class="flex-grow-1 min-height:0 height:0"
+							plugin='{"$SimpleBar": ["$this", {}]}'>
+							<div
+								id="offcanvas-app-view"
+								state-id="offcanvas-app-view"
+								state-overwrite
+								input-query="$closest .page-content #main-view"
+								src=""></div>
+						</div>
+						<div
+							class="card-footer flex-shrink-0"
+							src="/components/form-buttons.html"
+							role="region"
+							aria-label="Form actions"></div>
+					</form>
 					<div resize="left"></div>
 				</div>
 			</div>
@@ -160,8 +180,17 @@
 			aria-label="CoCreate AI"
 			resizable
 			resize
-			resize-query="$document #page-topbar, $document .main-content"
+			resize-query="$document #page-topbar, $document .main-content, $document #offcanvas-app"
 			resize.style="margin-right:$width">
+			<button
+				type="button"
+				class="ai-chat-panel-refresh"
+				aria-label="Refresh AI chat"
+				title="Refresh AI chat">
+				<i
+					class="ri-refresh-line"
+					aria-hidden="true"></i>
+			</button>
 			<button
 				type="button"
 				class="ai-chat-panel-close"

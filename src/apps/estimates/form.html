@@ -1,16 +1,4 @@
-<form
-	class="card mb-0"
-	array="invoices"
-	object
-	state-id="offcanvas-app-form"
-	state-overwrite>
-	<div
-		class="card-header text-center border-bottom-0"
-		input-query=".details-view-btn[]"
-		input.state.src="/apps/estimates/details.html"
-		src="components/offcanvas-header.html"></div>
-	<div class="form-container" plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="card-body d-flex flex-column gap-3">
+<div class="card-body d-flex flex-column gap-3">
 			<input type="hidden" key="type" value="estimate" />
 			<div
 				class="d-flex flex-wrap gap-3 align-items-start border-bottom border-bottom-dashed pb-3">
@@ -87,6 +75,14 @@
 					<label for="totalamountInput" class="form-label">Total Amount</label>
 					<input type="text" class="form-control bg-light border-0" id="totalamountInput" placeholder="$0.00" readonly aria-label="Total Amount"/>
 				</div>
+			</div>
+			<div class="d-flex justify-content-end gap-2 d-print-none w-100">
+				<a href="javascript:void(0);" class="btn btn-primary">
+					<i class="ri-download-2-line align-bottom me-1"></i> Download
+				</a>
+				<a href="javascript:void(0);" class="btn btn-danger">
+					<i class="ri-send-plane-fill align-bottom me-1"></i> Send
+				</a>
 			</div>
 		</div>
 		<div class="pt-3 border-top border-top-dashed">
@@ -314,19 +310,3 @@
 			</div>
 		</div>
 		</div>
-	</div>
-	<div class="card-footer d-flex flex-shrink-0 justify-content-end gap-2 d-print-none">
-		<button
-			type="button"
-			class="btn btn-light"
-			title="Cancel"
-			aria-label="Cancel form"
-			aria-controls="offcanvas-app"
-			aria-expanded="true" aria-close>
-			Cancel
-		</button>
-		<button class="btn btn-success" actions="validate, save" aria-label="Save estimate"><i class="ri-printer-line align-bottom me-1"></i> Save</button>
-		<a href="javascript:void(0);" class="btn btn-primary" aria-label="Download estimate"><i class="ri-download-2-line align-bottom me-1"></i> Download</a>
-		<a href="javascript:void(0);" class="btn btn-danger" aria-label="Send estimate"><i class="ri-send-plane-fill align-bottom me-1"></i> Send</a>
-	</div>
-</form>

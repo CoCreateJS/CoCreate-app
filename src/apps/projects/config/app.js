@@ -7,6 +7,7 @@ export default {
     "singularName": "Project",
     "path": "apps/projects",
     "array": "projects",
+    "category": "workspace",
     "mainViews": [
       "table",
       "grid",

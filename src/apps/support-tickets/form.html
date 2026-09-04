@@ -1,18 +1,4 @@
-<form
-	class="card mb-0"
-	array="support_tickets"
-	object
-	state-id="offcanvas-app-form"
-	state-overwrite>
-	<div
-		class="card-header text-center border-bottom-0"
-		input-query=".details-view-btn[]"
-		input.state.src="/apps/support-tickets/details.html"
-		src="components/offcanvas-header.html"
-		role="region"
-		aria-label="Support Ticket Form Header"></div>
-	<div class="form-container" plugin='{"$SimpleBar":["$this",{}]}'>
-		<div class="card-body d-flex flex-wrap align-items:flex-start">
+<div class="card-body d-flex flex-wrap align-items:flex-start">
 			<label
 				class="form-label flex-grow-1 flex-basis:140px min-width:120px"
 				for="ticket-id-field">
@@ -145,10 +131,3 @@
 					placeholder="Describe the issue, request, or question"></textarea>
 			</label>
 		</div>
-	</div>
-	<div
-		class="card-footer flex-shrink-0"
-		src="/components/form-buttons.html"
-		role="region"
-		aria-label="Form actions"></div>
-</form>

@@ -10,12 +10,11 @@
 		#details-btn {
 			display: none;
 		}
-		/* Show Details button if src ends with /details.html */
-		[src$="/details.html"] #form-btn {
+		/* The shared view owns src; its header is a sibling inside the form. */
+		form:has(#offcanvas-app-view[src*="/details.html"]) #form-btn {
 			display: inline;
 		}
-		/* Show Form button if src ends with /form.html */
-		[src$="/form.html"] #details-btn {
+		form:has(#offcanvas-app-view[src*="/form.html"]) #details-btn {
 			display: inline;
 		}
 	</style>
@@ -26,13 +25,12 @@
 			role="region"
 			aria-label="More actions">
 			<a
-				class="dropdown"
+				class="dropdown text-muted d-inline-block"
 				role="button"
 				aria-haspopup="menu"
 				aria-controls="offcanvas-header-dropdown"
 				aria-expanded="false"
-				aria-label="More actions"
-				class="text-muted d-inline-block">
+				aria-label="More actions">
 				<i class="ri-more-2-fill align-middle fs-18"></i>
 			</a>
 			<ul
@@ -47,6 +45,8 @@
 						href="javascript:void(0);"
 						state-to="offcanvas-app-view"
 						state.src=""
+						data-view="details"
+						onclick="this.setAttribute('state.src', document.getElementById('offcanvas-app-view').getAttribute('src').replace('/form.html', '/details.html'))"
 						role="menuitem"
 						><i class="ri-eye-fill align-bottom me-2 text-muted"></i
 						>View</a
@@ -58,6 +58,8 @@
 						href="javascript:void(0);"
 						state-to="offcanvas-app-view"
 						state.src=""
+						data-view="form"
+						onclick="this.setAttribute('state.src', document.getElementById('offcanvas-app-view').getAttribute('src').replace('/details.html', '/form.html'))"
 						role="menuitem"
 						><i class="ri-eye-fill align-bottom me-2 text-muted"></i
 						>Edit</a
@@ -93,6 +95,8 @@
 				type="button"
 				state-to="offcanvas-app-view"
 				state.src=""
+				data-view="details"
+					onclick="this.setAttribute('state.src', document.getElementById('offcanvas-app-view').getAttribute('src').replace('/form.html', '/details.html'))"
 				class="btn btn-sm btn-outline-primary ms-2 details-view-btn"
 				title="Details"
 				aria-label="Details">
@@ -105,6 +109,8 @@
 				type="button"
 				state-to="offcanvas-app-view"
 				state.src=""
+				data-view="form"
+					onclick="this.setAttribute('state.src', document.getElementById('offcanvas-app-view').getAttribute('src').replace('/details.html', '/form.html'))"
 				class="btn btn-sm btn-outline-primary ms-2 form-view-btn"
 				title="Edit"
 				aria-label="Edit">

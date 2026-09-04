@@ -35,10 +35,10 @@ File: Custom Css File
 .ai-chat-panel {
 	display: none;
 	position: fixed;
-	z-index: 1010;
+	z-index: 1045;
 	top: 0;
 	right: 0;
-	width: min(640px, 75vw);
+	width: min(400px, 75vw);
 	min-width: 380px;
 	max-width: 75vw;
 	height: 100dvh;
@@ -73,7 +73,8 @@ File: Custom Css File
 	height: 100%;
 }
 
-.ai-chat-panel-close {
+.ai-chat-panel-close,
+.ai-chat-panel-refresh {
 	display: grid;
 	position: absolute;
 	z-index: 3;
@@ -91,7 +92,12 @@ File: Custom Css File
 	cursor: pointer;
 }
 
-.ai-chat-panel-close:hover {
+.ai-chat-panel-refresh {
+	right: 54px;
+}
+
+.ai-chat-panel-close:hover,
+.ai-chat-panel-refresh:hover {
 	color: var(--coc-body-color);
 	background: var(--coc-tertiary-bg);
 }

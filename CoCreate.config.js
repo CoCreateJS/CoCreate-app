@@ -13,7 +13,7 @@ export default {
             entry: "./src",
             array: "files",
             languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
-            exclude: ["/config/", "/scss/", "/assets/js", "/assets/icons/", "/assets/images/", "/assets/svg"],
+            exclude: ["/config/", "/scss/", "/assets/js", "/assets/icons/", "/assets/svg"],
             object: {
                 name: "{{name}}",
                 src: "{{source}}",
@@ -285,7 +285,7 @@ export default {
         },
         cursors: {
             import: "@cocreate/cursors",
-            selector: "input, textarea, [contenteditable]",
+            selector: "[array][object][key][crdt='true']",
             path: "../CoCreate-modules/CoCreate-cursors",
             repo: "github.com/CoCreate-app/CoCreate-cursors.git"
         },

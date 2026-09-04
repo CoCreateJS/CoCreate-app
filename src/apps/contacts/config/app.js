@@ -407,38 +407,6 @@ export default {
         ]
       },
       {
-        "label": "Lead Score",
-        "tagName": "input",
-        "filterTemplate": "<input id=\"lead_score-filter\" class=\"form-control\" type=\"number\" placeholder=\"Enter lead score\" filter-query=\"$document .list-view\" filter-query-key=\"lead_score\" />",
-        "tableTemplate": "{{object.lead_score}}",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "form-control"
-          },
-          {
-            "name": "id",
-            "value": "lead_score-field"
-          },
-          {
-            "name": "placeholder",
-            "value": "Enter lead score"
-          },
-          {
-            "name": "required",
-            "value": false
-          },
-          {
-            "name": "key",
-            "value": "lead_score"
-          },
-          {
-            "name": "type",
-            "value": "number"
-          }
-        ]
-      },
-      {
         "label": "Availability",
         "tagName": "input",
         "filterTemplate": "<input id=\"availability-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter availability\" filter-query=\"$document .list-view\" filter-query-key=\"availability.$regex\" filter-query-options=\"i\" />",
