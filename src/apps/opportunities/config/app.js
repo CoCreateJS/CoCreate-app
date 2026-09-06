@@ -6,6 +6,8 @@ export default {
     "name": "Opportunities",
     "singularName": "Opportunity",
     "path": "apps/opportunities",
+    "card": "/apps/opportunities/card.html",
+    "cardTemplate": "/apps/opportunities/card-template.html",
     "array": "opportunities",
     "category": "CRM",
     "mainViews": [

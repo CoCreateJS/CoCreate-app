@@ -6,7 +6,9 @@ export default {
     "name": "Blog",
     "singularName": "Blog Post",
     "path": "apps/blog",
-    "array": "blog",
+    "card": "/apps/blog/card.html",
+    "cardTemplate": "/apps/blog/card-template.html",
+    "array": "posts",
     "category": "Marketing",
     "mainViews": [
       "table",

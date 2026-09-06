@@ -619,8 +619,28 @@ The examples above illustrate record shape and composition, not literal IDs or a
             description: "Server guidance",
             default: true,
             enabled: true,
-            instructions: "Use configured server, route, storage, cluster, and autoscaler tools for infrastructure work. Platform-only operations are restricted to the platform organization. Explain intended effects before a change to server state.",
-            examples: [],
+            instructions: `Use manage_server_cluster to inspect server topology and perform validated operational controls. Server records are stored in the servers array and contain top-level server lifecycle state, master state, worker1..workerN state, location, and provider-agnostic infrastructure fields including provider, region, zone, vmId, and vmType.
+
+Worker controls:
+- cordon prevents a worker from accepting new edge traffic without terminating existing connections.
+- shed evicts the specified organization IDs and cordons the worker. Supply organizations as one ID, an array, or false to stop shedding.
+- drain cordons the worker and closes its active WebSocket connections.
+- restart with worker defined gracefully drains and replaces that worker.
+
+Master controls:
+- restart without worker restarts the server application through the primary process.
+- reboot gracefully drains the server and reboots its host.
+- shutdown gracefully drains the server and powers off its host.
+
+Do not represent the master as another traffic worker: cordon, shed, and drain target workers. Reboot and shutdown are host-level destructive operations and require explicit user intent. Explain the operational effect before any control action. Use send_server_message only for generic server events that are not covered by manage_server_cluster. Platform-only operations are restricted to the platform organization.`,
+            examples: [
+                { action: "list", status: "running", limit: 50 },
+                { action: "get", serverId: "SERVER_ID" },
+                { action: "control", serverId: "SERVER_ID", operation: "cordon", worker: 2, value: true },
+                { action: "control", serverId: "SERVER_ID", operation: "shed", worker: 2, organizations: ["ORGANIZATION_ID"] },
+                { action: "control", serverId: "SERVER_ID", operation: "drain", worker: 2, value: true },
+                { action: "control", serverId: "SERVER_ID", operation: "restart" }
+            ],
             sources: []
         },
         {
@@ -639,17 +659,17 @@ The examples above illustrate record shape and composition, not literal IDs or a
             description: "Worker, server, and cluster message routing",
             default: true,
             enabled: true,
-            instructions: `CoCreate server.send uses the same unified top-level envelope as sockets and other CoCreate capabilities. method identifies the event or component to execute, and all remaining fields are its routing options and method-specific payload. Use send_server_message from AI tools.
+            instructions: `CoCreate server.send is the server-side IPC and mesh transport. Browser code starts with CoCreate.socket.send(data); the socket server passes the same unified top-level envelope into server.send(data) when server routing is required. method identifies the event or component to execute, and all remaining fields are routing options and method-specific payload. Use send_server_message for generic events and manage_server_cluster for lifecycle/state controls.
 
 Routing fields are:
 - worker targets one worker ID or an array of worker IDs.
 - server targets one server ID or an array of server IDs.
 - cluster targets one cluster ID or an array of cluster IDs.
-- master determines whether the primary process executes the method. Set master=false when only workers should execute it.
-- broadcast expands delivery across every applicable target in the selected scope.
+- master=true targets the primary process. Omit it for worker-only delivery.
+- broadcast is opt-in and expands delivery across every applicable target in the selected scope. If omitted, it is false.
 - broadcastSender determines whether the originating location receives the resulting envelope. Set false for fire-and-forget delivery that excludes the origin.
 
-worker, server, and cluster use singular property names even when their values are arrays. Define only the routing scope that is needed. A message received at its target fires its method as an event; the component registered for that method handles the remaining payload. Internal UUID, source tracking, IPC forwarding, and Promise resolution are managed automatically and should not be authored by the caller.
+worker, server, and cluster use singular property names even when their values are arrays. An explicit worker target takes precedence over broadcast worker selection. organization_id scopes routing to the organization workers and mesh sockets; it is not a broadcast instruction. Define only the routing scope needed. A message received at its target fires method as an event, and the registered component handles the remaining payload. Internal uuid, workerId, serverId, status lifecycle metadata, IPC forwarding, and Promise resolution are managed automatically and should not be authored by the caller.
 
 server.send is transport, not persistence or a domain operation. Use storage for primary-owned shared runtime state, CRUD for durable application data, sockets for client delivery, and server.send when an envelope must execute in another process, server, or cluster. Server messaging is restricted to the platform organization.`,
             examples: [

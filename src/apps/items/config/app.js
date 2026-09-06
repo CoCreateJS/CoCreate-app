@@ -6,6 +6,8 @@ export default {
     "name": "Items",
     "singularName": "Item",
     "path": "apps/items",
+    "card": "/apps/items/card.html",
+    "cardTemplate": "/apps/items/card-template.html",
     "array": "items",
     "category": "Sales & Billing",
     "icon": "ri-box-3-line",

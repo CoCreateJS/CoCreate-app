@@ -25,8 +25,10 @@ export default {
     "name": "APIs",
     "singularName": "API",
     "path": "apps/apis",
+    "card": "/apps/apis/card.html",
+    "cardTemplate": "/apps/apis/card-template.html",
     "array": "apis",
-    "category": "Integrations",
+    "category": "Settings",
     "mainViews": [
       "table",
       "grid"
@@ -42,7 +44,7 @@ export default {
         "label": "Name",
         "tagName": "input",
         "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by provider (e.g. stripe)\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/form.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\n\t\t\t\t\t\t\t\t<div class=\"avatar-xs rounded-circle position-relative overflow-hidden\">\n\t\t\t\t\t\t\t\t\t<div class=\"avatar-title bg-primary-subtle text-primary material-shadow\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"overflow-hidden width:1ch letter-spacing:1em text-uppercase\">{{object.name}}</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 ms-2 name text-capitalize\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/form.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n              \t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
+        "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\n\t\t\t\t\t\t\t\t<div class=\"avatar-xs rounded-circle position-relative overflow-hidden\">\n\t\t\t\t\t\t\t\t\t<div class=\"avatar-title bg-primary-subtle text-primary material-shadow\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"avatar-initial\">{{object.name[0]}}</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"d-flex align-items-center align-self-stretch flex-grow-1 ms-2 name text-capitalize\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"apis\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
         "attributes": [
           {
             "name": "class",

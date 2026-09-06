@@ -25,6 +25,8 @@ export default {
     "name": "Webhooks",
     "singularName": "Webhook",
     "path": "apps/apis/webhooks",
+    "card": "/apps/apis/webhooks/card.html",
+    "cardTemplate": "/apps/apis/webhooks/card-template.html",
     "array": "webhooks",
     "category": "Settings",
     "mainViews": [

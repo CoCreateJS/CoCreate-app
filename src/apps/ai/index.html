@@ -22,32 +22,34 @@
 					aria-hidden="true"></i>
 			</button>
 		</div>
-		<div
-			class="ai-thread-scroll"
-			plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="ai-thread-scroll-container">
 			<div
-				class="ai-thread-list"
-				array="ai-conversations"
-				object
-				render-query="[template='ai-conversation-template']"
-				filter-query-key="user_id"
-				filter-query-value="$user_id"
-				filter-sort-key="modified.on"
-				filter-sort-direction="desc">
-				<button
-					template="ai-conversation-template"
-					type="button"
-					class="ai-thread"
-					data-conversation-id="{{object._id}}"
-					data-provider="{{object.provider}}"
-					data-model="{{object.model}}">
-					<div class="ai-thread-title">
-						<span>{{object.title}}</span>
-					</div>
-				</button>
+				class="ai-thread-scroll"
+				plugin='{"$SimpleBar": ["$this", {}]}'>
+				<div
+					class="ai-thread-list"
+					array="ai-conversations"
+					object
+					render-query="[template='ai-conversation-template']"
+					filter-query-key="user_id"
+					filter-query-value="$user_id"
+					filter-sort-key="modified.on"
+					filter-sort-direction="desc">
+					<button
+						template="ai-conversation-template"
+						type="button"
+						class="ai-thread"
+						data-conversation-id="{{object._id}}"
+						data-provider="{{object.provider}}"
+						data-model="{{object.model}}">
+						<div class="ai-thread-title">
+							<span>{{object.title}}</span>
+						</div>
+					</button>
+				</div>
 			</div>
 		</div>
-	</aside>
+		</aside>
 	<button
 		type="button"
 		tabindex="-1"

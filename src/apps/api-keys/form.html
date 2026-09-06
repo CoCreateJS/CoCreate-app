@@ -1,0 +1,97 @@
+	<div class="card-body d-flex flex-wrap align-items:flex-start gap-3">
+	<label class="form-label flex-grow-1 width:100%" id="api-key-name-label">
+		Name
+		<input
+			type="text"
+			id="api-key-name"
+			key="name"
+			name="name"
+			class="form-control"
+			placeholder="Enter name"
+			required
+			aria-labelledby="api-key-name-label" />
+	</label>
+
+	<label class="form-label flex-grow-1 width:100%" id="api-key-value-label">
+		API Key
+		<div class="input-group">
+			<input
+				type="password"
+				id="api-key-value"
+				key="key"
+				name="key"
+				class="form-control"
+				placeholder="API key"
+				readonly
+				aria-labelledby="api-key-value-label" />
+			<button
+				class="btn btn-outline-secondary"
+				type="button"
+				onclick="
+					const input = this.previousElementSibling;
+					input.type = input.type === 'password' ? 'text' : 'password';
+					this.querySelector('i').className = input.type === 'password' ? 'ri-eye-line' : 'ri-eye-off-line';
+				"
+				aria-label="Toggle API key visibility">
+				<i class="ri-eye-line"></i>
+			</button>
+		</div>
+	</label>
+
+	<label class="form-label flex-grow-1 width:100%" id="api-key-description-label">
+		Description
+		<textarea
+			id="api-key-description"
+			key="description"
+			name="description"
+			class="form-control"
+			rows="3"
+			placeholder="Enter description"
+			aria-labelledby="api-key-description-label"></textarea>
+	</label>
+
+	<label class="form-label flex-grow-1 flex-basis:180px min-width:160px" id="api-key-status-label">
+		Status
+		<select
+			id="api-key-status"
+			key="status"
+			name="status"
+			class="form-select"
+			aria-labelledby="api-key-status-label">
+			<option value="">Select status</option>
+			<option value="active">Active</option>
+			<option value="inactive">Inactive</option>
+			<option value="revoked">Revoked</option>
+		</select>
+	</label>
+
+	<label class="form-label flex-grow-1 flex-basis:180px min-width:160px" id="api-key-type-label">
+		Type
+		<select
+			id="api-key-type"
+			key="type"
+			name="type"
+			class="form-select"
+			aria-labelledby="api-key-type-label">
+			<option value="">Select type</option>
+			<option value="internal">Internal</option>
+			<option value="external">External</option>
+			<option value="test">Test</option>
+		</select>
+	</label>
+
+	<label class="form-label flex-grow-1 width:100%" id="api-key-tags-label">
+		Tags
+		<select
+			id="api-key-tags"
+			key="tags"
+			name="tags"
+			class="form-select"
+			multiple
+			aria-labelledby="api-key-tags-label">
+			<option value="internal">Internal</option>
+			<option value="external">External</option>
+			<option value="test">Test</option>
+		</select>
+	</label>
+</div>

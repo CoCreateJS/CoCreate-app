@@ -6,6 +6,8 @@ export default {
     "name": "Social",
     "singularName": "Post",
     "path": "apps/social",
+    "card": "/apps/social/card.html",
+    "cardTemplate": "/apps/social/card-template.html",
     "array": "posts",
     "icon": "ri-share-line",
     "description": "App to manage and track Social.",

@@ -7,6 +7,8 @@ export default {
         "name": "Payments",
         "singularName": "Payment",
         "path": "apps/payments",
+        "card": "/apps/payments/card.html",
+        "cardTemplate": "/apps/payments/card-template.html",
         "array": "transactions",
         "category": "Sales & Billing",
         "mainViews": [

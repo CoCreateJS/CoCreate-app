@@ -7,6 +7,8 @@ export default {
     "name": "Support Tickets",
     "singularName": "Support Ticket",
     "path": "apps/support-tickets",
+    "card": "/apps/support-tickets/card.html",
+    "cardTemplate": "/apps/support-tickets/card-template.html",
     "array": "support_tickets",
     "category": "CRM",
     "icon": "ri-ticket-line",

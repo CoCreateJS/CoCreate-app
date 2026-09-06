@@ -1,115 +1,146 @@
 <div class="card-body d-flex flex-wrap gap-4">
-			<div
-				class="flex-shrink-0 d-flex flex-column align-items-center width:100% m-2">
-				<img
-					src="/assets/images/users.jpg"
-					key="avatar[0].src"
-					alt="Lead avatar"
-					class="avatar-xl rounded-circle img-thumbnail material-shadow"
-					onerror="
-						this.onerror = null;
-						this.src = '../assets/images/user.jpg';
-					" />
+	<div
+		class="flex-shrink-0 d-flex flex-column align-items-center width:100% m-2">
+		<img
+			src="/assets/images/users.jpg"
+			key="avatar[0].src"
+			alt="Lead avatar"
+			class="avatar-xl rounded-circle img-thumbnail material-shadow"
+			onerror="
+				this.onerror = null;
+				this.src = '../assets/images/user.jpg';
+			" />
 
-				<h5
-					class="mt-4 mb-1"
-					key="name"
-					aria-label="Lead Name"></h5>
-				<p
-					class="text-muted"
-					key="company"
-					aria-label="Lead Company"></p>
-				<ul
-					class="list-inline mb-0 d-flex gap-2 mt-3"
-					aria-label="Lead Actions">
-					<li class="avatar-xs">
-						<a
-							href=""
-							key="phone"
-							input.href="$value"
-							value-prefix="tel:"
-							value=""
-							class="avatar-title bg-success-subtle text-success fs-15 rounded"
-							aria-label="Call Lead">
-							<i class="ri-phone-line"></i>
-						</a>
-					</li>
-					<li class="avatar-xs">
-						<a
-							href=""
+		<h5
+			class="mt-4 mb-1"
+			key="name"
+			aria-label="Lead Name"></h5>
+		<p
+			class="text-muted"
+			key="company"
+			aria-label="Lead Company"></p>
+		<ul
+			class="list-inline mb-0 d-flex gap-2 mt-3"
+			aria-label="Lead Actions">
+			<li class="avatar-xs">
+				<a
+					href=""
+					key="phone"
+					input.href="$value"
+					value-prefix="tel:"
+					value=""
+					class="avatar-title bg-success-subtle text-success fs-15 rounded"
+					aria-label="Call Lead">
+					<i class="ri-phone-line"></i>
+				</a>
+			</li>
+			<li class="avatar-xs">
+				<a
+					href=""
+					key="email"
+					input.href="$value"
+					value-prefix="mailto:"
+					value=""
+					class="avatar-title bg-danger-subtle text-danger fs-15 rounded"
+					aria-label="Email Lead">
+					<i class="ri-mail-line"></i>
+				</a>
+			</li>
+			<li class="avatar-xs">
+				<a
+					href=""
+					key="phone"
+					input.href="$value"
+					value-prefix="sms:"
+					value=""
+					class="avatar-title bg-warning-subtle text-warning fs-15 rounded"
+					aria-label="Text Lead">
+					<i class="ri-question-answer-line"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div
+		class="flex-grow-1"
+		style="flex-basis: 0; min-width: 300px">
+		<h6
+			class="text-muted text-uppercase fw-semibold mb-3"
+			aria-label="Lead Information Section">
+			Lead Information
+		</h6>
+		<p
+			class="text-muted mb-4"
+			key="description"
+			aria-label="Lead Description"></p>
+		<div class="table-responsive table-card">
+			<table
+				class="table table-borderless mb-0"
+				aria-label="Lead Details Table">
+				<tbody>
+					<tr>
+						<td
+							class="fw-medium"
+							scope="row">
+							Name
+						</td>
+						<td
+							key="name"
+							aria-label="Lead Name"></td>
+					</tr>
+					<tr>
+						<td
+							class="fw-medium"
+							scope="row">
+							Email
+						</td>
+						<td
 							key="email"
-							input.href="$value"
-							value-prefix="mailto:"
-							value=""
-							class="avatar-title bg-danger-subtle text-danger fs-15 rounded"
-							aria-label="Email Lead">
-							<i class="ri-mail-line"></i>
-						</a>
-					</li>
-					<li class="avatar-xs">
-						<a
-							href=""
+							aria-label="Lead Email"></td>
+					</tr>
+					<tr>
+						<td
+							class="fw-medium"
+							scope="row">
+							Phone
+						</td>
+						<td
 							key="phone"
-							input.href="$value"
-							value-prefix="sms:"
-							value=""
-							class="avatar-title bg-warning-subtle text-warning fs-15 rounded"
-							aria-label="Text Lead">
-							<i class="ri-question-answer-line"></i>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div
-				class="flex-grow-1"
-				style="flex-basis: 0; min-width: 300px">
-				<h6
-					class="text-muted text-uppercase fw-semibold mb-3"
-					aria-label="Lead Information Section">
-					Lead Information
-				</h6>
-				<p
-					class="text-muted mb-4"
-					key="description"
-					aria-label="Lead Description"></p>
-				<div class="table-responsive table-card">
-					<table
-						class="table table-borderless mb-0"
-						aria-label="Lead Details Table">
-						<tbody>
-							<tr>
-								<td class="fw-medium" scope="row">Name</td>
-								<td key="name" aria-label="Lead Name"></td>
-							</tr>
-							<tr>
-								<td class="fw-medium" scope="row">Email</td>
-								<td key="email" aria-label="Lead Email"></td>
-							</tr>
-							<tr>
-								<td class="fw-medium" scope="row">Phone</td>
-								<td key="phone" aria-label="Lead Phone"></td>
-							</tr>
-							<tr>
-								<td class="fw-medium" scope="row">Lead Score</td>
-								<td key="lead_score" aria-label="Lead Score"></td>
-							</tr>
-							<tr>
-								<td class="fw-medium" scope="row">Tags</td>
-								<td aria-label="Lead Tags">
-									<span key="tags" render-query="[template]">
-										<span
-											template
-											class="badge bg-primary-subtle text-primary me-1"
-											>{{tags}}</span>
-									</span>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div
-				class="w-100"
-				src="components/activities.html"
-				aria-label="Lead Activities Section"></div>
+							aria-label="Lead Phone"></td>
+					</tr>
+					<tr>
+						<td
+							class="fw-medium"
+							scope="row">
+							Lead Score
+						</td>
+						<td
+							key="lead_score"
+							aria-label="Lead Score"></td>
+					</tr>
+					<tr>
+						<td
+							class="fw-medium"
+							scope="row">
+							Tags
+						</td>
+						<td aria-label="Lead Tags">
+							<span
+								key="tags"
+								render-query="[template]">
+								<span
+									template
+									class="badge bg-primary-subtle text-primary me-1"
+									>{{tags}}</span
+								>
+							</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+	</div>
+	<div
+		class="w-100"
+		src="components/activities.html"
+		aria-label="Lead Activities Section"></div>
+</div>

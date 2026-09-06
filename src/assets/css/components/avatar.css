@@ -49,8 +49,16 @@
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
+	white-space: nowrap;
 	width: 100%;
 }
+
+.avatar-initial {
+	letter-spacing: 0.2em;
+	overflow: hidden;
+	text-transform: uppercase;
+}
+
 .avatar-group {
 	padding-left: 12px;
 	display: -webkit-box;

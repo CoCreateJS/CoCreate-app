@@ -7,7 +7,7 @@ export default {
     "singularName": "Dashboard",
     "path": "apps/dashboards",
     "array": "dashboards",
-    "category": "CRM",
+    "category": "Workspace",
     "status": "active",
     "icon": "ri-dashboard-line",
     "description": "App to manage and track Dashboards.",

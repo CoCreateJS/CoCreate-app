@@ -25,8 +25,10 @@ export default {
     "name": "Servers",
     "singularName": "Server",
     "path": "apps/servers",
+    "card": "/apps/servers/card.html",
+    "cardTemplate": "/apps/servers/card-template.html",
     "array": "servers",
-    "category": "Infrastructure",
+    "category": "Settings",
     "mainViews": [
       "table",
       "grid"

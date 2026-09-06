@@ -6,6 +6,8 @@ export default {
     "name": "Jobs",
     "singularName": "Job",
     "path": "apps/jobs",
+    "card": "/apps/jobs/card.html",
+    "cardTemplate": "/apps/jobs/card-template.html",
     "array": "jobPosts",
     "category": "Human Resources",
     "mainViews": [

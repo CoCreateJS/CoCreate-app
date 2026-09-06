@@ -40,8 +40,10 @@ export default {
                 "enabled": true,
                 "defaultProvider": "copilot",
                 "defaultStorageTarget": "virtual",
-                "allowLocalFileSystem": false,
+                "allowLocalFileSystem": true,
                 "allowUnconfirmedLocalWrite": false,
+                "localFsRoot": "/home/ubuntu/Dev/CoCreate-app",
+                "cocPath": "coc",
                 "publicPath": "/public",
                 "tools": {
                     "crud": {
@@ -179,7 +181,7 @@ export default {
                         }
                     },
                     "send_server_message": {
-                        "description": "Dispatches an event through server.send(payload), CoCreateServer's unified process and server routing entry point. The method field names the event. On a worker, server.send forwards the payload to the master. On the master, worker may be one worker ID or an array of worker IDs; without worker, local workers are targeted by default. Set master=false to prevent local execution on the master. The server and cluster routing fields may each contain one ID or an array of IDs for upstream inter-server routing. Set broadcast=true for all applicable workers, servers, or clusters. The authenticated platform organization is injected automatically.",
+                        "description": "Dispatches a generic event through server.send(payload), the server-side IPC and mesh router. Use manage_server_cluster for cordon, shed, drain, restart, reboot, and shutdown. A browser normally begins this flow with CoCreate.socket.send(data); the socket server then passes the same top-level envelope to server.send(data). worker, server, and cluster each accept one ID or an array. broadcast is opt-in and omitted means false. organization_id is injected as routing scope and does not imply broadcast. Internal uuid, workerId, serverId, and status lifecycle metadata are managed automatically.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -231,11 +233,11 @@ export default {
                                 },
                                 "master": {
                                     "type": "boolean",
-                                    "description": "Whether the master should also handle the event. Use false to target workers only."
+                                    "description": "Target the primary process when true. Omit for worker-only delivery."
                                 },
                                 "broadcast": {
                                     "type": "boolean",
-                                    "description": "Broadcast across all applicable targets."
+                                    "description": "Opt in to delivery across all applicable targets. Omitted broadcast is false."
                                 },
                                 "broadcastSender": {
                                     "type": "boolean",
@@ -340,6 +342,14 @@ export default {
                                 "filePath": {
                                     "type": "string"
                                 },
+                                "startLine": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                },
+                                "endLine": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                },
                                 "target": {
                                     "type": "string",
                                     "enum": [
@@ -384,16 +394,48 @@ export default {
                         }
                     },
                     "read_local_file": {
-                        "description": "Reads a local server file. Only available when allowLocalFileSystem=true.",
+                        "description": "Reads a line range from a local file within localFsRoot. Large files must be read in successive ranges; use totalLines and hasMore to continue.",
                         "parameters": {
                             "type": "object",
                             "properties": {
                                 "filePath": {
                                     "type": "string"
+                                },
+                                "startLine": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "description": "First line to return. Defaults to 1."
+                                },
+                                "endLine": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "description": "Last line to return. Defaults to 400 lines after startLine."
                                 }
                             },
                             "required": [
                                 "filePath"
+                            ]
+                        }
+                    },
+                    "edit_local_file": {
+                        "description": "Safely edits part of a local file by replacing one exact, unique block of text. Read the relevant line range first and include enough surrounding text for oldText to match exactly once. The operation refuses missing or ambiguous matches and preserves the rest of the file.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "filePath": {
+                                    "type": "string"
+                                },
+                                "oldText": {
+                                    "type": "string"
+                                },
+                                "newText": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "filePath",
+                                "oldText",
+                                "newText"
                             ]
                         }
                     },
@@ -412,6 +454,39 @@ export default {
                             "required": [
                                 "filePath",
                                 "content"
+                            ]
+                        }
+                    },
+                    "coc": {
+                        "description": "Runs the constrained CoCreate CLI workflow against the configured local project. Use download to refresh database-backed site files locally before editing. Use upload only after edits are complete and the user requested the changes live. This tool cannot execute arbitrary commands.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "action": {
+                                    "type": "string",
+                                    "enum": [
+                                        "download",
+                                        "upload"
+                                    ]
+                                },
+                                "paths": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "description": "Virtual paths to download or local project paths to upload."
+                                },
+                                "destination": {
+                                    "type": "string",
+                                    "description": "Local destination within localFsRoot for downloads."
+                                },
+                                "site": {
+                                    "type": "boolean",
+                                    "description": "Download the complete website one file at a time."
+                                }
+                            },
+                            "required": [
+                                "action"
                             ]
                         }
                     },
@@ -478,7 +553,7 @@ export default {
                         }
                     },
                     "manage_server_cluster": {
-                        "description": "Inspects cluster topology by reading the 'servers' collection: lists all servers, fetches a single server document (by _id or host), or returns this running server's own identity/location/infrastructure/worker states. RESTRICTED: Platform-level action reserved exclusively for platform organization matching server.organization_id.",
+                        "description": "Inspects and controls CoCreate servers. list/get read the servers collection; self returns the running process; control dispatches validated worker or master operations through server.send. Infrastructure uses provider-agnostic vmId and vmType fields. Worker controls are cordon, shed, and drain. restart may target a worker or, when worker is omitted, the master application. reboot and shutdown target the master host. Explain the effect and obtain clear user intent before state-changing operations. RESTRICTED: platform organization only.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -487,9 +562,10 @@ export default {
                                     "enum": [
                                         "list",
                                         "get",
-                                        "self"
+                                        "self",
+                                        "control"
                                     ],
-                                    "description": "list: query multiple server documents. get: fetch one server by id or host. self: return this process's own server document."
+                                    "description": "list, get, or self inspect topology; control performs an authorized server operation."
                                 },
                                 "serverId": {
                                     "type": "string",
@@ -506,6 +582,30 @@ export default {
                                 "limit": {
                                     "type": "number",
                                     "description": "Optional max documents to return for action=\"list\" (default 50)"
+                                },
+                                "operation": {
+                                    "type": "string",
+                                    "enum": ["cordon", "shed", "drain", "restart", "reboot", "shutdown"],
+                                    "description": "Operation for action=\"control\"."
+                                },
+                                "worker": {
+                                    "description": "Worker ID or array of worker IDs. Required for cordon, shed, and drain; optional for restart.",
+                                    "oneOf": [
+                                        { "type": ["string", "number"] },
+                                        { "type": "array", "items": { "type": ["string", "number"] } }
+                                    ]
+                                },
+                                "value": {
+                                    "type": "boolean",
+                                    "description": "Enable or disable cordon/drain. Defaults to true when omitted."
+                                },
+                                "organizations": {
+                                    "description": "Organization ID, array of IDs, or false to stop shedding. Required for shed.",
+                                    "oneOf": [
+                                        { "type": "string" },
+                                        { "type": "array", "items": { "type": "string" } },
+                                        { "type": "boolean", "enum": [false] }
+                                    ]
                                 }
                             },
                             "required": [

@@ -6,11 +6,17 @@ export default {
     "name": "Apps",
     "singularName": "App",
     "path": "apps/",
+    "card": "/apps/apps/card.html",
+    "cardTemplate": "/apps/apps/card-template.html",
     "array": "apps",
-    "category": "apps",
+    "category": "Settings",
     "status": "active",
     "icon": "ri-apps-2-line",
     "description": "App to manage and track Apps.",
+    "mainViews": [
+      "table",
+      "grid"
+    ],
     "secondaryViews": [
       "form"
     ],

@@ -1,0 +1,508 @@
+<style>
+	#server-world-map .jvm-container text {
+		fill: var(--coc-body-color);
+		font-size: 13px;
+		font-weight: 600;
+		paint-order: stroke;
+		stroke: var(--coc-body-bg);
+		stroke-linejoin: round;
+		stroke-width: 4px;
+	}
+
+	#server-world-map circle {
+		filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.75));
+	}
+
+	.server-map-scroll {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		overflow-x: auto;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	#server-world-map {
+		min-width: 1300px;
+	}
+
+	.server-map-tooltip {
+		min-width: 170px;
+	}
+
+	.server-map-tooltip strong,
+	.server-map-tooltip span {
+		display: block;
+	}
+
+	.server-map-tooltip span {
+		font-size: 11px;
+		opacity: 0.85;
+	}
+
+	#server-fleet-table {
+		min-width: 980px;
+	}
+
+	#server-fleet-table th,
+	#server-fleet-table td {
+		white-space: nowrap;
+	}
+
+	#server-fleet-table th:first-child {
+		min-width: 190px;
+	}
+
+	#server-fleet-table th:nth-child(2),
+	#server-fleet-table th:nth-child(3) {
+		min-width: 130px;
+	}
+
+	#server-fleet-table th:nth-child(6) {
+		min-width: 145px;
+	}
+
+		.server-flex-grid {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+
+		.server-summary-item {
+			flex: 1 1 155px;
+			min-width: min(155px, 100%);
+		}
+
+		.server-content-wide {
+			flex: 2 1 560px;
+			min-width: min(320px, 100%);
+		}
+
+		.server-content-narrow {
+			flex: 1 1 280px;
+			min-width: min(260px, 100%);
+		}
+
+		.server-provider-item {
+			flex: 1 1 145px;
+			min-width: min(135px, 100%);
+		}
+
+		.server-filter-controls {
+			display: flex;
+			flex: 1 1 520px;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+		}
+
+		.server-filter-controls > * {
+			flex: 1 1 140px;
+			width: auto !important;
+			min-width: min(140px, 100%);
+		}
+</style>
+
+<div
+	class="h-100 overflow:unset"
+	plugin='{"$SimpleBar": ["$this", {}]}'>
+	<div class="container-fluid py-3">
+		<div class="d-flex align-items-lg-center flex-lg-row flex-column mb-4">
+			<div class="flex-grow-1">
+				<h4 class="mb-1">Multi-cloud server fleet</h4>
+				<p class="text-muted mb-0">
+					Monitor capacity, health, regions, and worker state across providers.
+				</p>
+			</div>
+			<div class="mt-3 mt-lg-0">
+				<div class="row g-3 mb-0 align-items-center">
+					<div class="col-sm-auto">
+						<label class="visually-hidden" for="dashboard-view-select">Dashboard view</label>
+						<select id="dashboard-view-select" class="form-select" aria-label="Switch dashboard view" data-dashboard-view-select>
+							<option value="/apps/dashboards/index.html">Overview</option>
+							<option value="/apps/dashboards/views/analytics.html">Analytics</option>
+							<option value="/apps/dashboards/views/crm.html">CRM</option>
+							<option value="/apps/dashboards/views/ecommerce.html">Ecommerce</option>
+							<option value="/apps/dashboards/views/projects.html">Projects</option>
+							<option value="/apps/dashboards/views/servers.html" selected>Servers</option>
+						</select>
+					</div>
+					<div class="col-auto">
+						<button type="button" class="btn btn-primary text-nowrap" state-to="offcanvas-app-view" state.src="/apps/servers/provision.html" aria-controls="offcanvas-app" aria-expanded="false" aria-open>
+							<div state-to="offcanvas-app-form" state.array="servers" state.object=""></div>
+							<i class="ri-add-line me-1"></i>Provision server
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<div class="server-flex-grid mb-4" data-server-state-summary>
+				<div class="server-summary-item">
+				<div class="card h-100 mb-0">
+					<div class="card-body d-flex align-items-center gap-3">
+						<span class="avatar-sm flex-shrink-0">
+							<span class="avatar-title rounded bg-primary-subtle text-primary fs-22">
+								<i class="ri-server-line"></i>
+							</span>
+						</span>
+						<div>
+							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Servers</p>
+							<h4 class="mb-0" data-state-count="total">0</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="server-summary-item">
+				<div class="card h-100 mb-0">
+					<div class="card-body d-flex align-items-center gap-3">
+						<span class="avatar-sm flex-shrink-0">
+							<span class="avatar-title rounded bg-success-subtle text-success fs-22">
+								<i class="ri-checkbox-circle-line"></i>
+							</span>
+						</span>
+						<div>
+							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Running</p>
+							<h4 class="mb-0" data-state-count="running">0</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="server-summary-item">
+				<div class="card h-100 mb-0">
+					<div class="card-body d-flex align-items-center gap-3">
+						<span class="avatar-sm flex-shrink-0">
+							<span class="avatar-title rounded bg-warning-subtle text-warning fs-22">
+								<i class="ri-shield-flash-line"></i>
+							</span>
+						</span>
+						<div>
+							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Cordoned</p>
+							<h4 class="mb-0" data-state-count="cordoned">0</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="server-summary-item">
+				<div class="card h-100 mb-0">
+					<div class="card-body d-flex align-items-center gap-3">
+						<span class="avatar-sm flex-shrink-0"><span class="avatar-title rounded bg-info-subtle text-info fs-22"><i class="ri-route-line"></i></span></span>
+						<div><p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Shedding</p><h4 class="mb-0" data-state-count="shedding">0</h4></div>
+					</div>
+				</div>
+			</div>
+				<div class="server-summary-item">
+				<div class="card h-100 mb-0">
+					<div class="card-body d-flex align-items-center gap-3">
+						<span class="avatar-sm flex-shrink-0"><span class="avatar-title rounded bg-warning-subtle text-warning fs-22"><i class="ri-hourglass-line"></i></span></span>
+						<div><p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Draining</p><h4 class="mb-0" data-state-count="draining">0</h4></div>
+					</div>
+				</div>
+			</div>
+				<div class="server-summary-item">
+				<div class="card h-100 mb-0">
+					<div class="card-body d-flex align-items-center gap-3">
+						<span class="avatar-sm flex-shrink-0"><span class="avatar-title rounded bg-primary-subtle text-primary fs-22"><i class="ri-restart-line"></i></span></span>
+						<div><p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Rebooting</p><h4 class="mb-0" data-state-count="rebooting">0</h4></div>
+					</div>
+				</div>
+			</div>
+				<div class="server-summary-item">
+				<div class="card h-100 mb-0">
+					<div class="card-body d-flex align-items-center gap-3">
+						<span class="avatar-sm flex-shrink-0">
+							<span class="avatar-title rounded bg-danger-subtle text-danger fs-22">
+								<i class="ri-stop-circle-line"></i>
+							</span>
+						</span>
+						<div>
+							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Stopped</p>
+							<h4 class="mb-0" data-state-count="stopped">0</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="server-summary-item">
+				<div class="card h-100 mb-0">
+					<div class="card-body d-flex align-items-center gap-3">
+						<span class="avatar-sm flex-shrink-0">
+							<span class="avatar-title rounded bg-info-subtle text-info fs-22">
+								<i class="ri-pulse-line"></i>
+							</span>
+						</span>
+						<div>
+							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Average usage</p>
+							<div class="text-nowrap fs-12">CPU <strong><span data-average-cpu>—</span>%</strong></div>
+							<div class="text-nowrap fs-12">Memory <strong><span data-average-memory>—</span>%</strong></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card mb-4">
+			<div class="card-header d-flex flex-wrap align-items-center gap-2">
+				<div class="flex-grow-1">
+					<h5 class="card-title mb-1">Global server footprint</h5>
+					<p class="text-muted fs-12 mb-0">
+						Select a marker to inspect the server operating at that location.
+					</p>
+				</div>
+				<div class="d-flex flex-wrap align-items-center gap-3 fs-12 text-muted">
+					<span><i class="ri-checkbox-blank-circle-fill text-success me-1"></i>Running</span>
+					<span><i class="ri-checkbox-blank-circle-fill text-warning me-1"></i>Cordoned</span>
+					<span><i class="ri-checkbox-blank-circle-fill text-info me-1"></i>Shedding</span>
+					<span><i class="ri-checkbox-blank-circle-fill text-warning-emphasis me-1"></i>Draining</span>
+					<span><i class="ri-checkbox-blank-circle-fill text-primary me-1"></i>Rebooting</span>
+					<span><i class="ri-checkbox-blank-circle-fill text-danger me-1"></i>Stopped</span>
+				</div>
+			</div>
+				<div class="card-body server-map-scroll">
+					<div
+						id="server-world-map"
+						data-server-map
+						dir="ltr"
+						style="height: calc(100dvh - 190px); min-height: 520px"
+						plugin='{"$jsVectorMap": [{"map": "world", "selector": "#server-world-map", "zoomOnScroll": false, "zoomButtons": true, "markers": [], "regionStyle": {"initial": {"stroke": "#9599ad", "strokeWidth": 0.25, "fill": "#e9ebec", "fillOpacity": 1}}, "markerStyle": {"initial": {"r": 7, "fill": "#0ab39c", "stroke": "#ffffff", "strokeWidth": 3}}}]}'></div>
+				<div
+					class="d-none"
+					data-server-map-records
+					array="servers"
+					object
+					render-query="[template='server-map-record']"
+					filter-limit="500">
+					<div
+						template="server-map-record"
+						data-server-map-record
+						data-server-id="{{object._id}}"
+						data-host="{{object.host}}"
+						data-provider="{{object.infrastructure.provider}}"
+						data-region="{{object.infrastructure.region}}"
+						data-status="{{object.status}}"
+						data-cordoned="{{object.worker1.isCordoned}}"
+						data-shedding="{{object.worker1.isShedding}}"
+						data-draining="{{object.worker1.isDraining}}"
+						data-latitude="{{object.location.latitude}}"
+						data-longitude="{{object.location.longitude}}">
+						<button
+							type="button"
+							state-to="offcanvas-app-view"
+							state.src="/apps/servers/details.html"
+							aria-controls="offcanvas-app"
+							aria-expanded="false"
+							aria-open>
+							<div state-to="offcanvas-app-form" state.array="servers" state.object="{{object._id}}"></div>
+						</button>
+					</div>
+				</div>
+				<div
+					class="d-none"
+					data-telemetry-subscription
+					array="servers_telemetry"
+					object
+					key="timestamp"
+					filter-sort-key="timestamp"
+					filter-sort-direction="desc"
+					filter-limit="1"
+					aria-hidden="true"></div>
+			</div>
+		</div>
+
+			<div class="server-flex-grid mb-4">
+				<div class="server-content-wide">
+				<div class="card h-100 mb-0">
+					<div class="card-header d-flex flex-wrap align-items-center gap-2">
+						<div class="flex-grow-1">
+							<h5 class="card-title mb-1">Fleet capacity</h5>
+							<p class="text-muted fs-12 mb-0">Current distribution by cloud provider</p>
+						</div>
+						<span class="badge bg-primary-subtle text-primary">Live inventory</span>
+					</div>
+						<div class="card-body">
+							<div class="server-flex-grid text-center">
+								<div class="server-provider-item">
+								<div class="border border-dashed rounded p-3 h-100">
+									<i class="ri-amazon-line fs-24 text-warning"></i>
+									<h4 class="mt-2 mb-1" array="servers" object key="$length" filter-query-key="infrastructure.provider.$regex" filter-query-value="aws|amazon" filter-query-options="i" filter-limit>0</h4>
+									<span class="text-muted fs-12">AWS</span>
+								</div>
+							</div>
+								<div class="server-provider-item">
+								<div class="border border-dashed rounded p-3 h-100">
+									<i class="ri-google-line fs-24 text-primary"></i>
+									<h4 class="mt-2 mb-1" array="servers" object key="$length" filter-query-key="infrastructure.provider.$regex" filter-query-value="gcp|google" filter-query-options="i" filter-limit>0</h4>
+									<span class="text-muted fs-12">Google Cloud</span>
+								</div>
+							</div>
+								<div class="server-provider-item">
+								<div class="border border-dashed rounded p-3 h-100">
+									<i class="ri-microsoft-line fs-24 text-info"></i>
+									<h4 class="mt-2 mb-1" array="servers" object key="$length" filter-query-key="infrastructure.provider.$regex" filter-query-value="azure|microsoft" filter-query-options="i" filter-limit>0</h4>
+									<span class="text-muted fs-12">Azure</span>
+								</div>
+							</div>
+								<div class="server-provider-item">
+								<div class="border border-dashed rounded p-3 h-100">
+									<i class="ri-cloud-line fs-24 text-danger"></i>
+									<h4 class="mt-2 mb-1" array="servers" object key="$length" filter-query-key="infrastructure.provider.$regex" filter-query-value="oci|oracle" filter-query-options="i" filter-limit>0</h4>
+									<span class="text-muted fs-12">Oracle Cloud</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="server-content-narrow">
+					<div class="card h-100 mb-0">
+					<div class="card-header">
+						<h5 class="card-title mb-1">Active fleet telemetry</h5>
+						<p class="text-muted fs-12 mb-0">Average of each active server's latest sample</p>
+					</div>
+					<div class="card-body" data-active-telemetry-summary>
+						<div class="d-flex justify-content-between mb-3">
+							<span class="text-muted">Active servers</span>
+							<span data-active-server-count>0</span>
+						</div>
+						<div class="d-flex justify-content-between mb-3">
+							<span class="text-muted">Servers sampled</span>
+							<span data-telemetry-sample-count>0</span>
+						</div>
+						<div class="d-flex justify-content-between mb-3">
+							<span class="text-muted">Average CPU</span>
+							<span><span data-average-cpu>—</span>%</span>
+						</div>
+						<div class="d-flex justify-content-between mb-3">
+							<span class="text-muted">Average memory</span>
+							<span><span data-average-memory>—</span>%</span>
+						</div>
+						<div class="d-flex justify-content-between">
+							<span class="text-muted">Latest sample</span>
+							<span class="text-muted fs-12" data-latest-sample>—</span>
+						</div>
+					</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="card mb-3">
+			<div class="card-header">
+				<div class="d-flex flex-wrap align-items-center gap-3">
+					<div class="flex-grow-1">
+						<h5 class="card-title mb-1">Servers</h5>
+						<p class="text-muted fs-12 mb-0">Filter and inspect the active multi-region fleet.</p>
+					</div>
+					<div class="server-filter-controls">
+						<input
+							type="search"
+							class="form-control"
+							style="width: 180px"
+							placeholder="Search host"
+							aria-label="Search server host"
+							filter-query="$document #server-fleet-list"
+							filter-query-key="host.$regex"
+							filter-query-options="i" />
+						<input
+							type="search"
+							class="form-control"
+							style="width: 150px"
+							placeholder="Provider"
+							aria-label="Filter cloud provider"
+							filter-query="$document #server-fleet-list"
+							filter-query-key="infrastructure.provider.$regex"
+							filter-query-options="i" />
+						<input
+							type="search"
+							class="form-control"
+							style="width: 150px"
+							placeholder="Region"
+							aria-label="Filter region"
+							filter-query="$document #server-fleet-list"
+							filter-query-key="infrastructure.region.$regex"
+							filter-query-options="i" />
+						<select
+							class="form-select"
+							style="width: 140px"
+							aria-label="Filter server status"
+							filter-query="$document #server-fleet-list"
+							filter-query-key="status">
+							<option value="">All statuses</option>
+							<option value="running">Running</option>
+							<option value="rebooting">Rebooting</option>
+							<option value="stopped">Stopped</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="card-body p-0">
+				<div class="table-responsive">
+					<table id="server-fleet-table" class="table table-hover align-middle mb-0" aria-label="Multi-cloud server fleet">
+						<thead>
+							<tr>
+								<th>Server</th>
+								<th>Provider</th>
+								<th>Region</th>
+								<th>Workers</th>
+								<th>Status</th>
+								<th>Usage</th>
+								<th class="text-end">Actions</th>
+							</tr>
+						</thead>
+						<tbody
+							id="server-fleet-list"
+							array="servers"
+							object
+							render-query="[template='server-fleet-row']"
+							filter-sort-key="modified.on"
+							filter-sort-direction="desc"
+							filter-limit="100">
+							<tr template="server-fleet-row" data-server-row data-server-id="{{object._id}}">
+								<td>
+									<a
+										role="button"
+										tabindex="0"
+										class="fw-medium"
+										state-to="offcanvas-app-view"
+										state.src="/apps/servers/details.html"
+										aria-controls="offcanvas-app"
+										aria-expanded="false"
+										aria-open>
+										<div state-to="offcanvas-app-form" state.array="servers" state.object="{{object._id}}"></div>
+										{{object.host}}
+									</a>
+									<div class="text-muted fs-12"><code>{{object.ip}}</code></div>
+								</td>
+								<td>{{object.infrastructure.provider}}</td>
+								<td>
+									<div>{{object.infrastructure.region}}</div>
+									<div class="text-muted fs-12">{{object.infrastructure.zone}}</div>
+								</td>
+								<td>{{object.totalWorkers}}</td>
+								<td><span class="badge bg-secondary-subtle text-secondary text-uppercase">{{object.status}}</span></td>
+								<td class="text-nowrap">
+									<div class="fs-12">CPU <strong><span data-server-cpu>—</span>%</strong></div>
+									<div class="fs-12">Memory <strong><span data-server-memory>—</span>%</strong></div>
+								</td>
+								<td class="text-end">
+									<button
+										type="button"
+										class="btn btn-sm btn-soft-primary"
+										state-to="offcanvas-app-view"
+										state.src="/apps/servers/details.html"
+										aria-label="View {{object.host}}"
+										aria-controls="offcanvas-app"
+										aria-expanded="false"
+										aria-open>
+										<div state-to="offcanvas-app-form" state.array="servers" state.object="{{object._id}}"></div>
+										<i class="ri-eye-line"></i>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/apps/dashboards/view-select.js"></script>
+<script src="/apps/dashboards/views/servers.js"></script>

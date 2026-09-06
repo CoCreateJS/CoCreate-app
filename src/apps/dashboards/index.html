@@ -1,12 +1,13 @@
 <link rel="stylesheet" href="/apps/dashboards/index.css" />
 
-<div class="">
+<div
+	class="h-100 overflow:unset"
+	plugin='{"$SimpleBar": ["$this", {}]}'>
 	<div class="col">
 		<div class="h-100">
 			<div class="row mb-3 pb-1">
 				<div class="col-12">
 					<div
-					+
 						class="d-flex align-items-lg-center flex-lg-row flex-column">
 						<div class="flex-grow-1">
 							<h4 class="fs-16 mb-1">Welcome back, <span array="contacts" object="$user_id" key="first_name"></span>!</h4>
@@ -19,6 +20,21 @@
 							<form action="javascript:void(0);">
 								<div
 									class="row g-3 mb-0 align-items-center">
+									<div class="col-sm-auto">
+										<label class="visually-hidden" for="dashboard-view-select">Dashboard view</label>
+										<select
+											id="dashboard-view-select"
+											class="form-select"
+											aria-label="Switch dashboard view"
+											data-dashboard-view-select>
+											<option value="/apps/dashboards/index.html" selected>Overview</option>
+											<option value="/apps/dashboards/views/analytics.html">Analytics</option>
+											<option value="/apps/dashboards/views/crm.html">CRM</option>
+											<option value="/apps/dashboards/views/ecommerce.html">Ecommerce</option>
+											<option value="/apps/dashboards/views/projects.html">Projects</option>
+											<option value="/apps/dashboards/views/servers.html">Servers</option>
+										</select>
+									</div>
 									<div class="col-sm-auto">
 										<div class="input-group">
 											<input
@@ -938,6 +954,8 @@
 	</div>
 	<!-- end col -->
 </div>
+
+<script src="/apps/dashboards/view-select.js"></script>
 
 <script src="/assets/libs/jsvectormap/jsvectormap.min.js"></script>
 <script src="/assets/libs/jsvectormap/maps/world-merc.js"></script>

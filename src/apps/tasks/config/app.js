@@ -6,6 +6,8 @@ export default {
     "name": "Tasks",
     "singularName": "Task",
     "path": "apps/tasks",
+    "card": "/apps/tasks/card.html",
+    "cardTemplate": "/apps/tasks/card-template.html",
     "array": "tasks",
     "category": "workspace",
     "icon": "ri-task-line",

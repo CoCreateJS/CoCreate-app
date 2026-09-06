@@ -25,6 +25,8 @@ export default {
     "name": "Server Configs",
     "singularName": "Server Config",
     "path": "apps/servers/configs",
+    "card": "/apps/servers/configs/card.html",
+    "cardTemplate": "/apps/servers/configs/card-template.html",
     "array": "servers_config",
     "category": "Settings",
     "mainViews": [

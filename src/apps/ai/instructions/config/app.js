@@ -25,6 +25,8 @@ export default {
     "name": "AI Instructions",
     "singularName": "AI Instruction",
     "path": "apps/ai/instructions",
+    "card": "/apps/ai/instructions/card.html",
+    "cardTemplate": "/apps/ai/instructions/card-template.html",
     "array": "ai-instructions",
     "category": "Settings",
     "mainViews": [
@@ -32,6 +34,7 @@ export default {
       "grid"
     ],
     "secondaryViews": [
+      "details",
       "form"
     ],
     "icon": "ri-file-list-3-line",
@@ -39,27 +42,14 @@ export default {
     "status": "active",
     "fields": [
       {
-        "label": "Title",
+        "label": "Name",
         "tagName": "input",
-        "filterTemplate": "<input id=\"ai-instruction-description-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by description\" filter-query=\"$document .list-view\" filter-query-key=\"description.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/ai/instructions/form.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"ai-instructions\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.description}}</span>\n          </a>\n        ",
+        "filterTemplate": "<input id=\"ai-instruction-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
+        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/ai/instructions/details.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"ai-instructions\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
         "attributes": [
           { "name": "class", "value": "form-control" },
-          { "name": "id", "value": "ai-instruction-description" },
-          { "name": "key", "value": "description" },
-          { "name": "type", "value": "text" },
-          { "name": "required", "value": true }
-        ]
-      },
-      {
-        "label": "Topic",
-        "tagName": "input",
-        "filterTemplate": "<input id=\"ai-instruction-topic-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by topic\" filter-query=\"$document .list-view\" filter-query-key=\"topic.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "<code>{{object.topic}}</code>",
-        "attributes": [
-          { "name": "class", "value": "form-control" },
-          { "name": "id", "value": "ai-instruction-topic" },
-          { "name": "key", "value": "topic" },
+          { "name": "id", "value": "ai-instruction-name" },
+          { "name": "key", "value": "name" },
           { "name": "type", "value": "text" },
           { "name": "required", "value": true }
         ]
@@ -73,18 +63,6 @@ export default {
           { "name": "class", "value": "form-check-input" },
           { "name": "id", "value": "ai-instruction-default" },
           { "name": "key", "value": "default" },
-          { "name": "type", "value": "checkbox" }
-        ]
-      },
-      {
-        "label": "Core",
-        "tagName": "input",
-        "filterTemplate": "<select id=\"ai-instruction-core-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"core\"><option value=\"\">Any state</option><option value=\"true\">Core</option><option value=\"false\">On demand</option></select>",
-        "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.core}}</span>",
-        "attributes": [
-          { "name": "class", "value": "form-check-input" },
-          { "name": "id", "value": "ai-instruction-core" },
-          { "name": "key", "value": "core" },
           { "name": "type", "value": "checkbox" }
         ]
       },

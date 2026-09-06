@@ -1,4 +1,5 @@
-<div class="card-body d-flex flex-column gap-4">
+		<div class="card-body d-flex flex-column gap-4" data-server-details>
+			<span key="_id" data-server-id hidden></span>
 			<section class="d-flex flex-wrap align-items-center gap-3">
 				<div
 					class="avatar-lg rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24">
@@ -28,8 +29,8 @@
 							<tr>
 								<td class="fw-medium text-muted">Provider</td>
 								<td key="infrastructure.provider"></td>
-								<td class="fw-medium text-muted">Instance Type</td>
-								<td key="infrastructure.instanceType"></td>
+								<td class="fw-medium text-muted">VM Type</td>
+								<td key="infrastructure.vmType"></td>
 							</tr>
 							<tr>
 								<td class="fw-medium text-muted">Region</td>
@@ -38,8 +39,8 @@
 								<td key="infrastructure.zone"></td>
 							</tr>
 							<tr>
-								<td class="fw-medium text-muted">Instance ID</td>
-								<td colspan="3"><code key="infrastructure.instanceId"></code></td>
+								<td class="fw-medium text-muted">VM ID</td>
+								<td colspan="3"><code key="infrastructure.vmId"></code></td>
 							</tr>
 						</tbody>
 					</table>
@@ -48,7 +49,7 @@
 
 			<section class="border-top border-top-dashed pt-3">
 				<h6 class="text-muted text-uppercase fw-semibold mb-3">Process health and control state</h6>
-				<div class="d-flex flex-wrap gap-3">
+				<div class="d-flex flex-wrap gap-3" data-worker-cards>
 					<div class="border border-dashed rounded p-3 flex-grow-1" style="flex-basis: 220px; min-width: 200px">
 						<div class="d-flex align-items-center justify-content-between gap-3 mb-3">
 							<h6 class="mb-0">Master</h6>
@@ -56,9 +57,24 @@
 						</div>
 						<span class="text-muted">PID</span>
 						<code class="float-end" key="master.pid"></code>
+						<div class="d-flex flex-wrap gap-2 mt-3">
+							<button class="btn btn-sm btn-outline-warning" type="button" data-server-action="restart">
+								<i class="ri-restart-line me-1"></i>Restart
+							</button>
+							<button
+								class="btn btn-sm btn-outline-warning"
+								type="button"
+								data-server-action="reboot"
+								style="--coc-btn-color:#fd7e14;--coc-btn-border-color:#fd7e14;--coc-btn-hover-bg:#fd7e14;--coc-btn-hover-border-color:#fd7e14;--coc-btn-active-bg:#fd7e14;--coc-btn-active-border-color:#fd7e14;--coc-btn-disabled-color:#fd7e14;--coc-btn-disabled-border-color:#fd7e14;--coc-btn-focus-shadow-rgb:253,126,20">
+								<i class="ri-refresh-line me-1"></i>Reboot
+							</button>
+							<button class="btn btn-sm btn-outline-danger" type="button" data-server-action="shutdown">
+								<i class="ri-shut-down-line me-1"></i>Shut down
+							</button>
+						</div>
 					</div>
 
-					<div class="border border-dashed rounded p-3 flex-grow-2" style="flex-basis: 360px; min-width: 280px">
+					<div class="border border-dashed rounded p-3 w-100" data-worker-card="1">
 						<div class="d-flex align-items-center justify-content-between gap-3 mb-3">
 							<h6 class="mb-0">Worker 1</h6>
 							<span class="badge bg-secondary-subtle text-secondary text-uppercase" key="worker1.status"></span>
@@ -69,15 +85,15 @@
 						</div>
 						<div class="d-flex flex-wrap gap-3">
 							<label class="form-check form-switch flex-grow-1">
-								<input class="form-check-input" type="checkbox" role="switch" key="worker1.isCordoned" disabled />
+								<input class="form-check-input" type="checkbox" role="switch" key="worker1.isCordoned" data-server-control="cordon" data-worker="1" />
 								<span class="form-check-label">Cordoned</span>
 							</label>
 							<label class="form-check form-switch flex-grow-1">
-								<input class="form-check-input" type="checkbox" role="switch" key="worker1.isShedding" disabled />
+								<input class="form-check-input" type="checkbox" role="switch" key="worker1.isShedding" data-server-control="shed" data-worker="1" />
 								<span class="form-check-label">Shedding</span>
 							</label>
 							<label class="form-check form-switch flex-grow-1">
-								<input class="form-check-input" type="checkbox" role="switch" key="worker1.isDraining" disabled />
+								<input class="form-check-input" type="checkbox" role="switch" key="worker1.isDraining" data-server-control="drain" data-worker="1" />
 								<span class="form-check-label">Draining</span>
 							</label>
 						</div>
@@ -142,3 +158,4 @@
 				src="components/activities.html"
 				aria-label="Server Activities"></div>
 		</div>
+		<script src="/apps/servers/details.js"></script>

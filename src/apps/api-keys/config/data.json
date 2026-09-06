@@ -4,9 +4,10 @@
   "upsert": true,
   "object": [
     {
-      "_id": "68e1134a6b2c4d5e7f8a9010",
-      "admin": true,
-      "key": "2567her8-efe2-409b-92c3-524c94nyue",
+    "_id": "68e1134a6b2c4d5e7f8a9010",
+    "admin": true,
+    "name": "admin",
+    "key": "2567her8-efe2-409b-92c3-524c94nyue",
       "modified": {
         "on": {
           "$date": "2025-09-17T14:24:15.405Z"
@@ -43,6 +44,7 @@
       "inviteUser": "true"
     },
     "default": true,
+    "name": "default",
     "key": "4210vl09-e332-pn45-bc42-772490pdg31",
     "modified": {
       "on": {
@@ -91,6 +93,7 @@
     "_id": "68e1134b0a1b2c3d4e5f6078",
     "array": "contacts",
     "email": "app-tester@cocreatejs.com",
+    "name": "app-tester@cocreatejs.com",
     "key": "68765ca00d899aa18761050d",
     "modified": {
       "on": {

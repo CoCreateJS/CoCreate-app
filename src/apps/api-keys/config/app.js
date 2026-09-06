@@ -6,7 +6,10 @@ export default {
     "name": "API Keys",
     "singularName": "API Key",
     "path": "apps/api-keys",
+    "card": "/apps/api-keys/card.html",
+    "cardTemplate": "/apps/api-keys/card-template.html",
     "array": "keys",
+    "category": "Settings",
     "icon": "ri-key-line",
     "description": "App to manage and track API Keys.",
     "status": "active",
@@ -15,7 +18,7 @@ export default {
         "label": "Name",
         "tagName": "input",
         "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter Name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/api-keys/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"api_keys\" state.object=\"{{object._id}}\"> </div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/api-keys/form.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"keys\" state.object=\"{{object._id}}\"> </div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
         "attributes": [
           {
             "name": "class",
@@ -46,8 +49,8 @@ export default {
       {
         "label": "API Key",
         "tagName": "input",
-        "filterTemplate": "<input id=\"api-key-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter API key\" filter-query=\"$document .list-view\" filter-query-key=\"key\" />",
-        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/api-keys/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\">\n            <div state-to=\"offcanvas-app-form\" state.array=\"api_keys\" state.object=\"{{object._id}}\">\n              {{object.key}}\n            </div>\n          </a>\n        ",
+        "filterTemplate": "",
+        "tableTemplate": "<span class=\"text-muted\">●●●●●●●●●●●●</span>",
         "attributes": [
           {
             "name": "class",
@@ -71,7 +74,7 @@ export default {
           },
           {
             "name": "type",
-            "value": "text"
+            "value": "password"
           }
         ]
       },

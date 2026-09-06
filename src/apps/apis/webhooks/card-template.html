@@ -1,0 +1,35 @@
+<article class="card flex-grow-1 mb-0 overflow-hidden" style="flex-basis:320px;min-width:min(280px,100%);max-width:460px" template>
+	<a class="card-body d-flex flex-column gap-3 text-reset" role="button" tabindex="0" state-to="offcanvas-app-view" state.src="/apps/apis/webhooks/details.html" aria-controls="offcanvas-app" aria-open>
+		<div state-to="offcanvas-app-form" state.array="webhooks" state.object="{{object._id}}"></div>
+		<div class="d-flex align-items-start justify-content-between gap-3">
+			<div class="d-flex align-items-center gap-3 min-width:0">
+				<div class="avatar-sm rounded-circle overflow-hidden flex-shrink-0">
+					<div class="avatar-title bg-info-subtle text-info material-shadow">
+						<i class="ri-bubble-chart-line fs-4"></i>
+					</div>
+				</div>
+				<div class="min-width:0">
+					<h5 class="mb-1">Inbound webhook</h5>
+					<div class="d-flex align-items-center gap-2">
+						<span class="badge bg-success-subtle text-success">POST</span>
+						<span class="text-muted fs-12">Event receiver</span>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex align-items-center gap-1 text-muted fs-12">
+				<span>Enabled</span>
+				<strong class="text-capitalize">{{object.enabled}}</strong>
+			</div>
+		</div>
+		<div class="bg-light border rounded px-3 py-2 overflow-hidden">
+			<span class="text-muted fs-12 d-block mb-1">Webhook URL</span>
+			<code class="d-block text-info text-truncate">/webhooks/{{object.path}}</code>
+		</div>
+		<p class="text-muted mb-0 line-clamp:2">{{object.description}}</p>
+		<div class="d-flex align-items-center justify-content-between gap-3 pt-2 border-top border-top-dashed">
+			<span class="text-muted fs-12">API provider</span>
+			<span class="text-uppercase fw-semibold text-primary text-truncate" array="apis" object="{{object.api_id}}" key="name"></span>
+		</div>
+	</a>
+</article>
+<div onload.array="webhooks" onload-query="$parent"></div>
