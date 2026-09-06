@@ -1,0 +1,543 @@
+<!-- Intake Form Modal -->
+<div
+	id="intake-form"
+	class="dialog fade zoomIn"
+	tabindex="-1"
+	role="dialog"
+	aria-modal="true"
+	aria-labelledby="intakeFormModalLabel">
+	<div
+		class="card w-100 bg-black border border-secondary border-opacity-25"
+		style="max-width: 800px; max-height: 90vh; overflow-y: auto"
+		aria-close-on="outside">
+		<div class="card-body p-4">
+			<button
+				type="button"
+				class="btn-close btn-close-white float-end bg-transparent"
+				id="btn-close-intake"
+				aria-label="Close"
+				aria-controls="intake-form"
+				aria-expanded="true" aria-close></button>
+
+			<div class="d-flex align-items-center gap-3 mb-4 mt-2">
+				<div class="avatar-sm flex-shrink-0">
+					<span
+						class="avatar-title bg-secondary-subtle text-secondary rounded fs-4">
+						<i class="ri-survey-line"></i>
+					</span>
+				</div>
+				<div>
+					<h5
+						id="intakeFormModalLabel"
+						class="fs-18 fw-bold text-white mb-1">
+						Clinical Intake Form
+					</h5>
+					<p class="fs-13 mb-0 text-muted">
+						Please outline your specific areas of concern so we can
+						formulate and update your recommended protocol.
+					</p>
+				</div>
+			</div>
+
+			<!-- Wrap in form to bind to contacts -->
+			<form array="contacts" object="$user_id">
+				<div class="row g-4">
+					<!-- Systems / Organs -->
+					<div class="col-md-6">
+						<label
+							class="form-label fs-13 text-secondary text-uppercase tracking-widest mb-3 border-bottom border-light border-opacity-10 pb-2 w-100"
+							>Targeted Systems</label
+						>
+						<div class="d-flex flex-column gap-3">
+							<!-- Brain -->
+							<div
+								class="card border-secondary border-opacity-25">
+								<div class="card-body p-2 px-3">
+									<div
+										class="form-check form-switch form-switch-secondary mb-0 py-1">
+										<input
+											class="form-check-input cursor-pointer"
+											type="checkbox"
+											role="switch"
+											key="concerns.organs"
+											value="Brain"
+											id="concern-brain" />
+										<label
+											class="form-check-label fs-14 text-white fw-medium cursor-pointer"
+											for="concern-brain"
+											>Brain / Cognitive</label
+										>
+									</div>
+									<div
+										show="#concern-brain:checked"
+										hide="#concern-brain:not(:checked)">
+										<div class="mt-3 mb-1">
+											<textarea
+												class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted"
+												rows="2"
+												key="concerns.details.Brain"
+												placeholder="Describe cognitive issues (e.g., brain fog, memory...)"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Lungs -->
+							<div
+								class="card border-secondary border-opacity-25">
+								<div class="card-body p-2 px-3">
+									<div
+										class="form-check form-switch form-switch-secondary mb-0 py-1">
+										<input
+											class="form-check-input cursor-pointer"
+											type="checkbox"
+											role="switch"
+											key="concerns.organs"
+											value="Lungs"
+											id="concern-lungs" />
+										<label
+											class="form-check-label fs-14 text-white fw-medium cursor-pointer"
+											for="concern-lungs"
+											>Lungs / Respiratory</label
+										>
+									</div>
+									<div
+										show="#concern-lungs:checked"
+										hide="#concern-lungs:not(:checked)">
+										<div
+											class="d-flex gap-3 mb-3 mt-2 px-1">
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Lungs"
+													value="Left"
+													id="lungs-left"
+													name="lungs-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="lungs-left"
+													>Left</label
+												>
+											</div>
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Lungs"
+													value="Right"
+													id="lungs-right"
+													name="lungs-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="lungs-right"
+													>Right</label
+												>
+											</div>
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Lungs"
+													value="Both"
+													id="lungs-both"
+													name="lungs-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="lungs-both"
+													>Both</label
+												>
+											</div>
+										</div>
+										<div class="mb-1">
+											<textarea
+												class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted"
+												rows="2"
+												key="concerns.details.Lungs"
+												placeholder="Describe respiratory issues..."></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Gut -->
+							<div
+								class="card border-secondary border-opacity-25">
+								<div class="card-body p-2 px-3">
+									<div
+										class="form-check form-switch form-switch-secondary mb-0 py-1">
+										<input
+											class="form-check-input cursor-pointer"
+											type="checkbox"
+											role="switch"
+											key="concerns.organs"
+											value="Gut"
+											id="concern-gut" />
+										<label
+											class="form-check-label fs-14 text-white fw-medium cursor-pointer"
+											for="concern-gut"
+											>Gut / Digestive</label
+										>
+									</div>
+									<div
+										show="#concern-gut:checked"
+										hide="#concern-gut:not(:checked)">
+										<div class="mt-3 mb-1">
+											<textarea
+												class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted"
+												rows="2"
+												key="concerns.details.Gut"
+												placeholder="Describe digestive issues..."></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Heart -->
+							<div
+								class="card border-secondary border-opacity-25">
+								<div class="card-body p-2 px-3">
+									<div
+										class="form-check form-switch form-switch-secondary mb-0 py-1">
+										<input
+											class="form-check-input cursor-pointer"
+											type="checkbox"
+											role="switch"
+											key="concerns.organs"
+											value="Heart"
+											id="concern-heart" />
+										<label
+											class="form-check-label fs-14 text-white fw-medium cursor-pointer"
+											for="concern-heart"
+											>Heart / Cardiovascular</label
+										>
+									</div>
+									<div
+										show="#concern-heart:checked"
+										hide="#concern-heart:not(:checked)">
+										<div class="mt-3 mb-1">
+											<textarea
+												class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted"
+												rows="2"
+												key="concerns.details.Heart"
+												placeholder="Describe cardiovascular issues..."></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+                                                    <!-- Skin -->
+                                                    <div class="card border-secondary border-opacity-25">
+                                                            <div class="card-body p-2 px-3">
+                                                                    <div class="form-check form-switch form-switch-secondary mb-0 py-1">
+                                                                            <input class="form-check-input cursor-pointer" type="checkbox" role="switch" key="concerns.organs" value="Skin" id="concern-skin">
+                                                                            <label class="form-check-label fs-14 text-white fw-medium cursor-pointer" for="concern-skin">Skin / Dermatological</label>
+                                                                    </div>
+                                                                    <div show="#concern-skin:checked" hide="#concern-skin:not(:checked)">
+                                                                            <div class="mt-3 mb-1">
+                                                                                    <textarea class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted" rows="2" key="concerns.details.Skin" placeholder="Describe skin issues (e.g., elasticity, spots...)"></textarea>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                                                    </div>
+
+                                                    <!-- Hair -->
+                                                    <div class="card border-secondary border-opacity-25">
+                                                            <div class="card-body p-2 px-3">
+                                                                    <div class="form-check form-switch form-switch-secondary mb-0 py-1">
+                                                                            <input class="form-check-input cursor-pointer" type="checkbox" role="switch" key="concerns.organs" value="Hair" id="concern-hair">
+                                                                            <label class="form-check-label fs-14 text-white fw-medium cursor-pointer" for="concern-hair">Hair / Scalp</label>
+                                                                    </div>
+                                                                    <div show="#concern-hair:checked" hide="#concern-hair:not(:checked)">
+                                                                            <div class="mt-3 mb-1">
+                                                                                    <textarea class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted" rows="2" key="concerns.details.Hair" placeholder="Describe hair issues (e.g., thinning, loss...)"></textarea>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                                                    </div>
+
+						</div>
+					</div>
+
+					<!-- Joints -->
+					<div class="col-md-6">
+						<label
+							class="form-label fs-13 text-secondary text-uppercase tracking-widest mb-3 border-bottom border-light border-opacity-10 pb-2 w-100"
+							>Targeted Joints</label
+						>
+						<div class="d-flex flex-column gap-3">
+							<!-- Knee -->
+							<div
+								class="card border-secondary border-opacity-25">
+								<div class="card-body p-2 px-3">
+									<div
+										class="form-check form-switch form-switch-secondary mb-0 py-1">
+										<input
+											class="form-check-input cursor-pointer"
+											type="checkbox"
+											role="switch"
+											key="concerns.joints"
+											value="Knee"
+											id="concern-knee" />
+										<label
+											class="form-check-label fs-14 text-white fw-medium cursor-pointer"
+											for="concern-knee"
+											>Knee</label
+										>
+									</div>
+									<div
+										show="#concern-knee:checked"
+										hide="#concern-knee:not(:checked)">
+										<div
+											class="d-flex gap-3 mb-3 mt-2 px-1">
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Knee"
+													value="Left"
+													id="knee-left"
+													name="knee-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="knee-left"
+													>Left</label
+												>
+											</div>
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Knee"
+													value="Right"
+													id="knee-right"
+													name="knee-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="knee-right"
+													>Right</label
+												>
+											</div>
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Knee"
+													value="Both"
+													id="knee-both"
+													name="knee-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="knee-both"
+													>Both</label
+												>
+											</div>
+										</div>
+										<div class="mb-1">
+											<textarea
+												class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted"
+												rows="2"
+												key="concerns.details.Knee"
+												placeholder="Describe knee issues..."></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Shoulder -->
+							<div
+								class="card border-secondary border-opacity-25">
+								<div class="card-body p-2 px-3">
+									<div
+										class="form-check form-switch form-switch-secondary mb-0 py-1">
+										<input
+											class="form-check-input cursor-pointer"
+											type="checkbox"
+											role="switch"
+											key="concerns.joints"
+											value="Shoulder"
+											id="concern-shoulder" />
+										<label
+											class="form-check-label fs-14 text-white fw-medium cursor-pointer"
+											for="concern-shoulder"
+											>Shoulder</label
+										>
+									</div>
+									<div
+										show="#concern-shoulder:checked"
+										hide="#concern-shoulder:not(:checked)">
+										<div
+											class="d-flex gap-3 mb-3 mt-2 px-1">
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Shoulder"
+													value="Left"
+													id="shoulder-left"
+													name="shoulder-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="shoulder-left"
+													>Left</label
+												>
+											</div>
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Shoulder"
+													value="Right"
+													id="shoulder-right"
+													name="shoulder-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="shoulder-right"
+													>Right</label
+												>
+											</div>
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Shoulder"
+													value="Both"
+													id="shoulder-both"
+													name="shoulder-side" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="shoulder-both"
+													>Both</label
+												>
+											</div>
+										</div>
+										<div class="mb-1">
+											<textarea
+												class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted"
+												rows="2"
+												key="concerns.details.Shoulder"
+												placeholder="Describe shoulder issues..."></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Spine / Back -->
+							<div
+								class="card border-secondary border-opacity-25">
+								<div class="card-body p-2 px-3">
+									<div
+										class="form-check form-switch form-switch-secondary mb-0 py-1">
+										<input
+											class="form-check-input cursor-pointer"
+											type="checkbox"
+											role="switch"
+											key="concerns.joints"
+											value="Spine"
+											id="concern-spine" />
+										<label
+											class="form-check-label fs-14 text-white fw-medium cursor-pointer"
+											for="concern-spine"
+											>Back / Spine</label
+										>
+									</div>
+									<div
+										show="#concern-spine:checked"
+										hide="#concern-spine:not(:checked)">
+										<div
+											class="d-flex gap-3 mb-3 mt-2 px-1 flex-wrap">
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Spine"
+													value="Cervical"
+													id="spine-c"
+													name="spine-section" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="spine-c"
+													>Cervical</label
+												>
+											</div>
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Spine"
+													value="Thoracic"
+													id="spine-t"
+													name="spine-section" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="spine-t"
+													>Thoracic</label
+												>
+											</div>
+											<div
+												class="form-check form-radio-secondary mb-0">
+												<input
+													class="form-check-input"
+													type="radio"
+													key="concerns.side.Spine"
+													value="Lumbar"
+													id="spine-l"
+													name="spine-section" />
+												<label
+													class="form-check-label fs-13 text-muted"
+													for="spine-l"
+													>Lumbar</label
+												>
+											</div>
+										</div>
+										<div class="mb-1">
+											<textarea
+												class="form-control bg-black text-white border-secondary border-opacity-50 fs-13 placeholder-muted"
+												rows="2"
+												key="concerns.details.Spine"
+												placeholder="Describe back issues..."></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Action -->
+					<div
+						class="col-12 mt-4 text-end border-top border-light border-opacity-10 pt-4">
+						<button
+							type="button"
+							class="btn btn-light me-2 border-secondary text-muted fw-medium"
+							aria-controls="intake-form"
+							aria-expanded="true" aria-close>
+							Cancel
+						</button>
+						<button
+							type="button"
+							actions="save"
+							aria-controls="intake-form"
+							aria-expanded="true"
+							class="btn btn-secondary d-inline-flex align-items-center gap-2 px-4 py-2 fw-medium">
+							<i class="ri-check-line"></i> Save Profile
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
