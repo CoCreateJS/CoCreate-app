@@ -33,6 +33,9 @@
     const prompt = shell.querySelector(".ai-prompt");
     const send = shell.querySelector(".ai-send");
     const stop = shell.querySelector(".ai-stop");
+    const steerQueue = shell.querySelector(".ai-steer-queue");
+    const steerCount = shell.querySelector(".ai-steer-count");
+    const steerItems = shell.querySelector(".ai-steer-items");
     const provider = shell.querySelector(".ai-provider");
     const model = shell.querySelector(".ai-model");
     const modelValue = shell.querySelector(".ai-model-value");
@@ -46,6 +49,7 @@
 	const sidebarToggle = shell.querySelector(".ai-sidebar-toggle");
 	const sidebarBackdrop = shell.querySelector(".ai-sidebar-backdrop");
 	const streams = new Map();
+	const queuedSteers = new Map();
 	const highlightTimers = new WeakMap();
 	let socket;
 	const menuCloseRoot = document;
@@ -126,11 +130,37 @@
     };
 
     const setBusy = (busy) => {
-        send.disabled = busy;
-        send.hidden = busy;
+        send.disabled = false;
+        send.hidden = false;
         stop.hidden = !busy;
         stop.disabled = false;
-        prompt.disabled = busy;
+        prompt.disabled = false;
+    };
+
+    const updateSteerQueue = () => {
+        steerQueue.hidden = queuedSteers.size === 0;
+        steerCount.textContent = `${queuedSteers.size} queued instruction${queuedSteers.size === 1 ? "" : "s"}`;
+    };
+
+    const addQueuedSteer = (queueId, content) => {
+        const item = document.createElement("div");
+        item.className = "ai-steer-item";
+        item.dataset.queueId = queueId;
+        const label = document.createElement("span");
+        label.textContent = content;
+        const state = document.createElement("small");
+        state.textContent = "Sending";
+        item.append(label, state);
+        queuedSteers.set(queueId, item);
+        steerItems.append(item);
+        updateSteerQueue();
+    };
+
+    const clearSteerQueue = () => {
+        queuedSteers.clear();
+        steerItems.replaceChildren();
+        steerQueue.open = false;
+        updateSteerQueue();
     };
 
     const resizePrompt = () => {
@@ -594,8 +624,9 @@
                     if (activeView !== "Details") return;
                     detailsPre.hidden = true;
                     detailsPanel.classList.add("ai-app-details-view");
-                    const details = document.createElement("div");
+                    const details = document.createElement("form");
                     details.className = "ai-crud-details-view";
+                    details.addEventListener("submit", (event) => event.preventDefault());
                     const array = editor.getAttribute("array");
                     const object = editor.getAttribute("object");
                     details.setAttribute("array", array);
@@ -1485,6 +1516,7 @@
         }
         const onComplete = stream.onComplete;
         streams.delete(data.stream_id);
+        clearSteerQueue();
         setBusy(false);
         if (onComplete) {
             void onComplete();
@@ -1526,6 +1558,29 @@
     const onChat = (data = {}) => {
         const stream = streams.get(data.stream_id);
         if (!stream || !data.ai) return;
+        if (data.ai.status === "queued") {
+            const item = queuedSteers.get(data.ai.queue_id);
+            const state = item?.querySelector("small");
+            if (state) state.textContent = "Queued";
+            setStatus("Instruction queued", "connected");
+            return;
+        }
+        if (data.ai.status === "steer-unavailable") {
+            const item = queuedSteers.get(data.ai.queue_id);
+            item?.remove();
+            queuedSteers.delete(data.ai.queue_id);
+            updateSteerQueue();
+            setStatus(data.ai.message || "Session finished", "connected");
+            return;
+        }
+        if (data.ai.status === "steer-error") {
+            const item = queuedSteers.get(data.ai.queue_id);
+            item?.remove();
+            queuedSteers.delete(data.ai.queue_id);
+            updateSteerQueue();
+            setStatus(data.ai.message || "Instruction could not be queued", "error");
+            return;
+        }
         if (data.ai.status === "tool" && data.ai.tool) {
             renderToolResult(stream, data.ai.tool);
             return;
@@ -1627,9 +1682,45 @@
         }
     };
 
+    const submitSteer = async (message, streamId) => {
+        const text = message.trim();
+        if (!text || !streamId || !socket) return;
+        const queueId = makeId();
+        const userMessage = addMessage("user", text);
+        const activeStream = streams.get(streamId);
+        if (activeStream?.element) activeStream.element.before(userMessage.element);
+        addQueuedSteer(queueId, text);
+        prompt.value = "";
+        resizePrompt();
+        setStatus("Queueing instruction…", "connected");
+
+        try {
+            await socket.send({
+                method: "ai.steer",
+                uuid: queueId,
+                stream_id: streamId,
+                ai: {
+                    stream_id: streamId,
+                    queue_id: queueId,
+                    prompt: text
+                }
+            });
+        } catch (error) {
+            queuedSteers.get(queueId)?.remove();
+            queuedSteers.delete(queueId);
+            updateSteerQueue();
+            setStatus(error.message, "error");
+        }
+    };
+
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-        void submitPrompt(prompt.value);
+        const streamId = streams.keys().next().value;
+        if (streamId) {
+            void submitSteer(prompt.value, streamId);
+        } else {
+            void submitPrompt(prompt.value);
+        }
     });
 
     stop.addEventListener("click", async () => {

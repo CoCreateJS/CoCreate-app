@@ -39,11 +39,10 @@ export default {
             "config": {
                 "enabled": true,
                 "defaultProvider": "copilot",
-                "defaultStorageTarget": "virtual",
+                "defaultStorageTarget": "local",
                 "allowLocalFileSystem": true,
                 "allowUnconfirmedLocalWrite": false,
-                "localFsRoot": "/home/ubuntu/Dev/CoCreate-app",
-                "cocPath": "coc",
+                "localFsRoot": "/home/ubuntu/Dev/CoCreateWS/websites",
                 "publicPath": "/public",
                 "tools": {
                     "crud": {
@@ -335,7 +334,7 @@ export default {
                         }
                     },
                     "read_project_file": {
-                        "description": "Reads from virtual or local file storage depending on target or context.",
+                        "description": "Reads from virtual or local file storage depending on target or context. With target=auto or omitted, the configured local organization workspace is preferred.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -365,7 +364,7 @@ export default {
                         }
                     },
                     "write_project_file": {
-                        "description": "Writes to virtual or local storage depending on target or context.",
+                        "description": "Writes to virtual or local storage depending on target or context. With target=auto or omitted, the configured local organization workspace is preferred; publishing the change to the live CRUD-backed file repository remains an explicit coc upload operation.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -394,7 +393,7 @@ export default {
                         }
                     },
                     "read_local_file": {
-                        "description": "Reads a line range from a local file within localFsRoot. Large files must be read in successive ranges; use totalLines and hasMore to continue.",
+                        "description": "Reads a line range from a local file within the authenticated organization's site workspace. Large files must be read in successive ranges; use totalLines and hasMore to continue.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -440,7 +439,7 @@ export default {
                         }
                     },
                     "write_local_file": {
-                        "description": "Writes a local server file. Only available when allowLocalFileSystem=true.",
+                        "description": "Writes a file within the authenticated organization's site workspace. AI runtime metadata under .ai is outside this tool's path boundary. Only available when allowLocalFileSystem=true.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -458,7 +457,7 @@ export default {
                         }
                     },
                     "coc": {
-                        "description": "Runs the constrained CoCreate CLI workflow against the configured local project. Use download to refresh database-backed site files locally before editing. Use upload only after edits are complete and the user requested the changes live. This tool cannot execute arbitrary commands.",
+                        "description": "Downloads database-backed site files into the authenticated organization's isolated site workspace or uploads selected site files through tenant-scoped CRUD. Site downloads process one file at a time and skip existing files unless overwrite=true. AI metadata under .ai is inaccessible to this tool. This tool cannot execute commands.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -476,13 +475,13 @@ export default {
                                     },
                                     "description": "Virtual paths to download or local project paths to upload."
                                 },
-                                "destination": {
-                                    "type": "string",
-                                    "description": "Local destination within localFsRoot for downloads."
-                                },
                                 "site": {
                                     "type": "boolean",
                                     "description": "Download the complete website one file at a time."
+                                },
+                                "overwrite": {
+                                    "type": "boolean",
+                                    "description": "Replace existing workspace files during download. Defaults to false."
                                 }
                             },
                             "required": [
