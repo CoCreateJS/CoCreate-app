@@ -1,11 +1,18 @@
 <div class="hstack gap-2 justify-content-end">
+	<style>
+		form:has(#offcanvas-app-view[src*="/details.html"]) .card-footer {
+			display: none;
+		}
+	</style>
+
 	<button
 		type="button"
 		class="btn btn-light"
 		title="Cancel"
 		aria-label="Cancel form"
 		aria-controls="offcanvas-app"
-		aria-expanded="true" aria-close>
+		aria-expanded="true"
+		aria-close>
 		Cancel
 	</button>
 	<button
