@@ -6,7 +6,7 @@ export default {
         "_id": "6a96308f88ce2e69559ce874",
         "name": "Candidates",
         "singularName": "Candidate",
-        "path": "apps/candidates",
+        "path": "/apps/candidates",
         "card": "/apps/candidates/card.html",
         "cardTemplate": "/apps/candidates/card-template.html",
         "array": "contacts",
@@ -22,7 +22,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/candidates/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t\t\t<div  state-to=\"offcanvas-app-form\" state.array=\"contacts\" state.object=\"{{object._id}}\"></div>\n\n\t\t\t\t\t\t\t<div class=\"avatar-xs rounded-circle position-relative overflow-hidden\" state-to=\"offcanvas-app-form\" state.array=\"contacts\" state.object=\"{{object._id}}\">\n\t\t\t\t\t\t\t\t\t<div class=\"avatar-title bg-secondary-subtle text-secondary material-shadow\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"avatar-initial\">{{object.first_name[0]}}</span>\n\t\t\t\t\t\t\t\t\t\t<img\n\t\t\t\t\t\t\t\t\t\t\tclass=\"position-absolute object-fit-cover\"\n\t\t\t\t\t\t\t\t\t\t\tsrc=\"{{object.avatar[0].src}}\"\n\t\t\t\t\t\t\t\t\t\t\talt=\"Avatar\"\n\t\t\t\t\t\t\t\t\t\t\twidth=\"100%\"\n\t\t\t\t\t\t\t\t\t\t\theight=\"100%\"\n\t\t\t\t\t\t\t\t\t\t\tarray=\"contacts\"\n\t\t\t\t\t\t\t\t\t\t\tobject=\"{{object._id}}\"\n\t\t\t\t\t\t\t\t\t\t\tkey=\"avatar[0].src\"\n\t\t\t\t\t\t\t\t\t\t\tonerror=\"this.onerror=null; this.src='/assets/images/transparent.png';\"/>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 ms-2 name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/candidates/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n              \t\t\t\t<div  state-to=\"offcanvas-app-form\" state.array=\"contacts\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
+                "tableTemplate": "\n        <a\n          role=\"button\"\n          tabindex=\"0\"\n          class=\"d-flex align-items-center\"\n          state-to=\"offcanvas-app\"\n          state.object=\"6a96308f88ce2e69559ce874\"\n          aria-controls=\"offcanvas-app\"\n          aria-open\n          aria-haspopup=\"dialog\"\n          aria-expanded=\"false\">\n          <div state-to=\"offcanvas-app-view\" state.src=\"/apps/candidates/details.html\"></div>\n          <div state-to=\"offcanvas-app-form\" state.array=\"contacts\" state.object=\"{{object._id}}\"></div>\n          <div class=\"avatar-xs rounded-circle position-relative overflow-hidden flex-shrink-0\">\n            <div class=\"avatar-title bg-secondary-subtle text-secondary material-shadow\">\n              <span class=\"avatar-initial\">{{object.first_name[0]}}</span>\n              <img\n                class=\"position-absolute object-fit-cover\"\n                src=\"{{object.avatar[0].src}}\"\n                alt=\"Avatar\"\n                width=\"100%\"\n                height=\"100%\"\n                array=\"contacts\"\n                object=\"{{object._id}}\"\n                key=\"avatar[0].src\"\n                onerror=\"this.onerror=null; this.src='/assets/images/transparent.png';\"/>\n            </div>\n          </div>\n          <span class=\"flex-grow-1 ms-2 name\">{{object.first_name}} {{object.last_name}}</span>\n        </a>\n      ",
                 "attributes": [
                     {
                         "name": "class",
@@ -43,70 +43,6 @@ export default {
                     {
                         "name": "key",
                         "value": "name"
-                    },
-                    {
-                        "name": "type",
-                        "value": "text"
-                    }
-                ]
-            },
-            {
-                "label": "First Name",
-                "tagName": "input",
-                "filterTemplate": "<input id=\"first_name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter first name\" filter-query=\"$document .list-view\" filter-query-key=\"first_name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "{{object.first_name}}",
-                "attributes": [
-                    {
-                        "name": "class",
-                        "value": "form-control"
-                    },
-                    {
-                        "name": "id",
-                        "value": "first_name-field"
-                    },
-                    {
-                        "name": "placeholder",
-                        "value": "Enter first name"
-                    },
-                    {
-                        "name": "required",
-                        "value": true
-                    },
-                    {
-                        "name": "key",
-                        "value": "first_name"
-                    },
-                    {
-                        "name": "type",
-                        "value": "text"
-                    }
-                ]
-            },
-            {
-                "label": "Last Name",
-                "tagName": "input",
-                "filterTemplate": "<input id=\"last_name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter last name\" filter-query=\"$document .list-view\" filter-query-key=\"last_name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "{{object.last_name}}",
-                "attributes": [
-                    {
-                        "name": "class",
-                        "value": "form-control"
-                    },
-                    {
-                        "name": "id",
-                        "value": "last_name-field"
-                    },
-                    {
-                        "name": "placeholder",
-                        "value": "Enter last name"
-                    },
-                    {
-                        "name": "required",
-                        "value": true
-                    },
-                    {
-                        "name": "key",
-                        "value": "last_name"
                     },
                     {
                         "name": "type",
