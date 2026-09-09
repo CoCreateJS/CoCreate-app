@@ -6,7 +6,9 @@
 	aria-modal="true"
 	aria-labelledby="removeItemModalLabel"
 	aria-describedby="removeItemModalDesc">
-	<div class="card" aria-close-on="outside">
+	<div
+		class="card"
+		aria-close-on="outside">
 		<div class="card-body">
 			<button
 				type="button"
@@ -14,7 +16,8 @@
 				id="btn-close"
 				aria-label="Close"
 				aria-controls="removeItemModal"
-				aria-expanded="true" aria-close></button>
+				aria-expanded="true"
+				aria-close></button>
 
 			<div class="mt-2 text-center">
 				<lord-icon
@@ -24,7 +27,9 @@
 					style="width: 100px; height: 100px"></lord-icon>
 				<div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
 					<h4 id="removeItemModalLabel">Are you Sure?</h4>
-					<p class="text-muted mx-4 mb-0" id="removeItemModalDesc">
+					<p
+						class="text-muted mx-4 mb-0"
+						id="removeItemModalDesc">
 						Are you Sure You want to Remove this Record?
 					</p>
 				</div>
@@ -34,7 +39,8 @@
 					type="button"
 					class="btn w-sm btn-light"
 					aria-controls="removeItemModal"
-					aria-expanded="true" aria-close>
+					aria-expanded="true"
+					aria-close>
 					Close
 				</button>
 				<button
@@ -45,9 +51,9 @@
 					state-overwrite
 					aria-controls="removeItemModal"
 					aria-expanded="true"
-					actions="delete" 
-					array="" 
-					object="" >
+					actions="delete, action($document #close-offcanvas-btn)"
+					array=""
+					object="">
 					Yes, Delete It!
 				</button>
 			</div>
