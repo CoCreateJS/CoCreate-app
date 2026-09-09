@@ -17,80 +17,80 @@
  ********************************************************************************/
 
 export default {
-  "method": "object.update",
-  "upsert": true,
-  "array": "apps",
-  "object": {
-    "_id": "db642be613418dda0ef345a1",
-    "name": "AI Instructions",
-    "singularName": "AI Instruction",
-    "path": "apps/ai/instructions",
-    "card": "/apps/ai/instructions/card.html",
-    "cardTemplate": "/apps/ai/instructions/card-template.html",
-    "array": "ai-instructions",
-    "category": "Settings",
-    "mainViews": [
-      "table",
-      "grid"
-    ],
-    "secondaryViews": [
-      "details",
-      "form"
-    ],
-    "icon": "ri-file-list-3-line",
-    "description": "Manage runtime instructions and capability context used by CoCreate AI.",
-    "status": "active",
-    "fields": [
-      {
-        "label": "Name",
-        "tagName": "input",
-        "filterTemplate": "<input id=\"ai-instruction-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-        "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/ai/instructions/details.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"ai-instructions\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
-        "attributes": [
-          { "name": "class", "value": "form-control" },
-          { "name": "id", "value": "ai-instruction-name" },
-          { "name": "key", "value": "name" },
-          { "name": "type", "value": "text" },
-          { "name": "required", "value": true }
+    "method": "object.update",
+    "upsert": true,
+    "array": "apps",
+    "object": {
+        "_id": "db642be613418dda0ef345a1",
+        "name": "AI Instructions",
+        "singularName": "AI Instruction",
+        "path": "/apps/ai/instructions",
+        "card": "/apps/ai/instructions/card.html",
+        "cardTemplate": "/apps/ai/instructions/card-template.html",
+        "array": "ai-instructions",
+        "category": "Settings",
+        "mainViews": [
+            "table",
+            "grid"
+        ],
+        "secondaryViews": [
+            "details",
+            "form"
+        ],
+        "icon": "ri-file-list-3-line",
+        "description": "Manage runtime instructions and capability context used by CoCreate AI.",
+        "status": "active",
+        "fields": [
+            {
+                "label": "Name",
+                "tagName": "input",
+                "filterTemplate": "<input id=\"ai-instruction-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/ai/instructions/details.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"ai-instructions\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+                "attributes": [
+                    { "name": "class", "value": "form-control" },
+                    { "name": "id", "value": "ai-instruction-name" },
+                    { "name": "key", "value": "name" },
+                    { "name": "type", "value": "text" },
+                    { "name": "required", "value": true }
+                ]
+            },
+            {
+                "label": "Default",
+                "tagName": "input",
+                "filterTemplate": "<select id=\"ai-instruction-default-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"default\"><option value=\"\">Any state</option><option value=\"true\">Default</option><option value=\"false\">Not default</option></select>",
+                "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.default}}</span>",
+                "attributes": [
+                    { "name": "class", "value": "form-check-input" },
+                    { "name": "id", "value": "ai-instruction-default" },
+                    { "name": "key", "value": "default" },
+                    { "name": "type", "value": "checkbox" }
+                ]
+            },
+            {
+                "label": "Enabled",
+                "tagName": "input",
+                "filterTemplate": "<select id=\"ai-instruction-enabled-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\">Enabled</option><option value=\"false\">Disabled</option></select>",
+                "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.enabled}}</span>",
+                "attributes": [
+                    { "name": "class", "value": "form-check-input" },
+                    { "name": "id", "value": "ai-instruction-enabled" },
+                    { "name": "key", "value": "enabled" },
+                    { "name": "type", "value": "checkbox" }
+                ]
+            },
+            {
+                "label": "Modified",
+                "tagName": "input",
+                "filterTemplate": "",
+                "tableTemplate": "{{object.modified.on}}",
+                "attributes": [
+                    { "name": "class", "value": "form-control" },
+                    { "name": "id", "value": "ai-instruction-modified" },
+                    { "name": "key", "value": "modified.on" },
+                    { "name": "type", "value": "date" },
+                    { "name": "readonly", "value": true }
+                ]
+            }
         ]
-      },
-      {
-        "label": "Default",
-        "tagName": "input",
-        "filterTemplate": "<select id=\"ai-instruction-default-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"default\"><option value=\"\">Any state</option><option value=\"true\">Default</option><option value=\"false\">Not default</option></select>",
-        "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.default}}</span>",
-        "attributes": [
-          { "name": "class", "value": "form-check-input" },
-          { "name": "id", "value": "ai-instruction-default" },
-          { "name": "key", "value": "default" },
-          { "name": "type", "value": "checkbox" }
-        ]
-      },
-      {
-        "label": "Enabled",
-        "tagName": "input",
-        "filterTemplate": "<select id=\"ai-instruction-enabled-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\">Enabled</option><option value=\"false\">Disabled</option></select>",
-        "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.enabled}}</span>",
-        "attributes": [
-          { "name": "class", "value": "form-check-input" },
-          { "name": "id", "value": "ai-instruction-enabled" },
-          { "name": "key", "value": "enabled" },
-          { "name": "type", "value": "checkbox" }
-        ]
-      },
-      {
-        "label": "Modified",
-        "tagName": "input",
-        "filterTemplate": "",
-        "tableTemplate": "{{object.modified.on}}",
-        "attributes": [
-          { "name": "class", "value": "form-control" },
-          { "name": "id", "value": "ai-instruction-modified" },
-          { "name": "key", "value": "modified.on" },
-          { "name": "type", "value": "date" },
-          { "name": "readonly", "value": true }
-        ]
-      }
-    ]
-  }
+    }
 };

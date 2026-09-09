@@ -6,7 +6,7 @@ export default {
         "_id": "686ecb750cb20318c29a050f",
         "name": "Payments",
         "singularName": "Payment",
-        "path": "apps/payments",
+        "path": "/apps/payments",
         "card": "/apps/payments/card.html",
         "cardTemplate": "/apps/payments/card-template.html",
         "array": "transactions",
@@ -756,7 +756,7 @@ export default {
                 ],
                 "tagName": "select",
                 "filterTemplate": "\n\t\t\t\t\t<select id=\"tags-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"tags\">\n\t\t\t\t\t\t<option value=\"credit\">Credit</option>\n\t\t\t\t\t\t<option value=\"debit\">Debit</option>\n\t\t\t\t\t\t<option value=\"refund\">Refund</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
-        "tableTemplate": "<span render=\"object.tags\" render-as=\"tags\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{tags}}\n</span>",
+                "tableTemplate": "<span render=\"object.tags\" render-as=\"tags\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{tags}}\n</span>",
                 "attributes": [
                     {
                         "name": "class",
