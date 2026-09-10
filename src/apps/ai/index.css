@@ -360,7 +360,6 @@
 	min-width: 0;
 	height: auto;
 	min-height: 0;
-	overflow: hidden;
 }
 
 .ai-crud-list .list-group-item {
@@ -375,7 +374,6 @@
 	height: auto;
 	min-height: 0;
 	margin: 0;
-	overflow: hidden;
 }
 
 .ai-crud-list [data-ai-crud-item] {
@@ -490,10 +488,6 @@
 	position: relative;
 	border: 0;
 	overflow: visible;
-}
-
-.ai-code-block.ai-crud-code-block:has(.ai-code-footer:not([hidden])) {
-	padding-bottom: var(--ai-code-footer-height, 53px);
 }
 
 .ai-code-block:has(.ai-code-menu[open]) {
@@ -666,15 +660,14 @@
 
 .ai-code-footer {
 	display: flex;
-	position: absolute;
+	position: sticky;
 	z-index: 5;
 	bottom: 0;
-	left: 0;
-	right: 0;
 	justify-content: flex-end;
 	gap: 8px;
 	padding: 10px var(--admin-gutter);
 	border-top: 1px solid var(--coc-border-color);
+	border-radius: 0 0 var(--coc-border-radius) var(--coc-border-radius);
 	background: var(--coc-secondary-bg);
 }
 

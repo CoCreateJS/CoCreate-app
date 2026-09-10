@@ -1147,79 +1147,9 @@
 			footer.hidden = true;
 			edit.className = "btn btn-primary";
 			footer.append(cancel, edit);
-			let footerScrollRoot;
-			let footerIntersectionObserver;
-			let footerResizeObserver;
-			let footerSectionVisible = false;
-			let footerFrame;
-			const positionFooter = () => {
-				footerFrame = undefined;
-				if (footer.hidden || !footerScrollRoot || !footerSectionVisible)
-					return;
-				const sectionRect = block.getBoundingClientRect();
-				const rootRect = footerScrollRoot.getBoundingClientRect();
-				const composerRect = composer.getBoundingClientRect();
-				const visibleBottom = Math.min(rootRect.bottom, composerRect.top);
-				const maxBottom = Math.max(
-					0,
-					sectionRect.height - footer.offsetHeight
-				);
-				const bottom = Math.min(
-					maxBottom,
-					Math.max(0, sectionRect.bottom - visibleBottom)
-				);
-				footer.style.bottom = `${bottom}px`;
-			};
-			const scheduleFooterPosition = () => {
-				if (!footerFrame)
-					footerFrame = requestAnimationFrame(positionFooter);
-			};
-			const stopFooterDocking = () => {
-				footerScrollRoot?.removeEventListener(
-					"scroll",
-					scheduleFooterPosition
-				);
-				footerIntersectionObserver?.disconnect();
-				footerResizeObserver?.disconnect();
-				if (footerFrame) cancelAnimationFrame(footerFrame);
-				footerFrame = undefined;
-				footerSectionVisible = false;
-				footer.style.removeProperty("bottom");
-			};
-			const startFooterDocking = () => {
-				stopFooterDocking();
-				footerScrollRoot = block
-					.closest(".ai-message-scroll")
-					?.querySelector(".simplebar-content-wrapper");
-				if (!footerScrollRoot) return;
-				footerIntersectionObserver = new IntersectionObserver(
-					([entry]) => {
-						footerSectionVisible = entry.isIntersecting;
-						footer.style.visibility = entry.isIntersecting
-							? ""
-							: "hidden";
-						scheduleFooterPosition();
-					},
-					{ root: footerScrollRoot }
-				);
-				footerResizeObserver = new ResizeObserver(scheduleFooterPosition);
-				footerIntersectionObserver.observe(block);
-				footerResizeObserver.observe(block);
-				footerResizeObserver.observe(composer);
-				footerScrollRoot.addEventListener(
-					"scroll",
-					scheduleFooterPosition,
-					{ passive: true }
-				);
-			};
 			new MutationObserver(() => {
 				footer.hidden = edit.hidden;
 				cancel.hidden = edit.hidden;
-				if (edit.hidden) {
-					stopFooterDocking();
-				} else {
-					requestAnimationFrame(startFooterDocking);
-				}
 			}).observe(edit, { attributes: true, attributeFilter: ["hidden"] });
 			previewTab.addEventListener("click", () => {
 				if (preview) return;
