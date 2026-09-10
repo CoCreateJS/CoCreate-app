@@ -6,6 +6,10 @@ export default {
         "name": "Chat",
         "singularName": "Chat",
         "path": "/apps/chat",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "chats",
         "category": "Workspace",
         "mainViews": [

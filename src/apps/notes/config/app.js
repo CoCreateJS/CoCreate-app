@@ -6,6 +6,10 @@ export default {
         "name": "Notes",
         "singularName": "Note",
         "path": "/apps/notes",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "notes",
         "icon": "ri-mail-line",
         "description": "App to manage and track Notes.",

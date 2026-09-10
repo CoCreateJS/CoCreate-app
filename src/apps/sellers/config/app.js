@@ -6,6 +6,10 @@ export default {
         "name": "Sellers",
         "singularName": "Seller",
         "path": "/apps/sellers",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "companies",
         "filter": {
             "tags": "seller"

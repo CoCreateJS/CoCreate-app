@@ -6,6 +6,10 @@ export default {
         "name": "Organization",
         "singularName": "Organization",
         "path": "/apps/organizations",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "organizations",
         "mainViews": [
             "table",

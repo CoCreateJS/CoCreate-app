@@ -6,6 +6,10 @@ export default {
         "name": "Activities",
         "singularName": "Activity",
         "path": "/apps/activities",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "activities",
         "status": "active",
         "icon": "ri-calendar-line",

@@ -1,39 +1,32 @@
 /* Faithfully extracted from the legacy SCSS build. */
 .avatar-xxs {
-	height: 1.5rem;
-	width: 1.5rem;
-	min-height: 1.5rem;
-		min-width: 1.5rem;
+	--avatar-size: 1.5rem;
 }
 .avatar-xs {
-	height: 2rem;
-	width: 2rem;
-	min-height: 2rem;
-		min-width: 2rem;
+	--avatar-size: 2rem;
 }
 .avatar-sm {
-	height: 3rem;
-	width: 3rem;
-	min-height: 3rem;
-		min-width: 3rem;
+	--avatar-size: 3rem;
 }
 .avatar-md {
-	height: 4.5rem;
-	width: 4.5rem;
-	min-height: 4.5rem;
-		min-width: 4.5rem;
+	--avatar-size: 4.5rem;
 }
 .avatar-lg {
-	height: 6rem;
-	width: 6rem;
-	min-height: 6rem;
-		min-width: 6rem;
+	--avatar-size: 6rem;
 }
 .avatar-xl {
-	height: 7.5rem;
-	width: 7.5rem;
-	min-height: 7.5rem;
-		min-width: 7.5rem;
+	--avatar-size: 7.5rem;
+}
+.avatar-xxs,
+.avatar-xs,
+.avatar-sm,
+.avatar-md,
+.avatar-lg,
+.avatar-xl {
+	height: var(--avatar-size);
+	width: var(--avatar-size);
+	min-height: var(--avatar-size);
+	min-width: var(--avatar-size);
 }
 .avatar-title {
 	-webkit-box-align: center;
@@ -54,6 +47,7 @@
 }
 
 .avatar-initial {
+	font-size: calc(var(--avatar-size, 2rem) * 0.375);
 	letter-spacing: 0.2em;
 	overflow: hidden;
 	text-transform: uppercase;

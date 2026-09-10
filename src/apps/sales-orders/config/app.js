@@ -7,7 +7,11 @@ export default {
         "singularName": "Order",
         "path": "/apps/orders",
         "card": "/apps/sales-orders/card.html",
-        "cardTemplate": "/apps/sales-orders/card-template.html",
+        "cardTemplate": "/apps/sales-orders/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "sales_orders",
         "icon": "ri-shopping-cart-line",
         "description": "App to manage and track Orders.",

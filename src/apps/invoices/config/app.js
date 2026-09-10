@@ -7,7 +7,11 @@ export default {
         "singularName": "Invoice",
         "path": "/apps/invoices",
         "card": "/apps/invoices/card.html",
-        "cardTemplate": "/apps/invoices/card-template.html",
+        "cardTemplate": "/apps/invoices/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "invoices",
         "filter": {
             "type": "invoice"

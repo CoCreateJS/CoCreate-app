@@ -2,7 +2,9 @@
 	array="contacts"
 	object="$user_id"
 	class="d-flex flex-wrap gap-4 width:100%">
-	<section role="banner" class="position-relative width:100%">
+	<section
+		role="banner"
+		class="position-relative width:100%">
 		<div
 			class="profile-wid-bg mx-n5 my-n3 height:480px@xxs&xs height:370px@sm height:300px@md&xxxl">
 			<img
@@ -24,10 +26,12 @@
 							<span key="first_name"></span>
 							<span key="last_name"></span>
 						</h3>
-						<p class="text-white text-opacity-75" key="title"></p>
+						<p
+							class="text-white text-opacity-75"
+							key="title"></p>
 					</div>
 					<div
-						class="d-flex flex-wrap flex-direction:column@xxs@xs gap-2 text-white-50">
+						class="d-flex flex-wrap flex-column@xxs@xs gap-2 text-white-50">
 						<div class="flex-grow:1@xxs">
 							<i
 								class="ri-building-line me-1 text-white text-opacity-75 fs-16 align-middle"></i
@@ -45,12 +49,20 @@
 				<div
 					class="position-relative d-flex justify-content-between text text-white-50 text-center width:250px mb-2 width:100%@xxs&xs">
 					<div class="p-2">
-						<h4 class="text-white mb-1" key="followers">0</h4>
+						<h4
+							class="text-white mb-1"
+							key="followers">
+							0
+						</h4>
 						<p class="fs-14 mb-0">Followers</p>
 					</div>
 
 					<div class="p-2">
-						<h4 class="text-white mb-1" key="following">0</h4>
+						<h4
+							class="text-white mb-1"
+							key="following">
+							0
+						</h4>
 						<p class="fs-14 mb-0">Following</p>
 					</div>
 				</div>
@@ -110,7 +122,7 @@
 					</a>
 				</li>
 			</ul>
-				<div class="card-body p-0 ms-auto z-index:1 d-flex gap-4">
+			<div class="card-body p-0 ms-auto z-index:1 d-flex gap-4">
 				<label
 					for="cover-foreground-img-file-input"
 					class="btn btn-light mb-0"
@@ -119,10 +131,10 @@
 						id="cover-foreground-img-file-input"
 						type="file"
 						realtime="true"
-							class="cover-foreground-img-file-input"
-							style="display: none"
-							key="cover_image"
-							aria-label="Change profile cover image" />
+						class="cover-foreground-img-file-input"
+						style="display: none"
+						key="cover_image"
+						aria-label="Change profile cover image" />
 					<i class="ri-image-edit-line align-bottom me-1"></i>
 					Change Cover
 				</label>
@@ -461,7 +473,9 @@
 											</option>
 											<option value="css">CSS</option>
 											<option value="html">HTML</option>
-											<option value="javascript" selected>
+											<option
+												value="javascript"
+												selected>
 												Javascript
 											</option>
 											<option value="python">
@@ -1105,7 +1119,9 @@
 									<!--end row-->
 								</div>
 							</div>
-							<div id="newForm" style="display: none"></div>
+							<div
+								id="newForm"
+								style="display: none"></div>
 							<div class="col-lg-12">
 								<div class="hstack gap-2">
 									<button

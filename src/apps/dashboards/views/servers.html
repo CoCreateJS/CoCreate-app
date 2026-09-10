@@ -115,17 +115,6 @@
 			</div>
 			<div class="mt-3 mt-lg-0">
 				<div class="row g-3 mb-0 align-items-center">
-					<div class="col-sm-auto">
-						<label class="visually-hidden" for="dashboard-view-select">Dashboard view</label>
-						<select id="dashboard-view-select" class="form-select" aria-label="Switch dashboard view" data-dashboard-view-select>
-							<option value="/apps/dashboards/index.html">Overview</option>
-							<option value="/apps/dashboards/views/analytics.html">Analytics</option>
-							<option value="/apps/dashboards/views/crm.html">CRM</option>
-							<option value="/apps/dashboards/views/ecommerce.html">Ecommerce</option>
-							<option value="/apps/dashboards/views/projects.html">Projects</option>
-							<option value="/apps/dashboards/views/servers.html" selected>Servers</option>
-						</select>
-					</div>
 					<div class="col-auto">
 						<button type="button" class="btn btn-primary text-nowrap" state-to="offcanvas-app-view" state.src="/apps/servers/provision.html" aria-controls="offcanvas-app" aria-expanded="false" aria-open>
 							<div state-to="offcanvas-app-form" state.array="servers" state.object=""></div>
@@ -504,5 +493,4 @@
 	</div>
 </div>
 
-<script src="/apps/dashboards/view-select.js"></script>
 <script src="/apps/dashboards/views/servers.js"></script>

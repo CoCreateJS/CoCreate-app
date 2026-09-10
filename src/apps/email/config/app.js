@@ -6,6 +6,10 @@ export default {
         "name": "Email",
         "singularName": "Email",
         "path": "/apps/email",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "email",
         "category": "workspace",
         "icon": "ri-mail-line",

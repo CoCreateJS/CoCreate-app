@@ -6,6 +6,10 @@ export default {
         "name": "Profile",
         "singularName": "Profile",
         "path": "/apps/profile",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "contacts",
         "icon": "ri-contacts-line",
         "description": "App to manage and track Profile.",

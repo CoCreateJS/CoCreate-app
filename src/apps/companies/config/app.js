@@ -7,7 +7,11 @@ export default {
         "singularName": "Company",
         "path": "/apps/companies",
         "card": "/apps/companies/card.html",
-        "cardTemplate": "/apps/companies/card-template.html",
+        "cardTemplate": "/apps/companies/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "companies",
         "category": "CRM",
         "icon": "ri-building-line",

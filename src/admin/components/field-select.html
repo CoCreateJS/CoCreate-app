@@ -27,9 +27,12 @@
 		aria-close-on="anywhere"
 		role="listbox"
 		class="dropdown-menu max-height:280px overflowy:auto position:absolute width:100% z-index:1">
-		<div template class="field-card border" tagname="{{fields.tagName}}">
+		<div
+			template
+			class="field-card border"
+			tagname="{{fields.tagName}}">
 			<a
-				class="d-flex flex-direction:column align-items-start p-2"
+				class="d-flex flex-column align-items-start p-2"
 				role="button"
 				click.key="fields[{{index}}].children"
 				click-query="$document #kanban"

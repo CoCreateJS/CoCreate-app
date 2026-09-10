@@ -5,6 +5,9 @@
 <div
 	class="ai-shell"
 	plugin='{"$Prism.highlightAllUnder":["$this"]}'
+	state-id="aiChat"
+	state-overwrite
+	conversation-id=""
 	data-ai-chat>
 	<aside
 		id="ai-conversations-sidebar"
@@ -15,6 +18,8 @@
 			<button
 				class="ai-new-chat"
 				type="button"
+				state-to="aiChat"
+				state.conversation-id=""
 				aria-label="New conversation"
 				title="New conversation">
 				<i
@@ -40,6 +45,8 @@
 						type="button"
 						class="ai-thread"
 						data-conversation-id="{{object._id}}"
+						state-to="aiChat"
+						state.conversation-id="{{object._id}}"
 						data-provider="{{object.provider}}"
 						data-model="{{object.model}}">
 						<div class="ai-thread-title">
@@ -92,7 +99,7 @@
 			<details class="ai-steer-queue" hidden>
 				<summary>
 					<i class="ri-stack-line" aria-hidden="true"></i>
-					<span class="ai-steer-count">0 queued instructions</span>
+					<span class="ai-steer-count">0 queued messages</span>
 				</summary>
 				<div class="ai-steer-items"></div>
 			</details>

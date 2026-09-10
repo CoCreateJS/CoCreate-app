@@ -6,6 +6,10 @@ export default {
         "name": "Settings",
         "singularName": "Setting",
         "path": "/apps/settings",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "settings",
         "mainViews": [
             "table",

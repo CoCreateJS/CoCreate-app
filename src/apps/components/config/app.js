@@ -6,6 +6,10 @@ export default {
         "name": "Components",
         "singularName": "Component",
         "path": "/apps/components",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "components",
         "status": "active",
         "icon": "ri-tools-line",

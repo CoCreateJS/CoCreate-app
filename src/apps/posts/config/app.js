@@ -6,6 +6,10 @@ export default {
         "name": "Posts",
         "singularName": "Post",
         "path": "/apps/posts",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "posts",
         "category": "Marketing",
         "icon": "ri-rss-line",

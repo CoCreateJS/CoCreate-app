@@ -6,6 +6,10 @@ export default {
         "name": "Calendar",
         "singularName": "Event",
         "path": "/apps/calendar",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "calendar",
         "category": "Workspace",
         "mainViews": [

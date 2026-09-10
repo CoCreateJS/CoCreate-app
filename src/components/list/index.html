@@ -1,23 +1,25 @@
 <div
-	class="card flex-shrink-0 mb-0"
-	src="/components/list/header.html"></div>
-
-<div
-	class="display:flex flex-direction:column flex-grow-1 min-height:0 overflow:hidden">
+	class="d-flex flex-column"
+	style="height: var(--admin-content-height)">
 	<div
-		id="list-view"
-		state-id="list-view"
-		state-overwrite
-		class="w-100 flex-grow-1 min-height:0 overflow:hidden"
-		src="/components/list/table.html"></div>
+		class="card flex-shrink-0 mb-0"
+		src="/components/list/header.html"></div>
 
-	<!-- <template
+	<div class="d-flex flex-column flex-grow-1 min-height:0 overflow-hidden">
+		<div
+			id="list-view"
+			state-id="list-view"
+			state-overwrite
+			class="w-100 flex-grow-1 min-height:0 overflow-hidden"
+			src="/components/list/table.html"></div>
+
+		<!-- <template
 		observe.target="#table-view td[field='']"
 		observe.query="$document .message.assistant codearea:not(.message.assistant .code-tools + codearea)[]"
 		observe.insert-adjacent="beforebegin">
 	</template> -->
 
-	<!-- Filters Offcanvas -->
-	<div src="components/filters.html"></div>
+		<!-- Filters Offcanvas -->
+		<div src="components/filters.html"></div>
+	</div>
 </div>
-

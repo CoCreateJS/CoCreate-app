@@ -8,7 +8,11 @@ export default {
         "singularName": "Candidate",
         "path": "/apps/candidates",
         "card": "/apps/candidates/card.html",
-        "cardTemplate": "/apps/candidates/card-template.html",
+        "cardTemplate": "/apps/candidates/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "contacts",
         "filter": {
             "type": "candidate"

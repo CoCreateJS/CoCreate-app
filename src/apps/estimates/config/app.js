@@ -7,7 +7,11 @@ export default {
         "singularName": "Estimate",
         "path": "/apps/estimates",
         "card": "/apps/estimates/card.html",
-        "cardTemplate": "/apps/estimates/card-template.html",
+        "cardTemplate": "/apps/estimates/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "invoices",
         "filter": {
             "type": "estimate"

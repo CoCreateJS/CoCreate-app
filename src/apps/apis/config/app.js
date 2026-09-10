@@ -26,7 +26,11 @@ export default {
         "singularName": "API",
         "path": "/apps/apis",
         "card": "/apps/apis/card.html",
-        "cardTemplate": "/apps/apis/card-template.html",
+        "cardTemplate": "/apps/apis/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "apis",
         "category": "Settings",
         "mainViews": [

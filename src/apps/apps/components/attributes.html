@@ -1,9 +1,9 @@
 <div
-	class="attributes-container accordion-item w-100 display:flex flex-direction:column"
+	class="attributes-container accordion-item w-100 d-flex flex-column"
 	aria-label="Attributes Container"
 	title="Manage attributes for this field. Drag and drop to reorder attributes.">
 	<div
-		class="accordion-header display:flex align-items:center p-2 bg-light rounded">
+		class="accordion-header d-flex align-items:center p-2 bg-light rounded">
 		<span
 			class="flex-grow:1"
 			aria-label="Attributes Section"
@@ -28,7 +28,7 @@
 		sortable
 		dnd-group-name="attributes">
 		<div
-			class="attribute-item display:flex gap:10px align-items:center height:30px"
+			class="attribute-item d-flex gap:10px align-items:center height:30px"
 			render="fields.attributes"
 			render-as="fieldAttr"
 			template
@@ -73,7 +73,7 @@
 			</button>
 		</div>
 		<div
-			class="attribute-item display:flex gap:10px align-items:center new-attribute-row"
+			class="attribute-item d-flex gap:10px align-items:center new-attribute-row"
 			aria-label="New Attribute Row"
 			title="Add a new attribute."
 			draggable="false">

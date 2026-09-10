@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <div class="padding:5px min-width:260px">
-	<div class="display:flex margin-bottom:5px font-size:16px tabs">
+	<div class="d-flex margin-bottom:5px font-size:16px tabs">
 		<div
 			class="width:40px line-height:40px text-align:center margin:5px border-radius:50% cursor:pointer background:gainsboro background:silver:hover tab"
 			selected-value="active"
@@ -20,7 +20,9 @@
 			toggle="files"
 			toggle-query="#fetch-assets"
 			toggle-attribute="array">
-			<i class="height:16px" src="/assets/svg/photo-video.svg"></i>
+			<i
+				class="height:16px"
+				src="/assets/svg/photo-video.svg"></i>
 		</div>
 		<div
 			class="width:40px line-height:40px text-align:center margin:5px border-radius:50% cursor:pointer background:gainsboro background:silver:hover tab"
@@ -30,14 +32,18 @@
 			toggle="files"
 			toggle-query=".fetch-files"
 			toggle-attribute="array">
-			<i class="height:16px" src="/assets/svg/folder.svg"></i>
+			<i
+				class="height:16px"
+				src="/assets/svg/folder.svg"></i>
 		</div>
 		<div
 			class="width:40px line-height:40px text-align:center margin:5px border-radius:50% cursor:pointer background:gainsboro background:silver:hover tab"
 			selected-value="active"
 			selected-query="#uploader"
 			selected-group="left-panels">
-			<i class="height:16px" src="/assets/svg/cloud-upload-alt.svg"></i>
+			<i
+				class="height:16px"
+				src="/assets/svg/cloud-upload-alt.svg"></i>
 		</div>
 		<div
 			classkey="left-tabs"
@@ -46,7 +52,9 @@
 			selected-query="#blocks"
 			selected-group="left-panels"
 			selected>
-			<i class="height:16px" src="/assets/svg/th-large.svg"></i>
+			<i
+				class="height:16px"
+				src="/assets/svg/th-large.svg"></i>
 		</div>
 	</div>
 
@@ -56,7 +64,7 @@
 			id="blocks"
 			class="left-panel display:none position:relative active">
 			<div
-				class="display:flex justify-content:center position:relative margin-bottom:30px">
+				class="d-flex justify-content:center position:relative margin-bottom:30px">
 				<div
 					class="card background:gainsboro width:50% text-align:center padding:5px"
 					selected-value="active"
@@ -79,7 +87,9 @@
 						actions="state, openModal"
 						modal-src="../marketplace/list.html"
 						modal-width="830px"
-						><i class="height:16px" src="/assets/svg/plus.svg"></i
+						><i
+							class="height:16px"
+							src="/assets/svg/plus.svg"></i
 					></a>
 				</button>
 			</div>
@@ -95,12 +105,16 @@
 				filter-sort-direction="asc"
 				render-query=":last-child">
 				<!-- Block Categories Template -->
-				<div template render-as="tag">
+				<div
+					template
+					render-as="tag">
 					<div
 						class="padding:5px background:gainsboro"
 						show=".category{{tag._id}}"
 						hide=".category{{tag._id}}">
-						<span class="category{{tag._id}}" hidden
+						<span
+							class="category{{tag._id}}"
+							hidden
 							><i
 								class="height:16px"
 								src="/assets/svg/plus.svg"></i
@@ -119,7 +133,7 @@
 					</div>
 					<!-- Blocks  -->
 					<div
-						class="category{{tag._id}} display:flex flex-wrap:wrap justify-content:center text-align:center padding-bottom:20px"
+						class="category{{tag._id}} d-flex flex-wrap:wrap justify-content:center text-align:center padding-bottom:20px"
 						array="blocks"
 						filter-query-key="category"
 						filter-query-value="{{tag._id}}"
@@ -169,12 +183,16 @@
 				filter-sort-direction="asc"
 				render-query=":last-child">
 				<!-- Components Categories Template -->
-				<div template render-as="tag">
+				<div
+					template
+					render-as="tag">
 					<div
 						class="padding:5px background:gainsboro"
 						show=".category{{tag._id}}"
 						hide=".category{{tag._id}}">
-						<span class="category{{tag._id}}" hidden
+						<span
+							class="category{{tag._id}}"
+							hidden
 							><i
 								class="height:16px"
 								src="/assets/svg/plus.svg"></i
@@ -193,7 +211,7 @@
 					</div>
 					<!-- Components -->
 					<div
-						class="category{{tag._id}} display:flex flex-wrap:wrap justify-content:center text-align:center padding-bottom:20px"
+						class="category{{tag._id}} d-flex flex-wrap:wrap justify-content:center text-align:center padding-bottom:20px"
 						array="blocks"
 						filter-query-key="category"
 						filter-query-value="{{tag._id}}"
@@ -243,7 +261,9 @@
 		</div>
 
 		<!-- uploader -->
-		<div id="uploader" class="left-panel display:none">
+		<div
+			id="uploader"
+			class="left-panel display:none">
 			<form>
 				<input
 					type="file"
@@ -255,19 +275,34 @@
 			</form>
 
 			<div template>
-				<input file="name" value="{{name}}" />
-				<input file="directory" value="{{directory}}" />
-				<input file="content-type" value="{{content-type}}" />
+				<input
+					file="name"
+					value="{{name}}" />
+				<input
+					file="directory"
+					value="{{directory}}" />
+				<input
+					file="content-type"
+					value="{{content-type}}" />
 
-				<textarea file="src" value-type="string">{{src}}</textarea>
+				<textarea
+					file="src"
+					value-type="string">
+{{src}}</textarea
+				>
 			</div>
 		</div>
 
 		<!-- Files -->
-		<div id="files" class="left-panel display:none">
+		<div
+			id="files"
+			class="left-panel display:none">
 			<!-- Search Files -->
 			<form class="padding:0px_5px_20px_5px">
-				<input type="text" class="floating-label" state_to="results" />
+				<input
+					type="text"
+					class="floating-label"
+					state_to="results" />
 				<span
 					class="position:relative bottom:28px right:14px float:right font-size:18px">
 					<a
@@ -359,7 +394,10 @@
 						filter-query="$parent"></div>
 
 					<!-- File Template -->
-					<div class="padding:5px" template object="{{$auto._id}}">
+					<div
+						class="padding:5px"
+						template
+						object="{{$auto._id}}">
 						<span class="{{$auto.content-type}}"
 							><i src="/assets/svg/html5.svg"></i
 						></span>
@@ -374,10 +412,15 @@
 		</div>
 
 		<!-- Assets -->
-		<div id="assets" class="left-panel display:none">
+		<div
+			id="assets"
+			class="left-panel display:none">
 			<!-- Search Assets-->
 			<form class="padding:0px_5px_20px_5px">
-				<input type="text" class="floating-label" state_to="results" />
+				<input
+					type="text"
+					class="floating-label"
+					state_to="results" />
 				<span
 					class="position:relative bottom:28px right:14px float:right font-size:18px">
 					<a
@@ -395,7 +438,7 @@
 			<!-- Assets -->
 			<div
 				id="fetch-assets"
-				class="display:flex flex-wrap:wrap justify-content:center width:100% text-align:center padding-bottom:20px"
+				class="d-flex flex-wrap:wrap justify-content:center width:100% text-align:center padding-bottom:20px"
 				array=""
 				object
 				filter-query-key="content-type"

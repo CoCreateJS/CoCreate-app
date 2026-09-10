@@ -1,9 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
 		<title>Builder Settings | CoCreate</title>
 		<link
 			rel="icon"
@@ -17,16 +21,20 @@
 			object="610cb468c0e9580010e5ba50"
 			key="src"
 			type="text/css" />
-		<link rel="manifest" href="/manifest.webmanifest" />
+		<link
+			rel="manifest"
+			href="/manifest.webmanifest" />
 	</head>
 
 	<body>
 		<!-- Modal Viewport -->
-		<div id="modal-viewport" hidden></div>
+		<div
+			id="modal-viewport"
+			hidden></div>
 
 		<!-- Navbar -->
 		<nav
-			class="nav display:flex align-items:center background:whitesmoke"
+			class="nav d-flex align-items:center background:whitesmoke"
 			content_id="content"
 			scroll="sticky-nav, hide-nav"
 			scroll-up="5"
@@ -37,7 +45,9 @@
 				<!-- Modal Controls -->
 				<li class="margin-right:15px">
 					<a actions="closeModal"
-						><i class="height:18px" src="/assets/svg/times.svg"></i
+						><i
+							class="height:18px"
+							src="/assets/svg/times.svg"></i
 					></a>
 				</li>
 				<li class="margin-right:15px">
@@ -60,7 +70,9 @@
 				<!-- fullscreen toogle and icon transform-->
 				<li class="margin-right:15px">
 					<a fullscreen>
-						<i class="height:18px" src="/assets/svg/expand.svg"></i>
+						<i
+							class="height:18px"
+							src="/assets/svg/expand.svg"></i>
 						<i
 							class="height:18px"
 							src="/assets/svg/compress.svg"></i>
@@ -73,7 +85,9 @@
 						actions="state, openModal"
 						modal-src="../modules/form.html"
 						modal-width="320px">
-						<i class="height:18px" src="/assets/svg/cog.svg"></i>
+						<i
+							class="height:18px"
+							src="/assets/svg/cog.svg"></i>
 						<div
 							state_id="module-form"
 							state-array="modules"
@@ -91,7 +105,9 @@
 					<a
 						actions="state, openModal"
 						modal-src="../code-editor/index.html">
-						<i class="height:18px" src="/assets/svg/code.svg"></i>
+						<i
+							class="height:18px"
+							src="/assets/svg/code.svg"></i>
 						<div
 							state_id="render"
 							state-array=""
@@ -133,12 +149,17 @@
 			</ul>
 		</nav>
 
-		<main class="padding:10px" content_id="content">
+		<main
+			class="padding:10px"
+			content_id="content">
 			<form
 				array="modules"
 				object="5f94ff945412e75f9b414a3e"
 				autocomplete="off">
-				<input type="hidden" key="module_id" state_id="module_id" />
+				<input
+					type="hidden"
+					key="module_id"
+					state_id="module_id" />
 
 				<input
 					type="text"
@@ -170,7 +191,10 @@
 						key="units"
 						render-query="[template]"
 						search_id="search-units">
-						<li class="option" template value="{{units.--}}">
+						<li
+							class="option"
+							template
+							value="{{units.--}}">
 							<h3 value="{{units.--}}">Unit Name</h3>
 						</li>
 					</ul>

@@ -7,7 +7,11 @@ export default {
         "singularName": "Project",
         "path": "/apps/projects",
         "card": "/apps/projects/card.html",
-        "cardTemplate": "/apps/projects/card-template.html",
+        "cardTemplate": "/apps/projects/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "projects",
         "category": "workspace",
         "mainViews": [

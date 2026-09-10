@@ -7,7 +7,11 @@ export default {
         "singularName": "Item",
         "path": "/apps/items",
         "card": "/apps/items/card.html",
-        "cardTemplate": "/apps/items/card-template.html",
+        "cardTemplate": "/apps/items/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "items",
         "category": "Sales & Billing",
         "icon": "ri-box-3-line",

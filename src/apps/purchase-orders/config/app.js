@@ -7,7 +7,11 @@ export default {
         "singularName": "Purchase Order",
         "path": "/apps/purchase-orders",
         "card": "/apps/purchase-orders/card.html",
-        "cardTemplate": "/apps/purchase-orders/card-template.html",
+        "cardTemplate": "/apps/purchase-orders/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "purchase_orders",
         "icon": "ri-shopping-bag-line",
         "description": "App to manage and track Purchase Orders.",

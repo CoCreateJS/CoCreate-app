@@ -2,3 +2,44 @@
 .dash-filter-picker {
 	min-width: 210px !important;
 }
+
+.dashboard-overview {
+	width: 100%;
+	min-width: 0;
+}
+
+.dashboard-overview .dashboard-flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--admin-gutter, 1rem);
+}
+
+.dashboard-overview .dashboard-summary-item {
+	flex: 1 1 240px;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.dashboard-overview .dashboard-content-item {
+	flex: 1 1 480px;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.dashboard-overview .dashboard-content-wide {
+	flex: 2 1 560px;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.dashboard-overview .dashboard-content-narrow {
+	flex: 1 1 280px;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.dashboard-overview .dashboard-control {
+	flex: 0 1 auto;
+	min-width: 0;
+	max-width: 100%;
+}

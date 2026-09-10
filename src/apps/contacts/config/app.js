@@ -8,7 +8,11 @@ export default {
         "singularName": "Contact",
         "path": "/apps/contacts",
         "card": "/apps/contacts/card.html",
-        "cardTemplate": "/apps/contacts/card-template.html",
+        "cardTemplate": "/apps/contacts/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "contacts",
         "category": "CRM",
         "mainViews": [

@@ -8,8 +8,17 @@ export default {
         "singularName": "Lead",
         "path": "/apps/leads",
         "card": "/apps/leads/card.html",
-        "cardTemplate": "/apps/leads/card-template.html",
+        "cardTemplate": "/apps/leads/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "contacts",
+        "filter": {
+            "query": {
+                "type": "Lead"
+            }
+        },
         "category": "CRM",
         "icon": "ri-user-add-line",
         "description": "App to manage and track Leads.",

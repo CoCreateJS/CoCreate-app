@@ -26,7 +26,11 @@ export default {
         "singularName": "Endpoint",
         "path": "/apps/apis/endpoints",
         "card": "/apps/apis/endpoints/card.html",
-        "cardTemplate": "/apps/apis/endpoints/card-template.html",
+        "cardTemplate": "/apps/apis/endpoints/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "endpoints",
         "category": "Settings",
         "mainViews": [

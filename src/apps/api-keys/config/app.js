@@ -7,7 +7,11 @@ export default {
         "singularName": "API Key",
         "path": "/apps/api-keys",
         "card": "/apps/api-keys/card.html",
-        "cardTemplate": "/apps/api-keys/card-template.html",
+        "cardTemplate": "/apps/api-keys/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "keys",
         "category": "Settings",
         "icon": "ri-key-line",

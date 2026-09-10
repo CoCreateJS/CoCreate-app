@@ -7,7 +7,11 @@ export default {
         "singularName": "Expense",
         "path": "/apps/expenses",
         "card": "/apps/expenses/card.html",
-        "cardTemplate": "/apps/expenses/card-template.html",
+        "cardTemplate": "/apps/expenses/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "transactions",
         "category": "Procurement & Cost",
         "mainViews": [

@@ -51,6 +51,43 @@
 	const streams = new Map();
 	const queuedSteers = new Map();
 	const highlightTimers = new WeakMap();
+	const messageRecords = new Map();
+	let editingMessage;
+	const messageTime = (message) =>
+		new Date(message?.created?.on || 0).getTime();
+	const getLatestDescendant = (message) => {
+		let current = message;
+		while (current) {
+			const children = [...messageRecords.values()]
+				.filter((candidate) =>
+					String(candidate.parent_id || "") === String(current._id)
+				)
+				.sort((a, b) => messageTime(a) - messageTime(b));
+			if (!children.length) break;
+			current = children.at(-1);
+		}
+		return current;
+	};
+	const renderActiveBranch = async (message) => {
+		const leaf = getLatestDescendant(message);
+		const path = [];
+		let current = leaf;
+		while (current) {
+			path.push(current);
+			current = messageRecords.get(String(current.parent_id));
+		}
+		messages.replaceChildren();
+		for (const record of path.reverse()) {
+			addMessage(record.role || "assistant", record.content || "", record.views || [], record);
+		}
+		if (conversationId && leaf?._id) {
+			await socket.send({
+				method: "object.update",
+				array: "ai-conversations",
+				object: { _id: conversationId, active_message_id: leaf._id }
+			});
+		}
+	};
 	let socket;
 	const menuCloseRoot = document;
 	if (menuCloseRoot.aiCodeMenuCloseHandler) {
@@ -64,16 +101,16 @@
 	};
 	menuCloseRoot.addEventListener("click", menuCloseRoot.aiCodeMenuCloseHandler);
 	if (panelRefresh) {
-		panelRefresh.onclick = () => {
+	panelRefresh.onclick = () => {
 			const content = panel.querySelector(".ai-chat-panel-content");
 			if (!content) return;
-			content.removeAttribute("src");
+			content.setAttribute("src", "");
 			setTimeout(() => {
 				content.setAttribute("src", "/apps/ai/index.html");
 			}, 500);
 		};
 	}
-    let conversationId;
+	let conversationId;
     let conversationLoadId;
 
     const makeId = () =>
@@ -85,6 +122,24 @@
 			messageScroll.querySelector(".simplebar-content-wrapper") ||
 			messageScroll;
 		scrollElement.scrollTop = scrollElement.scrollHeight;
+	};
+	const prismLanguageLoads = new Map();
+	const loadPrismLanguage = (language) => {
+		if (!prismLanguageLoads.has(language)) {
+			prismLanguageLoads.set(language, new Promise((resolve, reject) => {
+				const script = document.createElement("script");
+				script.src = `https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-${language}.min.js`;
+				script.onload = resolve;
+				script.onerror = () => reject(
+					new Error(`Unable to load Prism language: ${language}`)
+				);
+				document.head.append(script);
+			}).catch((error) => {
+				prismLanguageLoads.delete(language);
+				console.error(error);
+			}));
+		}
+		return prismLanguageLoads.get(language);
 	};
 
 	const highlightCodeBlocks = (element) => {
@@ -110,6 +165,8 @@
 					await new Promise((resolve) =>
 						autoloader.loadLanguages(missing, resolve, resolve)
 					);
+				} else if (missing.length) {
+					await Promise.all(missing.map(loadPrismLanguage));
 				}
 				globalThis.Prism.highlightAllUnder(element);
 				highlightTimers.delete(element);
@@ -139,7 +196,8 @@
 
     const updateSteerQueue = () => {
         steerQueue.hidden = queuedSteers.size === 0;
-        steerCount.textContent = `${queuedSteers.size} queued instruction${queuedSteers.size === 1 ? "" : "s"}`;
+        if (queuedSteers.size) steerQueue.open = true;
+        steerCount.textContent = `${queuedSteers.size} queued message${queuedSteers.size === 1 ? "" : "s"}`;
     };
 
     const addQueuedSteer = (queueId, content) => {
@@ -148,10 +206,16 @@
         item.dataset.queueId = queueId;
         const label = document.createElement("span");
         label.textContent = content;
-        const state = document.createElement("small");
-        state.textContent = "Sending";
-        item.append(label, state);
-        queuedSteers.set(queueId, item);
+        const steer = document.createElement("button");
+        steer.type = "button";
+        steer.className = "ai-steer-now";
+        steer.textContent = "Steer";
+        steer.addEventListener("click", () => {
+            const streamId = streams.keys().next().value;
+            if (streamId) void submitSteer(queueId, streamId);
+        });
+        item.append(label, steer);
+        queuedSteers.set(queueId, { content, element: item });
         steerItems.append(item);
         updateSteerQueue();
     };
@@ -266,6 +330,215 @@
         target.append(template.content);
     };
 
+	const initializeCrudLists = (body) => {
+		for (const list of body.querySelectorAll(
+			"[data-ai-crud-list]:not([data-ai-crud-list-ready])"
+		)) {
+			const items = list.querySelectorAll("[data-ai-crud-reference]");
+			if (!items.length) continue;
+			list.setAttribute("data-ai-crud-list-ready", "");
+			const listGroup = list.querySelector(":scope > .list-group");
+			for (const [index, item] of items.entries()) {
+				if (index >= 4) item.classList.add("d-none");
+			}
+			if (items.length > 4 && !list.querySelector("[data-ai-crud-more]")) {
+				const more = document.createElement("button");
+				more.type = "button";
+				more.className =
+					"list-group-item list-group-item-action text-center text-muted";
+				more.setAttribute("data-ai-crud-more", "");
+				more.setAttribute("aria-expanded", "false");
+				more.textContent = `${items.length - 4} more`;
+				listGroup.append(more);
+			}
+			list.querySelector("[data-ai-crud-more]")?.addEventListener("click", (event) => {
+				const button = event.currentTarget;
+				const expanded = button.getAttribute("aria-expanded") === "true";
+				for (const [index, item] of items.entries()) {
+					item.classList.toggle("d-none", expanded && index >= 4);
+				}
+				button.setAttribute("aria-expanded", String(!expanded));
+				button.textContent = expanded
+					? `${items.length - 4} more`
+					: "Show less";
+			});
+
+			for (const item of items) {
+				const itemButton = item.querySelector("[data-ai-crud-item]");
+				if (!itemButton) continue;
+				const chevron = document.createElement("i");
+				chevron.className = "ai-crud-list-chevron ri-arrow-down-s-line";
+				chevron.setAttribute("aria-hidden", "true");
+				itemButton.append(chevron);
+				itemButton.setAttribute("aria-expanded", "false");
+				itemButton.addEventListener("click", async () => {
+					let details = item.querySelector(":scope > .ai-crud-list-details");
+					if (details) {
+						const expanded = itemButton.getAttribute("aria-expanded") === "true";
+						details.hidden = expanded;
+						itemButton.setAttribute("aria-expanded", String(!expanded));
+						chevron.classList.toggle("ri-arrow-down-s-line", expanded);
+						chevron.classList.toggle("ri-arrow-up-s-line", !expanded);
+						return;
+					}
+					details = document.createElement("div");
+					details.className = "ai-crud-list-details";
+					const pre = document.createElement("pre");
+					const code = document.createElement("code");
+					for (const attribute of [
+						"storage", "database", "array", "object", "key", "data-pathname",
+						"data-app-path"
+					]) {
+						if (attribute === "key") {
+							code.setAttribute("key", item.dataset.key || "{}");
+						} else if (item.hasAttribute(attribute)) {
+							code.setAttribute(attribute, item.getAttribute(attribute));
+						}
+					}
+					const appPath = await item.querySelector(".ai-crud-app-path")?.getValue?.();
+					if (appPath) code.dataset.appPath = appPath;
+					const language = item.dataset.language;
+					if (language) code.className = `language-${language}`;
+					if (item.dataset.display) code.dataset.display = item.dataset.display;
+					if ((item.dataset.key || "{}") === "{}") {
+						code.setAttribute("value-type", "object");
+					}
+					pre.append(code);
+					details.append(pre);
+					item.append(details);
+					itemButton.setAttribute("aria-expanded", "true");
+					chevron.classList.replace("ri-arrow-down-s-line", "ri-arrow-up-s-line");
+					initializeCrudViews(details);
+				});
+			}
+			if (items.length === 1 && list.dataset.display !== "list") {
+				items[0].querySelector("[data-ai-crud-item]")?.click();
+			}
+		}
+	};
+
+	const templateCache = new Map();
+	const appCache = new Map();
+
+	const fetchTemplate = async (pathname) => {
+		if (!templateCache.has(pathname)) {
+			templateCache.set(pathname, fetch(pathname).then((response) => {
+				if (!response.ok) {
+					throw new Error(`Unable to load ${pathname} (${response.status})`);
+				}
+				return response.text();
+			}).catch((error) => {
+				templateCache.delete(pathname);
+				throw error;
+			}));
+		}
+		return templateCache.get(pathname);
+	};
+
+	const getAppRecord = async (appId) => {
+		if (!appId || !window.CoCreate?.crud?.send) return;
+		if (!appCache.has(appId)) {
+			appCache.set(appId, window.CoCreate.crud.send({
+				method: "object.read",
+				array: "apps",
+				object: appId
+			}).then((response) => Array.isArray(response?.object)
+				? response.object[0]
+				: response?.object
+			).catch((error) => {
+				appCache.delete(appId);
+				throw error;
+			}));
+		}
+		return appCache.get(appId);
+	};
+
+	const firstItemValue = (item, key) => {
+		const value = item?.[key];
+		return Array.isArray(value) ? value[0] : value;
+	};
+
+	const createCrudItem = (markup) => {
+		const button = document.createElement("button");
+		button.type = "button";
+		button.className =
+			"ai-crud-list-item list-group-item-action d-flex align-items-center width:100%";
+		button.setAttribute("data-ai-crud-item", "");
+		button.innerHTML = markup || '<div class="d-flex align-items-center gap-2"><span class="avatar-xs rounded-circle position-relative overflow-hidden flex-shrink-0"><span class="avatar-title bg-primary-subtle text-primary"><i class="ri-database-2-line"></i></span></span><span class="flex-grow-1 text-start text-truncate"><span key="name"></span></span></div>';
+		return button;
+	};
+
+	const createCrudView = async (view) => {
+		const shellMarkup = await fetchTemplate("/apps/ai/templates/crud.html");
+		const shellTemplate = document.createElement("template");
+		shellTemplate.innerHTML = shellMarkup;
+		const list = shellTemplate.content.firstElementChild.cloneNode(true);
+		if (view.app_id) list.setAttribute("app-id", view.app_id);
+		list.dataset.display = view.display || "list";
+		const listGroup = list.querySelector(":scope > .list-group");
+		const app = await getAppRecord(view.app_id);
+		const appPath = app?.path?.replace(/\/$/, "");
+		const relativeListPath = app?.templates?.list || "templates/list.html";
+		const listPath = relativeListPath.startsWith("/")
+			? relativeListPath
+			: appPath && `${appPath}/${relativeListPath}`;
+		let itemMarkup;
+		if (listPath) {
+			try {
+				itemMarkup = await fetchTemplate(listPath);
+			} catch (error) {
+				console.error("Unable to load AI CRUD list template:", error);
+			}
+		}
+
+		for (const item of view.items || []) {
+			const form = document.createElement("form");
+			form.className = "list-group-item p-0";
+			form.setAttribute("data-ai-crud-reference", "");
+			form.setAttribute("data-crud-key", "{}");
+			form.setAttribute("data-key", item?.key || "{}");
+			form.setAttribute("data-language", item?.language || "json");
+			form.setAttribute("data-display", view.display || "list");
+			form.setAttribute("autocomplete", "off");
+			for (const [attribute, value] of Object.entries({
+				storage: firstItemValue(item, "$storage"),
+				database: firstItemValue(item, "$database"),
+				array: firstItemValue(item, "$array"),
+				object: item?._id,
+				"app-id": view.app_id,
+				"data-app-path": appPath
+			})) {
+				if (value !== undefined && value !== null && value !== "") {
+					form.setAttribute(attribute, value);
+				}
+			}
+			form.append(createCrudItem(itemMarkup));
+			listGroup.append(form);
+		}
+		return list;
+	};
+
+	const renderStructuredViews = async (body, views = [], { defer = false } = {}) => {
+		if (!views.length) return;
+		while (
+			body.lastChild?.nodeType === Node.TEXT_NODE &&
+			!body.lastChild.textContent.trim()
+		) {
+			body.lastChild.remove();
+		}
+		const staging = defer ? document.createElement("div") : body;
+		for (const view of views) {
+			if (view?.type !== "crud") continue;
+			try {
+				staging.append(await createCrudView(view));
+			} catch (error) {
+				console.error("Unable to render AI CRUD view:", error);
+			}
+		}
+		if (defer) body.append(...staging.childNodes);
+		initializeCrudLists(body);
+	};
+
     const initializeCrudViews = (body) => {
         const initializedReferences = new Set();
         for (const code of body.querySelectorAll("pre > code[array]")) {
@@ -290,14 +563,14 @@
             editor.setAttribute("lang", [...code.classList]
                 .find((name) => name.startsWith("language-"))?.slice(9) || "text");
             for (const name of [
-                "storage", "database", "array", "object", "key", "data-pathname"
+				"storage", "database", "array", "object", "key", "data-pathname",
+				"data-app-path", "data-display"
             ]) {
                 if (code.hasAttribute(name)) editor.setAttribute(name, code.getAttribute(name));
             }
-            editor.setAttribute(
-                "value-type",
-                editor.getAttribute("key") === "{}" ? "object" : "text"
-            );
+			if (editor.getAttribute("key") === "{}") {
+				editor.setAttribute("value-type", "object");
+			}
             code.removeAttribute("array");
             code.removeAttribute("object");
             code.removeAttribute("key");
@@ -320,29 +593,54 @@
                 };
                 const [icon, label] = states[action];
                 edit.dataset.action = action;
-                edit.innerHTML = `<i class="${icon}" aria-hidden="true"></i>`;
+                edit.innerHTML = `<i class="${icon}" aria-hidden="true"></i><span>${label}</span>`;
                 edit.setAttribute("aria-label", label);
                 edit.title = label;
             };
             setEditAction("edit");
+			edit.hidden = true;
             let activeForm;
+			let activeJsonEditor;
             let collectFormValues;
             let editing = false;
             let originalValue = "";
-            const editTabs = document.createElement("div");
-            editTabs.className = "ai-edit-tabs";
-            editTabs.hidden = true;
-            const formTab = document.createElement("button");
-            formTab.type = "button";
-            formTab.textContent = "Form";
-            formTab.hidden = editor.getAttribute("key") !== "{}";
-            const codeTab = document.createElement("button");
-            codeTab.type = "button";
-            codeTab.textContent = editor.getAttribute("key") === "{}" ? "JSON" : "Code";
-            editTabs.append(formTab, codeTab);
+			let codeDirty = false;
+			let jsonDirty = false;
+			const isFileSource = editor.getAttribute("array") === "files" &&
+				["src", "content"].includes(editor.getAttribute("key"));
+			const editTabs = document.createElement("ul");
+			editTabs.className =
+				"ai-edit-tabs nav nav-tabs nav-tabs-custom nav-success";
+			editTabs.setAttribute("role", "tablist");
+			const createViewTab = (text) => {
+				const item = document.createElement("li");
+				item.className = "nav-item";
+				const tab = document.createElement("a");
+				tab.className = "nav-link text-decoration-none";
+				tab.setAttribute("role", "tab");
+				tab.setAttribute("aria-selected", "false");
+				tab.textContent = text;
+				item.append(tab);
+				editTabs.append(item);
+				return tab;
+			};
+			const detailsTab = createViewTab("Details");
+			const formTab = createViewTab("Form");
+			formTab.parentElement.hidden =
+				editor.getAttribute("key") !== "{}" && !isFileSource;
+			const jsonTab = createViewTab("JSON");
+			jsonTab.parentElement.hidden = !isFileSource;
+			const codeTab = createViewTab(
+				editor.getAttribute("key") === "{}" ? "JSON" : "Code"
+			);
+			const previewLanguages = new Set(["html", "markup", "markdown", "md"]);
+			const previewTab = createViewTab("Preview");
+			previewTab.parentElement.hidden =
+				!previewLanguages.has(editor.getAttribute("lang"));
             const cancel = document.createElement("button");
             cancel.type = "button";
-            cancel.innerHTML = '<i class="ri-close-line" aria-hidden="true"></i>';
+			cancel.className = "btn btn-light";
+            cancel.textContent = "Cancel";
             cancel.setAttribute("aria-label", "Cancel");
             cancel.title = "Cancel";
             cancel.hidden = true;
@@ -351,14 +649,47 @@
                 editor.dispatchEvent(new Event("input", { bubbles: true }));
                 editing = false;
                 activeForm = undefined;
+				activeJsonEditor = undefined;
                 collectFormValues = undefined;
-                detailsView.click();
+				detailsView.click();
             });
             edit.addEventListener("click", async () => {
                 if (activeForm) {
                     activeForm.requestSubmit();
                     return;
                 }
+				if (activeJsonEditor) {
+					const validation = window.CoCreate?.codearea?.validate?.(activeJsonEditor);
+					if (validation && !validation.valid) {
+						activeJsonEditor.reportValidity?.();
+						return;
+					}
+					edit.disabled = true;
+					setEditAction("saving");
+					try {
+						const object = JSON.parse(activeJsonEditor.value);
+						await window.CoCreate.crud.send({
+							method: "object.update",
+							...(editor.hasAttribute("storage") && {
+								storage: editor.getAttribute("storage")
+							}),
+							...(editor.hasAttribute("database") && {
+								database: editor.getAttribute("database")
+							}),
+							array: editor.getAttribute("array"),
+							object
+						});
+						jsonDirty = false;
+						editing = false;
+						detailsView.click();
+					} catch (error) {
+						setEditAction("retry");
+						edit.title = error.message;
+					} finally {
+						edit.disabled = false;
+					}
+					return;
+				}
                 if (!editing) {
                     startEdit();
                     return;
@@ -372,6 +703,7 @@
                 setEditAction("saving");
                 try {
                     await editor.save?.();
+					codeDirty = false;
                     editing = false;
                     detailsView.click();
                 } catch (error) {
@@ -383,11 +715,15 @@
             });
             const copy = document.createElement("button");
             copy.type = "button";
+			copy.className = "ai-code-copy";
             copy.innerHTML = '<i class="ri-file-copy-line" aria-hidden="true"></i>';
             copy.setAttribute("aria-label", "Copy");
             copy.title = "Copy";
+			copy.hidden = true;
             copy.addEventListener("click", async () => {
-                await navigator.clipboard?.writeText(editor.value);
+				await navigator.clipboard?.writeText(
+					activeJsonEditor?.value ?? editor.value
+				);
                 copy.innerHTML = '<i class="ri-check-line" aria-hidden="true"></i>';
                 copy.setAttribute("aria-label", "Copied");
                 copy.title = "Copied";
@@ -410,7 +746,6 @@
             const menuOptions = document.createElement("div");
             const view = document.createElement("div");
             view.className = "ai-code-view";
-            view.setAttribute("plugin", '{"$SimpleBar":["$this",{}]}');
             const detailsPanel = document.createElement("div");
             detailsPanel.className = "ai-code-details";
             detailsPanel.hidden = true;
@@ -422,34 +757,60 @@
             detailsPre.append(detailsCode);
             detailsContent.append(detailsTitle, detailsPre);
             detailsPanel.append(detailsContent);
+			let preview;
+			const destroyPreview = () => {
+				preview?.remove();
+				preview = undefined;
+				previewTab.classList.remove("active");
+				previewTab.setAttribute("aria-selected", "false");
+			};
             let activeView = "code";
-            const appPath = editor.getAttribute("array")
-                .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-                .replaceAll("_", "-")
-                .toLowerCase();
+			const appPath = (editor.dataset.appPath || editor.getAttribute("array"))
+				.replace(/^\/apps\//, "")
+				.replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+				.replaceAll("_", "-")
+				.toLowerCase();
+			const beginEditing = () => {
+				if (editing) return;
+				originalValue = editor.value;
+				editing = true;
+			};
             const showCode = () => {
+				beginEditing();
+				destroyPreview();
                 activeView = "code";
                 activeForm = undefined;
+				activeJsonEditor = undefined;
                 collectFormValues = undefined;
+				detailsPanel.querySelector(".ai-crud-json-codearea")?.remove();
                 detailsPanel.hidden = true;
                 detailsPanel.classList.remove("ai-code-detail-view");
                 detailsPanel.classList.remove("ai-app-details-view");
                 label.textContent = "Edit";
                 codearea.hidden = false;
                 setEditAction("save");
+				edit.hidden = !codeDirty;
+				copy.hidden = false;
                 cancel.hidden = false;
                 editTabs.hidden = false;
+				detailsTab.classList.remove("active");
+				detailsTab.setAttribute("aria-selected", "false");
                 formTab.classList.remove("active");
                 formTab.setAttribute("aria-selected", "false");
+				jsonTab.classList.remove("active");
+				jsonTab.setAttribute("aria-selected", "false");
                 codeTab.classList.add("active");
                 codeTab.setAttribute("aria-selected", "true");
                 menu.open = false;
                 requestAnimationFrame(resizeCodearea);
             };
             const showDetails = (title, value, languageName = "") => {
+				destroyPreview();
                 activeView = title;
                 activeForm = undefined;
+				activeJsonEditor = undefined;
                 collectFormValues = undefined;
+				detailsPanel.querySelector(".ai-crud-json-codearea")?.remove();
                 detailsPanel.classList.remove("ai-app-details-view");
                 detailsPanel.querySelector(".ai-crud-form")?.remove();
                 detailsPanel.querySelector(".ai-crud-configurations")?.remove();
@@ -458,8 +819,10 @@
                 label.textContent = title;
                 codearea.hidden = true;
                 setEditAction("edit");
+				edit.hidden = true;
+				copy.hidden = true;
                 cancel.hidden = true;
-                editTabs.hidden = true;
+				editTabs.hidden = false;
                 detailsPre.hidden = false;
                 detailsTitle.hidden = true;
                 detailsCode.className = languageName ? `language-${languageName}` : "";
@@ -469,20 +832,23 @@
                 detailsPanel.hidden = false;
                 menu.open = false;
                 highlightCodeBlocks(detailsPanel);
-                requestAnimationFrame(() => {
-                    globalThis.SimpleBar?.instances?.get(view)?.recalculate();
-                });
             };
             const showForm = async () => {
+				beginEditing();
+				destroyPreview();
                 activeView = "Form";
+				activeJsonEditor = undefined;
                 detailsPanel.classList.remove("ai-app-details-view");
-                let object;
-                try {
-                    object = JSON.parse(editor.value);
-                } catch {
-                    showDetails("Form", "The current value is not valid JSON.");
-                    return;
-                }
+				detailsPanel.querySelector(".ai-crud-json-codearea")?.remove();
+				let object = {};
+				if (!isFileSource) {
+					try {
+						object = JSON.parse(editor.value);
+					} catch {
+						showDetails("Form", "The current value is not valid JSON.");
+						return;
+					}
+				}
                 if (!object || Array.isArray(object) || typeof object !== "object") {
                     showDetails("Form", "Form view requires a JSON object.");
                     return;
@@ -506,10 +872,16 @@
                 }
                 activeForm = form;
                 setEditAction("save");
+				edit.hidden = true;
+				copy.hidden = true;
                 cancel.hidden = false;
                 editTabs.hidden = false;
+				detailsTab.classList.remove("active");
+				detailsTab.setAttribute("aria-selected", "false");
                 formTab.classList.add("active");
                 formTab.setAttribute("aria-selected", "true");
+				jsonTab.classList.remove("active");
+				jsonTab.setAttribute("aria-selected", "false");
                 codeTab.classList.remove("active");
                 codeTab.setAttribute("aria-selected", "false");
                 const formContent = document.createElement("div");
@@ -524,11 +896,15 @@
                     if (!formContent.firstElementChild) return;
                     formObserver.disconnect();
                     window.CoCreate?.elements?.init?.(form);
-                    globalThis.SimpleBar?.instances?.get(view)?.recalculate();
                 });
                 formObserver.observe(formContent, { childList: true });
                 form.append(formContent);
                 detailsContent.append(form);
+				const markFormChanged = () => {
+					edit.hidden = false;
+				};
+				form.addEventListener("input", markFormChanged);
+				form.addEventListener("change", markFormChanged);
                 formContent.setAttribute(
                     "src",
                     `/apps/${appPath}/form.html?view=${Date.now()}`
@@ -559,6 +935,21 @@
                 };
                 form.addEventListener("submit", async (event) => {
                     event.preventDefault();
+					if (isFileSource) {
+						edit.disabled = true;
+						setEditAction("saving");
+						try {
+							await form.save?.();
+							editing = false;
+							detailsView.click();
+						} catch (error) {
+							setEditAction("retry");
+							edit.title = error.message;
+						} finally {
+							edit.disabled = false;
+						}
+						return;
+					}
                     const updated = await collectFormValues();
                     if (!updated) return;
                     edit.disabled = true;
@@ -579,9 +970,6 @@
                 });
                 detailsPanel.hidden = false;
                 menu.open = false;
-                requestAnimationFrame(() => {
-                    globalThis.SimpleBar?.instances?.get(view)?.recalculate();
-                });
             };
             const startEdit = async () => {
                 if (!editing) {
@@ -592,8 +980,69 @@
                 else showCode();
             };
             formTab.addEventListener("click", showForm);
+			const showJson = async () => {
+				beginEditing();
+				destroyPreview();
+				activeView = "JSON";
+				activeForm = undefined;
+				collectFormValues = undefined;
+				detailsPanel.querySelector(".ai-crud-form")?.remove();
+				detailsPanel.querySelector(".ai-crud-configurations")?.remove();
+				detailsPanel.querySelector(".ai-crud-details-view")?.remove();
+				detailsPanel.querySelector(".ai-crud-json-codearea")?.remove();
+				detailsPre.hidden = true;
+				codearea.hidden = true;
+				detailsPanel.hidden = false;
+				detailsPanel.classList.add("ai-code-detail-view");
+				const jsonCodearea = document.createElement("codearea");
+				jsonCodearea.className = "ai-crud-codearea ai-crud-json-codearea";
+				const jsonEditor = document.createElement("textarea");
+				jsonEditor.setAttribute("type", "code");
+				jsonEditor.setAttribute("lang", "json");
+				for (const name of ["storage", "database", "array", "object"]) {
+					if (editor.hasAttribute(name)) {
+						jsonEditor.setAttribute(name, editor.getAttribute(name));
+					}
+				}
+				jsonEditor.setAttribute("key", "{}");
+				jsonEditor.setAttribute("value-type", "object");
+				jsonCodearea.append(jsonEditor);
+				detailsContent.append(jsonCodearea);
+				activeJsonEditor = jsonEditor;
+				jsonDirty = false;
+				setEditAction("save");
+				edit.hidden = true;
+				copy.hidden = false;
+				cancel.hidden = false;
+				window.CoCreate?.codearea?.initElement?.(jsonEditor);
+				window.CoCreate?.elements?.init?.(jsonEditor);
+				const resizeJson = () => {
+					jsonEditor.style.height = "auto";
+					jsonEditor.style.height = `${jsonEditor.scrollHeight}px`;
+					jsonCodearea.style.height = `${jsonEditor.scrollHeight}px`;
+				};
+				jsonEditor.addEventListener("beforeinput", () => {
+					jsonDirty = true;
+					edit.hidden = false;
+				});
+				jsonEditor.addEventListener("input", () =>
+					requestAnimationFrame(resizeJson)
+				);
+				requestAnimationFrame(resizeJson);
+				label.textContent = "Edit";
+				editTabs.hidden = false;
+				detailsTab.classList.remove("active");
+				detailsTab.setAttribute("aria-selected", "false");
+				formTab.classList.remove("active");
+				formTab.setAttribute("aria-selected", "false");
+				jsonTab.classList.add("active");
+				jsonTab.setAttribute("aria-selected", "true");
+				codeTab.classList.remove("active");
+				codeTab.setAttribute("aria-selected", "false");
+			};
+            jsonTab.addEventListener("click", showJson);
             codeTab.addEventListener("click", async () => {
-                if (activeForm && collectFormValues) {
+				if (!isFileSource && activeForm && collectFormValues) {
                     const updated = await collectFormValues();
                     if (!updated) return;
                     editor.value = JSON.stringify(updated, null, 2);
@@ -601,15 +1050,6 @@
                 }
                 showCode();
             });
-            const getCrudAttributes = () => {
-                const values = {};
-                for (const name of [
-                    "storage", "database", "array", "object", "key", "value-type"
-                ]) {
-                    if (editor.hasAttribute(name)) values[name] = editor.getAttribute(name);
-                }
-                return values;
-            };
             const detailsView = document.createElement("button");
             detailsView.type = "button";
             detailsView.textContent = "Details";
@@ -620,6 +1060,14 @@
                     editing = false;
                 }
                 showDetails("Details", "Loading…");
+				detailsTab.classList.add("active");
+				detailsTab.setAttribute("aria-selected", "true");
+				formTab.classList.remove("active");
+				formTab.setAttribute("aria-selected", "false");
+				jsonTab.classList.remove("active");
+				jsonTab.setAttribute("aria-selected", "false");
+				codeTab.classList.remove("active");
+				codeTab.setAttribute("aria-selected", "false");
                 try {
                     if (activeView !== "Details") return;
                     detailsPre.hidden = true;
@@ -649,61 +1097,7 @@
                     showDetails("Details", error.message || "Unable to load details view");
                 }
             });
-            const configurationsView = document.createElement("button");
-            configurationsView.type = "button";
-            configurationsView.textContent = "Configurations";
-            configurationsView.addEventListener("click", () => {
-                if (editing) {
-                    editor.value = originalValue;
-                    editor.dispatchEvent(new Event("input", { bubbles: true }));
-                    editing = false;
-                }
-                const crudAttributes = getCrudAttributes();
-                const htmlAttributes = Object.entries(crudAttributes)
-                    .map(([name, value]) => `${name}="${String(value)
-                        .replaceAll("&", "&amp;")
-                        .replaceAll('"', "&quot;")
-                        .replaceAll("<", "&lt;")
-                        .replaceAll(">", "&gt;")}"`)
-                    .join(" ");
-                showDetails("Configurations", "");
-                detailsPre.hidden = true;
-                const configurations = document.createElement("div");
-                configurations.className = "ai-crud-configurations";
-                const configurationItems = [
-                    ["CRUD attributes", `<div ${htmlAttributes}></div>`, "html"],
-                    ["CRUD object", JSON.stringify(crudAttributes, null, 2), "json"]
-                ];
-                if (editor.getAttribute("array") === "files") {
-                    configurationItems.unshift([
-                        "Pathname",
-                        editor.dataset.pathname || "Not available",
-                        ""
-                    ]);
-                }
-                for (const [title, value, languageName] of configurationItems) {
-                    const card = document.createElement("section");
-                    card.className = "ai-configuration-card";
-                    const cardLabel = document.createElement("strong");
-                    cardLabel.textContent = title;
-                    const cardPre = document.createElement("pre");
-                    const cardCode = document.createElement("code");
-                    if (languageName) cardCode.className = `language-${languageName}`;
-                    cardCode.textContent = value;
-                    cardPre.append(cardCode);
-                    card.append(cardLabel, cardPre);
-                    configurations.append(card);
-                }
-                detailsContent.append(configurations);
-                highlightCodeBlocks(configurations);
-                requestAnimationFrame(() => {
-                    globalThis.SimpleBar?.instances?.get(view)?.recalculate();
-                });
-            });
-            const editView = document.createElement("button");
-            editView.type = "button";
-            editView.textContent = "Edit";
-            editView.addEventListener("click", startEdit);
+			detailsTab.addEventListener("click", () => detailsView.click());
             const download = document.createElement("button");
             download.type = "button";
             download.textContent = "Download";
@@ -718,33 +1112,177 @@
                 URL.revokeObjectURL(url);
                 menu.open = false;
             });
-            menuOptions.append(
-                detailsView,
-                editView,
-                configurationsView,
-                download
-            );
+			const remove = document.createElement("button");
+			remove.type = "button";
+			remove.textContent = "Delete";
+			remove.addEventListener("click", async () => {
+				menu.open = false;
+				if (!window.confirm("Delete this item?")) return;
+				remove.disabled = true;
+				try {
+					await window.CoCreate.crud.send({
+						method: "object.delete",
+						array: editor.getAttribute("array"),
+						object: [{ _id: editor.getAttribute("object") }]
+					});
+					const item = block.closest("[data-ai-crud-reference]");
+					const list = item?.closest("[data-ai-crud-list]");
+					item?.remove();
+					if (list && !list.querySelector("[data-ai-crud-reference]")) {
+						list.remove();
+					}
+				} catch (error) {
+					remove.disabled = false;
+					remove.title = error.message || "Unable to delete item";
+				}
+			});
+			menuOptions.append(download, remove);
             menu.append(menuTrigger, menuOptions);
-            actions.append(editTabs, cancel, edit, copy, menu);
-            header.append(label, actions);
+			actions.append(menu);
+			header.append(editTabs, actions);
             const codearea = document.createElement("codearea");
             codearea.className = "ai-crud-codearea";
+			const footer = document.createElement("footer");
+			footer.className = "ai-code-footer";
+			footer.hidden = true;
+			edit.className = "btn btn-primary";
+			footer.append(cancel, edit);
+			let footerScrollRoot;
+			let footerIntersectionObserver;
+			let footerResizeObserver;
+			let footerSectionVisible = false;
+			let footerFrame;
+			const positionFooter = () => {
+				footerFrame = undefined;
+				if (footer.hidden || !footerScrollRoot || !footerSectionVisible)
+					return;
+				const sectionRect = block.getBoundingClientRect();
+				const rootRect = footerScrollRoot.getBoundingClientRect();
+				const composerRect = composer.getBoundingClientRect();
+				const visibleBottom = Math.min(rootRect.bottom, composerRect.top);
+				const maxBottom = Math.max(
+					0,
+					sectionRect.height - footer.offsetHeight
+				);
+				const bottom = Math.min(
+					maxBottom,
+					Math.max(0, sectionRect.bottom - visibleBottom)
+				);
+				footer.style.bottom = `${bottom}px`;
+			};
+			const scheduleFooterPosition = () => {
+				if (!footerFrame)
+					footerFrame = requestAnimationFrame(positionFooter);
+			};
+			const stopFooterDocking = () => {
+				footerScrollRoot?.removeEventListener(
+					"scroll",
+					scheduleFooterPosition
+				);
+				footerIntersectionObserver?.disconnect();
+				footerResizeObserver?.disconnect();
+				if (footerFrame) cancelAnimationFrame(footerFrame);
+				footerFrame = undefined;
+				footerSectionVisible = false;
+				footer.style.removeProperty("bottom");
+			};
+			const startFooterDocking = () => {
+				stopFooterDocking();
+				footerScrollRoot = block
+					.closest(".ai-message-scroll")
+					?.querySelector(".simplebar-content-wrapper");
+				if (!footerScrollRoot) return;
+				footerIntersectionObserver = new IntersectionObserver(
+					([entry]) => {
+						footerSectionVisible = entry.isIntersecting;
+						footer.style.visibility = entry.isIntersecting
+							? ""
+							: "hidden";
+						scheduleFooterPosition();
+					},
+					{ root: footerScrollRoot }
+				);
+				footerResizeObserver = new ResizeObserver(scheduleFooterPosition);
+				footerIntersectionObserver.observe(block);
+				footerResizeObserver.observe(block);
+				footerResizeObserver.observe(composer);
+				footerScrollRoot.addEventListener(
+					"scroll",
+					scheduleFooterPosition,
+					{ passive: true }
+				);
+			};
+			new MutationObserver(() => {
+				footer.hidden = edit.hidden;
+				cancel.hidden = edit.hidden;
+				if (edit.hidden) {
+					stopFooterDocking();
+				} else {
+					requestAnimationFrame(startFooterDocking);
+				}
+			}).observe(edit, { attributes: true, attributeFilter: ["hidden"] });
+			previewTab.addEventListener("click", () => {
+				if (preview) return;
+				const previewLanguage = editor.getAttribute("lang");
+				if (!previewLanguages.has(previewLanguage)) return;
+				activeView = "Preview";
+				activeForm = undefined;
+				activeJsonEditor = undefined;
+				collectFormValues = undefined;
+				detailsPanel.hidden = true;
+				preview = document.createElement("div");
+				preview.className = "ai-code-preview";
+				if (["html", "markup"].includes(previewLanguage)) {
+					const frame = document.createElement("iframe");
+					frame.setAttribute("sandbox", "allow-same-origin allow-scripts");
+					frame.title = "HTML preview";
+					frame.addEventListener("load", () => {
+						const documentElement = frame.contentDocument?.documentElement;
+						if (documentElement) {
+							frame.style.height = `${documentElement.scrollHeight}px`;
+						}
+					});
+					frame.srcdoc = editor.value;
+					preview.append(frame);
+				} else {
+					const markdown = document.createElement("div");
+					markdown.className = "ai-markdown-preview";
+					appendMarkdown(markdown, editor.value);
+					preview.append(markdown);
+				}
+				codearea.hidden = true;
+				copy.hidden = true;
+				edit.hidden = true;
+				view.append(preview);
+				for (const tab of [detailsTab, formTab, jsonTab, codeTab]) {
+					tab.classList.remove("active");
+					tab.setAttribute("aria-selected", "false");
+				}
+				previewTab.classList.add("active");
+				previewTab.setAttribute("aria-selected", "true");
+			});
             const resizeCodearea = () => {
                 if (codearea.hidden) return;
                 editor.style.height = "auto";
-                const height = Math.max(view.clientHeight, editor.scrollHeight);
+				const height = editor.scrollHeight;
                 editor.style.height = `${height}px`;
                 codearea.style.height = `${height}px`;
-                globalThis.SimpleBar?.instances?.get(view)?.recalculate();
             };
             editor.addEventListener("input", () => requestAnimationFrame(resizeCodearea));
+			editor.addEventListener("beforeinput", () => {
+				codeDirty = true;
+				if (activeView === "code") edit.hidden = false;
+			});
             pre.replaceWith(block);
             codearea.append(pre, editor);
-            view.append(detailsPanel, codearea);
-            block.append(header, view);
+            view.append(detailsPanel, codearea, copy);
+            block.append(header, view, footer);
             window.CoCreate?.elements?.init?.(editor);
-            window.CoCreate?.plugins?.init?.(view);
-            detailsView.click();
+			if (editor.dataset.display === "code" || editor.dataset.display === "form") {
+				void startEdit();
+			} else {
+				detailsView.click();
+			}
         }
     };
 
@@ -858,7 +1396,11 @@
         }
     };
 
-    const renderMessageContent = (body, content = "", { initializeCrud = true } = {}) => {
+    const renderMessageContent = (
+		body,
+		content = "",
+		{ initializeCrud = true, views = [], deferViews = false } = {}
+	) => {
         body.dataset.content = content;
         body.replaceChildren();
 
@@ -879,8 +1421,21 @@
         const trailing = content.slice(cursor);
 		const pendingFence = trailing.lastIndexOf("```");
 		appendMarkdown(body, pendingFence === -1 ? trailing : trailing.slice(0, pendingFence));
+		while (
+			body.lastChild?.nodeType === Node.TEXT_NODE &&
+			!body.lastChild.textContent.trim()
+		) {
+			body.lastChild.remove();
+		}
+		while (body.lastElementChild?.tagName === "BR") {
+			body.lastElementChild.remove();
+		}
 		highlightCodeBlocks(body);
-		if (initializeCrud) initializeCrudViews(body);
+		if (initializeCrud) {
+			initializeCrudLists(body);
+			initializeCrudViews(body);
+			void renderStructuredViews(body, views, { defer: deferViews });
+		}
 	};
 
     const getCodeLanguage = (filePath = "") => ({
@@ -1394,27 +1949,130 @@
         );
     };
 
-    const addMessage = (role, content = "") => {
+    const addMessageActions = (element, record) => {
+		if (!record?._id) return;
+		const actions = document.createElement("div");
+		actions.className = "ai-message-actions";
+		const action = (icon, label, callback) => {
+			const button = document.createElement("button");
+			button.type = "button";
+			button.innerHTML = `<i class="${icon}" aria-hidden="true"></i>`;
+			button.setAttribute("aria-label", label);
+			button.title = label;
+			button.addEventListener("click", callback);
+			actions.append(button);
+		};
+		action("ri-file-copy-line", "Copy", async () => {
+			await navigator.clipboard?.writeText(record.content || "");
+		});
+		if (record.role === "user") {
+			action("ri-pencil-line", "Edit", () => {
+				editingMessage = record;
+				prompt.value = record.content || "";
+				resizePrompt();
+				prompt.focus();
+			});
+		} else {
+			action("ri-restart-line", "Retry", () => {
+				const parent = messageRecords.get(String(record.parent_id));
+				if (!parent?.content) return;
+				void submitPrompt(parent.content, {
+					display: false,
+					persist: false,
+					userMessageId: parent._id,
+					parentId: parent.parent_id,
+					contextBeforeId: parent.parent_id,
+					onComplete: reloadActiveConversation
+				});
+			});
+		}
+		const siblings = [...messageRecords.values()]
+			.filter((message) =>
+				message.role === record.role &&
+				String(message.parent_id || "") === String(record.parent_id || "")
+			)
+			.sort((a, b) => messageTime(a) - messageTime(b));
+		if (siblings.length > 1) {
+			const index = siblings.findIndex((message) => String(message._id) === String(record._id));
+			const versions = document.createElement("div");
+			versions.className = "ai-message-versions";
+			const previous = document.createElement("button");
+			previous.type = "button";
+			previous.innerHTML = '<i class="ri-arrow-left-s-line" aria-hidden="true"></i>';
+			previous.setAttribute("aria-label", "Previous version");
+			previous.disabled = index <= 0;
+			previous.addEventListener("click", () => void renderActiveBranch(siblings[index - 1]));
+			const count = document.createElement("span");
+			count.textContent = `${index + 1} of ${siblings.length}`;
+			const next = document.createElement("button");
+			next.type = "button";
+			next.innerHTML = '<i class="ri-arrow-right-s-line" aria-hidden="true"></i>';
+			next.setAttribute("aria-label", "Next version");
+			next.disabled = index >= siblings.length - 1;
+			next.addEventListener("click", () => void renderActiveBranch(siblings[index + 1]));
+			versions.append(previous, count, next);
+			element.append(versions);
+		}
+		action("ri-delete-bin-line", "Delete", async () => {
+			if (!window.confirm("Delete this message and its replies?")) return;
+			const ids = new Set([String(record._id)]);
+			let changed = true;
+			while (changed) {
+				changed = false;
+				for (const message of messageRecords.values()) {
+					if (message.parent_id && ids.has(String(message.parent_id)) &&
+						!ids.has(String(message._id))) {
+						ids.add(String(message._id));
+						changed = true;
+					}
+				}
+			}
+			await socket.send({
+				method: "object.delete",
+				array: "ai-messages",
+				object: [...ids].map((_id) => ({ _id }))
+			});
+			await reloadActiveConversation();
+		});
+		element.append(actions);
+	};
+
+    const addMessage = (role, content = "", views = [], record = {}) => {
         shell.querySelector(".ai-empty")?.remove();
         const element = document.createElement("article");
         element.className = `ai-message ${role}`;
+		if (record._id) element.dataset.messageId = record._id;
+		if (record.parent_id) element.dataset.parentId = record.parent_id;
         const body = document.createElement("div");
         body.className = "ai-message-content";
-        renderMessageContent(body, content);
+		renderMessageContent(body, content, { views });
         element.append(body);
+		addMessageActions(element, { ...record, role, content });
         messages.append(element);
         scrollDown();
         return { element, body };
     };
 
-    const getConversationContext = () =>
-        Array.from(messages.querySelectorAll(".ai-message"))
+	const reloadActiveConversation = async () => {
+		const button = threadList.querySelector(
+			`.ai-thread[data-conversation-id="${CSS.escape(conversationId || "")}"]`
+		);
+		if (button) await loadConversation(button);
+	};
+
+    const getConversationContext = (throughId) => {
+		const elements = Array.from(messages.querySelectorAll(".ai-message"));
+		const end = throughId
+			? elements.findIndex((element) => element.dataset.messageId === String(throughId)) + 1
+			: elements.length;
+		return elements.slice(0, end || 0)
             .map((element) => ({
                 role: element.classList.contains("user") ? "user" : "assistant",
                 content: element.querySelector(".ai-message-content")?.dataset.content || ""
             }))
             .filter((message) => message.content)
             .slice(-12);
+	};
 
     const activateThread = (id) => {
         for (const item of threadList.querySelectorAll(".ai-thread")) {
@@ -1424,6 +2082,18 @@
             );
         }
     };
+
+	const setConversationState = (id = "") => {
+		if (shell.getAttribute("conversation-id") === id) return;
+		const stateAction = document.createElement("button");
+		stateAction.type = "button";
+		stateAction.hidden = true;
+		stateAction.setAttribute("state-to", "aiChat");
+		stateAction.setAttribute("state.conversation-id", id);
+		document.body.appendChild(stateAction);
+		stateAction.click();
+		stateAction.remove();
+	};
 
     const readObjects = async (array, filter) => {
         if (!socket?.send) throw new Error("CoCreate socket is unavailable.");
@@ -1482,10 +2152,24 @@
         try {
             const history = await readConversationMessages(id);
             if (conversationLoadId !== loadId) return;
-            for (const item of history) {
-                const message = unwrapObject(item);
-                addMessage(message.role || "assistant", message.content || "");
-            }
+			messageRecords.clear();
+			let previousId;
+			for (const item of history) {
+				const message = unwrapObject(item);
+				if (!message?._id) continue;
+				if (!message.parent_id && previousId) message.parent_id = previousId;
+				messageRecords.set(String(message._id), message);
+				previousId = message._id;
+			}
+			if (messageRecords.size) {
+				const parentIds = new Set(
+					[...messageRecords.values()].map((message) => String(message.parent_id || ""))
+				);
+				const leaves = [...messageRecords.values()]
+					.filter((message) => !parentIds.has(String(message._id)))
+					.sort((a, b) => messageTime(a) - messageTime(b));
+				await renderActiveBranch(leaves.at(-1));
+			}
             if (!history.length) {
                 addMessage("assistant", "This conversation has no saved messages.");
             }
@@ -1502,10 +2186,43 @@
         stream.element.classList.remove("pending");
         if (data.ai.status === "complete") {
             stream.content = data.ai.content ?? stream.content;
-            renderMessageContent(stream.body, stream.content);
+			renderMessageContent(stream.body, stream.content, {
+				views: data.ai.views || [],
+				deferViews: true
+			});
             conversationId = data.ai.conversation_id || conversationId;
+			setConversationState(conversationId);
             activateThread(conversationId);
             setStatus("Connected", "connected");
+			if (data.ai.user_message_id && stream.userMessage) {
+				const userRecord = {
+					_id: data.ai.user_message_id,
+					parent_id: stream.parentId,
+					role: "user",
+					content: stream.prompt
+				};
+				stream.userMessage.element.dataset.messageId = userRecord._id;
+				if (userRecord.parent_id) {
+					stream.userMessage.element.dataset.parentId = userRecord.parent_id;
+				}
+				messageRecords.set(String(userRecord._id), userRecord);
+				addMessageActions(stream.userMessage.element, userRecord);
+			}
+			if (data.ai.message_id) {
+				const assistantRecord = {
+					_id: data.ai.message_id,
+					parent_id: data.ai.parent_id,
+					role: "assistant",
+					content: stream.content,
+					views: data.ai.views || []
+				};
+				stream.element.dataset.messageId = assistantRecord._id;
+				if (assistantRecord.parent_id) {
+					stream.element.dataset.parentId = assistantRecord.parent_id;
+				}
+				messageRecords.set(String(assistantRecord._id), assistantRecord);
+				addMessageActions(stream.element, assistantRecord);
+			}
         } else if (data.ai.status === "stopped") {
             renderMessageContent(stream.body, stream.content || "Generation stopped.");
             setStatus("Stopped", "connected");
@@ -1516,11 +2233,18 @@
         }
         const onComplete = stream.onComplete;
         streams.delete(data.stream_id);
-        clearSteerQueue();
         setBusy(false);
         if (onComplete) {
             void onComplete();
-        } else {
+        }
+        const nextQueued = queuedSteers.entries().next().value;
+        if (nextQueued) {
+            const [queueId, queued] = nextQueued;
+            queued.element.remove();
+            queuedSteers.delete(queueId);
+            updateSteerQueue();
+            queueMicrotask(() => void submitPrompt(queued.content));
+        } else if (!onComplete) {
             prompt.focus();
         }
     };
@@ -1559,15 +2283,12 @@
         const stream = streams.get(data.stream_id);
         if (!stream || !data.ai) return;
         if (data.ai.status === "queued") {
-            const item = queuedSteers.get(data.ai.queue_id);
-            const state = item?.querySelector("small");
-            if (state) state.textContent = "Queued";
-            setStatus("Instruction queued", "connected");
+            setStatus("Instruction sent", "connected");
             return;
         }
         if (data.ai.status === "steer-unavailable") {
             const item = queuedSteers.get(data.ai.queue_id);
-            item?.remove();
+            item?.element.remove();
             queuedSteers.delete(data.ai.queue_id);
             updateSteerQueue();
             setStatus(data.ai.message || "Session finished", "connected");
@@ -1575,7 +2296,7 @@
         }
         if (data.ai.status === "steer-error") {
             const item = queuedSteers.get(data.ai.queue_id);
-            item?.remove();
+            item?.element.remove();
             queuedSteers.delete(data.ai.queue_id);
             updateSteerQueue();
             setStatus(data.ai.message || "Instruction could not be queued", "error");
@@ -1588,6 +2309,7 @@
         if (data.ai.status === "credentials" && data.ai.credential) {
             stream.element.classList.remove("pending");
             conversationId = data.ai.conversation_id || conversationId;
+			setConversationState(conversationId);
             activateThread(conversationId);
             renderCredentialCard(stream, data.ai.credential);
             setStatus("API key required", "error");
@@ -1637,14 +2359,25 @@
 
     const submitPrompt = async (
         message,
-        { display = true, persist = true, signal } = {}
+        {
+			display = true,
+			persist = true,
+			signal,
+			parentId,
+			userMessageId,
+			contextBeforeId,
+			onComplete
+		} = {}
     ) => {
         const text = message.trim();
         if (!text || send.disabled || !socket) return;
 
         const streamId = makeId();
-        const context = { messages: getConversationContext() };
-        if (display) addMessage("user", text);
+		const context = { messages: getConversationContext(contextBeforeId) };
+		const effectiveParentId = parentId ||
+			[...messages.querySelectorAll(".ai-message[data-message-id]")]
+				.at(-1)?.dataset.messageId;
+		const userMessage = display ? addMessage("user", text) : undefined;
         const assistant = addMessage("assistant");
         assistant.element.classList.add("pending");
         streams.set(streamId, {
@@ -1653,7 +2386,10 @@
             content: "",
             visibleLength: 0,
             terminal: null,
-            prompt: text
+			prompt: text,
+			onComplete,
+			userMessage,
+			parentId: effectiveParentId
         });
         if (display && prompt.value.trim() === text) prompt.value = "";
         resizePrompt();
@@ -1667,6 +2403,8 @@
                 ai: {
                     prompt: text,
                     persist,
+					...(effectiveParentId && { parent_id: effectiveParentId }),
+					...(userMessageId && { user_message_id: userMessageId }),
                     ...(signal && { signal }),
                     conversation_id: conversationId,
                     provider: provider.value,
@@ -1682,17 +2420,17 @@
         }
     };
 
-    const submitSteer = async (message, streamId) => {
-        const text = message.trim();
+    const submitSteer = async (queueId, streamId) => {
+        const queued = queuedSteers.get(queueId);
+        const text = queued?.content.trim();
         if (!text || !streamId || !socket) return;
-        const queueId = makeId();
+        queued.element.remove();
+        queuedSteers.delete(queueId);
+        updateSteerQueue();
         const userMessage = addMessage("user", text);
         const activeStream = streams.get(streamId);
         if (activeStream?.element) activeStream.element.before(userMessage.element);
-        addQueuedSteer(queueId, text);
-        prompt.value = "";
-        resizePrompt();
-        setStatus("Queueing instruction…", "connected");
+        setStatus("Steering…", "connected");
 
         try {
             await socket.send({
@@ -1706,9 +2444,6 @@
                 }
             });
         } catch (error) {
-            queuedSteers.get(queueId)?.remove();
-            queuedSteers.delete(queueId);
-            updateSteerQueue();
             setStatus(error.message, "error");
         }
     };
@@ -1717,9 +2452,20 @@
         event.preventDefault();
         const streamId = streams.keys().next().value;
         if (streamId) {
-            void submitSteer(prompt.value, streamId);
+            const text = prompt.value.trim();
+            if (!text) return;
+            addQueuedSteer(makeId(), text);
+            prompt.value = "";
+            resizePrompt();
+            setStatus("Message queued", "connected");
         } else {
-            void submitPrompt(prompt.value);
+			const edit = editingMessage;
+			editingMessage = undefined;
+			void submitPrompt(prompt.value, edit ? {
+				parentId: edit.parent_id,
+				contextBeforeId: edit.parent_id,
+				onComplete: reloadActiveConversation
+			} : {});
         }
     });
 
@@ -1752,8 +2498,22 @@
             sidebarBackdrop?.setAttribute("aria-expanded", "false");
         }
     });
+	const restoreConversation = () => {
+		const id = shell.getAttribute("conversation-id");
+		if (!id || conversationId === id) {
+			return;
+		}
+		const button = Array.from(
+			threadList.querySelectorAll(".ai-thread[data-conversation-id]")
+		).find((item) => item.dataset.conversationId === id);
+		if (button) void loadConversation(button);
+	};
+	new MutationObserver(restoreConversation).observe(shell, {
+		attributeFilter: ["conversation-id"]
+	});
     new MutationObserver(() => {
-        if (conversationId) activateThread(conversationId);
+		if (conversationId) activateThread(conversationId);
+		restoreConversation();
     }).observe(threadList, { childList: true, subtree: true });
     prompt.addEventListener("keydown", (event) => {
         if (event.key === "Enter" && !event.shiftKey) {
@@ -1765,6 +2525,7 @@
     shell.querySelector(".ai-new-chat").addEventListener("click", () => {
         conversationLoadId = undefined;
         conversationId = undefined;
+		setConversationState();
         messages.replaceChildren(emptyView.cloneNode(true));
         for (const item of threadList.querySelectorAll(".ai-thread")) {
             item.classList.remove("active");

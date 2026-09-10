@@ -25,6 +25,10 @@ export default {
         "name": "Webhooks",
         "singularName": "Webhook",
         "path": "/apps/apis/webhooks",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "webhooks",
         "category": "Integrations",
         "mainViews": [

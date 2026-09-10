@@ -7,7 +7,11 @@ export default {
         "singularName": "Opportunity",
         "path": "/apps/opportunities",
         "card": "/apps/opportunities/card.html",
-        "cardTemplate": "/apps/opportunities/card-template.html",
+        "cardTemplate": "/apps/opportunities/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "opportunities",
         "category": "CRM",
         "mainViews": [

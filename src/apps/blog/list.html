@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="/apps/blog/index.css" />
+<link
+	rel="stylesheet"
+	href="/apps/blog/index.css" />
 
 <div class="container-fluid">
 	<!-- start page title -->
@@ -21,8 +23,10 @@
 	</div>
 	<!-- end page title -->
 
-	<div class="display:flex flex-wrap:wrap gap:24px">
-		<div class="width:100%@xs@sm@md width:300px" hidden>
+	<div class="d-flex flex-wrap:wrap gap:24px">
+		<div
+			class="width:100%@xs@sm@md width:300px"
+			hidden>
 			<div class="card">
 				<div class="card-body p-4">
 					<div class="search-box">
@@ -216,7 +220,9 @@
 							filter-query-key="date_category">
 							<option value="All">All</option>
 							<option value="Today">Today</option>
-							<option value="Yesterday" selected>
+							<option
+								value="Yesterday"
+								selected>
 								Yesterday
 							</option>
 							<option value="Last 7 Days">Last 7 Days</option>
@@ -229,13 +235,13 @@
 			</div>
 			<!--end row-->
 			<div
-				class="display:flex flex-wrap:wrap gx-4 gap:24px"
+				class="d-flex flex-wrap:wrap gx-4 gap:24px"
 				id="blogListContainer"
 				array="blogs"
 				object
 				render-as="blog">
 				<div
-					class="card overflow:hidden blog-grid-card display:flex flex-direction:column width:100%@xs@sm max-width:50%@lg@md@xl@xxl flex-grow:1">
+					class="card overflow-hidden blog-grid-card d-flex flex-column width:100%@xs@sm max-width:50%@lg@md@xl@xxl flex-grow:1">
 					<div class="position-relative overflow-hidden">
 						<img
 							src="/assets/images/blog/img-1.jpg"
@@ -246,7 +252,9 @@
 						<p class="mb-2 text-primary text-uppercase">
 							{{blog.category_topic}}
 						</p>
-						<a state-to="adminView" state.src="pages/blog/post.html">
+						<a
+							state-to="adminView"
+							state.src="pages/blog/post.html">
 							<h5 class="fs-15 fw-semibold">{{blog.title}}</h5>
 							<div
 								state-to="form-fields"
@@ -327,22 +335,46 @@
 					<ul
 						class="pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
 						<li class="page-item disabled">
-							<a href="#" class="page-link">Previous</a>
+							<a
+								href="#"
+								class="page-link"
+								>Previous</a
+							>
 						</li>
 						<li class="page-item">
-							<a href="#" class="page-link">1</a>
+							<a
+								href="#"
+								class="page-link"
+								>1</a
+							>
 						</li>
 						<li class="page-item active">
-							<a href="#" class="page-link">2</a>
+							<a
+								href="#"
+								class="page-link"
+								>2</a
+							>
 						</li>
 						<li class="page-item">
-							<a href="#" class="page-link">3</a>
+							<a
+								href="#"
+								class="page-link"
+								>3</a
+							>
 						</li>
 						<li class="page-item">
-							<a href="#" class="page-link">4</a>
+							<a
+								href="#"
+								class="page-link"
+								>4</a
+							>
 						</li>
 						<li class="page-item">
-							<a href="#" class="page-link">Next</a>
+							<a
+								href="#"
+								class="page-link"
+								>Next</a
+							>
 						</li>
 					</ul>
 				</div>

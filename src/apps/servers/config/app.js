@@ -26,7 +26,11 @@ export default {
         "singularName": "Server",
         "path": "/apps/servers",
         "card": "/apps/servers/card.html",
-        "cardTemplate": "/apps/servers/card-template.html",
+        "cardTemplate": "/apps/servers/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "servers",
         "category": "Settings",
         "mainViews": [

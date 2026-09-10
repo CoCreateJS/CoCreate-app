@@ -7,7 +7,11 @@ export default {
         "singularName": "App",
         "path": "/apps/",
         "card": "/apps/apps/card.html",
-        "cardTemplate": "/apps/apps/card-template.html",
+        "cardTemplate": "/apps/apps/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "apps",
         "category": "Settings",
         "status": "active",

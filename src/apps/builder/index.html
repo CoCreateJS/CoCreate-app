@@ -1,9 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
 		<title>Builder | CoCreate</title>
 		<link
 			rel="icon"
@@ -17,13 +21,15 @@
 			object="610cb468c0e9580010e5ba50"
 			key="src"
 			type="text/css" />
-		<link rel="manifest" href="/manifest.webmanifest" />
+		<link
+			rel="manifest"
+			href="/manifest.webmanifest" />
 	</head>
 
 	<body>
-		<!--<nav class="nav display:flex position:relative align-items:center box-shadow-bottom" content_id="canvas" scroll=", hide-nav" scroll-up="5" scroll-down="5" array="files" object="60de0fae14b5ab0c2dd2feb9" key="src">-->
+		<!--<nav class="nav d-flex position:relative align-items:center box-shadow-bottom" content_id="canvas" scroll=", hide-nav" scroll-up="5" scroll-down="5" array="files" object="60de0fae14b5ab0c2dd2feb9" key="src">-->
 		<nav
-			class="nav display:flex position:relative align-items:center box-shadow-bottom"
+			class="nav d-flex position:relative align-items:center box-shadow-bottom"
 			content_id="canvas"
 			scroll=", hide-nav"
 			scroll-up="5"
@@ -46,7 +52,9 @@
 				<!-- Modal Controls -->
 				<li class="margin-right:15px">
 					<a actions="closeModal"
-						><i class="height:18px" src="/assets/svg/times.svg"></i
+						><i
+							class="height:18px"
+							src="/assets/svg/times.svg"></i
 					></a>
 				</li>
 				<li class="margin-right:15px">
@@ -69,7 +77,9 @@
 				<!-- fullscreen toogle and icon transform-->
 				<li class="margin-right:15px">
 					<a fullscreen>
-						<i class="height:18px" src="/assets/svg/expand.svg"></i>
+						<i
+							class="height:18px"
+							src="/assets/svg/expand.svg"></i>
 						<i
 							class="height:18px"
 							src="/assets/svg/compress.svg"></i>
@@ -90,12 +100,16 @@
 
 				<!-- Builder Controls -->
 				<li class="margin-right:15px">
-					<a id="redo-canvas" class=""
+					<a
+						id="redo-canvas"
+						class=""
 						><i src="/assets/svg/redo-alt.svg"></i
 					></a>
 				</li>
 				<li class="margin-right:15px">
-					<a id="undo-canvas" class=""
+					<a
+						id="undo-canvas"
+						class=""
 						><i src="/assets/svg/undo-alt.svg"></i
 					></a>
 				</li>
@@ -106,7 +120,9 @@
 					selected-query=".canvas-container"
 					selected-group="screen-size"
 					selected>
-					<a id="desktop-view" class=""
+					<a
+						id="desktop-view"
+						class=""
 						><i src="/assets/svg/desktop.svg"></i
 					></a>
 				</li>
@@ -115,7 +131,9 @@
 					selected-value="max-width:768px"
 					selected-query=".canvas-container"
 					selected-group="screen-size">
-					<a id="tablet-view" class=""
+					<a
+						id="tablet-view"
+						class=""
 						><i src="/assets/svg/tablet-alt.svg"></i
 					></a>
 				</li>
@@ -124,7 +142,9 @@
 					selected-value="max-width:375px"
 					selected-query=".canvas-container"
 					selected-group="screen-size">
-					<a id="mobile-view" class=""
+					<a
+						id="mobile-view"
+						class=""
 						><i src="/assets/svg/mobile-alt.svg"></i
 					></a>
 				</li>
@@ -164,7 +184,9 @@
 					</a>
 				</li>
 				<li class="margin-right:15px">
-					<a id="element-borders" class=""
+					<a
+						id="element-borders"
+						class=""
 						><i src="/assets/svg/square.svg"></i
 					></a>
 				</li>
@@ -196,7 +218,9 @@
 			class="position:fixed z-index:12!important"></div>
 
 		<!-- Main Container -->
-		<main content_id="canvas" class="height:100vh">
+		<main
+			content_id="canvas"
+			class="height:100vh">
 			<div class="canvas-container height:100% margin:auto">
 				<iframe
 					contenteditable
@@ -218,7 +242,7 @@
 		<!-- SideNav Left -->
 		<sidenav
 			id="menuL"
-			class="position:fixed top:0px left:0px overflow:hidden background:whitesmoke height:100vh width:260px width:0px@xs@sm@md"
+			class="position:fixed top:0px left:0px overflow-hidden background:whitesmoke height:100vh width:260px width:0px@xs@sm@md"
 			resizable
 			resize-query="[content_id='canvas']"
 			resize-property="margin-left"
@@ -234,12 +258,14 @@
 		<!-- SideNav Right -->
 		<sidenav
 			id="menuR"
-			class="position:fixed top:0px right:0px overflow:hidden background:whitesmoke height:100vh width:310px width:0px@xs@sm@md"
+			class="position:fixed top:0px right:0px overflow-hidden background:whitesmoke height:100vh width:310px width:0px@xs@sm@md"
 			resizable
 			resize-query="[content_id='canvas']"
 			resize-property="margin-right"
 			resize-value="width">
-			<input type="hidden" attribute="eid" />
+			<input
+				type="hidden"
+				attribute="eid" />
 			<div
 				class="domEditor"
 				array="files"
@@ -256,20 +282,26 @@
 			config-key="selectable"
 			class="position:absolute pointer-events:none display:none">
 			<tools
-				class="display:flex justify-content:space-between width:100% color:white font-size:11px">
+				class="d-flex justify-content:space-between width:100% color:white font-size:11px">
 				<span
 					class="padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid"
 					tagname></span>
 				<!--<span class="padding:3px background:dodgerblue pointer-events:auto"><i  src="/assets/svg/arrows-alt.svg"></i></span>-->
 				<div
-					class="display:flex align-items:center padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid pointer-events:auto">
-					<span actions="cloneElement" class="margin-right:10px"
+					class="d-flex align-items:center padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid pointer-events:auto">
+					<span
+						actions="cloneElement"
+						class="margin-right:10px"
 						><i src="/assets/svg/clone.svg"></i
 					></span>
-					<span actions="deleteElement" class="margin-right:10px"
+					<span
+						actions="deleteElement"
+						class="margin-right:10px"
 						><i src="/assets/svg/trash-alt.svg"></i
 					></span>
-					<span actions="previousElement" class="margin-right:10px"
+					<span
+						actions="previousElement"
+						class="margin-right:10px"
 						><i src="/assets/svg/arrow-up.svg"></i
 					></span>
 					<span actions="nextElement"
@@ -289,7 +321,7 @@
 			config-key="hoverable"
 			class="position:absolute pointer-events:none display:none">
 			<tools
-				class="tools display:flex align-items:center color:white font-size:11px">
+				class="tools d-flex align-items:center color:white font-size:11px">
 				<span
 					class="padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid"
 					tagname></span>
@@ -307,7 +339,7 @@
 			config-key="editable"
 			class="toolbar position:absolute pointer-events:none display:none">
 			<tools
-				class="display:flex align-items:center width:fit-content background:gainsboro border-radius:5px pointer-events:auto">
+				class="d-flex align-items:center width:fit-content background:gainsboro border-radius:5px pointer-events:auto">
 				<div
 					actions="nodeName"
 					node-name="b"
@@ -323,14 +355,19 @@
 					id="italic-button">
 					<i src="/assets/svg/italic.svg"></i>
 				</div>
-				<div id="link-button" show="#link" hide="#link">
+				<div
+					id="link-button"
+					show="#link"
+					hide="#link">
 					<i src="/assets/svg/link.svg"></i>
 				</div>
 				<div
 					id="link"
-					class="position:absolute display:flex align-items:center transition:0.4s background:gainsboro height:28px border-radius:5px"
+					class="position:absolute d-flex align-items:center transition:0.4s background:gainsboro height:28px border-radius:5px"
 					hidden>
-					<input type="text" key="" />
+					<input
+						type="text"
+						key="" />
 					<div
 						actions="nodeName"
 						node-name="a"
@@ -359,7 +396,7 @@
 					id="headings"
 					hover="width:fit-content"
 					hover-query="#headings"
-					class="position:absolute display:flex align-items:center transition:0.4s width:0px background:gainsboro overflow:hidden height:28px border-radius:5px">
+					class="position:absolute d-flex align-items:center transition:0.4s width:0px background:gainsboro overflow-hidden height:28px border-radius:5px">
 					<div
 						actions="nodeName"
 						node-name="h1"
@@ -411,7 +448,7 @@
 				</div>
 				<div
 					id="sidebar-controls"
-					class="display:flex align-items:center"
+					class="d-flex align-items:center"
 					hidden>
 					<div id="image-button">
 						<i src="/assets/svg/camera.svg"></i>
@@ -432,7 +469,11 @@
 		<!-- End Collaboration Toolbar -->
 
 		<!-- element-config -->
-		<script config-query="iframe; html" array="" object="" key="">
+		<script
+			config-query="iframe; html"
+			array=""
+			object=""
+			key="">
 			[
 				{
 					selector: "*",

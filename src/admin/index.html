@@ -75,7 +75,7 @@
 
 	<body
 		id="layout-wrapper"
-		class="height:100dvh overflow:hidden">
+		class="height:100dvh overflow-hidden">
 		<a
 			href="/auth/"
 			session="false"
@@ -104,36 +104,40 @@
 		<!-- Menu End -->
 
 		<!-- Main Content Start-->
-		<main
-			class="main-content display:flex flex-direction:column height:100dvh overflow:hidden">
-			<!-- start page title -->
-			<div
-				class="flex-shrink-0"
-				src="/components/breadcrumbs.html"></div>
-			<!-- end page title -->
-
+		<main class="main-content height:100dvh overflow-hidden">
 			<!-- TODO: use the src change to mark the the navigation menu item as active -->
+
 			<!-- Page Content Start -->
 			<div
-				class="page-content d-flex flex-grow-1 min-height:0 overflow:hidden">
+				class="page-content d-flex flex-grow-1 flex-wrap h-100 overflow-hidden">
+				<!-- Page Title Start -->
 				<div
-					id="main-view"
-					class="display:flex flex-direction:column flex-grow-1 min-height:0 overflow:hidden min-width:200px"
-					src=""
-					state-id="adminView"
-					state.onstoragechange="false"
-					state-overwrite>
-					<!-- <div
-						onload.src="/apps/calendar/index.html"
-						onload-query="$parent"
-						onload-setTimeout="3000"></div> -->
+					class="page-title flex-shrink-0"
+					src="/components/breadcrumbs.html"></div>
+				<!-- Page Title End -->
+
+				<div
+					class="flex-grow-1 h-100 min-width:200px width:300px"
+					plugin='{"$SimpleBar": ["$this", {}]}'>
+					<div
+						id="main-view"
+						class="d-flex flex-column min-height:100% min-width:200px"
+						src=""
+						state-id="adminView"
+						state.onstoragechange="false"
+						state-overwrite>
+						<!-- <div
+							onload.src="/apps/calendar/index.html"
+							onload-query="$parent"
+							onload-setTimeout="3000"></div> -->
+					</div>
 				</div>
 
 				<div
 					id="offcanvas-app"
 					resizable
 					role="dialog"
-					class="card offcanvas offcanvas-end flex-grow-1 min-height:0 mb-0 overflow:hidden"
+					class="card offcanvas offcanvas-end min-height:0 mb-0 overflow:hidden"
 					tabindex="-1"
 					aria-labelledby="offcanvas-app-label"
 					aria-close-on="button">
@@ -181,7 +185,7 @@
 			aria-label="CoCreate AI"
 			resizable
 			resize
-			resize-query="$document #page-topbar, $document .main-content, $document #offcanvas-app"
+			resize-query="$document #page-topbar, $document .page-content, $document #offcanvas-app"
 			resize.style="margin-right:$width">
 			<button
 				type="button"

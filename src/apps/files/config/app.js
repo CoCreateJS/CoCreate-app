@@ -5,7 +5,11 @@ export default {
         "_id": "68741e1d07a037d0d6d00ef3",
         "name": "Files",
         "singularName": "Files",
-        "path": "/apps/file",
+        "path": "/apps/files",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "files",
         "category": "Workspace",
         "mainViews": [
@@ -25,7 +29,7 @@ export default {
                 "label": "File Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"file-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter file name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/file-manager/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\"  aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"files\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/files/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"files\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",

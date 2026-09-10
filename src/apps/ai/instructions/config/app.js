@@ -26,7 +26,11 @@ export default {
         "singularName": "AI Instruction",
         "path": "/apps/ai/instructions",
         "card": "/apps/ai/instructions/card.html",
-        "cardTemplate": "/apps/ai/instructions/card-template.html",
+        "cardTemplate": "/apps/ai/instructions/templates/card.html",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "ai-instructions",
         "category": "Settings",
         "mainViews": [

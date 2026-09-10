@@ -6,6 +6,10 @@ export default {
         "name": "Dashboards",
         "singularName": "Dashboard",
         "path": "/apps/dashboards",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "dashboards",
         "category": "Workspace",
         "status": "active",

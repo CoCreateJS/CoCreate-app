@@ -6,6 +6,10 @@ export default {
         "name": "NFT",
         "singularName": "NFT",
         "path": "/apps/nft",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "nft",
         "mainViews": [
             "table",

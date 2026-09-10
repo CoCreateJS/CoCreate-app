@@ -1,8 +1,8 @@
 <div
-	class="display:flex align-items:center width:100% height:70px"
+	class="d-flex align-items:center width:100% height:70px"
 	organization="false">
 	<div
-		class="org-create position:absolute display:flex align-items:center width:100% cursor:pointer font-weight:bold white-space:nowrap overflow:hidden"
+		class="org-create position:absolute d-flex align-items:center width:100% cursor:pointer font-weight:bold white-space:nowrap overflow-hidden"
 		state-to="main"
 		state.src="./organizations/create.html"
 		state-overwrite
@@ -21,7 +21,7 @@
 	</div>
 
 	<form
-		class="org-toggle position:relative display:flex align-items:center gap:5px width:100% background:whitesmoke background:#222@dark cursor:pointer"
+		class="org-toggle position:relative d-flex align-items:center gap:5px width:100% background:whitesmoke background:#222@dark cursor:pointer"
 		array="organizations"
 		object=""
 		state-id="accountOrg"
@@ -33,7 +33,7 @@
 			src="/assets/svg/building.svg"
 			key="logo[0].src"
 			alt="Logo"
-			onerror="this.src='../../assets/svg/building.svg'" />
+			onerror="this.src = '../../assets/svg/building.svg'" />
 
 		<span
 			class="org-name font-size:22px font-weight:bold"
@@ -66,7 +66,7 @@
 			class="orgs max-height:calc(100vh_-_160px) overflow-x:hidden overflow-y:auto">
 			<div
 				template
-				class="org display:flex align-items:center gap:11px height:50px cursor:pointer font-weight:bold padding:10px"
+				class="org d-flex align-items:center gap:11px height:50px cursor:pointer font-weight:bold padding:10px"
 				state-to="accountOrg"
 				state.object="{{object._id}}"
 				state.organization_id="{{object._id}}"
@@ -109,7 +109,7 @@
 			</div>
 		</div>
 		<div
-			class="display:flex align-items:center width:100% height:50px cursor:pointer font-weight:bold white-space:nowrap overflow:hidden"
+			class="d-flex align-items:center width:100% height:50px cursor:pointer font-weight:bold white-space:nowrap overflow-hidden"
 			state-to="main"
 			state.src="./organizations/create.html"
 			state-overwrite

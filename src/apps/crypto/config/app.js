@@ -6,6 +6,10 @@ export default {
         "name": "Crypto",
         "singularName": "Crypto Asset",
         "path": "/apps/crypto",
+        "templates": {
+            "card": "templates/card.html",
+            "list": "templates/list.html"
+        },
         "array": "crypto",
         "statuses": [
             {
