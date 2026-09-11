@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/apps/speech-recognition/index.css" />
+
+<div class="speech-recognition-app card h-100" data-speech-recognition-app>
+	<div class="card-header d-flex align-items-center gap-3">
+		<div class="avatar-sm"><span class="avatar-title rounded bg-primary-subtle text-primary"><i class="ri-mic-line fs-20"></i></span></div>
+		<div><h5 class="card-title mb-1">Speech Recognition</h5><p class="text-muted mb-0">Configure and test browser dictation</p></div>
+	</div>
+	<div class="card-body d-flex flex-wrap align-items:flex-start gap-3 overflow:auto">
+		<label class="form-label flex-grow-1 width:100%">Transcript
+			<textarea id="speech-recognition-transcript" class="form-control" rows="8" placeholder="Your transcript appears here"></textarea>
+		</label>
+		<label class="form-label flex-grow-1 flex-basis:180px">Language
+			<input class="form-control" name="lang" value="en-US" />
+		</label>
+		<label class="form-check form-switch flex-grow-1 flex-basis:180px mt-4">
+			<input class="form-check-input" type="checkbox" name="continuous" />
+			<span class="form-check-label">Continuous</span>
+		</label>
+		<label class="form-check form-switch flex-grow-1 flex-basis:180px mt-4">
+			<input class="form-check-input" type="checkbox" name="interimResults" checked />
+			<span class="form-check-label">Interim results</span>
+		</label>
+		<div class="width:100% d-flex flex-wrap gap-2">
+			<button type="button" class="btn btn-primary" speech-recognition speech-recognition-query="$document #speech-recognition-transcript" speech-recognition-lang="en-US" speech-recognition-interim-results="true" disabled>
+				<i class="ri-mic-line me-1"></i><i class="ri-stop-circle-line me-1"></i>Start or stop
+			</button>
+			<button type="button" class="btn btn-danger-subtle text-danger" data-recognition-abort disabled><i class="ri-close-circle-line me-1"></i>Abort</button>
+		</div>
+		<div class="text-muted fs-12 width:100%" data-recognition-status>Loading speech recognition…</div>
+	</div>
+</div>
+<script src="/apps/speech-recognition/index.js"></script>

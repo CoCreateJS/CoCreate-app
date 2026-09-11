@@ -1,0 +1,31 @@
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+	<div class="d-flex align-items-center gap-2">
+		<button
+			type="button"
+			class="btn btn-soft-success btn-icon btn-sm fs-16 file-menu-btn d-lg-none">
+			<i class="ri-menu-2-fill align-bottom"></i>
+		</button>
+		<div class="dropdown">
+			<button
+				type="button"
+				class="btn btn-ghost-secondary dropdown"
+				aria-haspopup="menu"
+				aria-expanded="false"
+				aria-controls="files-location-menu">
+				<i class="ri-folder-2-line me-1"></i>
+				My Drive
+				<i class="ri-arrow-down-s-line ms-1"></i>
+			</button>
+			<ul
+				id="files-location-menu"
+				class="dropdown-menu"
+				role="menu"
+				aria-close-on="anywhere">
+				<li><button type="button" class="dropdown-item active">My Drive</button></li>
+				<li><button type="button" class="dropdown-item">Recent</button></li>
+				<li><button type="button" class="dropdown-item">Important</button></li>
+				<li><button type="button" class="dropdown-item">Deleted</button></li>
+			</ul>
+		</div>
+	</div>
+</div>

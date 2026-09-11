@@ -1,7 +1,4 @@
-<form
-	array="organizations"
-	object="$organization_id"
-	class="d-flex flex-wrap gap-4">
+<div class="d-flex flex-wrap gap-4 width:100% min-width:0 p-3">
 	<section
 		role="banner"
 		class="position-relative width:100%">
@@ -68,7 +65,7 @@
 		</div>
 		<div class="d-flex">
 			<ul
-				class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1"
+				class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1 d-none"
 				role="tablist">
 				<li class="nav-item">
 					<a
@@ -131,9 +128,9 @@
 					Change Cover
 				</label>
 				<a
-					state-to="adminView"
-					state.src="/apps/organizations/index.html"
-					class="btn btn-secondary"
+					state-to="offcanvas-app-view"
+					state.src="/apps/organizations/details.html"
+					class="btn btn-secondary d-none"
 					href="javascript:void(0);"
 					aria-label="View Organization">
 					<i class="ri-eye-line align-bottom"></i>
@@ -142,7 +139,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="text-muted flex-grow-1 width:300px">
+	<section class="text-muted flex-grow-1 flex-basis:300px min-width:min(280px,100%) max-width:100%">
 		<div class="card">
 			<div class="card-body">
 				<div class="d-flex align-items-center mb-5">
@@ -270,7 +267,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="flex-grow-1 width:600px">
+	<section class="flex-grow-1 flex-basis:600px min-width:min(320px,100%) max-width:100%">
 		<div class="card">
 			<div class="card-header">
 				<ul
@@ -289,7 +286,7 @@
 							<i class="fas fa-home"></i> Organization Details
 						</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item d-none">
 						<a
 							class="nav-link"
 							click.class="active"
@@ -302,7 +299,7 @@
 							<i class="far fa-user"></i> Change Password
 						</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item d-none">
 						<a
 							class="nav-link"
 							click.class="active"
@@ -529,18 +526,11 @@
 											aria-label="Description"></textarea>
 									</div>
 								</div>
-								<div class="col-lg-12">
-									<div
-										class="card-footer px-0 pb-0 border-top-0"
-										src="/components/form-buttons.html"
-										role="region"
-										aria-label="Organization form actions"></div>
-								</div>
 							</div>
 						</form>
 					</div>
 					<div
-						class="tab-pane"
+						class="tab-pane d-none"
 						id="changePassword"
 						role="tabpanel"
 						aria-labelledby="changePassword-tab">
@@ -702,7 +692,7 @@
 						</div>
 					</div>
 					<div
-						class="tab-pane"
+						class="tab-pane d-none"
 						id="experience"
 						role="tabpanel"
 						aria-labelledby="experience-tab">
@@ -1215,30 +1205,17 @@
 						<div>
 							<h5
 								class="card-title text-decoration-underline mb-3">
-								Delete This Account:
+								Delete This Organization:
 							</h5>
 							<p class="text-muted">
-								Go to the Data & Privacy section of your profile
-								Account. Scroll to "Your data & privacy
-								options." Delete your Profile Account. Follow
-								the instructions to delete your account :
-							</p>
-							<div>
-								<input
-									type="password"
-									class="form-control"
-									id="passwordInput"
-									placeholder="Enter your password"
-									style="max-width: 265px"
-									key="password"
-									aria-label="Password"
-									autocomplete="current-password" />
-							</div>
+							Permanently delete this organization and its associated data.
+							This action cannot be undone.
+						</p>
 							<div class="hstack gap-2 mt-3">
 								<a
 									href="javascript:void(0);"
 									class="btn btn-soft-danger"
-									>Close & Delete This Account</a
+							>Delete This Organization</a
 								>
 								<a
 									href="javascript:void(0);"
@@ -1252,4 +1229,4 @@
 			</div>
 		</div>
 	</section>
-</form>
+</div>

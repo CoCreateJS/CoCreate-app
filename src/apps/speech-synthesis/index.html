@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="/apps/speech-synthesis/index.css" />
+
+<div class="speech-synthesis-app card h-100" data-speech-synthesis-app>
+	<span hidden speech-synthesis></span>
+	<div class="card-header d-flex align-items-center gap-3">
+		<div class="avatar-sm flex-shrink-0">
+			<span class="avatar-title rounded bg-primary-subtle text-primary">
+				<i class="ri-volume-up-line fs-20"></i>
+			</span>
+		</div>
+		<div class="flex-grow-1 min-width:0">
+			<h5 class="card-title mb-1">Speech Synthesis</h5>
+			<p class="text-muted mb-0">Configure and test browser voices</p>
+		</div>
+		<ul class="nav nav-tabs nav-tabs-custom border-bottom-0" role="tablist">
+			<li class="nav-item">
+				<button
+					type="button"
+					class="nav-link active"
+					data-speech-view="details"
+					aria-selected="true">
+					Details
+				</button>
+			</li>
+			<li class="nav-item">
+				<button
+					type="button"
+					class="nav-link"
+					data-speech-view="form"
+					aria-selected="false">
+					Form
+				</button>
+			</li>
+		</ul>
+	</div>
+
+	<div class="speech-synthesis-view flex-grow-1 min-height:0 overflow:auto">
+		<section data-speech-panel="details">
+			<div class="card-body d-flex flex-wrap gap-4" data-speech-details>
+				<div class="flex-shrink-0 d-flex flex-column align-items-center width:100%">
+					<div class="avatar-xl">
+						<span class="avatar-title rounded-circle bg-primary-subtle text-primary fs-32">
+							<i class="ri-speak-line"></i>
+						</span>
+					</div>
+					<h5 class="mt-4 mb-1" data-speech-output="name">Default voice</h5>
+					<p class="text-muted mb-0" data-speech-output="lang">en-US</p>
+				</div>
+
+				<div class="width:100%">
+					<h6 class="text-muted text-uppercase fw-semibold mb-3">Preview text</h6>
+					<p class="speech-synthesis-preview border rounded p-3 mb-3" data-speech-output="text"></p>
+					<div class="d-flex flex-wrap gap-2">
+						<button type="button" class="btn btn-primary" data-speech-action="speak" disabled>
+							<i class="ri-play-fill me-1"></i>Speak
+						</button>
+						<button type="button" class="btn btn-light" data-speech-action="pause" disabled>
+							<i class="ri-pause-fill me-1"></i>Pause
+						</button>
+						<button type="button" class="btn btn-light" data-speech-action="resume" disabled>
+							<i class="ri-play-mini-fill me-1"></i>Resume
+						</button>
+						<button type="button" class="btn btn-danger-subtle text-danger" data-speech-action="cancel" disabled>
+							<i class="ri-stop-circle-line me-1"></i>Cancel
+						</button>
+					</div>
+					<div class="text-muted fs-12 mt-2" data-speech-status>Loading speech synthesis…</div>
+				</div>
+
+				<div class="width:100%">
+					<h6 class="text-muted text-uppercase fw-semibold mb-3">Voice settings</h6>
+					<div class="d-flex flex-wrap gap-3">
+						<div class="speech-synthesis-detail">
+							<div class="text-muted mb-1">Voice</div>
+							<div class="fw-medium" data-speech-output="voice">Browser default</div>
+						</div>
+						<div class="speech-synthesis-detail">
+							<div class="text-muted mb-1">Language</div>
+							<div class="fw-medium" data-speech-output="lang">en-US</div>
+						</div>
+						<div class="speech-synthesis-detail">
+							<div class="text-muted mb-1">Rate</div>
+							<div class="fw-medium" data-speech-output="rate">1</div>
+						</div>
+						<div class="speech-synthesis-detail">
+							<div class="text-muted mb-1">Pitch</div>
+							<div class="fw-medium" data-speech-output="pitch">1</div>
+						</div>
+						<div class="speech-synthesis-detail">
+							<div class="text-muted mb-1">Volume</div>
+							<div class="fw-medium" data-speech-output="volume">1</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section data-speech-panel="form" hidden>
+			<form class="card-body d-flex flex-wrap align-items:flex-start gap-3" data-speech-form>
+				<label class="form-label flex-grow-1 width:100%">
+					Name
+					<input type="text" name="name" class="form-control" placeholder="Configuration name" />
+				</label>
+				<label class="form-label flex-grow-1 width:100%">
+					Preview text
+					<textarea name="text" class="form-control" rows="5" placeholder="Enter text to speak"></textarea>
+				</label>
+				<label class="form-label flex-grow:2 flex-basis:280px min-width:220px">
+					Voice
+					<select name="voice" class="form-select" data-speech-voices>
+						<option value="">Browser default</option>
+					</select>
+				</label>
+				<label class="form-label flex-grow-1 flex-basis:160px min-width:140px">
+					Language
+					<input type="text" name="lang" class="form-control" placeholder="en-US" />
+				</label>
+				<label class="form-label speech-synthesis-range">
+					<span class="d-flex justify-content-between"><span>Rate</span><output data-speech-range-output="rate">1</output></span>
+					<input type="range" name="rate" class="form-range" min="0.1" max="10" step="0.1" />
+				</label>
+				<label class="form-label speech-synthesis-range">
+					<span class="d-flex justify-content-between"><span>Pitch</span><output data-speech-range-output="pitch">1</output></span>
+					<input type="range" name="pitch" class="form-range" min="0" max="2" step="0.1" />
+				</label>
+				<label class="form-label speech-synthesis-range">
+					<span class="d-flex justify-content-between"><span>Volume</span><output data-speech-range-output="volume">1</output></span>
+					<input type="range" name="volume" class="form-range" min="0" max="1" step="0.1" />
+				</label>
+			</form>
+		</section>
+	</div>
+</div>
+
+<script src="/apps/speech-synthesis/index.js"></script>

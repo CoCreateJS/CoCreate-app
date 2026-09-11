@@ -1,6 +1,4 @@
-<form
-	array="contacts"
-	object="$user_id">
+<div class="width:100% min-width:0 p-3">
 	<section
 		role="banner"
 		class="position-relative">
@@ -72,129 +70,22 @@
 			<!--end row-->
 		</div>
 
-		<div class="d-flex">
-			<!-- Nav tabs -->
-			<ul
-				class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1"
-				role="tablist">
-				<li class="nav-item">
-					<a
-						class="nav-link fs-14 active"
-						role="tab"
-						id="overview-tab-btn"
-						aria-selected="true"
-						aria-controls="overview-tab"
-						tabindex="0"
-						click.class="active"
-						click-group="profile-tabs">
-						<i class="ri-airplay-fill d-inline-block d-md-none"></i>
-						<span class="d-none d-md-inline-block">Overview</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a
-						class="nav-link fs-14"
-						role="tab"
-						id="activities-tab-btn"
-						aria-selected="false"
-						aria-controls="activities"
-						tabindex="0"
-						click.class="active"
-						click-group="profile-tabs">
-						<i
-							class="ri-list-unordered d-inline-block d-md-none"></i>
-						<span class="d-none d-md-inline-block">Activities</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a
-						class="nav-link fs-14"
-						role="tab"
-						id="projects-tab-btn"
-						aria-selected="false"
-						aria-controls="projects"
-						tabindex="0"
-						click.class="active"
-						click-group="profile-tabs">
-						<i
-							class="ri-price-tag-line d-inline-block d-md-none"></i>
-						<span class="d-none d-md-inline-block">Projects</span>
-					</a>
-				</li>
-				<li>
-					<a
-						class="nav-link fs-14"
-						role="tab"
-						id="documents-tab-btn"
-						aria-selected="false"
-						aria-controls="documents"
-						tabindex="0"
-						click.class="active"
-						click-group="profile-tabs">
-						<i
-							class="ri-folder-4-line d-inline-block d-md-none"></i>
-						<span class="d-none d-md-inline-block">Documents</span>
-					</a>
-				</li>
-			</ul>
-
-			<a
-				role="button"
-				state-to="adminView"
-				state.src="/apps/profile/form.html"
-				class="btn btn-success z-index:1"
-				href="javascript:void(0);">
-				<i class="ri-edit-box-line align-bottom"></i>
-				<span class="d-none d-sm-inline-block">Edit Profile</span>
-			</a>
-		</div>
 	</section>
 
-	<!-- Tab panes -->
-	<section class="tab-content pt-4 text-muted">
-		<div
-			class="tab-pane show"
-			id="overview-tab"
-			role="tabpanel">
-			<div class="d-flex flex-wrap gap-4">
-				<div
-					class="flex-grow-1 width:300px max-width:420px min-width:100%@xxs&lg">
-					<div
-						src="/apps/profile/components/complete-profile.html"></div>
-					<div src="/apps/profile/components/info.html"></div>
-					<div src="/apps/profile/components/about.html"></div>
-					<div src="/apps/profile/components/portfolio.html"></div>
-					<div src="/apps/profile/components/skills.html"></div>
-					<div src="/apps/profile/components/suggestions.html"></div>
-					<div
-						src="/apps/profile/components/popular-posts.html"></div>
-				</div>
-				<div class="flex-grow-1 width:500px">
-					<!-- <div class="col-lg-12" src="/apps/activities/index.html"></div> -->
-					<div
-						class="col-lg-12"
-						src="widgets/projects.html"></div>
-				</div>
+	<section class="pt-4 text-muted">
+		<div class="d-flex flex-wrap gap-4 min-width:0">
+			<div class="flex-grow-1 flex-basis:300px min-width:min(280px,100%)">
+				<div src="/apps/profile/components/complete-profile.html"></div>
+				<div src="/apps/profile/components/info.html"></div>
+				<div src="/apps/profile/components/about.html"></div>
+				<div src="/apps/profile/components/portfolio.html"></div>
+				<div src="/apps/profile/components/skills.html"></div>
+				<div src="/apps/profile/components/suggestions.html"></div>
+				<div src="/apps/profile/components/popular-posts.html"></div>
+			</div>
+			<div class="flex-grow-1 flex-basis:500px min-width:min(320px,100%) max-width:100%">
+				<div src="widgets/projects.html"></div>
 			</div>
 		</div>
-		<div
-			class="tab-pane fade"
-			id="activities"
-			role="tabpanel"
-			src="/apps/activities/index.html"></div>
-		<!--end tab-pane-->
-		<div
-			class="tab-pane fade"
-			id="projects"
-			role="tabpanel"
-			src="/apps/projects/profile-list.html"></div>
-		<!--end tab-pane-->
-		<div
-			class="tab-pane fade"
-			id="documents"
-			role="tabpanel"
-			src="/apps/file-manager/list.html"></div>
-		<!--end tab-pane-->
 	</section>
-	<!--end tab-content-->
-</form>
+</div>

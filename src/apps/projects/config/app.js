@@ -88,37 +88,6 @@ export default {
                 ]
             },
             {
-                "label": "Thumbnail Image",
-                "tagName": "input",
-                "tableTemplate": "<img src=\"{{object.thumbnail}}\" alt=\"Thumbnail\" class=\"avatar-xs rounded\" />",
-                "attributes": [
-                    {
-                        "name": "class",
-                        "value": "form-control"
-                    },
-                    {
-                        "name": "id",
-                        "value": "project-thumbnail-img"
-                    },
-                    {
-                        "name": "type",
-                        "value": "file"
-                    },
-                    {
-                        "name": "accept",
-                        "value": "image/png, image/gif, image/jpeg"
-                    },
-                    {
-                        "name": "key",
-                        "value": "thumbnail"
-                    },
-                    {
-                        "name": "type",
-                        "value": "file"
-                    }
-                ]
-            },
-            {
                 "label": "Priority",
                 "tagName": "select",
                 "filterTemplate": "\n\t\t\t\t\t<select id=\"priority-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"priority\">\n\t\t\t\t\t\t<option value=\"\">Select Priority</option>\n\t\t\t\t\t\t<option value=\"High\">High</option>\n\t\t\t\t\t\t<option value=\"Medium\">Medium</option>\n\t\t\t\t\t\t<option value=\"Low\">Low</option>\n\t\t\t\t\t</select>\n\t\t\t\t",

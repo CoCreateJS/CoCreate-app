@@ -31,6 +31,7 @@
     const emptyView = messages.querySelector(".ai-empty").cloneNode(true);
     const form = shell.querySelector(".ai-composer");
     const prompt = shell.querySelector(".ai-prompt");
+	const dictate = shell.querySelector(".ai-dictate");
     const send = shell.querySelector(".ai-send");
     const stop = shell.querySelector(".ai-stop");
     const steerQueue = shell.querySelector(".ai-steer-queue");
@@ -39,10 +40,10 @@
     const provider = shell.querySelector(".ai-provider");
     const model = shell.querySelector(".ai-model");
     const modelValue = shell.querySelector(".ai-model-value");
-    const modelOptions = shell.querySelector(".ai-model-options");
-    const status = shell.querySelector(".ai-status");
-	const panel = shell.closest("#ai-chat-panel");
-	const panelRefresh = panel?.querySelector(".ai-chat-panel-refresh");
+	const modelOptions = shell.querySelector(".ai-model-options");
+	const status = shell.querySelector(".ai-status");
+	const panelDock = shell.querySelector(".ai-chat-panel-dock");
+	const panelClose = shell.querySelector(".ai-chat-panel-close");
 	const threadList = shell.querySelector(".ai-thread-list");
 	const sidebar = shell.querySelector(".ai-sidebar");
 	const threadScroll = shell.querySelector(".ai-thread-scroll");
@@ -52,6 +53,13 @@
 	const queuedSteers = new Map();
 	const highlightTimers = new WeakMap();
 	const messageRecords = new Map();
+	const messageHistoryPageSize = 20;
+	let messageHistoryExhausted = true;
+	let messageHistoryLoading = false;
+	let messageHistoryOffset = 0;
+	let conversationMessagesNested = false;
+	let recognizing = false;
+	let activeBranchLeafId;
 	let editingMessage;
 	const messageTime = (message) =>
 		new Date(message?.created?.on || 0).getTime();
@@ -70,6 +78,7 @@
 	};
 	const renderActiveBranch = async (message) => {
 		const leaf = getLatestDescendant(message);
+		activeBranchLeafId = leaf?._id ? String(leaf._id) : undefined;
 		const path = [];
 		let current = leaf;
 		while (current) {
@@ -100,22 +109,98 @@
 		}
 	};
 	menuCloseRoot.addEventListener("click", menuCloseRoot.aiCodeMenuCloseHandler);
-	if (panelRefresh) {
-	panelRefresh.onclick = () => {
-			const content = panel.querySelector(".ai-chat-panel-content");
-			if (!content) return;
-			content.setAttribute("src", "");
-			setTimeout(() => {
-				content.setAttribute("src", "/apps/ai/index.html");
-			}, 500);
-		};
-	}
+	const configureDockButton = () => {
+		if (!panelDock) return;
+		const dockIcon = panelDock.querySelector("i");
+		if (shell.closest("#ai-chat-panel")) {
+			panelDock.title = "Dock left";
+			panelDock.setAttribute("aria-label", "Dock AI chat in main view");
+			panelDock.setAttribute("aria-controls", "ai-chat-panel");
+			panelDock.setAttribute("aria-close", "");
+			dockIcon?.setAttribute("src", "/assets/svg/sidebar-fold-line.svg");
+			if (panelClose) panelClose.hidden = false;
+		} else {
+			panelDock.title = "Dock right";
+			panelDock.setAttribute("aria-label", "Dock AI chat in side panel");
+			panelDock.setAttribute("aria-controls", "ai-chat-panel");
+			panelDock.removeAttribute("aria-close");
+			dockIcon?.setAttribute("src", "/assets/svg/sidebar-unfold-line.svg");
+			if (panelClose) panelClose.hidden = true;
+		}
+	};
+	configureDockButton();
+	panelDock?.addEventListener("click", () => {
+		const appPath = "/apps/ai/index.html";
+		const mainView = document.querySelector("#main-view");
+		const panelContent = document.querySelector(".ai-chat-panel-content");
+		const navbarButton = document.querySelector("#ai-chat-button");
+		if (!mainView || !panelContent || !navbarButton) return;
+		const dockLeft = Boolean(shell.closest("#ai-chat-panel"));
+		shell.setAttribute("render-clone", "");
+		if (dockLeft) {
+			mainView.setAttribute("src", "");
+			mainView.replaceChildren(shell);
+			panelContent.setAttribute("src", "");
+			navbarButton.setAttribute("state-to", "adminView");
+			navbarButton.setAttribute("state.src", appPath);
+			navbarButton.setAttribute("aria-controls", "");
+			CoCreate.state.setState({
+				adminView: { src: appPath },
+				"ai-chat-btn": {
+					"state-to": "adminView",
+					"state.src": appPath,
+					"aria-controls": ""
+				},
+				"ai-chat-panel-content": { src: "" }
+			});
+		} else {
+			panelContent.setAttribute("src", "");
+			panelContent.replaceChildren(shell);
+			mainView.setAttribute("src", "");
+			navbarButton.setAttribute("state-to", "ai-chat-panel-content");
+			navbarButton.setAttribute("state.src", appPath);
+			navbarButton.setAttribute("aria-controls", "ai-chat-panel");
+			CoCreate.state.setState({
+				adminView: { src: "" },
+				"ai-chat-btn": {
+					"state-to": "ai-chat-panel-content",
+					"state.src": appPath,
+					"aria-controls": "ai-chat-panel"
+				},
+				"ai-chat-panel-content": { src: appPath }
+			});
+		}
+		configureDockButton();
+		requestAnimationFrame(() => requestAnimationFrame(() => {
+			shell.removeAttribute("render-clone");
+		}));
+	});
 	let conversationId;
     let conversationLoadId;
 
-    const makeId = () =>
-        crypto.randomUUID?.() ||
-        `ai-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+	const makeId = () =>
+		crypto.randomUUID?.() ||
+		`ai-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+	const aiObserverNames = new Set();
+	const initAIObserver = (config) => {
+		const name = config.name || `AIChat-${makeId()}`;
+		let initialized = false;
+		let disposed = false;
+		const initialize = () => {
+			if (disposed || initialized || !globalThis.CoCreate?.observer) return;
+			initialized = true;
+			aiObserverNames.add(name);
+			CoCreate.observer.init({ ...config, name });
+		};
+		if (globalThis.CoCreate?.observer) initialize();
+		else document.addEventListener("observerLoaded", initialize, { once: true });
+		return () => {
+			disposed = true;
+			document.removeEventListener("observerLoaded", initialize);
+			if (initialized) globalThis.CoCreate?.observer?.uninit(name);
+			aiObserverNames.delete(name);
+		};
+	};
 
 	const scrollDown = () => {
 		const scrollElement =
@@ -186,13 +271,45 @@
         status.className = `ai-status ${state}`;
     };
 
+	const updateComposerActions = () => {
+		send.hidden = !recognizing && !prompt.value.trim();
+	};
+
     const setBusy = (busy) => {
         send.disabled = false;
-        send.hidden = false;
         stop.hidden = !busy;
         stop.disabled = false;
         prompt.disabled = false;
+		updateComposerActions();
     };
+
+	if (dictate) {
+		shell.addEventListener("speechRecognitionStart", (event) => {
+			if (event.target !== dictate) return;
+			recognizing = true;
+			dictate.setAttribute("aria-label", "Stop dictation");
+			dictate.setAttribute("title", "Listening… click to stop");
+			updateComposerActions();
+		});
+		shell.addEventListener("speechRecognitionEnd", (event) => {
+			if (event.target !== dictate) return;
+			recognizing = false;
+			dictate.setAttribute("aria-label", "Start dictation");
+			dictate.setAttribute("title", "Start dictation");
+			updateComposerActions();
+		});
+		shell.addEventListener("speechRecognitionError", (event) => {
+			if (event.target !== dictate) return;
+			recognizing = false;
+			const error = event.detail?.event?.error || event.detail?.error?.message;
+			dictate.setAttribute("aria-label", "Start dictation");
+			dictate.setAttribute(
+				"title",
+				error ? `Dictation failed ${error}` : "Dictation failed"
+			);
+			updateComposerActions();
+		});
+	}
 
     const updateSteerQueue = () => {
         steerQueue.hidden = queuedSteers.size === 0;
@@ -602,6 +719,7 @@
             let activeForm;
 			let activeJsonEditor;
             let collectFormValues;
+			let originalFormData;
             let editing = false;
             let originalValue = "";
 			let codeDirty = false;
@@ -644,15 +762,21 @@
             cancel.setAttribute("aria-label", "Cancel");
             cancel.title = "Cancel";
             cancel.hidden = true;
-            cancel.addEventListener("click", () => {
-                editor.value = originalValue;
-                editor.dispatchEvent(new Event("input", { bubbles: true }));
-                editing = false;
-                activeForm = undefined;
-				activeJsonEditor = undefined;
-                collectFormValues = undefined;
-				detailsView.click();
-            });
+			cancel.addEventListener("click", async () => {
+				if (activeForm && originalFormData !== undefined) {
+					await activeForm.setValue(structuredClone(originalFormData));
+				} else if (activeJsonEditor) {
+					activeJsonEditor.value = originalValue;
+					activeJsonEditor.dispatchEvent(new Event("input", { bubbles: true }));
+				} else {
+					editor.value = originalValue;
+					editor.dispatchEvent(new Event("input", { bubbles: true }));
+				}
+				codeDirty = false;
+				jsonDirty = false;
+				setEditAction("save");
+				edit.hidden = true;
+			});
             edit.addEventListener("click", async () => {
                 if (activeForm) {
                     activeForm.requestSubmit();
@@ -791,7 +915,7 @@
                 setEditAction("save");
 				edit.hidden = !codeDirty;
 				copy.hidden = false;
-                cancel.hidden = false;
+				cancel.hidden = false;
                 editTabs.hidden = false;
 				detailsTab.classList.remove("active");
 				detailsTab.setAttribute("aria-selected", "false");
@@ -853,6 +977,7 @@
                     showDetails("Form", "Form view requires a JSON object.");
                     return;
                 }
+				originalFormData = structuredClone(object);
                 detailsPanel.querySelector(".ai-crud-form")?.remove();
                 detailsPanel.querySelector(".ai-crud-configurations")?.remove();
                 detailsPanel.querySelector(".ai-crud-details-view")?.remove();
@@ -886,18 +1011,28 @@
                 codeTab.setAttribute("aria-selected", "false");
                 const formContent = document.createElement("div");
                 formContent.className = "ai-crud-form-content";
-                const formObserver = new MutationObserver(() => {
-                    const nestedForm = formContent.querySelector(":scope > form");
-                    if (nestedForm) {
+				const formObserverId = makeId();
+				formContent.setAttribute("data-ai-form-content", formObserverId);
+				const stopFormObserver = initAIObserver({
+					types: ["addedNodes"],
+					selector: `[data-ai-form-content="${formObserverId}"] > *`,
+					callback: async () => {
+					const nestedForm = formContent.querySelector(":scope > form");
+					if (nestedForm) {
                         nestedForm.querySelector(":scope > .card-header")?.remove();
                         nestedForm.querySelector(":scope > .card-footer")?.remove();
                         nestedForm.replaceWith(...nestedForm.childNodes);
-                    }
-                    if (!formContent.firstElementChild) return;
-                    formObserver.disconnect();
-                    window.CoCreate?.elements?.init?.(form);
-                });
-                formObserver.observe(formContent, { childList: true });
+					}
+					if (!formContent.firstElementChild) return;
+					stopFormObserver();
+					formContent.removeAttribute("data-ai-form-content");
+					await window.CoCreate?.elements?.init?.(form);
+					const formValue = await form.getValue?.();
+					if (formValue && typeof formValue === "object") {
+						originalFormData = structuredClone(formValue);
+					}
+					}
+				});
                 form.append(formContent);
                 detailsContent.append(form);
 				const markFormChanged = () => {
@@ -1013,7 +1148,7 @@
 				setEditAction("save");
 				edit.hidden = true;
 				copy.hidden = false;
-				cancel.hidden = false;
+                cancel.hidden = false;
 				window.CoCreate?.codearea?.initElement?.(jsonEditor);
 				window.CoCreate?.elements?.init?.(jsonEditor);
 				const resizeJson = () => {
@@ -1079,16 +1214,22 @@
                     const object = editor.getAttribute("object");
                     details.setAttribute("array", array);
                     details.setAttribute("object", object);
-                    const detailsObserver = new MutationObserver(() => {
-                        const content = details.firstElementChild;
-                        if (!content) return;
+					const detailsObserverId = makeId();
+					details.setAttribute("data-ai-details-content", detailsObserverId);
+					const stopDetailsObserver = initAIObserver({
+						types: ["addedNodes"],
+						selector: `[data-ai-details-content="${detailsObserverId}"] > *`,
+						callback: () => {
+						const content = details.firstElementChild;
+						if (!content) return;
                         content.removeAttribute("state-id");
                         content.setAttribute("array", array);
                         content.setAttribute("object", object);
-                        detailsObserver.disconnect();
-                        window.CoCreate?.elements?.init?.(content);
-                    });
-                    detailsObserver.observe(details, { childList: true, subtree: true });
+						stopDetailsObserver();
+						details.removeAttribute("data-ai-details-content");
+						window.CoCreate?.elements?.init?.(content);
+						}
+					});
                     detailsContent.append(details);
                     const path = `/apps/${appPath}/details.html`;
                     details.setAttribute("src", `${path}?view=${Date.now()}`);
@@ -1145,12 +1286,19 @@
 			const footer = document.createElement("footer");
 			footer.className = "ai-code-footer";
 			footer.hidden = true;
-			edit.className = "btn btn-primary";
+			edit.className = "btn btn-success btn-spinner";
 			footer.append(cancel, edit);
-			new MutationObserver(() => {
-				footer.hidden = edit.hidden;
-				cancel.hidden = edit.hidden;
-			}).observe(edit, { attributes: true, attributeFilter: ["hidden"] });
+			const editObserverId = makeId();
+			edit.setAttribute("data-ai-save-action", editObserverId);
+			initAIObserver({
+				types: ["attributes"],
+				attributeFilter: ["hidden"],
+				selector: `[data-ai-save-action="${editObserverId}"]`,
+				callback: () => {
+					footer.hidden = edit.hidden;
+					cancel.hidden = edit.hidden;
+				}
+			});
 			previewTab.addEventListener("click", () => {
 				if (preview) return;
 				const previewLanguage = editor.getAttribute("lang");
@@ -1900,6 +2048,7 @@
 				editingMessage = record;
 				prompt.value = record.content || "";
 				resizePrompt();
+				updateComposerActions();
 				prompt.focus();
 			});
 		} else {
@@ -2042,21 +2191,26 @@
         return Array.isArray(nested) ? nested[0] || object : nested || object;
     };
 
-    const readConversationMessages = async (id) => {
+	const readConversationMessages = async (id, index = 0) => {
         const createFilter = (nested = false) => {
             const prefix = nested ? "object." : "";
             return {
                 query: {
                     [`${prefix}conversation_id`]: id
                 },
-                sort: [{ key: `${prefix}created.on`, direction: "asc" }],
-                limit: 200
+                sort: [{ key: `${prefix}created.on`, direction: "desc" }],
+				index,
+				limit: messageHistoryPageSize
             };
         };
 
-        let history = await readObjects("ai-messages", createFilter());
-        if (!history.length) {
+		let history = await readObjects(
+			"ai-messages",
+			createFilter(conversationMessagesNested)
+		);
+		if (!history.length && index === 0 && !conversationMessagesNested) {
             history = await readObjects("ai-messages", createFilter(true));
+			conversationMessagesNested = history.length > 0;
         }
 
         return history.filter((item) => {
@@ -2064,6 +2218,78 @@
             return String(message.conversation_id) === String(id);
         });
     };
+
+	const mergeConversationMessages = (history) => {
+		for (const item of history) {
+			const message = unwrapObject(item);
+			if (message?._id) messageRecords.set(String(message._id), message);
+		}
+		const ordered = [...messageRecords.values()]
+			.sort((a, b) => messageTime(a) - messageTime(b));
+		let previousId;
+		for (const message of ordered) {
+			if (!message.parent_id && previousId) message.parent_id = previousId;
+			previousId = message._id;
+		}
+	};
+
+	const getActiveBranchLeaf = () => {
+		if (activeBranchLeafId && messageRecords.has(activeBranchLeafId)) {
+			return messageRecords.get(activeBranchLeafId);
+		}
+		const parentIds = new Set(
+			[...messageRecords.values()].map((message) => String(message.parent_id || ""))
+		);
+		return [...messageRecords.values()]
+			.filter((message) => !parentIds.has(String(message._id)))
+			.sort((a, b) => messageTime(a) - messageTime(b))
+			.at(-1);
+	};
+
+	const loadOlderConversationMessages = async () => {
+		if (!conversationId || messageHistoryLoading || messageHistoryExhausted) return;
+		messageHistoryLoading = true;
+		const scrollElement =
+			messageScroll.querySelector(".simplebar-content-wrapper") || messageScroll;
+		const previousHeight = scrollElement.scrollHeight;
+		const previousTop = scrollElement.scrollTop;
+		const requestedIndex = Math.max(messageRecords.size, messageHistoryOffset);
+		try {
+			const history = await readConversationMessages(conversationId, requestedIndex);
+			messageHistoryExhausted = history.length < messageHistoryPageSize;
+			mergeConversationMessages(history);
+			messageHistoryOffset = Math.max(
+				messageRecords.size,
+				requestedIndex + history.length
+			);
+			const leaf = getActiveBranchLeaf();
+			if (leaf) await renderActiveBranch(leaf);
+			const addedHeight = scrollElement.scrollHeight - previousHeight;
+			scrollElement.scrollTop = previousTop + Math.max(0, addedHeight);
+		} catch (error) {
+			setStatus(error.message || "History failed", "error");
+		} finally {
+			messageHistoryLoading = false;
+		}
+	};
+
+	const historyScrollElements = new WeakSet();
+	const observeHistoryScroll = (element) => {
+		if (!element || historyScrollElements.has(element)) return;
+		historyScrollElements.add(element);
+		element.addEventListener("scroll", () => {
+			if (element.scrollTop <= 80) void loadOlderConversationMessages();
+		}, { passive: true });
+	};
+	observeHistoryScroll(messageScroll);
+	observeHistoryScroll(messageScroll.querySelector(".simplebar-content-wrapper"));
+	initAIObserver({
+		types: ["addedNodes"],
+		selector: ".simplebar-content-wrapper",
+		callback: (mutation) => {
+			if (messageScroll.contains(mutation.target)) observeHistoryScroll(mutation.target);
+		}
+	});
 
     const loadConversation = async (button) => {
         const id = button.dataset.conversationId;
@@ -2077,28 +2303,22 @@
         if (button.dataset.model) model.value = button.dataset.model;
         updateModels();
         messages.replaceChildren();
+		messageRecords.clear();
+		messageHistoryExhausted = false;
+		messageHistoryLoading = false;
+		messageHistoryOffset = 0;
+		conversationMessagesNested = false;
+		activeBranchLeafId = undefined;
         setStatus("Loading conversation…", "connected");
 
         try {
-            const history = await readConversationMessages(id);
+			const history = await readConversationMessages(id);
             if (conversationLoadId !== loadId) return;
-			messageRecords.clear();
-			let previousId;
-			for (const item of history) {
-				const message = unwrapObject(item);
-				if (!message?._id) continue;
-				if (!message.parent_id && previousId) message.parent_id = previousId;
-				messageRecords.set(String(message._id), message);
-				previousId = message._id;
-			}
+			messageHistoryExhausted = history.length < messageHistoryPageSize;
+			mergeConversationMessages(history);
+			messageHistoryOffset = messageRecords.size;
 			if (messageRecords.size) {
-				const parentIds = new Set(
-					[...messageRecords.values()].map((message) => String(message.parent_id || ""))
-				);
-				const leaves = [...messageRecords.values()]
-					.filter((message) => !parentIds.has(String(message._id)))
-					.sort((a, b) => messageTime(a) - messageTime(b));
-				await renderActiveBranch(leaves.at(-1));
+				await renderActiveBranch(getActiveBranchLeaf());
 			}
             if (!history.length) {
                 addMessage("assistant", "This conversation has no saved messages.");
@@ -2280,12 +2500,17 @@
 
     updateModels();
 
-    new MutationObserver(() => {
-        if (!sidebar.classList.contains("show")) return;
-        requestAnimationFrame(() => {
-            globalThis.SimpleBar?.instances?.get(threadScroll)?.recalculate();
-        });
-    }).observe(sidebar, { attributes: true, attributeFilter: ["class"] });
+	initAIObserver({
+		types: ["attributes"],
+		attributeFilter: ["class"],
+		selector: ".ai-sidebar",
+		callback: (mutation) => {
+			if (mutation.target !== sidebar || !sidebar.classList.contains("show")) return;
+			requestAnimationFrame(() => {
+				globalThis.SimpleBar?.instances?.get(threadScroll)?.recalculate();
+			});
+		}
+	});
 
     const submitPrompt = async (
         message,
@@ -2323,8 +2548,9 @@
         });
         if (display && prompt.value.trim() === text) prompt.value = "";
         resizePrompt();
+		updateComposerActions();
         setBusy(true);
-        setStatus("Generating…", "connected");
+        setStatus("Sending…", "connected");
 
         try {
             await socket.send({
@@ -2387,6 +2613,7 @@
             addQueuedSteer(makeId(), text);
             prompt.value = "";
             resizePrompt();
+			updateComposerActions();
             setStatus("Message queued", "connected");
         } else {
 			const edit = editingMessage;
@@ -2416,7 +2643,10 @@
         }
     });
 
-    prompt.addEventListener("input", resizePrompt);
+    prompt.addEventListener("input", () => {
+		resizePrompt();
+		updateComposerActions();
+	});
     threadList.addEventListener("click", (event) => {
         const button = event.target.closest(".ai-thread[data-conversation-id]");
         if (!button) return;
@@ -2430,7 +2660,7 @@
     });
 	const restoreConversation = () => {
 		const id = shell.getAttribute("conversation-id");
-		if (!id || conversationId === id) {
+		if (!socket || !id || conversationId === id) {
 			return;
 		}
 		const button = Array.from(
@@ -2438,13 +2668,34 @@
 		).find((item) => item.dataset.conversationId === id);
 		if (button) void loadConversation(button);
 	};
-	new MutationObserver(restoreConversation).observe(shell, {
-		attributeFilter: ["conversation-id"]
+	initAIObserver({
+			types: ["attributes"],
+			attributeFilter: ["conversation-id"],
+			selector: "[data-ai-chat]",
+			callback: (mutation) => {
+				if (mutation.target === shell) restoreConversation();
+			}
 	});
-    new MutationObserver(() => {
-		if (conversationId) activateThread(conversationId);
-		restoreConversation();
-    }).observe(threadList, { childList: true, subtree: true });
+	initAIObserver({
+			types: ["addedNodes"],
+			selector: ".ai-thread[data-conversation-id]",
+			callback: (mutation) => {
+				if (!threadList.contains(mutation.target)) return;
+				if (conversationId) activateThread(conversationId);
+				restoreConversation();
+			}
+	});
+	initAIObserver({
+		types: ["removedNodes"],
+		selector: "[data-ai-chat]",
+		callback: (mutation) => {
+			if (mutation.target !== shell || mutation.target.isConnected) return;
+			for (const name of [...aiObserverNames]) {
+				globalThis.CoCreate?.observer?.uninit(name);
+			}
+				aiObserverNames.clear();
+			}
+	});
     prompt.addEventListener("keydown", (event) => {
         if (event.key === "Enter" && !event.shiftKey) {
             event.preventDefault();
@@ -2463,16 +2714,19 @@
         prompt.focus();
     });
 
-    if (!connect()) {
-        let attempts = 0;
-        const timer = setInterval(() => {
-            if (connect() || ++attempts >= 40) {
-                clearInterval(timer);
-                if (!socket) {
-                    setStatus("Socket unavailable", "error");
-                    send.disabled = true;
-                }
-            }
-        }, 250);
-    }
+	if (connect()) {
+		restoreConversation();
+	} else {
+		let attempts = 0;
+		const timer = setInterval(() => {
+			if (connect()) {
+				clearInterval(timer);
+				restoreConversation();
+			} else if (++attempts >= 40) {
+				clearInterval(timer);
+				setStatus("Socket unavailable", "error");
+				send.disabled = true;
+			}
+		}, 250);
+	}
 })();

@@ -71,20 +71,19 @@
 	class="dialog"
 	array="contacts"
 	object="$user_id"
-	realtime="true"
 	tabindex="-1"
 	role="dialog"
 	aria-labelledby="theme-customizer-title">
 	<div class="offcanvas offcanvas-end border-0" aria-close-on="outside">
 		<div
-			class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header">
-			<h5 class="m-0 me-2 text-white" id="theme-customizer-title">
+			class="theme-settings-topbar d-flex align-items-center offcanvas-header">
+			<h5 class="m-0 me-2" id="theme-customizer-title">
 				Theme Customizer
 			</h5>
 
 			<button
 				type="button"
-				class="btn-close btn-close-white ms-auto"
+				class="btn-close ms-auto"
 				id="customizerclose-btn"
 				aria-label="Close"
 				aria-controls="theme-settings-dialog"
@@ -1933,12 +1932,26 @@
 				</div>
 			</div>
 		</div>
-		<div class="offcanvas-footer border-top p-3 text-center">
+		<div class="offcanvas-footer border-top p-3">
 			<!-- TODO: Get default theme value and apply to user theme -->
-			<button type="button" class="btn btn-light w-100" id="reset-layout">
-				Reset
-			</button>
+			<div class="hstack gap-2 justify-content-end">
+				<button
+					type="reset"
+					class="btn btn-light"
+					id="reset-layout">
+					Reset
+				</button>
+				<button
+					type="button"
+					class="btn btn-success btn-spinner"
+					actions="disabled, save, timeout(2000), disabled">
+					<span
+						class="spinner-border spinner-border-sm display:none"
+						role="status"
+						aria-hidden="true"></span>
+					<span class="button-text">Save</span>
+				</button>
+			</div>
 		</div>
 	</div>
-</form>
 </form>

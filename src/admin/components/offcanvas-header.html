@@ -8,7 +8,7 @@
 		class="offcanvas-src"
 		input-query="$parent .offcanvas-path[]"
 		input.value="$value"
-		value-replace="/\/(?:form|details)\.html$/" />
+		value-replace="/\/(?:form|details|index)\.html$/" />
 	<input
 		type="hidden"
 		class="offcanvas-path"
@@ -29,11 +29,16 @@
 			display: none;
 		}
 		/* The shared view owns src; its header is a sibling inside the form. */
-		form:has(#offcanvas-app-view[src*="/details.html"]) #form-btn {
+		form:has(#offcanvas-app-view[src*="/details.html"]) #form-btn,
+		form:has(#offcanvas-app-view[src*="/profile/index.html"]) #form-btn {
 			display: inline;
 		}
 		form:has(#offcanvas-app-view[src*="/form.html"]) #details-btn {
 			display: inline;
+		}
+		#offcanvas-app:has(#offcanvas-app-view[src*="/apps/activities/index.html"]) .form-view-btn,
+		#offcanvas-app:has(#offcanvas-app-view[src*="/apps/activities/index.html"]) .details-view-btn {
+			display: none;
 		}
 	</style>
 
@@ -43,13 +48,13 @@
 			role="region"
 			aria-label="More actions">
 			<a
-				class="dropdown text-muted d-inline-block"
+				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle dropdown text-muted"
 				role="button"
 				aria-haspopup="menu"
 				aria-controls="offcanvas-header-dropdown"
 				aria-expanded="false"
 				aria-label="More actions">
-				<i class="ri-more-2-fill align-middle fs-18"></i>
+				<i class="ri-more-2-fill align-middle fs-22"></i>
 			</a>
 			<ul
 				id="offcanvas-header-dropdown"
@@ -138,8 +143,9 @@
 
 	<div
 		role="group"
-		aria-label="Window controls">
-		<li class="list-inline-item d-none d-lg-inline">
+		aria-label="Window controls"
+		class="hstack gap-1">
+		<li class="d-none d-md-inline">
 			<!-- Dock icon button -->
 			<a
 				role="button"
@@ -148,13 +154,13 @@
 				aria-label="Dock Right"
 				toggle.docked="true, false"
 				toggle-query="$document #offcanvas-app"
-				class="text-muted d-inline-block">
+				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
 				<i
-					toggle.class="ri-layout-right-fill, ri-layout-right-line"
-					class="ri-layout-right-line align-middle fs-22"></i>
+					toggle.class="ri-layout-right-line, ri-layout-right-2-line"
+					class="ri-layout-right-2-line align-middle fs-22"></i>
 			</a>
 		</li>
-		<li class="list-inline-item d-none d-lg-inline">
+		<li class="d-none d-md-inline">
 			<!-- Popout icon button -->
 			<a
 				role="button"
@@ -163,13 +169,13 @@
 				aria-label="Popout Left"
 				toggle.popout="true, false"
 				toggle-query="$document #offcanvas-app"
-				class="text-muted d-inline-block">
+				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
 				<i
 					toggle.class="ri-arrow-left-up-fill, ri-arrow-left-up-line"
 					class="ri-arrow-left-up-line align-middle fs-22"></i>
 			</a>
 		</li>
-		<li class="list-inline-item d-none">
+		<li class="d-none">
 			<!-- Pin icon button -->
 			<a
 				role="button"
@@ -178,22 +184,20 @@
 				aria-label="Pin Bottom"
 				toggle.pin="bottom, none"
 				toggle-query="$document #offcanvas-app"
-				class="text-muted d-inline-block">
+				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
 				<i
 					toggle.class="ri-pushpin-2-fill, ri-pushpin-2-line"
 					class="ri-pushpin-2-line align-middle fs-22"></i>
 			</a>
 		</li>
-		<li
-			class="list-inline-item"
-			title="Close">
+		<li title="Close">
 			<a
 				id="close-offcanvas-btn"
 				role="button"
 				aria-label="Close"
 				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				class="text-muted d-inline-block">
+				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
 				<i class="ri-close-line align-middle fs-22"></i>
 			</a>
 		</li>

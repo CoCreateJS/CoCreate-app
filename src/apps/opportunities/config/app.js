@@ -29,8 +29,9 @@ export default {
         "fields": [
             {
                 "label": "Name",
+                "key": "name",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter Name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
+                "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter Name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
                 "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/opportunities/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"opportunities\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     {
@@ -61,7 +62,9 @@ export default {
             },
             {
                 "label": "Description",
+                "key": "description",
                 "tagName": "textarea",
+                "filterTemplate": "<input id=\"description-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter description\" filter-query=\"$document .list-view\" filter-query-key=\"description.$regex\" filter-query-options=\"i\" />",
                 "tableTemplate": "{{object.description}}",
                 "attributes": [
                     {
@@ -92,7 +95,9 @@ export default {
             },
             {
                 "label": "Contact Name",
+                "key": "contact_name",
                 "tagName": "input",
+                "filterTemplate": "<input id=\"contact_name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter contact name\" filter-query=\"$document .list-view\" filter-query-key=\"contact_name.$regex\" filter-query-options=\"i\" />",
                 "tableTemplate": "{{object.contact_name}}",
                 "attributes": [
                     {
@@ -119,7 +124,9 @@ export default {
             },
             {
                 "label": "Company",
+                "key": "company",
                 "tagName": "input",
+                "filterTemplate": "<input id=\"company-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter company\" filter-query=\"$document .list-view\" filter-query-key=\"company.$regex\" filter-query-options=\"i\" />",
                 "tableTemplate": "{{object.company}}",
                 "attributes": [
                     {
@@ -146,7 +153,9 @@ export default {
             },
             {
                 "label": "Amount",
+                "key": "amount",
                 "tagName": "input",
+                "filterTemplate": "<input id=\"amount-filter\" class=\"form-control\" type=\"number\" value-type=\"number\" step=\"any\" min=\"0\" placeholder=\"Filter amount\" filter-query=\"$document .list-view\" filter-query-key=\"amount\" />",
                 "tableTemplate": "{{object.amount}}",
                 "attributes": [
                     {
@@ -177,7 +186,9 @@ export default {
             },
             {
                 "label": "Closing Date",
+                "key": "closing_date",
                 "tagName": "input",
+                "filterTemplate": "<input id=\"closing_date-filter\" class=\"form-control\" type=\"date\" placeholder=\"Filter closing date\" filter-query=\"$document .list-view\" filter-query-key=\"closing_date\" />",
                 "tableTemplate": "{{object.closing_date}}",
                 "attributes": [
                     {
@@ -202,13 +213,15 @@ export default {
                     },
                     {
                         "name": "type",
-                        "value": "dat"
+                        "value": "date"
                     }
                 ]
             },
             {
                 "label": "Owner",
+                "key": "assigned_to",
                 "tagName": "input",
+                "filterTemplate": "<input id=\"assigned_to-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter owner\" filter-query=\"$document .list-view\" filter-query-key=\"assigned_to.$regex\" filter-query-options=\"i\" />",
                 "tableTemplate": "{{object.assigned_to}}",
                 "attributes": [
                     {
@@ -235,7 +248,9 @@ export default {
             },
             {
                 "label": "Lead Source",
+                "key": "lead_source",
                 "tagName": "select",
+                "filterTemplate": "<select id=\"lead_source-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"lead_source\"><option value=\"\">All Lead Source</option><option value=\"Website\">Website</option><option value=\"Referral\">Referral</option><option value=\"Event\">Event</option><option value=\"Email\">Email</option><option value=\"Cold Call\">Cold Call</option></select>",
                 "options": [
                     {
                         "value": "Website",
@@ -318,7 +333,9 @@ export default {
             },
             {
                 "label": "Probability (%)",
+                "key": "probability",
                 "tagName": "input",
+                "filterTemplate": "<input id=\"probability-filter\" class=\"form-control\" type=\"number\" value-type=\"number\" step=\"any\" min=\"0\" max=\"100\" placeholder=\"Filter probability (%)\" filter-query=\"$document .list-view\" filter-query-key=\"probability\" />",
                 "tableTemplate": "{{object.probability}}",
                 "attributes": [
                     {
@@ -353,7 +370,9 @@ export default {
             },
             {
                 "label": "Expected Revenue",
+                "key": "expected_revenue",
                 "tagName": "input",
+                "filterTemplate": "<input id=\"expected_revenue-filter\" class=\"form-control\" type=\"number\" value-type=\"number\" step=\"any\" min=\"0\" placeholder=\"Filter expected revenue\" filter-query=\"$document .list-view\" filter-query-key=\"expected_revenue\" />",
                 "tableTemplate": "{{object.expected_revenue}}",
                 "attributes": [
                     {
@@ -384,7 +403,9 @@ export default {
             },
             {
                 "label": "Currency",
+                "key": "currency",
                 "tagName": "select",
+                "filterTemplate": "<select id=\"currency-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"currency\"><option value=\"\">All Currency</option><option value=\"USD\">USD</option><option value=\"EUR\">EUR</option><option value=\"GBP\">GBP</option></select>",
                 "tableTemplate": "{{object.currency}}",
                 "attributes": [
                     {
@@ -429,7 +450,9 @@ export default {
             },
             {
                 "label": "Next Steps",
+                "key": "next_steps",
                 "tagName": "textarea",
+                "filterTemplate": "<input id=\"next_steps-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter next steps\" filter-query=\"$document .list-view\" filter-query-key=\"next_steps.$regex\" filter-query-options=\"i\" />",
                 "tableTemplate": "{{object.next_steps}}",
                 "attributes": [
                     {
@@ -456,7 +479,9 @@ export default {
             },
             {
                 "label": "Products",
+                "key": "products",
                 "tagName": "select",
+                "filterTemplate": "<select id=\"products-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"products.$in\"><option value=\"Product A\">Product A</option><option value=\"Product B\">Product B</option><option value=\"Service X\">Service X</option></select>",
                 "tableTemplate": "<span render=\"object.products\" render-as=\"product\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{product}}\n</span>",
                 "attributes": [
                     {
@@ -505,6 +530,7 @@ export default {
             },
             {
                 "label": "Stage",
+                "key": "stage",
                 "options": [
                     {
                         "value": "Prospecting",
@@ -613,6 +639,7 @@ export default {
             },
             {
                 "label": "Priority",
+                "key": "priority",
                 "options": [
                     {
                         "value": "High",
@@ -681,6 +708,7 @@ export default {
             },
             {
                 "label": "Tags",
+                "key": "tags",
                 "options": [
                     {
                         "value": "urgent",
@@ -696,7 +724,7 @@ export default {
                     }
                 ],
                 "tagName": "select",
-                "filterTemplate": "\n\t\t\t\t\t<select id=\"tags-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"tags\">\n\t\t\t\t\t\t<option value=\"urgent\">Urgent</option>\n\t\t\t\t\t\t<option value=\"follow-up\">Follow-Up</option>\n\t\t\t\t\t\t<option value=\"important\">Important</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
+                "filterTemplate": "\n\t\t\t\t\t<select id=\"tags-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"tags.$in\">\n\t\t\t\t\t\t<option value=\"urgent\">Urgent</option>\n\t\t\t\t\t\t<option value=\"follow-up\">Follow-Up</option>\n\t\t\t\t\t\t<option value=\"important\">Important</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
                 "tableTemplate": "<span render=\"object.tags\" render-as=\"tags\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{tags}}\n</span>",
                 "attributes": [
                     {
@@ -749,8 +777,9 @@ export default {
             },
             {
                 "label": "Status",
+                "key": "status",
                 "tagName": "select",
-                "filterTemplate": "\n\t\t\t\t\t<select id=\"status-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"status\">\n\t\t\t\t\t\t<option value=\"active\">Active</option>\n\t\t\t\t\t\t<option value=\"inactive\">Inactive</option>\n\t\t\t\t\t\t<option value=\"archived\">Archived</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
+                "filterTemplate": "\n\t\t\t\t\t<select id=\"status-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"status.$in\">\n\t\t\t\t\t\t<option value=\"active\">Active</option>\n\t\t\t\t\t\t<option value=\"inactive\">Inactive</option>\n\t\t\t\t\t\t<option value=\"archived\">Archived</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
                 "tableTemplate": "{{object.status}}",
                 "attributes": [
                     {

@@ -52,12 +52,32 @@
 		</span>
 	</a>
 	<span array=""></span>
+	<style>
+		html[data-sidebar-size="sm-hover-active"] #vertical-hover,
+		html:not([data-sidebar-size="sm-hover-active"]) #vertical-hover-release {
+			display: none;
+		}
+	</style>
 	<button
 		type="button"
 		class="btn btn-sm p-0 px-2 fs-20 header-item float-end btn-vertical-sm-hover"
 		id="vertical-hover"
-		click-query="$document html"
-		click.data-sidebar-size="sm-hover, sm-hover-active">
+		state-to="sidebar-size"
+		state.data-sidebar-size="sm-hover-active"
+		title="Keep sidebar open"
+		aria-label="Keep sidebar open"
+		aria-pressed="false">
+		<i class="ri-record-circle-line"></i>
+	</button>
+	<button
+		type="button"
+		class="btn btn-sm p-0 px-2 fs-20 header-item float-end btn-vertical-sm-hover"
+		id="vertical-hover-release"
+		state-to="sidebar-size"
+		state.data-sidebar-size="sm-hover"
+		title="Unpin sidebar"
+		aria-label="Unpin sidebar"
+		aria-pressed="true">
 		<i class="ri-record-circle-line"></i>
 	</button>
 </div>
@@ -412,6 +432,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.array="contacts"
+						state.filter-query-key=""
+						state.filter-query-value=""
 						state.src="/apps/contacts/templates/card.html"></div>
 				</a>
 				<a
@@ -795,6 +818,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.array="posts"
+						state.filter-query-key=""
+						state.filter-query-value=""
 						state.src="/apps/blog/templates/card.html"></div>
 				</a>
 				<a
@@ -833,6 +859,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.array="posts"
+						state.filter-query-key=""
+						state.filter-query-value=""
 						state.src="/apps/social/templates/card.html"></div>
 				</a>
 				<a
@@ -939,6 +968,23 @@
 			<!-- Settings Section -->
 			<li class="menu-title">
 				<span>Settings</span>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="speech-synthesis-btn"
+					state-to="adminView"
+					state.src="/apps/speech-synthesis/index.html"
+					class="nav-link">
+					<i class="ri-volume-up-line"></i>
+					<span>Speech Synthesis</span>
+				</a>
+			</li>
+			<li class="nav-item d-flex justify-content-between align-items-center">
+				<a id="speech-recognition-btn" state-to="adminView" state.src="/apps/speech-recognition/index.html" class="nav-link">
+					<i class="ri-mic-line"></i>
+					<span>Speech Recognition</span>
+				</a>
 			</li>
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">

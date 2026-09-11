@@ -1,7 +1,11 @@
 <!-- Dragula css -->
-<link rel="stylesheet" href="/assets/libs/dragula/dragula.min.css" />
-	<link rel="stylesheet" href="/components/list/kanban/index.css" />
-	<div src="/components/field-select.html"></div>
+<link
+	rel="stylesheet"
+	href="/assets/libs/dragula/dragula.min.css" />
+<link
+	rel="stylesheet"
+	href="/components/list/kanban/index.css" />
+<!-- Temporarily testing Opportunities Stage before restoring the field picker. -->
 
 <div
 	id="kanban"
@@ -9,17 +13,21 @@
 	state-overwrite
 	array="apps"
 	object=""
-	key=""
+	key="fields[13].options"
+	filter-limit
+	input.array=""
 	render-query="[template='column']"
 	render-as="column"
-	input.plugin='{"$SimpleBar":["$this",{}]}'
-	input-query="[plugin]"
+	input-query=".tasks-wrapper"
 	class="tasks-board align-middle">
-	<div class="tasks-list" template="column">
+	<div
+		class="tasks-list"
+		render-as="column"
+		template="column">
 		<div class="d-flex mb-3">
 			<div class="flex-grow-1">
 				<h6 class="fs-14 text-uppercase fw-semibold mb-0">
-					{{column.innerText}}
+					{{column.label}}
 					<small
 						class="badge bg-success align-bottom ms-1 totaltask-badge"
 						>{{column.cards.length}}</small
@@ -43,30 +51,35 @@
 						class="dropdown-menu dropdown-menu-end"
 						role="menu"
 						aria-hidden="true">
-						<a class="dropdown-item" href="#">Priority</a>
-						<a class="dropdown-item" href="#">Date Added</a>
+						<a
+							class="dropdown-item"
+							href="#"
+							>Priority</a
+						>
+						<a
+							class="dropdown-item"
+							href="#"
+							>Date Added</a
+						>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div
-			filter-query-key="status"
-			filter-query-value="{{column.key}}"
-			filter-query="$next">
-		</div>
-		<div
-			state-id="list"
-			state-overwrite
-			array="{{column.$array}}"
+			array=""
 			object
+			filter-query-key="stage"
+			filter-query-value="{{column.value}}"
 			render-query="[template='card']"
 			filter-limit
-			style="max-height: 300px;"
-			plugin='{"$SimpleBar": ["$this", {}]}'
-			class="tasks-wrapper px-3 mx-n3">
-			<div class="tasks h-100" >
+			style="max-height: 300px"
+			class="tasks-wrapper list-view px-3 mx-n3">
+			<div class="tasks h-100">
 				<!-- Card Template -->
-				<div class="card tasks-box" template="card" object="">
+				<div
+					class="card tasks-box"
+					template="card"
+					object="">
 					<div class="card-body">
 						<div class="d-flex mb-2">
 							<h6
@@ -77,9 +90,33 @@
 									aria-open
 									aria-haspopup="dialog"
 									aria-expanded="false"
-									click-query="$document #offcanvas-app"
-									click.object="{{object._id}}"
+									state-to="offcanvas-app-view"
+									state.src=""
 									class="name-trigger">
+									<input
+										type="hidden"
+										state-id="app"
+										state-overwrite
+										array="apps"
+										object=""
+										key="path"
+										value-suffix="/details.html"
+										input.state.src="$value"
+										input-query="$parent" />
+									<span
+										state-to="offcanvas-app-form"
+										state.object="{{object._id}}"
+										state.array="">
+										<input
+											type="hidden"
+											state-id="app"
+											state-overwrite
+											array="apps"
+											object=""
+											key="array"
+											input.state.array="$value"
+											input-query="$parent" />
+									</span>
 									{{object.name}}
 								</a>
 							</h6>
@@ -88,11 +125,17 @@
 									href="javascript:void(0);"
 									class="text-muted"
 									id="dropdownMenuLink1"
-									aria-expanded="false" aria-haspopup="menu" aria-controls="dropdownMenuLink1-menu"><i class="ri-more-fill"></i
+									aria-expanded="false"
+									aria-haspopup="menu"
+									aria-controls="dropdownMenuLink1-menu"
+									><i class="ri-more-fill"></i
 								></a>
 								<ul
 									class="dropdown-menu"
-									aria-labelledby="dropdownMenuLink1" id="dropdownMenuLink1-menu" aria-hidden="true" aria-close-on="anywhere">
+									aria-labelledby="dropdownMenuLink1"
+									id="dropdownMenuLink1-menu"
+									aria-hidden="true"
+									aria-close-on="anywhere">
 									<li>
 										<a
 											tabindex="0"
@@ -100,9 +143,33 @@
 											aria-open
 											aria-haspopup="dialog"
 											aria-expanded="false"
-											click-query="$document #offcanvas-app"
-											click.object="{{object._id}}"
+											state-to="offcanvas-app-view"
+											state.src=""
 											class="dropdown-item">
+											<input
+												type="hidden"
+												state-id="app"
+												state-overwrite
+												array="apps"
+												object=""
+												key="path"
+												value-suffix="/details.html"
+												input.state.src="$value"
+												input-query="$parent" />
+											<span
+												state-to="offcanvas-app-form"
+												state.object="{{object._id}}"
+												state.array="">
+												<input
+													type="hidden"
+													state-id="app"
+													state-overwrite
+													array="apps"
+													object=""
+													key="array"
+													input.state.array="$value"
+													input-query="$parent" />
+											</span>
 											<i
 												class="ri-eye-fill align-bottom me-2 text-muted"></i>
 											View
@@ -116,11 +183,33 @@
 											aria-haspopup="dialog"
 											aria-expanded="false"
 											state-to="offcanvas-app-view"
-											state.view="form"
-											click-query="$document #offcanvas-app"
-											click.object="{{object._id}}"
+											state.src=""
 											class="dropdown-item"
 											href="#">
+											<input
+												type="hidden"
+												state-id="app"
+												state-overwrite
+												array="apps"
+												object=""
+												key="path"
+												value-suffix="/form.html"
+												input.state.src="$value"
+												input-query="$parent" />
+											<span
+												state-to="offcanvas-app-form"
+												state.object="{{object._id}}"
+												state.array="">
+												<input
+													type="hidden"
+													state-id="app"
+													state-overwrite
+													array="apps"
+													object=""
+													key="array"
+													input.state.array="$value"
+													input-query="$parent" />
+											</span>
 											<i
 												class="ri-edit-2-line align-bottom me-2 text-muted"></i>
 											Edit
@@ -163,7 +252,7 @@
 						<div class="d-flex align-items-center">
 							<div class="flex-grow-1">
 								<span
-									array="contacts"
+									array="{{object.$array}}"
 									object="{{object._id}}"
 									key="tags"
 									render-query="[template]">
@@ -176,7 +265,7 @@
 							</div>
 							<div
 								class="flex-shrink-0"
-								src="components/avatar-group.html"></div>
+								src="/admin/components/avatar-group.html"></div>
 						</div>
 					</div>
 					<div class="card-footer border-top-dashed">
@@ -191,7 +280,9 @@
 							<div class="flex-shrink-0">
 								<ul class="link-inline mb-0">
 									<li class="list-inline-item">
-										<a href="#" class="text-muted">
+										<a
+											href="#"
+											class="text-muted">
 											<i
 												class="ri-eye-line align-bottom"></i>
 											<span
@@ -250,9 +341,32 @@
 				aria-haspopup="dialog"
 				aria-expanded="false"
 				state-to="offcanvas-app-view"
-				state.view="form"
-				state.$reset
-				id="create-btn">
+				state.src=""
+				title="Add record">
+				<input
+					type="hidden"
+					state-id="app"
+					state-overwrite
+					array="apps"
+					object=""
+					key="path"
+					value-suffix="/form.html"
+					input.state.src="$value"
+					input-query="$parent" />
+				<span
+					state-to="offcanvas-app-form"
+					state.$reset
+					state.array="">
+					<input
+						type="hidden"
+						state-id="app"
+						state-overwrite
+						array="apps"
+						object=""
+						key="array"
+						input.state.array="$value"
+						input-query="$parent" />
+				</span>
 				<i class="ri-add-line align-bottom"></i>
 				<span class="ms-1">Add More</span>
 			</button>

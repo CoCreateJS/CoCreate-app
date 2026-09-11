@@ -7,7 +7,17 @@
 
 		.search-box {
 			min-width: 20px;
+			max-width: 100%;
 			justify-content: flex-start;
+		}
+		@media (min-width: 577px) {
+			.search-box:has(#search-objects) {
+				width: 320px;
+			}
+			#search-objects {
+				width: 0;
+				flex: 1 1 auto;
+			}
 		}
 		.form-control.search {
 			z-index: unset !important;
@@ -58,7 +68,7 @@
 			<button
 				type="button"
 				class="btn btn-outline-success"
-				aria-controls="filters-view"
+				aria-controls="context-sidebar"
 				aria-haspopup="dialog"
 				aria-expanded="false"
 				title="Filter options">

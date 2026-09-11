@@ -1,4 +1,67 @@
 /* Search results page presentation. */
+.search-header-form {
+	width: 100%;
+	max-width: 640px;
+}
+
+.search-flex-gutter-sm {
+	gap: 0.5rem;
+}
+
+.search-image-results {
+	width: 100%;
+	max-width: 640px;
+}
+
+.search-thumbnail-item,
+.search-gallery-item,
+.search-news-item {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.search-gallery-item,
+.search-news-item {
+	padding: 0.75rem;
+}
+
+@media (min-width: 576px) {
+	.search-thumbnail-item,
+	.search-gallery-item {
+		width: 50%;
+	}
+
+	.search-flex-gutter-sm > .search-thumbnail-item {
+		width: calc(50% - 0.25rem);
+	}
+}
+
+@media (min-width: 992px) {
+	.search-gallery-item {
+		width: 33.333333%;
+	}
+
+	.search-news-item {
+		width: 50%;
+	}
+}
+
+@media (min-width: 1200px) {
+	.search-gallery-item {
+		width: 25%;
+	}
+}
+
+.search-thumbnail-item {
+	padding: 0.25rem;
+}
+
+@media (min-width: 768px) {
+	.search-thumbnail-item {
+		width: calc(25% - 0.375rem);
+	}
+}
+
 .search-more-results {
 	position: relative;
 	overflow: hidden;

@@ -547,7 +547,9 @@ export default {
             },
             {
                 "label": "Type",
+                "key": "type",
                 "tagName": "select",
+                "filterTemplate": "<select id=\"type-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"type\"><option value=\"\">All types</option><option value=\"support\">Support</option></select>",
                 "attributes": [
                     {
                         "name": "class",
@@ -564,14 +566,8 @@ export default {
                 ],
                 "options": [
                     {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "support"
-                            }
-                        ],
-                        "innerText": "Support"
+                        "value": "support",
+                        "label": "Support"
                     }
                 ],
                 "children": [

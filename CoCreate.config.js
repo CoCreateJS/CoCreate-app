@@ -13,7 +13,7 @@ export default {
             entry: "./src",
             array: "files",
             languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
-            exclude: ["/config/", "/scss/", "/assets/js", "/assets/icons/", "/assets/svg"],
+            exclude: ["/config/", "/scss/", "/assets/js", "/assets/icons/"],
             object: {
                 name: "{{name}}",
                 src: "{{source}}",
@@ -330,6 +330,18 @@ export default {
             selector: "[fullscreen]",
             path: "../CoCreate-modules/CoCreate-fullscreen",
             repo: "github.com/CoCreate-app/CoCreate-fullscreen.git"
+        },
+        speechSynthesis: {
+            import: "@cocreate/speech-synthesis",
+            selector: "[speech-synthesis]",
+            path: "../CoCreate-modules/CoCreate-speech-synthesis",
+            repo: "github.com/CoCreate-app/CoCreate-speech-synthesis.git"
+        },
+        speechRecognition: {
+            import: "@cocreate/speech-recognition",
+            selector: "[speech-recognition]",
+            path: "../CoCreate-modules/CoCreate-speech-recognition",
+            repo: "github.com/CoCreate-app/CoCreate-speech-recognition.git"
         },
         modal: {
             import: "@cocreate/modal",

@@ -95,8 +95,9 @@ export default {
             },
             {
                 "label": "Leads Score",
+                "key": "leads_score",
                 "tagName": "input",
-                "filterTemplate": "<!--<input id=\"leads_score-filter\" class=\"form-range\" type=\"range\" min=\"0\" value=\"\" filter-query=\"$document .list-view\" filter-query-key=\"leads_score\" /> -->",
+                "filterTemplate": "<input id=\"leads_score-filter\" class=\"form-control\" type=\"number\" min=\"0\" value-type=\"number\" placeholder=\"Filter lead score\" filter-query=\"$document .list-view\" filter-query-key=\"leads_score\" />",
                 "tableTemplate": "{{object.leads_score}}",
                 "attributes": [
                     {
@@ -389,8 +390,9 @@ export default {
             },
             {
                 "label": "Create Date",
+                "key": "created.on",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"{{fields.key}}-filter\" class=\"{{fields.attributes.class}}\" type=\"{{fields.type}}\" filter-query=\"$document .list-view\" filter-query-key=\"{{fields.key}}\"  />",
+                "filterTemplate": "<input id=\"created.on-filter\" class=\"form-control\" type=\"date\" filter-query=\"$document .list-view\" filter-query-key=\"created.on\" />",
                 "tableTemplate": "{{object.created.on}}",
                 "attributes": [
                     {
@@ -407,7 +409,7 @@ export default {
                     },
                     {
                         "name": "type",
-                        "value": "dat"
+                        "value": "date"
                     }
                 ]
             },

@@ -1,7 +1,4 @@
 <div class="p-3 d-flex flex-column h-100">
-	<div class="mb-3">
-		<h5 class="mb-0 fw-semibold">My Drive</h5>
-	</div>
 	<div class="search-box">
 		<input
 			type="text"
@@ -9,7 +6,9 @@
 			placeholder="Search here..." />
 		<i class="ri-search-2-line search-icon"></i>
 	</div>
-	<div class="mt-3 mx-n4 px-4 file-menu-sidebar-scroll" plugin='{"$SimpleBar": ["$this", {}]}'>
+	<div
+		class="mt-3 mx-n4 px-4 file-menu-sidebar-scroll"
+		plugin='{"$SimpleBar": ["$this", {}]}'>
 		<ul class="list-unstyled file-manager-menu">
 			<li>
 				<a
@@ -20,7 +19,9 @@
 					<i class="ri-folder-2-line align-bottom me-2"></i>
 					<span class="file-list-link">My Drive</span>
 				</a>
-				<div class="collapse show" id="collapseExample">
+				<div
+					class="collapse show"
+					id="collapseExample">
 					<ul class="sub-menu list-unstyled">
 						<li>
 							<a href="#!">Assets</a>
@@ -98,7 +99,7 @@
 	</div>
 </div>
 
-<div
+<!-- <div
 	class="margin-left:10px"
 	sortable
 	array="files"
@@ -111,9 +112,9 @@
 	<div
 		filter-query-key="content-type"
 		filter-query-value="directory"
-		filter-query="$parent"></div>
-	<!--Folder Template -->
-	<div class="padding:5px" template render="object" object="{{object._id}}">
+		filter-query="$parent"></div> -->
+<!--Folder Template -->
+<!-- <div class="padding:5px" template render="object" object="{{object._id}}">
 		<span
 			class=""
 			show="#directory{{object._id}}"
@@ -128,8 +129,8 @@
 			object="{{object._id}}"
 			key="name"
 			>Folder name</span
-		>
-		<div
+		> -->
+<!-- <div
 			id="directory{{object._id}}"
 			class="domEditor margin-left:10px"
 			hidden
@@ -138,8 +139,8 @@
 			key="src"
 			filter-query-value="{{object.path}}"></div>
 	</div>
-</div>
-<div
+</div> -->
+<!-- <div
 	class="margin-left:10px"
 	sortable
 	array="files"
@@ -151,14 +152,14 @@
 		filter-query="$parent"
 		filter-query-key="content-type"
 		filter-query-value="text/directory.$ne"></div>
-
-	<!--File Template -->
-	<div class="padding:5px" template render="object" object="{{object._id}}">
+ -->
+<!--File Template -->
+<!-- <div class="padding:5px" template render="object" object="{{object._id}}">
 		<span class=""><i src="/assets/svg/html5.svg"></i></span>
 		<span
 			class="margin-left:5px"
 			array="files"
 			object="{{object._id}}"
 			key="name"></span>
-	</div>
-</div>
+	</div> -->
+<!-- </div> -->

@@ -27,6 +27,29 @@
 					aria-hidden="true"></i>
 			</button>
 		</div>
+		<div class="search-box flex-shrink-0">
+			<div class="input-group">
+				<input
+					id="search-ai-conversations"
+					type="text"
+					class="form-control search search-sm"
+					placeholder="Search for..."
+					filter-search
+					filter-query="$document #ai-conversations-sidebar .ai-thread-list" />
+				<button
+					type="button"
+					class="btn btn-outline-success"
+					aria-controls="ai-conversation-filters-view"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					title="Filter options">
+					<i class="ri-filter-3-line align-bottom"></i>
+				</button>
+			</div>
+			<i
+				class="ri-search-line search-icon"
+				style="pointer-events: none"></i>
+		</div>
 		<div class="ai-thread-scroll-container">
 			<div
 				class="ai-thread-scroll"
@@ -56,7 +79,7 @@
 				</div>
 			</div>
 		</div>
-		</aside>
+	</aside>
 	<button
 		type="button"
 		tabindex="-1"
@@ -64,19 +87,72 @@
 		aria-label="Close conversations"
 		aria-controls="ai-conversations-sidebar"
 		aria-close
-		aria-expanded="false"></button>
+		aria-expanded="false"
+		state-to="ai-chat-btn"
+		state.$unset="$click"></button>
 
 	<main class="ai-main">
-		<button
-			class="ai-sidebar-toggle"
-			type="button"
-			aria-label="Toggle conversations"
-			aria-controls="ai-conversations-sidebar"
-			aria-expanded="false">
-			<i
-				class="ri-chat-history-line"
-				aria-hidden="true"></i>
-		</button>
+		<header
+			class="ai-topbar"
+			role="toolbar"
+			aria-label="AI chat controls">
+			<button
+				class="ai-sidebar-toggle"
+				type="button"
+				aria-label="Toggle conversations"
+				aria-controls="ai-conversations-sidebar"
+				aria-expanded="false"
+				title="Conversations">
+				<i
+					class="ri-chat-history-line align-middle fs-22"
+					aria-hidden="true"></i>
+			</button>
+			<span class="ai-topbar-title">CoCreate AI</span>
+			<div
+				class="ai-topbar-actions"
+				role="group"
+				aria-label="Window controls">
+				<button
+					type="button"
+					class="ai-chat-panel-fullscreen"
+					fullscreen
+					fullscreen-query="$closest .ai-shell"
+					aria-label="Toggle fullscreen"
+					title="Fullscreen">
+					<i
+						class="ri-fullscreen-line align-middle fs-22"
+						aria-hidden="true"></i>
+					<i
+						class="ri-fullscreen-exit-line align-middle fs-22"
+						aria-hidden="true"></i>
+				</button>
+				<button
+					type="button"
+					class="ai-chat-panel-dock d-none d-md-grid"
+					aria-label="Dock AI chat in main view"
+					aria-controls="ai-chat-panel"
+					aria-close
+					aria-expanded="false"
+					title="Dock left">
+					<i
+						class="align-middle fs-22"
+						src="/assets/svg/sidebar-fold-line.svg"
+						aria-hidden="true"></i>
+				</button>
+				<button
+					type="button"
+					class="ai-chat-panel-close"
+					aria-label="Close AI chat"
+					aria-controls="ai-chat-panel"
+					aria-close
+					aria-expanded="false"
+					title="Close">
+					<i
+						class="ri-close-line align-middle fs-22"
+						aria-hidden="true"></i>
+				</button>
+			</div>
+		</header>
 
 		<section
 			class="ai-message-scroll"
@@ -87,18 +163,22 @@
 				<div class="ai-empty">
 					<h1>What will you build today?</h1>
 					<p>
-						Build apps and websites, manage servers, organize CRM work,
-						and turn your next business task into action—without leaving
-						CoCreate.
+						Build apps and websites, manage servers, organize CRM
+						work, and turn your next business task into
+						action—without leaving CoCreate.
 					</p>
 				</div>
 			</div>
 		</section>
 
 		<form class="ai-composer">
-			<details class="ai-steer-queue" hidden>
+			<details
+				class="ai-steer-queue"
+				hidden>
 				<summary>
-					<i class="ri-stack-line" aria-hidden="true"></i>
+					<i
+						class="ri-stack-line"
+						aria-hidden="true"></i>
 					<span class="ai-steer-count">0 queued messages</span>
 				</summary>
 				<div class="ai-steer-items"></div>
@@ -163,9 +243,26 @@
 							aria-label="AI model"></div>
 					</div>
 					<button
+						class="ai-dictate"
+						type="button"
+						speech-recognition
+						speech-recognition-query="$closest .ai-composer .ai-prompt"
+						speech-recognition-lang="en-US"
+						speech-recognition-interim-results="true"
+						aria-label="Start dictation"
+						title="Start dictation">
+						<i
+							class="ri-mic-line"
+							aria-hidden="true"></i>
+						<i
+							class="ri-stop-fill"
+							aria-hidden="true"></i>
+					</button>
+					<button
 						class="ai-send"
 						type="submit"
-						aria-label="Send message">
+						aria-label="Send message"
+						hidden>
 						<i
 							class="ri-arrow-up-line"
 							aria-hidden="true"></i>

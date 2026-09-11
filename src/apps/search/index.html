@@ -1,18 +1,24 @@
 <!-- glightbox css -->
-<link rel="stylesheet" href="/assets/libs/glightbox/css/glightbox.min.css" />
+<link
+	rel="stylesheet"
+	href="/assets/libs/glightbox/css/glightbox.min.css" />
 <!-- Swiper css -->
-<link rel="stylesheet" href="/assets/libs/swiper/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/apps/search/index.css" />
+<link
+	rel="stylesheet"
+	href="/assets/libs/swiper/swiper-bundle.min.css" />
+<link
+	rel="stylesheet"
+	href="/apps/search/index.css" />
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-lg-12">
+<div>
+	<div class="d-flex flex-wrap">
+		<div class="width:100%">
 			<div class="card">
 				<div class="card-header border-0">
-					<div class="row justify-content-center mb-4">
-						<div class="col-lg-6">
-							<div class="row g-2">
-								<div class="col">
+					<div class="d-flex flex-wrap justify-content-center mb-4">
+						<div class="search-header-form">
+							<div class="d-flex flex-wrap search-flex-gutter-sm">
+								<div class="flex-grow-1 min-width:0">
 									<div class="position-relative mb-3">
 										<input
 											type="text"
@@ -21,11 +27,14 @@
 											value="Admin Dashboard" />
 										<a
 											class="btn btn-link link-success btn-lg position-absolute end-0 top-0 material-shadow-none"
-											aria-controls="offcanvasExample" aria-expanded="false" aria-haspopup="dialog"><i class="ri-mic-fill"></i
+											aria-controls="offcanvasExample"
+											aria-expanded="false"
+											aria-haspopup="dialog"
+											><i class="ri-mic-fill"></i
 										></a>
 									</div>
 								</div>
-								<div class="col-auto">
+								<div class="flex-shrink-0">
 									<button
 										type="submit"
 										class="btn btn-primary btn-lg waves-effect waves-light">
@@ -35,8 +44,7 @@
 								</div>
 							</div>
 						</div>
-						<!--end col-->
-						<div class="col-lg-12">
+						<div class="width:100%">
 							<h5 class="fs-16 fw-semibold text-center mb-0">
 								Showing results for "<span
 									class="text-primary fw-medium fst-italic"
@@ -46,39 +54,18 @@
 							</h5>
 						</div>
 					</div>
-					<!--end row-->
-
-					<div
-						class="offcanvas offcanvas-top"
-						tabindex="-1"
-						id="offcanvasExample"
-						aria-labelledby="offcanvasExampleLabel">
-						<div class="offcanvas-body">
-							<button
-								type="button"
-								class="btn-close text-reset float-end"
-								aria-label="Close" aria-controls="offcanvasExample" aria-close aria-expanded="true"></button>
-							<div
-								class="d-flex flex-column h-100 justify-content-center align-items-center">
-								<div class="search-voice">
-									<i class="ri-mic-fill align-middle"></i>
-									<span class="voice-wave"></span>
-									<span class="voice-wave"></span>
-									<span class="voice-wave"></span>
-								</div>
-								<h4>Talk to me, what can I do for you?</h4>
-							</div>
-						</div>
-					</div>
 				</div>
 				<div>
-					<ul class="nav nav-tabs nav-tabs-custom" role="tablist">
+					<ul
+						class="nav nav-tabs nav-tabs-custom"
+						role="tablist">
 						<li class="nav-item">
 							<a
 								class="nav-link active"
 								href="#all"
 								role="tab"
-								aria-selected="false" aria-controls="all">
+								aria-selected="false"
+								aria-controls="all">
 								<i
 									class="ri-search-2-line text-muted align-bottom me-1"></i>
 								All Results
@@ -90,7 +77,8 @@
 								id="images-tab"
 								href="#images"
 								role="tab"
-								aria-selected="true" aria-controls="images">
+								aria-selected="true"
+								aria-controls="images">
 								<i
 									class="ri-image-fill text-muted align-bottom me-1"></i>
 								Images
@@ -101,7 +89,8 @@
 								class="nav-link"
 								href="#news"
 								role="tab"
-								aria-selected="false" aria-controls="news">
+								aria-selected="false"
+								aria-controls="news">
 								<i
 									class="ri-list-unordered text-muted align-bottom me-1"></i>
 								News
@@ -112,7 +101,8 @@
 								class="nav-link"
 								href="#video"
 								role="tab"
-								aria-selected="false" aria-controls="video">
+								aria-selected="false"
+								aria-controls="video">
 								<i
 									class="ri-video-line text-muted align-bottom me-1"></i>
 								Videos
@@ -125,7 +115,9 @@
 									href="#"
 									role="button"
 									id="dropdownMenuLink1"
-									aria-expanded="false" aria-haspopup="menu" aria-controls="dropdownMenuLink1-menu">
+									aria-expanded="false"
+									aria-haspopup="menu"
+									aria-controls="dropdownMenuLink1-menu">
 									<i
 										class="ri-settings-4-line align-middle me-1"></i>
 									Settings
@@ -133,30 +125,42 @@
 								<ul
 									class="dropdown-menu"
 									aria-close-on="anywhere"
-									aria-labelledby="dropdownMenuLink1" id="dropdownMenuLink1-menu" aria-hidden="true">
+									aria-labelledby="dropdownMenuLink1"
+									id="dropdownMenuLink1-menu"
+									aria-hidden="true">
 									<li>
-										<a class="dropdown-item" href="#"
+										<a
+											class="dropdown-item"
+											href="#"
 											>Search Settings</a
 										>
 									</li>
 									<li>
-										<a class="dropdown-item" href="#"
+										<a
+											class="dropdown-item"
+											href="#"
 											>Advanced Search</a
 										>
 									</li>
 									<li>
-										<a class="dropdown-item" href="#"
+										<a
+											class="dropdown-item"
+											href="#"
 											>Search History</a
 										>
 									</li>
 									<li>
-										<a class="dropdown-item" href="#"
+										<a
+											class="dropdown-item"
+											href="#"
 											>Search Help</a
 										>
 									</li>
 									<div class="dropdown-divider"></div>
 									<li>
-										<a class="dropdown-item" href="#"
+										<a
+											class="dropdown-item"
+											href="#"
 											>Dark Mode:Off</a
 										>
 									</li>
@@ -167,7 +171,10 @@
 				</div>
 				<div class="card-body p-4">
 					<div class="tab-content text-muted">
-						<div class="tab-pane active" id="all" role="tabpanel">
+						<div
+							class="tab-pane active"
+							id="all"
+							role="tabpanel">
 							<div class="pb-3">
 								<h5 class="mb-1">
 									<a href="javascript:void(0);"
@@ -225,10 +232,11 @@
 								<h5 class="fs-13 mb-3 text-muted fst-italic">
 									Showing results Images
 								</h5>
-								<div class="row">
-									<div class="col-xl-4 col-lg-10">
-										<div class="row g-2">
-											<div class="col-md-3 col-sm-6">
+								<div class="d-flex flex-wrap">
+									<div class="search-image-results">
+										<div
+											class="d-flex flex-wrap search-flex-gutter-sm">
+											<div class="search-thumbnail-item">
 												<div>
 													<a
 														href="/assets/images/small/img-1.jpg"
@@ -240,8 +248,7 @@
 													</a>
 												</div>
 											</div>
-											<!--end col-->
-											<div class="col-md-3 col-sm-6">
+											<div class="search-thumbnail-item">
 												<div>
 													<a
 														href="/assets/images/small/img-3.jpg"
@@ -253,8 +260,7 @@
 													</a>
 												</div>
 											</div>
-											<!--end col-->
-											<div class="col-md-3 col-sm-6">
+											<div class="search-thumbnail-item">
 												<div>
 													<a
 														href="/assets/images/small/img-4.jpg"
@@ -266,8 +272,7 @@
 													</a>
 												</div>
 											</div>
-											<!--end col-->
-											<div class="col-md-3 col-sm-6">
+											<div class="search-thumbnail-item">
 												<div
 													class="search-more-results rounded">
 													<a
@@ -289,13 +294,9 @@
 													</a>
 												</div>
 											</div>
-											<!--end col-->
 										</div>
-										<!--end row-->
 									</div>
-									<!--end col-->
 								</div>
-								<!--end row-->
 							</div>
 
 							<div class="border border-dashed"></div>
@@ -499,9 +500,12 @@
 								</ul>
 							</div>
 						</div>
-						<div class="tab-pane" id="images" role="tabpanel">
-							<div class="row">
-								<div class="col-lg-12">
+						<div
+							class="tab-pane"
+							id="images"
+							role="tabpanel">
+							<div class="d-flex flex-wrap">
+								<div class="width:100%">
 									<div class="swiper images-menu mb-3">
 										<div class="swiper-wrapper">
 											<div class="swiper-slide">
@@ -689,8 +693,8 @@
 								</div>
 							</div>
 							<div class="gallery-light">
-								<div class="row">
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+								<div class="d-flex flex-wrap">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -746,8 +750,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -803,8 +806,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -860,8 +862,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -916,8 +917,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -973,8 +973,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -1030,8 +1029,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -1087,8 +1085,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -1144,8 +1141,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -1202,8 +1198,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -1259,8 +1254,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -1316,8 +1310,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
-									<div class="col-xl-3 col-lg-4 col-sm-6">
+									<div class="search-gallery-item">
 										<div class="gallery-box card">
 											<div class="gallery-container">
 												<a
@@ -1375,9 +1368,7 @@
 											</div>
 										</div>
 									</div>
-									<!--end col-->
 								</div>
-								<!--end row-->
 								<div class="mt-4">
 									<ul
 										class="pagination pagination-separated justify-content-center mb-0">
@@ -1437,9 +1428,12 @@
 							</div>
 						</div>
 						<!--end tab-pane-->
-						<div class="tab-pane" id="news" role="tabpanel">
-							<div class="row">
-								<div class="col-lg-6">
+						<div
+							class="tab-pane"
+							id="news"
+							role="tabpanel">
+							<div class="d-flex flex-wrap">
+								<div class="search-news-item">
 									<div class="card border">
 										<div class="card-body">
 											<div class="d-sm-flex">
@@ -1492,9 +1486,8 @@
 									</div>
 									<!--end card-->
 								</div>
-								<!--end col-->
 
-								<div class="col-lg-6">
+								<div class="search-news-item">
 									<div class="card border">
 										<div class="card-body">
 											<div class="d-sm-flex">
@@ -1545,9 +1538,8 @@
 									</div>
 									<!--end card-->
 								</div>
-								<!--end col-->
 
-								<div class="col-lg-6">
+								<div class="search-news-item">
 									<div class="card border">
 										<div class="card-body">
 											<div class="d-sm-flex">
@@ -1599,9 +1591,8 @@
 									</div>
 									<!--end card-->
 								</div>
-								<!--end col-->
 
-								<div class="col-lg-6">
+								<div class="search-news-item">
 									<div class="card border">
 										<div class="card-body">
 											<div class="d-sm-flex">
@@ -1653,9 +1644,8 @@
 									</div>
 									<!--end card-->
 								</div>
-								<!--end col-->
 
-								<div class="col-lg-6">
+								<div class="search-news-item">
 									<div class="card border">
 										<div class="card-body">
 											<div class="d-sm-flex">
@@ -1708,9 +1698,8 @@
 									</div>
 									<!--end card-->
 								</div>
-								<!--end col-->
 
-								<div class="col-lg-6">
+								<div class="search-news-item">
 									<div class="card border">
 										<div class="card-body">
 											<div class="d-sm-flex">
@@ -1762,9 +1751,8 @@
 									</div>
 									<!--end card-->
 								</div>
-								<!--end col-->
 
-								<div class="col-lg-6">
+								<div class="search-news-item">
 									<div class="card border">
 										<div class="card-body">
 											<div class="d-sm-flex">
@@ -1815,9 +1803,8 @@
 									</div>
 									<!--end card-->
 								</div>
-								<!--end col-->
 
-								<div class="col-lg-6">
+								<div class="search-news-item">
 									<div class="card border">
 										<div class="card-body">
 											<div class="d-sm-flex">
@@ -1869,9 +1856,7 @@
 									</div>
 									<!--end card-->
 								</div>
-								<!--end col-->
 							</div>
-							<!--end row-->
 
 							<div class="mt-4">
 								<ul
@@ -1930,9 +1915,12 @@
 							</div>
 						</div>
 						<!--end tab-pane-->
-						<div class="tab-pane" id="video" role="tabpanel">
-							<div class="row">
-								<div class="col-lg-12 video-list">
+						<div
+							class="tab-pane"
+							id="video"
+							role="tabpanel">
+							<div class="d-flex flex-wrap">
+								<div class="width:100% video-list">
 									<div class="list-element">
 										<h5 class="mb-1">
 											<a href="javascript:void(0);"
@@ -2335,7 +2323,6 @@
 									</div>
 									<!--end list-element-->
 								</div>
-								<!--end col-->
 								<div class="text-center">
 									<button
 										id="loadmore"
@@ -2346,7 +2333,6 @@
 									</button>
 								</div>
 							</div>
-							<!--end row-->
 						</div>
 						<!--end tab-pane-->
 					</div>
@@ -2358,7 +2344,6 @@
 		</div>
 		<!--end card -->
 	</div>
-	<!--end row-->
 </div>
 <!-- container-fluid -->
 
@@ -2370,5 +2355,34 @@
 
 <!-- search-result init js -->
 <script>
-	var swiper=new Swiper(".images-menu",{slidesPerView:"auto",spaceBetween:10,pagination:{el:".swiper-pagination",clickable:!0}}),lightbox=GLightbox({selector:".image-popup",title:!1});function _toConsumableArray(e){if(Array.isArray(e)){for(var r=0,t=Array(e.length);r<e.length;r++)t[r]=e[r];return t}return Array.from(e)}var currentItems,loadmore=document.querySelector("#loadmore");loadmore&&(currentItems=3,loadmore.addEventListener("click",function(e){var r=[].concat(_toConsumableArray(document.querySelectorAll(".list .list-element")));if(r){for(var t=currentItems;t<currentItems+3;t++)r[t]&&(r[t].style.display="block");(currentItems+=3)>=r.length&&(event.target.style.display="none")}}));
+	var swiper = new Swiper(".images-menu", {
+			slidesPerView: "auto",
+			spaceBetween: 10,
+			pagination: { el: ".swiper-pagination", clickable: !0 }
+		}),
+		lightbox = GLightbox({ selector: ".image-popup", title: !1 });
+	function _toConsumableArray(e) {
+		if (Array.isArray(e)) {
+			for (var r = 0, t = Array(e.length); r < e.length; r++) t[r] = e[r];
+			return t;
+		}
+		return Array.from(e);
+	}
+	var currentItems,
+		loadmore = document.querySelector("#loadmore");
+	loadmore &&
+		((currentItems = 3),
+		loadmore.addEventListener("click", function (e) {
+			var r = [].concat(
+				_toConsumableArray(
+					document.querySelectorAll(".list .list-element")
+				)
+			);
+			if (r) {
+				for (var t = currentItems; t < currentItems + 3; t++)
+					r[t] && (r[t].style.display = "block");
+				(currentItems += 3) >= r.length &&
+					(event.target.style.display = "none");
+			}
+		}));
 </script>

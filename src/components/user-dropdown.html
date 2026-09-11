@@ -2,24 +2,34 @@
 <h6 class="dropdown-header">Welcome <span array="contacts" object="$user_id" key="first_name"></span>!</h6>
 <a
 	class="dropdown-item"
-	state-to="adminView, accountView"
-	state.src="/apps/profile/index.html"
-	state.array="contacts"
-	state.object="$user_id"
+	state-to="offcanvas-app-view"
+	state.src="/apps/profile/details.html"
+	aria-controls="offcanvas-app"
+	aria-expanded="false"
+	aria-open
 	role="menuitem"
 	title="View your profile">
+	<span
+		state-to="offcanvas-app-form"
+		state.array="contacts"
+		state.object="$user_id"></span>
 	<i class="ri-account-circle-line text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Profile</span>
 	<div state-to="app" state.object="68741e1d07a037d0d6d00efd"></div>
 </a>
 <a
 	class="dropdown-item"
-	state-to="adminView, accountView"
-	state.src="/apps/organizations/index.html"
-	state.array="organizations"
-	state.object="$organization_id"
+	state-to="offcanvas-app-view"
+	state.src="/apps/organizations/details.html"
+	aria-controls="offcanvas-app"
+	aria-expanded="false"
+	aria-open
 	role="menuitem"
 	title="Organization settings">
+	<span
+		state-to="offcanvas-app-form"
+		state.array="organizations"
+		state.object="$organization_id"></span>
 	<i class="ri-building-line text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Organization</span>
 	<div state-to="app" state.object="68741e1d07a037d0d6d70dfb"></div>

@@ -1,6 +1,7 @@
 <!doctype html>
 <html
-	state-id="theme"
+	state-id="theme, sidebar-size"
+	state-overwrite
 	lang="en"
 	data-layout="vertical"
 	data-topbar-color="defualt"
@@ -117,19 +118,35 @@
 				<!-- Page Title End -->
 
 				<div
-					class="flex-grow-1 h-100 min-width:200px width:300px"
-					plugin='{"$SimpleBar": ["$this", {}]}'>
-					<div
-						id="main-view"
-						class="d-flex flex-column min-height:100% min-width:200px"
-						src=""
-						state-id="adminView"
-						state.onstoragechange="false"
+					class="admin-view-layout d-flex flex-grow-1 min-height:0 min-width:0">
+					<aside
+						id="context-sidebar"
+						class="context-sidebar"
+						aria-label="Filters"
+						aria-hidden="true"
+						state-id="context-sidebar"
+						state.aria-hidden
 						state-overwrite>
-						<!-- <div
+						<div
+							class="context-sidebar-content"
+							src="/components/filters.html"></div>
+					</aside>
+
+					<div
+						class="admin-main-view flex-grow-1 min-height:0 min-width:200px width:300px"
+						plugin='{"$SimpleBar": ["$this", {}]}'>
+						<div
+							id="main-view"
+							class="d-flex flex-column min-height:100% min-width:200px"
+							src=""
+							state-id="adminView"
+							state.onstoragechange="false"
+							state-overwrite>
+							<!-- <div
 							onload.src="/apps/calendar/index.html"
 							onload-query="$parent"
 							onload-setTimeout="3000"></div> -->
+						</div>
 					</div>
 				</div>
 
@@ -140,7 +157,8 @@
 					class="card offcanvas offcanvas-end min-height:0 mb-0 overflow:hidden"
 					tabindex="-1"
 					aria-labelledby="offcanvas-app-label"
-					aria-close-on="button">
+					aria-close-on="button"
+					aria-hidden="true">
 					<form
 						class="card mb-0 d-flex flex-column flex-grow-1 min-height:0 h-100 overflow:hidden"
 						array
@@ -148,8 +166,8 @@
 						state-id="offcanvas-app-form"
 						state-overwrite>
 						<div
-							class="card-header text-center border-bottom-0"
-							src="components/offcanvas-header.html"
+							class="card-header offcanvas-app-topbar"
+							src="/admin/components/offcanvas-header.html"
 							aria-label="App details header"></div>
 						<div
 							class="flex-grow-1 min-height:0 height:0"
@@ -179,42 +197,20 @@
 		<aside
 			id="ai-chat-panel"
 			class="ai-chat-panel"
-			open="false"
-			state-id="ai-chat-panel-drawer"
+			aria-hidden="true"
+			state-id="ai-chat-panel"
+			state.aria-hidden
 			state-overwrite
 			aria-label="CoCreate AI"
 			resizable
 			resize
 			resize-query="$document #page-topbar, $document .page-content, $document #offcanvas-app"
 			resize.style="margin-right:$width">
-			<button
-				type="button"
-				class="ai-chat-panel-refresh"
-				aria-label="Refresh AI chat"
-				title="Refresh AI chat">
-				<i
-					class="ri-refresh-line"
-					aria-hidden="true"></i>
-			</button>
-			<button
-				type="button"
-				class="ai-chat-panel-close"
-				aria-label="Close AI chat"
-				aria-controls="ai-chat-panel"
-				aria-close
-				aria-expanded="false"
-				state-id="ai-chat-panel-drawer"
-				state-to="ai-chat-panel-drawer"
-				state-overwrite
-				state.open="false"
-				state.aria-expanded="false">
-				<i
-					class="ri-close-line"
-					aria-hidden="true"></i>
-			</button>
 			<div
 				class="ai-chat-panel-content"
-				src="/apps/ai/index.html"></div>
+				state-id="ai-chat-panel-content"
+				state-overwrite
+				src=""></div>
 			<div resize="left"></div>
 		</aside>
 		<!-- AI Chat End -->
@@ -230,10 +226,6 @@
 			</div>
 		</div>
 		<!-- Preloader End -->
-
-		<!-- Activities Start -->
-		<div src="/apps/activities/index.html"></div>
-		<!-- Activities End -->
 
 		<!-- Theme Settings Start -->
 		<div src="/components/theme-settings.html"></div>
@@ -268,6 +260,10 @@
 			</div>
 		</div>
 		<!-- Notification End -->
+
+		<!-- Back To Top Start -->
+		<div src="/components/offcanvas-top.html"></div>
+		<!-- Back To Top End -->
 
 		<!-- Back To Top Start -->
 		<div src="/components/scroll-to-top.html"></div>

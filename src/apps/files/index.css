@@ -1,4 +1,29 @@
 /* Files app styles extracted from the legacy bundle. */
+.files-app {
+	width: 100%;
+}
+
+.files-app > .chat-wrapper {
+	width: 100%;
+}
+
+.files-card-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-auto-rows: max-content;
+	height: auto;
+	min-height: 0;
+	align-items: start;
+	align-content: start;
+	gap: var(--admin-gutter);
+}
+
+.files-grid-section {
+	display: block;
+	height: auto;
+	min-height: 0;
+}
+
 .file-manager-menu {
 	max-height: calc(100vh - 296px);
 }
@@ -74,14 +99,17 @@
 	}
 }
 .file-manager-content {
+	width: 100%;
+	min-width: 0;
 	background-color: var(--coc-secondary-bg);
-}
-.file-manager-content-scroll {
-	height: calc(100vh - 185px);
 }
 @media (max-width: 991.98px) {
 	.file-manager-content-scroll {
 		height: calc(100vh - 144px);
+	}
+
+	.files-card-grid {
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 	}
 }
 .file-detail-content-scroll {

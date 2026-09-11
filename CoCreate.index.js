@@ -486,6 +486,8 @@ lazyLoad('floatingLabel', 'floating-label, .floating-label', () => import(/*webp
 lazyLoad('clipboard', '[actions*="clipboard"], [clipboard-query]', () => import(/*webpackChunkName: "clipboard"*/ '@cocreate/clipboard'));
 lazyLoad('print', '[actions*="print"], [print-query]', () => import(/*webpackChunkName: "print"*/ '@cocreate/print'));
 lazyLoad('fullscreen', '[fullscreen]', () => import(/*webpackChunkName: "fullscreen"*/ '@cocreate/fullscreen'));
+lazyLoad('speechSynthesis', '[speech-synthesis]', () => import(/*webpackChunkName: "speechSynthesis"*/ '@cocreate/speech-synthesis'));
+lazyLoad('speechRecognition', '[speech-recognition]', () => import(/*webpackChunkName: "speechRecognition"*/ '@cocreate/speech-recognition'));
 lazyLoad('modal', '[actions*="Modal"]', () => import(/*webpackChunkName: "modal"*/ '@cocreate/modal'));
 lazyLoad('parallax', '[parallax-src]', () => import(/*webpackChunkName: "parallax"*/ '@cocreate/parallax'));
 lazyLoad('progress', '[data-progress]', () => import(/*webpackChunkName: "progress"*/ '@cocreate/progress'));

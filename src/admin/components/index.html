@@ -1,5 +1,7 @@
+<div class="components-app d-flex flex-column width:100% height:var(--admin-content-height) min-height:0 overflow:hidden">
+<div class="card flex-shrink-0 mb-0">
 <div
-	class="card-body d-flex justify-content-between align-items-center gap-2 z-index:3">
+	class="card-body d-flex flex-wrap flex-grow-0 flex-shrink-0 justify-content-between align-items-center gap-2 z-index:3">
 	<style>
 		/* .search-box {
             flex-grow: 1;
@@ -7,7 +9,17 @@
 
 		.search-box {
 			min-width: 20px;
+			max-width: 100%;
 			justify-content: flex-start;
+		}
+		@media (min-width: 577px) {
+			.search-box:has(#search-objects) {
+				width: 320px;
+			}
+			#search-objects {
+				width: 0;
+				flex: 1 1 auto;
+			}
 		}
 		.form-control.search {
 			z-index: unset !important;
@@ -127,7 +139,7 @@
 			<button
 				type="button"
 				class="btn btn-outline-success"
-				aria-controls="filters-view"
+				aria-controls="context-sidebar"
 				aria-haspopup="dialog"
 				aria-expanded="false"
 				title="Filter options">
@@ -140,7 +152,7 @@
 	</div>
 
 	<!-- Navigation / Controls -->
-	<div class="hstack gap-2 align-items-center height:40px">
+	<div class="hstack gap-2 flex-wrap">
 		<!-- Pages Dropdown -->
 		<div class="dropdown">
 			<button
@@ -151,7 +163,7 @@
 				aria-controls="pagesDropdownMenu"
 				aria-haspopup="menu">
 				<i class="ri-pages-line"></i>
-				<span class="d-none d-sm-inline ms-1">Pages</span>
+				<span class="d-none d-sm-inline">Pages</span>
 			</button>
 			<ul
 				id="pagesDropdownMenu"
@@ -523,7 +535,7 @@
 				aria-controls="uiDropdownMenu"
 				aria-haspopup="menu">
 				<i class="ri-pages-line"></i>
-				<span class="d-none d-sm-inline ms-1">Components</span>
+				<span class="d-none d-sm-inline">Components</span>
 			</button>
 			<ul
 				id="uiDropdownMenu"
@@ -1211,18 +1223,18 @@
 		<!-- UI Dropdown -->
 		<div class="dropdown">
 			<button
-				class="btn btn-outline-info dropdown-toggle"
+				class="btn btn-outline-primary dropdown-toggle"
 				type="button"
 				id="componentsDropdown"
 				aria-expanded="false"
 				aria-controls="componentsDropdownMenu"
 				aria-haspopup="menu">
 				<i class="ri-stack-line"></i>
-				<span class="d-none d-sm-inline ms-1">UI</span>
+				<span class="d-none d-sm-inline">UI</span>
 			</button>
 			<ul
 				id="componentsDropdownMenu"
-				class="dropdown-menu dropdown-menu-end"
+				class="dropdown-menu width:180px dropdown-menu-end"
 				aria-labelledby="componentsDropdown"
 				aria-close-on="anywhere">
 				<div
@@ -1401,43 +1413,15 @@
 			<i class="ri-delete-bin-2-line"></i>
 		</button>
 
-		<button
-			type="button"
-			class="btn btn-success add-btn"
-			aria-controls="offcanvas-app"
-			aria-open
-			aria-haspopup="dialog"
-			aria-expanded="false"
-			state-to="offcanvas-app-view"
-			state.src="form.html"
-			state.$reset
-			id="create-btn">
-			<input
-				type="hidden"
-				state-id="app"
-				state-overwrite
-				array="apps"
-				object
-				key="path"
-				value-suffix="/form.html"
-				input.state.src="$value"
-				input-query="$parent" />
-			<i class="ri-add-line align-bottom"></i>
-			<span class="d-none d-xl-inline ms-1">
-				New
-				<span
-					state-id="app"
-					state-overwrite
-					array="apps"
-					object
-					key="singularName"></span>
-			</span>
-		</button>
 	</div>
 </div>
 
+</div>
 <div
 	state-id="component-view"
 	state-overwrite
 	src=""
-	class="position-relative"></div>
+	style="margin-top: var(--admin-gutter)"
+	class="position-relative flex-grow-1 min-height:0 height:0 width:100%"
+	plugin='{"$SimpleBar": ["$this", {}]}'></div>
+</div>

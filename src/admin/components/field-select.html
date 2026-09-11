@@ -34,7 +34,9 @@
 			<a
 				class="d-flex flex-column align-items-start p-2"
 				role="button"
-				click.key="fields[{{index}}].children"
+				state-to="kanban-column"
+				state.filter-query-key="{{fields.key}}"
+				click.key="fields[{{index}}].options"
 				click-query="$document #kanban"
 				aria-label="Select field">
 				<h6 class="mb-0">{{fields.label}}</h6>
