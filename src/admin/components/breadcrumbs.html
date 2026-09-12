@@ -1,9 +1,24 @@
+<style>
+	html:not([data-breadcrumbs="on"]) #layout-wrapper .page-title,
+	html:not([data-breadcrumbs="on"]) #layout-wrapper .page-title-box {
+		display: none !important;
+	}
+
+	html[data-breadcrumbs="on"] #layout-wrapper .page-title {
+		display: block !important;
+	}
+
+	html[data-breadcrumbs="on"] #layout-wrapper .page-title-box {
+		display: flex !important;
+	}
+</style>
+
 <form
 	state-id="app"
 	state-overwrite
 	array="apps"
 	object=""
-	class="page-title-box d-flex align-items-center justify-content-between bg-galaxy-transparent">
+	class="admin-breadcrumbs page-title-box align-items-center justify-content-between bg-galaxy-transparent">
 	<div>
 		<p class="text-muted mb-1 text-uppercase fs-12 letter-spacing:1px">
 			Official Product Catalog

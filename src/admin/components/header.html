@@ -84,36 +84,44 @@
 		</div>
 
 		<div class="d-flex align-items-center">
-			<div class="dropdown d-md-none topbar-head-dropdown header-item">
+			<div
+				class="topbar-search-compact dropdown d-md-none topbar-head-dropdown header-item">
 				<button
 					type="button"
 					class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle"
 					id="header-search-button"
+					aria-label="Open search"
 					aria-haspopup="true"
 					aria-expanded="false"
-					aria-controls="header-search-dropdown">
+					aria-controls="header-search-dropdown"
+					title="Search">
 					<i class="ri-search-line fs-22"></i>
 				</button>
 				<div
 					class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 right:0 top:72px"
 					id="header-search-dropdown"
-					aria-labelledby="header-search-button">
-					<form class="p-3">
+					aria-labelledby="header-search-button"
+					aria-close-on="outside">
+					<form class="p-3 border-bottom">
 						<div class="form-group m-0">
 							<div class="input-group">
 								<input
+									id="header-search-options"
 									type="text"
 									class="form-control"
 									placeholder="Search products, protocols, or kits..."
-									aria-label="Recipient's username" />
+									autocomplete="off"
+									aria-label="Search" />
 								<button
 									class="btn btn-primary"
-									type="submit">
+									type="submit"
+									aria-label="Submit search">
 									<i class="ri-search-line"></i>
 								</button>
 							</div>
 						</div>
 					</form>
+					<div src="/components/search.html"></div>
 				</div>
 			</div>
 
@@ -165,25 +173,6 @@
 				</button>
 			</div>
 
-			<!-- Light/Dark theme Icon -->
-			<div class="ms-1 header-item">
-				<button
-					type="button"
-					array="contacts"
-					object="$user_id"
-					key="theme.colorScheme"
-					value=""
-					realtime="true"
-					input.data-bs-theme="$value"
-					input-query="$document html"
-					click
-					click.value="dark, light"
-					class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle light-dark-mode"
-					title="Toggle Light/Dark Mode">
-					<i class="ri-moon-line fs-22"></i>
-				</button>
-			</div>
-
 			<!-- Notifications Icon with Badge -->
 			<div
 				class="dropdown topbar-head-dropdown ms-1 header-item"
@@ -215,9 +204,11 @@
 					type="button"
 					class="btn material-shadow-none"
 					id="header-user-button"
+					aria-label="Open account menu"
 					aria-haspopup="true"
 					aria-expanded="false"
-					aria-controls="header-user-dropdown">
+					aria-controls="header-user-dropdown"
+					title="Account menu">
 					<form
 						class="d-flex align-items-center"
 						array="contacts"

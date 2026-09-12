@@ -494,6 +494,25 @@
 						</div>
 					</div>
 
+					<div class="form-check form-switch form-switch-md mb-3 mt-4">
+						<input
+							type="checkbox"
+							id="show-breadcrumbs"
+							key="theme.breadcrumbs"
+							name="theme.breadcrumbs"
+							value="on"
+							input-query="$document html"
+							input.data-breadcrumbs="$value"
+							change-query="$document .page-title"
+							change.$hidden="!$value"
+							class="form-check-input" />
+						<label
+							class="form-check-label"
+							for="show-breadcrumbs">
+							Show breadcrumbs
+						</label>
+					</div>
+
 					<div id="sidebar-size">
 						<h6 class="mt-4 mb-0 fw-semibold text-uppercase">
 							Sidebar Size

@@ -98,7 +98,13 @@
 		}
 	};
 	let socket;
+	let listeningSocket;
+	let socketRetryTimer;
+	let socketRetryDelay = 250;
+	let conversationRestoreStarted = false;
+	let retrySocketConnection = () => {};
 	const menuCloseRoot = document;
+	const compactDockQuery = globalThis.matchMedia("(max-width: 860px)");
 	if (menuCloseRoot.aiCodeMenuCloseHandler) {
 		menuCloseRoot.removeEventListener("click", menuCloseRoot.aiCodeMenuCloseHandler);
 	}
@@ -132,15 +138,18 @@
 	panelDock?.addEventListener("click", () => {
 		const appPath = "/apps/ai/index.html";
 		const mainView = document.querySelector("#main-view");
+		const panel = document.querySelector("#ai-chat-panel");
 		const panelContent = document.querySelector(".ai-chat-panel-content");
 		const navbarButton = document.querySelector("#ai-chat-button");
-		if (!mainView || !panelContent || !navbarButton) return;
+		if (!mainView || !panel || !panelContent || !navbarButton) return;
 		const dockLeft = Boolean(shell.closest("#ai-chat-panel"));
+		if (!dockLeft && compactDockQuery.matches) return;
 		shell.setAttribute("render-clone", "");
 		if (dockLeft) {
 			mainView.setAttribute("src", "");
 			mainView.replaceChildren(shell);
 			panelContent.setAttribute("src", "");
+			panel.setAttribute("aria-hidden", "true");
 			navbarButton.setAttribute("state-to", "adminView");
 			navbarButton.setAttribute("state.src", appPath);
 			navbarButton.setAttribute("aria-controls", "");
@@ -151,11 +160,13 @@
 					"state.src": appPath,
 					"aria-controls": ""
 				},
-				"ai-chat-panel-content": { src: "" }
+				"ai-chat-panel-content": { src: "" },
+				"ai-chat-panel": { "aria-hidden": "true" }
 			});
 		} else {
 			panelContent.setAttribute("src", "");
 			panelContent.replaceChildren(shell);
+			panel.setAttribute("aria-hidden", "false");
 			mainView.setAttribute("src", "");
 			navbarButton.setAttribute("state-to", "ai-chat-panel-content");
 			navbarButton.setAttribute("state.src", appPath);
@@ -167,7 +178,8 @@
 					"state.src": appPath,
 					"aria-controls": "ai-chat-panel"
 				},
-				"ai-chat-panel-content": { src: appPath }
+				"ai-chat-panel-content": { src: appPath },
+				"ai-chat-panel": { "aria-hidden": "false" }
 			});
 		}
 		configureDockButton();
@@ -175,6 +187,18 @@
 			shell.removeAttribute("render-clone");
 		}));
 	});
+	const enforceCompactDock = () => {
+		const panel = document.querySelector("#ai-chat-panel");
+		if (
+			!compactDockQuery.matches ||
+			!panelDock ||
+			!panel?.contains(shell) ||
+			panel.getAttribute("aria-hidden") !== "false"
+		) return;
+		panelDock.click();
+	};
+	compactDockQuery.addEventListener("change", enforceCompactDock);
+	requestAnimationFrame(enforceCompactDock);
 	let conversationId;
     let conversationLoadId;
 
@@ -2491,11 +2515,19 @@
     };
 
     const connect = () => {
-        socket = window.CoCreate?.socket;
-        if (!socket?.send || !socket?.listen) return false;
-        socket.listen("ai.chat", onChat);
-        setStatus("Connected", "connected");
-        return true;
+		const candidate = window.CoCreate?.socket;
+		if (!candidate?.send || !candidate?.listen) {
+			setStatus("Connecting");
+			return false;
+		}
+		socket = candidate;
+		if (listeningSocket !== candidate) {
+			candidate.listen("ai.chat", onChat);
+			listeningSocket = candidate;
+		}
+		send.disabled = false;
+		setStatus(candidate.connected ? "Connected" : "Connecting", candidate.connected ? "connected" : "");
+		return true;
     };
 
     updateModels();
@@ -2686,10 +2718,26 @@
 			}
 	});
 	initAIObserver({
+		types: ["attributes"],
+		attributeFilter: ["aria-hidden"],
+		selector: "#ai-chat-panel",
+		callback: (mutation) => {
+			if (
+				mutation.target.id === "ai-chat-panel" &&
+				mutation.target.getAttribute("aria-hidden") === "false"
+			) requestAnimationFrame(enforceCompactDock);
+		}
+	});
+	initAIObserver({
 		types: ["removedNodes"],
 		selector: "[data-ai-chat]",
 		callback: (mutation) => {
 			if (mutation.target !== shell || mutation.target.isConnected) return;
+			compactDockQuery.removeEventListener("change", enforceCompactDock);
+			clearTimeout(socketRetryTimer);
+			document.removeEventListener("socketLoaded", retrySocketConnection);
+			window.removeEventListener("online", retrySocketConnection);
+			window.removeEventListener("focus", retrySocketConnection);
 			for (const name of [...aiObserverNames]) {
 				globalThis.CoCreate?.observer?.uninit(name);
 			}
@@ -2714,19 +2762,25 @@
         prompt.focus();
     });
 
-	if (connect()) {
-		restoreConversation();
-	} else {
-		let attempts = 0;
-		const timer = setInterval(() => {
-			if (connect()) {
-				clearInterval(timer);
-				restoreConversation();
-			} else if (++attempts >= 40) {
-				clearInterval(timer);
-				setStatus("Socket unavailable", "error");
-				send.disabled = true;
-			}
-		}, 250);
-	}
+	retrySocketConnection = () => {
+		clearTimeout(socketRetryTimer);
+		const available = connect();
+		if (available && !conversationRestoreStarted) {
+			conversationRestoreStarted = true;
+			restoreConversation();
+		}
+		if (socket?.connected) {
+			socketRetryDelay = 250;
+			return;
+		}
+		socketRetryTimer = setTimeout(
+			retrySocketConnection,
+			socketRetryDelay
+		);
+		socketRetryDelay = Math.min(socketRetryDelay * 2, 5000);
+	};
+	document.addEventListener("socketLoaded", retrySocketConnection);
+	window.addEventListener("online", retrySocketConnection);
+	window.addEventListener("focus", retrySocketConnection);
+	retrySocketConnection();
 })();

@@ -1,6 +1,11 @@
 <div
-	class="card-body d-flex flex-wrap justify-content-between align-items-center gap-2">
+	class="list-header card-body d-flex flex-wrap justify-content-between align-items-center gap-2">
 	<style>
+		.list-header {
+			container-name: list-header;
+			container-type: inline-size;
+		}
+
 		/* .search-box {
 			flex-grow: 1;
 		} */
@@ -54,6 +59,25 @@
 				padding-left: 40px !important;
 			}
 		}
+
+		@container list-header (max-width: 1200px) {
+			.list-action-label {
+				display: none !important;
+			}
+
+			.list-compact-action {
+				display: inline-flex;
+				width: 40px;
+				height: 38px;
+				align-items: center;
+				justify-content: center;
+				padding: 0;
+			}
+
+			.list-compact-action.dropdown-toggle::after {
+				display: none;
+			}
+		}
 	</style>
 
 	<div class="search-box">
@@ -71,6 +95,7 @@
 				aria-controls="context-sidebar"
 				aria-haspopup="dialog"
 				aria-expanded="false"
+				aria-label="Filter options"
 				title="Filter options">
 				<i class="ri-filter-3-line align-bottom"></i>
 			</button>
@@ -84,16 +109,18 @@
 	<div class="hstack gap-2">
 		<div class="dropdown">
 			<button
-				class="btn btn-outline-primary dropdown-toggle"
+				class="list-compact-action btn btn-outline-primary dropdown-toggle"
 				type="button"
 				id="viewDropdown"
 				aria-expanded="false"
 				aria-controls="viewDropdownMenu"
-				aria-haspopup="menu">
+				aria-haspopup="menu"
+				aria-label="Change view"
+				title="Change view">
 				<i
 					state-id="list-view"
 					class="ri-layout-grid-line"></i>
-				<span class="d-none d-sm-inline">View</span>
+				<span class="list-action-label d-none d-sm-inline">View</span>
 			</button>
 			<ul
 				id="viewDropdownMenu"
@@ -136,20 +163,25 @@
 		</div>
 
 		<button
+			type="button"
 			class="btn btn-soft-danger"
-			id="remove-actions">
+			id="remove-actions"
+			aria-label="Delete selected items"
+			title="Delete selected items">
 			<i class="ri-delete-bin-2-line"></i>
 		</button>
 		<button
 			type="button"
-			class="btn btn-success add-btn"
+			class="list-compact-action btn btn-success add-btn"
 			aria-controls="offcanvas-app"
 			aria-open
 			aria-haspopup="dialog"
 			aria-expanded="false"
 			state-to="offcanvas-app-view"
 			state.src=""
-			id="create-btn">
+			id="create-btn"
+			aria-label="Create item"
+			title="Create item">
 			<input
 				type="hidden"
 				state-id="app"
@@ -175,8 +207,8 @@
 					input-query="$parent" />
 			</div>
 
-			<i class="ri-add-line align-bottom"></i>
-			<span class="d-none d-xl-inline ms-1">
+			<i class="ri-add-line"></i>
+			<span class="list-action-label d-none d-xl-inline ms-1">
 				New
 				<span
 					state-id="app"

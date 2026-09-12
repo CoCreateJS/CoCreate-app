@@ -53,6 +53,10 @@
 	text-transform: uppercase;
 }
 
+.avatar-title > .avatar-initial:last-of-type {
+	letter-spacing: 0;
+}
+
 .avatar-group {
 	padding-left: 12px;
 	display: -webkit-box;

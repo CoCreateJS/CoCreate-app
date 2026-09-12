@@ -1,6 +1,20 @@
 <div
 	class="h-100"
 	plugin='{"$SimpleBar": ["$this", {}]}'>
+	<style>
+		#grid {
+			container-name: card-grid;
+			container-type: inline-size;
+		}
+
+		@container card-grid (max-width: 672px) {
+			#grid > .card {
+				width: 100%;
+				max-width: none !important;
+				flex-basis: 100% !important;
+			}
+		}
+	</style>
 	<div
 		id="grid"
 		array=""

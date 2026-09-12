@@ -246,7 +246,36 @@
 }
 
 .ai-topbar .ai-chat-panel-dock svg {
+	display: block;
 	fill: currentColor;
+}
+
+.ai-topbar .ai-chat-panel-dock i {
+	line-height: 0;
+}
+
+@media (max-width: 860px) {
+	#main-view .ai-topbar {
+		position: absolute;
+		top: var(--admin-gutter);
+		left: var(--admin-gutter);
+		width: 36px;
+		height: 36px;
+		min-height: 0;
+		flex-basis: auto;
+		padding: 0;
+		border: 0;
+		background: transparent;
+	}
+
+	#main-view .ai-topbar-title,
+	#main-view .ai-topbar-actions {
+		display: none !important;
+	}
+
+	#main-view .ai-messages {
+		padding-top: calc(var(--admin-gutter) + 44px);
+	}
 }
 
 .ai-topbar .ai-sidebar-toggle:hover,
