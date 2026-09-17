@@ -1,12 +1,17 @@
 											<button
 												class="btn btn-ghost-primary btn-icon btn-sm dropdown material-shadow-none"
 												type="button"
-												aria-expanded="false" aria-haspopup="menu" aria-controls="dropdown-apps-files-components-options-dropdown-1">
+												aria-expanded="false"
+												aria-haspopup="menu"
+												aria-controls="files-options-{{object._id}}">
 												<i
 													class="ri-more-2-fill fs-16 align-bottom"></i>
 											</button>
 											<ul
-												class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere" id="dropdown-apps-files-components-options-dropdown-1" aria-hidden="true">
+												id="files-options-{{object._id}}"
+												class="dropdown-menu dropdown-menu-end"
+												aria-close-on="anywhere"
+												aria-hidden="true">
 												<li>
 													<a
 														class="dropdown-item view-item-btn"
@@ -16,16 +21,27 @@
 												</li>
 												<li>
 													<a
-														class="dropdown-item edit-folder-list"
-														href="#createFolderModal"
-														role="button" aria-controls="createFolderModal">Rename</a
+														class="dropdown-item"
+														role="button"
+														aria-haspopup="dialog"
+														aria-controls="rename-file-modal"
+														aria-expanded="false"
+														state-to="rename-file-form"
+														state.array="files"
+														state.object="{{object._id}}">Rename</a
 													>
 												</li>
 												<li>
 													<a
-														class="dropdown-item"
-														href="#removeFolderModal"
-														role="button" aria-controls="removeFolderModal">Delete</a
+														class="dropdown-item remove-item-btn"
+														role="button"
+														aria-haspopup="dialog"
+														aria-label="Delete {{object.name}}"
+														aria-controls="delete-file-modal"
+														aria-expanded="false"
+														state-to="delete-file-record"
+														state.array="files"
+														state.object="{{object._id}}">Delete</a
 													>
 												</li>
 											</ul>

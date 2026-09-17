@@ -12,65 +12,49 @@
 		<ul class="list-unstyled file-manager-menu">
 			<li>
 				<a
-					href="#collapseExample"
-					role="button"
-					aria-expanded="true"
-					aria-controls="collapseExample">
+					class="active"
+					href="#!"
+					aria-current="page"
+					state='{"file-view":{"src":"/apps/files/components/drive.html"},"folder-filter":{"filter-query-value":"/"},"file-filter":{"filter-query-value":"/"}}'>
+					<i class="ri-building-line align-bottom me-2"></i>
+					<span class="file-list-link">Organization</span>
+				</a>
+			</li>
+			<li>
+				<a
+					href="#!"
+					state-to="file-view"
+					state.src="/apps/files/components/my-drive.html">
 					<i class="ri-folder-2-line align-bottom me-2"></i>
 					<span class="file-list-link">My Drive</span>
 				</a>
-				<div
-					class="collapse show"
-					id="collapseExample">
-					<ul class="sub-menu list-unstyled">
-						<li>
-							<a href="#!">Assets</a>
-						</li>
-						<li>
-							<a href="#!">Marketing</a>
-						</li>
-						<li>
-							<a href="#!">Personal</a>
-						</li>
-						<li>
-							<a href="#!">Projects</a>
-						</li>
-						<li>
-							<a href="#!">Templates</a>
-						</li>
-					</ul>
-				</div>
 			</li>
 			<li>
-				<a href="#!"
-					><i class="ri-file-list-2-line align-bottom me-2"></i>
-					<span class="file-list-link">Documents</span></a
-				>
+				<a
+					href="#!"
+					state-to="file-view"
+					state.src="/apps/files/components/recent.html">
+					<i class="ri-history-line align-bottom me-2"></i>
+					<span class="file-list-link">Recent</span>
+				</a>
 			</li>
 			<li>
-				<a href="#!"
-					><i class="ri-image-2-line align-bottom me-2"></i>
-					<span class="file-list-link">Media</span></a
-				>
-			</li>
-
-			<li>
-				<a href="#!"
-					><i class="ri-history-line align-bottom me-2"></i>
-					<span class="file-list-link">Recent</span></a
-				>
+				<a
+					href="#!"
+					state-to="file-view"
+					state.src="/apps/files/components/starred.html">
+					<i class="ri-star-line align-bottom me-2"></i>
+					<span class="file-list-link">Starred</span>
+				</a>
 			</li>
 			<li>
-				<a href="#!"
-					><i class="ri-star-line align-bottom me-2"></i>
-					<span class="file-list-link">Important</span></a
-				>
-			</li>
-			<li>
-				<a href="#!"
-					><i class="ri-delete-bin-line align-bottom me-2"></i>
-					<span class="file-list-link">Deleted</span></a
-				>
+				<a
+					href="#!"
+					state-to="file-view"
+					state.src="/apps/files/components/trash.html">
+					<i class="ri-delete-bin-line align-bottom me-2"></i>
+					<span class="file-list-link">Trash</span>
+				</a>
 			</li>
 		</ul>
 	</div>

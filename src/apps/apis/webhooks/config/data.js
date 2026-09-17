@@ -14,7 +14,7 @@ export default {
             "_id": "65f8cb557b39a3c1a8904e20",
             "api_id": "65f8ca227b39a3c1a8904dfe", // Stripe API Provider Ref
             "path": "stripe/payments",
-            "description": "Verifies Stripe webhook signatures and activates paid memberships after successful invoice payments.",
+            "description": "Verifies Stripe signatures and applies successful PaymentIntent top-ups to the organization credit ledger.",
             "enabled": true,
             "chunks": [],
             "receive": {
@@ -37,6 +37,9 @@ export default {
             "timestampParts": {
                 "$signatureParts.0.split": "="
             },
+            "receivedSignatureParts": {
+                "$signatureParts.1.split": "="
+            },
             "expectedSignature": {
                 "$security.createWebhookSignature": [
                     "$rawBody",
@@ -47,10 +50,18 @@ export default {
                     }
                 ]
             },
+            "receivedSignature": {
+                "$concat": [
+                    "t=",
+                    "$timestampParts.1",
+                    ",v1=",
+                    "$receivedSignatureParts.1"
+                ]
+            },
             "authenticated": {
                 "$security.timingSafeEqual": [
                     "$expectedSignature",
-                    "$header.stripe-signature"
+                    "$receivedSignature"
                 ]
             },
             "process": {
@@ -67,16 +78,19 @@ export default {
                                     "$if": {
                                         "$event.type": {
                                             "$eq": {
-                                                "invoice.payment_succeeded": {
-                                                    "$crud.send": {
-                                                        "method": "object.update",
-                                                        "array": "users",
-                                                        "object": [
-                                                            {
-                                                                "_id": "$event.data.object.metadata.user_id",
-                                                                "status": "active_paid"
-                                                            }
-                                                        ]
+                                                "payment_intent.succeeded": {
+                                                    "$server.usage.payment": {
+                                                        "organization_id": "$event.data.object.metadata.organization_id",
+                                                        "provider": "stripe",
+                                                        "event_id": "$event.id",
+                                                        "payment_intent_id": "$event.data.object.id",
+                                                        "amount": "$event.data.object.amount_received",
+                                                        "currency": "$event.data.object.currency",
+                                                        "precision": 2,
+                                                        "status": "$event.data.object.status",
+                                                        "customer_id": "$event.data.object.customer",
+                                                        "payment_method_id": "$event.data.object.payment_method",
+                                                        "metadata": "$event.data.object.metadata"
                                                     }
                                                 },
                                                 "$else": null

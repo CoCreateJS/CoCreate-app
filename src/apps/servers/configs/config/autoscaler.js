@@ -24,43 +24,8 @@ export default {
             "server": "*",
             "worker": "*",
             "config": {
-                "spot": {
-                    "enabled": true,
-                    "fallbackToOnDemand": true
-                },
-                "scaleOut": {
-                    "cpuThreshold": 85,
-                    "memoryThreshold": 85,
-                    "consecutiveFlushes": 3,
-                    "maxClusterSize": 0
-                },
-                "scaleIn": {
-                    "cpuThreshold": 10,
-                    "memoryThreshold": 45,
-                    "consecutiveFlushes": 10,
-                    "preservation": "continent",
-                    "minClusterSize": 2,
-                    "decommissionStrategy": "local"
-                },
-                "geoScale": {
-                    "enabled": true,
-                    "sheddingThreshold": 20,
-                    "densityBy": "continent"
-                },
-                "vertical": {
-                    "enabled": true,
-                    "maxNodesPerTier": 2,
-                    "tiers": [
-                        { "vCPU": 1, "memoryGb": 2 },
-                        { "vCPU": 2, "memoryGb": 8 },
-                        { "vCPU": 4, "memoryGb": 16 },
-                        { "vCPU": 8, "memoryGb": 32 },
-                        { "vCPU": 16, "memoryGb": 64 },
-                        { "vCPU": 32, "memoryGb": 128 },
-                        { "vCPU": 64, "memoryGb": 256 }
-                    ]
-                },
-                "startupScript": `#!/usr/bin/env bash
+                "startupScript": {
+                    "$concat": [[`#!/usr/bin/env bash
 # ==============================================================================
 # CoCreate WebService Startup Script (Cloud-Init / User Data)
 # Zero-Trust / Immutable Node Lockdown
@@ -105,6 +70,12 @@ chmod +x /usr/local/bin/cocreatews-linux-x86
 # 4. Systemd Service Unit Provisioning
 # ------------------------------------------------------------------------------
 echo "[CoCreate] Creating systemd service unit..."
+cat << 'EOF' > /etc/cocreatews/environment
+NODE_ENV=production
+organization_id=`, "$payload.organization_id", "\n", "$payload.data.environment", `
+EOF
+chmod 600 /etc/cocreatews/environment
+
 cat << 'EOF' > /etc/systemd/system/cocreatews.service
 [Unit]
 Description=CoCreate WebService Node
@@ -116,11 +87,7 @@ User=root
 Restart=always
 RestartSec=3
 
-# Environment Variables
-Environment=NODE_ENV=production
-Environment=organization_id=5ff747727005da1c272740ab
-Environment=storage.mongodb.provider=mongodb
-Environment=storage.mongodb.url=mongodb+srv://cocreate-app:F98HAalM9qVZxfcU@cocreatedatabase.ne3tel6.mongodb.net/?retryWrites=true&w=majority
+EnvironmentFile=/etc/cocreatews/environment
 
 # Execution & Logging
 ExecStart=/usr/local/bin/cocreatews-linux-x86
@@ -165,7 +132,8 @@ systemctl stop sshd || systemctl stop ssh || true
 systemctl disable sshd || systemctl disable ssh || true
 systemctl mask sshd || systemctl mask ssh || true
 
-echo "[CoCreate] Node successfully locked down. HTTP (80) & HTTPS (443) open, SSH (22) disabled."`,
+echo "[CoCreate] Node successfully locked down. HTTP (80) & HTTPS (443) open, SSH (22) disabled."`]]
+                }
             }
         },
         {

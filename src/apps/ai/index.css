@@ -1,5 +1,5 @@
 .ai-shell {
-	--ai-sidebar-bg: var(--coc-secondary-bg);
+	--ai-sidebar-bg: var(--coc-body-bg);
 	--ai-sidebar-color: var(--coc-body-color);
 	--ai-sidebar-muted: var(--coc-secondary-color);
 	--ai-sidebar-soft: var(--coc-tertiary-bg);
@@ -220,9 +220,15 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	margin-left: auto;
+}
+
+.ai-topbar > .ai-new-chat {
+	margin-left: 0;
 }
 
 .ai-topbar .ai-sidebar-toggle,
+.ai-topbar .ai-new-chat,
 .ai-topbar .ai-chat-panel-fullscreen,
 .ai-topbar .ai-chat-panel-dock,
 .ai-topbar .ai-chat-panel-close {
@@ -239,6 +245,7 @@
 }
 
 .ai-topbar .ai-sidebar-toggle i,
+.ai-topbar .ai-new-chat i,
 .ai-topbar .ai-chat-panel-fullscreen i,
 .ai-topbar .ai-chat-panel-dock i,
 .ai-topbar .ai-chat-panel-close i {
@@ -269,6 +276,7 @@
 	}
 
 	#main-view .ai-topbar-title,
+	#main-view .ai-topbar > .ai-new-chat,
 	#main-view .ai-topbar-actions {
 		display: none !important;
 	}
@@ -280,6 +288,7 @@
 
 .ai-topbar .ai-sidebar-toggle:hover,
 .ai-topbar .ai-sidebar-toggle[aria-expanded="true"],
+.ai-topbar .ai-new-chat:hover,
 .ai-topbar .ai-chat-panel-fullscreen:hover,
 .ai-topbar .ai-chat-panel-dock:hover,
 .ai-topbar .ai-chat-panel-close:hover {
@@ -1339,6 +1348,7 @@
 	flex: 1 1 auto;
 	min-width: 0;
 	flex-direction: column;
+	background: var(--coc-body-bg);
 }
 
 .ai-status {

@@ -93,7 +93,7 @@
 		<!-- Header Start -->
 		<header
 			id="page-topbar"
-			src="/admin/components/header.html"
+			src="/components/workspace-header.html"
 			scroll="topbar-shadow"
 			scroll-attribute="class"
 			scroll-top="50"></header>
@@ -122,6 +122,13 @@
 				<div
 					class="admin-view-layout d-flex flex-grow-1 min-height:0 min-width:0">
 					<aside
+						id="create-panel"
+						class="create-panel"
+						aria-label="Create item"
+						aria-hidden="true"
+						src="/components/create-panel.html"></aside>
+
+					<aside
 						id="context-sidebar"
 						class="context-sidebar"
 						aria-label="Filters"
@@ -140,7 +147,7 @@
 						<div
 							id="main-view"
 							class="d-flex flex-column min-height:100% min-width:200px"
-							src=""
+							src="/apps/ai/index.html"
 							state-id="adminView"
 							state.onstoragechange="false"
 							state-overwrite>
@@ -150,45 +157,29 @@
 							onload-setTimeout="3000"></div> -->
 						</div>
 					</div>
-				</div>
-
-				<div
-					id="offcanvas-app"
-					resizable
-					role="dialog"
-					class="card offcanvas offcanvas-end min-height:0 mb-0 overflow-hidden"
-					tabindex="-1"
-					aria-labelledby="offcanvas-app-label"
-					aria-close-on="button"
-					aria-hidden="true">
-					<form
-						class="card mb-0 d-flex flex-column flex-grow-1 min-height:0 h-100 overflow-hidden"
-						array
-						object
-						state-id="offcanvas-app-form"
-						state-overwrite>
+					<div
+						id="offcanvas-app"
+						docked="true"
+						resizable
+						role="dialog"
+						class="app-panel offcanvas offcanvas-end min-height:0 overflow-hidden"
+						tabindex="-1"
+						aria-labelledby="offcanvas-app-label"
+						aria-close-on="button"
+						aria-hidden="true">
 						<div
-							class="card-header offcanvas-app-topbar"
-							src="/admin/components/offcanvas-header.html"
-							aria-label="App details header"></div>
-						<div
-							class="flex-grow-1 min-height:0 height:0"
-							plugin='{"$SimpleBar": ["$this", {}]}'>
+							class="offcanvas-app-content d-flex flex-column flex-grow-1 min-height:0 h-100 overflow-hidden">
 							<div
-								id="offcanvas-app-view"
-								state-id="offcanvas-app-view"
-								state-overwrite
-								input-query="$closest form .offcanvas-src"
-								input.value="$getAttribute(src)"
-								src=""></div>
+								class="offcanvas-app-scroll flex-grow-1 min-height:0 height:0 overflow:auto">
+								<div
+									id="offcanvas-app-view"
+									state-id="offcanvas-app-view"
+									state-overwrite
+									src=""></div>
+							</div>
 						</div>
-						<div
-							class="card-footer flex-shrink-0"
-							src="/components/form-buttons.html"
-							role="region"
-							aria-label="Form actions"></div>
-					</form>
-					<div resize="left"></div>
+						<div resize="left"></div>
+					</div>
 				</div>
 			</div>
 			<!-- Page Content End -->
@@ -267,10 +258,6 @@
 		<div src="/components/offcanvas-top.html"></div>
 		<!-- Back To Top End -->
 
-		<!-- Back To Top Start -->
-		<div src="/components/scroll-to-top.html"></div>
-		<!-- Back To Top End -->
-
 		<!-- Vertical Overlay Start -->
 		<div
 			class="vertical-overlay"
@@ -280,6 +267,7 @@
 
 		<!-- JAVASCRIPT -->
 		<script src="/dist/CoCreate.js"></script>
+		<script src="/components/component-form.js?v=5"></script>
 		<script src="/assets/js/lord-icon-2.1.0.js"></script>
 	</body>
 </html>

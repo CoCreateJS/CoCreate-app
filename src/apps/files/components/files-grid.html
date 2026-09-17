@@ -1,14 +1,21 @@
 <div
 	id="file-card-list"
-	class="files-card-grid pt-3"
+	class="files-card-grid"
 	array="files"
 	object
+	state-id="file-filter"
+	state-overwrite
 	filter-query-key="path"
 	filter-query-value="/"
 	filter-sort-key="name"
 	filter-sort-direction="asc"
 	filter-limit="20"
 	render-query="[template]">
+	<div
+		class="d-none"
+		filter-query="$parent"
+		filter-query-key="deleted.$ne"
+		filter-query-value="true"></div>
 	<div
 		class="d-none"
 		filter-query="$parent"
@@ -25,10 +32,11 @@
 				aria-expanded="false"
 				aria-open>
 				<span
+					hidden
 					state-to="offcanvas-app-form"
 					state.array="files"
 					state.object="{{object._id}}"></span>
-				<i class="ri-file-line text-primary font-size-24 flex-shrink-0"></i>
+				<i class="ri-file-line fs-24 flex-shrink-0"></i>
 				<h6 class="flex-grow-1 fs-15 mb-0 text-truncate">{{object.name}}</h6>
 			</a>
 			<div class="dropdown" src="/apps/files/components/options-dropdown.html"></div>

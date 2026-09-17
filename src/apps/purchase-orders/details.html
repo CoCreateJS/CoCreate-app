@@ -1,4 +1,18 @@
-<div class="card-body d-flex flex-wrap gap-4">
+<form
+	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	data-component-form
+	array
+	object
+	autocomplete="off">
+	<header
+		class="card-header offcanvas-app-topbar flex-shrink-0"
+		src="/apps/purchase-orders/header.html"
+		aria-label="Details controls"></header>
+
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-4">
 			<div class="flex-grow-1" style="flex-basis: 350px">
 				<h5 class="mb-2" key="po_number"></h5>
 				<p class="text-muted mb-1">
@@ -37,3 +51,5 @@
 			</div>
 			<div class="w-100" src="components/activities.html"></div>
 		</div>
+	</div>
+</form>

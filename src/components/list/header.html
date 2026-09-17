@@ -1,5 +1,5 @@
 <div
-	class="list-header card-body d-flex flex-wrap justify-content-between align-items-center gap-2">
+	class="list-header d-flex flex-wrap justify-content-between align-items-center gap-2">
 	<style>
 		.list-header {
 			container-name: list-header;
@@ -149,16 +149,6 @@
 						Grid
 					</a>
 				</li>
-				<li>
-					<a
-						class="dropdown-item"
-						href="#"
-						state-to="list-view"
-						state.src="/components/list/kanban/index.html">
-						<i class="ri-layout-masonry-line me-2"></i>
-						Kanban
-					</a>
-				</li>
 			</ul>
 		</div>
 
@@ -275,6 +265,17 @@
 						role="menuitem"
 						>Download as CSV</a
 					>
+				</li>
+				<li><hr class="dropdown-divider" /></li>
+				<li>
+					<a
+						class="dropdown-item text-danger"
+						role="menuitem"
+						actions="delete"
+						delete-query="$document #list-view table[data-row-selection] tbody [data-select-row]:checked[]">
+						<i class="ri-delete-bin-2-line me-2"></i>
+						Delete selected
+					</a>
 				</li>
 				<!-- <li><a class="dropdown-item" href="#" role="menuitem">Customize Columns</a></li> -->
 				<!-- <li><a class="dropdown-item" href="#" role="menuitem">Reset board view to default</a></li> -->

@@ -1,4 +1,17 @@
-<div class="d-flex flex-wrap gap-4 width:100% min-width:0 p-3">
+<form
+	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	data-component-form
+	array
+	object
+	autocomplete="off">
+	<header
+		class="card-header offcanvas-app-topbar flex-shrink-0"
+		src="/apps/organizations/header.html"
+		aria-label="Form controls"></header>
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="d-flex flex-wrap gap-4 width:100% min-width:0 p-3">
 	<section
 		role="banner"
 		class="position-relative width:100%">
@@ -334,7 +347,7 @@
 						id="personalDetails"
 						role="tabpanel"
 						aria-labelledby="personalDetails-tab">
-						<form action="javascript:void(0);">
+						<div>
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="mb-3">
@@ -527,14 +540,14 @@
 									</div>
 								</div>
 							</div>
-						</form>
+						</div>
 					</div>
 					<div
 						class="tab-pane d-none"
 						id="changePassword"
 						role="tabpanel"
 						aria-labelledby="changePassword-tab">
-						<form action="javascript:void(0);">
+						<div>
 							<div class="row g-2">
 								<div class="col-lg-4">
 									<div>
@@ -608,7 +621,7 @@
 									</div>
 								</div>
 							</div>
-						</form>
+						</div>
 						<div class="mt-4 mb-3 border-bottom pb-2">
 							<div class="float-end">
 								<a
@@ -696,7 +709,7 @@
 						id="experience"
 						role="tabpanel"
 						aria-labelledby="experience-tab">
-						<form>
+						<div>
 							<div id="newlink">
 								<div id="1">
 									<div class="row">
@@ -996,7 +1009,7 @@
 									>
 								</div>
 							</div>
-						</form>
+						</div>
 					</div>
 					<div
 						class="tab-pane"
@@ -1230,3 +1243,29 @@
 		</div>
 	</section>
 </div>
+	</div>
+	<footer class="card-footer flex-shrink-0">
+		<div class="hstack gap-2 justify-content-end">
+			<button
+				type="button"
+				class="btn btn-light"
+				data-component-form-close
+				aria-label="Cancel form"
+				aria-expanded="true"
+				aria-close>
+				Cancel
+			</button>
+			<button
+				type="button"
+				class="btn btn-success btn-spinner"
+				aria-label="Save form"
+				actions="validate, disabled, save, timeout(2000), disabled">
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
+				<span class="button-text">Save</span>
+			</button>
+		</div>
+	</footer>
+</form>

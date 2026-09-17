@@ -1,4 +1,18 @@
-<div class="card-body d-flex flex-wrap gap-3">
+<form
+	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	data-component-form
+	array
+	object
+	autocomplete="off">
+	<header
+		class="card-header offcanvas-app-topbar flex-shrink-0"
+		src="/apps/items/header.html"
+		aria-label="Details controls"></header>
+
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-wrap gap-3">
 			<div class="position-relative d-flex justify-content-center w-100">
 				<img
 					src="/assets/svg/boxes.svg"
@@ -645,3 +659,5 @@
 <script>
 	var productNavSlider=new Swiper(".product-nav-slider",{loop:!1,spaceBetween:10,slidesPerView:4,freeMode:!0,watchSlidesProgress:!0}),productThubnailSlider=new Swiper(".product-thumbnail-slider",{loop:!1,spaceBetween:24,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},thumbs:{swiper:productNavSlider}});
 </script>
+	</div>
+</form>

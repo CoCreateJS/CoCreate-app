@@ -1015,6 +1015,32 @@
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
+					id="clusters-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link">
+					<i class="ri-stack-line"></i>
+					<span>Clusters</span>
+					<div
+						state-to="app"
+						state.object="28b6ddbe8b35de252ecd79e1"
+						state.input.array="clusters"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.src="/apps/clusters/templates/card.html"></div>
+				</a>
+				<a id="clusters-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/clusters/provision.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Provision new cluster">
+					<div state-to="offcanvas-app-form" state.$reset state.$unset="$reset" state.array="clusters"></div>
+					<i class="ri-add-line"></i>
+				</a>
+			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
 					id="servers-list-btn"
 					state-to="adminView"
 					state.src="/components/list/index.html"
@@ -1033,8 +1059,8 @@
 						state-to="list"
 						state.src="/apps/servers/templates/card.html"></div>
 				</a>
-				<a id="servers-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/servers/provision.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Provision new server">
-					<div state-to="offcanvas-app-form" state.$reset state.array="servers"></div>
+				<a id="servers-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/servers/provision.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Deploy a server">
+					<div state-to="offcanvas-app-form" state.$reset state.$unset="$reset" state.array="servers"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1085,8 +1111,8 @@
 						state-to="list"
 						state.src="/apps/api-keys/templates/card.html"></div>
 				</a>
-				<a id="api-keys-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/api-keys/form.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new API key">
-					<div state-to="offcanvas-app-form" state.$reset state.array="keys"></div>
+				<a id="api-keys-create-btn" class="nav-link nav-action" state-to="create-panel-view" state.src="/apps/api-keys/form.html" aria-controls="create-panel" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new API key">
+					<div state-to="create-panel-form" state.$reset state.array="keys"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1123,7 +1149,7 @@
 					state-to="adminView"
 					state.src="/components/list/index.html"
 					class="nav-link">
-					<i class="ri-terminal-box-line"></i>
+					<i class="ri-logout-box-line" style="transform: translateY(-2px) rotate(-90deg)"></i>
 					<span>Endpoints</span>
 					<div
 						state-to="app"
@@ -1149,7 +1175,7 @@
 					state-to="adminView"
 					state.src="/components/list/index.html"
 					class="nav-link">
-					<i class="ri-bubble-chart-line"></i>
+					<i class="ri-login-box-line" style="transform: translateY(-2px) rotate(-90deg)"></i>
 					<span>Webhooks</span>
 					<div
 						state-to="app"

@@ -106,7 +106,6 @@ export default {
             "name": "openai",
             "provider": "openai",
             "url": "https://api.openai.com/v1",
-            "key": "openai_api_key_placeholder",
             "headers": {
                 "Authorization": {
                     "$concat": ["Bearer ", "$key"]
@@ -170,25 +169,57 @@ export default {
             "_id": "65f8ca227b39a3c1a8904e02",
             "name": "aws",
             "provider": "aws",
-            "url": "https://amazonaws.com",
-            "key": "aws_access_key_id_placeholder:aws_secret_access_key_placeholder",
+            "url": {
+                "$concat": [[
+                    "https://ec2.",
+                    "$payload.region",
+                    ".amazonaws.com"
+                ]]
+            },
             "headers": {
-                "Authorization": {
-                    "$concat": [
-                        "AWS4-HMAC-SHA256 Credential=",
-                        "$key",
-                        ", Signature=",
-                        {
-                            "$security.signHmac": {
-                                "payload": "$key",
-                                "secret": "$key",
-                                "algorithm": "sha256",
-                                "digest": "hex"
-                            }
-                        }
+                "content-type": "application/x-www-form-urlencoded; charset=utf-8",
+                "host": {
+                    "$concat": [[
+                        "ec2.",
+                        "$payload.region",
+                        ".amazonaws.com"
+                    ]]
+                },
+                "x-amz-date": {
+                    "$security.transform": [
+                        "",
+                        [{ "op": "timestamp", "format": "iso-basic" }]
                     ]
                 },
-                "Content-Type": "application/x-amz-json-1.1"
+                "Authorization": {
+                    "$security.createAwsSigV4Token": [
+                        {
+                            "method": "$payload.method",
+                            "uri": "$payload.endpoint",
+                            "payload": {
+                                "$objectToSearchParams": ["$payload.data", false]
+                            },
+                            "region": "$payload.region",
+                            "service": "ec2",
+                            "isoDate": "$x-amz-date",
+                            "headers": {
+                                "content-type": "application/x-www-form-urlencoded; charset=utf-8",
+                                "host": {
+                                    "$concat": [[
+                                        "ec2.",
+                                        "$payload.region",
+                                        ".amazonaws.com"
+                                    ]]
+                                },
+                                "x-amz-date": "$x-amz-date"
+                            }
+                        },
+                        {
+                            "accessKeyId": "$config.accessKeyId",
+                            "secretAccessKey": "$config.secretAccessKey"
+                        }
+                    ]
+                }
             },
             "description": "Amazon Web Services (AWS) infrastructure API configuration leveraging $security.signHmac and $concat primitives for request signature authorization.",
             "enabled": true
@@ -197,23 +228,28 @@ export default {
             "_id": "65f8ca227b39a3c1a8904e03",
             "name": "gcp",
             "provider": "gcp",
-            "project": "gcp_project_id_placeholder",
             "url": "https://compute.googleapis.com/compute/v1",
-            "key": "gcp_service_account_private_key_placeholder",
+            "projectId": "",
+            "clientEmail": "",
+            "privateKey": "",
             "headers": {
                 "Authorization": {
                     "$concat": [
                         "Bearer ",
                         {
-                            "$security.generateJWT": {
-                                "header": { "alg": "RS256", "typ": "JWT" },
-                                "payload": {
-                                    "iss": "gcp-service-account@project.iam.gserviceaccount.com",
-                                    "sub": "gcp-service-account@project.iam.gserviceaccount.com",
-                                    "aud": "https://oauth2.googleapis.com/token",
-                                    "scope": "https://www.googleapis.com/auth/cloud-platform"
-                                }
-                            }
+                            "$security.generateJWT": [
+                                {
+                                    "header": { "alg": "RS256", "typ": "JWT" },
+                                    "payload": {
+                                        "iss": "$config.clientEmail",
+                                        "sub": "$config.clientEmail",
+                                        "aud": "https://oauth2.googleapis.com/token",
+                                        "scope": "https://www.googleapis.com/auth/cloud-platform"
+                                    }
+                                },
+                                "$config.privateKey",
+                                "RS256"
+                            ]
                         }
                     ]
                 },
@@ -226,13 +262,13 @@ export default {
             "_id": "65f8ca227b39a3c1a8904e04",
             "name": "azure",
             "provider": "azure",
-            "subscriptionId": "azure_subscription_id_placeholder",
             "resourceGroup": "default-rg",
             "url": "https://management.azure.com",
-            "key": "azure_bearer_token_placeholder",
+            "subscriptionId": "",
+            "accessToken": "",
             "headers": {
                 "Authorization": {
-                    "$concat": ["Bearer ", "$key"]
+                    "$concat": ["Bearer ", "$config.accessToken"]
                 },
                 "Content-Type": "application/json"
             },
@@ -245,10 +281,10 @@ export default {
             "name": "digitalocean",
             "provider": "digitalocean",
             "url": "https://api.digitalocean.com/v2",
-            "key": "digitalocean_personal_access_token_placeholder",
+            "token": "",
             "headers": {
                 "Authorization": {
-                    "$concat": ["Bearer ", "$key"]
+                    "$concat": ["Bearer ", "$config.token"]
                 },
                 "Content-Type": "application/json"
             },
@@ -259,20 +295,31 @@ export default {
             "_id": "65f8ca227b39a3c1a8904e06",
             "name": "oci",
             "provider": "oci",
-            "compartmentId": "oci_compartment_id_placeholder",
             "url": "https://iaas.us-ashburn-1.oraclecloud.com/20160918",
-            "key": "oci_tenancy_ocid:oci_user_ocid:oci_key_fingerprint:oci_private_key",
+            "tenancyId": "",
+            "userId": "",
+            "fingerprint": "",
+            "privateKey": "",
+            "compartmentId": "",
             "headers": {
                 "Authorization": {
                     "$concat": [
                         "Signature algorithm=\"hmac-sha256\",headers=\"date (request-target) host\",signature=",
                         {
-                            "$security.signHmac": {
-                                "payload": "$key",
-                                "secret": "$key",
-                                "algorithm": "sha256",
-                                "digest": "base64"
-                            }
+                            "$security.signHmac": [
+                                {
+                                    "$concat": [
+                                        "$config.tenancyId",
+                                        ":",
+                                        "$config.userId",
+                                        ":",
+                                        "$config.fingerprint"
+                                    ]
+                                },
+                                "$config.privateKey",
+                                "sha256",
+                                "base64"
+                            ]
                         }
                     ]
                 },
@@ -286,10 +333,10 @@ export default {
             "name": "hetzner",
             "provider": "hetzner",
             "url": "https://api.hetzner.cloud/v1",
-            "key": "hetzner_api_token_placeholder",
+            "token": "",
             "headers": {
                 "Authorization": {
-                    "$concat": ["Bearer ", "$key"]
+                    "$concat": ["Bearer ", "$config.token"]
                 },
                 "Content-Type": "application/json"
             },
@@ -301,12 +348,12 @@ export default {
             "name": "vultr",
             "provider": "vultr",
             "url": "https://api.vultr.com/v2",
-            "key": "vultr_api_key_placeholder",
+            "apiKey": "",
             "headers": {
                 "Authorization": {
-                    "$concat": ["Bearer ", "$key"]
+                    "$concat": ["Bearer ", "$config.apiKey"]
                 },
-                "API-Key": "$key",
+                "API-Key": "$config.apiKey",
                 "Content-Type": "application/json"
             },
             "description": "Vultr Cloud Platform API v2. Utilizes both API-Key and standard Bearer token authorization headers.",
@@ -316,11 +363,11 @@ export default {
             "_id": "65f8ca227b39a3c1a8904e09",
             "name": "equinix",
             "provider": "equinix",
-            "projectId": "equinix_project_id_placeholder",
             "url": "https://api.equinix.com/metal/v1",
-            "key": "equinix_user_api_token_placeholder",
+            "projectId": "",
+            "token": "",
             "headers": {
-                "X-Auth-Token": "$key",
+                "X-Auth-Token": "$config.token",
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },

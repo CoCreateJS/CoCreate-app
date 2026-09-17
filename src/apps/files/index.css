@@ -1,10 +1,16 @@
 /* Files app styles extracted from the legacy bundle. */
 .files-app {
 	width: 100%;
+	height: var(--admin-content-height);
+	min-height: 0;
+	overflow: hidden;
 }
 
 .files-app > .chat-wrapper {
 	width: 100%;
+	height: 100%;
+	min-height: 0;
+	align-items: stretch;
 }
 
 .files-card-grid {
@@ -24,6 +30,16 @@
 	min-height: 0;
 }
 
+.files-grid-sections {
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--admin-gutter) + var(--admin-gutter));
+}
+
+.files-grid-view {
+	display: contents;
+}
+
 .file-manager-menu {
 	max-height: calc(100vh - 296px);
 }
@@ -33,10 +49,11 @@
 	}
 }
 .file-manager-menu li {
-	padding: 5px 0;
+	padding: 8px 0;
 }
 .file-manager-menu li a {
 	color: var(--coc-body-color);
+	font-size: var(--coc-font-14);
 	font-weight: var(--coc-font-weight-medium);
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
@@ -59,13 +76,14 @@
 }
 .file-manager-sidebar {
 	position: relative;
-	background-color: var(--coc-secondary-bg);
+	border-right: 1px solid var(--coc-border-color);
+	background-color: var(--coc-body-bg);
 }
 @media (min-width: 992px) {
 	.file-manager-sidebar {
 		min-width: 300px;
 		max-width: 300px;
-		height: calc(100vh - 70px - 60px - 8px);
+		height: 100%;
 	}
 }
 @media (max-width: 991.98px) {
@@ -99,13 +117,30 @@
 	}
 }
 .file-manager-content {
+	display: flex;
+	flex-direction: column;
 	width: 100%;
+	height: 100%;
 	min-width: 0;
-	background-color: var(--coc-secondary-bg);
+	min-height: 0;
+	background-color: var(--coc-body-bg);
+	overflow: hidden;
 }
+
+.file-manager-content-scroll {
+	flex: 1 1 auto;
+	height: 100%;
+	min-height: 0;
+	overflow: auto;
+}
+
+.file-manager-content-scroll #file-view.files-grid-sections {
+	padding: var(--admin-gutter);
+}
+
 @media (max-width: 991.98px) {
 	.file-manager-content-scroll {
-		height: calc(100vh - 144px);
+		height: 100%;
 	}
 
 	.files-card-grid {

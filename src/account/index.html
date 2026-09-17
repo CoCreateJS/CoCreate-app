@@ -1,6 +1,7 @@
 <!doctype html>
 <html
-	state-id="theme"
+	state-id="theme, sidebar-size"
+	state-overwrite
 	lang="en"
 	data-layout="vertical"
 	data-topbar-color="defualt"
@@ -10,18 +11,19 @@
 	data-preloader="disable"
 	data-theme="default"
 	data-theme-colors="default"
+	data-breadcrumbs="off"
 	data-bs-theme=""
 	session>
 	<head>
 		<meta charset="utf-8" />
-		<title>CoCreate - Regenerative Health Dashboard</title>
+		<title>CoCreate Account</title>
 
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
 		<meta
 			name="description"
-			content="Regenerative Health & Longevity product catalog for discover, optimize, and regenerate care pathways." />
+			content="Build, deploy, and manage applications with CoCreate AI." />
 
 		<meta
 			content="CoCreate"
@@ -50,6 +52,9 @@
 			rel="stylesheet"
 			type="text/css" />
 
+		<!-- Plugins -->
+		<link plugins />
+
 		<!-- App -->
 		<link
 			href="/assets/css/index.css"
@@ -68,20 +73,17 @@
 		<link
 			rel="manifest"
 			href="/manifest.webmanifest" />
-
-		<!-- Remix Icon -->
-		<link
-			href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-			rel="stylesheet" />
 	</head>
 
-	<body id="layout-wrapper">
+	<body
+		id="layout-wrapper"
+		class="height:100dvh overflow-hidden">
 		<a
 			href="/auth/"
 			session="false"
 			hidden></a>
 		<a
-			state-to="authRedirect"
+			state-to="accountAuthRedirect"
 			state.href="/account/"
 			onload
 			onload.click
@@ -91,7 +93,7 @@
 		<!-- Header Start -->
 		<header
 			id="page-topbar"
-			src="/account/components/header.html"
+			src="/components/workspace-header.html"
 			scroll="topbar-shadow"
 			scroll-attribute="class"
 			scroll-top="50"></header>
@@ -104,47 +106,107 @@
 		<!-- Menu End -->
 
 		<!-- Main Content Start-->
-		<main class="main-content pt-5">
-			<!-- start page title -->
-			<!-- <div src="../components/breadcrumbs.html"></div> -->
-			<!-- end page title -->
-
+		<main class="main-content height:100dvh overflow-hidden">
 			<!-- TODO: use the src change to mark the the navigation menu item as active -->
+
 			<!-- Page Content Start -->
-			<div class="page-content d-flex gap-4 pt-5 padding:0px@xxs&xs">
+			<div
+				class="page-content d-flex flex-grow-1 flex-wrap h-100 overflow-hidden">
+				<!-- Page Title Start -->
 				<div
-					id="main-view"
-					class="d-flex flex-column flex-grow-1 gap-3 min-width:200px"
-					src=""
-					state-id="accountView"
-					state.onstoragechange="false"
-					state-overwrite>
-					<div
-						onload.src="/account/components/dashboard.html"
-						onload-query="$parent"
-						onload-setTimeout="3000"></div>
-				</div>
+					class="page-title flex-shrink-0"
+					hidden
+					src="/components/breadcrumbs.html"></div>
+				<!-- Page Title End -->
 
 				<div
-					id="offcanvas-app"
-					resizable
-					role="dialog"
-					class="card offcanvas offcanvas-end flex-grow-1 mb-0"
-					tabindex="-1"
-					aria-labelledby="offcanvas-app-label"
-					aria-close-on="button">
+					class="admin-view-layout d-flex flex-grow-1 min-height:0 min-width:0">
+					<aside
+						id="create-panel"
+						class="create-panel"
+						aria-label="Create item"
+						aria-hidden="true"
+						src="/components/create-panel.html"></aside>
+
+					<aside
+						id="context-sidebar"
+						class="context-sidebar"
+						aria-label="Filters"
+						aria-hidden="true"
+						state-id="context-sidebar"
+						state.aria-hidden
+						state-overwrite>
+						<div
+							class="context-sidebar-content"
+							src="/components/filters.html"></div>
+					</aside>
+
 					<div
-						id="offcanvas-app-view"
-						state-id="offcanvas-app-view"
-						state-overwrite
-						src=""
-						input-query="$closest .page-content #main-view"></div>
-					<div resize="left"></div>
+						class="admin-main-view flex-grow-1 min-height:0 min-width:200px width:300px"
+						plugin='{"$SimpleBar": ["$this", {}]}'>
+						<div
+							id="main-view"
+							class="d-flex flex-column min-height:100% min-width:200px"
+							src="/apps/ai/index.html"
+							state-id="accountView"
+							state.onstoragechange="false"
+							state-overwrite>
+							<!-- <div
+							onload.src="/apps/calendar/index.html"
+							onload-query="$parent"
+							onload-setTimeout="3000"></div> -->
+						</div>
+					</div>
+					<div
+						id="offcanvas-app"
+						docked="true"
+						resizable
+						role="dialog"
+						class="app-panel offcanvas offcanvas-end min-height:0 overflow-hidden"
+						tabindex="-1"
+						aria-labelledby="offcanvas-app-label"
+						aria-close-on="button"
+						aria-hidden="true">
+						<div
+							class="offcanvas-app-content d-flex flex-column flex-grow-1 min-height:0 h-100 overflow-hidden">
+							<div
+								class="offcanvas-app-scroll flex-grow-1 min-height:0 height:0 overflow:auto">
+								<div
+									id="offcanvas-app-view"
+									state-id="offcanvas-app-view"
+									state-overwrite
+									src=""></div>
+							</div>
+						</div>
+						<div resize="left"></div>
+					</div>
 				</div>
 			</div>
 			<!-- Page Content End -->
 		</main>
 		<!-- Main Content End -->
+
+		<!-- AI Chat Start -->
+		<aside
+			id="ai-chat-panel"
+			class="ai-chat-panel"
+			aria-hidden="true"
+			state-id="ai-chat-panel"
+			state.aria-hidden
+			state-overwrite
+			aria-label="CoCreate AI"
+			resizable
+			resize
+			resize-query="$document #page-topbar, $document .page-content, $document #offcanvas-app"
+			resize.style="margin-right:$width">
+			<div
+				class="ai-chat-panel-content"
+				state-id="ai-chat-panel-content"
+				state-overwrite
+				src=""></div>
+			<div resize="left"></div>
+		</aside>
+		<!-- AI Chat End -->
 
 		<!-- Preloader Start -->
 		<div id="preloader">
@@ -166,9 +228,9 @@
 		<div src="/components/remove-item.html"></div>
 		<!-- Remove Item End -->
 
-		<!-- Members Start -->
-		<!-- <div src="/components/members.html"></div> -->
-		<!-- Members End -->
+		<!-- Remove Item Start -->
+		<div src="/components/members.html"></div>
+		<!-- Remove Item End -->
 
 		<!-- Notification Start -->
 		<div
@@ -193,18 +255,19 @@
 		<!-- Notification End -->
 
 		<!-- Back To Top Start -->
-		<div src="/components/scroll-to-top.html"></div>
+		<div src="/components/offcanvas-top.html"></div>
 		<!-- Back To Top End -->
 
 		<!-- Vertical Overlay Start -->
 		<div
 			class="vertical-overlay"
-			click.class="vertical-sidebar-enable,"
-			click-query="$document body"></div>
+			toggle.class="vertical-sidebar-enable,"
+			toggle-query="$document body"></div>
 		<!-- Vertical Overlay End -->
 
 		<!-- JAVASCRIPT -->
 		<script src="/dist/CoCreate.js"></script>
+		<script src="/components/component-form.js?v=5"></script>
 		<script src="/assets/js/lord-icon-2.1.0.js"></script>
 	</body>
 </html>

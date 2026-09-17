@@ -1,0 +1,13 @@
+<article class="card flex-grow-1 mb-0" style="flex-basis:320px;min-width:min(280px,100%);max-width:460px" template>
+	<a class="card-body d-flex flex-column gap-3 text-reset" role="button" tabindex="0" state-to="offcanvas-app-view" state.src="/apps/clusters/details.html" aria-controls="offcanvas-app" aria-open>
+		<div state-to="offcanvas-app-form" state.array="clusters" state.object="{{object._id}}"></div>
+		<div class="d-flex align-items-center gap-3">
+			<span class="avatar-sm flex-shrink-0"><span class="avatar-title rounded-circle bg-primary-subtle text-primary"><i class="ri-stack-line"></i></span></span>
+			<div class="flex-grow-1 min-width:0"><h5 class="mb-1 text-truncate">{{object.name}}</h5><span class="badge bg-secondary-subtle text-secondary text-uppercase">{{object.status}}</span></div>
+		</div>
+		<div class="border-top border-top-dashed pt-2 text-muted fs-12">
+			<i class="ri-server-line me-2"></i><span array="servers" object key="$length" filter-query-key="cluster_id" filter-query-value="{{object._id}}" filter-limit>0</span> servers
+		</div>
+	</a>
+</article>
+<div onload.array="clusters" onload-query="$parent"></div>

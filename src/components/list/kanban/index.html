@@ -333,44 +333,6 @@
 			</div>
 		</div>
 		<!--end tasks-->
-		<div class="my-3">
-			<button
-				class="btn btn-soft-info w-100"
-				aria-controls="offcanvas-app"
-				aria-open
-				aria-haspopup="dialog"
-				aria-expanded="false"
-				state-to="offcanvas-app-view"
-				state.src=""
-				title="Add record">
-				<input
-					type="hidden"
-					state-id="app"
-					state-overwrite
-					array="apps"
-					object=""
-					key="path"
-					value-suffix="/form.html"
-					input.state.src="$value"
-					input-query="$parent" />
-				<span
-					state-to="offcanvas-app-form"
-					state.$reset
-					state.array="">
-					<input
-						type="hidden"
-						state-id="app"
-						state-overwrite
-						array="apps"
-						object=""
-						key="array"
-						input.state.array="$value"
-						input-query="$parent" />
-				</span>
-				<i class="ri-add-line align-bottom"></i>
-				<span class="ms-1">Add More</span>
-			</button>
-		</div>
 	</div>
 	<!--end tasks-list-->
 </div>

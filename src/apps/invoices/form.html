@@ -1,3 +1,16 @@
+<form
+	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	data-component-form
+	array
+	object
+	autocomplete="off">
+<header
+		class="card-header offcanvas-app-topbar flex-shrink-0"
+		src="/apps/invoices/header.html"
+		aria-label="Form controls"></header>
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		plugin='{"$SimpleBar": ["$this", {}]}'>
 <div class="card-body d-flex flex-column gap-3">
 			<input type="hidden" key="type" value="invoice" />
 			<div
@@ -704,3 +717,23 @@
 
 <!-- cleave.js -->
 <script src="/assets/libs/cleave.js/cleave.min.js"></script>
+	</div>
+	<footer class="card-footer flex-shrink-0">
+		<div class="hstack gap-2 justify-content-end">
+			<button
+				type="button"
+				class="btn btn-light"
+				data-component-form-close
+				aria-label="Cancel form"
+				aria-expanded="true"
+				aria-close>Cancel</button>
+			<button
+				class="btn btn-success btn-spinner"
+				aria-label="Save form"
+				actions="validate, disabled, save, timeout(2000), disabled">
+				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span class="button-text">Save</span>
+			</button>
+		</div>
+	</footer>
+</form>

@@ -1,0 +1,89 @@
+<form
+	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	data-component-form
+	array
+	object
+	autocomplete="off">
+	<header
+		class="card-header offcanvas-app-topbar flex-shrink-0"
+		src="/apps/api-keys/header.html"
+		aria-label="API key details controls"></header>
+
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div class="card-body d-flex flex-column gap-4">
+			<section class="d-flex align-items-start gap-3">
+				<div
+					class="avatar-lg rounded-circle flex-shrink-0 overflow-hidden">
+					<div
+						class="avatar-title bg-warning-subtle text-warning material-shadow">
+						<i
+							class="ri-key-line fs-3"
+							aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="flex-grow-1 min-width:0">
+					<h4
+						class="mb-2 text-truncate"
+						key="name"></h4>
+					<div class="d-flex flex-wrap gap-2">
+						<span
+							class="badge bg-primary-subtle text-primary text-uppercase"
+							key="type"></span>
+						<span
+							class="badge bg-success-subtle text-success text-capitalize"
+							key="status"></span>
+					</div>
+				</div>
+			</section>
+
+			<section class="border-top border-top-dashed pt-3">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">
+					Credential
+				</h6>
+				<div class="input-group">
+					<input
+						type="password"
+						class="form-control font-monospace"
+						key="key"
+						readonly
+						aria-label="API key" />
+					<button
+						type="button"
+						class="btn btn-outline-secondary"
+						onclick="
+							const input = this.previousElementSibling;
+							input.type =
+								input.type === 'password' ? 'text' : 'password';
+							this.querySelector('i').className =
+								input.type === 'password'
+									? 'ri-eye-line'
+									: 'ri-eye-off-line';
+						"
+						aria-label="Toggle API key visibility">
+						<i
+							class="ri-eye-line"
+							aria-hidden="true"></i>
+					</button>
+				</div>
+			</section>
+
+			<section class="border-top border-top-dashed pt-3">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">
+					Description
+				</h6>
+				<p
+					class="text-muted mb-0"
+					key="description"></p>
+			</section>
+
+			<section class="border-top border-top-dashed pt-3">
+				<h6 class="text-muted text-uppercase fw-semibold mb-3">Tags</h6>
+				<div
+					class="text-muted"
+					key="tags"></div>
+			</section>
+		</div>
+	</div>
+</form>

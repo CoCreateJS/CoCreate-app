@@ -14,6 +14,14 @@ export default {
         },
         "array": "keys",
         "category": "Settings",
+        "mainViews": [
+            "table",
+            "grid"
+        ],
+        "secondaryViews": [
+            "details",
+            "form"
+        ],
         "icon": "ri-key-line",
         "description": "App to manage and track API Keys.",
         "status": "active",
@@ -22,7 +30,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter Name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/api-keys/form.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"keys\" state.object=\"{{object._id}}\"> </div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/api-keys/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"keys\" state.object=\"{{object._id}}\"> </div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
                 "attributes": [
                     {
                         "name": "class",

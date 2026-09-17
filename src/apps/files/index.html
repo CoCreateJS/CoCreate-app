@@ -3,20 +3,24 @@
 	href="/apps/files/index.css" />
 
 <div class="files-app">
-	<div class="chat-wrapper d-lg-flex gap-1">
+	<div class="chat-wrapper d-lg-flex">
 		<div
 			class="file-manager-sidebar minimal-border"
 			src="/apps/files/components/sidenav.html"></div>
 
 		<div class="file-manager-content minimal-border flex-grow-1">
-			<div class="file-manager-content-scroll p-3">
-				<div src="/apps/files/components/header.html"></div>
+			<div
+				class="files-content-header"
+				src="/apps/files/components/header.html"></div>
+			<div
+				class="file-manager-content-scroll"
+				plugin='{"$SimpleBar": ["$this", {}]}'>
 				<div
-					class="files-grid-section"
-					src="/apps/files/components/folder-grid.html"></div>
-				<div
-					class="files-grid-section"
-					src="/apps/files/components/files-grid.html"></div>
+					id="file-view"
+					class="files-grid-sections"
+					state-id="file-view"
+					state-overwrite
+					src="/apps/files/components/drive.html"></div>
 			</div>
 
 			<!-- <div
@@ -25,3 +29,6 @@
 		</div>
 	</div>
 </div>
+
+<div src="/apps/files/components/rename.html"></div>
+<div src="/apps/files/components/delete.html"></div>

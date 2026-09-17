@@ -28,6 +28,67 @@ export default {
     "upsert": true,
     "object": [
         {
+            "_id": "65f8cb447b39a3c1a8904e13",
+            "api_id": "65f8ca227b39a3c1a8904e02", // AWS API Provider Ref
+            "name": "resolve-image",
+            "method": "post",
+            "url": {
+                "$concat": [[
+                    "https://ssm.",
+                    "$payload.region",
+                    ".amazonaws.com"
+                ]]
+            },
+            "endpoint": "/",
+            "headers": {
+                "content-type": "application/x-amz-json-1.1",
+                "host": {
+                    "$concat": [[
+                        "ssm.",
+                        "$payload.region",
+                        ".amazonaws.com"
+                    ]]
+                },
+                "x-amz-target": "AmazonSSM.GetParameter",
+                "x-amz-date": {
+                    "$security.transform": [
+                        "",
+                        [{ "op": "timestamp", "format": "iso-basic" }]
+                    ]
+                },
+                "Authorization": {
+                    "$security.createAwsSigV4Token": [
+                        {
+                            "method": "$payload.method",
+                            "uri": "/",
+                            "payload": { "$JSON.stringify": "$payload.data" },
+                            "region": "$payload.region",
+                            "service": "ssm",
+                            "isoDate": "$x-amz-date",
+                            "headers": {
+                                "content-type": "application/x-amz-json-1.1",
+                                "host": {
+                                    "$concat": [[
+                                        "ssm.",
+                                        "$payload.region",
+                                        ".amazonaws.com"
+                                    ]]
+                                },
+                                "x-amz-date": "$x-amz-date",
+                                "x-amz-target": "AmazonSSM.GetParameter"
+                            }
+                        },
+                        {
+                            "accessKeyId": "$config.accessKeyId",
+                            "secretAccessKey": "$config.secretAccessKey"
+                        }
+                    ]
+                }
+            },
+            "description": "Resolves the current regional Ubuntu 24.04 LTS amd64 AMI from Canonical's public AWS Systems Manager parameter.",
+            "enabled": true
+        },
+        {
             "_id": "65f8cb447b39a3c1a8904e14",
             "api_id": "65f8ca227b39a3c1a8904e02", // AWS API Provider Ref
             "name": "create-instance",
@@ -35,49 +96,38 @@ export default {
             "endpoint": "/instances",
             "description": "Provisions EC2 virtual machine instances within target AWS availability zones.",
             "actions": {
-                "existingSg": {
+                "image": {
                     "$api.send": {
                         "api": "$config.name",
-                        "method": "get",
-                        "endpoint": "/security-groups",
-                        "searchParams": {
-                            "region": "$payload.data.region",
-                            "groupName": "cocreate-sg"
+                        "method": "post",
+                        "endpoint": "resolve-image",
+                        "region": "$payload.data.region",
+                        "data": {
+                            "Name": "/aws/service/canonical/ubuntu/server/noble/stable/current/amd64/hvm/ebs-gp3/ami-id"
                         }
                     }
                 },
-                "createdSg": {
-                    "$if.$existingSg.data.$eq": {
-                        "$null": {
-                            "$api.send": {
-                                "api": "$config.name",
-                                "method": "post",
-                                "endpoint": "/security-groups",
-                                "data": {
-                                    "region": "$payload.data.region",
-                                    "groupName": "cocreate-sg",
-                                    "description": "CoCreate WebService HTTP/HTTPS Inbound Rules",
-                                    "rules": [
-                                        { "ipProtocol": "tcp", "fromPort": 80, "toPort": 80, "cidrIp": "0.0.0.0/0" },
-                                        { "ipProtocol": "tcp", "fromPort": 443, "toPort": 443, "cidrIp": "0.0.0.0/0" }
-                                    ]
-                                }
-                            }
+                "aws": {
+                    "$api.send": {
+                        "api": "$config.name",
+                        "method": "post",
+                        "endpoint": "/",
+                        "region": "$payload.data.region",
+                        "encoding": "form",
+                        "data": {
+                            "Action": "RunInstances",
+                            "Version": "2016-11-15",
+                            "ImageId": "$image.data.Parameter.Value",
+                            "InstanceType": "$payload.data.vmType",
+                            "MinCount": 1,
+                            "MaxCount": 1,
+                            "UserData": { "$btoa": { "$astAsync": "$payload.data.startupScript" } }
                         }
                     }
                 }
             },
-            "data": {
-                "ImageId": "ami-0c55b159cbfafe1f0",
-                "InstanceType": "$payload.data.vmType",
-                "MinCount": 1,
-                "MaxCount": 1,
-                "KeyName": "$payload.data.sshKeyName",
-                "UserData": { "$base64": "$payload.data.startupScript" },
-                "SecurityGroupIds": [
-                    { "$null": ["$payload.data.securityGroupId", "$actions.existingSg.data.id", "$actions.createdSg.data.id"] }
-                ]
-            },
+            "resolved": true,
+            "data": "$actions.aws.data",
             "enabled": true
         },
         {
@@ -98,7 +148,7 @@ export default {
             "endpoint": {
                 "$concat": [
                     "/compute/v1/projects/",
-                    { "$null": ["$payload.data.project", "$config.project"] },
+                    { "$null": ["$payload.data.project", "$config.projectId"] },
                     "/zones/",
                     { "$null": ["$payload.data.zone", "$payload.data.region"] },
                     "/instances"
@@ -106,32 +156,32 @@ export default {
             },
             "description": "Launches a Google Compute Engine VM instance in the specified GCP zone.",
             "data": {
-                        "name": "$payload.data.vmId",
-                        "machineType": { "$concat": ["zones/", { "$null": ["$payload.data.zone", "$payload.data.region"] }, "/machineTypes/", "$payload.data.vmType"] },
-                        "tags": {
-                            "items": ["http-server", "https-server"]
-                        },
-                        "disks": [
-                            {
-                                "boot": true,
-                                "autoDelete": true,
-                                "initializeParams": {
-                                    "sourceImage": "projects/ubuntu-os-cloud/global/images/family/ubuntu-2404-lts"
-                                }
-                            }
-                        ],
-                        "networkInterfaces": [
-                            { "network": "global/networks/default" }
-                        ],
-                        "metadata": {
-                            "items": [
-                                {
-                                    "key": "startup-script",
-                                    "value": "$payload.data.startupScript"
-                                }
-                            ]
+                "name": "$payload.data.vmId",
+                "machineType": { "$concat": ["zones/", { "$null": ["$payload.data.zone", "$payload.data.region"] }, "/machineTypes/", "$payload.data.vmType"] },
+                "tags": {
+                    "items": ["http-server", "https-server"]
+                },
+                "disks": [
+                    {
+                        "boot": true,
+                        "autoDelete": true,
+                        "initializeParams": {
+                            "sourceImage": "projects/ubuntu-os-cloud/global/images/family/ubuntu-2404-lts"
                         }
-                    },
+                    }
+                ],
+                "networkInterfaces": [
+                    { "network": "global/networks/default" }
+                ],
+                "metadata": {
+                    "items": [
+                        {
+                            "key": "startup-script",
+                            "value": { "$astAsync": "$payload.data.startupScript" }
+                        }
+                    ]
+                }
+            },
             "enabled": true
         },
         {
@@ -142,7 +192,7 @@ export default {
             "endpoint": {
                 "$concat": [
                     "/compute/v1/projects/",
-                    { "$null": ["$payload.data.project", "$config.project"] },
+                    { "$null": ["$payload.data.project", "$config.projectId"] },
                     "/zones/",
                     { "$null": ["$payload.data.zone", "$payload.data.region"] },
                     "/instances/",
@@ -232,7 +282,7 @@ export default {
                     },
                     "osProfile": {
                         "computerName": "$payload.data.vmId",
-                        "customData": { "$base64": "$payload.data.startupScript" }
+                        "customData": { "$base64": { "$astAsync": "$payload.data.startupScript" } }
                     }
                 }
             },
@@ -266,12 +316,12 @@ export default {
             "endpoint": "/v2/droplets",
             "description": "Spins up a new DigitalOcean Droplet compute instance.",
             "data": {
-                        "name": { "$null": ["$payload.data.vmId", "$payload.data.name"] },
-                        "region": "$payload.data.region",
-                        "size": "$payload.data.vmType",
-                        "image": "ubuntu-24-04-x64",
-                        "user_data": "$payload.data.startupScript"
-                    },
+                "name": { "$null": ["$payload.data.vmId", "$payload.data.name"] },
+                "region": "$payload.data.region",
+                "size": "$payload.data.vmType",
+                "image": "ubuntu-24-04-x64",
+                "user_data": { "$astAsync": "$payload.data.startupScript" }
+            },
             "enabled": true
         },
         {
@@ -334,7 +384,7 @@ export default {
                     ]
                 },
                 "metadata": {
-                    "user_data": { "$base64": "$payload.data.startupScript" }
+                    "user_data": { "$base64": { "$astAsync": "$payload.data.startupScript" } }
                 }
             },
             "enabled": true
@@ -357,12 +407,12 @@ export default {
             "endpoint": "/v1/servers",
             "description": "Creates a new Hetzner Cloud server instance.",
             "data": {
-                        "name": "$payload.data.vmId",
-                        "server_type": "$payload.data.vmType",
-                        "location": "$payload.data.region",
-                        "image": "ubuntu-24.04",
-                        "user_data": "$payload.data.startupScript"
-                    },
+                "name": "$payload.data.vmId",
+                "server_type": "$payload.data.vmType",
+                "location": "$payload.data.region",
+                "image": "ubuntu-24.04",
+                "user_data": { "$astAsync": "$payload.data.startupScript" }
+            },
             "enabled": true
         },
         {
@@ -383,12 +433,12 @@ export default {
             "endpoint": "/v2/instances",
             "description": "Deploys a new Vultr cloud compute instance.",
             "data": {
-                        "region": "$payload.data.region",
-                        "plan": "$payload.data.vmType",
-                        "label": "$payload.data.vmId",
-                        "os_id": 215, // 215 = Ubuntu 24.04 LTS x64
-                        "user_data": { "$base64": "$payload.data.startupScript" }
-                    },
+                "region": "$payload.data.region",
+                "plan": "$payload.data.vmType",
+                "label": "$payload.data.vmId",
+                "os_id": 215, // 215 = Ubuntu 24.04 LTS x64
+                "user_data": { "$base64": { "$astAsync": "$payload.data.startupScript" } }
+            },
             "enabled": true
         },
         {
@@ -415,12 +465,12 @@ export default {
             },
             "description": "Provisions bare metal compute hardware on Equinix Metal.",
             "data": {
-                        "hostname": "$payload.data.vmId",
-                        "plan": "$payload.data.vmType",
-                        "metro": "$payload.data.region",
-                        "operating_system": "ubuntu_24_04",
-                        "userdata": "$payload.data.startupScript"
-                    },
+                "hostname": "$payload.data.vmId",
+                "plan": "$payload.data.vmType",
+                "metro": "$payload.data.region",
+                "operating_system": "ubuntu_24_04",
+                "userdata": { "$astAsync": "$payload.data.startupScript" }
+            },
             "enabled": true
         },
         {

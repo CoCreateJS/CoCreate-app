@@ -1,0 +1,72 @@
+<div
+	id="rename-file-modal"
+	class="dialog fade zoomIn"
+	tabindex="-1"
+	role="dialog"
+	aria-modal="true"
+	aria-hidden="true"
+	aria-labelledby="rename-file-modal-label">
+	<form
+		id="rename-file-form"
+		class="card width:300px max-width:100%"
+		state-id="rename-file-form"
+		state-overwrite
+		array=""
+		object=""
+		autocomplete="off"
+		aria-close-on="outside">
+		<header class="card-header d-flex align-items-center justify-content-between">
+			<h5
+				id="rename-file-modal-label"
+				class="card-title mb-0">
+				Rename
+			</h5>
+			<button
+				id="rename-file-close"
+				type="button"
+				class="btn-close"
+				aria-label="Close"
+				aria-controls="rename-file-modal"
+				aria-expanded="true"
+				aria-close></button>
+		</header>
+
+		<div class="card-body">
+			<label
+				class="form-label width:100%"
+				for="rename-file-name">
+				Name
+			</label>
+			<input
+				id="rename-file-name"
+				type="text"
+				class="form-control"
+				key="name"
+				required
+				autofocus />
+		</div>
+
+		<footer class="card-footer">
+			<div class="hstack gap-2 justify-content-end">
+				<button
+					type="button"
+					class="btn btn-light"
+					aria-controls="rename-file-modal"
+					aria-expanded="true"
+					aria-close>
+					Cancel
+				</button>
+				<button
+					type="button"
+					class="btn btn-success btn-spinner"
+					actions="validate, disabled, save, action($document #rename-file-close), disabled">
+					<span
+						class="spinner-border spinner-border-sm display:none"
+						role="status"
+						aria-hidden="true"></span>
+					<span class="button-text">Rename</span>
+				</button>
+			</div>
+		</footer>
+	</form>
+</div>

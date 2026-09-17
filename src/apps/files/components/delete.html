@@ -1,0 +1,69 @@
+<div
+	id="delete-file-modal"
+	class="dialog fade zoomIn"
+	tabindex="-1"
+	role="dialog"
+	aria-modal="true"
+	aria-hidden="true"
+	aria-labelledby="delete-file-modal-label"
+	aria-describedby="delete-file-modal-description">
+	<form
+		class="card"
+		state-id="delete-file-record"
+		state-overwrite
+		array=""
+		object=""
+		autocomplete="off"
+		aria-close-on="outside">
+		<div class="card-body">
+			<input
+				type="hidden"
+				key="deleted"
+				value="true"
+				value-type="boolean"
+				read="false" />
+
+			<button
+				id="delete-file-close"
+				type="button"
+				class="btn-close float-end"
+				aria-label="Close"
+				aria-controls="delete-file-modal"
+				aria-expanded="true"
+				aria-close></button>
+
+			<div class="mt-2 text-center">
+				<lord-icon
+					src="/assets/icons/gsqxdxog.json"
+					trigger="loop"
+					colors="primary:#f7b84b,secondary:#f06548"
+					style="width: 100px; height: 100px"></lord-icon>
+				<div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+					<h4 id="delete-file-modal-label">Move to Trash?</h4>
+					<p
+						id="delete-file-modal-description"
+						class="text-muted mx-4 mb-0">
+						This file or folder will be moved to Trash.
+					</p>
+				</div>
+			</div>
+
+			<div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+				<button
+					type="button"
+					class="btn w-sm btn-light"
+					aria-controls="delete-file-modal"
+					aria-expanded="true"
+					aria-close>
+					Cancel
+				</button>
+				<button
+					type="button"
+					class="btn w-sm btn-danger"
+					actions="disabled, save, action($document #delete-file-close), disabled">
+					Move to Trash
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

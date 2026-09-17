@@ -142,21 +142,22 @@
 		const panelContent = document.querySelector(".ai-chat-panel-content");
 		const navbarButton = document.querySelector("#ai-chat-button");
 		if (!mainView || !panel || !panelContent || !navbarButton) return;
+		const mainViewState = mainView.getAttribute("state-id") || "adminView";
 		const dockLeft = Boolean(shell.closest("#ai-chat-panel"));
 		if (!dockLeft && compactDockQuery.matches) return;
-		shell.setAttribute("render-clone", "");
 		if (dockLeft) {
+			mainView.setAttribute("rendered", "");
 			mainView.setAttribute("src", "");
 			mainView.replaceChildren(shell);
 			panelContent.setAttribute("src", "");
 			panel.setAttribute("aria-hidden", "true");
-			navbarButton.setAttribute("state-to", "adminView");
+			navbarButton.setAttribute("state-to", mainViewState);
 			navbarButton.setAttribute("state.src", appPath);
 			navbarButton.setAttribute("aria-controls", "");
 			CoCreate.state.setState({
-				adminView: { src: appPath },
+				[mainViewState]: { src: appPath },
 				"ai-chat-btn": {
-					"state-to": "adminView",
+					"state-to": mainViewState,
 					"state.src": appPath,
 					"aria-controls": ""
 				},
@@ -164,6 +165,7 @@
 				"ai-chat-panel": { "aria-hidden": "true" }
 			});
 		} else {
+			panelContent.setAttribute("rendered", "");
 			panelContent.setAttribute("src", "");
 			panelContent.replaceChildren(shell);
 			panel.setAttribute("aria-hidden", "false");
@@ -172,7 +174,7 @@
 			navbarButton.setAttribute("state.src", appPath);
 			navbarButton.setAttribute("aria-controls", "ai-chat-panel");
 			CoCreate.state.setState({
-				adminView: { src: "" },
+				[mainViewState]: { src: "" },
 				"ai-chat-btn": {
 					"state-to": "ai-chat-panel-content",
 					"state.src": appPath,
@@ -183,9 +185,6 @@
 			});
 		}
 		configureDockButton();
-		requestAnimationFrame(() => requestAnimationFrame(() => {
-			shell.removeAttribute("render-clone");
-		}));
 	});
 	const enforceCompactDock = () => {
 		const panel = document.querySelector("#ai-chat-panel");
@@ -2751,16 +2750,18 @@
         }
     });
 
-    shell.querySelector(".ai-new-chat").addEventListener("click", () => {
-        conversationLoadId = undefined;
-        conversationId = undefined;
-		setConversationState();
-        messages.replaceChildren(emptyView.cloneNode(true));
-        for (const item of threadList.querySelectorAll(".ai-thread")) {
-            item.classList.remove("active");
-        }
-        prompt.focus();
-    });
+    for (const newChat of shell.querySelectorAll(".ai-new-chat")) {
+        newChat.addEventListener("click", () => {
+            conversationLoadId = undefined;
+            conversationId = undefined;
+			setConversationState();
+            messages.replaceChildren(emptyView.cloneNode(true));
+            for (const item of threadList.querySelectorAll(".ai-thread")) {
+                item.classList.remove("active");
+            }
+            prompt.focus();
+        });
+    }
 
 	retrySocketConnection = () => {
 		clearTimeout(socketRetryTimer);

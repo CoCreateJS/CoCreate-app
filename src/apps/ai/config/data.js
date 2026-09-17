@@ -781,7 +781,7 @@ The resolved configuration contains:
 - scaleOut thresholds, consecutive flushes, and the maximum cluster size. maxClusterSize=0 means no configured maximum.
 - scaleIn thresholds, consecutive flushes, preservation policy, minimum cluster size, and decommission strategy.
 - geoScale enablement, shedding threshold, and geographic density grouping.
-- vertical enablement, maximum nodes per tier, and ordered vCPU/memory tiers.
+- vertical enablement, maximum nodes per tier, and minimum/maximum vCPU and memory boundaries. After a region reaches the configured node count at its current size, the next target doubles both resources without exceeding those maximums.
 - spot-instance policy and optional startupScript, operating-system, and application defaults.
 - clouds keyed by provider. A provider can define its instance catalog, regions, provider-specific startupScript, os, application, and create/delete API endpoints.
 - preferredProviders when provider selection should be constrained or prioritized.
@@ -833,11 +833,8 @@ Inspect configuration and use a determine action before invoking scaleOut or sca
                             vertical: {
                                 enabled: true,
                                 maxNodesPerTier: 2,
-                                tiers: [
-                                    { vCPU: 1, memoryGb: 2 },
-                                    { vCPU: 2, memoryGb: 8 },
-                                    { vCPU: 4, memoryGb: 16 }
-                                ]
+                                min: { vCPU: 1, memoryGb: 2 },
+                                max: { vCPU: 64, memoryGb: 256 }
                             },
                             preferredProviders: ["aws", "gcp"]
                         }

@@ -1,4 +1,18 @@
-<div
+<form
+	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	data-component-form
+	array
+	object
+	autocomplete="off">
+	<header
+		class="card-header offcanvas-app-topbar flex-shrink-0"
+		src="/apps/apps/header.html"
+		aria-label="Details controls"></header>
+
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		plugin='{"$SimpleBar": ["$this", {}]}'>
+		<div
 			class="card-body d-flex flex-wrap gap-4 justify-content-center"
 			aria-label="Application Details Body">
 			<!-- Centered Avatar Section -->
@@ -160,3 +174,5 @@
 				src="components/activities.html"
 				aria-label="Application Activities Section"></div>
 		</div>
+	</div>
+</form>
