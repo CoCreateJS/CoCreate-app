@@ -1,23 +1,26 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/companies/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-wrap gap-3">
+		<div class="card-body d-flex flex-wrap gap-3">
 			<div
 				class="text-center w-100"
 				input.src="/assets/images/multi-user.jpg"
 				input-query="img"
 				src="/components/profile-img.html"></div>
-			<label class="form-label" id="company-name-label"
+			<label
+				class="form-label"
+				id="company-name-label"
 				>Company Name
 				<input
 					type="text"
@@ -27,7 +30,9 @@
 					placeholder="Enter company name"
 					aria-labelledby="company-name-label" />
 			</label>
-			<label class="form-label" id="website-label"
+			<label
+				class="form-label"
+				id="website-label"
 				>Website
 				<input
 					type="url"
@@ -37,7 +42,9 @@
 					placeholder="Enter website URL"
 					aria-labelledby="website-label" />
 			</label>
-			<label class="form-label" id="industry-label"
+			<label
+				class="form-label"
+				id="industry-label"
 				>Industry
 				<input
 					type="text"
@@ -47,7 +54,9 @@
 					placeholder="Enter industry"
 					aria-labelledby="industry-label" />
 			</label>
-			<label class="form-label" id="employee-count-label"
+			<label
+				class="form-label"
+				id="employee-count-label"
 				>Employee Count
 				<input
 					type="number"
@@ -57,7 +66,9 @@
 					placeholder="Enter employee count"
 					aria-labelledby="employee-count-label" />
 			</label>
-			<label class="form-label" id="description-label"
+			<label
+				class="form-label"
+				id="description-label"
 				>Description
 				<textarea
 					key="description"
@@ -67,10 +78,14 @@
 					aria-labelledby="description-label"></textarea>
 			</label>
 			<div class="d-flex flex-column flex-grow-1 gap-3 min-w-250px">
-				<div class="card-header" id="contact-information-header">
+				<div
+					class="card-header"
+					id="contact-information-header">
 					Contact Information
 				</div>
-				<label class="form-label" id="primary-contact-name-label"
+				<label
+					class="form-label"
+					id="primary-contact-name-label"
 					>Primary Contact Name
 					<input
 						type="text"
@@ -80,7 +95,9 @@
 						placeholder="Enter primary contact name"
 						aria-labelledby="primary-contact-name-label" />
 				</label>
-				<label class="form-label" id="primary-contact-email-label"
+				<label
+					class="form-label"
+					id="primary-contact-email-label"
 					>Primary Contact Email
 					<input
 						type="email"
@@ -90,7 +107,9 @@
 						placeholder="Enter primary contact email"
 						aria-labelledby="primary-contact-email-label" />
 				</label>
-				<label class="form-label" id="primary-contact-phone-label"
+				<label
+					class="form-label"
+					id="primary-contact-phone-label"
 					>Primary Contact Phone
 					<input
 						type="tel"
@@ -100,8 +119,14 @@
 						placeholder="Enter primary contact phone"
 						aria-labelledby="primary-contact-phone-label" />
 				</label>
-				<div class="card-header" id="address-header">Address</div>
-				<label class="form-label" id="street-label"
+				<div
+					class="card-header"
+					id="address-header">
+					Address
+				</div>
+				<label
+					class="form-label"
+					id="street-label"
 					>Street
 					<input
 						type="text"
@@ -111,7 +136,9 @@
 						placeholder="Enter street"
 						aria-labelledby="street-label" />
 				</label>
-				<label class="form-label" id="city-label"
+				<label
+					class="form-label"
+					id="city-label"
 					>City
 					<input
 						type="text"
@@ -121,7 +148,9 @@
 						placeholder="Enter city"
 						aria-labelledby="city-label" />
 				</label>
-				<label class="form-label" id="state.province-label"
+				<label
+					class="form-label"
+					id="state.province-label"
 					>State/Province
 					<input
 						type="text"
@@ -131,7 +160,9 @@
 						placeholder="Enter state/province"
 						aria-labelledby="state.province-label" />
 				</label>
-				<label class="form-label" id="zip-postal-code-label"
+				<label
+					class="form-label"
+					id="zip-postal-code-label"
 					>Zip/Postal Code
 					<input
 						type="text"
@@ -141,7 +172,9 @@
 						placeholder="Enter zip/postal code"
 						aria-labelledby="zip-postal-code-label" />
 				</label>
-				<label class="form-label" id="country-label"
+				<label
+					class="form-label"
+					id="country-label"
 					>Country
 					<input
 						type="text"
@@ -159,15 +192,20 @@
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

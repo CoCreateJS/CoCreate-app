@@ -1,19 +1,21 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/items/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-wrap align-items:flex-start gap-3">
-			<div class="d-flex flex-column gap-4 flex-grow:2 flex-basis:500px min-width:320px">
-					<div class="width:100%">
+		<div class="card-body d-flex flex-wrap align-items:flex-start gap-3">
+			<div
+				class="d-flex flex-column gap-4 flex-grow:2 flex-basis:500px min-width:320px">
+				<div class="width:100%">
 					<div class="d-flex flex-column gap-3">
 						<input
 							type="hidden"
@@ -21,7 +23,9 @@
 							id="item-id-input"
 							key="_id" />
 
-						<label class="form-label w-100" for="item-title-input">
+						<label
+							class="form-label w-100"
+							for="item-title-input">
 							Item Name
 							<input
 								type="text"
@@ -60,7 +64,7 @@
 				</div>
 				<!-- end card -->
 
-					<div class="width:100%">
+				<div class="width:100%">
 					<div class="mb-3">
 						<h5 class="card-title mb-0">Item Gallery</h5>
 					</div>
@@ -74,7 +78,7 @@
 				</div>
 				<!-- end card -->
 
-					<div class="width:100%">
+				<div class="width:100%">
 					<div class="mb-3">
 						<ul
 							class="nav nav-tabs-custom border-bottom-0"
@@ -83,7 +87,9 @@
 								<a
 									class="nav-link active"
 									href="#addproduct-general-info"
-									role="tab" aria-controls="addproduct-general-info" aria-selected="true">
+									role="tab"
+									aria-controls="addproduct-general-info"
+									aria-selected="true">
 									General Info
 								</a>
 							</li>
@@ -91,7 +97,9 @@
 								<a
 									class="nav-link"
 									href="#addproduct-metadata"
-									role="tab" aria-controls="addproduct-metadata" aria-selected="false">
+									role="tab"
+									aria-controls="addproduct-metadata"
+									aria-selected="false">
 									Meta Data
 								</a>
 							</li>
@@ -301,8 +309,9 @@
 			</div>
 			<!-- end col -->
 
-			<div class="d-flex flex-column gap-4 flex-grow-1 flex-basis:320px min-width:280px">
-					<div class="width:100%">
+			<div
+				class="d-flex flex-column gap-4 flex-grow-1 flex-basis:320px min-width:280px">
+				<div class="width:100%">
 					<div class="mb-3">
 						<h5 class="card-title mb-0">Publish</h5>
 					</div>
@@ -320,7 +329,9 @@
 								data-choices
 								data-choices-search-false
 								key="publish.status">
-								<option value="Published" selected>
+								<option
+									value="Published"
+									selected>
 									Published
 								</option>
 								<option value="Scheduled">Scheduled</option>
@@ -340,7 +351,11 @@
 								data-choices
 								data-choices-search-false
 								key="publish.visibility">
-								<option value="Public" selected>Public</option>
+								<option
+									value="Public"
+									selected>
+									Public
+								</option>
 								<option value="Hidden">Hidden</option>
 							</select>
 						</div>
@@ -349,7 +364,7 @@
 				</div>
 				<!-- end card -->
 
-					<div class="width:100%">
+				<div class="width:100%">
 					<div class="mb-3">
 						<h5 class="card-title mb-0">Publish Schedule</h5>
 					</div>
@@ -375,7 +390,7 @@
 				</div>
 				<!-- end card -->
 
-					<div class="width:100%">
+				<div class="width:100%">
 					<div class="mb-3">
 						<h5 class="card-title mb-0">Item Categories</h5>
 					</div>
@@ -409,7 +424,7 @@
 					<!-- end card body -->
 				</div>
 				<!-- end card -->
-					<div class="width:100%">
+				<div class="width:100%">
 					<div class="mb-3">
 						<h5 class="card-title mb-0">Item Tags</h5>
 					</div>
@@ -435,7 +450,7 @@
 				</div>
 				<!-- end card -->
 
-					<div class="width:100%">
+				<div class="width:100%">
 					<div class="mb-3">
 						<h5 class="card-title mb-0">Item Short Description</h5>
 					</div>
@@ -460,15 +475,20 @@
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

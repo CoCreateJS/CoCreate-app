@@ -1,0 +1,152 @@
+#apis-aside > header {
+	flex-shrink: 0;
+}
+
+.apis-credential :is(input, textarea):not([hidden]):placeholder-shown ~ button,
+.apis-credential-field:has(:is(input, textarea)[type="password"]:not([hidden])) .ri-eye-off-line,
+.apis-credential-field:has(:is(input, textarea)[type="text"]:not([hidden])) .ri-eye-line {
+	display: none;
+}
+
+.apis-credential-field > input {
+	padding-right: 5rem;
+	background-color: var(--coc-body-bg);
+}
+
+.apis-credential-icon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.25rem;
+	border: 0;
+	background: transparent;
+	color: var(--coc-secondary-color);
+	font-size: 1.25rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.apis-credential-reveal {
+	right: 2.5rem;
+}
+
+.apis-credential-copy {
+	right: 0.5rem;
+}
+
+.apis-credential-copy .ri-check-line,
+.apis-credential-copy.is-copied .ri-file-copy-line {
+	display: none;
+}
+
+.apis-credential-copy.is-copied .ri-check-line {
+	display: inline-block;
+	color: var(--coc-success);
+	animation: apis-copy-check 1.2s ease;
+}
+
+@keyframes apis-copy-check {
+	0% { opacity: 0; transform: scale(0.6); }
+	15%, 85% { opacity: 1; transform: scale(1); }
+	100% { opacity: 0; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	@keyframes apis-copy-check {
+		from, to { opacity: 1; }
+	}
+}
+
+.apis-status .apis-status-enabled,
+.apis-status:has(input:checked) .apis-status-disabled {
+	display: none;
+}
+
+.apis-status:has(input:checked) .apis-status-enabled {
+	display: inline-block;
+}
+
+#apis-aside:has(#APIs-details-view[aria-hidden="false"]) #APIs-details-btn,
+#apis-aside:has(#APIs-form-view[aria-hidden="false"]) #APIs-form-btn,
+#apis-aside:has(#APIs-codearea-view[aria-hidden="false"]) #APIs-codearea-btn {
+	display: none;
+}
+
+#create-panel .APIs-record-actions,
+#create-panel .APIs-dock-control {
+	display: none !important;
+}
+
+#apis-aside > .component-form-body {
+	flex: 1 1 0;
+	height: auto !important;
+	min-height: 0;
+	overflow: hidden;
+}
+
+#apis-aside [role="tabpanel"] {
+	height: 100%;
+	min-height: 0;
+	overflow: hidden;
+}
+
+#APIs-details-view > form {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 0;
+	margin: 0;
+}
+
+#APIs-form-view > form,
+#APIs-codearea-view > form {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 0;
+	margin: 0;
+}
+
+#apis-aside [role="tabpanel"] > form > .card-body {
+	flex: 1 1 0;
+	height: auto !important;
+	min-height: 0;
+}
+
+#APIs-details-view > form > .card-body,
+#APIs-form-view > form > .card-body {
+	position: relative;
+	overflow: auto;
+}
+
+#APIs-codearea-view > form > [src="/components/codearea/"] {
+	position: relative;
+}
+
+#APIs-form-view > form > footer,
+#APIs-codearea-view > form > footer {
+	flex-shrink: 0;
+}
+
+#apis-aside [role="tabpanel"] > form > .card-body > .simplebar-wrapper {
+	height: 100%;
+}
+
+#APIs-codearea-view .card-body .simplebar-content {
+	min-height: 100%;
+}
+
+#APIs-codearea-view .component-codearea > textarea,
+#APIs-codearea-view .component-codearea > pre,
+#APIs-codearea-view .component-codearea > pre * {
+	-webkit-text-security: disc;
+}
+
+#APIs-codearea-view[aria-hidden="false"]:not([aria-hidden="true"] *) .component-codearea > textarea,
+#APIs-codearea-view[aria-hidden="false"]:not([aria-hidden="true"] *) .component-codearea > pre,
+#APIs-codearea-view[aria-hidden="false"]:not([aria-hidden="true"] *) .component-codearea > pre * {
+	-webkit-text-security: none;
+}

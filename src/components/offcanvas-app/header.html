@@ -1,0 +1,197 @@
+<header
+	class="card-header offcanvas-app-topbar flex-shrink-0"
+	aria-label="{{app.name}} view and window controls">
+	<link rel="stylesheet" href="/components/offcanvas-app/header.css" />
+	<ul
+		class="list-inline hstack justify-content-between align-items-center gap-2 mb-0"
+		style="min-height: unset"
+		role="toolbar"
+		aria-label="{{app.name}} controls">
+		<li class="{{app.name}}-record-actions list-inline-item">
+			<div
+				class="dropdown d-inline-block"
+				role="region"
+				aria-label="{{app.name}} actions">
+				<a
+					class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle dropdown text-muted"
+					role="button"
+					aria-haspopup="menu"
+					aria-controls="{{app.name}}-header-dropdown"
+					aria-expanded="false"
+					aria-label="More actions">
+					<i
+						class="ri-more-2-fill align-middle fs-22"
+						aria-hidden="true"></i>
+				</a>
+				<ul
+					id="{{app.name}}-header-dropdown"
+					class="dropdown-menu dropdown-menu-start"
+					aria-close-on="anywhere"
+					role="menu"
+					aria-label="{{app.name}} actions menu">
+					<li>
+						<a
+							class="dropdown-item"
+							aria-controls="{{app.name}}-details-view"
+							aria-controls-group="{{app.name}}-views"
+							aria-expanded="true"
+							aria-open
+							role="menuitem">
+							<i
+								class="ri-eye-fill align-bottom me-2 text-muted"
+								aria-hidden="true"></i
+							>View
+						</a>
+					</li>
+					<li>
+						<a
+							class="dropdown-item"
+							aria-controls="{{app.name}}-form-view"
+							aria-controls-group="{{app.name}}-views"
+							aria-expanded="false"
+							aria-open
+							role="menuitem">
+							<i
+								class="ri-pencil-fill align-bottom me-2 text-muted"
+								aria-hidden="true"></i
+							>Edit
+						</a>
+					</li>
+					<li>
+						<a
+							class="dropdown-item remove-item-btn"
+							aria-haspopup="dialog"
+							aria-label="Delete {{app.name}}"
+							aria-controls="removeItemModal"
+							role="menuitem"
+							state-to="delete-record"
+							state.array=""
+							state.object="">
+							<input
+								state-id="offcanvas-app-form"
+								key="_id"
+								input.state.object="$value"
+								input-query="$parent"
+								hidden />
+							<input
+								state-id="offcanvas-app-form"
+								key="$array[0]"
+								input.state.array="$value"
+								input-query="$parent"
+								hidden />
+							<i
+								class="ri-delete-bin-fill align-bottom me-2 text-muted"
+								aria-hidden="true"></i
+							>Delete
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div
+				role="tablist"
+				aria-label="{{app.name}} views"
+				class="d-inline-block align-middle">
+				<button
+					id="{{app.name}}-details-btn"
+					type="button"
+					role="tab"
+					aria-controls="{{app.name}}-details-view"
+					aria-selected="true"
+					class="btn btn-sm btn-outline-primary ms-2"
+					title="Details"
+					aria-label="View {{app.name}} details">
+					<i
+						class="ri-eye-fill align-bottom"
+						aria-hidden="true"></i>
+					<span>Details</span>
+				</button>
+
+				<button
+					id="{{app.name}}-form-btn"
+					type="button"
+					role="tab"
+					aria-controls="{{app.name}}-form-view"
+					aria-selected="false"
+					class="btn btn-sm btn-outline-primary ms-2"
+					title="Edit"
+					aria-label="Edit {{app.name}}">
+					<i
+						class="ri-pencil-fill align-bottom"
+						aria-hidden="true"></i>
+					<span>Edit</span>
+				</button>
+				<button
+					id="{{app.name}}-codearea-btn"
+					type="button"
+					role="tab"
+					aria-controls="{{app.name}}-codearea-view"
+					aria-selected="false"
+					class="btn btn-sm btn-outline-primary ms-2"
+					title="JSON"
+					aria-label="Edit {{app.name}} JSON">
+					<i
+						class="ri-code-s-slash-line align-bottom"
+						aria-hidden="true"></i>
+					<span>JSON</span>
+				</button>
+			</div>
+		</li>
+
+		<div
+			role="group"
+			aria-label="Window controls"
+			class="hstack gap-1 ms-auto">
+			<li class="{{app.name}}-dock-control d-none d-md-inline">
+				<a
+					role="button"
+					title="Dock Right"
+					aria-label="Dock Right"
+					state-to="offcanvas-app-dock"
+					state.docked="true"
+					class="offcanvas-app-dock btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
+					<i
+						class="ri-layout-right-line align-middle fs-22"
+						aria-hidden="true"></i>
+				</a>
+				<a
+					role="button"
+					title="Undock"
+					aria-label="Undock"
+					state-to="offcanvas-app-dock"
+					state.docked="false"
+					class="offcanvas-app-undock btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
+					<i
+						class="ri-layout-right-2-line align-middle fs-22"
+						aria-hidden="true"></i>
+				</a>
+			</li>
+			<li title="Close">
+				<a
+					role="button"
+					aria-label="Close"
+					aria-controls="offcanvas-app"
+					data-panel-close="offcanvas-app"
+					aria-close
+					aria-expanded="true"
+					class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
+					<i
+						class="ri-close-line align-middle fs-22"
+						aria-hidden="true"></i>
+				</a>
+				<a
+					role="button"
+					aria-label="Close"
+					aria-controls="create-panel"
+					data-panel-close="create-panel"
+					aria-close
+					aria-expanded="true"
+					class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
+					<i
+						class="ri-close-line align-middle fs-22"
+						aria-hidden="true"></i>
+				</a>
+			</li>
+		</div>
+	</ul>
+</header>

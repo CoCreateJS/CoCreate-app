@@ -24,6 +24,8 @@ export default {
             "server": "*",
             "worker": "*",
             "config": {
+                "host": "dev.cocreatejs.com",
+                "binaryUrl": "https://github.com/cocreate-js/CoCreateWS/releases/download/dev-2026-09-17/cocreatews-node-linux-x64.tar.gz",
                 "startupScript": {
                     "$concat": [[`#!/usr/bin/env bash
 # ==============================================================================
@@ -39,12 +41,17 @@ echo "[CoCreate] Preparing workspace directories..."
 mkdir -p /var/log/cocreatews
 mkdir -p /etc/cocreatews
 
+# Mirror cloud-init output into a persistent file and the provider console so
+# failed first boots remain diagnosable without SSH access.
+exec > >(tee -a /var/log/cocreatews/startup.log /dev/console) 2>&1
+trap 'status=$?; echo "[CoCreate] Startup failed on line $LINENO (exit $status)"; systemctl --no-pager --full status cocreatews 2>/dev/null || true; journalctl --no-pager -u cocreatews -n 100 2>/dev/null || true; exit $status' ERR
+
 # ------------------------------------------------------------------------------
-# 2. Linux Swap Space Provisioning (4GB Fixed Safety Net)
+# 2. Linux Swap Space Provisioning (1GB Safety Net)
 # ------------------------------------------------------------------------------
 if ! grep -q '/swapfile' /etc/fstab; then
-  echo "[CoCreate] Configuring 4GB disk swap space..."
-  fallocate -l 4G /swapfile || dd if=/dev/zero of=/swapfile bs=1M count=4096
+  echo "[CoCreate] Configuring 1GB disk swap space..."
+  fallocate -l 1G /swapfile || dd if=/dev/zero of=/swapfile bs=1M count=1024
   chmod 600 /swapfile
   mkswap /swapfile
   swapon /swapfile
@@ -56,15 +63,42 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# 3. Download Latest Binary (Public GitHub Release - No API Key Needed)
+# 3. Install Node and Download Runtime Bundle (Public GitHub Release)
 # ------------------------------------------------------------------------------
-if [ -f /usr/local/bin/cocreatews-linux-x86 ]; then
-  echo "[CoCreate] Binary already present locally at /usr/local/bin/cocreatews-linux-x86, skipping download."
-else
-  echo "[CoCreate] Fetching latest compiled binary from public GitHub Releases..."
-  curl -sL https://github.com/CoCreate-app/CoCreateWS/releases/latest/download/cocreatews-linux-x86 -o /usr/local/bin/cocreatews-linux-x86
+echo "[CoCreate] Installing the Node.js runtime..."
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get install -y --no-install-recommends ca-certificates curl tar xz-utils
+if [ ! -x /opt/node-v24.18.0/bin/node ]; then
+  curl -fsSL --retry 5 --retry-all-errors --connect-timeout 15 \
+    "https://nodejs.org/dist/v24.18.0/node-v24.18.0-linux-x64.tar.xz" \
+    -o /tmp/node-v24.18.0-linux-x64.tar.xz
+  echo "55aa7153f9d88f28d765fcdad5ae6945b5c0f98a36881703817e4c450fa76742  /tmp/node-v24.18.0-linux-x64.tar.xz" | sha256sum -c -
+  mkdir -p /opt/node-v24.18.0
+  tar -xJf /tmp/node-v24.18.0-linux-x64.tar.xz \
+    -C /opt/node-v24.18.0 --strip-components=1
+  rm -f /tmp/node-v24.18.0-linux-x64.tar.xz
 fi
-chmod +x /usr/local/bin/cocreatews-linux-x86
+ln -sfn /opt/node-v24.18.0 /opt/node
+/opt/node/bin/node --version
+
+if [ -s /opt/cocreatews/index.js ] && [ -x /opt/cocreatews/copilot-linux-x64 ]; then
+  echo "[CoCreate] Node runtime bundle already present, skipping download."
+else
+  echo "[CoCreate] Fetching the configured Node runtime bundle from GitHub Releases..."
+  mkdir -p /opt/cocreatews
+  curl -fsSL --retry 5 --retry-all-errors --connect-timeout 15 \
+    "`, "$payload.data.binaryUrl", `" -o /tmp/cocreatews-node.tar.gz
+  test -s /tmp/cocreatews-node.tar.gz
+  tar -xzf /tmp/cocreatews-node.tar.gz -C /opt/cocreatews
+  rm -f /tmp/cocreatews-node.tar.gz
+fi
+test -s /opt/cocreatews/index.js
+test -x /opt/cocreatews/copilot-linux-x64
+echo "[CoCreate] Node runtime bundle is ready:"
+ls -lh /opt/cocreatews/index.js /opt/cocreatews/copilot-linux-x64
+sha256sum /opt/cocreatews/index.js /opt/cocreatews/copilot-linux-x64
+apt-get clean
 
 # ------------------------------------------------------------------------------
 # 4. Systemd Service Unit Provisioning
@@ -73,8 +107,31 @@ echo "[CoCreate] Creating systemd service unit..."
 cat << 'EOF' > /etc/cocreatews/environment
 NODE_ENV=production
 organization_id=`, "$payload.organization_id", "\n", "$payload.data.environment", `
+host=`, "$payload.data.host", `
 EOF
 chmod 600 /etc/cocreatews/environment
+
+# Storage is passed as base64 so connection strings and punctuation cannot be
+# misinterpreted by cloud-init, the shell, or systemd's EnvironmentFile parser.
+printf '%s' '`, "$payload.data.storage", `' | base64 --decode > /etc/cocreatews/storage.json
+test -s /etc/cocreatews/storage.json
+chmod 600 /etc/cocreatews/storage.json
+
+# CoCreate.config.prompt resolves variable-backed configuration such as
+# storage from its global config object. JSON is a supported config format.
+printf '{"storage":' > /root/CoCreate.config.js
+cat /etc/cocreatews/storage.json >> /root/CoCreate.config.js
+printf '}\n' >> /root/CoCreate.config.js
+chmod 600 /root/CoCreate.config.js
+
+cat << 'EOF' > /usr/local/bin/cocreatews-start
+#!/usr/bin/env bash
+set -euo pipefail
+cd /root
+export storage="$(cat /etc/cocreatews/storage.json)"
+exec /opt/node/bin/node /opt/cocreatews/index.js
+EOF
+chmod 700 /usr/local/bin/cocreatews-start
 
 cat << 'EOF' > /etc/systemd/system/cocreatews.service
 [Unit]
@@ -84,15 +141,17 @@ After=network.target
 [Service]
 Type=simple
 User=root
+WorkingDirectory=/root
 Restart=always
 RestartSec=3
 
 EnvironmentFile=/etc/cocreatews/environment
+Environment=HOME=/root
 
 # Execution & Logging
-ExecStart=/usr/local/bin/cocreatews-linux-x86
-StandardOutput=append:/var/log/cocreatews/output.log
-StandardError=append:/var/log/cocreatews/error.log
+ExecStart=/usr/local/bin/cocreatews-start
+StandardOutput=journal+console
+StandardError=journal+console
 
 # Graceful Shutdown for AWS Spot Interruption (2-minute / 120s warning)
 # systemd sends SIGTERM first and grants 110s for connection draining & metrics flush
@@ -108,13 +167,7 @@ systemctl daemon-reload
 systemctl enable cocreatews
 
 # ------------------------------------------------------------------------------
-# 5. Boot WebService via Systemd
-# ------------------------------------------------------------------------------
-echo "[CoCreate] Booting WebService node via systemd..."
-systemctl restart cocreatews
-
-# ------------------------------------------------------------------------------
-# 6. Security Hardening: Lockdown Server & Close Port 22 (Disable SSH)
+# 5. Security Hardening: Lockdown Server & Close Port 22 (Disable SSH)
 # ------------------------------------------------------------------------------
 echo "[CoCreate] Locking down server: configuring firewall and disabling SSH..."
 
@@ -123,16 +176,51 @@ if command -v ufw >/dev/null 2>&1; then
   ufw default allow outgoing
   ufw allow 80/tcp
   ufw allow 443/tcp
+  ufw allow 8090/tcp
   ufw deny 22/tcp
   ufw --force enable || true
 fi
 
-# Stop, disable, and mask SSH daemon so it cannot be started
+# Stop, disable, and mask SSH daemon so it cannot be started.
 systemctl stop sshd || systemctl stop ssh || true
 systemctl disable sshd || systemctl disable ssh || true
 systemctl mask sshd || systemctl mask ssh || true
 
-echo "[CoCreate] Node successfully locked down. HTTP (80) & HTTPS (443) open, SSH (22) disabled."`]]
+# ------------------------------------------------------------------------------
+# 6. Boot WebService via Systemd
+# ------------------------------------------------------------------------------
+echo "[CoCreate] Booting WebService node via systemd..."
+systemctl restart cocreatews
+
+port_is_listening() {
+  ss -H -lnt | awk '{ print $4 }' | grep -Eq "(^|:)$1$"
+}
+
+for attempt in $(seq 1 90); do
+  if systemctl is-active --quiet cocreatews && \
+    port_is_listening 80 && \
+    port_is_listening 443 && \
+    port_is_listening 8090; then
+    break
+  fi
+  sleep 2
+done
+
+if ! systemctl is-active --quiet cocreatews || \
+  ! port_is_listening 80 || \
+  ! port_is_listening 443 || \
+  ! port_is_listening 8090; then
+  echo "[CoCreate] WebService failed to open all required ports (80, 443, 8090)."
+  systemctl --no-pager --full status cocreatews || true
+  journalctl --no-pager -u cocreatews -n 100 || true
+  echo "[CoCreate] Listening sockets at failure:"
+  ss -lntp || true
+  exit 1
+fi
+echo "[CoCreate] WebService is active on ports 80, 443, and 8090. Listening sockets:"
+ss -lntp || true
+
+echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh (8090) open; SSH (22) disabled."`]]
                 }
             }
         },
@@ -149,13 +237,13 @@ echo "[CoCreate] Node successfully locked down. HTTP (80) & HTTPS (443) open, SS
                 "clouds.aws": {
                     "image": "ubuntu-24.04-lts",
                     "instances": [
-                        { "name": "t3a.nano", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.small", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.medium", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.large", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.xlarge", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.2xlarge", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24.04-lts" },
-                        { "name": "c5a.4xlarge", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24.04-lts" }
+                        { "name": "t3a.nano", "vCPU": 2, "memoryGb": 0.5, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.small", "vCPU": 2, "memoryGb": 2, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.medium", "vCPU": 2, "memoryGb": 4, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.large", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.xlarge", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24.04-lts" },
+                        { "name": "t3a.2xlarge", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24.04-lts" },
+                        { "name": "c5a.4xlarge", "vCPU": 16, "memoryGb": 32, "image": "ubuntu-24.04-lts" }
                     ],
                     "regions": [
                         { "region": "us-east-1", "name": "N. Virginia", "country": "US", "lat": 38.9489, "lng": -77.4499 },

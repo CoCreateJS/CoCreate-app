@@ -1,115 +1,40 @@
 <div
 	class="list-header d-flex flex-wrap justify-content-between align-items-center gap-2">
-	<style>
-		.list-header {
-			container-name: list-header;
-			container-type: inline-size;
-		}
+	<link rel="stylesheet" href="/components/list/header.css" />
 
-		/* .search-box {
-			flex-grow: 1;
-		} */
-
-		.search-box {
-			min-width: 20px;
-			max-width: 100%;
-			justify-content: flex-start;
-		}
-		@media (min-width: 577px) {
-			.search-box:has(#search-objects) {
-				width: 320px;
-			}
-			#search-objects {
-				width: 0;
-				flex: 1 1 auto;
-			}
-		}
-		.form-control.search {
-			z-index: unset !important;
-		}
-		.search-box .input-group {
-			width: 100% !important;
-			flex-wrap: nowrap;
-			display: flex;
-		}
-		@media (max-width: 576px) {
-			.search-box .form-control {
-				padding-left: 0px;
-			}
-			.form-control.search.search-sm {
-				width: 39px !important;
-				max-width: 39px !important;
-				transition:
-					width 0.2s,
-					padding-left 0.2s;
-			}
-			.form-control.search.search-sm::placeholder {
-				color: transparent !important;
-			}
-			.form-control.search.search-sm:focus::placeholder,
-			.form-control.search.search-sm:not(
-					:placeholder-shown
-				)::placeholder {
-				color: #6c757d !important;
-			}
-			.form-control.search.search-sm:focus,
-			.form-control.search.search-sm:not(:placeholder-shown) {
-				width: 100% !important;
-				max-width: 100% !important;
-				padding-left: 40px !important;
-			}
-		}
-
-		@container list-header (max-width: 1200px) {
-			.list-action-label {
-				display: none !important;
-			}
-
-			.list-compact-action {
-				display: inline-flex;
-				width: 40px;
-				height: 38px;
-				align-items: center;
-				justify-content: center;
-				padding: 0;
-			}
-
-			.list-compact-action.dropdown-toggle::after {
-				display: none;
-			}
-		}
-	</style>
-
-	<div class="search-box">
-		<div class="input-group">
+	<div class="list-header-primary d-flex align-items-center gap-2">
+		<button
+			type="button"
+			class="list-toolbar-control list-compact-action list-filter-button btn btn-light"
+			aria-controls="context-sidebar"
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			aria-label="Filters"
+			title="Filters">
+			<i
+				class="ri-filter-3-line"
+				aria-hidden="true"></i>
+			<span class="list-action-label">Filters</span>
+		</button>
+		<div
+			class="list-header-extension d-flex align-items-center min-width:0"
+			src="">
 			<input
-				id="search-objects"
-				type="text"
-				class="form-control search search-sm"
-				placeholder="Search for..."
-				filter-search
-				filter-query="$document .list-view" />
-			<button
-				type="button"
-				class="btn btn-outline-success"
-				aria-controls="context-sidebar"
-				aria-haspopup="dialog"
-				aria-expanded="false"
-				aria-label="Filter options"
-				title="Filter options">
-				<i class="ri-filter-3-line align-bottom"></i>
-			</button>
+				type="hidden"
+				state-id="app"
+				array="apps"
+				object
+				key="listHeader"
+				input.src="$value"
+				input-query="$parent" />
 		</div>
-		<i
-			class="ri-search-line search-icon"
-			style="pointer-events: none"></i>
 	</div>
 
-	<!-- View Dropdown -->
-	<div class="hstack gap-2">
+	<!-- List actions -->
+	<div class="list-header-actions hstack gap-2 ms-auto">
 		<div class="dropdown">
 			<button
-				class="list-compact-action btn btn-outline-primary dropdown-toggle"
+				class="list-toolbar-control list-compact-action btn btn-light dropdown-toggle"
 				type="button"
 				id="viewDropdown"
 				aria-expanded="false"
@@ -120,7 +45,7 @@
 				<i
 					state-id="list-view"
 					class="ri-layout-grid-line"></i>
-				<span class="list-action-label d-none d-sm-inline">View</span>
+				<span class="list-action-label">View</span>
 			</button>
 			<ul
 				id="viewDropdownMenu"
@@ -134,9 +59,9 @@
 						class="dropdown-item"
 						href="#"
 						state-to="list-view"
-						state.src="/components/list/table.html">
-						<i class="ri-table-line me-2"></i>
-						Table
+						state.src="/components/list/grid.html">
+						<i class="ri-layout-grid-line me-2"></i>
+						Grid
 					</a>
 				</li>
 				<li>
@@ -144,9 +69,9 @@
 						class="dropdown-item"
 						href="#"
 						state-to="list-view"
-						state.src="/components/list/grid.html">
-						<i class="ri-layout-grid-line me-2"></i>
-						Grid
+						state.src="/components/list/table.html">
+						<i class="ri-table-line me-2"></i>
+						Table
 					</a>
 				</li>
 			</ul>
@@ -154,15 +79,17 @@
 
 		<button
 			type="button"
-			class="btn btn-soft-danger"
+			class="list-toolbar-control list-toolbar-icon btn btn-soft-danger"
 			id="remove-actions"
+			actions="delete"
+			delete-query="$document #list-view table[data-row-selection] tbody [data-select-row]:checked[]"
 			aria-label="Delete selected items"
 			title="Delete selected items">
-			<i class="ri-delete-bin-2-line"></i>
+			<i class="ri-delete-bin-2-line" aria-hidden="true"></i>
 		</button>
 		<button
 			type="button"
-			class="list-compact-action btn btn-success add-btn"
+			class="list-toolbar-control list-compact-action btn btn-success add-btn"
 			aria-controls="offcanvas-app"
 			aria-open
 			aria-haspopup="dialog"
@@ -175,7 +102,6 @@
 			<input
 				type="hidden"
 				state-id="app"
-				state-overwrite
 				array="apps"
 				object
 				key="path"
@@ -189,7 +115,6 @@
 				<input
 					type="hidden"
 					state-id="app"
-					state-overwrite
 					array="apps"
 					object
 					key="array"
@@ -197,12 +122,11 @@
 					input-query="$parent" />
 			</div>
 
-			<i class="ri-add-line"></i>
-			<span class="list-action-label d-none d-xl-inline ms-1">
+			<i class="ri-add-line" aria-hidden="true"></i>
+			<span class="list-action-label">
 				New
 				<span
 					state-id="app"
-					state-overwrite
 					array="apps"
 					object
 					key="singularName"></span>
@@ -210,14 +134,15 @@
 		</button>
 		<span class="dropdown">
 			<button
-				class="btn btn-soft-info btn-icon fs-14"
+				class="list-toolbar-control list-toolbar-icon btn btn-light"
 				type="button"
 				id="settingsDropdownButton"
 				aria-controls="settingsDropdownMenu"
 				aria-haspopup="menu"
 				aria-expanded="false"
-				title="Settings">
-				<i class="ri-settings-4-line"></i>
+				title="More actions"
+				aria-label="More actions">
+				<i class="ri-more-2-fill" aria-hidden="true"></i>
 			</button>
 			<ul
 				id="settingsDropdownMenu"

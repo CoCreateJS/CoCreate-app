@@ -1,0 +1,4 @@
+#offcanvas-app[docked="true"] .offcanvas-app-dock,
+#offcanvas-app:not([docked="true"]) .offcanvas-app-undock {
+	display: none;
+}

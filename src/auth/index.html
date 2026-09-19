@@ -19,13 +19,21 @@
 		<meta
 			name="description"
 			content="Secure sign in / sign up for CoCreate — access your dashboard and projects." />
-		<meta name="robots" content="noindex, nofollow" />
+		<meta
+			name="robots"
+			content="noindex, nofollow" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta content="CoCreate" name="author" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<meta
+			content="CoCreate"
+			name="author" />
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+		<link
+			rel="shortcut icon"
+			href="/assets/images/icons/favicon.ico" />
 
 		<!-- Bootstrap -->
 		<link
@@ -40,7 +48,10 @@
 			type="text/css" />
 
 		<!-- App -->
-		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
+		<link
+			href="/assets/css/index.css"
+			rel="stylesheet"
+			type="text/css" />
 
 		<!-- Custom -->
 		<link
@@ -49,10 +60,16 @@
 			type="text/css" />
 
 		<!-- Custom -->
-		<link rel="stylesheet" type="text/css" parse="true" save="false" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			parse="true"
+			save="false" />
 
 		<!-- Manifest -->
-		<link rel="manifest" href="/manifest.webmanifest" />
+		<link
+			rel="manifest"
+			href="/manifest.webmanifest" />
 		<style>
 			.auth-page-content .main-view {
 				z-index: 1;
@@ -65,7 +82,11 @@
 	</head>
 
 	<body id="layout-wrapper">
-		<a href="/account/" session="true" state-id="authRedirect" state-overwrite hidden></a>
+		<a
+			href="/account/"
+			session="true"
+			state-id="authRedirect"
+			hidden></a>
 
 		<!-- auth page bg -->
 		<div
@@ -154,7 +175,9 @@
 		<!-- auth page content -->
 		<div class="auth-page-content container">
 			<div class="text-center p-4 text-white-50 position-relative">
-				<a href="../" class="d-inline-block auth-logo">
+				<a
+					href="../"
+					class="d-inline-block auth-logo">
 					<img
 						src="/assets/images/logos/logo.png"
 						alt="Logo"
@@ -168,8 +191,7 @@
 				class="main-view d-flex flex-column align-items-center position-relative z-index:1">
 				<div
 					class="card flex-grow-1 w-100 max-width:500px mx-auto"
-					state-id="authView"
-					state-overwrite>
+					state-id="authView">
 					<div
 						onload-query="$parent"
 						onload.src="./signin.html"
@@ -181,10 +203,15 @@
 		<!-- end auth page content -->
 		<p
 			class="position-fixed w-100 mb-3 mt-3 text-muted mx-auto text-center bottom-0 z-index:1">
-            <input
-				type="date" value-type="getYear" onload.value="$value" onload-query="$next" now hidden>
-            © <span>2026</span>
-            CoCreate
+			<input
+				type="date"
+				value-type="getYear"
+				onload.value="$value"
+				onload-query="$next"
+				now
+				hidden />
+			© <span>2026</span>
+			CoCreate
 		</p>
 
 		<!-- Preloader Start -->
@@ -213,13 +240,17 @@
 					actions="remove"
 					class="position:absolute top:4px right:4px"
 					aria-label="Dismiss notification">
-					<i src="/assets/svg/times.svg" aria-hidden="true"></i>
+					<i
+						src="/assets/svg/times.svg"
+						aria-hidden="true"></i>
 				</a>
 			</div>
 		</div>
 		<!-- Notification End -->
 
 		<!-- CoCreateJS -->
-		<script src="../dist/CoCreate.js" organization></script>
+		<script
+			src="../dist/CoCreate.js"
+			organization></script>
 	</body>
 </html>

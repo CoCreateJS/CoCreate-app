@@ -1,0 +1,57 @@
+<div
+	id="apis-aside"
+	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	role="region"
+	aria-label="API record">
+	<span
+		hidden
+		observe
+		observe-selector="#APIs-details-view, #APIs-form-view, #APIs-codearea-view, #offcanvas-app, #create-panel, #apis-aside form[state-id='offcanvas-app-form']"
+		observe-attribute-filter="aria-hidden, hidden, object"
+		observe-query="$parent [data-api-secret][]"
+		observe.type="password"
+		observe.get-value-decode="atob"></span>
+	<link
+		rel="stylesheet"
+		href="/apps/apis/aside.css" />
+	<header
+		src="/components/offcanvas-app/header.html"
+		value-replace="/\{\{app\.name\}\}/g"
+		value-replacement="APIs"
+		value-type="outerHtml"></header>
+	<div
+		class="component-form-body flex-grow-1 h-100"
+		onload.plugin='({"$SimpleBar": ["$this", {}]})'
+		onload-query="form .card-body[]">
+		<div
+			id="APIs-details-view"
+			role="tabpanel"
+			aria-labelledby="APIs-details-btn"
+			tabindex="0"
+			src="/apps/apis/details.html"
+			aria-hidden="false"
+			state-id="apis-details"
+			state.aria-hidden
+			hidden></div>
+		<div
+			id="APIs-form-view"
+			role="tabpanel"
+			aria-labelledby="APIs-form-btn"
+			tabindex="0"
+			src="/apps/apis/form.html"
+			aria-hidden="true"
+			state-id="apis-form"
+			state.aria-hidden
+			hidden></div>
+		<div
+			id="APIs-codearea-view"
+			role="tabpanel"
+			aria-labelledby="APIs-codearea-btn"
+			tabindex="0"
+			src="/apps/apis/codearea.html"
+			aria-hidden="true"
+			state-id="apis-codearea"
+			state.aria-hidden
+			hidden></div>
+	</div>
+</div>

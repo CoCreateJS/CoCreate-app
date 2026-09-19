@@ -1,10 +1,11 @@
-<div class="card height:calc(100vh_-_110px) mb-0" plugin='{"$SimpleBar": ["$this", {}]}'>
+<div
+	class="card height:calc(100vh_-_110px) mb-0"
+	plugin='{"$SimpleBar": ["$this", {}]}'>
 	<div class="card-body">
 		<div class="table-card">
 			<table
 				id="table"
 				state-id="apps"
-				state-overwrite
 				array="apps"
 				object="68741e1d07a037d0d6d00eed"
 				key="field"
@@ -16,7 +17,10 @@
 				<thead>
 					<tr>
 						<!-- Render each column header dynamically -->
-						<th template="column" render-as="column" scope="col">
+						<th
+							template="column"
+							render-as="column"
+							scope="col">
 							<div
 								class="d-flex align-items-center justify-content-between gap-2">
 								<span>{{column.value.label}}</span>
@@ -38,7 +42,6 @@
 				<tbody
 					class="form-check-all list-view"
 					state-id="table"
-					state-overwrite
 					array="companies"
 					object
 					filter-limit="20"
@@ -54,7 +57,9 @@
 				</tbody>
 			</table>
 
-			<div class="noresult" style="display: none">
+			<div
+				class="noresult"
+				style="display: none">
 				<div class="text-center">
 					<lord-icon
 						src="https://cdn.lordicon.com/msoeawqm.json"

@@ -26,10 +26,14 @@
 				height="40" />
 		</span>
 		<span class="logo-lg ps-4">
-			<img
+			<!-- <img
 				array="organizations"
 				object="$organization_id"
 				key="logo[0].src"
+				alt=""
+				height="40" /> -->
+			<img
+				src="/assets/images/logos/logo.png"
 				alt=""
 				height="40" />
 		</span>
@@ -54,7 +58,8 @@
 	<span array=""></span>
 	<style>
 		html[data-sidebar-size="sm-hover-active"] #vertical-hover,
-		html:not([data-sidebar-size="sm-hover-active"]) #vertical-hover-release {
+		html:not([data-sidebar-size="sm-hover-active"])
+			#vertical-hover-release {
 			display: none;
 		}
 	</style>
@@ -144,7 +149,6 @@
 						state.input.array="apps"></div>
 				</a>
 			</li>
-
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
@@ -980,8 +984,13 @@
 					<span>Speech Synthesis</span>
 				</a>
 			</li>
-			<li class="nav-item d-flex justify-content-between align-items-center">
-				<a id="speech-recognition-btn" state-to="adminView" state.src="/apps/speech-recognition/index.html" class="nav-link">
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="speech-recognition-btn"
+					state-to="adminView"
+					state.src="/apps/speech-recognition/index.html"
+					class="nav-link">
 					<i class="ri-mic-line"></i>
 					<span>Speech Recognition</span>
 				</a>
@@ -1007,8 +1016,20 @@
 						state-to="list"
 						state.src="/apps/apps/templates/card.html"></div>
 				</a>
-				<a id="apps-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/apps/form.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new app">
-					<div state-to="offcanvas-app-form" state.$reset state.array="apps"></div>
+				<a
+					id="apps-create-btn"
+					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/apps/form.html"
+					aria-controls="offcanvas-app"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Create new app">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="apps"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1033,8 +1054,21 @@
 						state-to="list"
 						state.src="/apps/clusters/templates/card.html"></div>
 				</a>
-				<a id="clusters-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/clusters/provision.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Provision new cluster">
-					<div state-to="offcanvas-app-form" state.$reset state.$unset="$reset" state.array="clusters"></div>
+				<a
+					id="clusters-create-btn"
+					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/clusters/provision.html"
+					aria-controls="offcanvas-app"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Provision new cluster">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.$unset="$reset"
+						state.array="clusters"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1059,8 +1093,20 @@
 						state-to="list"
 						state.src="/apps/servers/templates/card.html"></div>
 				</a>
-				<a id="servers-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/servers/provision.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Deploy a server">
-					<div state-to="offcanvas-app-form" state.$reset state.$unset="$reset" state.array="servers"></div>
+				<a
+					id="servers-create-btn"
+					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/servers/provision.html"
+					aria-controls="offcanvas-app"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Deploy a server">
+					<div
+						state-to="offcanvas-app-form"
+						state.array="servers"
+						state.object=""></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1085,8 +1131,20 @@
 						state-to="list"
 						state.src="/apps/servers/configs/templates/card.html"></div>
 				</a>
-				<a id="server-configs-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/servers/configs/form.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new server config">
-					<div state-to="offcanvas-app-form" state.$reset state.array="servers_config"></div>
+				<a
+					id="server-configs-create-btn"
+					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/servers/configs/form.html"
+					aria-controls="offcanvas-app"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Create new server config">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="servers_config"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1111,8 +1169,20 @@
 						state-to="list"
 						state.src="/apps/api-keys/templates/card.html"></div>
 				</a>
-				<a id="api-keys-create-btn" class="nav-link nav-action" state-to="create-panel-view" state.src="/apps/api-keys/form.html" aria-controls="create-panel" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new API key">
-					<div state-to="create-panel-form" state.$reset state.array="keys"></div>
+				<a
+					id="api-keys-create-btn"
+					class="nav-link nav-action"
+					state-to="create-panel-view"
+					state.src="/apps/api-keys/form.html"
+					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Create new API key">
+					<div
+						state-to="create-panel-form"
+						state.$reset
+						state.array="keys"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1137,8 +1207,20 @@
 						state-to="list"
 						state.src="/apps/apis/templates/card.html"></div>
 				</a>
-				<a id="apis-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/apis/form.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new API">
-					<div state-to="offcanvas-app-form" state.$reset state.array="apis"></div>
+				<a
+					id="apis-create-btn"
+					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/apis/form.html"
+					aria-controls="offcanvas-app"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Create new API">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="apis"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1149,7 +1231,9 @@
 					state-to="adminView"
 					state.src="/components/list/index.html"
 					class="nav-link">
-					<i class="ri-logout-box-line" style="transform: translateY(-2px) rotate(-90deg)"></i>
+					<i
+						class="ri-logout-box-line"
+						style="transform: translateY(-2px) rotate(-90deg)"></i>
 					<span>Endpoints</span>
 					<div
 						state-to="app"
@@ -1163,8 +1247,20 @@
 						state-to="list"
 						state.src="/apps/apis/endpoints/templates/card.html"></div>
 				</a>
-				<a id="endpoints-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/apis/endpoints/form.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new endpoint">
-					<div state-to="offcanvas-app-form" state.$reset state.array="endpoints"></div>
+				<a
+					id="endpoints-create-btn"
+					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/apis/endpoints/form.html"
+					aria-controls="offcanvas-app"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Create new endpoint">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="endpoints"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1175,7 +1271,9 @@
 					state-to="adminView"
 					state.src="/components/list/index.html"
 					class="nav-link">
-					<i class="ri-login-box-line" style="transform: translateY(-2px) rotate(-90deg)"></i>
+					<i
+						class="ri-login-box-line"
+						style="transform: translateY(-2px) rotate(-90deg)"></i>
 					<span>Webhooks</span>
 					<div
 						state-to="app"
@@ -1189,8 +1287,20 @@
 						state-to="list"
 						state.src="/apps/apis/webhooks/templates/card.html"></div>
 				</a>
-				<a id="webhooks-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/apis/webhooks/form.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new webhook">
-					<div state-to="offcanvas-app-form" state.$reset state.array="webhooks"></div>
+				<a
+					id="webhooks-create-btn"
+					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/apis/webhooks/form.html"
+					aria-controls="offcanvas-app"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Create new webhook">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="webhooks"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -1215,8 +1325,20 @@
 						state-to="list"
 						state.src="/apps/ai/instructions/templates/card.html"></div>
 				</a>
-				<a id="ai-instructions-create-btn" class="nav-link nav-action" state-to="offcanvas-app-view" state.src="/apps/ai/instructions/form.html" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open title="Create new AI instruction">
-					<div state-to="offcanvas-app-form" state.$reset state.array="ai-instructions"></div>
+				<a
+					id="ai-instructions-create-btn"
+					class="nav-link nav-action"
+					state-to="offcanvas-app-view"
+					state.src="/apps/ai/instructions/form.html"
+					aria-controls="offcanvas-app"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					title="Create new AI instruction">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="ai-instructions"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>

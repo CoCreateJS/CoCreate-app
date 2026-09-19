@@ -5,8 +5,18 @@
 <div class="files-app">
 	<div class="chat-wrapper d-lg-flex">
 		<div
+			id="files-sidebar"
 			class="file-manager-sidebar minimal-border"
+			aria-hidden="true"
 			src="/apps/files/components/sidenav.html"></div>
+		<button
+			type="button"
+			tabindex="-1"
+			class="file-sidebar-backdrop"
+			aria-label="Close files menu"
+			aria-controls="files-sidebar"
+			aria-close
+			aria-expanded="false"></button>
 
 		<div class="file-manager-content minimal-border flex-grow-1">
 			<div
@@ -19,7 +29,6 @@
 					id="file-view"
 					class="files-grid-sections"
 					state-id="file-view"
-					state-overwrite
 					src="/apps/files/components/drive.html"></div>
 			</div>
 

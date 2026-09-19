@@ -8,7 +8,6 @@
 					id="table"
 					data-row-selection
 					state-id="app"
-					state-overwrite
 					array="apps"
 					object=""
 					key="fields"
@@ -47,10 +46,10 @@
 										filter-query="$closest table tbody"
 										filter-sort-key="{{column.key}}"
 										filter-sort-direction=""
-										click.value="asc, desc"
-										click.filter-sort-direction="$value">
+										click
+										click.filter-sort-direction="asc, desc">
 										<i
-											toggle.src="/assets/svg/sort-down.svg, assets/svg/sort-up.svg"
+											toggle.src="/assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
 											src="/assets/svg/sort.svg"></i>
 									</a>
 								</div>
@@ -62,8 +61,7 @@
 					</thead>
 					<tbody
 						class="form-check-all list-view"
-						state-id="table"
-						state-overwrite
+						state-id="list"
 						filter-sort-key="modified.on"
 						filter-sort-direction="desc"
 						array=""

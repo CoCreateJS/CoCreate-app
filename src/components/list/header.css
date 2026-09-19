@@ -1,0 +1,95 @@
+.list-header {
+	container-name: list-header;
+	container-type: inline-size;
+}
+
+.list-header-primary {
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+.list-header-extension {
+	min-width: 0;
+}
+
+.list-header-extension:has(> :not(input, [hidden])) {
+	padding-left: 12px;
+	margin-left: 4px;
+	border-left: 1px solid var(--coc-border-color);
+}
+
+.list-header .list-toolbar-control {
+	display: inline-flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: 38px;
+	padding: 0 12px;
+	border-radius: var(--coc-border-radius);
+	white-space: nowrap;
+}
+
+.list-header .add-btn {
+	padding-right: 18px;
+}
+
+.list-header .list-toolbar-control.btn-light {
+	color: var(--coc-secondary-color);
+	background: var(--coc-body-bg);
+	border-color: var(--coc-border-color);
+}
+
+.list-header .list-toolbar-control.btn-light:hover,
+.list-header .list-toolbar-control.btn-light[aria-expanded="true"] {
+	color: var(--coc-body-color);
+	background: var(--coc-tertiary-bg);
+}
+
+.list-header .list-toolbar-control > i {
+	font-size: 18px;
+	line-height: 1;
+}
+
+.list-header .list-toolbar-icon {
+	width: 38px;
+	padding: 0;
+}
+
+.list-header-actions {
+	flex-shrink: 0;
+}
+
+.list-header #remove-actions {
+	display: none;
+}
+
+.component-list:has(#list-view table[data-row-selection] tbody [data-select-row]:checked:not(:disabled):not(:is([template], [hidden]) *)) > .app-panel-header #remove-actions {
+	display: inline-flex;
+}
+
+@container list-header (max-width: 760px) {
+	.list-action-label {
+		display: none;
+	}
+
+	.list-header .list-compact-action {
+		width: 38px;
+		padding: 0;
+	}
+
+	.list-compact-action.dropdown-toggle::after {
+		display: none;
+	}
+}
+
+@container list-header (max-width: 560px) {
+	.list-header-primary {
+		flex-basis: 100%;
+	}
+
+	.list-header-extension:has(> :not(input, [hidden])) {
+		padding-left: 8px;
+		margin-left: 0;
+	}
+}

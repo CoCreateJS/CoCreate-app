@@ -3,16 +3,15 @@
 	plugin='{"$SimpleBar": ["$this", {}]}'>
 	<style>
 		#grid {
-			container-name: card-grid;
-			container-type: inline-size;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+			align-content: start;
 		}
 
-		@container card-grid (max-width: 672px) {
-			#grid > .card {
-				width: 100%;
-				max-width: none !important;
-				flex-basis: 100% !important;
-			}
+		#grid > .card {
+			width: 100%;
+			min-width: 0 !important;
+			max-width: none !important;
 		}
 	</style>
 	<div
@@ -22,10 +21,8 @@
 		filter-limit="20"
 		render-query="[template]"
 		state-id="list"
-		state-overwrite
-		class="d-flex flex-wrap gap-3"
-		style="padding-top: var(--admin-gutter)"
+		class="list-view gap-3"
+		style="padding: var(--admin-gutter)"
 		src=""></div>
 </div>
 <!-- end grid -->
-<script src="/components/list/grid.js"></script>

@@ -1,21 +1,30 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/expenses/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body gap-3">
-				<input type="hidden" key="type" value="expense" />
-				<div class="d-flex flex-wrap align-items:flex-start gap-3">
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-name">Name</label>
+		<div class="card-body gap-3">
+			<input
+				type="hidden"
+				key="type"
+				value="expense" />
+			<div class="d-flex flex-wrap align-items:flex-start gap-3">
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-name"
+						>Name</label
+					>
 					<input
 						type="text"
 						id="expense-name"
@@ -24,8 +33,11 @@
 						placeholder="Enter name"
 						aria-label="Expense Name" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-id"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-id"
 						>Expense ID</label
 					>
 					<input
@@ -37,8 +49,13 @@
 						readonly
 						aria-label="Expense ID" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-date">Date</label>
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-date"
+						>Date</label
+					>
 					<input
 						type="date"
 						id="expense-date"
@@ -47,8 +64,11 @@
 						placeholder="Select date"
 						aria-label="Expense Date" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-category"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-category"
 						>Category</label
 					>
 					<select
@@ -66,8 +86,11 @@
 						<option value="Other">Other</option>
 					</select>
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-vendor"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-vendor"
 						>Vendor</label
 					>
 					<input
@@ -78,8 +101,11 @@
 						placeholder="Enter vendor/supplier"
 						aria-label="Expense Vendor" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-reference"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-reference"
 						>Reference #</label
 					>
 					<input
@@ -91,7 +117,9 @@
 						aria-label="Expense Reference Number" />
 				</div>
 				<div class="d-flex flex-column width:100%">
-					<label class="form-label" for="expense-description"
+					<label
+						class="form-label"
+						for="expense-description"
 						>Description</label
 					>
 					<textarea
@@ -102,8 +130,11 @@
 						placeholder="Enter description"
 						aria-label="Expense Description"></textarea>
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-amount"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-amount"
 						>Amount</label
 					>
 					<input
@@ -116,8 +147,13 @@
 						step="0.01"
 						aria-label="Expense Amount" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-tax">Tax</label>
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-tax"
+						>Tax</label
+					>
 					<input
 						type="number"
 						id="expense-tax"
@@ -128,8 +164,11 @@
 						step="0.01"
 						aria-label="Expense Tax Amount" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-currency"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-currency"
 						>Currency</label
 					>
 					<select
@@ -146,8 +185,11 @@
 						<option value="Other">Other</option>
 					</select>
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-status"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-status"
 						>Status</label
 					>
 					<select
@@ -163,7 +205,9 @@
 					</select>
 				</div>
 				<div class="d-flex flex-column width:100%">
-					<label class="form-check-label" for="expense-reimbursable">
+					<label
+						class="form-check-label"
+						for="expense-reimbursable">
 						<input
 							type="checkbox"
 							id="expense-reimbursable"
@@ -172,8 +216,11 @@
 						Reimbursable
 					</label>
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-paid-by"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-paid-by"
 						>Paid By</label
 					>
 					<input
@@ -184,8 +231,11 @@
 						placeholder="Who paid for this expense?"
 						aria-label="Paid By" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-project"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-project"
 						>Project/Department</label
 					>
 					<input
@@ -196,8 +246,11 @@
 						placeholder="Project or department (optional)"
 						aria-label="Project or Department" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-due-date"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-due-date"
 						>Due Date</label
 					>
 					<input
@@ -208,8 +261,11 @@
 						placeholder="Due date (optional)"
 						aria-label="Due Date" />
 				</div>
-				<div class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
-					<label class="form-label" for="expense-approved-by"
+				<div
+					class="d-flex flex-column flex-grow-1 flex-basis:260px min-width:220px">
+					<label
+						class="form-label"
+						for="expense-approved-by"
 						>Approval By</label
 					>
 					<input
@@ -221,7 +277,9 @@
 						aria-label="Approved By" />
 				</div>
 				<div class="d-flex flex-column width:100%">
-					<label class="form-label" for="expense-receipt"
+					<label
+						class="form-label"
+						for="expense-receipt"
 						>Receipt Upload</label
 					>
 					<input
@@ -234,7 +292,11 @@
 						aria-label="Receipt Upload" />
 				</div>
 				<div class="d-flex flex-column width:100%">
-					<label class="form-label" for="expense-notes">Notes</label>
+					<label
+						class="form-label"
+						for="expense-notes"
+						>Notes</label
+					>
 					<textarea
 						id="expense-notes"
 						key="notes"
@@ -251,15 +313,20 @@
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

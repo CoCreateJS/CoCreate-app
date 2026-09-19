@@ -1,0 +1,166 @@
+<style>
+	#apiTypeMoreButton {
+		border-bottom-left-radius: 0;
+		border-left: 0;
+		border-top-left-radius: 0;
+		border-left-width: 0;
+	}
+</style>
+
+<!-- Checkbox Buttons -->
+<div
+	class="btn-group"
+	role="group"
+	aria-label="API categories">
+	<input
+		type="radio"
+		class="btn-check"
+		id="api-type-all"
+		name="api-type"
+		key="api-type"
+		filter-query-value="[]"
+		value-type="array"
+		checked
+		aria-default="true"
+		aria-controls="list-view"
+		filter-query-key="type.$in"
+		filter-query='$document [state-id="list"][]' />
+	<label
+		class="btn btn-outline-primary material-shadow-none mb-0"
+		for="api-type-all"
+		>All</label
+	>
+	<input
+		type="checkbox"
+		class="btn-check"
+		id="api-type-storage"
+		name="api-type"
+		key="api-type"
+		value="storage"
+		aria-controls="list-view"
+		filter-query-key="type.$in"
+		filter-query='$document [state-id="list"][]' />
+	<label
+		class="btn btn-outline-primary material-shadow-none mb-0"
+		for="api-type-storage"
+		>Storage</label
+	>
+
+	<input
+		type="checkbox"
+		class="btn-check"
+		id="api-type-cloud"
+		name="api-type"
+		key="api-type"
+		value="cloud"
+		aria-controls="list-view"
+		filter-query-key="type.$in"
+		filter-query='$document [state-id="list"][]' />
+	<label
+		class="btn btn-outline-primary material-shadow-none mb-0"
+		for="api-type-cloud"
+		>Cloud</label
+	>
+
+	<input
+		type="checkbox"
+		class="btn-check"
+		id="api-type-routing"
+		name="api-type"
+		key="api-type"
+		value="routing"
+		aria-controls="list-view"
+		filter-query-key="type.$in"
+		filter-query='$document [state-id="list"][]' />
+	<label
+		class="btn btn-outline-primary material-shadow-none mb-0"
+		for="api-type-routing"
+		>Routing</label
+	>
+
+	<input
+		type="checkbox"
+		class="btn-check"
+		id="api-type-ai"
+		name="api-type"
+		key="api-type"
+		value="ai"
+		aria-controls="list-view"
+		filter-query-key="type.$in"
+		filter-query='$document [state-id="list"][]' />
+	<label
+		class="btn btn-outline-primary material-shadow-none mb-0"
+		for="api-type-ai"
+		>AI</label
+	>
+
+	<div class="dropdown flex-shrink-0">
+		<button
+			type="button"
+			class="btn btn-outline-primary material-shadow-none mb-0 dropdown-toggle"
+			id="apiTypeMoreButton"
+			aria-controls="apiTypeMoreMenu"
+			aria-expanded="false">
+			More
+		</button>
+		<ul
+			id="apiTypeMoreMenu"
+			class="dropdown-menu"
+			role="presentation"
+			aria-labelledby="apiTypeMoreButton"
+			aria-hidden="true"
+			aria-close-on="anywhere">
+			<li role="presentation">
+				<input
+					type="checkbox"
+					class="btn-check"
+					id="api-type-payments"
+					name="api-type"
+					key="api-type"
+					value="payments"
+					aria-controls="list-view"
+					filter-query-key="type.$in"
+					filter-query='$document [state-id="list"][]' />
+				<label
+					class="dropdown-item"
+					for="api-type-payments"
+					>Payments</label
+				>
+			</li>
+			<li role="presentation">
+				<input
+					type="checkbox"
+					class="btn-check"
+					id="api-type-communications"
+					name="api-type"
+					key="api-type"
+					value="communications"
+					aria-controls="list-view"
+					filter-query-key="type.$in"
+					filter-query='$document [state-id="list"][]' />
+				<label
+					class="dropdown-item"
+					for="api-type-communications"
+					>Communications</label
+				>
+			</li>
+			<li role="presentation">
+				<input
+					type="checkbox"
+					class="btn-check"
+					id="api-type-authentication"
+					name="api-type"
+					key="api-type"
+					value="authentication"
+					aria-controls="list-view"
+					filter-query-key="type.$in"
+					filter-query='$document [state-id="list"][]' />
+				<label
+					class="dropdown-item"
+					for="api-type-authentication"
+					>Authentication</label
+				>
+			</li>
+		</ul>
+	</div>
+</div>

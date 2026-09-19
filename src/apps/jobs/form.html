@@ -1,178 +1,329 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/jobs/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-column gap-4">
-			<section class="width:100%" aria-labelledby="job-information-heading">
+		<div class="card-body d-flex flex-column gap-4">
+			<section
+				class="width:100%"
+				aria-labelledby="job-information-heading">
 				<h6
 					id="job-information-heading"
 					class="text-muted text-uppercase fw-semibold mb-3">
 					Job Information
 				</h6>
-				<div class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
-			<label class="form-label flex-grow:2 flex-basis:320px min-width:240px" for="job-title-input">
-				Job Title <span class="text-danger">*</span>
-				<input type="text" class="form-control" id="job-title-input" key="jobTitle" placeholder="Enter job title" required />
-			</label>
+				<div
+					class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
+					<label
+						class="form-label flex-grow:2 flex-basis:320px min-width:240px"
+						for="job-title-input">
+						Job Title <span class="text-danger">*</span>
+						<input
+							type="text"
+							class="form-control"
+							id="job-title-input"
+							key="jobTitle"
+							placeholder="Enter job title"
+							required />
+					</label>
 
-			<label class="form-label flex-grow:2 flex-basis:280px min-width:220px" for="job-position-input">
-				Job Position <span class="text-danger">*</span>
-				<input type="text" class="form-control" id="job-position-input" key="position" placeholder="Enter job position" required />
-			</label>
+					<label
+						class="form-label flex-grow:2 flex-basis:280px min-width:220px"
+						for="job-position-input">
+						Job Position <span class="text-danger">*</span>
+						<input
+							type="text"
+							class="form-control"
+							id="job-position-input"
+							key="position"
+							placeholder="Enter job position"
+							required />
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:220px min-width:200px" for="job-category-input">
-				Job Category <span class="text-danger">*</span>
-				<select class="form-select" id="job-category-input" key="category" plugin='{"$Choices":["$this",{}]}' required>
-					<option value="">Select category</option>
-					<option value="Accounting & Finance">Accounting & Finance</option>
-					<option value="Purchasing Manager">Purchasing Manager</option>
-					<option value="Education & training">Education & Training</option>
-					<option value="Marketing & Advertising">Marketing & Advertising</option>
-					<option value="It / Software Jobs">IT / Software</option>
-					<option value="Digital Marketing">Digital Marketing</option>
-					<option value="Administrative Officer">Administration</option>
-					<option value="Government Jobs">Government</option>
-				</select>
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:220px min-width:200px"
+						for="job-category-input">
+						Job Category <span class="text-danger">*</span>
+						<select
+							class="form-select"
+							id="job-category-input"
+							key="category"
+							plugin='{"$Choices":["$this",{}]}'
+							required>
+							<option value="">Select category</option>
+							<option value="Accounting & Finance">
+								Accounting & Finance
+							</option>
+							<option value="Purchasing Manager">
+								Purchasing Manager
+							</option>
+							<option value="Education & training">
+								Education & Training
+							</option>
+							<option value="Marketing & Advertising">
+								Marketing & Advertising
+							</option>
+							<option value="It / Software Jobs">
+								IT / Software
+							</option>
+							<option value="Digital Marketing">
+								Digital Marketing
+							</option>
+							<option value="Administrative Officer">
+								Administration
+							</option>
+							<option value="Government Jobs">Government</option>
+						</select>
+					</label>
 				</div>
 			</section>
 
-			<section class="width:100%" aria-labelledby="employment-details-heading">
+			<section
+				class="width:100%"
+				aria-labelledby="employment-details-heading">
 				<h6
 					id="employment-details-heading"
 					class="text-muted text-uppercase fw-semibold mb-3">
 					Employment Details
 				</h6>
-				<div class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
-			<label class="form-label flex-grow-1 flex-basis:200px min-width:180px" for="job-type-input">
-				Job Type <span class="text-danger">*</span>
-				<select class="form-select" id="job-type-input" key="type" plugin='{"$Choices":["$this",{}]}' required>
-					<option value="">Select job type</option>
-					<option value="Full Time">Full Time</option>
-					<option value="Part Time">Part Time</option>
-					<option value="Freelance">Freelance</option>
-					<option value="Internship">Internship</option>
-				</select>
-			</label>
+				<div
+					class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
+					<label
+						class="form-label flex-grow-1 flex-basis:200px min-width:180px"
+						for="job-type-input">
+						Job Type <span class="text-danger">*</span>
+						<select
+							class="form-select"
+							id="job-type-input"
+							key="type"
+							plugin='{"$Choices":["$this",{}]}'
+							required>
+							<option value="">Select job type</option>
+							<option value="Full Time">Full Time</option>
+							<option value="Part Time">Part Time</option>
+							<option value="Freelance">Freelance</option>
+							<option value="Internship">Internship</option>
+						</select>
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:160px min-width:140px" for="job-vacancy-input">
-				Vacancies <span class="text-danger">*</span>
-				<input type="number" class="form-control" id="job-vacancy-input" key="vacancy" min="1" placeholder="0" required />
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:160px min-width:140px"
+						for="job-vacancy-input">
+						Vacancies <span class="text-danger">*</span>
+						<input
+							type="number"
+							class="form-control"
+							id="job-vacancy-input"
+							key="vacancy"
+							min="1"
+							placeholder="0"
+							required />
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:180px min-width:160px" for="job-experience-input">
-				Experience <span class="text-danger">*</span>
-				<select class="form-select" id="job-experience-input" key="experience" plugin='{"$Choices":["$this",{}]}' required>
-					<option value="">Select experience</option>
-					<option value="0 Year">0 Years</option>
-					<option value="2 Years">2 Years</option>
-					<option value="3 Years">3 Years</option>
-					<option value="4 Years">4 Years</option>
-					<option value="5 Years">5 Years</option>
-				</select>
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+						for="job-experience-input">
+						Experience <span class="text-danger">*</span>
+						<select
+							class="form-select"
+							id="job-experience-input"
+							key="experience"
+							plugin='{"$Choices":["$this",{}]}'
+							required>
+							<option value="">Select experience</option>
+							<option value="0 Year">0 Years</option>
+							<option value="2 Years">2 Years</option>
+							<option value="3 Years">3 Years</option>
+							<option value="4 Years">4 Years</option>
+							<option value="5 Years">5 Years</option>
+						</select>
+					</label>
 				</div>
 			</section>
 
-			<section class="width:100%" aria-labelledby="schedule-compensation-heading">
+			<section
+				class="width:100%"
+				aria-labelledby="schedule-compensation-heading">
 				<h6
 					id="schedule-compensation-heading"
 					class="text-muted text-uppercase fw-semibold mb-3">
 					Schedule and Compensation
 				</h6>
-				<div class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
-			<label class="form-label flex-grow-1 flex-basis:190px min-width:170px" for="job-last-apply-date-input">
-				Last Date to Apply <span class="text-danger">*</span>
-				<input type="text" class="form-control" id="job-last-apply-date-input" key="last_apply_date" date-picker="flatpickr" data-date-format="d M, Y" placeholder="Select date" required />
-			</label>
+				<div
+					class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
+					<label
+						class="form-label flex-grow-1 flex-basis:190px min-width:170px"
+						for="job-last-apply-date-input">
+						Last Date to Apply <span class="text-danger">*</span>
+						<input
+							type="text"
+							class="form-control"
+							id="job-last-apply-date-input"
+							key="last_apply_date"
+							date-picker="flatpickr"
+							data-date-format="d M, Y"
+							placeholder="Select date"
+							required />
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:190px min-width:170px" for="job-close-date-input">
-				Close Date <span class="text-danger">*</span>
-				<input type="text" class="form-control" id="job-close-date-input" key="close_date" date-picker="flatpickr" data-date-format="d M, Y" placeholder="Select date" required />
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:190px min-width:170px"
+						for="job-close-date-input">
+						Close Date <span class="text-danger">*</span>
+						<input
+							type="text"
+							class="form-control"
+							id="job-close-date-input"
+							key="close_date"
+							date-picker="flatpickr"
+							data-date-format="d M, Y"
+							placeholder="Select date"
+							required />
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:180px min-width:160px" for="job-start-salary-input">
-				Starting Salary
-				<input type="number" class="form-control" id="job-start-salary-input" key="start_salary" placeholder="Enter starting salary" />
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+						for="job-start-salary-input">
+						Starting Salary
+						<input
+							type="number"
+							class="form-control"
+							id="job-start-salary-input"
+							key="start_salary"
+							placeholder="Enter starting salary" />
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:180px min-width:160px" for="job-last-salary-input">
-				Maximum Salary
-				<input type="number" class="form-control" id="job-last-salary-input" key="last_salary" placeholder="Enter maximum salary" />
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+						for="job-last-salary-input">
+						Maximum Salary
+						<input
+							type="number"
+							class="form-control"
+							id="job-last-salary-input"
+							key="last_salary"
+							placeholder="Enter maximum salary" />
+					</label>
 				</div>
 			</section>
 
-			<section class="width:100%" aria-labelledby="location-workflow-heading">
+			<section
+				class="width:100%"
+				aria-labelledby="location-workflow-heading">
 				<h6
 					id="location-workflow-heading"
 					class="text-muted text-uppercase fw-semibold mb-3">
 					Location and Workflow
 				</h6>
-				<div class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
-			<label class="form-label flex-grow-1 flex-basis:200px min-width:180px" for="job-country-input">
-				Country <span class="text-danger">*</span>
-				<input type="text" class="form-control" id="job-country-input" key="country" placeholder="Enter country" required />
-			</label>
+				<div
+					class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
+					<label
+						class="form-label flex-grow-1 flex-basis:200px min-width:180px"
+						for="job-country-input">
+						Country <span class="text-danger">*</span>
+						<input
+							type="text"
+							class="form-control"
+							id="job-country-input"
+							key="country"
+							placeholder="Enter country"
+							required />
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:200px min-width:180px" for="job-state-input">
-				State <span class="text-danger">*</span>
-				<input type="text" class="form-control" id="job-state-input" key="state" placeholder="Enter state" required />
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:200px min-width:180px"
+						for="job-state-input">
+						State <span class="text-danger">*</span>
+						<input
+							type="text"
+							class="form-control"
+							id="job-state-input"
+							key="state"
+							placeholder="Enter state"
+							required />
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:180px min-width:160px" for="job-status-input">
-				Status
-				<select class="form-select" id="job-status-input" key="status">
-					<option value="">Select status</option>
-					<option value="open">Open</option>
-					<option value="closed">Closed</option>
-					<option value="paused">Paused</option>
-				</select>
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+						for="job-status-input">
+						Status
+						<select
+							class="form-select"
+							id="job-status-input"
+							key="status">
+							<option value="">Select status</option>
+							<option value="open">Open</option>
+							<option value="closed">Closed</option>
+							<option value="paused">Paused</option>
+						</select>
+					</label>
 
-			<label class="form-label flex-grow-1 flex-basis:180px min-width:160px" for="job-stage-input">
-				Stage
-				<select class="form-select" id="job-stage-input" key="stage">
-					<option value="">Select stage</option>
-					<option value="posting">Posting</option>
-					<option value="interview">Interview</option>
-					<option value="offer">Offer</option>
-					<option value="hired">Hired</option>
-				</select>
-			</label>
+					<label
+						class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+						for="job-stage-input">
+						Stage
+						<select
+							class="form-select"
+							id="job-stage-input"
+							key="stage">
+							<option value="">Select stage</option>
+							<option value="posting">Posting</option>
+							<option value="interview">Interview</option>
+							<option value="offer">Offer</option>
+							<option value="hired">Hired</option>
+						</select>
+					</label>
 				</div>
 			</section>
 
-			<section class="width:100%" aria-labelledby="job-content-heading">
+			<section
+				class="width:100%"
+				aria-labelledby="job-content-heading">
 				<h6
 					id="job-content-heading"
 					class="text-muted text-uppercase fw-semibold mb-3">
 					Content and Discovery
 				</h6>
-				<div class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
-			<label class="form-label flex-grow:2 flex-basis:320px min-width:240px" for="job-tags-input">
-				Tags
-				<select class="form-select" id="job-tags-input" key="tags" multiple plugin='{"$Choices":["$this",{}]}'>
-					<option value="remote">Remote</option>
-					<option value="full-time">Full Time</option>
-					<option value="part-time">Part Time</option>
-					<option value="internship">Internship</option>
-				</select>
-			</label>
+				<div
+					class="d-flex flex-wrap align-items:flex-start gap-3 width:100%">
+					<label
+						class="form-label flex-grow:2 flex-basis:320px min-width:240px"
+						for="job-tags-input">
+						Tags
+						<select
+							class="form-select"
+							id="job-tags-input"
+							key="tags"
+							multiple
+							plugin='{"$Choices":["$this",{}]}'>
+							<option value="remote">Remote</option>
+							<option value="full-time">Full Time</option>
+							<option value="part-time">Part Time</option>
+							<option value="internship">Internship</option>
+						</select>
+					</label>
 
-			<label class="form-label width:100%" for="job-description-field">
-				Description <span class="text-danger">*</span>
-				<textarea class="form-control" id="job-description-field" key="description" rows="5" placeholder="Describe the role, responsibilities, and requirements" required></textarea>
-			</label>
+					<label
+						class="form-label width:100%"
+						for="job-description-field">
+						Description <span class="text-danger">*</span>
+						<textarea
+							class="form-control"
+							id="job-description-field"
+							key="description"
+							rows="5"
+							placeholder="Describe the role, responsibilities, and requirements"
+							required></textarea>
+					</label>
 				</div>
 			</section>
 		</div>
@@ -182,15 +333,20 @@
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

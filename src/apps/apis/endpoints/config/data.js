@@ -94,7 +94,7 @@ export default {
             "name": "create-instance",
             "method": "post",
             "endpoint": "/instances",
-            "description": "Provisions EC2 virtual machine instances within target AWS availability zones.",
+            "description": "Provisions EC2 instances with cluster-scoped network security.",
             "actions": {
                 "image": {
                     "$api.send": {
@@ -105,6 +105,119 @@ export default {
                         "data": {
                             "Name": "/aws/service/canonical/ubuntu/server/noble/stable/current/amd64/hvm/ebs-gp3/ami-id"
                         }
+                    }
+                },
+                "defaultVpc": {
+                    "$api.send": {
+                        "api": "$config.name",
+                        "method": "post",
+                        "endpoint": "/",
+                        "region": "$payload.data.region",
+                        "encoding": "form",
+                        "data": {
+                            "Action": "DescribeVpcs",
+                            "Version": "2016-11-15",
+                            "Filter.1.Name": "is-default",
+                            "Filter.1.Value.1": "true"
+                        }
+                    }
+                },
+                "defaultVpcId": {
+                    "$defaultVpc.data.match": ["<vpcId>([^<]+)</vpcId>"]
+                },
+                "vpcId": {
+                    "$null": ["$payload.data.vpcId", "$defaultVpcId.1"]
+                },
+                "existingSecurityGroup": {
+                    "$api.send": {
+                        "api": "$config.name",
+                        "method": "post",
+                        "endpoint": "/",
+                        "region": "$payload.data.region",
+                        "encoding": "form",
+                        "data": {
+                            "Action": "DescribeSecurityGroups",
+                            "Version": "2016-11-15",
+                            "Filter.1.Name": "vpc-id",
+                            "Filter.1.Value.1": "$vpcId",
+                            "Filter.2.Name": "tag:CoCreateClusterId",
+                            "Filter.2.Value.1": "$payload.data.cluster_id",
+                            "Filter.3.Name": "tag:CoCreateRole",
+                            "Filter.3.Value.1": "server",
+                            "Filter.4.Name": "tag:CoCreateManaged",
+                            "Filter.4.Value.1": "true"
+                        }
+                    }
+                },
+                "existingSecurityGroupId": {
+                    "$existingSecurityGroup.data.match": ["<groupId>([^<]+)</groupId>"]
+                },
+                "createdSecurityGroup": {
+                    "$if.$existingSecurityGroupId.$eq": {
+                        "$null": {
+                            "$api.send": {
+                                "api": "$config.name",
+                                "method": "post",
+                                "endpoint": "/",
+                                "region": "$payload.data.region",
+                                "encoding": "form",
+                                "data": {
+                                    "Action": "CreateSecurityGroup",
+                                    "Version": "2016-11-15",
+                                    "GroupName": "cocreate-cluster-{{$payload.data.cluster_id}}",
+                                    "GroupDescription": "CoCreate server cluster {{$payload.data.cluster_id}}",
+                                    "VpcId": "$vpcId",
+                                    "TagSpecification.1.ResourceType": "security-group",
+                                    "TagSpecification.1.Tag.1.Key": "CoCreateClusterId",
+                                    "TagSpecification.1.Tag.1.Value": "$payload.data.cluster_id",
+                                    "TagSpecification.1.Tag.2.Key": "CoCreateRole",
+                                    "TagSpecification.1.Tag.2.Value": "server",
+                                    "TagSpecification.1.Tag.3.Key": "CoCreateManaged",
+                                    "TagSpecification.1.Tag.3.Value": "true"
+                                }
+                            }
+                        },
+                        "$else": null
+                    }
+                },
+                "createdSecurityGroupId": {
+                    "$createdSecurityGroup.data.match": ["<groupId>([^<]+)</groupId>"]
+                },
+                "securityGroupId": {
+                    "$null": [
+                        "$existingSecurityGroupId.1",
+                        "$createdSecurityGroupId.1"
+                    ]
+                },
+                "securityGroupIngress": {
+                    "$if.$existingSecurityGroupId.$eq": {
+                        "$null": {
+                            "$api.send": {
+                                "api": "$config.name",
+                                "method": "post",
+                                "endpoint": "/",
+                                "region": "$payload.data.region",
+                                "encoding": "form",
+                                "data": {
+                                    "Action": "AuthorizeSecurityGroupIngress",
+                                    "Version": "2016-11-15",
+                                    "GroupId": "$securityGroupId",
+                                    "IpPermissions.1.IpProtocol": "tcp",
+                                    "IpPermissions.1.FromPort": 80,
+                                    "IpPermissions.1.ToPort": 80,
+                                    "IpPermissions.1.IpRanges.1.CidrIp": "0.0.0.0/0",
+                                    "IpPermissions.2.IpProtocol": "tcp",
+                                    "IpPermissions.2.FromPort": 443,
+                                    "IpPermissions.2.ToPort": 443,
+                                    "IpPermissions.2.IpRanges.1.CidrIp": "0.0.0.0/0",
+                                    "IpPermissions.3.IpProtocol": "tcp",
+                                    "IpPermissions.3.FromPort": 8090,
+                                    "IpPermissions.3.ToPort": 8090,
+                                    "IpPermissions.3.Groups.1.GroupId": "$securityGroupId"
+                                }
+                            }
+                        },
+                        "$else": null
                     }
                 },
                 "aws": {
@@ -121,6 +234,7 @@ export default {
                             "InstanceType": "$payload.data.vmType",
                             "MinCount": 1,
                             "MaxCount": 1,
+                            "SecurityGroupId.1": "$securityGroupId",
                             "UserData": { "$btoa": { "$astAsync": "$payload.data.startupScript" } }
                         }
                     }
@@ -480,6 +594,211 @@ export default {
             "method": "delete",
             "endpoint": { "$concat": ["/metal/v1/devices/", "$payload.data.vmId"] },
             "description": "Deprovisions and deletes an Equinix Metal device.",
+            "enabled": true
+        },
+
+        {
+            "_id": "65f8cb447b39a3c1a8904e30",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "verify-token",
+            "method": "get",
+            "endpoint": "/user/tokens/verify",
+            "description": "Verifies the configured Cloudflare API token.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e31",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "list-monitors",
+            "method": "get",
+            "endpoint": {
+                "$concat": [
+                    "/accounts/",
+                    "$config.accountId",
+                    "/load_balancers/monitors"
+                ]
+            },
+            "description": "Lists Cloudflare load balancer health monitors.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e32",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "create-monitor",
+            "method": "post",
+            "endpoint": {
+                "$concat": [
+                    "/accounts/",
+                    "$config.accountId",
+                    "/load_balancers/monitors"
+                ]
+            },
+            "description": "Creates a Cloudflare load balancer health monitor.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e33",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "delete-monitor",
+            "method": "delete",
+            "endpoint": {
+                "$concat": [
+                    "/accounts/",
+                    "$config.accountId",
+                    "/load_balancers/monitors/",
+                    "$payload.monitorId"
+                ]
+            },
+            "description": "Deletes a Cloudflare load balancer health monitor.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e34",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "list-pools",
+            "method": "get",
+            "endpoint": {
+                "$concat": [
+                    "/accounts/",
+                    "$config.accountId",
+                    "/load_balancers/pools"
+                ]
+            },
+            "description": "Lists Cloudflare load balancer origin pools.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e35",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "create-pool",
+            "method": "post",
+            "endpoint": {
+                "$concat": [
+                    "/accounts/",
+                    "$config.accountId",
+                    "/load_balancers/pools"
+                ]
+            },
+            "data": {
+                "name": "$payload.data._id",
+                "description": {
+                    "$null": [
+                        "$payload.data.name",
+                        "$payload.data._id"
+                    ]
+                },
+                "enabled": true,
+                "latitude": "$payload.data.location.latitude",
+                "longitude": "$payload.data.location.longitude",
+                "minimum_origins": 1,
+                "origins": [
+                    {
+                        "name": {
+                            "$null": [
+                                "$payload.data.name",
+                                "$payload.data._id"
+                            ]
+                        },
+                        "address": "$payload.data.ip",
+                        "enabled": true
+                    }
+                ]
+            },
+            "description": "Creates a geographically located Cloudflare origin pool by mapping a CoCreate server object.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e36",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "update-pool",
+            "method": "patch",
+            "endpoint": {
+                "$concat": [
+                    "/accounts/",
+                    "$config.accountId",
+                    "/load_balancers/pools/",
+                    "$payload.poolId"
+                ]
+            },
+            "description": "Updates a Cloudflare origin pool and its server origins.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e37",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "delete-pool",
+            "method": "delete",
+            "endpoint": {
+                "$concat": [
+                    "/accounts/",
+                    "$config.accountId",
+                    "/load_balancers/pools/",
+                    "$payload.poolId"
+                ]
+            },
+            "description": "Deletes a Cloudflare load balancer origin pool.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e38",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "list-load-balancers",
+            "method": "get",
+            "endpoint": {
+                "$concat": [
+                    "/zones/",
+                    "$config.zoneId",
+                    "/load_balancers"
+                ]
+            },
+            "description": "Lists Cloudflare load balancers for the configured zone.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e39",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "create-load-balancer",
+            "method": "post",
+            "endpoint": {
+                "$concat": [
+                    "/zones/",
+                    "$config.zoneId",
+                    "/load_balancers"
+                ]
+            },
+            "description": "Creates a proxied Cloudflare load balancer hostname.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e3a",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "update-load-balancer",
+            "method": "patch",
+            "endpoint": {
+                "$concat": [
+                    "/zones/",
+                    "$config.zoneId",
+                    "/load_balancers/",
+                    "$payload.loadBalancerId"
+                ]
+            },
+            "description": "Updates a Cloudflare load balancer configuration.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e3b",
+            "api_id": "65f8ca227b39a3c1a8904e11", // Cloudflare API Provider Ref
+            "name": "delete-load-balancer",
+            "method": "delete",
+            "endpoint": {
+                "$concat": [
+                    "/zones/",
+                    "$config.zoneId",
+                    "/load_balancers/",
+                    "$payload.loadBalancerId"
+                ]
+            },
+            "description": "Deletes a Cloudflare load balancer.",
             "enabled": true
         }
     ]

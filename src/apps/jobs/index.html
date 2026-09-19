@@ -1,7 +1,13 @@
 <div class="container-fluid">
-	<div class="d-flex gap-4" style="overflow-x: hidden">
-		<div class="flex-grow-1" style="min-width: 300px">
-			<div id="job-view" src="components/table.html"></div>
+	<div
+		class="d-flex gap-4"
+		style="overflow-x: hidden">
+		<div
+			class="flex-grow-1"
+			style="min-width: 300px">
+			<div
+				id="job-view"
+				src="components/table.html"></div>
 			<template
 				observe-target="#table-view td[field='']"
 				observe-query="$document tda[]"
@@ -13,7 +19,6 @@
 		<form
 			id="offcanvas-app"
 			state-id="offcanvas-app"
-			state-overwrite
 			array="job"
 			view="details"
 			class="app-panel offcanvas offcanvas-end flex-grow-1 apps-view-right"
@@ -24,7 +29,9 @@
 			<div
 				class="card-header text-center border-bottom-0"
 				src="components/offcanvas-header.html"></div>
-			<div class="card-body" plugin='{"$SimpleBar": ["$this", {}]}'>
+			<div
+				class="card-body"
+				plugin='{"$SimpleBar": ["$this", {}]}'>
 				<div
 					id="detail-view"
 					src="/apps/job/details.html"></div>

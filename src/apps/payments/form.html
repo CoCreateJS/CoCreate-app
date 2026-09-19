@@ -1,197 +1,217 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/payments/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-wrap align-items:flex-start p-0">
-				<input type="hidden" id="id-field" key="_id" aria-label="Hidden ID field" />
-				<input type="hidden" key="type" value="payment" />
+		<div class="card-body d-flex flex-wrap align-items:flex-start p-0">
+			<input
+				type="hidden"
+				id="id-field"
+				key="_id"
+				aria-label="Hidden ID field" />
+			<input
+				type="hidden"
+				key="type"
+				value="payment" />
 
-				<div class="card mb-0 width:100%">
-					<div class="card-body">
-						<div class="row g-3">
-							<div class="col-12">
-								<label for="paymentId" class="form-label"
-									>Payment ID</label
+			<div class="card mb-0 width:100%">
+				<div class="card-body">
+					<div class="row g-3">
+						<div class="col-12">
+							<label
+								for="paymentId"
+								class="form-label"
+								>Payment ID</label
+							>
+							<input
+								type="text"
+								id="paymentId"
+								class="form-control"
+								placeholder="Payment ID"
+								readonly
+								key="payment_id"
+								aria-label="Payment ID" />
+						</div>
+
+						<div class="col-12">
+							<label
+								for="customername-field"
+								class="form-label"
+								>Customer Name</label
+							>
+							<input
+								type="text"
+								id="customername-field"
+								class="form-control"
+								placeholder="Enter name"
+								key="customer_name"
+								aria-label="Customer Name" />
+						</div>
+
+						<div class="col-12">
+							<label
+								for="productname-field"
+								class="form-label"
+								>Product</label
+							>
+							<select
+								class="form-control"
+								data-trigger
+								name="productname-field"
+								id="productname-field"
+								key="product_name"
+								aria-label="Product Name">
+								<option value="">Product</option>
+								<option value="Puma Tshirt">Puma Tshirt</option>
+								<option value="Adidas Sneakers">
+									Adidas Sneakers
+								</option>
+								<option value="350 ml Glass Grocery Container">
+									350 ml Glass Grocery Container
+								</option>
+								<option value="American egale outfitters Shirt">
+									American egale outfitters Shirt
+								</option>
+								<option value="Galaxy Watch4">
+									Galaxy Watch4
+								</option>
+								<option value="Apple iPhone 12">
+									Apple iPhone 12
+								</option>
+								<option value="Funky Prints T-shirt">
+									Funky Prints T-shirt
+								</option>
+								<option
+									value="USB Flash Drive Personalized with 3D Print">
+									USB Flash Drive Personalized with 3D Print
+								</option>
+								<option value="Oxford Button-Down Shirt">
+									Oxford Button-Down Shirt
+								</option>
+								<option value="Classic Short Sleeve Shirt">
+									Classic Short Sleeve Shirt
+								</option>
+								<option value="Half Sleeve T-Shirts (Blue)">
+									Half Sleeve T-Shirts (Blue)
+								</option>
+								<option value="Noise Evolve Smartwatch">
+									Noise Evolve Smartwatch
+								</option>
+							</select>
+						</div>
+
+						<div class="col-12">
+							<label
+								for="date-field"
+								class="form-label"
+								>Payment Date</label
+							>
+							<input
+								type="date"
+								id="date-field"
+								class="form-control"
+								date-picker="flatpickr"
+								data-date-format="d M, Y"
+								data-enable-time
+								placeholder="Select date"
+								key="date"
+								aria-label="Payment Date" />
+						</div>
+
+						<div class="col-md-6">
+							<div>
+								<label
+									for="amount-field"
+									class="form-label"
+									>Amount</label
 								>
 								<input
 									type="text"
-									id="paymentId"
+									id="amount-field"
 									class="form-control"
-									placeholder="Payment ID"
-									readonly
-									key="payment_id"
-									aria-label="Payment ID" />
+									placeholder="Total amount"
+									key="amount"
+									aria-label="Amount" />
 							</div>
-
-							<div class="col-12">
-								<label for="customername-field" class="form-label"
-									>Customer Name</label
-								>
-								<input
-									type="text"
-									id="customername-field"
-									class="form-control"
-									placeholder="Enter name"
-
-									key="customer_name"
-									aria-label="Customer Name" />
-							</div>
-
-							<div class="col-12">
-								<label for="productname-field" class="form-label"
-									>Product</label
+						</div>
+						<div class="col-md-6">
+							<div>
+								<label
+									for="payment-field"
+									class="form-label"
+									>Payment Method</label
 								>
 								<select
 									class="form-control"
 									data-trigger
-									name="productname-field"
-									id="productname-field"
-
-									key="product_name"
-									aria-label="Product Name">
-									<option value="">Product</option>
-									<option value="Puma Tshirt">Puma Tshirt</option>
-									<option value="Adidas Sneakers">
-										Adidas Sneakers
+									name="payment-method"
+									id="payment-field"
+									key="payment_method"
+									aria-label="Payment Method">
+									<option value="">Payment Method</option>
+									<option value="Mastercard">
+										Mastercard
 									</option>
-									<option value="350 ml Glass Grocery Container">
-										350 ml Glass Grocery Container
-									</option>
-									<option value="American egale outfitters Shirt">
-										American egale outfitters Shirt
-									</option>
-									<option value="Galaxy Watch4">
-										Galaxy Watch4
-									</option>
-									<option value="Apple iPhone 12">
-										Apple iPhone 12
-									</option>
-									<option value="Funky Prints T-shirt">
-										Funky Prints T-shirt
-									</option>
-									<option
-										value="USB Flash Drive Personalized with 3D Print">
-										USB Flash Drive Personalized with 3D Print
-									</option>
-									<option value="Oxford Button-Down Shirt">
-										Oxford Button-Down Shirt
-									</option>
-									<option value="Classic Short Sleeve Shirt">
-										Classic Short Sleeve Shirt
-									</option>
-									<option value="Half Sleeve T-Shirts (Blue)">
-										Half Sleeve T-Shirts (Blue)
-									</option>
-									<option value="Noise Evolve Smartwatch">
-										Noise Evolve Smartwatch
-									</option>
-								</select>
-							</div>
-
-							<div class="col-12">
-								<label for="date-field" class="form-label"
-									>Payment Date</label
-								>
-								<input
-									type="date"
-									id="date-field"
-									class="form-control"
-									date-picker="flatpickr"
-
-									data-date-format="d M, Y"
-									data-enable-time
-									placeholder="Select date"
-									key="date"
-									aria-label="Payment Date" />
-							</div>
-
-							<div class="col-md-6">
-								<div>
-									<label for="amount-field" class="form-label"
-										>Amount</label
-									>
-									<input
-										type="text"
-										id="amount-field"
-										class="form-control"
-										placeholder="Total amount"
-
-										key="amount"
-										aria-label="Amount" />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div>
-									<label for="payment-field" class="form-label"
-										>Payment Method</label
-									>
-									<select
-										class="form-control"
-										data-trigger
-										name="payment-method"
-
-										id="payment-field"
-										key="payment_method"
-										aria-label="Payment Method">
-										<option value="">Payment Method</option>
-										<option value="Mastercard">
-											Mastercard
-										</option>
-										<option value="Visa">Visa</option>
-										<option value="COD">COD</option>
-										<option value="Paypal">Paypal</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="col-12">
-								<label for="payment-status" class="form-label"
-									>Payment Status</label
-								>
-								<select
-									class="form-control"
-									data-trigger
-									name="payment-status"
-
-									id="payment-status"
-									key="status"
-									aria-label="Payment Status">
-									<option value="">Payment Status</option>
-									<option value="Pending">Pending</option>
-									<option value="Inprogress">Inprogress</option>
-									<option value="Cancelled">Cancelled</option>
-									<option value="Completed">Completed</option>
+									<option value="Visa">Visa</option>
+									<option value="COD">COD</option>
+									<option value="Paypal">Paypal</option>
 								</select>
 							</div>
 						</div>
+
+						<div class="col-12">
+							<label
+								for="payment-status"
+								class="form-label"
+								>Payment Status</label
+							>
+							<select
+								class="form-control"
+								data-trigger
+								name="payment-status"
+								id="payment-status"
+								key="status"
+								aria-label="Payment Status">
+								<option value="">Payment Status</option>
+								<option value="Pending">Pending</option>
+								<option value="Inprogress">Inprogress</option>
+								<option value="Cancelled">Cancelled</option>
+								<option value="Completed">Completed</option>
+							</select>
+						</div>
 					</div>
 				</div>
-
 			</div>
+		</div>
 	</div>
 	<footer class="card-footer flex-shrink-0">
 		<div class="hstack gap-2 justify-content-end">
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

@@ -30,20 +30,31 @@
 		}
 		/* Prefer the view owned by this form; retain the host src as a fallback. */
 		form:has(> header[aria-label="Details controls"]) #form-btn,
-		.offcanvas-app-content:has(#offcanvas-app-view[src*="/details.html"]) #form-btn,
-		.offcanvas-app-content:has(#offcanvas-app-view[src*="/profile/index.html"]) #form-btn {
+		.offcanvas-app-content:has(#offcanvas-app-view[src*="/details.html"])
+			#form-btn,
+		.offcanvas-app-content:has(
+				#offcanvas-app-view[src*="/profile/index.html"]
+			)
+			#form-btn {
 			display: inline-flex;
 		}
 		form:has(> header[aria-label="Form controls"]) #details-btn,
-		.offcanvas-app-content:has(#offcanvas-app-view[src*="/form.html"]) #details-btn {
+		.offcanvas-app-content:has(#offcanvas-app-view[src*="/form.html"])
+			#details-btn {
 			display: inline-flex;
 		}
 		/* NFT currently has no form view. */
 		.form-view-btn {
 			display: none !important;
 		}
-		#offcanvas-app:has(#offcanvas-app-view[src*="/apps/activities/index.html"]) .form-view-btn,
-		#offcanvas-app:has(#offcanvas-app-view[src*="/apps/activities/index.html"]) .details-view-btn {
+		#offcanvas-app:has(
+				#offcanvas-app-view[src*="/apps/activities/index.html"]
+			)
+			.form-view-btn,
+		#offcanvas-app:has(
+				#offcanvas-app-view[src*="/apps/activities/index.html"]
+			)
+			.details-view-btn {
 			display: none;
 		}
 	</style>
@@ -157,8 +168,8 @@
 				toggle-query="$document #offcanvas-app"
 				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
 				<i
-					toggle.class="ri-layout-right-line, ri-layout-right-2-line"
-					class="ri-layout-right-2-line align-middle fs-22"></i>
+					toggle.class="ri-layout-right-2-line, ri-layout-right-line"
+					class="ri-layout-right-line align-middle fs-22"></i>
 			</a>
 		</li>
 		<li class="d-none">
@@ -181,6 +192,7 @@
 				id="close-offcanvas-btn"
 				role="button"
 				aria-label="Close"
+				aria-close
 				aria-controls="offcanvas-app"
 				aria-expanded="true"
 				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">

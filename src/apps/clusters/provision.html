@@ -73,397 +73,769 @@
 	object
 	data-create-panel-title="Cluster Provisioning"
 	data-cluster-provision>
-	<header class="card-header d-flex align-items-center justify-content-between flex-shrink-0">
+	<header
+		class="card-header d-flex align-items-center justify-content-between flex-shrink-0">
 		<span class="fw-medium">Cluster Provisioning</span>
 		<button
 			type="button"
 			class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted"
-			data-component-form-close
+			aria-controls="offcanvas-app"
+			data-panel-close="offcanvas-app"
 			aria-label="Close cluster provisioning"
 			title="Close"
 			aria-expanded="true"
 			aria-close>
-			<i class="ri-close-line align-middle fs-22" aria-hidden="true"></i>
+			<i
+				class="ri-close-line align-middle fs-22"
+				aria-hidden="true"></i>
+		</button>
+		<button
+			type="button"
+			class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted"
+			aria-controls="create-panel"
+			data-panel-close="create-panel"
+			aria-label="Close cluster provisioning"
+			title="Close"
+			aria-expanded="true"
+			aria-close>
+			<i
+				class="ri-close-line align-middle fs-22"
+				aria-hidden="true"></i>
 		</button>
 	</header>
 	<div
 		class="flex-grow-1 min-height:0 height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-	<div class="card-body d-flex flex-column gap-4 min-height:100%">
-		<header data-provision-progress>
-		<h4 class="mb-1" data-provision-heading>Cluster Configuration</h4>
-		<p class="text-muted mb-0" data-provision-description>
-			Select cloud providers and define how the cluster scales, distributes
-			capacity, and deploys.
-		</p>
-	</header>
+		<div class="card-body d-flex flex-column gap-4 min-height:100%">
+			<header data-provision-progress>
+				<h4
+					class="mb-1"
+					data-provision-heading>
+					Cluster Configuration
+				</h4>
+				<p
+					class="text-muted mb-0"
+					data-provision-description>
+					Select cloud providers and define how the cluster scales,
+					distributes capacity, and deploys.
+				</p>
+			</header>
 
-		<nav
-			class="d-flex align-items-center gap-2"
-			data-provision-progress
-			aria-label="Provisioning progress">
-		<button
-			type="button"
-			class="badge rounded-pill bg-secondary"
-			data-provision-indicator="1"
-			aria-label="Open step 1"
-			>1</button
-		>
-		<span class="flex-grow-1 border-top"></span>
-		<button
-			type="button"
-			class="badge rounded-pill bg-primary"
-			data-provision-indicator="2"
-			aria-label="Open step 2"
-			>2</button
-		>
-		<span class="flex-grow-1 border-top"></span>
-		<button
-			type="button"
-			class="badge rounded-pill bg-primary"
-			data-provision-indicator="3"
-			aria-label="Open step 3"
-			>3</button
-		>
-		<span class="flex-grow-1 border-top"></span>
-		<button
-			type="button"
-			class="badge rounded-pill bg-primary"
-			data-provision-indicator="4"
-			aria-label="Open step 4"
-			>4</button
-		>
-	</nav>
+			<nav
+				class="d-flex align-items-center gap-2"
+				data-provision-progress
+				aria-label="Provisioning progress">
+				<button
+					type="button"
+					class="badge rounded-pill bg-secondary"
+					data-provision-indicator="1"
+					aria-label="Open step 1">
+					1
+				</button>
+				<span class="flex-grow-1 border-top"></span>
+				<button
+					type="button"
+					class="badge rounded-pill bg-primary"
+					data-provision-indicator="2"
+					aria-label="Open step 2">
+					2
+				</button>
+				<span class="flex-grow-1 border-top"></span>
+				<button
+					type="button"
+					class="badge rounded-pill bg-primary"
+					data-provision-indicator="3"
+					aria-label="Open step 3">
+					3
+				</button>
+				<span class="flex-grow-1 border-top"></span>
+				<button
+					type="button"
+					class="badge rounded-pill bg-primary"
+					data-provision-indicator="4"
+					aria-label="Open step 4">
+					4
+				</button>
+			</nav>
 
-	<section data-provision-step="1">
-		<h5 class="mb-1" data-provider-heading>Choose cloud providers</h5>
-		<p class="text-muted" data-provider-description>
-			Select one or more providers that this cluster can use.
-		</p>
-		<div
-			class="alert alert-info py-2"
-			data-provider-status
-			hidden></div>
-		<div class="d-flex flex-column gap-3">
-			<div class="cluster-provider-option border rounded"
-				><label class="d-flex align-items-start gap-3 p-3"
-					><input
-						type="checkbox"
-						name="cluster-provider"
-						value="aws" /><i
-						class="ri-amazon-line fs-24 text-warning"></i
-					><span class="flex-grow-1"
-						><strong class="d-block">AWS</strong
-						><small class="text-muted">Amazon EC2</small></span
-					></label
-				><div data-provider-credential-fields hidden></div></div
-			>
-			<div class="cluster-provider-option border rounded"
-				><label class="d-flex align-items-start gap-3 p-3"
-					><input
-						type="checkbox"
-						name="cluster-provider"
-						value="gcp" /><i
-						class="ri-google-line fs-24 text-primary"></i
-					><span class="flex-grow-1"
-						><strong class="d-block">Google Cloud</strong
-						><small class="text-muted">Compute Engine</small></span
-					></label
-				><div data-provider-credential-fields hidden></div></div
-			>
-			<div class="cluster-provider-option border rounded"
-				><label class="d-flex align-items-start gap-3 p-3"
-					><input
-						type="checkbox"
-						name="cluster-provider"
-						value="azure" /><i
-						class="ri-microsoft-line fs-24 text-info"></i
-					><span class="flex-grow-1"
-						><strong class="d-block">Azure</strong
-						><small class="text-muted">Virtual Machines</small></span
-					></label
-				><div data-provider-credential-fields hidden></div></div
-			>
-			<div class="cluster-provider-option border rounded"
-				><label class="d-flex align-items-start gap-3 p-3"
-					><input
-						type="checkbox"
-						name="cluster-provider"
-						value="digitalocean" /><i
-						class="ri-cloud-line fs-24 text-primary"></i
-					><span class="flex-grow-1"
-						><strong class="d-block">DigitalOcean</strong
-						><small class="text-muted">Droplets</small></span
-					></label
-				><div data-provider-credential-fields hidden></div></div
-			>
-			<div class="cluster-provider-option border rounded"
-				><label class="d-flex align-items-start gap-3 p-3"
-					><input
-						type="checkbox"
-						name="cluster-provider"
-						value="oci" /><i
-						class="ri-cloud-line fs-24 text-danger"></i
-					><span class="flex-grow-1"
-						><strong class="d-block">Oracle Cloud</strong
-						><small class="text-muted">Compute</small></span
-					></label
-				><div data-provider-credential-fields hidden></div></div
-			>
-			<div class="cluster-provider-option border rounded"
-				><label class="d-flex align-items-start gap-3 p-3"
-					><input
-						type="checkbox"
-						name="cluster-provider"
-						value="hetzner" /><i
-						class="ri-server-line fs-24 text-danger"></i
-					><span class="flex-grow-1"
-						><strong class="d-block">Hetzner</strong
-						><small class="text-muted">Cloud Servers</small></span
-					></label
-				><div data-provider-credential-fields hidden></div></div
-			>
-			<div class="cluster-provider-option border rounded"
-				><label class="d-flex align-items-start gap-3 p-3"
-					><input
-						type="checkbox"
-						name="cluster-provider"
-						value="vultr" /><i
-						class="ri-cloud-line fs-24 text-primary"></i
-					><span class="flex-grow-1"
-						><strong class="d-block">Vultr</strong
-						><small class="text-muted">Cloud Compute</small></span
-					></label
-				><div data-provider-credential-fields hidden></div></div
-			>
-			<div class="cluster-provider-option border rounded"
-				><label class="d-flex align-items-start gap-3 p-3"
-					><input
-						type="checkbox"
-						name="cluster-provider"
-						value="equinix" /><i
-						class="ri-global-line fs-24 text-success"></i
-					><span class="flex-grow-1"
-						><strong class="d-block">Equinix</strong
-						><small class="text-muted">Metal</small></span
-					></label
-				><div data-provider-credential-fields hidden></div></div
-			>
-		</div>
-	</section>
+			<section data-provision-step="1">
+				<h5
+					class="mb-1"
+					data-provider-heading>
+					Choose cloud providers
+				</h5>
+				<p
+					class="text-muted"
+					data-provider-description>
+					Select one or more providers that this cluster can use.
+				</p>
+				<div
+					class="alert alert-info py-2"
+					data-provider-status
+					hidden></div>
+				<div class="d-flex flex-column gap-3">
+					<div class="cluster-provider-option border rounded">
+						<label class="d-flex align-items-start gap-3 p-3"
+							><input
+								type="checkbox"
+								name="cluster-provider"
+								value="aws" /><i
+								class="ri-amazon-line fs-24 text-warning"></i
+							><span class="flex-grow-1"
+								><strong class="d-block">AWS</strong
+								><small class="text-muted"
+									>Amazon EC2</small
+								></span
+							></label
+						>
+						<div
+							data-provider-credential-fields
+							hidden></div>
+					</div>
+					<div class="cluster-provider-option border rounded">
+						<label class="d-flex align-items-start gap-3 p-3"
+							><input
+								type="checkbox"
+								name="cluster-provider"
+								value="gcp" /><i
+								class="ri-google-line fs-24 text-primary"></i
+							><span class="flex-grow-1"
+								><strong class="d-block">Google Cloud</strong
+								><small class="text-muted"
+									>Compute Engine</small
+								></span
+							></label
+						>
+						<div
+							data-provider-credential-fields
+							hidden></div>
+					</div>
+					<div class="cluster-provider-option border rounded">
+						<label class="d-flex align-items-start gap-3 p-3"
+							><input
+								type="checkbox"
+								name="cluster-provider"
+								value="azure" /><i
+								class="ri-microsoft-line fs-24 text-info"></i
+							><span class="flex-grow-1"
+								><strong class="d-block">Azure</strong
+								><small class="text-muted"
+									>Virtual Machines</small
+								></span
+							></label
+						>
+						<div
+							data-provider-credential-fields
+							hidden></div>
+					</div>
+					<div class="cluster-provider-option border rounded">
+						<label class="d-flex align-items-start gap-3 p-3"
+							><input
+								type="checkbox"
+								name="cluster-provider"
+								value="digitalocean" /><i
+								class="ri-cloud-line fs-24 text-primary"></i
+							><span class="flex-grow-1"
+								><strong class="d-block">DigitalOcean</strong
+								><small class="text-muted"
+									>Droplets</small
+								></span
+							></label
+						>
+						<div
+							data-provider-credential-fields
+							hidden></div>
+					</div>
+					<div class="cluster-provider-option border rounded">
+						<label class="d-flex align-items-start gap-3 p-3"
+							><input
+								type="checkbox"
+								name="cluster-provider"
+								value="oci" /><i
+								class="ri-cloud-line fs-24 text-danger"></i
+							><span class="flex-grow-1"
+								><strong class="d-block">Oracle Cloud</strong
+								><small class="text-muted">Compute</small></span
+							></label
+						>
+						<div
+							data-provider-credential-fields
+							hidden></div>
+					</div>
+					<div class="cluster-provider-option border rounded">
+						<label class="d-flex align-items-start gap-3 p-3"
+							><input
+								type="checkbox"
+								name="cluster-provider"
+								value="hetzner" /><i
+								class="ri-server-line fs-24 text-danger"></i
+							><span class="flex-grow-1"
+								><strong class="d-block">Hetzner</strong
+								><small class="text-muted"
+									>Cloud Servers</small
+								></span
+							></label
+						>
+						<div
+							data-provider-credential-fields
+							hidden></div>
+					</div>
+					<div class="cluster-provider-option border rounded">
+						<label class="d-flex align-items-start gap-3 p-3"
+							><input
+								type="checkbox"
+								name="cluster-provider"
+								value="vultr" /><i
+								class="ri-cloud-line fs-24 text-primary"></i
+							><span class="flex-grow-1"
+								><strong class="d-block">Vultr</strong
+								><small class="text-muted"
+									>Cloud Compute</small
+								></span
+							></label
+						>
+						<div
+							data-provider-credential-fields
+							hidden></div>
+					</div>
+					<div class="cluster-provider-option border rounded">
+						<label class="d-flex align-items-start gap-3 p-3"
+							><input
+								type="checkbox"
+								name="cluster-provider"
+								value="equinix" /><i
+								class="ri-global-line fs-24 text-success"></i
+							><span class="flex-grow-1"
+								><strong class="d-block">Equinix</strong
+								><small class="text-muted">Metal</small></span
+							></label
+						>
+						<div
+							data-provider-credential-fields
+							hidden></div>
+					</div>
+				</div>
+			</section>
 
-	<section
-		data-provision-step="2"
-		hidden>
-		<h5 class="mb-1">Configure the cluster</h5>
-		<p class="text-muted">Define how the cluster scales and distributes capacity.</p>
-		<div class="d-flex flex-column gap-3">
-			<label class="col-12 form-label" data-cluster-name-field
-				>Cluster name<input
-					class="form-control"
-					name="clusterName"
-					placeholder="Production cluster"
-					required
-			/></label>
-			<section class="col-12 border-top border-top-dashed pt-3">
-				<div class="d-flex align-items-center justify-content-between gap-3">
-					<div class="d-flex align-items-center gap-2">
-						<h6 class="mb-0">Autoscaling</h6>
-						<span class="badge bg-success-subtle text-success" data-enabled-badge="autoscalingEnabled">Enabled</span>
-					</div>
-					<label class="form-check form-switch mb-0">
-						<input class="form-check-input" type="checkbox" name="autoscalingEnabled" aria-label="Enable autoscaling" />
-					</label>
-				</div>
-			</section>
-			<section class="col-12 border-top border-top-dashed pt-3" data-enabled-fields="autoscalingEnabled">
-				<div class="d-flex align-items-center justify-content-between gap-3">
-					<div class="d-flex align-items-center gap-2">
-						<h6 class="mb-0">Spot capacity</h6>
-						<span class="badge bg-success-subtle text-success" data-enabled-badge="spotEnabled">Enabled</span>
-					</div>
-					<label class="form-check form-switch mb-0">
-						<input class="form-check-input" type="checkbox" name="spotEnabled" aria-label="Enable spot capacity" />
-					</label>
-				</div>
-			</section>
-			<section class="col-12 border-top border-top-dashed pt-3" data-enabled-fields="autoscalingEnabled">
-				<h6>Scale out</h6>
-				<div class="d-grid gap-3" style="grid-template-columns: repeat(2, minmax(0, 1fr))">
-					<label class="form-label min-width:0">CPU threshold (%)
-						<input class="form-control" type="number" name="scaleOutCpuThreshold" min="0" max="100" required /></label>
-					<label class="form-label min-width:0">Memory threshold (%)
-						<input class="form-control" type="number" name="scaleOutMemoryThreshold" min="0" max="100" required /></label>
-					<label class="form-label min-width:0"><span class="d-flex align-items-center gap-1">Consecutive flushes <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Number of consecutive telemetry intervals that must exceed a scale-out threshold." title="Number of consecutive telemetry intervals that must exceed a scale-out threshold."></i></span>
-						<input class="form-control" type="number" name="scaleOutConsecutiveFlushes" min="1" required /></label>
-					<label class="form-label min-width:0"><span class="d-flex align-items-center gap-1">Maximum cluster size <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Maximum number of active servers allowed in this cluster. Zero means unlimited." title="Maximum number of active servers allowed in this cluster. Zero means unlimited."></i></span>
-						<input class="form-control" type="number" name="maxClusterSize" min="0" required /></label>
-				</div>
-			</section>
-			<section class="col-12 border-top border-top-dashed pt-3" data-enabled-fields="autoscalingEnabled">
-				<h6>Scale in</h6>
-				<div class="d-grid gap-3" style="grid-template-columns: repeat(2, minmax(0, 1fr))">
-					<label class="form-label min-width:0">CPU threshold (%)
-						<input class="form-control" type="number" name="scaleInCpuThreshold" min="0" max="100" required /></label>
-					<label class="form-label min-width:0">Memory threshold (%)
-						<input class="form-control" type="number" name="scaleInMemoryThreshold" min="0" max="100" required /></label>
-					<label class="form-label min-width:0"><span class="d-flex align-items-center gap-1">Consecutive flushes <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Number of consecutive telemetry intervals that must remain below the scale-in thresholds." title="Number of consecutive telemetry intervals that must remain below the scale-in thresholds."></i></span>
-						<input class="form-control" type="number" name="scaleInConsecutiveFlushes" min="1" required /></label>
-					<label class="form-label min-width:0"><span class="d-flex align-items-center gap-1">Minimum cluster size <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Minimum number of active servers retained across the entire cluster." title="Minimum number of active servers retained across the entire cluster."></i></span>
-						<input class="form-control" type="number" name="minClusterSize" min="0" required /></label>
-					<label class="form-label min-width:0"><span class="d-flex align-items-center gap-1">Preservation <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Geographic boundary the autoscaler should preserve while removing capacity." title="Geographic boundary the autoscaler should preserve while removing capacity."></i></span>
-						<select class="form-select" name="preservation" required>
-							<option value="global">Global</option>
-							<option value="continent">Continent</option>
-							<option value="country">Country</option>
-							<option value="region">Region</option>
-						</select></label>
-					<label class="form-label min-width:0"><span class="d-flex align-items-center gap-1">Decommission strategy <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Oldest removes the earliest-created eligible server. Local lets the autoscaler node decommission itself." title="Oldest removes the earliest-created eligible server. Local lets the autoscaler node decommission itself."></i></span>
-						<select class="form-select" name="decommissionStrategy" required>
-							<option value="oldest">Oldest</option>
-							<option value="local">Local</option>
-						</select></label>
-				</div>
-			</section>
-			<section class="col-12 border-top border-top-dashed pt-3" data-enabled-fields="autoscalingEnabled">
-				<div class="d-flex align-items-center justify-content-between gap-3 mb-3">
-					<div class="d-flex align-items-center gap-2">
-						<h6 class="mb-0">Geographic scaling</h6>
-						<span class="badge bg-success-subtle text-success" data-enabled-badge="geoScaleEnabled">Enabled</span>
-					</div>
-					<label class="form-check form-switch mb-0">
-						<input class="form-check-input" type="checkbox" name="geoScaleEnabled" aria-label="Enable geographic scaling" />
-					</label>
-				</div>
-				<div class="d-grid gap-3" style="grid-template-columns: repeat(2, minmax(0, 1fr))" data-enabled-fields="geoScaleEnabled">
-					<label class="form-label min-width:0"><span class="d-flex align-items-center gap-1">Shedding threshold (%) <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Minimum percentage of active client load in an unserved geographic area required to place capacity there." title="Minimum percentage of active client load in an unserved geographic area required to place capacity there."></i></span>
-						<input class="form-control" type="number" name="sheddingThreshold" min="0" max="100" required /></label>
-					<label class="form-label min-width:0"><span class="d-flex align-items-center gap-1">Density by <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Geographic level used to group client demand when selecting where to add capacity." title="Geographic level used to group client demand when selecting where to add capacity."></i></span>
-						<select class="form-select" name="densityBy" required>
-							<option value="continent">Continent</option>
-							<option value="country">Country</option>
-							<option value="region">Region</option>
-						</select></label>
-				</div>
-			</section>
-			<section class="col-12 border-top border-top-dashed pt-3" data-enabled-fields="autoscalingEnabled">
-				<div class="d-flex align-items-center justify-content-between gap-3 mb-3">
-					<div class="d-flex align-items-center gap-2">
-						<h6 class="mb-0">Vertical scaling</h6>
-						<span class="badge bg-success-subtle text-success" data-enabled-badge="verticalEnabled">Enabled</span>
-					</div>
-					<label class="form-check form-switch mb-0">
-						<input class="form-check-input" type="checkbox" name="verticalEnabled" aria-label="Enable vertical scaling" />
-					</label>
-				</div>
-				<div class="d-flex flex-column gap-3" data-enabled-fields="verticalEnabled">
-					<label class="form-label mb-0"><span class="d-flex align-items-center gap-1">Maximum nodes per tier <i class="ri-information-line text-muted" role="img" tabindex="0" aria-label="Servers allowed at the current resource size in a region before the next server target doubles in size." title="Servers allowed at the current resource size in a region before the next server target doubles in size."></i></span>
-						<input class="form-control" type="number" name="maxNodesPerTier" min="1" required /></label>
-					<div>
-						<h6 class="text-muted fs-12 mb-2">Minimum server size</h6>
-						<div class="d-grid gap-3" style="grid-template-columns: repeat(2, minmax(0, 1fr))">
-							<label class="form-label min-width:0 mb-0">vCPU
-								<input class="form-control" type="number" name="minVcpu" min="1" required /></label>
-							<label class="form-label min-width:0 mb-0">Memory (GB)
-								<input class="form-control" type="number" name="minMemory" min="1" required /></label>
+			<section
+				data-provision-step="2"
+				hidden>
+				<h5 class="mb-1">Configure the cluster</h5>
+				<p class="text-muted">
+					Define how the cluster scales and distributes capacity.
+				</p>
+				<div class="d-flex flex-column gap-3">
+					<label
+						class="col-12 form-label"
+						data-cluster-name-field
+						>Cluster name<input
+							class="form-control"
+							name="clusterName"
+							placeholder="Production cluster"
+							required
+					/></label>
+					<section class="col-12 border-top border-top-dashed pt-3">
+						<div
+							class="d-flex align-items-center justify-content-between gap-3">
+							<div class="d-flex align-items-center gap-2">
+								<h6 class="mb-0">Autoscaling</h6>
+								<span
+									class="badge bg-success-subtle text-success"
+									data-enabled-badge="autoscalingEnabled"
+									>Enabled</span
+								>
+							</div>
+							<label class="form-check form-switch mb-0">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="autoscalingEnabled"
+									aria-label="Enable autoscaling" />
+							</label>
 						</div>
-					</div>
-					<div>
-						<h6 class="text-muted fs-12 mb-2">Maximum server size</h6>
-						<div class="d-grid gap-3" style="grid-template-columns: repeat(2, minmax(0, 1fr))">
-							<label class="form-label min-width:0 mb-0">vCPU
-								<input class="form-control" type="number" name="maxVcpu" min="1" required /></label>
-							<label class="form-label min-width:0 mb-0">Memory (GB)
-								<input class="form-control" type="number" name="maxMemory" min="1" required /></label>
+					</section>
+					<section
+						class="col-12 border-top border-top-dashed pt-3"
+						data-enabled-fields="autoscalingEnabled">
+						<div
+							class="d-flex align-items-center justify-content-between gap-3">
+							<div class="d-flex align-items-center gap-2">
+								<h6 class="mb-0">Spot capacity</h6>
+								<span
+									class="badge bg-success-subtle text-success"
+									data-enabled-badge="spotEnabled"
+									>Enabled</span
+								>
+							</div>
+							<label class="form-check form-switch mb-0">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="spotEnabled"
+									aria-label="Enable spot capacity" />
+							</label>
 						</div>
-					</div>
+					</section>
+					<section
+						class="col-12 border-top border-top-dashed pt-3"
+						data-enabled-fields="autoscalingEnabled">
+						<h6>Scale out</h6>
+						<div
+							class="d-grid gap-3"
+							style="
+								grid-template-columns: repeat(
+									2,
+									minmax(0, 1fr)
+								);
+							">
+							<label class="form-label min-width:0"
+								>CPU threshold (%)
+								<input
+									class="form-control"
+									type="number"
+									name="scaleOutCpuThreshold"
+									min="0"
+									max="100"
+									required
+							/></label>
+							<label class="form-label min-width:0"
+								>Memory threshold (%)
+								<input
+									class="form-control"
+									type="number"
+									name="scaleOutMemoryThreshold"
+									min="0"
+									max="100"
+									required
+							/></label>
+							<label class="form-label min-width:0"
+								><span class="d-flex align-items-center gap-1"
+									>Consecutive flushes
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Number of consecutive telemetry intervals that must exceed a scale-out threshold."
+										title="Number of consecutive telemetry intervals that must exceed a scale-out threshold."></i
+								></span>
+								<input
+									class="form-control"
+									type="number"
+									name="scaleOutConsecutiveFlushes"
+									min="1"
+									required
+							/></label>
+							<label class="form-label min-width:0"
+								><span class="d-flex align-items-center gap-1"
+									>Maximum cluster size
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Maximum number of active servers allowed in this cluster. Zero means unlimited."
+										title="Maximum number of active servers allowed in this cluster. Zero means unlimited."></i
+								></span>
+								<input
+									class="form-control"
+									type="number"
+									name="maxClusterSize"
+									min="0"
+									required
+							/></label>
+						</div>
+					</section>
+					<section
+						class="col-12 border-top border-top-dashed pt-3"
+						data-enabled-fields="autoscalingEnabled">
+						<h6>Scale in</h6>
+						<div
+							class="d-grid gap-3"
+							style="
+								grid-template-columns: repeat(
+									2,
+									minmax(0, 1fr)
+								);
+							">
+							<label class="form-label min-width:0"
+								>CPU threshold (%)
+								<input
+									class="form-control"
+									type="number"
+									name="scaleInCpuThreshold"
+									min="0"
+									max="100"
+									required
+							/></label>
+							<label class="form-label min-width:0"
+								>Memory threshold (%)
+								<input
+									class="form-control"
+									type="number"
+									name="scaleInMemoryThreshold"
+									min="0"
+									max="100"
+									required
+							/></label>
+							<label class="form-label min-width:0"
+								><span class="d-flex align-items-center gap-1"
+									>Consecutive flushes
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Number of consecutive telemetry intervals that must remain below the scale-in thresholds."
+										title="Number of consecutive telemetry intervals that must remain below the scale-in thresholds."></i
+								></span>
+								<input
+									class="form-control"
+									type="number"
+									name="scaleInConsecutiveFlushes"
+									min="1"
+									required
+							/></label>
+							<label class="form-label min-width:0"
+								><span class="d-flex align-items-center gap-1"
+									>Minimum cluster size
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Minimum number of active servers retained across the entire cluster."
+										title="Minimum number of active servers retained across the entire cluster."></i
+								></span>
+								<input
+									class="form-control"
+									type="number"
+									name="minClusterSize"
+									min="0"
+									required
+							/></label>
+							<label class="form-label min-width:0"
+								><span class="d-flex align-items-center gap-1"
+									>Preservation
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Geographic boundary the autoscaler should preserve while removing capacity."
+										title="Geographic boundary the autoscaler should preserve while removing capacity."></i
+								></span>
+								<select
+									class="form-select"
+									name="preservation"
+									required>
+									<option value="global">Global</option>
+									<option value="continent">Continent</option>
+									<option value="country">Country</option>
+									<option value="region">Region</option>
+								</select></label
+							>
+							<label class="form-label min-width:0"
+								><span class="d-flex align-items-center gap-1"
+									>Decommission strategy
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Oldest removes the earliest-created eligible server. Local lets the autoscaler node decommission itself."
+										title="Oldest removes the earliest-created eligible server. Local lets the autoscaler node decommission itself."></i
+								></span>
+								<select
+									class="form-select"
+									name="decommissionStrategy"
+									required>
+									<option value="oldest">Oldest</option>
+									<option value="local">Local</option>
+								</select></label
+							>
+						</div>
+					</section>
+					<section
+						class="col-12 border-top border-top-dashed pt-3"
+						data-enabled-fields="autoscalingEnabled">
+						<div
+							class="d-flex align-items-center justify-content-between gap-3 mb-3">
+							<div class="d-flex align-items-center gap-2">
+								<h6 class="mb-0">Geographic scaling</h6>
+								<span
+									class="badge bg-success-subtle text-success"
+									data-enabled-badge="geoScaleEnabled"
+									>Enabled</span
+								>
+							</div>
+							<label class="form-check form-switch mb-0">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="geoScaleEnabled"
+									aria-label="Enable geographic scaling" />
+							</label>
+						</div>
+						<div
+							class="d-grid gap-3"
+							style="
+								grid-template-columns: repeat(
+									2,
+									minmax(0, 1fr)
+								);
+							"
+							data-enabled-fields="geoScaleEnabled">
+							<label class="form-label min-width:0"
+								><span class="d-flex align-items-center gap-1"
+									>Shedding threshold (%)
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Minimum percentage of active client load in an unserved geographic area required to place capacity there."
+										title="Minimum percentage of active client load in an unserved geographic area required to place capacity there."></i
+								></span>
+								<input
+									class="form-control"
+									type="number"
+									name="sheddingThreshold"
+									min="0"
+									max="100"
+									required
+							/></label>
+							<label class="form-label min-width:0"
+								><span class="d-flex align-items-center gap-1"
+									>Density by
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Geographic level used to group client demand when selecting where to add capacity."
+										title="Geographic level used to group client demand when selecting where to add capacity."></i
+								></span>
+								<select
+									class="form-select"
+									name="densityBy"
+									required>
+									<option value="continent">Continent</option>
+									<option value="country">Country</option>
+									<option value="region">Region</option>
+								</select></label
+							>
+						</div>
+					</section>
+					<section
+						class="col-12 border-top border-top-dashed pt-3"
+						data-enabled-fields="autoscalingEnabled">
+						<div
+							class="d-flex align-items-center justify-content-between gap-3 mb-3">
+							<div class="d-flex align-items-center gap-2">
+								<h6 class="mb-0">Vertical scaling</h6>
+								<span
+									class="badge bg-success-subtle text-success"
+									data-enabled-badge="verticalEnabled"
+									>Enabled</span
+								>
+							</div>
+							<label class="form-check form-switch mb-0">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="verticalEnabled"
+									aria-label="Enable vertical scaling" />
+							</label>
+						</div>
+						<div
+							class="d-flex flex-column gap-3"
+							data-enabled-fields="verticalEnabled">
+							<label class="form-label mb-0"
+								><span class="d-flex align-items-center gap-1"
+									>Maximum nodes per tier
+									<i
+										class="ri-information-line text-muted"
+										role="img"
+										tabindex="0"
+										aria-label="Servers allowed at the current resource size in a region before the next server target doubles in size."
+										title="Servers allowed at the current resource size in a region before the next server target doubles in size."></i
+								></span>
+								<input
+									class="form-control"
+									type="number"
+									name="maxNodesPerTier"
+									min="1"
+									required
+							/></label>
+							<div>
+								<h6 class="text-muted fs-12 mb-2">
+									Minimum server size
+								</h6>
+								<div
+									class="d-grid gap-3"
+									style="
+										grid-template-columns: repeat(
+											2,
+											minmax(0, 1fr)
+										);
+									">
+									<label class="form-label min-width:0 mb-0"
+										>vCPU
+										<input
+											class="form-control"
+											type="number"
+											name="minVcpu"
+											min="1"
+											required
+									/></label>
+									<label class="form-label min-width:0 mb-0"
+										>Memory (GB)
+										<input
+											class="form-control"
+											type="number"
+											name="minMemory"
+											min="1"
+											required
+									/></label>
+								</div>
+							</div>
+							<div>
+								<h6 class="text-muted fs-12 mb-2">
+									Maximum server size
+								</h6>
+								<div
+									class="d-grid gap-3"
+									style="
+										grid-template-columns: repeat(
+											2,
+											minmax(0, 1fr)
+										);
+									">
+									<label class="form-label min-width:0 mb-0"
+										>vCPU
+										<input
+											class="form-control"
+											type="number"
+											name="maxVcpu"
+											min="1"
+											required
+									/></label>
+									<label class="form-label min-width:0 mb-0"
+										>Memory (GB)
+										<input
+											class="form-control"
+											type="number"
+											name="maxMemory"
+											min="1"
+											required
+									/></label>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div
+					class="alert alert-info py-2 mb-0 mt-3"
+					data-step-status
+					data-cluster-status
+					hidden></div>
+			</section>
+
+			<section
+				data-provision-step="3"
+				hidden>
+				<h5 class="mb-1">Storage provider</h5>
+				<p class="text-muted">
+					Choose one database connection required to start the
+					cluster.
+				</p>
+				<div
+					class="alert alert-info py-2"
+					data-step-status
+					data-storage-status
+					hidden></div>
+				<div
+					class="d-flex flex-column gap-3"
+					data-storage-options></div>
+				<div
+					class="flex-column gap-3"
+					data-storage-fields
+					hidden>
+					<label class="form-label mb-0"
+						>Connection name<input
+							class="form-control"
+							name="storageName"
+							placeholder="mongodb"
+							required
+					/></label>
+					<div
+						class="d-flex flex-column gap-3"
+						data-storage-provider-fields></div>
 				</div>
 			</section>
-		</div>
-		<div
-			class="alert alert-info py-2 mb-0 mt-3"
-			data-step-status
-			data-cluster-status
-			hidden></div>
-	</section>
 
-	<section
-		data-provision-step="3"
-		hidden>
-		<h5 class="mb-1">Storage provider</h5>
-		<p class="text-muted">Choose one database connection required to start the cluster.</p>
-		<div
-			class="alert alert-info py-2"
-			data-step-status
-			data-storage-status
-			hidden></div>
-		<div class="d-flex flex-column gap-3" data-storage-options></div>
-		<div class="flex-column gap-3" data-storage-fields hidden>
-			<label class="form-label mb-0"
-				>Connection name<input
-					class="form-control"
-					name="storageName"
-					placeholder="mongodb"
-					required
-			/></label>
-			<div class="d-flex flex-column gap-3" data-storage-provider-fields></div>
-		</div>
-	</section>
+			<section
+				data-provision-step="4"
+				hidden>
+				<h5 class="mb-1">First deployment</h5>
+				<p
+					class="text-muted"
+					data-deployment-description>
+					Choose where to deploy the first server. As resource needs
+					change, servers are automatically added or removed across
+					your selected cloud providers according to the cluster’s
+					scaling settings.
+				</p>
+				<div class="row g-3">
+					<label
+						class="col-12 form-label"
+						data-initial-provider-field
+						>Cloud provider<select
+							class="form-select"
+							name="initialProvider"
+							required></select
+					></label>
+					<label class="col-12 form-label"
+						>Region<select
+							class="form-select"
+							name="region"
+							required></select
+					></label>
+				</div>
+			</section>
 
-		<section
-			data-provision-step="4"
-			hidden>
-		<h5 class="mb-1">First deployment</h5>
-		<p class="text-muted" data-deployment-description>Choose where to deploy the first server. As resource needs change, servers are automatically added or removed across your selected cloud providers according to the cluster’s scaling settings.</p>
-		<div class="row g-3">
-			<label class="col-12 form-label" data-initial-provider-field
-				>Cloud provider<select
-					class="form-select"
-					name="initialProvider"
-					required></select></label
-			>
-			<label class="col-12 form-label"
-				>Region<select
-					class="form-select"
-					name="region"
-					required></select
-			></label>
-		</div>
-		</section>
-
-		<section
-			class="text-center my-auto py-5"
-			data-provision-complete
-			data-provision-state="provisioning"
-			hidden>
-			<div class="d-flex flex-column align-items-center gap-3">
-				<span
-					class="avatar-lg d-inline-flex align-items-center justify-content-center rounded-circle bg-info-subtle text-info"
-					data-provision-status-icon>
+			<section
+				class="text-center my-auto py-5"
+				data-provision-complete
+				data-provision-state="provisioning"
+				hidden>
+				<div class="d-flex flex-column align-items-center gap-3">
 					<span
-						class="spinner-border spinner-border-sm"
-						role="status"
-						aria-label="Provisioning"></span>
-				</span>
-				<div>
-					<h4 class="mb-2" data-provision-status-title>
-						Deploying cluster
-					</h4>
-					<p class="text-muted mb-0" data-provision-complete-message>
-						Your cluster is being deployed.
-					</p>
+						class="avatar-lg d-inline-flex align-items-center justify-content-center rounded-circle bg-info-subtle text-info"
+						data-provision-status-icon>
+						<span
+							class="spinner-border spinner-border-sm"
+							role="status"
+							aria-label="Provisioning"></span>
+					</span>
+					<div>
+						<h4
+							class="mb-2"
+							data-provision-status-title>
+							Deploying cluster
+						</h4>
+						<p
+							class="text-muted mb-0"
+							data-provision-complete-message>
+							Your cluster is being deployed.
+						</p>
+					</div>
+					<span
+						class="badge bg-info-subtle text-info"
+						data-provision-status-badge
+						>Provisioning</span
+					>
 				</div>
-				<span
-					class="badge bg-info-subtle text-info"
-					data-provision-status-badge
-					>Provisioning</span
-				>
-			</div>
-		</section>
-	</div>
+			</section>
+		</div>
 	</div>
 
-	<footer class="card-footer d-flex align-items-center gap-2 width:100% flex-shrink-0" data-provision-footer>
+	<footer
+		class="card-footer d-flex align-items-center gap-2 width:100% flex-shrink-0"
+		data-provision-footer>
 		<button
 			class="btn btn-light"
 			type="button"
@@ -490,7 +862,20 @@
 			class="btn btn-primary"
 			type="button"
 			data-provision-close
-			data-component-form-close
+			aria-controls="offcanvas-app"
+			data-panel-close="offcanvas-app"
+			aria-label="Close provisioning panel"
+			aria-expanded="true"
+			aria-close
+			hidden>
+			Close
+		</button>
+		<button
+			class="btn btn-primary"
+			type="button"
+			data-provision-close
+			aria-controls="create-panel"
+			data-panel-close="create-panel"
 			aria-label="Close provisioning panel"
 			aria-expanded="true"
 			aria-close
@@ -500,4 +885,4 @@
 	</footer>
 </form>
 
-<script src="/apps/clusters/provision.js?v=43"></script>
+<script src="/apps/clusters/provision.js?v=44"></script>

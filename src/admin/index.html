@@ -1,7 +1,6 @@
 <!doctype html>
 <html
 	state-id="theme, sidebar-size"
-	state-overwrite
 	lang="en"
 	data-layout="vertical"
 	data-topbar-color="defualt"
@@ -134,8 +133,7 @@
 						aria-label="Filters"
 						aria-hidden="true"
 						state-id="context-sidebar"
-						state.aria-hidden
-						state-overwrite>
+						state.aria-hidden>
 						<div
 							class="context-sidebar-content"
 							src="/components/filters.html"></div>
@@ -148,9 +146,7 @@
 							id="main-view"
 							class="d-flex flex-column min-height:100% min-width:200px"
 							src="/apps/ai/index.html"
-							state-id="adminView"
-							state.onstoragechange="false"
-							state-overwrite>
+							state-id="adminView">
 							<!-- <div
 							onload.src="/apps/calendar/index.html"
 							onload-query="$parent"
@@ -159,6 +155,7 @@
 					</div>
 					<div
 						id="offcanvas-app"
+						state-id="offcanvas-app-dock"
 						docked="true"
 						resizable
 						role="dialog"
@@ -174,7 +171,6 @@
 								<div
 									id="offcanvas-app-view"
 									state-id="offcanvas-app-view"
-									state-overwrite
 									src=""></div>
 							</div>
 						</div>
@@ -193,7 +189,6 @@
 			aria-hidden="true"
 			state-id="ai-chat-panel"
 			state.aria-hidden
-			state-overwrite
 			aria-label="CoCreate AI"
 			resizable
 			resize
@@ -202,7 +197,6 @@
 			<div
 				class="ai-chat-panel-content"
 				state-id="ai-chat-panel-content"
-				state-overwrite
 				src=""></div>
 			<div resize="left"></div>
 		</aside>

@@ -25,7 +25,8 @@ export default {
         "name": "APIs",
         "singularName": "API",
         "path": "/apps/apis",
-        "card": "/apps/apis/card.html",
+        "card": "/apps/apis/components/card.html",
+        "listHeader": "/apps/apis/components/type-filter.html",
         "cardTemplate": "/apps/apis/templates/card.html",
         "templates": {
             "card": "templates/card.html",
@@ -109,38 +110,6 @@ export default {
                 ]
             },
             {
-                "label": "API Secret Key",
-                "tagName": "input",
-                "filterTemplate": "",
-                "tableTemplate": "<span class=\"text-muted\">●●●●●●●●●●●●</span>",
-                "attributes": [
-                    {
-                        "name": "class",
-                        "value": "form-control"
-                    },
-                    {
-                        "name": "id",
-                        "value": "api-key-field"
-                    },
-                    {
-                        "name": "placeholder",
-                        "value": "sk_live_..."
-                    },
-                    {
-                        "name": "required",
-                        "value": true
-                    },
-                    {
-                        "name": "key",
-                        "value": "key"
-                    },
-                    {
-                        "name": "type",
-                        "value": "password"
-                    }
-                ]
-            },
-            {
                 "label": "Description",
                 "tagName": "textarea",
                 "filterTemplate": "<input id=\"description-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search description\" filter-query=\"$document .list-view\" filter-query-key=\"description.$regex\" filter-query-options=\"i\" />",
@@ -175,7 +144,7 @@ export default {
             {
                 "label": "Enabled",
                 "tagName": "input",
-                "filterTemplate": "<select id=\"api-enabled-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\">Enabled</option><option value=\"false\">Disabled</option></select>",
+                "filterTemplate": "<select id=\"api-enabled-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\" value-type=\"boolean\">Enabled</option><option value=\"false\" value-type=\"boolean\">Disabled</option></select>",
                 "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.enabled}}</span>",
                 "attributes": [
                     {

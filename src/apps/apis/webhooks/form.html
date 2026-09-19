@@ -1,23 +1,29 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/apis/webhooks/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-column gap-4">
-			<input type="hidden" key="_id" />
+		<div class="card-body d-flex flex-column gap-4">
+			<input
+				type="hidden"
+				key="_id" />
 
 			<section>
-				<h5 class="text-uppercase fw-semibold mb-3">Webhook identity</h5>
+				<h5 class="text-uppercase fw-semibold mb-3">
+					Webhook identity
+				</h5>
 				<div class="d-flex flex-wrap gap-3">
-					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:320px min-width:240px">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:320px min-width:240px">
 						API Provider
 						<select
 							id="webhook-api"
@@ -25,14 +31,23 @@
 							key="api_id"
 							required>
 							<option value="">Select an API provider</option>
-							<option template value="{{object._id}}">{{object.name}}</option>
+							<option
+								template
+								value="{{object._id}}">
+								{{object.name}}
+							</option>
 						</select>
-						<div array="apis" render-query="$previous"></div>
+						<div
+							array="apis"
+							render-query="$previous"></div>
 					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:360px min-width:260px">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:360px min-width:260px">
 						Webhook Path
 						<div class="input-group">
-							<span class="input-group-text font-monospace">/webhooks/</span>
+							<span class="input-group-text font-monospace"
+								>/webhooks/</span
+							>
 							<input
 								type="text"
 								id="webhook-path"
@@ -42,7 +57,8 @@
 								required />
 						</div>
 					</label>
-					<label class="form-check form-switch d-flex align-items-center gap-2 flex-grow-1 flex-basis:140px min-width:130px mt-4">
+					<label
+						class="form-check form-switch d-flex align-items-center gap-2 flex-grow-1 flex-basis:140px min-width:130px mt-4">
 						<input
 							class="form-check-input"
 							type="checkbox"
@@ -69,9 +85,13 @@
 
 			<section class="border-top border-top-dashed pt-3">
 				<h5 class="text-uppercase fw-semibold mb-2">Request stream</h5>
-				<p class="text-muted mb-3">Collect incoming chunks and assemble the raw request body before parsing or signature verification.</p>
+				<p class="text-muted mb-3">
+					Collect incoming chunks and assemble the raw request body
+					before parsing or signature verification.
+				</p>
 				<div class="d-flex flex-wrap gap-3">
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:240px min-width:220px">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:240px min-width:220px">
 						Initial Chunks
 						<textarea
 							id="webhook-chunks"
@@ -79,9 +99,12 @@
 							value-type="json"
 							class="form-control font-monospace"
 							rows="8"
-							spellcheck="false">[]</textarea>
+							spellcheck="false">
+[]</textarea
+						>
 					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px">
 						Receive
 						<textarea
 							id="webhook-receive"
@@ -92,7 +115,8 @@
 							spellcheck="false"
 							required></textarea>
 					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">
 						Raw Body
 						<textarea
 							id="webhook-raw-body"
@@ -107,25 +131,117 @@
 			</section>
 
 			<section class="border-top border-top-dashed pt-3">
-				<h5 class="text-uppercase fw-semibold mb-2">Signature verification</h5>
-				<p class="text-muted mb-3">These stages are optional and provider-specific. Preserve all dollar-prefixed AST operators exactly.</p>
+				<h5 class="text-uppercase fw-semibold mb-2">
+					Signature verification
+				</h5>
+				<p class="text-muted mb-3">
+					These stages are optional and provider-specific. Preserve
+					all dollar-prefixed AST operators exactly.
+				</p>
 				<div class="d-flex flex-wrap gap-3">
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:280px min-width:240px">Signature Parts<textarea id="webhook-signature-parts" key="signatureParts" value-type="json" class="form-control font-monospace" rows="8" spellcheck="false"></textarea></label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:280px min-width:240px">Timestamp Parts<textarea id="webhook-timestamp-parts" key="timestampParts" value-type="json" class="form-control font-monospace" rows="8" spellcheck="false"></textarea></label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:280px">Expected Signature<textarea id="webhook-expected-signature" key="expectedSignature" value-type="json" class="form-control font-monospace" rows="10" spellcheck="false"></textarea></label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:280px">Authenticated<textarea id="webhook-authenticated" key="authenticated" value-type="json" class="form-control font-monospace" rows="10" spellcheck="false"></textarea></label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:280px min-width:240px"
+						>Signature Parts<textarea
+							id="webhook-signature-parts"
+							key="signatureParts"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="8"
+							spellcheck="false"></textarea>
+					</label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:280px min-width:240px"
+						>Timestamp Parts<textarea
+							id="webhook-timestamp-parts"
+							key="timestampParts"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="8"
+							spellcheck="false"></textarea>
+					</label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:280px"
+						>Expected Signature<textarea
+							id="webhook-expected-signature"
+							key="expectedSignature"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="10"
+							spellcheck="false"></textarea>
+					</label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:280px"
+						>Authenticated<textarea
+							id="webhook-authenticated"
+							key="authenticated"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="10"
+							spellcheck="false"></textarea>
+					</label>
 				</div>
 			</section>
 
 			<section class="border-top border-top-dashed pt-3">
-				<h5 class="text-uppercase fw-semibold mb-2">Event processing</h5>
-				<p class="text-muted mb-3">Use a combined process pipeline or the individual event, action, status, and response stages supported by the runtime.</p>
+				<h5 class="text-uppercase fw-semibold mb-2">
+					Event processing
+				</h5>
+				<p class="text-muted mb-3">
+					Use a combined process pipeline or the individual event,
+					action, status, and response stages supported by the
+					runtime.
+				</p>
 				<div class="d-flex flex-wrap gap-3">
-					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:480px min-width:300px">Process<textarea id="webhook-process" key="process" value-type="json" class="form-control font-monospace" rows="18" spellcheck="false"></textarea></label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">Event<textarea id="webhook-event" key="event" value-type="json" class="form-control font-monospace" rows="10" spellcheck="false"></textarea></label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px">Action<textarea id="webhook-action" key="action" value-type="json" class="form-control font-monospace" rows="14" spellcheck="false"></textarea></label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">Response Status<textarea id="webhook-status" key="status" value-type="json" class="form-control font-monospace" rows="10" spellcheck="false"></textarea></label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px">Response Body<textarea id="webhook-response" key="response" value-type="json" class="form-control font-monospace" rows="12" spellcheck="false"></textarea></label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:480px min-width:300px"
+						>Process<textarea
+							id="webhook-process"
+							key="process"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="18"
+							spellcheck="false"></textarea>
+					</label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px"
+						>Event<textarea
+							id="webhook-event"
+							key="event"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="10"
+							spellcheck="false"></textarea>
+					</label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px"
+						>Action<textarea
+							id="webhook-action"
+							key="action"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="14"
+							spellcheck="false"></textarea>
+					</label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px"
+						>Response Status<textarea
+							id="webhook-status"
+							key="status"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="10"
+							spellcheck="false"></textarea>
+					</label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:420px min-width:280px"
+						>Response Body<textarea
+							id="webhook-response"
+							key="response"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="12"
+							spellcheck="false"></textarea>
+					</label>
 				</div>
 			</section>
 		</div>
@@ -135,15 +251,31 @@
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
+				data-panel-close="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
+			<button
+				type="button"
+				class="btn btn-light"
+				aria-label="Cancel form"
+				aria-controls="create-panel"
+				data-panel-close="create-panel"
+				aria-expanded="true"
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

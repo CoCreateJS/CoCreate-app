@@ -1,9 +1,12 @@
-<link rel="stylesheet" href="/apps/dashboards/index.css" />
+<link
+	rel="stylesheet"
+	href="/apps/dashboards/index.css" />
 
 <div
 	class="d-flex flex-column min-height:0"
 	style="height: var(--admin-content-height)">
-	<div class="dashboard-view-control d-flex justify-content-end flex-shrink-0 mb-3">
+	<div
+		class="dashboard-view-control d-flex justify-content-end flex-shrink-0 mb-3">
 		<div class="dashboard-control">
 			<label
 				class="visually-hidden"
@@ -15,12 +18,22 @@
 				class="form-select"
 				aria-label="Switch dashboard view"
 				data-dashboard-view-select>
-				<option value="/apps/dashboards/views/overview.html">Overview</option>
-				<option value="/apps/dashboards/views/analytics.html">Analytics</option>
+				<option value="/apps/dashboards/views/overview.html">
+					Overview
+				</option>
+				<option value="/apps/dashboards/views/analytics.html">
+					Analytics
+				</option>
 				<option value="/apps/dashboards/views/crm.html">CRM</option>
-				<option value="/apps/dashboards/views/ecommerce.html">Ecommerce</option>
-				<option value="/apps/dashboards/views/projects.html">Projects</option>
-				<option value="/apps/dashboards/views/servers.html">Servers</option>
+				<option value="/apps/dashboards/views/ecommerce.html">
+					Ecommerce
+				</option>
+				<option value="/apps/dashboards/views/projects.html">
+					Projects
+				</option>
+				<option value="/apps/dashboards/views/servers.html">
+					Servers
+				</option>
 			</select>
 		</div>
 	</div>
@@ -29,7 +42,6 @@
 		id="dashboard-view"
 		class="flex-grow-1 min-height:0"
 		state-id="dashboardView"
-		state-overwrite
 		src="/apps/dashboards/views/overview.html"></div>
 </div>
 

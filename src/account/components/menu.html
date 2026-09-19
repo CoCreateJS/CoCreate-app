@@ -13,7 +13,7 @@
 				array="organizations"
 				object="$organization_id"
 				key="logo[0].src"
-				src="/assets/images/logos/dark.png"
+				src="/assets/images/logos/logo.png"
 				alt="Organization"
 				height="40" />
 		</span>
@@ -29,7 +29,7 @@
 		</span>
 		<span class="logo-lg ps-4">
 			<img
-				src="/assets/images/logos/light.png"
+				src="/assets/images/logos/logo.png"
 				alt="CoCreate"
 				height="40" />
 		</span>
@@ -38,6 +38,20 @@
 		html[data-sidebar-size="sm-hover-active"] #account-sidebar-pin,
 		html:not([data-sidebar-size="sm-hover-active"]) #account-sidebar-unpin {
 			display: none;
+		}
+
+		#account-endpoints-list-btn > i {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex: 0 0 1.75rem;
+			height: 1.75rem;
+			line-height: 1;
+			transform: translate(-6px, -1px);
+		}
+
+		#account-endpoints-list-btn > i::before {
+			transform: rotate(90deg);
 		}
 	</style>
 	<button
@@ -105,6 +119,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.array="files"
 						state.filter-query-value=""></div>
 				</a>
@@ -145,6 +162,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/apps/templates/card.html"></div>
 				</a>
 				<a
@@ -186,6 +206,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/clusters/templates/card.html"></div>
 				</a>
 				<a
@@ -226,6 +249,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/servers/templates/card.html"></div>
 				</a>
 				<a
@@ -240,9 +266,8 @@
 					title="Deploy a server">
 					<div
 						state-to="create-panel-form"
-						state.$reset
-						state.$unset="$reset"
-						state.array="servers"></div>
+						state.array="servers"
+						state.object=""></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -253,9 +278,9 @@
 					state-to="accountView"
 					state.src="/components/list/index.html"
 					class="nav-link menu-link"
-					title="Server Configs">
+					title="Configurations">
 					<i class="ri-settings-3-line"></i>
-					<span>Server Configs</span>
+					<span>Configurations</span>
 					<div
 						state-to="app"
 						state.object="6a96308fbe321a28ad3edec1"
@@ -266,6 +291,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/servers/configs/templates/card.html"></div>
 				</a>
 				<a
@@ -286,42 +314,66 @@
 				</a>
 			</li>
 
-			<li class="menu-title"><span>APIs</span></li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
+			<li class="menu-title"><span>Connections</span></li>
+			<li class="nav-item">
 				<a
-					id="account-api-keys-list-btn"
-					state-to="accountView"
-					state.src="/components/list/index.html"
-					class="nav-link menu-link">
-					<i class="ri-key-line"></i><span>API Keys</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00ee6"
-						state.input.array="keys"></div>
-					<div
-						state-to="table"
-						state.filter-query-key=""
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/api-keys/templates/card.html"></div>
-				</a>
-				<a
-					class="nav-link nav-action"
+					id="account-storage-providers-list-btn"
 					state-to="create-panel-view"
-					state.src="/apps/api-keys/form.html"
+					state.src="/apps/storage-providers/index.html"
 					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
 					aria-open
-					aria-label="Create API key"
-					title="Create API key">
-					<div
-						state-to="create-panel-form"
-						state.$reset
-						state.array="keys"></div>
-					<i class="ri-add-line"></i>
+					class="nav-link menu-link"
+					title="Storage Providers">
+					<i class="ri-database-2-line"></i
+					><span>Storage Providers</span>
 				</a>
 			</li>
+			<li class="nav-item">
+				<a
+					id="account-cloud-providers-list-btn"
+					state-to="create-panel-view"
+					state.src="/apps/cloud-providers/index.html"
+					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					class="nav-link menu-link"
+					title="Cloud Providers">
+					<i class="ri-cloud-line"></i><span>Cloud Providers</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a
+					id="account-routing-providers-list-btn"
+					state-to="create-panel-view"
+					state.src="/apps/routing-providers/index.html"
+					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					class="nav-link menu-link"
+					title="Routing Providers">
+					<i class="ri-route-line"></i><span>Routing Providers</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a
+					id="account-ai-providers-list-btn"
+					state-to="create-panel-view"
+					state.src="/apps/ai-providers/index.html"
+					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					class="nav-link menu-link"
+					title="AI Providers">
+					<i class="ri-brain-line"></i><span>AI Providers</span>
+				</a>
+			</li>
+
+			<li class="menu-title"><span>Developer</span></li>
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
@@ -340,6 +392,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/apis/templates/card.html"></div>
 				</a>
 				<a
@@ -364,7 +419,10 @@
 					state-to="accountView"
 					state.src="/components/list/index.html"
 					class="nav-link menu-link">
-					<i class="ri-logout-box-line" style="transform: translateY(-2px) rotate(-90deg)"></i><span>Endpoints</span>
+					<i
+						class="ri-logout-box-line"
+						aria-hidden="true"></i
+					><span>Endpoints</span>
 					<div
 						state-to="app"
 						state.object="68741e1d07a037d0d6d00eef"
@@ -375,6 +433,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/apis/endpoints/templates/card.html"></div>
 				</a>
 				<a
@@ -399,7 +460,12 @@
 					state-to="accountView"
 					state.src="/components/list/index.html"
 					class="nav-link menu-link">
-					<i class="ri-login-box-line" style="transform: translateY(-2px) rotate(-90deg)"></i><span>Webhooks</span>
+					<i
+						class="ri-login-box-line"
+						style="
+							transform: translate(-6px, 4px) rotate(90deg);
+						"></i
+					><span>Webhooks</span>
 					<div
 						state-to="app"
 						state.object="68741e1d07a037d0d6d00ef0"
@@ -410,6 +476,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/apis/webhooks/templates/card.html"></div>
 				</a>
 				<a
@@ -424,6 +493,46 @@
 						state-to="create-panel-form"
 						state.$reset
 						state.array="webhooks"></div>
+					<i class="ri-add-line"></i>
+				</a>
+			</li>
+
+			<li class="menu-title"><span>Access</span></li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="account-api-keys-list-btn"
+					state-to="accountView"
+					state.src="/components/list/index.html"
+					class="nav-link menu-link">
+					<i class="ri-key-line"></i><span>API Keys</span>
+					<div
+						state-to="app"
+						state.object="68741e1d07a037d0d6d00ee6"
+						state.input.array="keys"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
+						state.src="/apps/api-keys/templates/card.html"></div>
+				</a>
+				<a
+					class="nav-link nav-action"
+					state-to="create-panel-view"
+					state.src="/apps/api-keys/form.html"
+					aria-controls="create-panel"
+					aria-open
+					aria-label="Create API key"
+					title="Create API key">
+					<div
+						state-to="create-panel-form"
+						state.$reset
+						state.array="keys"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -448,6 +557,9 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/ai/instructions/templates/card.html"></div>
 				</a>
 				<a
@@ -463,22 +575,6 @@
 						state.$reset
 						state.array="ai-instructions"></div>
 					<i class="ri-add-line"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a
-					state-to="accountView"
-					state.src="/apps/speech-synthesis/index.html"
-					class="nav-link menu-link">
-					<i class="ri-volume-up-line"></i><span>Speech Synthesis</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a
-					state-to="accountView"
-					state.src="/apps/speech-recognition/index.html"
-					class="nav-link menu-link">
-					<i class="ri-mic-line"></i><span>Speech Recognition</span>
 				</a>
 			</li>
 		</ul>

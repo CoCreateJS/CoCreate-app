@@ -2,7 +2,6 @@
 	class="ai-shell"
 	plugin='{"$Prism.highlightAllUnder":["$this"]}'
 	state-id="aiChat"
-	state-overwrite
 	conversation-id=""
 	data-ai-chat>
 	<link
@@ -36,15 +35,6 @@
 					placeholder="Search for..."
 					filter-search
 					filter-query="$document #ai-conversations-sidebar .ai-thread-list" />
-				<button
-					type="button"
-					class="btn btn-outline-success"
-					aria-controls="ai-conversation-filters-view"
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					title="Filter options">
-					<i class="ri-filter-3-line align-bottom"></i>
-				</button>
 			</div>
 			<i
 				class="ri-search-line search-icon"
@@ -114,7 +104,9 @@
 				state.conversation-id=""
 				aria-label="New conversation"
 				title="New conversation">
-				<i class="ri-add-line" aria-hidden="true"></i>
+				<i
+					class="ri-add-line"
+					aria-hidden="true"></i>
 			</button>
 			<div
 				class="ai-topbar-actions"

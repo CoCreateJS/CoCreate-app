@@ -1,23 +1,28 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/invoices/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-column gap-3">
-			<input type="hidden" key="type" value="invoice" />
+		<div class="card-body d-flex flex-column gap-3">
+			<input
+				type="hidden"
+				key="type"
+				value="invoice" />
 			<div
 				class="d-flex flex-wrap gap-3 align-items-start border-bottom border-bottom-dashed pb-3">
 				<div
 					class="d-flex flex-column gap-4 flex-grow-1 flex-basis:320px min-width:280px">
-					<label class="form-label d-flex flex-column gap-1 align-self-start">
+					<label
+						class="form-label d-flex flex-column gap-1 align-self-start">
 						<div>Upload Company Logo</div>
 						<div
 							type="file"
@@ -107,62 +112,61 @@
 					</label>
 				</div>
 			</div>
-			<div
-				class="d-flex flex-wrap gap-3 w-100">
-					<label
-						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Invoice No
-						<input
-							type="text"
-							class="form-control bg-light border-0"
-							id="invoicenoInput"
-							placeholder="Invoice No"
-							value="#VL25000355"
-							readonly="readonly"
-							aria-labelledby="invoicenoInput"
-							key="invoice.number" />
-					</label>
-					<label
-						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Date
-						<input
-							type="text"
-							class="form-control bg-light border-0"
-							id="date-field"
-							date-picker="flatpickr"
-							data-time="true"
-							placeholder="Select Date-time"
-							aria-labelledby="date-field"
-							key="date" />
-					</label>
-					<label
-						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Payment Status
-						<select
-							class="form-control bg-light border-0"
-							plugin='{"$Choices":["$this",{}]}'
-							data-choices-search-false
-							id="choices-payment-status"
-							aria-labelledby="choices-payment-status"
-							key="payment.status">
-							<option value="">Select Payment Status</option>
-							<option value="Paid">Paid</option>
-							<option value="Unpaid">Unpaid</option>
-							<option value="Refund">Refund</option>
-						</select>
-					</label>
-					<label
-						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Total Amount
-						<input
-							type="text"
-							class="form-control bg-light border-0"
-							id="totalamountInput"
-							placeholder="$0.00"
-							readonly
-							aria-labelledby="totalamountInput"
-							key="cart.total" />
-					</label>
+			<div class="d-flex flex-wrap gap-3 w-100">
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+					Invoice No
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="invoicenoInput"
+						placeholder="Invoice No"
+						value="#VL25000355"
+						readonly="readonly"
+						aria-labelledby="invoicenoInput"
+						key="invoice.number" />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+					Date
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="date-field"
+						date-picker="flatpickr"
+						data-time="true"
+						placeholder="Select Date-time"
+						aria-labelledby="date-field"
+						key="date" />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+					Payment Status
+					<select
+						class="form-control bg-light border-0"
+						plugin='{"$Choices":["$this",{}]}'
+						data-choices-search-false
+						id="choices-payment-status"
+						aria-labelledby="choices-payment-status"
+						key="payment.status">
+						<option value="">Select Payment Status</option>
+						<option value="Paid">Paid</option>
+						<option value="Unpaid">Unpaid</option>
+						<option value="Refund">Refund</option>
+					</select>
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+					Total Amount
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="totalamountInput"
+						placeholder="$0.00"
+						readonly
+						aria-labelledby="totalamountInput"
+						key="cart.total" />
+				</label>
 			</div>
 			<div
 				class="d-flex flex-wrap gap-3 pt-3 border-top border-top-dashed">
@@ -213,7 +217,9 @@
 							key="billing.taxNumber" />
 					</label>
 					<div class="form-check">
-						<label class="form-check-label" for="same">
+						<label
+							class="form-check-label"
+							for="same">
 							<input
 								type="checkbox"
 								class="form-check-input"
@@ -278,8 +284,14 @@
 						class="invoice-table table table-borderless table-nowrap mb-0">
 						<thead class="align-middle">
 							<tr class="table-active">
-								<th scope="col" style="width: 50px">#</th>
-								<th scope="col" class="min-width:280px">
+								<th
+									scope="col"
+									style="width: 50px">
+									#
+								</th>
+								<th
+									scope="col"
+									class="min-width:280px">
 									Item Details
 								</th>
 								<th
@@ -328,7 +340,11 @@
 							render-query="[template]"
 							filter-limit>
 							<tr template>
-								<th scope="row" class="item-id">{{index}}</th>
+								<th
+									scope="row"
+									class="item-id">
+									{{index}}
+								</th>
 								<td class="text-start min-width:280px">
 									<input
 										type="text"
@@ -414,7 +430,9 @@
 							</tr>
 
 							<tr class="product quick-add-row">
-								<th scope="row" class="product-id">
+								<th
+									scope="row"
+									class="product-id">
 									<button
 										type="button"
 										id="quick-add-btn"
@@ -517,7 +535,9 @@
 						<tbody>
 							<tr class="border-top border-top-dashed mt-2">
 								<td colspan="3"></td>
-								<td colspan="2" class="p-0">
+								<td
+									colspan="2"
+									class="p-0">
 									<table
 										class="table table-borderless table-sm table-nowrap align-middle mb-0">
 										<tbody>
@@ -642,7 +662,9 @@
 							</div>
 						</div>
 						<div class="d-flex flex-column gap-1">
-							<label for="cardholderName" class="form-label"
+							<label
+								for="cardholderName"
+								class="form-label"
 								>Card Holder Name</label
 							>
 							<div>
@@ -656,7 +678,9 @@
 							</div>
 						</div>
 						<div class="d-flex flex-column gap-1">
-							<label for="cardNumber" class="form-label"
+							<label
+								for="cardNumber"
+								class="form-label"
 								>Card Number</label
 							>
 							<div>
@@ -670,7 +694,9 @@
 							</div>
 						</div>
 						<div class="d-flex flex-column gap-1">
-							<label for="amountTotalPay" class="form-label"
+							<label
+								for="amountTotalPay"
+								class="form-label"
 								>Total Amount to Pay</label
 							>
 							<div>
@@ -706,32 +732,42 @@
 				</div>
 			</div>
 			<div class="d-flex justify-content-end gap-2 d-print-none w-100">
-				<a href="javascript:void(0);" class="btn btn-primary">
-					<i class="ri-download-2-line align-bottom me-1"></i> Download
+				<a
+					href="javascript:void(0);"
+					class="btn btn-primary">
+					<i class="ri-download-2-line align-bottom me-1"></i>
+					Download
 				</a>
-				<a href="javascript:void(0);" class="btn btn-danger">
+				<a
+					href="javascript:void(0);"
+					class="btn btn-danger">
 					<i class="ri-send-plane-fill align-bottom me-1"></i> Send
 				</a>
 			</div>
 		</div>
 
-<!-- cleave.js -->
-<script src="/assets/libs/cleave.js/cleave.min.js"></script>
+		<!-- cleave.js -->
+		<script src="/assets/libs/cleave.js/cleave.min.js"></script>
 	</div>
 	<footer class="card-footer flex-shrink-0">
 		<div class="hstack gap-2 justify-content-end">
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

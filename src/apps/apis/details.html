@@ -1,186 +1,85 @@
 <form
-	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
-	data-component-form
+	state-id="offcanvas-app-form"
 	array
 	object
 	autocomplete="off">
-	<header
-		class="card-header offcanvas-app-topbar flex-shrink-0"
-		src="/apps/apis/header.html"
-		aria-label="Details controls"></header>
-
-	<div
-		class="component-form-body flex-grow-1 min-height:0"
-		plugin='{"$SimpleBar": ["$this", {}]}'>
-		<div class="card-body d-flex flex-column gap-4">
-	<section class="d-flex flex-wrap align-items-center gap-3">
-		<div
-			class="avatar-lg rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle text-primary material-shadow fs-24">
-			<i class="ri-key-2-line"></i>
-		</div>
-		<div
-			class="flex-grow-1"
-			style="min-width: 220px">
-			<div class="d-flex flex-wrap align-items-center gap-2">
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<section class="d-flex flex-column align-items-start gap-3 pb-3">
+			<div class="d-flex flex-wrap align-items-start gap-2 w-100">
 				<h4
-					class="mb-0 text-capitalize"
+					class="mb-0 flex-grow-1 text-capitalize text-break min-width:0"
 					key="name"
-					aria-label="API Name"></h4>
-				<span
-					class="badge bg-primary-subtle text-primary text-uppercase"
-					key="provider"></span>
-				<span
-					class="badge bg-secondary-subtle text-secondary text-uppercase"
-					key="type"></span>
+					aria-label="API name"></h4>
+				<div
+					class="d-flex flex-wrap align-items-center justify-content-end ms-auto gap-2">
+					<span
+						class="badge bg-primary-subtle text-primary text-capitalize"
+						key="type"
+						aria-label="Type"></span>
+					<div
+						class="apis-status"
+						role="status"
+						aria-label="API status">
+						<input
+							type="checkbox"
+							key="enabled"
+							disabled
+							hidden />
+						<span
+							class="apis-status-enabled badge bg-success-subtle text-success"
+							>Enabled</span
+						>
+						<span
+							class="apis-status-disabled badge bg-secondary-subtle text-muted"
+							>Disabled</span
+						>
+					</div>
+				</div>
 			</div>
-			<p
-				class="text-muted mt-2 mb-0"
-				key="description"></p>
-		</div>
-		<div class="d-flex align-items-center gap-2">
-			<span class="text-muted">Enabled</span>
-			<input
-				class="form-check-input"
-				type="checkbox"
-				role="switch"
-				key="enabled"
-				disabled />
-		</div>
-	</section>
+			<div class="w-100">
+				<div class="d-flex flex-wrap align-items-baseline gap-2 fs-13">
+					<span class="text-muted">Provider</span>
+					<span
+						class="fw-medium text-capitalize"
+						key="provider"
+						aria-label="Provider"></span>
+				</div>
+				<p
+					class="text-muted mt-3 mb-0 text-break"
+					key="description"></p>
+			</div>
+		</section>
 
-	<section class="border-top border-top-dashed pt-3">
-		<div
-			class="d-flex align-items-center justify-content-between gap-3 mb-3">
-			<h6 class="text-muted text-uppercase fw-semibold mb-0">
-				Connection
+		<section class="border-top border-top-dashed pt-3 pb-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">Base URL</h6>
+			<pre class="border rounded p-3 mb-0 text-wrap text-break">
+                <code type="code" lang="json" key="url" value-type="text" value-evaluate="false" aria-label="API base URL configuration" height="auto"></code>
+            </pre>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3 pb-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				<label
+					for="api-headers"
+					class="mb-0"
+					>Credentials</label
+				>
 			</h6>
-			<a
-				href=""
-				key="url"
-				input.href="$value"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="btn btn-sm btn-soft-primary"
-				aria-label="Open API base URL">
-				<i class="ri-external-link-line me-1"></i>Open endpoint
-			</a>
-		</div>
-		<div class="table-responsive">
-			<table
-				class="table table-borderless mb-0"
-				aria-label="API Connection Details">
-				<tbody>
-					<tr>
-						<td
-							class="fw-medium text-muted"
-							style="width: 35%">
-							Base URL
-						</td>
-						<td>
-							<code
-								class="text-break"
-								key="url"></code>
-						</td>
-					</tr>
-					<tr>
-						<td class="fw-medium text-muted">Account SID</td>
-						<td>
-							<code
-								class="text-break"
-								key="accountSid"></code>
-						</td>
-					</tr>
-					<tr>
-						<td class="fw-medium text-muted">
-							API Key / Credential
-						</td>
-						<td>
-							<input
-								type="password"
-								key="key"
-								class="form-control form-control-sm font-monospace"
-								readonly
-								aria-label="API credential" />
-						</td>
-					</tr>
-					<tr>
-						<td class="fw-medium text-muted">
-							Webhook Signing Secret
-						</td>
-						<td>
-							<input
-								type="password"
-								key="webhookSecret"
-								class="form-control form-control-sm font-monospace"
-								readonly
-								aria-label="Webhook signing secret" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</section>
+			<div src="/apps/apis/components/field-render.html"></div>
+		</section>
 
-	<section class="border-top border-top-dashed pt-3">
-		<h6 class="text-muted text-uppercase fw-semibold mb-3">
-			Provider metadata
-		</h6>
-		<div class="d-flex flex-wrap gap-3">
-			<div
-				class="border border-dashed rounded p-3 flex-grow-1"
-				style="flex-basis: 220px; min-width: 200px">
-				<span class="text-muted d-block mb-1">Project</span>
-				<code
-					class="text-break"
-					key="project"></code>
-			</div>
-			<div
-				class="border border-dashed rounded p-3 flex-grow-1"
-				style="flex-basis: 220px; min-width: 200px">
-				<span class="text-muted d-block mb-1">Project ID</span>
-				<code
-					class="text-break"
-					key="projectId"></code>
-			</div>
-			<div
-				class="border border-dashed rounded p-3 flex-grow-1"
-				style="flex-basis: 220px; min-width: 200px">
-				<span class="text-muted d-block mb-1">Subscription ID</span>
-				<code
-					class="text-break"
-					key="subscriptionId"></code>
-			</div>
-			<div
-				class="border border-dashed rounded p-3 flex-grow-1"
-				style="flex-basis: 220px; min-width: 200px">
-				<span class="text-muted d-block mb-1">Resource Group</span>
-				<code
-					class="text-break"
-					key="resourceGroup"></code>
-			</div>
-			<div
-				class="border border-dashed rounded p-3 flex-grow-1"
-				style="flex-basis: 280px; min-width: 240px">
-				<span class="text-muted d-block mb-1">Compartment ID</span>
-				<code
-					class="text-break"
-					key="compartmentId"></code>
-			</div>
-		</div>
-	</section>
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				Request headers
+			</h6>
+			<pre class="border rounded p-3 mb-0 text-wrap text-break">
+                <code type="code" lang="json" key="headers" value-type="text" value-evaluate="false" height="auto"></code>
+            </pre>
+		</section>
 
-	<section class="border-top border-top-dashed pt-3">
-		<h6 class="text-muted text-uppercase fw-semibold mb-3">
-			Request headers
-		</h6>
-		<pre
-			class="bg-light border rounded p-3 mb-0 text-wrap"><code key="headers"></code></pre>
-	</section>
-
-	<div
-		class="w-100"
-		src="components/activities.html"
-		aria-label="API Activities"></div>
-</div>
+		<div
+			class="w-100"
+			src="/components/activities.html"
+			aria-label="API Activities"></div>
 	</div>
 </form>

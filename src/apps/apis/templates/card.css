@@ -1,0 +1,8 @@
+.apis-grid-status .apis-grid-enabled,
+.apis-grid-status[data-enabled="true"] .apis-grid-disabled {
+	display: none;
+}
+
+.apis-grid-status[data-enabled="true"] .apis-grid-enabled {
+	display: inline-block;
+}

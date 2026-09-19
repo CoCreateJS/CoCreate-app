@@ -1,30 +1,36 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/calendar/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-wrap gap-4">
-			<label class="form-label" id="type-label w-100">
+		<div class="card-body d-flex flex-wrap gap-4">
+			<label
+				class="form-label"
+				id="type-label w-100">
 				Type
 				<select
 					class="form-select d-block"
 					plugin='{"$Choices":["$this",{"searchEnabled":false}]}'
-
 					name="category"
 					id="event-category"
 					key="category"
 					required>
 					<option value="bg-danger-subtle">Danger</option>
 					<option value="bg-success-subtle">Success</option>
-					<option value="bg-primary-subtle" selected>Primary</option>
+					<option
+						value="bg-primary-subtle"
+						selected>
+						Primary
+					</option>
 					<option value="bg-info-subtle">Info</option>
 					<option value="bg-dark-subtle">Dark</option>
 					<option value="bg-warning-subtle">Warning</option>
@@ -34,7 +40,9 @@
 				</div>
 			</label>
 
-			<label class="form-label w-100" id="event-name-label">
+			<label
+				class="form-label w-100"
+				id="event-name-label">
 				Event Name
 				<input
 					class="form-control d-block"
@@ -50,12 +58,13 @@
 				</div>
 			</label>
 
-			<label class="form-label" id="event-date-label">
+			<label
+				class="form-label"
+				id="event-date-label">
 				Event Date
 				<div class="input-group">
 					<input
 						plugin='{"$flatpickr":["$this",{"mode":"range","minDate":"today","enableTime":false}]}'
-
 						type="text"
 						id="event-start-date"
 						key="start_date"
@@ -78,7 +87,6 @@
 					<div class="input-group">
 						<input
 							plugin='{"$flatpickr":["$this",{"enableTime":true,"noCalendar":true}]}'
-
 							id="timepicker1"
 							key="start_time"
 							type="text"
@@ -98,7 +106,6 @@
 					<div class="input-group">
 						<input
 							plugin='{"$flatpickr":["$this",{"enableTime":true,"noCalendar":true}]}'
-
 							id="timepicker2"
 							key="end_time"
 							type="text"
@@ -111,7 +118,9 @@
 					</div>
 				</label>
 			</div>
-			<label class="form-label" id="location-label">
+			<label
+				class="form-label"
+				id="location-label">
 				Location
 				<input
 					type="text"
@@ -122,7 +131,9 @@
 					placeholder="Event location" />
 			</label>
 
-			<label class="form-label w-100" id="description-label">
+			<label
+				class="form-label w-100"
+				id="description-label">
 				Description
 				<textarea
 					class="form-control d-block"
@@ -139,15 +150,20 @@
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

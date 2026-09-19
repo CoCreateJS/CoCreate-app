@@ -1,59 +1,153 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/ai/instructions/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-column gap-4">
-	<input type="hidden" key="_id" />
-	<section>
-		<h5 class="text-uppercase fw-semibold mb-3">Instruction identity</h5>
-		<div class="d-flex flex-wrap gap-3">
-			<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:190px">Name<input type="text" id="ai-instruction-name" key="name" class="form-control text-lowercase" placeholder="crud" required /></label>
-			<label class="form-label d-flex flex-column gap-1 flex-grow:2 flex-basis:360px min-width:260px">Description<input type="text" id="ai-instruction-description" key="description" class="form-control" placeholder="CoCreate CRUD guidance" required /></label>
+		<div class="card-body d-flex flex-column gap-4">
+			<input
+				type="hidden"
+				key="_id" />
+			<section>
+				<h5 class="text-uppercase fw-semibold mb-3">
+					Instruction identity
+				</h5>
+				<div class="d-flex flex-wrap gap-3">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:190px"
+						>Name<input
+							type="text"
+							id="ai-instruction-name"
+							key="name"
+							class="form-control text-lowercase"
+							placeholder="crud"
+							required
+					/></label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow:2 flex-basis:360px min-width:260px"
+						>Description<input
+							type="text"
+							id="ai-instruction-description"
+							key="description"
+							class="form-control"
+							placeholder="CoCreate CRUD guidance"
+							required
+					/></label>
+				</div>
+			</section>
+			<section class="border-top border-top-dashed pt-3">
+				<h5 class="text-uppercase fw-semibold mb-2">
+					Loading behavior
+				</h5>
+				<p class="text-muted mb-3">
+					Default instructions are loaded into the shared instruction
+					map when the AI server starts.
+				</p>
+				<div class="d-flex flex-wrap gap-4">
+					<label class="form-check form-switch"
+						><input
+							class="form-check-input"
+							type="checkbox"
+							role="switch"
+							id="ai-instruction-default"
+							key="default" /><span class="form-check-label"
+							>Load by default</span
+						></label
+					>
+					<label class="form-check form-switch"
+						><input
+							class="form-check-input"
+							type="checkbox"
+							role="switch"
+							id="ai-instruction-enabled"
+							key="enabled" /><span class="form-check-label"
+							>Enabled</span
+						></label
+					>
+				</div>
+			</section>
+			<section class="border-top border-top-dashed pt-3">
+				<label class="form-label d-flex flex-column gap-1"
+					>Instructions<textarea
+						id="ai-instruction-instructions"
+						key="instructions"
+						class="form-control font-monospace"
+						rows="24"
+						spellcheck="true"
+						placeholder="Describe the rules, context, and workflow for this capability."
+						required></textarea>
+				</label>
+			</section>
+			<section class="border-top border-top-dashed pt-3">
+				<div class="d-flex flex-wrap gap-3">
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:260px"
+						>Examples<textarea
+							id="ai-instruction-examples"
+							key="examples"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="14"
+							spellcheck="false"
+							placeholder="[]"></textarea>
+					</label>
+					<label
+						class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:260px"
+						>Sources<textarea
+							id="ai-instruction-sources"
+							key="sources"
+							value-type="json"
+							class="form-control font-monospace"
+							rows="14"
+							spellcheck="false"
+							placeholder="[]"></textarea>
+					</label>
+				</div>
+			</section>
+			<p class="text-muted fs-12 mb-0">
+				Restart the AI server after changing an enabled default
+				instruction so its in-memory copy is refreshed.
+			</p>
 		</div>
-	</section>
-	<section class="border-top border-top-dashed pt-3">
-		<h5 class="text-uppercase fw-semibold mb-2">Loading behavior</h5>
-		<p class="text-muted mb-3">Default instructions are loaded into the shared instruction map when the AI server starts.</p>
-		<div class="d-flex flex-wrap gap-4">
-			<label class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="ai-instruction-default" key="default" /><span class="form-check-label">Load by default</span></label>
-			<label class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="ai-instruction-enabled" key="enabled" /><span class="form-check-label">Enabled</span></label>
-		</div>
-	</section>
-	<section class="border-top border-top-dashed pt-3">
-		<label class="form-label d-flex flex-column gap-1">Instructions<textarea id="ai-instruction-instructions" key="instructions" class="form-control font-monospace" rows="24" spellcheck="true" placeholder="Describe the rules, context, and workflow for this capability." required></textarea></label>
-	</section>
-	<section class="border-top border-top-dashed pt-3">
-		<div class="d-flex flex-wrap gap-3">
-			<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:260px">Examples<textarea id="ai-instruction-examples" key="examples" value-type="json" class="form-control font-monospace" rows="14" spellcheck="false" placeholder="[]"></textarea></label>
-			<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:260px">Sources<textarea id="ai-instruction-sources" key="sources" value-type="json" class="form-control font-monospace" rows="14" spellcheck="false" placeholder="[]"></textarea></label>
-		</div>
-	</section>
-	<p class="text-muted fs-12 mb-0">Restart the AI server after changing an enabled default instruction so its in-memory copy is refreshed.</p>
-</div>
 	</div>
 	<footer class="card-footer flex-shrink-0">
 		<div class="hstack gap-2 justify-content-end">
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
+				data-panel-close="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
+			<button
+				type="button"
+				class="btn btn-light"
+				aria-label="Cancel form"
+				aria-controls="create-panel"
+				data-panel-close="create-panel"
+				aria-expanded="true"
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

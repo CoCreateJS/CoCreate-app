@@ -1,30 +1,30 @@
-<div
-	class="context-filter d-flex h-100 min-height:0 flex-column">
+<div class="context-filter d-flex h-100 min-height:0 flex-column">
 	<div class="context-sidebar-header">
 		<h5 class="context-sidebar-title mb-0">
-			<span 
+			<span
 				state-id="app"
-				state-overwrite
 				array="apps"
 				object=""
-				key="singularName"></span> 
-				<span>Filters</span>
+				key="singularName"></span>
+			<span>Filters</span>
 		</h5>
 		<button
 			type="button"
 			class="btn-close text-reset"
 			aria-controls="context-sidebar"
 			aria-expanded="true"
-			aria-label="Close" aria-close></button>
+			aria-label="Close"
+			aria-close></button>
 	</div>
-	<form action="" class="d-flex flex-column flex-grow-1 min-height:0">
+	<form
+		action=""
+		class="d-flex flex-column flex-grow-1 min-height:0">
 		<div
 			class="context-sidebar-body flex-grow-1 min-height:0"
 			plugin='{"$SimpleBar": ["$this", {}]}'>
 			<!-- Render filter fields dynamically from object.fields[] -->
 			<div
 				state-id="app"
-				state-overwrite
 				render-query="[template='filter']"
 				array="apps"
 				object=""
@@ -77,7 +77,9 @@
 				observe-target="#context-sidebar [tag='div']:empty"
 				observe-query="$parent [tag='div']:empty"
 				observe-insert-adjacent="afterbegin">
-				<div class="{{fields.attributes.class}}" render>
+				<div
+					class="{{fields.attributes.class}}"
+					render>
 					<!-- You can add dynamic content for div tagname here if needed -->
 				</div>
 			</template>

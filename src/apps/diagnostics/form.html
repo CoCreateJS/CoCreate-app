@@ -1,17 +1,18 @@
 <form
+	state-id="offcanvas-app-form"
 	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	data-component-form
 	array
 	object
 	autocomplete="off">
-<header
+	<header
 		class="card-header offcanvas-app-topbar flex-shrink-0"
 		src="/apps/diagnostics/header.html"
 		aria-label="Form controls"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-wrap gap-3">
+		<div class="card-body d-flex flex-wrap gap-3">
 			<div class="d-flex flex-column flex-grow-1 width:500px">
 				<div class="card">
 					<div class="card-header">
@@ -28,7 +29,9 @@
 
 						<div class="row">
 							<div class="col-md-6 mb-3">
-								<label class="form-label" for="first-name-input"
+								<label
+									class="form-label"
+									for="first-name-input"
 									>First Name</label
 								>
 								<input
@@ -78,7 +81,9 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-6 mb-3">
-								<label class="form-label" for="chrono-age"
+								<label
+									class="form-label"
+									for="chrono-age"
 									>Chronological Age</label
 								>
 								<input
@@ -88,7 +93,9 @@
 									key="chronologicalAge" />
 							</div>
 							<div class="col-md-6 mb-3">
-								<label class="form-label" for="bio-age"
+								<label
+									class="form-label"
+									for="bio-age"
 									>Biological Age</label
 								>
 								<input
@@ -98,7 +105,9 @@
 									key="biologicalAge" />
 							</div>
 							<div class="col-md-6 mb-3">
-								<label class="form-label" for="age-diff"
+								<label
+									class="form-label"
+									for="age-diff"
 									>Age Difference</label
 								>
 								<input
@@ -108,7 +117,9 @@
 									key="ageDifference" />
 							</div>
 							<div class="col-md-6 mb-3">
-								<label class="form-label" for="pace"
+								<label
+									class="form-label"
+									for="pace"
 									>Pace of Aging (DunedinPACE)</label
 								>
 								<input
@@ -118,7 +129,9 @@
 									key="paceOfAging" />
 							</div>
 							<div class="col-md-6 mb-3">
-								<label class="form-label" for="pace-diff"
+								<label
+									class="form-label"
+									for="pace-diff"
 									>Pace Difference (%)</label
 								>
 								<input
@@ -131,7 +144,9 @@
 						<hr class="my-3" />
 						<div class="row">
 							<div class="col-md-4 mb-3">
-								<label class="form-label" for="cardio-stat"
+								<label
+									class="form-label"
+									for="cardio-stat"
 									>Cardiovascular</label
 								>
 								<input
@@ -141,7 +156,9 @@
 									key="cardioStat" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<label class="form-label" for="meta-stat"
+								<label
+									class="form-label"
+									for="meta-stat"
 									>Metabolism</label
 								>
 								<input
@@ -151,7 +168,9 @@
 									key="metabolismStat" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<label class="form-label" for="nutri-stat"
+								<label
+									class="form-label"
+									for="nutri-stat"
 									>Nutrition</label
 								>
 								<input
@@ -161,7 +180,9 @@
 									key="nutritionStat" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<label class="form-label" for="horm-stat"
+								<label
+									class="form-label"
+									for="horm-stat"
 									>Hormones</label
 								>
 								<input
@@ -171,7 +192,9 @@
 									key="hormonesStat" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<label class="form-label" for="gut-stat"
+								<label
+									class="form-label"
+									for="gut-stat"
 									>Gut Health</label
 								>
 								<input
@@ -181,7 +204,9 @@
 									key="gutHealthStat" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<label class="form-label" for="genet-stat"
+								<label
+									class="form-label"
+									for="genet-stat"
 									>Genetics</label
 								>
 								<input
@@ -191,7 +216,9 @@
 									key="geneticsStat" />
 							</div>
 							<div class="col-md-4 mb-3">
-								<label class="form-label" for="cell-stat"
+								<label
+									class="form-label"
+									for="cell-stat"
 									>Cellular Health</label
 								>
 								<input
@@ -322,15 +349,20 @@
 			<button
 				type="button"
 				class="btn btn-light"
-				data-component-form-close
 				aria-label="Cancel form"
+				aria-controls="offcanvas-app"
 				aria-expanded="true"
-				aria-close>Cancel</button>
+				aria-close>
+				Cancel
+			</button>
 			<button
 				class="btn btn-success btn-spinner"
 				aria-label="Save form"
 				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span
+					class="spinner-border spinner-border-sm display:none"
+					role="status"
+					aria-hidden="true"></span>
 				<span class="button-text">Save</span>
 			</button>
 		</div>

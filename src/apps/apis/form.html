@@ -1,190 +1,149 @@
 <form
-	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
-	data-component-form
+	state-id="offcanvas-app-form"
 	array
 	object
 	autocomplete="off">
-<header
-		class="card-header offcanvas-app-topbar flex-shrink-0"
-		src="/apps/apis/header.html"
-		aria-label="Form controls"></header>
-	<div
-		class="component-form-body flex-grow-1 min-height:0"
-		plugin='{"$SimpleBar": ["$this", {}]}'>
-<div class="card-body d-flex flex-column gap-4">
-			<input type="hidden" key="_id" />
+	<link
+		rel="stylesheet"
+		href="/components/codearea/index.css" />
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<input
+			type="hidden"
+			key="_id" />
 
-			<section>
-				<h5 class="text-uppercase fw-semibold mb-3">Integration identity</h5>
-				<div class="d-flex flex-wrap gap-3">
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Name
-						<input
-							type="text"
-							id="api-name"
-							key="name"
-							class="form-control text-lowercase"
-							placeholder="stripe"
-							required />
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Provider
-						<input
-							type="text"
-							id="api-provider"
-							key="provider"
-							class="form-control text-lowercase"
-							placeholder="stripe"
-							required />
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:180px min-width:160px">
-						Type
-						<input
-							type="text"
-							id="api-type"
-							key="type"
-							class="form-control"
-							placeholder="storage" />
-					</label>
-					<label class="form-check form-switch d-flex align-items-center gap-2 flex-grow-1 flex-basis:140px min-width:130px mt-4">
-						<input
-							class="form-check-input"
-							type="checkbox"
-							role="switch"
-							id="api-enabled"
-							key="enabled" />
-						<span class="form-check-label">Enabled</span>
-					</label>
-				</div>
-			</section>
-
-			<section class="border-top border-top-dashed pt-3">
-				<h5 class="text-uppercase fw-semibold mb-3">Connection and credentials</h5>
-				<div class="d-flex flex-wrap gap-3">
-					<label class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:360px min-width:260px">
-						Base URL
-						<input
-							type="url"
-							id="api-url"
-							key="url"
-							class="form-control text-lowercase"
-							placeholder="https://api.provider.com/v1" />
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:280px min-width:240px">
-						Account SID
-						<input
-							type="text"
-							id="api-account-sid"
-							key="accountSid"
-							class="form-control"
-							placeholder="Provider account SID" />
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">
-						API Key / Credential
-						<div class="input-group">
-							<input
-								type="password"
-								id="api-key"
-								key="key"
-								class="form-control"
-								placeholder="API key, token, or credential pair" />
-							<button
-								class="btn btn-outline-secondary"
-								type="button"
-								onclick="
-									const input = this.previousElementSibling;
-									input.type = input.type === 'password' ? 'text' : 'password';
-									this.querySelector('i').className = input.type === 'password' ? 'ri-eye-line' : 'ri-eye-off-line';
-								"
-								aria-label="Toggle API credential visibility">
-								<i class="ri-eye-line"></i>
-							</button>
-						</div>
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:320px min-width:260px">
-						Webhook Signing Secret
-						<input
-							type="password"
-							id="api-webhook-secret"
-							key="webhookSecret"
-							class="form-control"
-							placeholder="Webhook signing secret" />
-					</label>
-				</div>
-			</section>
-
-			<section class="border-top border-top-dashed pt-3">
-				<h5 class="text-uppercase fw-semibold mb-3">Provider metadata</h5>
-				<div class="d-flex flex-wrap gap-3">
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Project
-						<input type="text" class="form-control" id="api-project" key="project" placeholder="GCP project ID" />
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Project ID
-						<input type="text" class="form-control" id="api-project-id" key="projectId" placeholder="Provider project ID" />
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:240px min-width:220px">
-						Subscription ID
-						<input type="text" class="form-control" id="api-subscription-id" key="subscriptionId" placeholder="Azure subscription ID" />
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
-						Resource Group
-						<input type="text" class="form-control" id="api-resource-group" key="resourceGroup" placeholder="Azure resource group" />
-					</label>
-					<label class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:300px min-width:260px">
-						Compartment ID
-						<input type="text" class="form-control" id="api-compartment-id" key="compartmentId" placeholder="OCI compartment ID" />
-					</label>
-				</div>
-			</section>
-
-			<section class="border-top border-top-dashed pt-3">
-				<h5 class="text-uppercase fw-semibold mb-3">Request configuration</h5>
-				<label class="form-label d-flex flex-column gap-1">
-					Headers
-					<textarea
-						id="api-headers"
-						key="headers"
-						value-type="json"
-						class="form-control font-monospace"
-						rows="10"
-						spellcheck="false"
-						placeholder='{"Authorization":{"$concat":["Bearer ","$key"]}}'></textarea>
+		<section class="pb-3">
+			<div
+				class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+				<h6 class="text-muted text-uppercase fw-semibold mb-0">
+					API details
+				</h6>
+				<label class="form-check form-switch mb-0">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						role="switch"
+						id="api-enabled"
+						key="enabled" />
+					<span class="form-check-label">Enabled</span>
 				</label>
-				<p class="text-muted fs-12 mb-0">Headers are saved as a JSON object and may use CoCreate AST expressions.</p>
-			</section>
-
-			<section class="border-top border-top-dashed pt-3">
-				<label class="form-label d-flex flex-column gap-1">
-					Description
+			</div>
+			<div class="row g-3 mx-0">
+				<div class="col-12">
+					<label
+						class="form-label"
+						for="api-name"
+						>Name</label
+					>
+					<input
+						type="text"
+						id="api-name"
+						key="name"
+						class="form-control"
+						placeholder="Production Stripe"
+						required />
+				</div>
+				<div class="col-12 col-sm-6">
+					<label
+						class="form-label"
+						for="api-provider"
+						>Provider</label
+					>
+					<input
+						type="text"
+						id="api-provider"
+						key="provider"
+						class="form-control"
+						placeholder="stripe"
+						required />
+				</div>
+				<div class="col-12 col-sm-6">
+					<label
+						class="form-label"
+						for="api-type"
+						>Type</label
+					>
+					<input
+						type="text"
+						id="api-type"
+						name="api-integration-type"
+						key="type"
+						autocomplete="off"
+						data-lpignore="true"
+						data-1p-ignore
+						class="form-control"
+						placeholder="storage" />
+				</div>
+				<div class="col-12">
+					<label
+						class="form-label"
+						for="api-description"
+						>Description</label
+					>
 					<textarea
+						height="auto"
 						id="api-description"
 						key="description"
 						class="form-control"
-						rows="4"
-						placeholder="Describe the integration and how its credentials are used"
+						rows="3"
+						placeholder="Describe this integration"
 						required></textarea>
-				</label>
-			</section>
-		</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3 pb-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">Base URL</h6>
+			<pre class="border rounded p-3 mb-0 text-wrap text-break">
+                <code type="code" lang="json" key="url" value-type="text" value-evaluate="false" aria-label="API base URL configuration" height="auto"></code>
+            </pre>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3 pb-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				<label
+					for="api-headers"
+					class="mb-0"
+					>Credentials</label
+				>
+			</h6>
+			<div src="/apps/apis/components/field-render.html"></div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3 pb-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				<label
+					for="api-headers"
+					class="mb-0"
+					>Request headers</label
+				>
+			</h6>
+			<codearea class="component-codearea border rounded p-3">
+				<pre
+					aria-hidden="true"><code class="language-json"></code></pre>
+				<textarea
+					height="auto"
+					type="code"
+					lang="json"
+					id="api-headers"
+					key="headers"
+					value-type="json"
+					class="form-control font-monospace"
+					height="auto"
+					rows="1"
+					spellcheck="false"
+					value-evaluate="false"
+					aria-describedby="api-headers-help"
+					placeholder='{"Authorization":{"$concat":["Bearer ","$key"]}}'></textarea>
+			</codearea>
+			<p
+				id="api-headers-help"
+				class="text-muted fs-12 mt-2 mb-0">
+				Enter headers as a JSON object. Expressions and variables are
+				preserved.
+			</p>
+		</section>
 	</div>
-	<footer class="card-footer flex-shrink-0">
-		<div class="hstack gap-2 justify-content-end">
-			<button
-				type="button"
-				class="btn btn-light"
-				data-component-form-close
-				aria-label="Cancel form"
-				aria-expanded="true"
-				aria-close>Cancel</button>
-			<button
-				class="btn btn-success btn-spinner"
-				aria-label="Save form"
-				actions="validate, disabled, save, timeout(2000), disabled">
-				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
-				<span class="button-text">Save</span>
-			</button>
-		</div>
-	</footer>
+	<footer
+		src="/apps/apis/components/footer.html"
+		value-type="outerHtml"></footer>
 </form>
