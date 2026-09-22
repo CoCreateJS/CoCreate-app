@@ -35,86 +35,134 @@ const queryParams = new URLSearchParams(queryString);
 let cacheType = queryParams.get("cache");
 
 function openStateDatabase() {
-	return new Promise((resolve, reject) => {
-		const request = indexedDB.open(stateDatabaseName);
-		request.onsuccess = () => {
-			const database = request.result;
-			if (database.objectStoreNames.contains(stateStoreName)) {
-				resolve(database);
-				return;
-			}
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(stateDatabaseName);
+        request.onsuccess = () => {
+            const database = request.result;
+            if (database.objectStoreNames.contains(stateStoreName)) {
+                resolve(database);
+                return;
+            }
 
-			const version = database.version + 1;
-			database.close();
-			const upgradeRequest = indexedDB.open(stateDatabaseName, version);
-			upgradeRequest.onupgradeneeded = () => {
-				const upgradedDatabase = upgradeRequest.result;
-				if (!upgradedDatabase.objectStoreNames.contains(stateStoreName)) {
-					upgradedDatabase.createObjectStore(stateStoreName, { keyPath: "_id" });
-				}
-			};
-			upgradeRequest.onsuccess = () => resolve(upgradeRequest.result);
-			upgradeRequest.onerror = () => reject(upgradeRequest.error);
-		};
-		request.onerror = () => reject(request.error);
-	});
+            const version = database.version + 1;
+            database.close();
+            const upgradeRequest = indexedDB.open(stateDatabaseName, version);
+            upgradeRequest.onupgradeneeded = () => {
+                const upgradedDatabase = upgradeRequest.result;
+                if (!upgradedDatabase.objectStoreNames.contains(stateStoreName)) {
+                    upgradedDatabase.createObjectStore(stateStoreName, { keyPath: "_id" });
+                }
+            };
+            upgradeRequest.onsuccess = () => resolve(upgradeRequest.result);
+            upgradeRequest.onerror = () => reject(upgradeRequest.error);
+        };
+        request.onerror = () => reject(request.error);
+    });
 }
 
 async function setActiveState(state, theme) {
-	const database = await openStateDatabase();
-	return new Promise((resolve, reject) => {
-		const transaction = database.transaction(stateStoreName, "readwrite");
-		transaction.objectStore(stateStoreName).put({
-			_id: "activeState",
-			state,
-			theme,
-			updatedAt: Date.now()
-		});
-		transaction.oncomplete = () => {
-			database.close();
-			resolve();
-		};
-		transaction.onerror = () => {
-			database.close();
-			reject(transaction.error);
-		};
-	});
+    const database = await openStateDatabase();
+    return new Promise((resolve, reject) => {
+        const transaction = database.transaction(stateStoreName, "readwrite");
+        transaction.objectStore(stateStoreName).put({
+            _id: "activeState",
+            state,
+            theme,
+            updatedAt: Date.now()
+        });
+        transaction.oncomplete = () => {
+            database.close();
+            resolve();
+        };
+        transaction.onerror = () => {
+            database.close();
+            reject(transaction.error);
+        };
+    });
 }
 
 async function getActiveState() {
-	const database = await openStateDatabase();
-	return new Promise((resolve, reject) => {
-		const transaction = database.transaction(stateStoreName, "readonly");
-		const request = transaction.objectStore(stateStoreName).get("activeState");
-		request.onsuccess = () => resolve(request.result || null);
-		request.onerror = () => reject(request.error);
-		transaction.oncomplete = () => database.close();
-	});
+    const database = await openStateDatabase();
+    return new Promise((resolve, reject) => {
+        const transaction = database.transaction(stateStoreName, "readonly");
+        const request = transaction.objectStore(stateStoreName).get("activeState");
+        request.onsuccess = () => resolve(request.result || null);
+        request.onerror = () => reject(request.error);
+        transaction.oncomplete = () => database.close();
+    });
 }
 
 async function applyActiveState(request) {
-	if (request.mode !== "navigate" || new URL(request.url).origin !== self.location.origin) {
-		return { request, hasState: false };
-	}
+    if (request.mode !== "navigate" || new URL(request.url).origin !== self.location.origin) {
+        return { request, hasState: false };
+    }
 
-	const activeState = await getActiveState();
-	const state = activeState?.state;
-	if (!state || state === "{}") return { request, hasState: false };
+    const activeState = await getActiveState();
+    const state = activeState?.state;
+    const hasState = Boolean(state && state !== "{}");
+    const theme = activeState?.theme;
+    const hasTheme = theme === "dark" || theme === "light";
+    if (!hasState && !hasTheme) return { request, hasState: false };
 
-	const headers = new Headers(request.headers);
-	headers.set("X-State", state);
-	if (activeState.theme) {
-		headers.set("X-Prefers-Color-Scheme", activeState.theme);
-	}
-	return {
-		request: new Request(request, { headers }),
-		hasState: true
-	};
+    const headers = new Headers(request.headers);
+    if (hasState) headers.set("X-State", state);
+    if (hasTheme) {
+        headers.set("X-Prefers-Color-Scheme", theme);
+    }
+    return {
+        request: new Request(request, { headers }),
+        hasState: true
+    };
+}
+
+// Private responses use the browser HTTP cache, not the worker's shared asset cache.
+function canUseAssetCache(response) {
+    if (!response) return false;
+    const policy = response.headers.get("Cache-Control") || "";
+    if (!/(?:^|,)\s*public\s*(?:,|$)/i.test(policy) ||
+        /(?:^|,)\s*(?:private|no-cache|no-store|must-revalidate|proxy-revalidate)\b/i.test(policy)) return false;
+    const age = policy.match(/(?:^|,)\s*max-age=(\d+)\s*(?:,|$)/i);
+    const date = Date.parse(response.headers.get("Date"));
+    const elapsed = (Date.now() - date) / 1000 + Number(response.headers.get("Age") || 0);
+    return age && Number.isFinite(elapsed) && elapsed < Number(age[1]);
+}
+
+// Ask the requesting page for its current Config token; do not persist a second copy.
+async function applySessionToken(event, request = event.request) {
+    if (new URL(request.url).origin !== self.location.origin) return request;
+    if (request.headers.has("Authorization")) return request;
+    const client = event.clientId && await self.clients.get(event.clientId);
+    if (!client) return request;
+
+    const token = await new Promise((resolve) => {
+        const channel = new MessageChannel();
+        const finish = (value) => {
+            clearTimeout(timeout);
+            channel.port1.close();
+            channel.port2.close();
+            resolve(value);
+        };
+        const timeout = setTimeout(() => finish(null), 1000);
+        channel.port1.onmessage = (message) => finish(message.data?.token);
+        try {
+            client.postMessage({ action: "getSessionToken" }, [channel.port2]);
+        } catch {
+            finish(null);
+        }
+    });
+    if (typeof token !== "string" || !token) return request;
+    const headers = new Headers(request.headers);
+    headers.set("Authorization", `Bearer ${token}`);
+    return new Request(request, {
+        headers,
+        // Native image requests use no-cors, which strips Authorization.
+        ...(request.mode === "no-cors" ? { mode: "same-origin" } : {})
+    });
 }
 
 self.addEventListener("install", (e) => {
-	console.log("Service Worker Installing");
-	self.skipWaiting();
+    console.log("Service Worker Installing");
+    self.skipWaiting();
 });
 
 // self.addEventListener("activate", async (e) => {
@@ -122,237 +170,245 @@ self.addEventListener("install", (e) => {
 // });
 
 self.addEventListener("activate", (event) => {
-	event.waitUntil(
-		clients.claim().then(() => {
-			return clients.matchAll({ type: "window" }).then((clients) => {
-				clients.forEach((client) => client.navigate(client.url));
-			});
-		})
-	);
+    event.waitUntil(
+        clients.claim().then(() => {
+            return clients.matchAll({ type: "window" }).then((clients) => {
+                clients.forEach((client) => client.navigate(client.url));
+            });
+        })
+    );
 });
 
 self.addEventListener("fetch", async (e) => {
-	try {
-		if (
-			!(e.request.url.indexOf("http") === 0) ||
-			e.request.method === "POST"
-		)
-			return;
+    try {
+        if (
+            !(e.request.url.indexOf("http") === 0)
+        )
+            return;
 
-		e.respondWith(
-			caches
-				.match(e.request)
-				.then(async (cacheResponse) => {
-					const stateRequest = await applyActiveState(e.request);
-					if (stateRequest.hasState) cacheResponse = null;
-					let fetchedOn;
-					if (cacheResponse && cacheType !== "false") {
-						fetchedOn = cacheResponse.headers.get("fetched-on");
-						if (fetchedOn) fetchedOn = new Date(fetchedOn);
-					}
+        if (e.request.method !== "GET") {
+            e.respondWith(applySessionToken(e).then(request => fetch(request)));
+            return;
+        }
 
-					if (
-						!navigator.onLine ||
-						(!!cacheResponse &&
-							cacheType !== "false" &&
-							(!fetchedOn || fetchedOn > updatedOn))
-					) {
-						const organization =
-							cacheResponse.headers.get("organization");
-						// console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
-						const lastModified =
-							cacheResponse.headers.get("last-modified");
-						sendCacheUpdate(
-							e.request.url,
-							organization,
-							lastModified
-						);
-						return cacheResponse;
-					} else {
-						// console.log('fetching fetchOn less', fetchedOn > updatedOn)
+        e.respondWith(
+            caches
+                .match(e.request)
+                .then(async (cacheResponse) => {
+                    if (!canUseAssetCache(cacheResponse)) cacheResponse = null;
+                    const sessionRequest = await applySessionToken(e);
+                    const stateRequest = await applyActiveState(sessionRequest);
+                    if (sessionRequest.headers.has("Authorization")) return fetch(stateRequest.request);
+                    if (stateRequest.hasState) cacheResponse = null;
+                    let fetchedOn;
+                    if (cacheResponse && cacheType !== "false") {
+                        fetchedOn = cacheResponse.headers.get("fetched-on");
+                        if (fetchedOn) fetchedOn = new Date(fetchedOn);
+                    }
 
-						const networkResponse = await fetch(stateRequest.request);
+                    if (
+                        (!navigator.onLine && cacheResponse) ||
+                        (!!cacheResponse &&
+                            cacheType !== "false" &&
+                            (!fetchedOn || fetchedOn > updatedOn))
+                    ) {
+                        const organization =
+                            cacheResponse.headers.get("organization");
+                        // console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
+                        const lastModified =
+                            cacheResponse.headers.get("last-modified");
+                        sendCacheUpdate(
+                            e.request.url,
+                            organization,
+                            lastModified
+                        );
+                        return cacheResponse;
+                    } else {
+                        // console.log('fetching fetchOn less', fetchedOn > updatedOn)
 
-						if (!organization_id)
-							organization_id =
-								networkResponse.headers.get("organization");
+                        const networkResponse = await fetch(stateRequest.request);
+                        if (!canUseAssetCache(networkResponse)) return networkResponse;
 
-						let storageHeader =
-							networkResponse.headers.get("storage");
-						if (storageHeader) storage = storageHeader;
+                        if (!organization_id)
+                            organization_id =
+                                networkResponse.headers.get("organization");
 
-						if (
-							!stateRequest.hasState &&
-							cacheType &&
-							cacheType !== "false" &&
-							networkResponse.status === 200
-						) {
-							// console.log('caching')
+                        let storageHeader =
+                            networkResponse.headers.get("storage");
+                        if (storageHeader) storage = storageHeader;
 
-							caches
-								.open(cacheName)
-								.then((cache) => {
-									if (networkResponse.status !== 206) {
-										const networkModified =
-											networkResponse.headers.get(
-												"last-modified"
-											);
-										// if (!networkModified) {
-										//     networkResponse.headers.set('Last-Modified', new Date().toISOString());
-										// }
-										cache.put(e.request, networkResponse);
-										if (
-											cacheType === "reload" ||
-											cacheType === "prompt"
-										) {
-											const cacheModified =
-												cacheResponse.headers.get(
-													"last-modified"
-												);
-											if (
-												networkModified !==
-												cacheModified
-											) {
-												self.clients
-													.matchAll()
-													.then((clients) => {
-														clients.forEach(
-															(client) => {
-																client.postMessage(
-																	{
-																		action: "cacheType",
-																		cacheType
-																	}
-																); // Send a custom message
-																// console.log(`file ${cacheType} has been triggered`)
-															}
-														);
-													});
-											}
-										}
-									}
-								})
-								.catch(() => {});
-						}
+                        if (
+                            !stateRequest.hasState &&
+                            cacheType &&
+                            cacheType !== "false" &&
+                            networkResponse.status === 200
+                        ) {
+                            // console.log('caching')
 
-						if (
-							!cacheResponse ||
-							cacheType === "false" ||
-							cacheType === "offline"
-						) {
-							return networkResponse.clone();
-						}
-					}
+                            caches
+                                .open(cacheName)
+                                .then((cache) => {
+                                    if (networkResponse.status !== 206) {
+                                        const networkModified =
+                                            networkResponse.headers.get(
+                                                "last-modified"
+                                            );
+                                        // if (!networkModified) {
+                                        //     networkResponse.headers.set('Last-Modified', new Date().toISOString());
+                                        // }
+                                        cache.put(e.request, networkResponse);
+                                        if (
+                                            cacheType === "reload" ||
+                                            cacheType === "prompt"
+                                        ) {
+                                            const cacheModified =
+                                                cacheResponse.headers.get(
+                                                    "last-modified"
+                                                );
+                                            if (
+                                                networkModified !==
+                                                cacheModified
+                                            ) {
+                                                self.clients
+                                                    .matchAll()
+                                                    .then((clients) => {
+                                                        clients.forEach(
+                                                            (client) => {
+                                                                client.postMessage(
+                                                                    {
+                                                                        action: "cacheType",
+                                                                        cacheType
+                                                                    }
+                                                                ); // Send a custom message
+                                                                // console.log(`file ${cacheType} has been triggered`)
+                                                            }
+                                                        );
+                                                    });
+                                            }
+                                        }
+                                    }
+                                })
+                                .catch(() => { });
+                        }
 
-					if (
-						!!cacheResponse &&
-						cacheType !== "false" &&
-						cacheType !== "offline"
-					) {
-						return cacheResponse;
-					}
-				})
-				.catch(function () {
-					return caches.match("./offline.html");
-				})
-		);
-	} catch (error) {
-		console.error("An error occurred:", error.message);
-	}
+                        if (
+                            !cacheResponse ||
+                            cacheType === "false" ||
+                            cacheType === "offline"
+                        ) {
+                            return networkResponse.clone();
+                        }
+                    }
+
+                    if (
+                        !!cacheResponse &&
+                        cacheType !== "false" &&
+                        cacheType !== "offline"
+                    ) {
+                        return cacheResponse;
+                    }
+                })
+                .catch(function () {
+                    return caches.match("./offline.html");
+                })
+        );
+    } catch (error) {
+        console.error("An error occurred:", error.message);
+    }
 });
 
 self.addEventListener("message", function (event) {
-	if (event.data.action === "setActiveState") {
-		event.waitUntil(setActiveState(
-			event.data.state || "{}",
-			event.data.theme
-		));
-	} else if (event.data.action === "getOrganization")
-		event.source.postMessage({
-			action: "getOrganization",
-			organization_id
-		});
-	else if (event.data.action === "checkCache") {
-		event.source.postMessage({
-			action: "checkCache",
-			returnedFromCache: { ...returnedFromCache }
-		});
-		returnedFromCache = {};
-	}
+    if (event.data.action === "setActiveState") {
+        event.waitUntil(setActiveState(
+            event.data.state || "{}",
+            event.data.theme
+        ));
+    } else if (event.data.action === "getOrganization")
+        event.source.postMessage({
+            action: "getOrganization",
+            organization_id
+        });
+    else if (event.data.action === "checkCache") {
+        event.source.postMessage({
+            action: "checkCache",
+            returnedFromCache: { ...returnedFromCache }
+        });
+        returnedFromCache = {};
+    }
 });
 
 self.addEventListener("push", (event) => {
-	const pushData = event.data.json(); // Assuming the push payload is JSON data
+    const pushData = event.data.json(); // Assuming the push payload is JSON data
 
-	// Process the push notification data as needed
-	const { socketUrl, _id } = pushData;
+    // Process the push notification data as needed
+    const { socketUrl, _id } = pushData;
 
-	// Establish a WebSocket connection
-	const socket = new WebSocket(socketUrl);
+    // Establish a WebSocket connection
+    const socket = new WebSocket(socketUrl);
 
-	// Handle WebSocket events
-	socket.addEventListener("open", () => {
-		// The WebSocket connection is open, send the message to the server
-		socket.send(
-			JSON.stringify({
-				method: "object.read",
-				array: "files",
-				object: { _id },
-				 uuid: ""
-			})
-		);
-	});
+    // Handle WebSocket events
+    socket.addEventListener("open", () => {
+        // The WebSocket connection is open, send the message to the server
+        socket.send(
+            JSON.stringify({
+                method: "object.read",
+                array: "files",
+                object: { _id },
+                uuid: ""
+            })
+        );
+    });
 
-	socket.addEventListener("message", (event) => {
-		// Handle messages received from the server over the WebSocket
-		const serverData = JSON.parse(event.data);
-		if (serverData.uuid ===  uuid) {
-			// TODO: add file to cache and close socket
-		}
-	});
+    socket.addEventListener("message", (event) => {
+        // Handle messages received from the server over the WebSocket
+        const serverData = JSON.parse(event.data);
+        if (serverData.uuid === uuid) {
+            // TODO: add file to cache and close socket
+        }
+    });
 
-	socket.addEventListener("close", () => {
-		// Handle the WebSocket connection being closed
-		console.log("WebSocket connection closed.");
-	});
+    socket.addEventListener("close", () => {
+        // Handle the WebSocket connection being closed
+        console.log("WebSocket connection closed.");
+    });
 
-	socket.addEventListener("error", (error) => {
-		// Handle WebSocket errors
-		console.error("WebSocket error:", error);
-	});
+    socket.addEventListener("error", (error) => {
+        // Handle WebSocket errors
+        console.error("WebSocket error:", error);
+    });
 
-	// Ensure that the service worker stays active until the WebSocket connection is closed
-	event.waitUntil(
-		new Promise((resolve) => {
-			socket.addEventListener("close", () => {
-				resolve();
-			});
-		})
-	);
+    // Ensure that the service worker stays active until the WebSocket connection is closed
+    event.waitUntil(
+        new Promise((resolve) => {
+            socket.addEventListener("close", () => {
+                resolve();
+            });
+        })
+    );
 });
 
 let returnedFromCache = {};
 let fetchTimeout = null;
 const sendCacheUpdate = (url, organization, lastModified) => {
-	returnedFromCache[url] = { organization, lastModified };
+    returnedFromCache[url] = { organization, lastModified };
 
-	if (fetchTimeout) {
-		clearTimeout(fetchTimeout);
-	}
-	const self = this;
-	fetchTimeout = setTimeout(() => {
-		self.clients.matchAll().then((clients) => {
-			if (clients.length > 0) {
-				clients[0].postMessage({
-					action: "checkCache",
-					returnedFromCache: { ...returnedFromCache }
-				});
-				returnedFromCache = {};
-			}
-		});
+    if (fetchTimeout) {
+        clearTimeout(fetchTimeout);
+    }
+    const self = this;
+    fetchTimeout = setTimeout(() => {
+        self.clients.matchAll().then((clients) => {
+            if (clients.length > 0) {
+                clients[0].postMessage({
+                    action: "checkCache",
+                    returnedFromCache: { ...returnedFromCache }
+                });
+                returnedFromCache = {};
+            }
+        });
 
-		fetchTimeout = null;
-	}, 500);
+        fetchTimeout = null;
+    }, 500);
 };
 
 // self.addEventListener('backgroundfetchsuccess', (event) => {

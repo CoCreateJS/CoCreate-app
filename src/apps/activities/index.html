@@ -1,7 +1,46 @@
 <link
 	rel="stylesheet"
 	href="/apps/activities/index.css" />
-<div class="card-body">
+<link
+	rel="stylesheet"
+	href="/components/offcanvas-app/header.css" />
+<header class="card-header offcanvas-app-topbar flex-shrink-0 justify-content-between">
+	<h5 class="mb-0">Recent activities</h5>
+	<div class="d-flex align-items-center gap-1">
+		<button
+			type="button"
+			class="offcanvas-app-dock btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted"
+			state-to="offcanvas-app-dock"
+			state.docked="true"
+			aria-label="Dock"
+			title="Dock">
+			<i class="ri-layout-right-line fs-22" aria-hidden="true"></i>
+		</button>
+		<button
+			type="button"
+			class="offcanvas-app-undock btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted"
+			state-to="offcanvas-app-dock"
+			state.docked="false"
+			aria-label="Undock"
+			title="Undock">
+			<i class="ri-layout-right-2-line fs-22" aria-hidden="true"></i>
+		</button>
+		<button
+			type="button"
+			class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted"
+			aria-label="Close"
+			aria-controls="offcanvas-app"
+			data-panel-close="offcanvas-app"
+			aria-close
+			aria-expanded="true"
+			title="Close">
+			<i class="ri-close-line fs-22" aria-hidden="true"></i>
+		</button>
+	</div>
+</header>
+<div
+	class="card-body activities-scroll"
+	plugin='{"$SimpleBar": ["$this", {}]}'>
 	<div
 		id="activities-list"
 		class="activity-panel d-flex flex-column gap-3"

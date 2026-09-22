@@ -1,0 +1,53 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-details app-without-image"
+	array
+	object
+	autocomplete="off">
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<section
+			class="app-card d-flex flex-column gap-3 pb-3 w-100"
+			src="/apps/api-keys/components/card.html"></section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				Credential
+			</h6>
+			<div class="input-group">
+				<input
+					type="password"
+					class="form-control font-monospace"
+					key="key"
+					readonly
+					aria-label="API key" />
+				<button
+					type="button"
+					class="btn btn-outline-secondary"
+					onclick="
+						const input = this.previousElementSibling;
+						input.type =
+							input.type === 'password' ? 'text' : 'password';
+						this.querySelector('i').className =
+							input.type === 'password'
+								? 'ri-eye-line'
+								: 'ri-eye-off-line';
+					"
+					aria-label="Toggle API key visibility">
+					<i
+						class="ri-eye-line"
+						aria-hidden="true"></i>
+				</button>
+			</div>
+		</section>
+
+
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">Tags</h6>
+			<div
+				class="text-muted"
+				key="tags"></div>
+		</section>
+	</div>
+
+</form>

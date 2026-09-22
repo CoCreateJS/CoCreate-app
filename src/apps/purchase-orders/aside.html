@@ -1,0 +1,52 @@
+<div
+	id="purchase-orders-aside"
+	class="offcanvas-app-shell app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	role="region"
+	aria-label="Purchase Orders record">
+	<header
+		src="/components/offcanvas-app/header.html"
+		value-replace="/\{\{app\.name\}\}/g"
+		value-replacement="PurchaseOrders"
+		value-type="outerHtml"></header>
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		onload.plugin='({"$SimpleBar": ["$this", {}]})'
+		onload-query=".offcanvas-app-view > form > .card-body[]">
+		<div
+			id="PurchaseOrders-details-view"
+			class="offcanvas-app-view"
+			data-view="details"
+			role="tabpanel"
+			aria-labelledby="PurchaseOrders-details-btn"
+			tabindex="0"
+			src="/apps/purchase-orders/components/details.html"
+			aria-hidden="false"
+			state-id="purchase-orders-details"
+			state.aria-hidden
+			hidden></div>
+		<div
+			id="PurchaseOrders-form-view"
+			class="offcanvas-app-view"
+			data-view="form"
+			role="tabpanel"
+			aria-labelledby="PurchaseOrders-form-btn"
+			tabindex="0"
+			src="/apps/purchase-orders/components/form.html"
+			aria-hidden="true"
+			state-id="purchase-orders-form"
+			state.aria-hidden
+			hidden></div>
+		<div
+			id="PurchaseOrders-codearea-view"
+			class="offcanvas-app-view"
+			data-view="codearea"
+			role="tabpanel"
+			aria-labelledby="PurchaseOrders-codearea-btn"
+			tabindex="0"
+			src="/components/offcanvas-app/codearea.html"
+			aria-hidden="true"
+			state-id="purchase-orders-codearea"
+			state.aria-hidden
+			hidden></div>
+	</div>
+</div>

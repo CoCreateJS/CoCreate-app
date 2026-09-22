@@ -6,7 +6,7 @@ export default {
         "name": "Social",
         "singularName": "Post",
         "path": "/apps/social",
-        "card": "/apps/social/card.html",
+        "card": "/apps/social/components/card.html",
         "cardTemplate": "/apps/social/templates/card.html",
         "templates": {
             "card": "templates/card.html",

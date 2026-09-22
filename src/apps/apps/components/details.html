@@ -1,0 +1,147 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-details app-with-image"
+	array
+	object
+	autocomplete="off">
+	
+	<link
+		rel="stylesheet"
+		href="/apps/apps/components/card.css" />
+	<link
+		rel="stylesheet"
+		href="/apps/apps/components/details.css" />
+	<div class="card-body apps-details-body d-flex flex-column gap-4 h-100">
+		<section
+			class="d-flex flex-column gap-3 pb-3 border-bottom border-bottom-dashed"
+			aria-label="App overview">
+			<div class="apps-details-identity">
+				<span class="apps-details-icon flex-shrink-0">
+					<span
+						class="avatar-title bg-primary-subtle rounded-circle material-shadow">
+						<i
+							class="ri-apps-2-line"
+							key="icon"
+							value
+							input.class="$value"
+							aria-hidden="true"></i>
+					</span>
+				</span>
+				<h4
+					class="mb-0 text-break"
+					key="name"
+					aria-label="App name"></h4>
+			</div>
+			<div class="apps-details-badges app-badges">
+				<span
+					class="badge border border-primary text-primary"
+					key="category"
+					aria-label="Category"></span>
+				<span
+					class="apps-card-status"
+					role="status"
+					aria-label="App status">
+					<input
+						type="hidden"
+						key="status"
+						input-query="$parent"
+						input.data-status="$value" />
+					<span
+						class="apps-card-enabled badge border border-success text-success"
+						>Enabled</span
+					>
+					<span class="apps-card-disabled badge border text-muted"
+						>Disabled</span
+					>
+				</span>
+			</div>
+			<p
+				class="text-muted text-break mb-0"
+				key="description"></p>
+		</section>
+		<dl class="apps-details-fields mb-0">
+			<div>
+				<dt>Singular name</dt>
+				<dd key="singularName"></dd>
+			</div>
+			<div>
+				<dt>Array</dt>
+				<dd><code key="array"></code></dd>
+			</div>
+			<div class="w-100">
+				<dt>Path</dt>
+				<dd><code key="path"></code></dd>
+			</div>
+			<div>
+				<dt>Main views</dt>
+				<dd
+					class="d-flex flex-wrap gap-2"
+					key="mainViews"
+					render-query="[template]">
+					<span
+						template
+						class="badge border border-secondary text-secondary text-capitalize"
+						>{{mainViews}}</span
+					>
+				</dd>
+			</div>
+			<div>
+				<dt>Secondary views</dt>
+				<dd
+					class="d-flex flex-wrap gap-2"
+					key="secondaryViews"
+					render-query="[template]">
+					<span
+						template
+						class="badge border border-secondary text-secondary text-capitalize"
+						>{{secondaryViews}}</span
+					>
+				</dd>
+			</div>
+			<div>
+				<dt>Statuses</dt>
+				<dd
+					class="d-flex flex-wrap gap-2"
+					key="statuses"
+					render-query="[template]">
+					<span
+						template
+						class="badge border border-secondary text-secondary"
+						>{{statuses.label}}</span
+					>
+				</dd>
+			</div>
+			<div>
+				<dt>Types</dt>
+				<dd
+					class="d-flex flex-wrap gap-2"
+					key="type"
+					render-query="[template]">
+					<span
+						template
+						class="badge border border-secondary text-secondary"
+						>{{type}}</span
+					>
+				</dd>
+			</div>
+			<div class="w-100">
+				<dt>Tags</dt>
+				<dd
+					class="d-flex flex-wrap gap-2"
+					key="tags"
+					render-query="[template]">
+					<span
+						template
+						class="badge border border-secondary text-secondary"
+						>{{tags}}</span
+					>
+				</dd>
+			</div>
+		</dl>
+		<div
+			class="w-100"
+			src="/components/activities.html"
+			aria-label="App activities"></div>
+	</div>
+
+</form>

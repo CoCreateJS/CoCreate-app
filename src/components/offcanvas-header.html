@@ -14,13 +14,13 @@
 		class="offcanvas-path"
 		input.state.src="$value"
 		input-query="$parent .details-view-btn[]"
-		value-suffix="/details.html" />
+		value-suffix="/aside.html" />
 	<input
 		type="hidden"
 		class="offcanvas-path"
 		input.state.src="$value"
 		input-query="$parent .form-view-btn[]"
-		value-suffix="/form.html" />
+		value-suffix="/create.html" />
 	<style>
 		#form-btn {
 			display: none;
@@ -30,12 +30,12 @@
 		}
 		/* Prefer the view owned by this form; retain the host src as a fallback. */
 		form:has(> header[aria-label="Details controls"]) #form-btn,
-		.offcanvas-app-content:has(#offcanvas-app-view[src*="/details.html"]) #form-btn,
+		.offcanvas-app-content:has(#offcanvas-app-view[src*="/aside.html"]) #form-btn,
 		.offcanvas-app-content:has(#offcanvas-app-view[src*="/profile/index.html"]) #form-btn {
 			display: inline-flex;
 		}
 		form:has(> header[aria-label="Form controls"]) #details-btn,
-		.offcanvas-app-content:has(#offcanvas-app-view[src*="/form.html"]) #details-btn {
+		.offcanvas-app-content:has(#offcanvas-app-view[src*="/create.html"]) #details-btn {
 			display: inline-flex;
 		}
 		#offcanvas-app:has(#offcanvas-app-view[src*="/apps/activities/index.html"]) .form-view-btn,
@@ -92,6 +92,8 @@
 						aria-controls="removeItemModal"
 						role="menuitem"
 						state-to="delete-record"
+						state.delete-query="$document #delete-record"
+						state.actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])"
 						state.array=""
 						state.object="">
 						<input

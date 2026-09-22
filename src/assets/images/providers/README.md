@@ -13,3 +13,5 @@ Routing icons: Cloudflare and bunny.net from SVG Logos (CC0). Other routing prov
 AI icons: OpenAI, Google Gemini, and GitHub Copilot from SVG Logos (CC0).
 
 Claude icon: SVG Logos (CC0).
+
+Webhook provider icons: Stripe and Twilio from SVG Logos (CC0).

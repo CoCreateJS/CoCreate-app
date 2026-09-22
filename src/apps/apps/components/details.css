@@ -1,0 +1,11 @@
+.apps-details-body { position: relative; min-width: 0; }
+.apps-details-identity { display: flex; align-items: center; gap: 1rem; min-width: 0; min-height: 50px; }
+.apps-details-icon { display: inline-flex; width: 50px; height: 50px; }
+.apps-details-icon i { font-size: 1.5rem; }
+.apps-details-badges { position: absolute; top: 15px; right: 15px; max-width: calc(100% - 30px); }
+.apps-details-badges .badge { font-size: 9px; }
+.apps-details-fields { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.apps-details-fields > div { flex: 1 1 12rem; min-width: 0; }
+.apps-details-fields > .w-100 { flex-basis: 100%; }
+.apps-details-fields dt { margin-bottom: .5rem; color: var(--coc-secondary-color); font-size: .75rem; font-weight: 500; }
+.apps-details-fields dd { margin: 0; overflow-wrap: anywhere; }

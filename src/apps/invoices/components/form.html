@@ -1,0 +1,746 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<input
+			type="hidden"
+			key="type"
+			value="invoice" />
+		<div
+			class="d-flex flex-wrap gap-3 align-items-start border-bottom border-bottom-dashed pb-3">
+			<div
+				class="d-flex flex-column gap-4 flex-grow-1 flex-basis:320px min-width:280px">
+				<label
+					class="form-label d-flex flex-column gap-1 align-self-start">
+					<div>Upload Company Logo</div>
+					<div
+						type="file"
+						array="organizations"
+						object="$organization_id"
+						key="company.logo"
+						accept="image/*"
+						placeholder="Upload company logo"
+						class="logo-uploader"
+						render-query="[template]"
+						active>
+						<div template>
+							<img
+								src="{{company.logo.src}}"
+								alt="image"
+								width="100%" />
+						</div>
+					</div>
+				</label>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Address
+					<textarea
+						class="form-control bg-light border-0"
+						id="companyAddress"
+						rows="3"
+						placeholder="Company Address"
+						aria-labelledby="companyAddress"
+						key="company.address">
+						</textarea>
+				</label>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Postal Code
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="companyaddpostalcode"
+						minlength="5"
+						maxlength="6"
+						placeholder="Enter Postal Code"
+						aria-labelledby="companyaddpostalcode"
+						key="company.postalCode" />
+				</label>
+			</div>
+			<div
+				class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:260px">
+				<label class="form-label d-flex flex-column gap-1">
+					Legal Registration No
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="registrationNumber"
+						maxlength="12"
+						placeholder="Legal Registration No"
+						aria-labelledby="registrationNumber"
+						key="company.registrationNumber" />
+				</label>
+				<label class="form-label d-flex flex-column gap-1">
+					Email Address
+					<input
+						type="email"
+						class="form-control bg-light border-0"
+						id="companyEmail"
+						placeholder="Email Address"
+						aria-labelledby="companyEmail"
+						key="company.email" />
+				</label>
+				<label class="form-label d-flex flex-column gap-1">
+					Website
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="companyWebsite"
+						placeholder="Website"
+						aria-labelledby="companyWebsite"
+						key="company.website" />
+				</label>
+				<label class="form-label d-flex flex-column gap-1">
+					Contact No
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						data-plugin="cleave-phone"
+						id="compnayContactno"
+						placeholder="Contact No"
+						aria-labelledby="compnayContactno"
+						key="company.contactNo" />
+				</label>
+			</div>
+		</div>
+		<div class="d-flex flex-wrap gap-3 w-100">
+			<label
+				class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+				Invoice No
+				<input
+					type="text"
+					class="form-control bg-light border-0"
+					id="invoicenoInput"
+					placeholder="Invoice No"
+					value="#VL25000355"
+					readonly="readonly"
+					aria-labelledby="invoicenoInput"
+					key="invoice.number" />
+			</label>
+			<label
+				class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+				Date
+				<input
+					type="text"
+					class="form-control bg-light border-0"
+					id="date-field"
+					date-picker="flatpickr"
+					data-time="true"
+					placeholder="Select Date-time"
+					aria-labelledby="date-field"
+					key="date" />
+			</label>
+			<label
+				class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+				Payment Status
+				<select
+					class="form-control bg-light border-0"
+					plugin='{"$Choices":["$this",{}]}'
+					data-choices-search-false
+					id="choices-payment-status"
+					aria-labelledby="choices-payment-status"
+					key="payment.status">
+					<option value="">Select Payment Status</option>
+					<option value="Paid">Paid</option>
+					<option value="Unpaid">Unpaid</option>
+					<option value="Refund">Refund</option>
+				</select>
+			</label>
+			<label
+				class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
+				Total Amount
+				<input
+					type="text"
+					class="form-control bg-light border-0"
+					id="totalamountInput"
+					placeholder="$0.00"
+					readonly
+					aria-labelledby="totalamountInput"
+					key="cart.total" />
+			</label>
+		</div>
+		<div
+			class="d-flex flex-wrap gap-3 pt-3 border-top border-top-dashed">
+			<div
+				class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+				<div class="text-muted text-uppercase fw-semibold">
+					Billing Address
+				</div>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Full Name
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="billingName"
+						placeholder="Full Name"
+						aria-labelledby="billingName"
+						key="billing.fullName" />
+				</label>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Address
+					<textarea
+						class="form-control bg-light border-0"
+						id="billingAddress"
+						rows="3"
+						placeholder="Address"
+						aria-labelledby="billingAddress"
+						key="billing.address"></textarea>
+				</label>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Phone Number
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						data-plugin="cleave-phone"
+						id="billingPhoneno"
+						placeholder="(123)456-7890"
+						aria-labelledby="billingPhoneno"
+						key="billing.phoneNumber" />
+				</label>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Tax Number
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="billingTaxno"
+						placeholder="Tax Number"
+						aria-labelledby="billingTaxno"
+						key="billing.taxNumber" />
+				</label>
+				<div class="form-check">
+					<label
+						class="form-check-label"
+						for="same">
+						<input
+							type="checkbox"
+							class="form-check-input"
+							id="same"
+							name="same" />
+						Will your Billing and Shipping address same?
+					</label>
+				</div>
+			</div>
+
+			<div
+				class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+				<div class="text-muted text-uppercase fw-semibold">
+					Shipping Address
+				</div>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Full Name
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="shippingName"
+						placeholder="Full Name"
+						aria-labelledby="shippingName"
+						key="shipping.fullName" />
+				</label>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Address
+					<textarea
+						class="form-control bg-light border-0"
+						id="shippingAddress"
+						rows="3"
+						placeholder="Address"
+						aria-labelledby="shippingAddress"
+						key="shipping.address"></textarea>
+				</label>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Phone Number
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						data-plugin="cleave-phone"
+						id="shippingPhoneno"
+						placeholder="(123)456-7890"
+						aria-labelledby="shippingPhoneno"
+						key="shipping.phoneNumber" />
+				</label>
+				<label class="form-label d-flex flex-column gap-1 w-100">
+					Tax Number
+					<input
+						type="text"
+						class="form-control bg-light border-0"
+						id="shippingTaxno"
+						placeholder="Tax Number"
+						aria-labelledby="shippingTaxno"
+						key="shipping.taxNumber" />
+				</label>
+			</div>
+		</div>
+		<div class="pt-3">
+			<div class="table-responsive">
+				<table
+					class="invoice-table table table-borderless table-nowrap mb-0">
+					<thead class="align-middle">
+						<tr class="table-active">
+							<th
+								scope="col"
+								style="width: 50px">
+								#
+							</th>
+							<th
+								scope="col"
+								class="min-width:280px">
+								Item Details
+							</th>
+							<th
+								scope="col"
+								class="min-width:150px"
+								style="width: 150px">
+								<div
+									class="d-flex currency-select input.light align-items-center">
+									Rate
+									<select
+										class="form-select border-0 bg-light"
+										plugin='{"$Choices":["$this",{}]}'
+										data-choices-search-false
+										id="choices-payment-currency"
+										onchange="otherPayment()"
+										aria-label="Select currency for rate"
+										key="currencySelector">
+										<option value="$">($)</option>
+										<option value="£">(£)</option>
+										<option value="₹">(₹)</option>
+										<option value="€">(€)</option>
+									</select>
+								</div>
+							</th>
+							<th
+								scope="col"
+								class="min-width:140px"
+								style="width: 140px">
+								Quantity
+							</th>
+							<th
+								scope="col"
+								class="text-end min-width:160px"
+								style="width: 160px">
+								Amount
+							</th>
+							<th
+								scope="col"
+								class="text-end text-nowrap"
+								style="width: 1%"></th>
+						</tr>
+					</thead>
+					<tbody
+						id="newlink"
+						key="items"
+						render-query="[template]"
+						filter-limit>
+						<tr template>
+							<th
+								scope="row"
+								class="item-id">
+								{{index}}
+							</th>
+							<td class="text-start min-width:280px">
+								<input
+									type="text"
+									class="form-control bg-light border-0 mb-2"
+									key="items[{{index}}].name"
+									placeholder="Item name"
+									aria-label="Item name" />
+								<textarea
+									class="form-control bg-light border-0"
+									key="items[{{index}}].description"
+									rows="2"
+									placeholder="Item description"
+									aria-label="Item description"></textarea>
+							</td>
+							<td class="min-width:150px">
+								<input
+									id="rate{{index}}"
+									type="number"
+									class="form-control product-price bg-light border-0"
+									key="items[{{index}}].rate"
+									step="0.01"
+									placeholder="0.00"
+									aria-label="Rate per unit" />
+							</td>
+							<td class="min-width:140px">
+								<div class="input-step">
+									<!-- minus: update quantity value on click via CoCreate attributes -->
+									<button
+										type="button"
+										class="minus"
+										aria-label="Decrease quantity"
+										calculate="($next) - 1"
+										click-query="$next"
+										click.value="$value"
+										click.if=">=0"
+										value>
+										–
+									</button>
+
+									<input
+										id="quantity{{index}}"
+										type="number"
+										class="quantity"
+										key="items[{{index}}].quantity"
+										readonly
+										min="0"
+										placeholder="0"
+										aria-label="Quantity" />
+
+									<!-- plus: update quantity value on click via CoCreate attributes -->
+									<button
+										type="button"
+										class="plus"
+										aria-label="Increase quantity"
+										calculate="($previous) + 1"
+										click-query="$previous"
+										click.value="$value"
+										value>
+										+
+									</button>
+								</div>
+							</td>
+							<td class="min-width:160px">
+								<input
+									type="text"
+									class="form-control bg-light border-0 lineAmounts"
+									key="items[{{index}}].amount"
+									readonly
+									placeholder="$0.00"
+									aria-label="Line item amount"
+									calculate="($document #rate{{index}}[]) * ($document #quantity{{index}}[])" />
+							</td>
+							<td
+								class="product-actions text-nowrap"
+								style="width: 1%">
+								<button
+									class="btn btn-soft-danger delete-btn"
+									remove-query="$parent"
+									aria-label="Delete product row">
+									<i class="ri-delete-bin-line"></i>
+								</button>
+							</td>
+						</tr>
+
+						<tr class="product quick-add-row">
+							<th
+								scope="row"
+								class="product-id">
+								<button
+									type="button"
+									id="quick-add-btn"
+									class="btn btn-sm btn-primary"
+									title="Add item"
+									aria-label="Add item"
+									actions="save">
+									+
+								</button>
+							</th>
+
+							<td class="text-start min-width:280px">
+								<input
+									id="quick-name"
+									type="text"
+									key="item.name"
+									class="form-control bg-light border-0 mb-2"
+									placeholder="Item name"
+									aria-label="Quick add item name" />
+								<textarea
+									id="quick-description"
+									class="form-control bg-light border-0"
+									key="item.description"
+									rows="2"
+									placeholder="Item description"
+									aria-label="Quick add item description"></textarea>
+							</td>
+
+							<td class="min-width:150px">
+								<input
+									id="quick-rate"
+									type="number"
+									key="item.rate"
+									class="form-control product-price bg-light border-0"
+									step="0.01"
+									placeholder="0.00"
+									aria-label="Quick add rate" />
+							</td>
+
+							<td class="min-width:140px">
+								<div class="input-step">
+									<button
+										type="button"
+										class="minus"
+										aria-label="Decrease quantity"
+										calculate="($next) - 1"
+										click-query="$next"
+										click.value="$value"
+										click.if=">=0"
+										value>
+										–
+									</button>
+									<input
+										id="quick-quantity"
+										type="number"
+										key="item.quantity"
+										class="product-quantity"
+										value="1"
+										min="1"
+										placeholder="1"
+										aria-label="Quick add quantity" />
+									<button
+										type="button"
+										class="plus"
+										aria-label="Increase quantity"
+										calculate="($previous) + 1"
+										click-query="$previous"
+										click.value="$value"
+										value>
+										+
+									</button>
+								</div>
+							</td>
+
+							<td class="min-width:160px">
+								<input
+									id="quick-amount"
+									type="text"
+									class="form-control bg-light border-0 lineAmounts"
+									readonly
+									placeholder="$0.00"
+									aria-label="Quick add line amount" />
+							</td>
+
+							<td
+								class="product-actions text-nowrap"
+								style="width: 1%">
+								<!-- optional: clear quick inputs -->
+								<button
+									type="button"
+									class="btn btn-sm btn-light"
+									aria-label="Clear quick add"
+									onclick="clearQuickInputs()">
+									<i class="ri-refresh-line"></i>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+
+					<tbody>
+						<tr class="border-top border-top-dashed mt-2">
+							<td colspan="3"></td>
+							<td
+								colspan="2"
+								class="p-0">
+								<table
+									class="table table-borderless table-sm table-nowrap align-middle mb-0">
+									<tbody>
+										<tr>
+											<th scope="row">Sub Total</th>
+											<td style="width: 150px">
+												<input
+													type="text"
+													class="form-control bg-light border-0 cart-items"
+													id="cart-subtotal"
+													placeholder="$0.00"
+													readonly
+													aria-labelledby="cart-subtotal"
+													calculate="($document .lineAmounts[])"
+													key="cart.subtotal" />
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												Estimated Tax (12.5%)
+											</th>
+											<td>
+												<input
+													type="text"
+													class="form-control bg-light border-0 cart-items"
+													id="cart-tax"
+													placeholder="$0.00"
+													readonly
+													aria-labelledby="cart-tax"
+													calculate="($document #cart-subtotal[]) * ($next)"
+													key="cart.tax" />
+												<input
+													type="hidden"
+													value="0.125" />
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">Discount</th>
+											<td>
+												<input
+													type="text"
+													class="form-control bg-light border-0"
+													id="cart-discount"
+													placeholder="$0.00"
+													readonly
+													aria-labelledby="cart-discount"
+													key="cart.discount" />
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												Shipping Charge
+											</th>
+											<td>
+												<input
+													type="text"
+													class="form-control bg-light border-0 cart-items"
+													id="cart-shipping"
+													placeholder="$0.00"
+													readonly
+													aria-labelledby="cart-shipping"
+													key="cart.shipping" />
+											</td>
+										</tr>
+										<tr
+											class="border-top border-top-dashed">
+											<th scope="row">
+												Total Amount
+											</th>
+											<td>
+												<input
+													type="text"
+													class="form-control bg-light border-0"
+													id="cart-total"
+													placeholder="$0.00"
+													readonly
+													aria-labelledby="cart-total"
+													calculate="($document .cart-items[]) - ($document #cart-discount)"
+													key="cart.total" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<!--end table-->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!--end table-->
+			</div>
+			<div class="d-flex flex-wrap gap-3 mt-4">
+				<div
+					class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
+					<div class="text-muted text-uppercase fw-semibold">
+						Payment Details
+					</div>
+					<div class="d-flex flex-column gap-1">
+						<label
+							for="choices-payment-type"
+							class="form-label"
+							>Payment Method</label
+						>
+						<div class="input-light">
+							<select
+								class="form-control bg-light border-0"
+								plugin='{"$Choices":["$this",{}]}'
+								data-choices-search-false
+								data-choices-removeItem
+								id="choices-payment-type"
+								aria-label="Select payment method"
+								key="payment.method">
+								<option value="">Payment Method</option>
+								<option value="Mastercard">
+									Mastercard
+								</option>
+								<option value="Credit Card">
+									Credit Card
+								</option>
+								<option value="Visa">Visa</option>
+								<option value="Paypal">Paypal</option>
+							</select>
+						</div>
+					</div>
+					<div class="d-flex flex-column gap-1">
+						<label
+							for="cardholderName"
+							class="form-label"
+							>Card Holder Name</label
+						>
+						<div>
+							<input
+								class="form-control bg-light border-0"
+								type="text"
+								id="cardholderName"
+								placeholder="Card Holder Name"
+								aria-labelledby="cardholderName"
+								key="payment.cardholderName" />
+						</div>
+					</div>
+					<div class="d-flex flex-column gap-1">
+						<label
+							for="cardNumber"
+							class="form-label"
+							>Card Number</label
+						>
+						<div>
+							<input
+								class="form-control bg-light border-0"
+								type="text"
+								id="cardNumber"
+								placeholder="xxxx xxxx xxxx xxxx"
+								aria-labelledby="cardNumber"
+								key="payment.cardNumber" />
+						</div>
+					</div>
+					<div class="d-flex flex-column gap-1">
+						<label
+							for="amountTotalPay"
+							class="form-label"
+							>Total Amount to Pay</label
+						>
+						<div>
+							<input
+								class="form-control bg-light border-0"
+								type="text"
+								id="amountTotalPay"
+								placeholder="$0.00"
+								readonly
+								aria-labelledby="amountTotalPay"
+								key="payment.amount" />
+						</div>
+					</div>
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+			<div class="d-flex flex-column gap-1 mt-4">
+				<label
+					for="notesTextarea"
+					class="form-label text-muted text-uppercase fw-semibold"
+					>NOTES</label
+				>
+				<textarea
+					class="form-control alert alert-info"
+					id="notesTextarea"
+					placeholder="Notes"
+					rows="2"
+					aria-labelledby="notesTextarea"
+					key="notes">
+        All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above.</textarea
+				>
+			</div>
+		</div>
+		<div class="d-flex justify-content-end gap-2 d-print-none w-100">
+			<a
+				href="javascript:void(0);"
+				class="btn btn-primary">
+				<i class="ri-download-2-line align-bottom me-1"></i>
+				Download
+			</a>
+			<a
+				href="javascript:void(0);"
+				class="btn btn-danger">
+				<i class="ri-send-plane-fill align-bottom me-1"></i> Send
+			</a>
+		</div>
+	</div>
+
+	<!-- cleave.js -->
+	<script src="/assets/libs/cleave.js/cleave.min.js"></script>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

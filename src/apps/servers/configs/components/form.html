@@ -1,0 +1,143 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+<link rel="stylesheet" href="/components/codearea/index.css" />
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<input
+			type="hidden"
+			key="_id" />
+
+		<section>
+			<h5 class="text-uppercase fw-semibold mb-3">
+				Configuration identity
+			</h5>
+			<div class="d-flex flex-wrap gap-3">
+				<label
+					class="form-label d-flex flex-column gap-1 width:100% flex-basis:100%">
+					Name
+					<input
+						type="text"
+						id="server-config-name"
+						key="name"
+						class="form-control"
+						placeholder="Configuration name"
+						required />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:200px min-width:180px">
+					Type
+					<input
+						type="text"
+						id="server-config-type"
+						key="type"
+						list="server-config-types"
+						class="form-control text-lowercase"
+						placeholder="ai, autoscaler, storage, telemetry"
+						required />
+					<datalist id="server-config-types">
+						<option value="ai"></option>
+						<option value="autoscaler"></option>
+						<option value="storage"></option>
+						<option value="telemetry"></option>
+					</datalist>
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:200px min-width:180px">
+					Provider
+					<input
+						type="text"
+						id="server-config-provider"
+						key="provider"
+						class="form-control text-lowercase"
+						placeholder="aws, openai, mongodb" />
+				</label>
+				<label
+					class="form-check form-switch d-flex align-items-center gap-2 flex-grow-1 flex-basis:140px min-width:130px mt-4">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						role="switch"
+						id="server-config-enabled"
+						key="enabled" />
+					<span class="form-check-label">Enabled</span>
+				</label>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h5 class="text-uppercase fw-semibold mb-2">
+				Runtime targeting
+			</h5>
+			<p class="text-muted mb-3">
+				Use <code>*</code> for every target,
+				<code>default</code> for the default scope, or an exact
+				identifier.
+			</p>
+			<div class="d-flex flex-wrap gap-3">
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:190px">
+					Cluster
+					<input
+						type="text"
+						id="server-config-cluster"
+						key="cluster"
+						class="form-control"
+						placeholder="*" />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:260px min-width:220px">
+					Server
+					<input
+						type="text"
+						id="server-config-server"
+						key="server"
+						class="form-control"
+						placeholder="* or server ID" />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:200px min-width:180px">
+					Worker
+					<input
+						type="text"
+						id="server-config-worker"
+						key="worker"
+						class="form-control"
+						placeholder="* or worker ID" />
+				</label>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h5 class="text-uppercase fw-semibold mb-2">
+				Runtime configuration
+			</h5>
+			<p class="text-muted mb-3">
+				The object is merged with other enabled records that match
+				the same runtime scope. Dot-notation keys are supported.
+			</p>
+			<codearea class="component-codearea border rounded p-3">
+    <pre aria-hidden="true"><code class="language-json"></code></pre>
+    <textarea id="server-config-json-form" key="config" type="code" lang="json"
+        value-type="json" value-evaluate="false" height="auto" rows="1"
+        class="form-control font-monospace" spellcheck="false"
+        aria-label="Runtime configuration" required></textarea>
+    <button type="button" class="component-codearea-copy"
+        actions="clipboard, copied, timeout(1200), copyreset"
+        clipboard-query="$parent textarea" event-name="copied, copyreset"
+        copied.class="is-copied" copied.aria-label="Configuration copied"
+        copyreset.class="is-copied, " copyreset.aria-label="Copy configuration"
+        aria-label="Copy configuration" title="Copy configuration">
+        <i class="ri-file-copy-line" aria-hidden="true"></i>
+        <i class="ri-check-line" aria-hidden="true"></i>
+    </button>
+</codearea>
+		</section>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

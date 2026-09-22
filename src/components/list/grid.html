@@ -1,10 +1,16 @@
+<link
+	rel="stylesheet"
+	href="/components/list/selection.css" />
 <div
 	class="h-100"
 	plugin='{"$SimpleBar": ["$this", {}]}'>
 	<style>
 		#grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+			grid-template-columns: repeat(
+				auto-fit,
+				minmax(min(100%, 320px), 1fr)
+			);
 			align-content: start;
 		}
 
@@ -16,13 +22,20 @@
 	</style>
 	<div
 		id="grid"
+		data-grid-selection
 		array=""
 		object
-		filter-limit="20"
+		filter-limit="30"
 		render-query="[template]"
 		state-id="list"
 		class="list-view gap-3"
 		style="padding: var(--admin-gutter)"
 		src=""></div>
+	<div
+		style="height: 20px"
+		filter-on="scroll"
+		filter-query="$previous"></div>
 </div>
 <!-- end grid -->
+
+<script src="/components/list/selection.js"></script>

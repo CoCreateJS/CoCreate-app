@@ -25,7 +25,7 @@ export default {
         "name": "Endpoints",
         "singularName": "Endpoint",
         "path": "/apps/apis/endpoints",
-        "card": "/apps/apis/endpoints/card.html",
+        "card": "/apps/apis/endpoints/components/card.html",
         "cardTemplate": "/apps/apis/endpoints/templates/card.html",
         "templates": {
             "card": "templates/card.html",
@@ -48,7 +48,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"endpoint-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/endpoints/form.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"endpoints\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/endpoints/aside.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"endpoints\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
                 "attributes": [
                     { "name": "class", "value": "form-control" },
                     { "name": "id", "value": "endpoint-name" },

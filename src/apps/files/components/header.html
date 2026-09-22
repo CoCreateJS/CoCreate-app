@@ -1,37 +1,220 @@
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-	<div class="d-flex align-items-center gap-2">
+<div
+	class="list-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+	<link rel="stylesheet" href="/components/list/header.css" />
+	<link rel="stylesheet" href="/components/list/selection.css" />
+
+	<div class="list-header-primary d-flex align-items-center gap-2">
+        <button type="button" class="list-toolbar-control list-toolbar-icon list-files-menu btn btn-light"
+            aria-controls="files-sidebar" aria-expanded="false" aria-label="Toggle files menu" title="Files menu">
+            <i class="ri-menu-2-line" aria-hidden="true"></i>
+        </button>
 		<button
 			type="button"
-			class="file-menu-btn d-lg-none"
-			aria-label="Toggle files menu"
-			aria-controls="files-sidebar"
+			class="list-toolbar-control list-compact-action list-filter-button btn btn-light"
+			aria-controls="context-sidebar"
+			aria-haspopup="dialog"
 			aria-expanded="false"
-			title="Files menu">
+			aria-label="Filters"
+			title="Filters">
 			<i
-				class="ri-menu-2-line align-middle fs-22"
+				class="ri-filter-3-line"
 				aria-hidden="true"></i>
+			<span class="list-action-label">Filters</span>
 		</button>
+        <div class="list-header-extension d-flex align-items-center min-width:0"
+            src="/apps/files/components/type-filter.html"></div>
+	</div>
+
+	<textarea id="list-export-fields" state-id="app" array="apps" object
+		key="fields" value-type="json" value-evaluate="false" hidden></textarea>
+
+	<div data-selection-summary hidden>
+		<span data-selection-count class="text-muted fs-12" aria-live="polite"></span>
+		<button type="button" class="btn btn-sm btn-link p-0" data-selection-all>Select all loaded</button>
+		<button type="button" class="btn btn-sm btn-link p-0" data-selection-clear>Clear</button>
+	</div>
+
+	<!-- List actions -->
+	<div class="list-header-actions hstack gap-2 ms-auto">
 		<div class="dropdown">
 			<button
+				class="list-toolbar-control list-compact-action btn btn-light dropdown-toggle"
 				type="button"
-				class="btn btn-ghost-secondary dropdown"
-				aria-haspopup="menu"
+				id="viewDropdown"
 				aria-expanded="false"
-				aria-controls="files-location-menu">
-				<i class="ri-folder-2-line me-1"></i>
-				My Drive
-				<i class="ri-arrow-down-s-line ms-1"></i>
+				aria-controls="viewDropdownMenu"
+				aria-haspopup="menu"
+				aria-label="Change view"
+				title="Change view">
+				<i
+					class="list-view-grid-icon ri-layout-grid-line"
+					aria-hidden="true"></i>
+				<i
+					class="list-view-list-icon ri-list-unordered"
+					aria-hidden="true"></i>
+				<span class="list-action-label"><span class="list-view-grid-label">Grid</span><span class="list-view-list-label">List</span></span>
 			</button>
 			<ul
-				id="files-location-menu"
+				id="viewDropdownMenu"
 				class="dropdown-menu"
 				role="menu"
-				aria-close-on="anywhere">
-				<li><button type="button" class="dropdown-item active">My Drive</button></li>
-				<li><button type="button" class="dropdown-item">Recent</button></li>
-				<li><button type="button" class="dropdown-item">Important</button></li>
-				<li><button type="button" class="dropdown-item">Deleted</button></li>
+				aria-labelledby="viewDropdown"
+				aria-close-on="anywhere"
+				aria-hidden="true">
+				<li>
+					<a
+						class="dropdown-item"
+						href="#"
+						state-to="list-view"
+						state.src="/apps/files/components/grid.html">
+						<i class="ri-layout-grid-line me-2"></i>
+						Grid
+					</a>
+				</li>
+				<li>
+					<a
+						class="dropdown-item"
+						href="#"
+						state-to="list-view"
+						state.src="/apps/files/components/list.html">
+						<i class="ri-list-unordered me-2"></i>
+						List
+					</a>
+				</li>
 			</ul>
 		</div>
+
+		<button
+			type="button"
+			class="list-toolbar-control list-toolbar-icon btn btn-soft-danger"
+			id="remove-actions"
+			aria-controls="removeItemModal"
+			state-to="delete-record"
+			state.delete-query="$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected=&quot;true&quot;]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]"
+			state.actions="delete"
+			state.array=""
+			state.object=""
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			aria-open
+			aria-label="Delete selected items"
+			title="Delete selected items">
+			<i class="ri-delete-bin-2-line" aria-hidden="true"></i>
+		</button>
+		<button
+			type="button"
+			class="list-toolbar-control list-compact-action btn btn-success add-btn"
+			aria-controls="offcanvas-app"
+			aria-open
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			state-to="offcanvas-app-view"
+			state.src=""
+			id="create-btn"
+			aria-label="Create item"
+			title="Create item">
+			<input
+				type="hidden"
+				state-id="app"
+				array="apps"
+				object
+				key="path"
+				value-suffix="/create.html"
+				input.state.src="$value"
+				input-query="$parent" />
+			<div
+				state-to="offcanvas-app-form"
+				state.$reset
+				state.array="">
+				<input
+					type="hidden"
+					state-id="app"
+					array="apps"
+					object
+					key="array"
+					input.state.array="$value"
+					input-query="$parent" />
+			</div>
+
+			<i class="ri-add-line" aria-hidden="true"></i>
+			<span class="list-action-label">
+				New
+				<span
+					state-id="app"
+					array="apps"
+					object
+					key="singularName"></span>
+			</span>
+		</button>
+		<span class="dropdown">
+			<button
+				class="list-toolbar-control list-toolbar-icon btn btn-light"
+				type="button"
+				id="settingsDropdownButton"
+				aria-controls="settingsDropdownMenu"
+				aria-haspopup="menu"
+				aria-expanded="false"
+				title="More actions"
+				aria-label="More actions">
+				<i class="ri-more-2-fill" aria-hidden="true"></i>
+			</button>
+			<ul
+				id="settingsDropdownMenu"
+				class="dropdown-menu dropdown-menu-end"
+				role="menu"
+				aria-labelledby="settingsDropdownButton"
+				aria-hidden="true"
+				aria-close-on="anywhere">
+				<li>
+					<button type="button" class="dropdown-item" role="menuitem"
+						actions="import"
+						import-query='$document #list-view [data-files-results]:not([hidden])'>
+						<i class="ri-upload-2-line me-2" aria-hidden="true"></i>Import
+					</button>
+				</li>
+				<li>
+					<button type="button" class="dropdown-item" role="menuitem"
+						actions="export" export-format="json"
+						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [data-files-results]:not([hidden])[]'>
+						<i class="ri-download-2-line me-2" aria-hidden="true"></i>Export JSON
+					</button>
+				</li>
+				<li>
+					<button type="button" class="dropdown-item" role="menuitem"
+						actions="export" export-format="csv"
+						export-columns-query="$document #list-view th[data-export-key]:not([template])[], $document #list-export-fields"
+						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [data-files-results]:not([hidden])[]'>
+						<i class="ri-download-2-line me-2" aria-hidden="true"></i>Export CSV
+					</button>
+				</li>
+				<li>
+					<button type="button" class="dropdown-item" role="menuitem"
+						actions="print"
+						print-query="$document #list-view">
+						<i class="ri-printer-line me-2" aria-hidden="true"></i>Print
+					</button>
+				</li>
+				<li><hr class="dropdown-divider" /></li>
+				<li>
+					<a
+						class="dropdown-item text-danger"
+						role="menuitem"
+						aria-controls="removeItemModal"
+			state-to="delete-record"
+			state.delete-query="$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected=&quot;true&quot;]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]"
+			state.actions="delete"
+			state.array=""
+			state.object=""
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			aria-open>
+						<i class="ri-delete-bin-2-line me-2"></i>
+						Delete selected
+					</a>
+				</li>
+				<!-- <li><a class="dropdown-item" href="#" role="menuitem">Customize Columns</a></li> -->
+				<!-- <li><a class="dropdown-item" href="#" role="menuitem">Reset board view to default</a></li> -->
+			</ul>
+		</span>
 	</div>
 </div>

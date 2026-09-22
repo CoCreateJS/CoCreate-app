@@ -1,0 +1,93 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body align-items:flex-start d-flex flex-column gap-4 h-100">
+		<label
+			class="form-label width:100%"
+			for="task-name-field">
+			Task Name
+			<input
+				type="text"
+				key="name"
+				id="task-name-field"
+				class="form-control"
+				placeholder="Enter task name"
+				aria-label="Task Name" />
+		</label>
+
+		<label
+			class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+			for="due-date-field">
+			Due Date
+			<input
+				type="date"
+				key="dueDate"
+				id="due-date-field"
+				class="form-control"
+				aria-label="Due Date" />
+		</label>
+		<label
+			class="form-label flex-grow-1 flex-basis:160px min-width:140px"
+			for="due-time-field">
+			Due Time
+			<input
+				type="time"
+				key="dueTime"
+				id="due-time-field"
+				class="form-control"
+				aria-label="Due Time" />
+		</label>
+
+		<label
+			class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+			for="status-field">
+			Status
+			<select
+				class="form-control"
+				key="status"
+				id="status-field"
+				aria-label="Status">
+				<option value="">Select Status</option>
+				<option value="To Do">To Do</option>
+				<option value="Inprogress">Inprogress</option>
+				<option value="In Reviews">In Reviews</option>
+				<option value="Completed">Completed</option>
+			</select>
+		</label>
+
+		<label
+			class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+			for="priority-field">
+			Priority
+			<select
+				class="form-control"
+				key="priority"
+				id="priority-field"
+				aria-label="Priority">
+				<option value="">Select Priority</option>
+				<option value="High">High</option>
+				<option value="Medium">Medium</option>
+				<option value="Low">Low</option>
+			</select>
+		</label>
+
+		<label
+			class="form-label width:100%"
+			for="description-field">
+			Description
+			<textarea
+				key="description"
+				id="description-field"
+				class="form-control"
+				rows="3"
+				placeholder="Add description"
+				aria-label="Description"></textarea>
+		</label>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

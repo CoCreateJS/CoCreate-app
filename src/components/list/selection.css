@@ -1,0 +1,38 @@
+[data-grid-selection] [data-select-card] {
+    cursor: pointer;
+}
+
+[data-grid-selection] [data-select-card][aria-selected="true"] {
+    outline: 2px solid var(--coc-primary);
+    outline-offset: -2px;
+    background-color: var(--coc-primary-bg-subtle);
+}
+
+[data-grid-selection] [data-select-card]:focus-visible {
+    outline: 2px solid var(--coc-primary);
+    outline-offset: 2px;
+}
+
+[data-card-open]:hover,
+[data-card-open]:focus-visible {
+    text-decoration: underline !important;
+}
+
+[data-selection-summary] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+[data-selection-summary][hidden] {
+    display: none;
+}
+
+table[data-row-selection] tbody > tr:has([data-select-row]):not([template]) {
+    cursor: pointer;
+}
+
+table[data-row-selection] tbody > tr:focus-visible {
+    outline: 2px solid var(--coc-primary);
+    outline-offset: -2px;
+}

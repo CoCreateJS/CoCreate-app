@@ -1,0 +1,174 @@
+.app-card .badge,
+.app-details .badge {
+    flex-shrink: 0;
+    font-size: 10px;
+    line-height: 1;
+    padding: 0.35em 0.65em;
+    background-color: transparent;
+}
+
+:is(.app-card, .app-details) .badge.text-muted {
+    border-color: currentColor !important;
+}
+
+.app-title {
+    font-size: 1.125rem;
+    overflow-wrap: anywhere;
+}
+
+.app-identity {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.app-identity > .app-title {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
+.app-identity > :is(p, ul) {
+    flex-basis: 100%;
+    margin-top: 0;
+}
+
+.app-fields { min-width: 0; }
+.app-field { min-width: 0; padding: 0; }
+.app-field-full { flex: 1 1 100%; width: 100%; }
+.app-field-half { flex: 1 1 16rem; }
+.app-field-third { flex: 1 1 12rem; }
+
+.app-form .form-label { max-width: 100%; }
+.app-form textarea.form-control { resize: none; }
+.app-form :is(.form-control, .form-select) { min-width: 0; }
+
+.app-image-editor {
+    flex: 0 0 100px;
+    width: 100px;
+    max-width: 100%;
+}
+.app-image-editor .avatar-xl { --avatar-size: 100px; }
+.app-image-editor > div { margin-bottom: 0 !important; }
+
+.app-enabled-status .app-enabled,
+.app-enabled-status[data-enabled="true"] .app-disabled,
+.app-enabled-status:has(input:checked) .app-disabled { display: none; }
+.app-enabled-status[data-enabled="true"] .app-enabled,
+.app-enabled-status:has(input:checked) .app-enabled { display: inline-block; }
+
+.app-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 100%;
+}
+.app-heading > :first-child { flex: 1 1 12rem; min-width: 0; }
+.app-badges { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: flex-end; gap: 0.5rem; }
+.app-badges .app-enabled-status { display: inline-flex; }
+.app-details .app-identity > img { --avatar-size: 36px; width: 36px; height: 36px; object-fit: contain; }
+.app-form .app-enabled-status .badge { font-size: 10px; }
+
+.app-avatar { display: inline-flex; flex: 0 0 36px; width: 36px; height: 36px; }
+.app-avatar img { width: 100%; height: 100%; object-fit: contain; }
+.app-avatar:has(img[hidden]) { display: none; }
+.app-details .app-identity :is(.avatar-lg, .avatar-xl) { --avatar-size: 36px; }
+
+/* Shared app-card identity and corner badges. */
+.app-card :is(.app-avatar, .avatar-sm) {
+    --avatar-size: 50px;
+    flex: 0 0 50px;
+    width: 50px;
+    height: 50px;
+}
+.app-card .app-title {
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+}
+.app-card .app-title > a { min-width: 0; }
+.app-card .app-heading {
+    position: relative;
+    display: block;
+    min-height: 50px;
+}
+.app-card .app-heading > .app-badges {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    max-width: calc(100% - 50px);
+}
+.app-card .app-heading > .app-badges .badge {
+    font-size: 9px;
+}
+
+.app-card-icon .avatar-title { position: relative; font-size: 1.5rem; }
+.app-card-icon .app-card-logo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--coc-body-bg); }
+.app-card-icon:has(.app-card-logo:not([hidden])) .avatar-title > i { visibility: hidden; }
+
+.app-provider-image {
+	display: inline-flex;
+	position: relative;
+	flex: 0 0 36px;
+	width: 36px;
+	height: 36px;
+}
+.app-provider-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+.app-provider-image .app-provider-custom {
+	position: absolute;
+	inset: 0;
+	background: var(--coc-body-bg);
+}
+.app-provider-image:has(.app-provider-custom:not([hidden]))
+	.app-provider-default {
+	visibility: hidden;
+}
+.app-provider-image:not(:has(img:not([hidden]))) {
+	display: none;
+}
+.app-form .app-provider-image {
+	flex-basis: 100px;
+	width: 100px;
+	height: 100px;
+}
+.app-provider-reference {
+	flex-shrink: 0;
+}
+
+.app-card .app-provider-image {
+	--avatar-size: 50px;
+	flex: 0 0 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.app-profile {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+.app-profile .d-flex > *,
+.app-profile .hstack > * {
+    min-width: 0;
+}
+.app-profile .hstack,
+.app-profile .nav {
+    flex-wrap: wrap;
+}
+.app-profile .profile-wid-bg {
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+.app-profile .table {
+    width: 100%;
+    table-layout: fixed;
+}
+

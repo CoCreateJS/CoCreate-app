@@ -1,0 +1,61 @@
+{
+  "name": "admin",
+  "version": 1,
+  "source": "src",
+  "description": "Account admin app and shared component inventory. Paths are relative to the source root; trailing slashes include a directory recursively.",
+  "entrypoints": [
+    "/account/index.html",
+    "/auth/index.html"
+  ],
+  "shell": [
+    "/account/index.html",
+    "/account/components/menu.html"
+  ],
+  "auth": "/auth/",
+  "apps": [
+    "/apps/activities/",
+    "/apps/ai/",
+    "/apps/ai/instructions/",
+    "/apps/ai-providers/",
+    "/apps/api-keys/",
+    "/apps/apis/",
+    "/apps/apis/endpoints/",
+    "/apps/apis/webhooks/",
+    "/apps/apps/",
+    "/apps/cloud-providers/",
+    "/apps/clusters/",
+    "/apps/dashboards/",
+    "/apps/files/",
+    "/apps/organizations/",
+    "/apps/profile/",
+    "/apps/routing-providers/",
+    "/apps/servers/",
+    "/apps/servers/configs/",
+    "/apps/storage-providers/"
+  ],
+  "components": [
+    "/components/about.html",
+    "/components/breadcrumbs.html",
+    "/components/codearea/",
+    "/components/create-panel.html",
+    "/components/filters.html",
+    "/components/header.html",
+    "/components/language-dropdown.html",
+    "/components/list/",
+    "/components/media-picker/",
+    "/components/members.html",
+    "/components/notifications.html",
+    "/components/offcanvas-app/",
+    "/components/offcanvas-top.html",
+    "/components/profile-img.html",
+    "/components/remove-item.html",
+    "/components/search/",
+    "/components/theme-settings.html",
+    "/components/user-dropdown.html",
+    "/components/workspace-header.html"
+  ],
+  "styles": [
+    "/assets/css/index.css",
+    "/assets/css/app.css"
+  ]
+}

@@ -6,7 +6,7 @@ export default {
         "name": "API Keys",
         "singularName": "API Key",
         "path": "/apps/api-keys",
-        "card": "/apps/api-keys/card.html",
+        "card": "/apps/api-keys/components/card.html",
         "cardTemplate": "/apps/api-keys/templates/card.html",
         "templates": {
             "card": "templates/card.html",
@@ -30,7 +30,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter Name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/api-keys/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"keys\" state.object=\"{{object._id}}\"> </div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/api-keys/aside.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"keys\" state.object=\"{{object._id}}\"> </div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
                 "attributes": [
                     {
                         "name": "class",

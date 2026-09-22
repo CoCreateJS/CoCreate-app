@@ -1,8 +1,8 @@
 <div
 	id="apis-aside"
-	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	class="offcanvas-app-shell app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	role="region"
-	aria-label="API record">
+	aria-label="Apis record">
 	<span
 		hidden
 		observe
@@ -20,35 +20,41 @@
 		value-replacement="APIs"
 		value-type="outerHtml"></header>
 	<div
-		class="component-form-body flex-grow-1 h-100"
+		class="component-form-body flex-grow-1 min-height:0"
 		onload.plugin='({"$SimpleBar": ["$this", {}]})'
-		onload-query="form .card-body[]">
+		onload-query=".offcanvas-app-view > form > .card-body[]">
 		<div
 			id="APIs-details-view"
+			class="offcanvas-app-view"
+			data-view="details"
 			role="tabpanel"
 			aria-labelledby="APIs-details-btn"
 			tabindex="0"
-			src="/apps/apis/details.html"
+			src="/apps/apis/components/details.html"
 			aria-hidden="false"
 			state-id="apis-details"
 			state.aria-hidden
 			hidden></div>
 		<div
 			id="APIs-form-view"
+			class="offcanvas-app-view"
+			data-view="form"
 			role="tabpanel"
 			aria-labelledby="APIs-form-btn"
 			tabindex="0"
-			src="/apps/apis/form.html"
+			src="/apps/apis/components/form.html"
 			aria-hidden="true"
 			state-id="apis-form"
 			state.aria-hidden
 			hidden></div>
 		<div
 			id="APIs-codearea-view"
+			class="offcanvas-app-view"
+			data-view="codearea"
 			role="tabpanel"
 			aria-labelledby="APIs-codearea-btn"
 			tabindex="0"
-			src="/apps/apis/codearea.html"
+			src="/components/offcanvas-app/codearea.html"
 			aria-hidden="true"
 			state-id="apis-codearea"
 			state.aria-hidden

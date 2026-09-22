@@ -14,7 +14,7 @@ export default {
             entry: "./src",
             array: "files",
             languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
-            exclude: ["/config/", "/scss/", "/assets/js", "/assets/icons/"],
+            exclude: ["/admin/", "/account/", "/apps/"],
             object: {
                 name: "{{name}}",
                 src: "{{source}}",
@@ -23,7 +23,23 @@ export default {
                 path: "{{path}}",
                 pathname: "{{pathname}}",
                 "content-type": "{{content-type}}",
-                public: "true"
+                headers: { "cache-control": "public, max-age=31536000" }
+            }
+        },
+        {
+            entry: "./src",
+            array: "files",
+            languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
+            include: ["/admin/", "/account/", "/apps/"],
+            object: {
+                name: "{{name}}",
+                src: "{{source}}",
+                host: ["*"],
+                directory: "/",
+                path: "{{path}}",
+                pathname: "{{pathname}}",
+                "content-type": "{{content-type}}",
+                headers: { "cache-control": "private, max-age=31536000" }
             }
         },
         {

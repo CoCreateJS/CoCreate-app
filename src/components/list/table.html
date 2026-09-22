@@ -1,4 +1,7 @@
-<div class="app-panel">
+<div class="app-panel component-list-table">
+	<link
+		rel="stylesheet"
+		href="/components/list/table.css" />
 	<div
 		class="h-100"
 		plugin='{"$SimpleBar": ["$this", {}]}'>
@@ -37,6 +40,8 @@
 							<th
 								template="column"
 								render-as="column"
+								data-export-key="{{column.key}}"
+								data-export-label="{{column.label}}"
 								scope="col">
 								<div
 									class="d-flex align-items-center justify-content-between gap-2">
@@ -66,7 +71,7 @@
 						filter-sort-direction="desc"
 						array=""
 						object
-						filter-limit="20"
+						filter-limit="30"
 						render-query="tr[template]">
 						<tr template>
 							<td class="table-selection-column">
@@ -129,4 +134,4 @@
 	</div>
 </div>
 <!--end card-->
-<script src="/components/list/table.js"></script>
+<script src="/components/list/selection.js"></script>

@@ -1,0 +1,142 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+<link rel="stylesheet" href="/components/codearea/index.css" />
+
+	<div class="card-body d-flex flex-column gap-4 h-100"><div class="d-flex justify-content-end w-100"><label class="form-check form-switch"
+					><input
+						class="form-check-input"
+						type="checkbox"
+						role="switch"
+						id="ai-instruction-enabled"
+						key="enabled" /><span class="form-check-label"
+						>Enabled</span
+					></label
+				></div>
+		<input
+			type="hidden"
+			key="_id" />
+		<section>
+			<h5 class="text-uppercase fw-semibold mb-3">
+				Instruction identity
+			</h5>
+			<div class="d-flex flex-wrap gap-3">
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:190px"
+					>Name<input
+						type="text"
+						id="ai-instruction-name"
+						key="name"
+						class="form-control text-lowercase"
+						placeholder="crud"
+						required
+				/></label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow:2 flex-basis:360px min-width:260px"
+					>Description<input
+						type="text"
+						id="ai-instruction-description"
+						key="description"
+						class="form-control"
+						placeholder="CoCreate CRUD guidance"
+						required
+				/></label>
+			</div>
+		</section>
+		<section class="border-top border-top-dashed pt-3">
+			<h5 class="text-uppercase fw-semibold mb-2">
+				Loading behavior
+			</h5>
+			<p class="text-muted mb-3">
+				Default instructions are loaded into the shared instruction
+				map when the AI server starts.
+			</p>
+			<div class="d-flex flex-wrap gap-4">
+				<label class="form-check form-switch"
+					><input
+						class="form-check-input"
+						type="checkbox"
+						role="switch"
+						id="ai-instruction-default"
+						key="default" /><span class="form-check-label"
+						>Load by default</span
+					></label
+				>
+				
+			</div>
+		</section>
+		<section class="border-top border-top-dashed pt-3">
+			<div class="d-flex flex-column gap-1">
+<label class="form-label" for="ai-instruction-instructions">Instructions</label>
+<codearea class="component-codearea border rounded p-3">
+    <pre aria-hidden="true"><code class="language-markdown"></code></pre>
+    <textarea id="ai-instruction-instructions" key="instructions" type="code" lang="markdown"
+        value-type="text" value-evaluate="false" height="auto" rows="1"
+        class="form-control font-monospace" spellcheck="false"
+        aria-label="Instructions" required></textarea>
+    <button type="button" class="component-codearea-copy"
+    actions="clipboard, copied, timeout(1200), copyreset"
+    clipboard-query="$parent textarea" event-name="copied, copyreset"
+    copied.class="is-copied" copied.aria-label="Copied"
+    copyreset.class="is-copied, " copyreset.aria-label="Copy instructions"
+    aria-label="Copy instructions" title="Copy instructions">
+    <i class="ri-file-copy-line" aria-hidden="true"></i>
+    <i class="ri-check-line" aria-hidden="true"></i>
+</button>
+</codearea>
+</div>
+		</section>
+		<section class="border-top border-top-dashed pt-3">
+			<div class="d-flex flex-wrap gap-3">
+				<div class="d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:260px">
+<label class="form-label" for="ai-instruction-examples">Examples</label>
+<codearea class="component-codearea border rounded p-3">
+    <pre aria-hidden="true"><code class="language-json"></code></pre>
+    <textarea id="ai-instruction-examples" key="examples" type="code" lang="json"
+        value-type="json" value-evaluate="false" height="auto" rows="1"
+        class="form-control font-monospace" spellcheck="false"
+        aria-label="Examples"></textarea>
+    <button type="button" class="component-codearea-copy"
+    actions="clipboard, copied, timeout(1200), copyreset"
+    clipboard-query="$parent textarea" event-name="copied, copyreset"
+    copied.class="is-copied" copied.aria-label="Copied"
+    copyreset.class="is-copied, " copyreset.aria-label="Copy examples"
+    aria-label="Copy examples" title="Copy examples">
+    <i class="ri-file-copy-line" aria-hidden="true"></i>
+    <i class="ri-check-line" aria-hidden="true"></i>
+</button>
+</codearea>
+</div>
+				<div class="d-flex flex-column gap-1 flex-grow-1 flex-basis:360px min-width:260px">
+<label class="form-label" for="ai-instruction-sources">Sources</label>
+<codearea class="component-codearea border rounded p-3">
+    <pre aria-hidden="true"><code class="language-json"></code></pre>
+    <textarea id="ai-instruction-sources" key="sources" type="code" lang="json"
+        value-type="json" value-evaluate="false" height="auto" rows="1"
+        class="form-control font-monospace" spellcheck="false"
+        aria-label="Sources"></textarea>
+    <button type="button" class="component-codearea-copy"
+    actions="clipboard, copied, timeout(1200), copyreset"
+    clipboard-query="$parent textarea" event-name="copied, copyreset"
+    copied.class="is-copied" copied.aria-label="Copied"
+    copyreset.class="is-copied, " copyreset.aria-label="Copy sources"
+    aria-label="Copy sources" title="Copy sources">
+    <i class="ri-file-copy-line" aria-hidden="true"></i>
+    <i class="ri-check-line" aria-hidden="true"></i>
+</button>
+</codearea>
+</div>
+			</div>
+		</section>
+		<p class="text-muted fs-12 mb-0">
+			Restart the AI server after changing an enabled default
+			instruction so its in-memory copy is refreshed.
+		</p>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

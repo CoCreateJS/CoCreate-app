@@ -1,0 +1,76 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-details app-with-image"
+	array
+	object
+	autocomplete="off">
+
+<link rel="stylesheet" href="/components/codearea/index.css" />
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<section
+			class="app-card d-flex flex-column gap-3 pb-3 w-100"
+			src="/apps/servers/configs/components/card.html"></section>
+		<div class="text-muted">
+			<i class="ri-cloud-line me-1" aria-hidden="true"></i><span key="provider"></span>
+		</div>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">Runtime scope</h6>
+			<div class="d-flex flex-wrap gap-3">
+				<div class="border border-dashed rounded p-3 flex-grow-1" style="flex-basis: 200px; min-width: 180px">
+					<span class="text-muted d-block mb-1">Cluster</span>
+					<code class="text-break" key="cluster"></code>
+				</div>
+				<div class="border border-dashed rounded p-3 flex-grow-1" style="flex-basis: 240px; min-width: 210px">
+					<span class="text-muted d-block mb-1">Server</span>
+					<code class="text-break" key="server"></code>
+				</div>
+				<div class="border border-dashed rounded p-3 flex-grow-1" style="flex-basis: 200px; min-width: 180px">
+					<span class="text-muted d-block mb-1">Worker</span>
+					<code class="text-break" key="worker"></code>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">Configuration</h6>
+			<codearea class="component-codearea border rounded p-3">
+    <pre aria-hidden="true"><code class="language-json"></code></pre>
+    <textarea id="server-config-json-details" key="config" type="code" lang="json"
+        value-type="json" value-evaluate="false" height="auto" rows="1"
+        class="form-control font-monospace" spellcheck="false"
+        aria-label="Runtime configuration" readonly save="false"></textarea>
+    <button type="button" class="component-codearea-copy"
+        actions="clipboard, copied, timeout(1200), copyreset"
+        clipboard-query="$parent textarea" event-name="copied, copyreset"
+        copied.class="is-copied" copied.aria-label="Configuration copied"
+        copyreset.class="is-copied, " copyreset.aria-label="Copy configuration"
+        aria-label="Copy configuration" title="Copy configuration">
+        <i class="ri-file-copy-line" aria-hidden="true"></i>
+        <i class="ri-check-line" aria-hidden="true"></i>
+    </button>
+</codearea>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">Record information</h6>
+			<div class="d-flex flex-wrap gap-4">
+				<div>
+					<span class="text-muted d-block">Record ID</span>
+					<code key="_id"></code>
+				</div>
+				<div>
+					<span class="text-muted d-block">Last modified</span>
+					<span key="modified.on"></span>
+				</div>
+			</div>
+		</section>
+
+		<div
+			class="w-100"
+			src="components/activities.html"
+			aria-label="Server Configuration Activities"></div>
+	</div>
+
+</form>

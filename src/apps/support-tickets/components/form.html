@@ -1,0 +1,143 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body align-items:flex-start d-flex flex-column gap-4 h-100">
+		<label
+			class="form-label flex-grow-1 flex-basis:140px min-width:120px"
+			for="ticket-id-field">
+			ID
+			<input
+				type="text"
+				id="ticket-id-field"
+				key="ticket_id"
+				name="ticket_id"
+				class="form-control"
+				placeholder="Generated automatically"
+				readonly />
+		</label>
+
+		<label
+			class="form-label flex-grow:3 flex-basis:360px min-width:240px"
+			for="ticket-title-field">
+			Title
+			<input
+				type="text"
+				id="ticket-title-field"
+				key="title"
+				name="title"
+				class="form-control"
+				placeholder="What can we help with?"
+				required />
+		</label>
+
+		<label
+			class="form-label flex-grow:2 flex-basis:260px min-width:220px"
+			for="ticket-client-name-field">
+			Client Name
+			<input
+				type="text"
+				id="ticket-client-name-field"
+				key="client_name"
+				name="client_name"
+				class="form-control"
+				placeholder="Enter client name"
+				required />
+		</label>
+
+		<label
+			class="form-label flex-grow:2 flex-basis:260px min-width:220px"
+			for="ticket-assigned-to-field">
+			Assigned To
+			<input
+				type="text"
+				id="ticket-assigned-to-field"
+				key="assigned_to"
+				name="assigned_to"
+				class="form-control"
+				placeholder="Enter assignee"
+				required />
+		</label>
+
+		<label
+			class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+			for="ticket-create-date-field">
+			Create Date
+			<input
+				type="text"
+				id="ticket-create-date-field"
+				key="create_date"
+				name="create_date"
+				class="form-control"
+				date-picker="flatpickr"
+				data-date-format="d M, Y"
+				placeholder="Select date" />
+		</label>
+
+		<label
+			class="form-label flex-grow-1 flex-basis:180px min-width:160px"
+			for="ticket-due-date-field">
+			Due Date
+			<input
+				type="text"
+				id="ticket-due-date-field"
+				key="due_date"
+				name="due_date"
+				class="form-control"
+				date-picker="flatpickr"
+				data-date-format="d M, Y"
+				placeholder="Select date" />
+		</label>
+
+		<label
+			class="form-label flex-grow-1 flex-basis:160px min-width:140px"
+			for="ticket-status-field">
+			Status
+			<select
+				class="form-select"
+				id="ticket-status-field"
+				key="status"
+				name="status">
+				<option value="">Select status</option>
+				<option value="New">New</option>
+				<option value="Inprogress">In Progress</option>
+				<option value="Open">Open</option>
+				<option value="Closed">Closed</option>
+			</select>
+		</label>
+
+		<label
+			class="form-label flex-grow-1 flex-basis:160px min-width:140px"
+			for="ticket-priority-field">
+			Priority
+			<select
+				class="form-select"
+				id="ticket-priority-field"
+				key="priority"
+				name="priority">
+				<option value="">Select priority</option>
+				<option value="High">High</option>
+				<option value="Medium">Medium</option>
+				<option value="Low">Low</option>
+			</select>
+		</label>
+
+		<label
+			class="form-label width:100%"
+			for="ticket-description-field">
+			Description
+			<textarea
+				id="ticket-description-field"
+				key="description"
+				name="description"
+				class="form-control"
+				rows="5"
+				placeholder="Describe the issue, request, or question"></textarea>
+		</label>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

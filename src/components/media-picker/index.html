@@ -1,0 +1,115 @@
+<link
+	rel="stylesheet"
+	href="/components/media-picker/index.css" />
+<div class="media-picker-toolbar">
+	<strong>Drive</strong>
+	<label class="btn btn-sm btn-light mb-0">
+		<i
+			class="ri-upload-2-line"
+			aria-hidden="true"></i>
+		Upload
+		<input
+			type="file"
+			hidden
+			data-picker-upload
+			array="files"
+			object=""
+			key="{}"
+			read="false"
+			realtime="false"
+			accept="image/*" />
+	</label>
+	<label
+		class="btn btn-sm btn-light mb-0"
+		data-picker-camera>
+		<i
+			class="ri-camera-line"
+			aria-hidden="true"></i>
+		Camera
+		<input
+			type="file"
+			hidden
+			data-picker-upload
+			array="files"
+			object=""
+			key="{}"
+			read="false"
+			realtime="false"
+			accept="image/*"
+			capture="environment" />
+	</label>
+	<button
+		type="button"
+		class="btn btn-sm btn-light"
+		data-picker-close
+		aria-label="Close image picker">
+		<i
+			class="ri-close-line"
+			aria-hidden="true"></i>
+	</button>
+</div>
+<div class="media-picker-search">
+	<input
+		type="search"
+		class="form-control form-control-sm"
+		placeholder="Search images…"
+		aria-label="Search images by name"
+		autocomplete="off"
+		filter-query="$closest .media-picker-dropdown [data-picker-results]"
+		filter-query-key="name.$regex"
+		filter-query-options="i" />
+</div>
+<div class="media-picker-scroll">
+	<div
+		id="media-picker-grid"
+		class="media-picker-grid"
+		data-picker-results
+		array="files"
+		object
+		filter-limit="10"
+		filter-query-key="content-type.$regex"
+		filter-query-value="^image/"
+		filter-sort-key="_id"
+		filter-sort-direction="asc"
+		render-query="[template]">
+		<input
+			type="hidden"
+			filter-query="$parent"
+			filter-key="src"
+			filter-value="0" />
+		<button
+			type="button"
+			class="media-picker-item"
+			template
+			data-picker-image
+			data-path="{{object.pathname}}"
+			data-file-id="{{object._id}}"
+			data-name="{{object.name}}"
+			title="{{object.name}}">
+			<img
+				src="{{object.pathname}}"
+				alt="{{object.name}}"
+				loading="lazy" />
+			<span class="text-truncate">{{object.name}}</span>
+		</button>
+	</div>
+	<div
+		style="height: 1px"
+		filter-on="scroll"
+		filter-limit="10"
+		filter-query="$previous"></div>
+</div>
+<p
+	class="media-picker-status text-muted"
+	role="status"></p>
+<div
+	class="px-3 pb-3"
+	data-picker-save-row>
+	<button
+		type="button"
+		class="btn btn-primary btn-sm"
+		data-picker-save
+		hidden>
+		Save upload
+	</button>
+</div>

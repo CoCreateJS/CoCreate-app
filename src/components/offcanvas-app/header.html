@@ -2,12 +2,13 @@
 	class="card-header offcanvas-app-topbar flex-shrink-0"
 	aria-label="{{app.name}} view and window controls">
 	<link rel="stylesheet" href="/components/offcanvas-app/header.css" />
+	<link rel="stylesheet" href="/components/offcanvas-app/index.css" />
 	<ul
 		class="list-inline hstack justify-content-between align-items-center gap-2 mb-0"
 		style="min-height: unset"
 		role="toolbar"
 		aria-label="{{app.name}} controls">
-		<li class="{{app.name}}-record-actions list-inline-item">
+		<li class="offcanvas-app-record-actions {{app.name}}-record-actions list-inline-item">
 			<div
 				class="dropdown d-inline-block"
 				role="region"
@@ -31,40 +32,14 @@
 					aria-label="{{app.name}} actions menu">
 					<li>
 						<a
-							class="dropdown-item"
-							aria-controls="{{app.name}}-details-view"
-							aria-controls-group="{{app.name}}-views"
-							aria-expanded="true"
-							aria-open
-							role="menuitem">
-							<i
-								class="ri-eye-fill align-bottom me-2 text-muted"
-								aria-hidden="true"></i
-							>View
-						</a>
-					</li>
-					<li>
-						<a
-							class="dropdown-item"
-							aria-controls="{{app.name}}-form-view"
-							aria-controls-group="{{app.name}}-views"
-							aria-expanded="false"
-							aria-open
-							role="menuitem">
-							<i
-								class="ri-pencil-fill align-bottom me-2 text-muted"
-								aria-hidden="true"></i
-							>Edit
-						</a>
-					</li>
-					<li>
-						<a
-							class="dropdown-item remove-item-btn"
+							class="dropdown-item remove-item-btn text-danger"
 							aria-haspopup="dialog"
 							aria-label="Delete {{app.name}}"
 							aria-controls="removeItemModal"
 							role="menuitem"
 							state-to="delete-record"
+							state.delete-query="$document #delete-record"
+							state.actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])"
 							state.array=""
 							state.object="">
 							<input
@@ -80,7 +55,7 @@
 								input-query="$parent"
 								hidden />
 							<i
-								class="ri-delete-bin-fill align-bottom me-2 text-muted"
+								class="ri-delete-bin-fill align-bottom me-2"
 								aria-hidden="true"></i
 							>Delete
 						</a>
@@ -142,7 +117,7 @@
 			role="group"
 			aria-label="Window controls"
 			class="hstack gap-1 ms-auto">
-			<li class="{{app.name}}-dock-control d-none d-md-inline">
+			<li class="offcanvas-app-dock-control {{app.name}}-dock-control d-none d-md-inline">
 				<a
 					role="button"
 					title="Dock Right"

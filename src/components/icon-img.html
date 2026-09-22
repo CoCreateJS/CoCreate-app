@@ -1,0 +1,40 @@
+<div
+	data-media-field
+	class="avatar-xl p-0 position-relative d-inline-block mb-4">
+	<img
+		src="/assets/images/providers/api.svg"
+		key="icon"
+		save="false"
+		alt="image"
+		width="100%"
+		height="100%"
+		class="avatar-xl object-fit-contain"
+		onload="this.hidden = false"
+		onerror="if (this.getAttribute('src') === '/assets/images/providers/api.svg') { this.hidden = true; } else { this.src = '/assets/images/providers/api.svg'; }" />
+	<input
+		type="hidden"
+		key="icon"
+		media-value="src"
+		input-query="$closest form [data-provider-icon][]"
+		input.save="false"
+		realtime="true"
+		set-value-bubbles="true"
+		data-media-value />
+	<button
+		type="button"
+		class="avatar-xs rounded-circle position-absolute right:0 left:auto bottom:0 overflow-hidden cursor-pointer border-0 p-0"
+		data-picker-open
+		aria-haspopup="dialog"
+		aria-expanded="false"
+		accept="image/*"
+		path="/media/logos/"
+		filter-query-key="content-type.$regex"
+		filter-query-value="^image/"
+		title="Choose image"
+		aria-label="Choose image">
+		<i
+			class="avatar-title ri-camera-fill"
+			aria-hidden="true"></i>
+	</button>
+</div>
+<script src="/components/media-picker/index.js"></script>

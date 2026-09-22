@@ -6,7 +6,7 @@ export default {
         "name": "Orders",
         "singularName": "Order",
         "path": "/apps/orders",
-        "card": "/apps/sales-orders/card.html",
+        "card": "/apps/sales-orders/components/card.html",
         "cardTemplate": "/apps/sales-orders/templates/card.html",
         "templates": {
             "card": "templates/card.html",
@@ -31,7 +31,7 @@ export default {
                 "label": "Order Number",
                 "tagName": "input",
                 "filterTemplate": "<input class=\"form-control\" type=\"text\" placeholder=\"Order number\" filter-query=\"$document .list-view\" filter-query-key=\"order_number\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/sales-orders/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"sales_orders\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.order_number}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/sales-orders/aside.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"sales_orders\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.order_number}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",

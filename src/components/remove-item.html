@@ -26,11 +26,11 @@
 					colors="primary:#f7b84b,secondary:#f06548"
 					style="width: 100px; height: 100px"></lord-icon>
 				<div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-					<h4 id="removeItemModalLabel">Are you Sure?</h4>
+					<h4 id="removeItemModalLabel">Confirm deletion</h4>
 					<p
 						class="text-muted mx-4 mb-0"
 						id="removeItemModalDesc">
-						Are you Sure You want to Remove this Record?
+						Are you sure you want to delete the selected records?
 					</p>
 				</div>
 			</div>
@@ -48,12 +48,13 @@
 					class="btn w-sm btn-danger"
 					id="delete-record"
 					state-id="delete-record"
+					delete-query="$document #delete-record"
 					aria-controls="removeItemModal"
 					aria-expanded="true"
 					actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])"
 					array=""
 					object="">
-					Yes, Delete It!
+					Delete
 				</button>
 			</div>
 		</div>

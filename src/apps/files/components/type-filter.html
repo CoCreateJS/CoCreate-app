@@ -1,0 +1,75 @@
+<style>
+	#fileTypeMoreButton {
+		border-bottom-left-radius: 0;
+		border-left: 0;
+		border-top-left-radius: 0;
+		border-left-width: 0;
+	}
+
+	#fileTypeMoreMenu .btn-check:checked + .dropdown-item {
+		color: var(--coc-primary);
+		background-color: var(--coc-primary-bg-subtle);
+	}
+
+	#fileTypeMoreMenu .btn-check:focus-visible + .dropdown-item {
+		outline: 2px solid var(--coc-primary);
+		outline-offset: -2px;
+	}
+
+	.dropdown:has(> #fileTypeMoreMenu .btn-check:checked) > #fileTypeMoreButton {
+		color: var(--coc-btn-active-color);
+		background-color: var(--coc-primary);
+	}
+</style>
+
+<div class="btn-group" role="group" aria-label="File categories">
+    <input type="radio" class="btn-check" id="file-type-all"
+        name="file-type" key="file-type" value=""
+        value-evaluate="false" checked aria-default="true"
+        aria-controls="list-view" filter-query-key="content-type.$regex"
+        filter-query='$document #list-view [data-files-results]:not([hidden])[]'
+        state="{&quot;files-folders&quot;:{&quot;hidden&quot;:true,&quot;read&quot;:&quot;false&quot;},&quot;list&quot;:{&quot;filter-query-key&quot;:&quot;content-type.$ne&quot;,&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-owner&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-starred&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-deleted&quot;:{&quot;value&quot;:&quot;{\&quot;$ne\&quot;:true}&quot;}}" />
+    <label class="btn btn-outline-primary material-shadow-none mb-0" for="file-type-all">All Media</label>
+    <input type="radio" class="btn-check" id="file-type-images"
+        name="file-type" key="file-type" value="^image/"
+        value-evaluate="false"
+        aria-controls="list-view" filter-query-key="content-type.$regex"
+        filter-query='$document #list-view [data-files-results]:not([hidden])[]'
+        state="{&quot;files-folders&quot;:{&quot;hidden&quot;:true,&quot;read&quot;:&quot;false&quot;},&quot;list&quot;:{&quot;filter-query-key&quot;:&quot;content-type.$ne&quot;,&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-owner&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-starred&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-deleted&quot;:{&quot;value&quot;:&quot;{\&quot;$ne\&quot;:true}&quot;}}" />
+    <label class="btn btn-outline-primary material-shadow-none mb-0" for="file-type-images">Images</label>
+    <input type="radio" class="btn-check" id="file-type-videos"
+        name="file-type" key="file-type" value="^video/"
+        value-evaluate="false"
+        aria-controls="list-view" filter-query-key="content-type.$regex"
+        filter-query='$document #list-view [data-files-results]:not([hidden])[]'
+        state="{&quot;files-folders&quot;:{&quot;hidden&quot;:true,&quot;read&quot;:&quot;false&quot;},&quot;list&quot;:{&quot;filter-query-key&quot;:&quot;content-type.$ne&quot;,&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-owner&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-starred&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-deleted&quot;:{&quot;value&quot;:&quot;{\&quot;$ne\&quot;:true}&quot;}}" />
+    <label class="btn btn-outline-primary material-shadow-none mb-0" for="file-type-videos">Videos</label>
+    <input type="radio" class="btn-check" id="file-type-audio"
+        name="file-type" key="file-type" value="^audio/"
+        value-evaluate="false"
+        aria-controls="list-view" filter-query-key="content-type.$regex"
+        filter-query='$document #list-view [data-files-results]:not([hidden])[]'
+        state="{&quot;files-folders&quot;:{&quot;hidden&quot;:true,&quot;read&quot;:&quot;false&quot;},&quot;list&quot;:{&quot;filter-query-key&quot;:&quot;content-type.$ne&quot;,&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-owner&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-starred&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-deleted&quot;:{&quot;value&quot;:&quot;{\&quot;$ne\&quot;:true}&quot;}}" />
+    <label class="btn btn-outline-primary material-shadow-none mb-0" for="file-type-audio">Audio</label>
+    <input type="radio" class="btn-check" id="file-type-docs"
+        name="file-type" key="file-type" value="^(application|text)/"
+        value-evaluate="false"
+        aria-controls="list-view" filter-query-key="content-type.$regex"
+        filter-query='$document #list-view [data-files-results]:not([hidden])[]'
+        state="{&quot;files-folders&quot;:{&quot;hidden&quot;:true,&quot;read&quot;:&quot;false&quot;},&quot;list&quot;:{&quot;filter-query-key&quot;:&quot;content-type.$ne&quot;,&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-owner&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-starred&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-deleted&quot;:{&quot;value&quot;:&quot;{\&quot;$ne\&quot;:true}&quot;}}" />
+    <label class="btn btn-outline-primary material-shadow-none mb-0" for="file-type-docs">Docs</label>
+    <input type="radio" class="btn-check" id="file-type-favorites"
+        name="file-type" key="file-type" value=""
+        value-evaluate="false"
+        aria-controls="list-view" filter-query-key="content-type.$regex"
+        filter-query='$document #list-view [data-files-results]:not([hidden])[]'
+        state="{&quot;files-folders&quot;:{&quot;hidden&quot;:true,&quot;read&quot;:&quot;false&quot;},&quot;list&quot;:{&quot;filter-query-key&quot;:&quot;content-type.$ne&quot;,&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-owner&quot;:{&quot;value&quot;:&quot;&quot;},&quot;files-starred&quot;:{&quot;value&quot;:&quot;$user_id&quot;},&quot;files-deleted&quot;:{&quot;value&quot;:&quot;{\&quot;$ne\&quot;:true}&quot;}}" />
+    <label class="btn btn-outline-primary material-shadow-none mb-0" for="file-type-favorites">Favorites</label>
+    <div class="dropdown flex-shrink-0">
+        <button type="button" class="btn btn-outline-primary material-shadow-none mb-0 dropdown-toggle"
+            id="fileTypeMoreButton" aria-controls="fileTypeMoreMenu" aria-expanded="false">More</button>
+        <ul id="fileTypeMoreMenu" class="dropdown-menu" role="presentation"
+            aria-labelledby="fileTypeMoreButton" aria-hidden="true" aria-close-on="anywhere"></ul>
+    </div>
+</div>
+<script src="/apps/files/components/type-filter.js"></script>

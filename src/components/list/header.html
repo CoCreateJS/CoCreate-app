@@ -1,8 +1,13 @@
 <div
 	class="list-header d-flex flex-wrap justify-content-between align-items-center gap-2">
 	<link rel="stylesheet" href="/components/list/header.css" />
+	<link rel="stylesheet" href="/components/list/selection.css" />
 
 	<div class="list-header-primary d-flex align-items-center gap-2">
+        <button type="button" class="list-toolbar-control list-toolbar-icon list-files-menu btn btn-light"
+            aria-controls="files-sidebar" aria-expanded="false" aria-label="Toggle files menu" title="Files menu">
+            <i class="ri-menu-2-line" aria-hidden="true"></i>
+        </button>
 		<button
 			type="button"
 			class="list-toolbar-control list-compact-action list-filter-button btn btn-light"
@@ -30,6 +35,15 @@
 		</div>
 	</div>
 
+	<textarea id="list-export-fields" state-id="app" array="apps" object
+		key="fields" value-type="json" value-evaluate="false" hidden></textarea>
+
+	<div data-selection-summary hidden>
+		<span data-selection-count class="text-muted fs-12" aria-live="polite"></span>
+		<button type="button" class="btn btn-sm btn-link p-0" data-selection-all>Select all loaded</button>
+		<button type="button" class="btn btn-sm btn-link p-0" data-selection-clear>Clear</button>
+	</div>
+
 	<!-- List actions -->
 	<div class="list-header-actions hstack gap-2 ms-auto">
 		<div class="dropdown">
@@ -43,9 +57,12 @@
 				aria-label="Change view"
 				title="Change view">
 				<i
-					state-id="list-view"
-					class="ri-layout-grid-line"></i>
-				<span class="list-action-label">View</span>
+					class="list-view-grid-icon ri-layout-grid-line"
+					aria-hidden="true"></i>
+				<i
+					class="list-view-list-icon ri-list-unordered"
+					aria-hidden="true"></i>
+				<span class="list-action-label"><span class="list-view-grid-label">Grid</span><span class="list-view-list-label">List</span></span>
 			</button>
 			<ul
 				id="viewDropdownMenu"
@@ -70,8 +87,8 @@
 						href="#"
 						state-to="list-view"
 						state.src="/components/list/table.html">
-						<i class="ri-table-line me-2"></i>
-						Table
+						<i class="ri-list-unordered me-2"></i>
+						List
 					</a>
 				</li>
 			</ul>
@@ -81,8 +98,15 @@
 			type="button"
 			class="list-toolbar-control list-toolbar-icon btn btn-soft-danger"
 			id="remove-actions"
-			actions="delete"
-			delete-query="$document #list-view table[data-row-selection] tbody [data-select-row]:checked[]"
+			aria-controls="removeItemModal"
+			state-to="delete-record"
+			state.delete-query="$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected=&quot;true&quot;]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]"
+			state.actions="delete"
+			state.array=""
+			state.object=""
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			aria-open
 			aria-label="Delete selected items"
 			title="Delete selected items">
 			<i class="ri-delete-bin-2-line" aria-hidden="true"></i>
@@ -105,7 +129,7 @@
 				array="apps"
 				object
 				key="path"
-				value-suffix="/form.html"
+				value-suffix="/create.html"
 				input.state.src="$value"
 				input-query="$parent" />
 			<div
@@ -152,52 +176,48 @@
 				aria-hidden="true"
 				aria-close-on="anywhere">
 				<li>
-					<a
-						class="dropdown-item"
-						href="#"
-						role="menuitem"
-						>Copy</a
-					>
+					<button type="button" class="dropdown-item" role="menuitem"
+						actions="import"
+						import-query='$document #list-view [state-id="list"]'>
+						<i class="ri-upload-2-line me-2" aria-hidden="true"></i>Import
+					</button>
 				</li>
 				<li>
-					<a
-						class="dropdown-item"
-						href="#"
-						role="menuitem"
-						>Import</a
-					>
+					<button type="button" class="dropdown-item" role="menuitem"
+						actions="export" export-format="json"
+						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [state-id="list"][]'>
+						<i class="ri-download-2-line me-2" aria-hidden="true"></i>Export JSON
+					</button>
 				</li>
 				<li>
-					<a
-						class="dropdown-item"
-						href="#"
-						role="menuitem"
-						>Export</a
-					>
+					<button type="button" class="dropdown-item" role="menuitem"
+						actions="export" export-format="csv"
+						export-columns-query="$document #list-view th[data-export-key]:not([template])[], $document #list-export-fields"
+						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [state-id="list"][]'>
+						<i class="ri-download-2-line me-2" aria-hidden="true"></i>Export CSV
+					</button>
 				</li>
 				<li>
-					<a
-						class="dropdown-item"
-						href="#"
-						role="menuitem"
-						>Print</a
-					>
-				</li>
-				<li>
-					<a
-						class="dropdown-item"
-						href="#"
-						role="menuitem"
-						>Download as CSV</a
-					>
+					<button type="button" class="dropdown-item" role="menuitem"
+						actions="print"
+						print-query="$document #list-view">
+						<i class="ri-printer-line me-2" aria-hidden="true"></i>Print
+					</button>
 				</li>
 				<li><hr class="dropdown-divider" /></li>
 				<li>
 					<a
 						class="dropdown-item text-danger"
 						role="menuitem"
-						actions="delete"
-						delete-query="$document #list-view table[data-row-selection] tbody [data-select-row]:checked[]">
+						aria-controls="removeItemModal"
+			state-to="delete-record"
+			state.delete-query="$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected=&quot;true&quot;]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]"
+			state.actions="delete"
+			state.array=""
+			state.object=""
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			aria-open>
 						<i class="ri-delete-bin-2-line me-2"></i>
 						Delete selected
 					</a>

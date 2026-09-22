@@ -25,7 +25,7 @@ export default {
         "name": "Webhooks",
         "singularName": "Webhook",
         "path": "/apps/apis/webhooks",
-        "card": "/apps/apis/webhooks/card.html",
+        "card": "/apps/apis/webhooks/components/card.html",
         "cardTemplate": "/apps/apis/webhooks/templates/card.html",
         "templates": {
             "card": "templates/card.html",
@@ -48,7 +48,7 @@ export default {
                 "label": "Webhook Path",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"webhook-path-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by path\" filter-query=\"$document .list-view\" filter-query-key=\"path.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name font-monospace\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/webhooks/form.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"webhooks\" state.object=\"{{object._id}}\"></div>\n            <code>/webhooks/{{object.path}}</code>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name font-monospace\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/webhooks/aside.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"webhooks\" state.object=\"{{object._id}}\"></div>\n            <code>/webhooks/{{object.path}}</code>\n          </a>\n        ",
                 "attributes": [
                     { "name": "class", "value": "form-control font-monospace" },
                     { "name": "id", "value": "webhook-path" },

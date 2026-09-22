@@ -1,0 +1,78 @@
+<form
+	state-id="offcanvas-app-form"
+	array
+	object
+	autocomplete="off"
+	class="app-details app-with-image">
+	<link
+		rel="stylesheet"
+		href="/components/codearea/index.css" />
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<section
+			class="app-card d-flex flex-column gap-3 pb-3 w-100"
+			src="/apps/apis/endpoints/components/card.html"></section>
+		<section>
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				<label for="endpoint-details-route">Endpoint path</label>
+			</h6>
+			<codearea class="component-codearea border rounded p-3">
+				<pre
+					aria-hidden="true"><code class="language-json"></code></pre>
+				<textarea
+					id="endpoint-details-route"
+					type="code"
+					lang="json"
+					key="endpoint"
+					value-type="json"
+					value-evaluate="false"
+					height="auto"
+					rows="1"
+					readonly
+					spellcheck="false"
+					aria-label="Endpoint path"></textarea>
+			</codearea>
+		</section>
+		<section>
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				<label for="endpoint-details-actions">Execution pipeline</label>
+			</h6>
+			<codearea class="component-codearea border rounded p-3">
+				<pre
+					aria-hidden="true"><code class="language-json"></code></pre>
+				<textarea
+					id="endpoint-details-actions"
+					type="code"
+					lang="json"
+					key="actions"
+					value-type="json"
+					value-evaluate="false"
+					height="auto"
+					rows="1"
+					readonly
+					spellcheck="false"
+					aria-label="Execution pipeline"></textarea>
+			</codearea>
+		</section>
+		<section>
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				<label for="endpoint-details-data">Request data</label>
+			</h6>
+			<codearea class="component-codearea border rounded p-3">
+				<pre
+					aria-hidden="true"><code class="language-json"></code></pre>
+				<textarea
+					id="endpoint-details-data"
+					type="code"
+					lang="json"
+					key="data"
+					value-type="json"
+					value-evaluate="false"
+					height="auto"
+					rows="1"
+					readonly
+					spellcheck="false"
+					aria-label="Request data"></textarea>
+			</codearea>
+		</section>
+	</div>
+</form>

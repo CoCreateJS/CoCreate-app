@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/apps/files/index.css" />
+
+<div class="files-app">
+    <div class="chat-wrapper d-lg-flex">
+        <div
+            id="files-sidebar"
+            state-id="files-sidebar"
+            state.aria-hidden
+            aria-close-on="button"
+            class="file-manager-sidebar minimal-border"
+            aria-hidden="true"
+            src="/apps/files/components/sidenav.html"></div>
+        <button
+            type="button"
+            tabindex="-1"
+            class="file-sidebar-backdrop"
+            aria-label="Close files menu"
+            aria-controls="files-sidebar"
+            aria-close
+            aria-expanded="false"></button>
+
+        <div class="file-manager-content minimal-border flex-grow-1">
+            <div class="files-content-header" src="/apps/files/components/header.html"></div>
+            <div class="file-manager-content-scroll" plugin='{"$SimpleBar": ["$this", {}]}'>
+                <div
+                    id="file-view"
+                    class="files-grid-sections"
+                    state-id="list-view"
+                    src="/apps/files/components/browser.html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div src="/apps/files/components/rename.html"></div>
+<div src="/apps/files/components/delete.html"></div>

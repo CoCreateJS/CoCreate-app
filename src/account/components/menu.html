@@ -91,7 +91,7 @@
 				<a
 					id="account-dashboards-btn"
 					state-to="accountView"
-					state.src="/account/dashboard.html"
+					state.src="/apps/dashboards/index.html"
 					class="nav-link menu-link">
 					<i class="ri-dashboard-2-line"></i>
 					<span>Dashboards</span>
@@ -123,12 +123,12 @@
 						state.filter-query-value=""
 						state.filter-query-options=""
 						state.array="files"
-						state.filter-query-value=""></div>
+						state.src="/apps/files/templates/card.html"></div>
 				</a>
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/files/form.html"
+					state.src="/apps/files/create.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
@@ -136,7 +136,7 @@
 					aria-label="Create new file"
 					title="Create new file">
 					<div
-						state-to="create-panel-form"
+						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="files"></div>
 					<i class="ri-add-line"></i>
@@ -170,7 +170,7 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/apps/form.html"
+					state.src="/apps/apps/create.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
@@ -178,7 +178,7 @@
 					aria-label="Create new app"
 					title="Create new app">
 					<div
-						state-to="create-panel-form"
+						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="apps"></div>
 					<i class="ri-add-line"></i>
@@ -299,7 +299,7 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/servers/configs/form.html"
+					state.src="/apps/servers/configs/create.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
@@ -307,7 +307,7 @@
 					aria-label="Create server configuration"
 					title="Create server configuration">
 					<div
-						state-to="create-panel-form"
+						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="servers_config"></div>
 					<i class="ri-add-line"></i>
@@ -400,13 +400,13 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/apis/form.html"
+					state.src="/apps/apis/create.html"
 					aria-controls="create-panel"
 					aria-open
 					aria-label="Create API"
 					title="Create API">
 					<div
-						state-to="create-panel-form"
+						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="apis"></div>
 					<i class="ri-add-line"></i>
@@ -441,13 +441,13 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/apis/endpoints/form.html"
+					state.src="/apps/apis/endpoints/create.html"
 					aria-controls="create-panel"
 					aria-open
 					aria-label="Create endpoint"
 					title="Create endpoint">
 					<div
-						state-to="create-panel-form"
+						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="endpoints"></div>
 					<i class="ri-add-line"></i>
@@ -484,13 +484,13 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/apis/webhooks/form.html"
+					state.src="/apps/apis/webhooks/create.html"
 					aria-controls="create-panel"
 					aria-open
 					aria-label="Create webhook"
 					title="Create webhook">
 					<div
-						state-to="create-panel-form"
+						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="webhooks"></div>
 					<i class="ri-add-line"></i>
@@ -524,13 +524,13 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/api-keys/form.html"
+					state.src="/apps/api-keys/create.html"
 					aria-controls="create-panel"
 					aria-open
 					aria-label="Create API key"
 					title="Create API key">
 					<div
-						state-to="create-panel-form"
+						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="keys"></div>
 					<i class="ri-add-line"></i>
@@ -565,13 +565,13 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/ai/instructions/form.html"
+					state.src="/apps/ai/instructions/create.html"
 					aria-controls="create-panel"
 					aria-open
 					aria-label="Create AI instruction"
 					title="Create AI instruction">
 					<div
-						state-to="create-panel-form"
+						state-to="offcanvas-app-form"
 						state.$reset
 						state.array="ai-instructions"></div>
 					<i class="ri-add-line"></i>

@@ -25,7 +25,7 @@ export default {
         "name": "AI Instructions",
         "singularName": "AI Instruction",
         "path": "/apps/ai/instructions",
-        "card": "/apps/ai/instructions/card.html",
+        "card": "/apps/ai/instructions/components/card.html",
         "cardTemplate": "/apps/ai/instructions/templates/card.html",
         "templates": {
             "card": "templates/card.html",
@@ -49,7 +49,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"ai-instruction-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/ai/instructions/details.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"ai-instructions\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/ai/instructions/aside.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"ai-instructions\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
                 "attributes": [
                     { "name": "class", "value": "form-control" },
                     { "name": "id", "value": "ai-instruction-name" },
@@ -61,7 +61,7 @@ export default {
             {
                 "label": "Default",
                 "tagName": "input",
-                "filterTemplate": "<select id=\"ai-instruction-default-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"default\"><option value=\"\">Any state</option><option value=\"true\">Default</option><option value=\"false\">Not default</option></select>",
+                "filterTemplate": "<select id=\"ai-instruction-default-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"default\"><option value=\"\">Any state</option><option value=\"true\" value-type=\"boolean\">Default</option><option value=\"false\" value-type=\"boolean\">Not default</option></select>",
                 "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.default}}</span>",
                 "attributes": [
                     { "name": "class", "value": "form-check-input" },
@@ -73,7 +73,7 @@ export default {
             {
                 "label": "Enabled",
                 "tagName": "input",
-                "filterTemplate": "<select id=\"ai-instruction-enabled-filter\" class=\"form-select\" value-type=\"boolean\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\">Enabled</option><option value=\"false\">Disabled</option></select>",
+                "filterTemplate": "<select id=\"ai-instruction-enabled-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\" value-type=\"boolean\">Enabled</option><option value=\"false\" value-type=\"boolean\">Disabled</option></select>",
                 "tableTemplate": "<span class=\"badge bg-secondary-subtle text-secondary text-uppercase\">{{object.enabled}}</span>",
                 "attributes": [
                     { "name": "class", "value": "form-check-input" },

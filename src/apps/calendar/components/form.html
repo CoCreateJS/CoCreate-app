@@ -1,0 +1,142 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<label
+			class="form-label"
+			id="type-label w-100">
+			Type
+			<select
+				class="form-select d-block"
+				plugin='{"$Choices":["$this",{"searchEnabled":false}]}'
+				name="category"
+				id="event-category"
+				key="category"
+				required>
+				<option value="bg-danger-subtle">Danger</option>
+				<option value="bg-success-subtle">Success</option>
+				<option
+					value="bg-primary-subtle"
+					selected>
+					Primary
+				</option>
+				<option value="bg-info-subtle">Info</option>
+				<option value="bg-dark-subtle">Dark</option>
+				<option value="bg-warning-subtle">Warning</option>
+			</select>
+			<div class="invalid-feedback">
+				Please select a valid event category
+			</div>
+		</label>
+
+		<label
+			class="form-label w-100"
+			id="event-name-label">
+			Event Name
+			<input
+				class="form-control d-block"
+				placeholder="Enter event name"
+				type="text"
+				name="title"
+				id="event-title"
+				key="title"
+				required=""
+				value="" />
+			<div class="invalid-feedback">
+				Please provide a valid event name
+			</div>
+		</label>
+
+		<label
+			class="form-label"
+			id="event-date-label">
+			Event Date
+			<div class="input-group">
+				<input
+					plugin='{"$flatpickr":["$this",{"mode":"range","minDate":"today","enableTime":false}]}'
+					type="text"
+					id="event-start-date"
+					key="start_date"
+					class="form-control flatpickr flatpickr-input"
+					placeholder="Select date"
+					required=""
+					value="2025-10-01"
+					readonly="readonly" />
+				<span class="input-group-text"
+					><i class="ri-calendar-event-line"></i
+				></span>
+			</div>
+		</label>
+
+		<div class="d-flex flex-wrap gap-3 w-100">
+			<label
+				class="form-label flex-grow-1 width:150px"
+				id="start-time-label">
+				Start Time
+				<div class="input-group">
+					<input
+						plugin='{"$flatpickr":["$this",{"enableTime":true,"noCalendar":true}]}'
+						id="timepicker1"
+						key="start_time"
+						type="text"
+						class="form-control flatpickr flatpickr-input"
+						placeholder="Start time"
+						readonly="readonly" />
+					<span class="input-group-text"
+						><i class="ri-time-line"></i
+					></span>
+				</div>
+			</label>
+
+			<label
+				class="form-label flex-grow-1 width:150px"
+				id="end-time-label">
+				End Time
+				<div class="input-group">
+					<input
+						plugin='{"$flatpickr":["$this",{"enableTime":true,"noCalendar":true}]}'
+						id="timepicker2"
+						key="end_time"
+						type="text"
+						class="form-control flatpickr flatpickr-input"
+						placeholder="End time"
+						readonly="readonly" />
+					<span class="input-group-text"
+						><i class="ri-time-line"></i
+					></span>
+				</div>
+			</label>
+		</div>
+		<label
+			class="form-label"
+			id="location-label">
+			Location
+			<input
+				type="text"
+				class="form-control d-block"
+				name="event-location"
+				id="event-location"
+				key="location"
+				placeholder="Event location" />
+		</label>
+
+		<label
+			class="form-label w-100"
+			id="description-label">
+			Description
+			<textarea
+				class="form-control d-block"
+				id="event-description"
+				key="description"
+				placeholder="Enter a description"
+				rows="3"
+				spellcheck="false"></textarea>
+		</label>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

@@ -807,6 +807,10 @@
 
             const crud = await waitForCrud();
             const provider = selectedProvider();
+            const apiId = apiConfigs.get(provider)?._id;
+            if (!apiId) {
+                throw new Error("Select a configured cloud provider before creating a server.");
+            }
             const region = field("region").value;
             const profile = providers.get(provider);
             const vmType = initialVmType();
@@ -818,11 +822,12 @@
                 object: {
                     name,
                     cluster_id: cluster._id,
+                    api_id: apiId,
                     status: "provisioning",
                     totalWorkers: 0,
                     infrastructure: {
                         provider,
-                        api_id: apiConfigs.get(provider)?._id,
+                        api_id: apiId,
                         region,
                         vmType,
                         vCPU: instance?.vCPU,

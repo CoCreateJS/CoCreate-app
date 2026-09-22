@@ -1,0 +1,113 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-with-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body align-items:flex-start d-flex flex-column gap-4 h-100"><div class="w-100"><div class="app-image-editor" src="/components/profile-img.html"></div></div>
+		<input
+			type="hidden"
+			key="type[0]"
+			value="candidate" />
+		<section
+			class="d-flex flex-column flex-grow-1 flex-basis:400px min-width:280px">
+			<div class="mb-3">
+				<h5 class="card-title mb-0">Candidate Information</h5>
+			</div>
+			<div class="d-flex flex-column gap-3">
+				<label class="form-label"
+					>First Name
+					<input
+						type="text"
+						key="first_name"
+						class="form-control"
+						placeholder="Enter first name"
+						aria-label="First Name" />
+				</label>
+				<label class="form-label"
+					>Last Name
+					<input
+						type="text"
+						key="last_name"
+						class="form-control"
+						placeholder="Enter last name"
+						aria-label="Last Name" />
+				</label>
+				<label class="form-label"
+					>Email
+					<input
+						type="email"
+						key="email"
+						class="form-control"
+						placeholder="candidate@example.com"
+						aria-label="Email" />
+				</label>
+				<label class="form-label"
+					>Phone Number
+					<input
+						type="tel"
+						key="phone"
+						class="form-control"
+						placeholder="(123) 456-7890"
+						aria-label="Phone Number" />
+				</label>
+				<label class="form-label"
+					>Company
+					<input
+						type="text"
+						key="company"
+						class="form-control"
+						placeholder="Enter company name"
+						aria-label="Company" />
+				</label>
+				<label class="form-label"
+					>Title
+					<input
+						type="text"
+						key="title"
+						class="form-control"
+						placeholder="e.g., Software Engineer"
+						aria-label="Title" />
+				</label>
+			</div>
+		</section>
+		<section
+			class="d-flex flex-column flex-grow-1 flex-basis:400px min-width:280px">
+			<div class="mb-3">
+				<h5 class="card-title mb-0">Additional Details</h5>
+			</div>
+			<div class="d-flex flex-column gap-3">
+				<label class="form-label"
+					>Website
+					<input
+						type="url"
+						key="website"
+						class="form-control"
+						placeholder="https://www.example.com"
+						aria-label="Website" />
+				</label>
+				<label class="form-label"
+					>Description
+					<textarea
+						key="description"
+						class="form-control"
+						placeholder="Brief candidate description"
+						rows="5"
+						aria-label="Description"></textarea>
+				</label>
+				<label class="form-label"
+					>Tags
+					<select
+						key="tags"
+						class="form-select"
+						multiple
+						plugin='{"$Choices":["$this",{}]}'
+						aria-label="Tags"></select>
+				</label>
+			</div>
+		</section>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

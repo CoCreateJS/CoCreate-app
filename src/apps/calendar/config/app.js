@@ -29,7 +29,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"calendar-title-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter event name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/calendar/details.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"calendar\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/calendar/aside.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"calendar\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
                 "attributes": [
                     {
                         "name": "class",

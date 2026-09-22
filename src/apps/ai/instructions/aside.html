@@ -1,0 +1,52 @@
+<div
+	id="ai-instructions-aside"
+	class="offcanvas-app-shell app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	role="region"
+	aria-label="Ai Instructions record">
+	<header
+		src="/components/offcanvas-app/header.html"
+		value-replace="/\{\{app\.name\}\}/g"
+		value-replacement="AiInstructions"
+		value-type="outerHtml"></header>
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		onload.plugin='({"$SimpleBar": ["$this", {}]})'
+		onload-query=".offcanvas-app-view > form > .card-body[]">
+		<div
+			id="AiInstructions-details-view"
+			class="offcanvas-app-view"
+			data-view="details"
+			role="tabpanel"
+			aria-labelledby="AiInstructions-details-btn"
+			tabindex="0"
+			src="/apps/ai/instructions/components/details.html"
+			aria-hidden="false"
+			state-id="ai-instructions-details"
+			state.aria-hidden
+			hidden></div>
+		<div
+			id="AiInstructions-form-view"
+			class="offcanvas-app-view"
+			data-view="form"
+			role="tabpanel"
+			aria-labelledby="AiInstructions-form-btn"
+			tabindex="0"
+			src="/apps/ai/instructions/components/form.html"
+			aria-hidden="true"
+			state-id="ai-instructions-form"
+			state.aria-hidden
+			hidden></div>
+		<div
+			id="AiInstructions-codearea-view"
+			class="offcanvas-app-view"
+			data-view="codearea"
+			role="tabpanel"
+			aria-labelledby="AiInstructions-codearea-btn"
+			tabindex="0"
+			src="/components/offcanvas-app/codearea.html"
+			aria-hidden="true"
+			state-id="ai-instructions-codearea"
+			state.aria-hidden
+			hidden></div>
+	</div>
+</div>

@@ -60,15 +60,27 @@
 	flex-shrink: 0;
 }
 
+.list-header .list-view-list-label,
+.list-header .list-view-list-icon,
+.component-list:has(#list-view[src="/components/list/table.html"]) .list-view-grid-label,
+.component-list:has(#list-view[src="/components/list/table.html"]) .list-view-grid-icon {
+	display: none;
+}
+
+.component-list:has(#list-view[src="/components/list/table.html"]) .list-view-list-label,
+.component-list:has(#list-view[src="/components/list/table.html"]) .list-view-list-icon {
+	display: inline-block;
+}
+
 .list-header #remove-actions {
 	display: none;
 }
 
-.component-list:has(#list-view table[data-row-selection] tbody [data-select-row]:checked:not(:disabled):not(:is([template], [hidden]) *)) > .app-panel-header #remove-actions {
+.component-list:has(#list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)) > .app-panel-header #remove-actions {
 	display: inline-flex;
 }
 
-@container list-header (max-width: 760px) {
+@container list-header (max-width: 860px) {
 	.list-action-label {
 		display: none;
 	}
@@ -78,18 +90,21 @@
 		padding: 0;
 	}
 
+	.list-header .add-btn {
+		gap: 0;
+	}
+
 	.list-compact-action.dropdown-toggle::after {
 		display: none;
 	}
 }
 
 @container list-header (max-width: 560px) {
-	.list-header-primary {
-		flex-basis: 100%;
-	}
-
 	.list-header-extension:has(> :not(input, [hidden])) {
 		padding-left: 8px;
 		margin-left: 0;
 	}
 }
+
+.list-header .list-files-menu { display: none; }
+.files-app .list-header .list-files-menu { display: inline-flex; }

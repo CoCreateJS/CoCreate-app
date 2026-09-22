@@ -8,7 +8,14 @@ File: Custom Css File
 
 #layout-wrapper {
 	--admin-gutter: clamp(0.5rem, 0.35rem + 0.5vw, 1rem);
+	--admin-padding: clamp(16px, 12px + 1vw, 24px);
 	--admin-content-height: calc(100dvh - 70px);
+}
+
+@media (min-width: 1200px) {
+	#layout-wrapper {
+		--admin-gutter: 1.5rem;
+	}
 }
 
 [data-breadcrumbs="on"] #layout-wrapper {
@@ -38,6 +45,10 @@ File: Custom Css File
 
 .navbar-header .app-search:has(.search-scope-chip:not([hidden])) .form-control {
 	padding-right: 118px;
+}
+
+.search-scope-chip[hidden] {
+	display: none;
 }
 
 .search-scope-chip {
@@ -248,10 +259,10 @@ html:not([data-navbar-position="scrollable"]):not([data-navbar-position="srollab
 }
 
 .app-panel {
-	--coc-card-spacer-x: var(--admin-gutter);
-	--coc-card-spacer-y: var(--admin-gutter);
-	--coc-card-cap-padding-x: var(--admin-gutter);
-	--coc-card-cap-padding-y: var(--admin-gutter);
+	--coc-card-spacer-x: var(--admin-padding);
+	--coc-card-spacer-y: var(--admin-padding);
+	--coc-card-cap-padding-x: var(--admin-padding);
+	--coc-card-cap-padding-y: var(--admin-padding);
 	display: flex;
 	width: 100%;
 	height: 100%;
@@ -515,14 +526,6 @@ body:has(#offcanvas-app[docked="true"].show) #layout-wrapper .admin-view-layout 
 	background: var(--coc-body-bg);
 }
 
-#layout-wrapper .card {
-	--coc-card-spacer-x: var(--admin-gutter);
-	--coc-card-spacer-y: var(--admin-gutter);
-	--coc-card-cap-padding-x: var(--admin-gutter);
-	--coc-card-cap-padding-y: var(--admin-gutter);
-	margin-bottom: var(--admin-gutter);
-}
-
 #layout-wrapper .form-container,
 #layout-wrapper .form-container .card-body {
 	gap: var(--admin-gutter);
@@ -699,7 +702,7 @@ dialog.show {
 	height: 70px;
 	min-height: 70px;
 	align-items: center;
-	padding: 0 var(--admin-gutter);
+	padding: 0 8px;
 	border-bottom: 1px solid var(--coc-border-color);
 }
 

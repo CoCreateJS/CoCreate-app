@@ -1,0 +1,124 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body align-items:flex-start d-flex flex-column gap-4 h-100">
+		<section
+			class="d-flex flex-column gap-3 flex-grow:2 flex-basis:480px min-width:300px">
+			<label
+				class="form-label"
+				for="po_number">
+				PO Number
+				<input
+					type="text"
+					key="po_number"
+					id="po_number"
+					class="form-control"
+					placeholder="PO-0001"
+					aria-label="Purchase Order Number" />
+			</label>
+			<label
+				class="form-label"
+				for="supplier">
+				Supplier
+				<input
+					type="text"
+					key="supplier"
+					id="supplier"
+					class="form-control"
+					placeholder="Supplier name"
+					aria-label="Supplier Name" />
+			</label>
+			<label
+				class="form-label"
+				for="items">
+				Items (JSON)
+				<textarea
+					key="items"
+					id="items"
+					class="form-control"
+					rows="4"
+					placeholder='[{"product":"SKU","qty":1,"price":0}]'
+					aria-label="Purchase Order Items in JSON format"></textarea>
+			</label>
+		</section>
+		<section
+			class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:260px">
+			<label
+				class="form-label"
+				for="order_date">
+				Order Date
+				<input
+					type="date"
+					key="order_date"
+					id="order_date"
+					class="form-control"
+					aria-label="Order Date" />
+			</label>
+			<label
+				class="form-label"
+				for="expected_delivery">
+				Expected Delivery
+				<input
+					type="date"
+					key="expected_delivery"
+					id="expected_delivery"
+					class="form-control"
+					aria-label="Expected Delivery Date" />
+			</label>
+			<label
+				class="form-label"
+				for="subtotal">
+				Subtotal
+				<input
+					type="number"
+					key="subtotal"
+					id="subtotal"
+					class="form-control"
+					aria-label="Subtotal Amount" />
+			</label>
+			<label
+				class="form-label"
+				for="tax">
+				Tax
+				<input
+					type="number"
+					key="tax"
+					id="tax"
+					class="form-control"
+					aria-label="Tax Amount" />
+			</label>
+			<label
+				class="form-label"
+				for="total">
+				Total
+				<input
+					type="number"
+					key="total"
+					id="total"
+					class="form-control"
+					aria-label="Total Amount" />
+			</label>
+			<label
+				class="form-label"
+				for="status">
+				Status
+				<select
+					key="status"
+					id="status"
+					class="form-select"
+					aria-label="Purchase Order Status">
+					<option value="draft">Draft</option>
+					<option value="ordered">Ordered</option>
+					<option value="received">Received</option>
+					<option value="cancelled">Cancelled</option>
+				</select>
+			</label>
+		</section>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

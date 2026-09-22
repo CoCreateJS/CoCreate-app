@@ -1,0 +1,64 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-details app-with-image"
+	array
+	object
+	autocomplete="off">
+
+<link rel="stylesheet" href="/components/codearea/index.css" />
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+<section
+	class="app-card d-flex flex-column gap-3 pb-3 w-100"
+	src="/apps/ai/instructions/components/card.html"></section>
+<section class="border-top border-top-dashed pt-3"><h5 class="text-uppercase fw-semibold mb-3">Instructions</h5><codearea class="component-codearea border rounded p-3">
+    <pre aria-hidden="true"><code class="language-markdown"></code></pre>
+    <textarea id="ai-instruction-instructions-details" key="instructions" type="code" lang="markdown"
+        value-type="text" value-evaluate="false" height="auto" rows="1"
+        class="form-control font-monospace" spellcheck="false"
+        aria-label="Instructions" readonly save="false"></textarea>
+    <button type="button" class="component-codearea-copy"
+    actions="clipboard, copied, timeout(1200), copyreset"
+    clipboard-query="$parent textarea" event-name="copied, copyreset"
+    copied.class="is-copied" copied.aria-label="Copied"
+    copyreset.class="is-copied, " copyreset.aria-label="Copy instructions"
+    aria-label="Copy instructions" title="Copy instructions">
+    <i class="ri-file-copy-line" aria-hidden="true"></i>
+    <i class="ri-check-line" aria-hidden="true"></i>
+</button>
+</codearea></section>
+<section class="border-top border-top-dashed pt-3"><h5 class="text-uppercase fw-semibold mb-3">Examples</h5><codearea class="component-codearea border rounded p-3">
+    <pre aria-hidden="true"><code class="language-json"></code></pre>
+    <textarea id="ai-instruction-examples-details" key="examples" type="code" lang="json"
+        value-type="json" value-evaluate="false" height="auto" rows="1"
+        class="form-control font-monospace" spellcheck="false"
+        aria-label="Examples" readonly save="false"></textarea>
+    <button type="button" class="component-codearea-copy"
+    actions="clipboard, copied, timeout(1200), copyreset"
+    clipboard-query="$parent textarea" event-name="copied, copyreset"
+    copied.class="is-copied" copied.aria-label="Copied"
+    copyreset.class="is-copied, " copyreset.aria-label="Copy examples"
+    aria-label="Copy examples" title="Copy examples">
+    <i class="ri-file-copy-line" aria-hidden="true"></i>
+    <i class="ri-check-line" aria-hidden="true"></i>
+</button>
+</codearea></section>
+<section class="border-top border-top-dashed pt-3"><h5 class="text-uppercase fw-semibold mb-3">Sources</h5><codearea class="component-codearea border rounded p-3">
+    <pre aria-hidden="true"><code class="language-json"></code></pre>
+    <textarea id="ai-instruction-sources-details" key="sources" type="code" lang="json"
+        value-type="json" value-evaluate="false" height="auto" rows="1"
+        class="form-control font-monospace" spellcheck="false"
+        aria-label="Sources" readonly save="false"></textarea>
+    <button type="button" class="component-codearea-copy"
+    actions="clipboard, copied, timeout(1200), copyreset"
+    clipboard-query="$parent textarea" event-name="copied, copyreset"
+    copied.class="is-copied" copied.aria-label="Copied"
+    copyreset.class="is-copied, " copyreset.aria-label="Copy sources"
+    aria-label="Copy sources" title="Copy sources">
+    <i class="ri-file-copy-line" aria-hidden="true"></i>
+    <i class="ri-check-line" aria-hidden="true"></i>
+</button>
+</codearea></section>
+</div>
+
+</form>

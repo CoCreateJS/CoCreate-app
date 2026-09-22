@@ -1,0 +1,341 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<div class="d-flex flex-column flex-grow-1 width:500px">
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-title mb-0">
+						Demographics & Key Status
+					</h5>
+				</div>
+				<div class="card-body">
+					<input
+						type="hidden"
+						class="form-control"
+						id="diagnostic-id-input"
+						key="_id" />
+
+					<div class="app-fields d-flex flex-wrap gap-3">
+						<div class="mb-3 app-field app-field-half">
+							<label
+								class="form-label"
+								for="first-name-input"
+								>First Name</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="first-name-input"
+								key="first_name"
+								placeholder="First Name" />
+						</div>
+						<div class="mb-3 app-field app-field-half">
+							<label
+								class="form-label"
+								for="last-updated-input"
+								>Last Updated</label
+							>
+							<input
+								type="date"
+								class="form-control"
+								id="last-updated-input"
+								key="lastUpdated" />
+						</div>
+					</div>
+
+					<div class="app-fields d-flex flex-wrap gap-3">
+						<div class="mb-3 app-field app-field-half">
+							<label
+								class="form-label"
+								for="health-score-input"
+								>Health Score</label
+							>
+							<input
+								type="number"
+								class="form-control"
+								id="health-score-input"
+								key="healthScore"
+								placeholder="e.g. 88" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end card -->
+
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-title mb-0">Dimensions & Results</h5>
+				</div>
+				<div class="card-body">
+					<div class="app-fields d-flex flex-wrap gap-3">
+						<div class="mb-3 app-field app-field-half">
+							<label
+								class="form-label"
+								for="chrono-age"
+								>Chronological Age</label
+							>
+							<input
+								type="number"
+								class="form-control"
+								id="chrono-age"
+								key="chronologicalAge" />
+						</div>
+						<div class="mb-3 app-field app-field-half">
+							<label
+								class="form-label"
+								for="bio-age"
+								>Biological Age</label
+							>
+							<input
+								type="number"
+								class="form-control"
+								id="bio-age"
+								key="biologicalAge" />
+						</div>
+						<div class="mb-3 app-field app-field-half">
+							<label
+								class="form-label"
+								for="age-diff"
+								>Age Difference</label
+							>
+							<input
+								type="number"
+								class="form-control"
+								id="age-diff"
+								key="ageDifference" />
+						</div>
+						<div class="mb-3 app-field app-field-half">
+							<label
+								class="form-label"
+								for="pace"
+								>Pace of Aging (DunedinPACE)</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="pace"
+								key="paceOfAging" />
+						</div>
+						<div class="mb-3 app-field app-field-half">
+							<label
+								class="form-label"
+								for="pace-diff"
+								>Pace Difference (%)</label
+							>
+							<input
+								type="number"
+								class="form-control"
+								id="pace-diff"
+								key="paceDifference" />
+						</div>
+					</div>
+					<hr class="my-3" />
+					<div class="app-fields d-flex flex-wrap gap-3">
+						<div class="mb-3 app-field app-field-third">
+							<label
+								class="form-label"
+								for="cardio-stat"
+								>Cardiovascular</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="cardio-stat"
+								key="cardioStat" />
+						</div>
+						<div class="mb-3 app-field app-field-third">
+							<label
+								class="form-label"
+								for="meta-stat"
+								>Metabolism</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="meta-stat"
+								key="metabolismStat" />
+						</div>
+						<div class="mb-3 app-field app-field-third">
+							<label
+								class="form-label"
+								for="nutri-stat"
+								>Nutrition</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="nutri-stat"
+								key="nutritionStat" />
+						</div>
+						<div class="mb-3 app-field app-field-third">
+							<label
+								class="form-label"
+								for="horm-stat"
+								>Hormones</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="horm-stat"
+								key="hormonesStat" />
+						</div>
+						<div class="mb-3 app-field app-field-third">
+							<label
+								class="form-label"
+								for="gut-stat"
+								>Gut Health</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="gut-stat"
+								key="gutHealthStat" />
+						</div>
+						<div class="mb-3 app-field app-field-third">
+							<label
+								class="form-label"
+								for="genet-stat"
+								>Genetics</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="genet-stat"
+								key="geneticsStat" />
+						</div>
+						<div class="mb-3 app-field app-field-third">
+							<label
+								class="form-label"
+								for="cell-stat"
+								>Cellular Health</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="cell-stat"
+								key="cellularStat" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end card -->
+
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-title mb-0">Protocols State</h5>
+				</div>
+				<div class="card-body">
+					<div class="app-fields d-flex flex-wrap gap-3">
+						<div class="app-field app-field-full">
+							<h6 class="text-info">Discover</h6>
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Status</label>
+							<input
+								type="text"
+								class="form-control"
+								key="discoverStatus" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Plan</label>
+							<input
+								type="text"
+								class="form-control"
+								key="discoverPlan" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Next</label>
+							<input
+								type="date"
+								class="form-control"
+								key="discoverNext" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Cycle (Days)</label>
+							<input
+								type="number"
+								class="form-control"
+								key="diagnosticCycleDays" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Format</label>
+							<input
+								type="text"
+								class="form-control"
+								key="discoverFormat" />
+						</div>
+					</div>
+					<hr class="my-3" />
+					<div class="app-fields d-flex flex-wrap gap-3">
+						<div class="app-field app-field-full">
+							<h6 class="text-success">Optimize</h6>
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Status</label>
+							<input
+								type="text"
+								class="form-control"
+								key="optimizeStatus" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Plan</label>
+							<input
+								type="text"
+								class="form-control"
+								key="optimizePlan" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Next Delivery</label>
+							<input
+								type="date"
+								class="form-control"
+								key="optimizeNextDelivery" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Format</label>
+							<input
+								type="text"
+								class="form-control"
+								key="optimizeFormat" />
+						</div>
+					</div>
+					<hr class="my-3" />
+					<div class="app-fields d-flex flex-wrap gap-3">
+						<div class="app-field app-field-full">
+							<h6 class="text-primary">Regenerate</h6>
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Status</label>
+							<input
+								type="text"
+								class="form-control"
+								key="regenerateStatus" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Plan</label>
+							<input
+								type="text"
+								class="form-control"
+								key="regeneratePlan" />
+						</div>
+						<div class="mb-2 app-field app-field-third">
+							<label class="form-label">Price</label>
+							<input
+								type="number"
+								class="form-control"
+								key="regeneratePrice" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end card -->
+		</div>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

@@ -473,7 +473,7 @@ export function createCodeareaTools(options = {}) {
 				form.addEventListener("change", markFormChanged);
                 formContent.setAttribute(
                     "src",
-                    `/apps/${appPath}/form.html?view=${Date.now()}`
+                    `/apps/${appPath}/components/form.html?view=${Date.now()}`
                 );
                 window.CoCreate?.elements?.init?.(form);
                 collectFormValues = async () => {
@@ -661,7 +661,7 @@ export function createCodeareaTools(options = {}) {
 						}
 					});
                     detailsContent.append(details);
-                    const path = `/apps/${appPath}/details.html`;
+                    const path = `/apps/${appPath}/components/details.html`;
                     details.setAttribute("src", `${path}?view=${Date.now()}`);
                     window.CoCreate?.elements?.init?.(details);
                 } catch (error) {

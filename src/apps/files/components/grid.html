@@ -1,0 +1,44 @@
+<link
+	rel="stylesheet"
+	href="/components/list/selection.css" />
+<div
+	class="files-render-sections"
+	data-grid-selection>
+	<div
+		id="files-folders"
+		state-id="files-folders"
+		data-files-results
+		class="list-view files-render-grid gap-3"
+		array="files"
+		object
+		read="false"
+		hidden
+		filter-limit="0"
+		filter-query-key="content-type"
+		filter-query-value="text/directory"
+		filter-sort-key="name"
+		filter-sort-direction="asc"
+		render-query="[template]"
+		src="/apps/files/templates/card.html"></div>
+
+	<div
+		id="grid"
+		state-id="list"
+		data-files-results
+		class="list-view files-render-grid gap-3"
+		array="files"
+		object
+		filter-limit="10"
+		filter-query-key="content-type.$ne"
+		filter-query-value=""
+		filter-sort-key="name"
+		filter-sort-direction="asc"
+		render-query="[template]"
+		src="/apps/files/templates/card.html"></div>
+	<div
+		style="height: 20px"
+		filter-limit="10"
+		filter-on="scroll"
+		filter-query="$previous"></div>
+</div>
+<script src="/components/list/selection.js"></script>

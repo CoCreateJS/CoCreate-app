@@ -4,7 +4,7 @@ export default {
     "object": {
         "_id": "68741e1d07a037d0d6d00ef3",
         "name": "Files",
-        "singularName": "Files",
+        "singularName": "File",
         "path": "/apps/files",
         "templates": {
             "card": "templates/card.html",
@@ -14,8 +14,7 @@ export default {
         "category": "Workspace",
         "mainViews": [
             "table",
-            "grid",
-            "kanban"
+            "grid"
         ],
         "secondaryViews": [
             "details",
@@ -26,10 +25,10 @@ export default {
         "status": "active",
         "fields": [
             {
-                "label": "File Name",
+                "label": "Name",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"file-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter file name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/files/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"files\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "filterTemplate": "<input id=\"file-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search file names\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
+                "tableTemplate": "<span class=\"files-record-name\" data-file-kind=\"{{object.content-type}}\"><a class=\"files-folder-link text-reset text-decoration-none\" role=\"button\" tabindex=\"0\" state=\"{&quot;files-folders&quot;:{&quot;hidden&quot;:false,&quot;read&quot;:&quot;true&quot;},&quot;list&quot;:{&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;{{object.pathname}}&quot;}}\"><i class=\"ri-folder-2-fill me-2\" aria-hidden=\"true\"></i>{{object.name}}</a><a class=\"files-file-link text-reset text-decoration-none\" role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/files/aside.html\" aria-controls=\"offcanvas-app\" aria-open data-card-open><span hidden state-to=\"offcanvas-app-form\" state.array=\"files\" state.object=\"{{object._id}}\"></span><i class=\"ri-file-line me-2\" aria-hidden=\"true\"></i>{{object.name}}</a></span>",
                 "attributes": [
                     {
                         "name": "class",
@@ -55,123 +54,40 @@ export default {
                         "name": "type",
                         "value": "text"
                     }
-                ]
+                ],
+                "key": "name"
             },
             {
                 "label": "Type",
-                "tagName": "select",
-                "filterTemplate": "\n\t\t\t\t\t<select id=\"file-type-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"type\">\n\t\t\t\t\t\t<option value=\"\">Select Type</option>\n\t\t\t\t\t\t<option value=\"document\">Document</option>\n\t\t\t\t\t\t<option value=\"image\">Image</option>\n\t\t\t\t\t\t<option value=\"pdf\">PDF</option>\n\t\t\t\t\t\t<option value=\"spreadsheet\">Spreadsheet</option>\n\t\t\t\t\t\t<option value=\"video\">Video</option>\n\t\t\t\t\t\t<option value=\"audio\">Audio</option>\n\t\t\t\t\t\t<option value=\"archive\">Archive</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
-                "tableTemplate": "<span render=\"object.type\" render-as=\"type\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{type}}\n</span>",
+                "key": "content-type",
+                "tagName": "input",
+                "filterTemplate": "<select id=\"file-content-type-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"content-type.$regex\"><option value=\"\">All types</option><option value=\"^image/\">Images</option><option value=\"^video/\">Videos</option><option value=\"^audio/\">Audio</option><option value=\"^application/pdf$\">PDF</option><option value=\"^text/directory$\">Folders</option><option value=\"^text/(?!directory$)\">Text</option><option value=\"^application/\">Applications / documents</option></select>",
+                "tableTemplate": "{{object.content-type}}",
                 "attributes": [
                     {
                         "name": "class",
-                        "value": "form-select"
+                        "value": "form-control"
                     },
                     {
                         "name": "id",
-                        "value": "file-type"
-                    },
-                    {
-                        "name": "placeholder",
-                        "value": "File type"
-                    },
-                    {
-                        "name": "required",
-                        "value": true
+                        "value": "file-content-type"
                     },
                     {
                         "name": "key",
-                        "value": "type"
-                    }
-                ],
-                "children": [
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": ""
-                            }
-                        ],
-                        "innerText": "Select Type"
+                        "value": "content-type"
                     },
                     {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "document"
-                            }
-                        ],
-                        "innerText": "Document"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "image"
-                            }
-                        ],
-                        "innerText": "Image"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "pdf"
-                            }
-                        ],
-                        "innerText": "PDF"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "spreadsheet"
-                            }
-                        ],
-                        "innerText": "Spreadsheet"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "video"
-                            }
-                        ],
-                        "innerText": "Video"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "audio"
-                            }
-                        ],
-                        "innerText": "Audio"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "archive"
-                            }
-                        ],
-                        "innerText": "Archive"
+                        "name": "type",
+                        "value": "text"
                     }
                 ]
             },
             {
-                "label": "Size",
+                "label": "Size (bytes)",
+                "key": "size",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"file-size-filter\" class=\"form-control\" type=\"number\" placeholder=\"File size in bytes\" filter-query=\"$document .list-view\" filter-query-key=\"size\" />",
-                "tableTemplate": "{{object.size}} Bytes",
+                "filterTemplate": "<input id=\"file-size-filter\" class=\"form-control\" type=\"number\" placeholder=\"Filter size (bytes)\" filter-query=\"$document .list-view\" filter-query-key=\"size\" value-type=\"number\" />",
+                "tableTemplate": "{{object.size}}",
                 "attributes": [
                     {
                         "name": "class",
@@ -180,14 +96,6 @@ export default {
                     {
                         "name": "id",
                         "value": "file-size"
-                    },
-                    {
-                        "name": "placeholder",
-                        "value": "File size in bytes"
-                    },
-                    {
-                        "name": "step",
-                        "value": "1"
                     },
                     {
                         "name": "key",
@@ -200,10 +108,11 @@ export default {
                 ]
             },
             {
-                "label": "Modified Date",
+                "label": "Folder",
+                "key": "path",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"file-modified-filter\" class=\"form-control\" type=\"dat\" filter-query=\"$document .list-view\" filter-query-key=\"modified\" />",
-                "tableTemplate": "{{object.modified}}",
+                "filterTemplate": "<input id=\"file-path-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter folder\" filter-query=\"$document .list-view\" filter-query-key=\"path.$regex\" filter-query-options=\"i\" />",
+                "tableTemplate": "<code>{{object.path}}</code>",
                 "attributes": [
                     {
                         "name": "class",
@@ -211,163 +120,11 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "file-modified"
-                    },
-                    {
-                        "name": "date-picker",
-                        "value": "flatpickr"
-                    },
-                    {
-                        "name": "placeholder",
-                        "value": "Modified date"
+                        "value": "file-path"
                     },
                     {
                         "name": "key",
-                        "value": "modified"
-                    },
-                    {
-                        "name": "type",
-                        "value": "dat"
-                    }
-                ]
-            },
-            {
-                "label": "Status",
-                "tagName": "select",
-                "filterTemplate": "\n\t\t\t\t\t<select id=\"status-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"status\">\n\t\t\t\t\t\t<option value=\"\">Select Status</option>\n\t\t\t\t\t\t<option template value=\"{{object.key}}\">{{object.label}}</option>\n\t\t\t\t\t</select>\n\t\t\t\t\t<div array=\"files\" object=\"statuses\" render-query=\"$previous\"></div>\n\t\t\t\t",
-                "tableTemplate": "{{object.status}}",
-                "attributes": [
-                    {
-                        "name": "class",
-                        "value": "form-select"
-                    },
-                    {
-                        "name": "id",
-                        "value": "file-manager-status"
-                    },
-                    {
-                        "name": "key",
-                        "value": "status"
-                    }
-                ],
-                "children": [
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": ""
-                            }
-                        ],
-                        "innerText": "Select Status"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "template",
-                                "value": ""
-                            },
-                            {
-                                "name": "value",
-                                "value": "{{object.key}}"
-                            }
-                        ],
-                        "innerText": "{{object.label}}"
-                    }
-                ]
-            },
-            {
-                "label": "Tags",
-                "tagName": "select",
-                "filterTemplate": "\n\t\t\t\t\t<select id=\"tags-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"tags\">\n\t\t\t\t\t\t<option value=\"document\">Document</option>\n\t\t\t\t\t\t<option value=\"image\">Image</option>\n\t\t\t\t\t\t<option value=\"pdf\">PDF</option>\n\t\t\t\t\t\t<option value=\"spreadsheet\">Spreadsheet</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
-                "tableTemplate": "\n\t\t\t\t\t<span array=\"files\" object=\"{{object._id}}\" key=\"tags\" render-query=\"[template]\">\n\t\t\t\t\t\t<span template class=\"badge bg-primary-subtle text-primary me-1\">\n\t\t\t\t\t\t\t{{tags}}\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</span>\n\t\t\t\t",
-                "attributes": [
-                    {
-                        "name": "class",
-                        "value": "form-select"
-                    },
-                    {
-                        "name": "id",
-                        "value": "file-manager-tags"
-                    },
-                    {
-                        "name": "multiple",
-                        "value": true
-                    },
-                    {
-                        "name": "key",
-                        "value": "tags"
-                    }
-                ],
-                "children": [
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "document"
-                            }
-                        ],
-                        "innerText": "Document"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "image"
-                            }
-                        ],
-                        "innerText": "Image"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "pdf"
-                            }
-                        ],
-                        "innerText": "PDF"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "spreadsheet"
-                            }
-                        ],
-                        "innerText": "Spreadsheet"
-                    }
-                ]
-            },
-            {
-                "label": "Content Preview",
-                "tagName": "textarea",
-                "filterTemplate": "<input id=\"file-preview-filter\" class=\"form-control\" type=\"text\" placeholder=\"Content preview\" filter-query=\"$document .list-view\" filter-query-key=\"preview\" />",
-                "tableTemplate": "{{object.preview}}",
-                "attributes": [
-                    {
-                        "name": "class",
-                        "value": "form-control"
-                    },
-                    {
-                        "name": "id",
-                        "value": "file-preview"
-                    },
-                    {
-                        "name": "placeholder",
-                        "value": "Content preview or description"
-                    },
-                    {
-                        "name": "rows",
-                        "value": "3"
-                    },
-                    {
-                        "name": "key",
-                        "value": "preview"
+                        "value": "path"
                     },
                     {
                         "name": "type",
@@ -376,222 +133,57 @@ export default {
                 ]
             },
             {
-                "label": "Statuses",
-                "tagName": "select",
-                "filterTemplate": "<select id=\"statuses-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"statuses\">\n\t\t\t\t\t\t<option value=\"\">Select Status</option>\n\t\t\t\t\t\t<option value=\"active\">Active</option>\n\t\t\t\t\t\t<option value=\"archived\">Archived</option>\n\t\t\t\t\t</select>",
-                "tableTemplate": "<span render=\"object.statuses\" render-as=\"statuses\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{statuses}}\n</span>",
+                "label": "Pathname",
+                "key": "pathname",
+                "tagName": "input",
+                "filterTemplate": "<input id=\"file-pathname-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter pathname\" filter-query=\"$document .list-view\" filter-query-key=\"pathname.$regex\" filter-query-options=\"i\" />",
+                "tableTemplate": "<code>{{object.pathname}}</code>",
                 "attributes": [
                     {
                         "name": "class",
-                        "value": "form-select"
+                        "value": "form-control"
                     },
                     {
                         "name": "id",
-                        "value": "statuses"
+                        "value": "file-pathname"
                     },
                     {
                         "name": "key",
-                        "value": "statuses"
-                    }
-                ],
-                "children": [
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": ""
-                            }
-                        ],
-                        "innerText": "Select Status"
+                        "value": "pathname"
                     },
                     {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "active"
-                            }
-                        ],
-                        "innerText": "Active"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "archived"
-                            }
-                        ],
-                        "innerText": "Archived"
+                        "name": "type",
+                        "value": "text"
                     }
                 ]
             },
             {
-                "label": "Type",
-                "tagName": "select",
-                "filterTemplate": "<select id=\"type-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"type\">\n\t\t\t\t\t\t<option value=\"\">Select Type</option>\n\t\t\t\t\t\t<option value=\"file\">File</option>\n\t\t\t\t\t\t<option value=\"document\">Document</option>\n\t\t\t\t\t\t<option value=\"image\">Image</option>\n\t\t\t\t\t\t<option value=\"video\">Video</option>\n\t\t\t\t\t\t<option value=\"audio\">Audio</option>\n\t\t\t\t\t\t<option value=\"archive\">Archive</option>\n\t\t\t\t\t</select>",
-                "tableTemplate": "<span render=\"object.type\" render-as=\"type\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{type}}\n</span>",
+                "label": "Modified",
+                "key": "modified.on",
+                "tagName": "input",
+                "filterTemplate": "<input id=\"file-modified-on-filter\" class=\"form-control\" type=\"datetime-local\" placeholder=\"Filter modified\" filter-query=\"$document .list-view\" filter-query-key=\"modified.on.$gte\" />",
+                "tableTemplate": "{{object.modified.on}}",
                 "attributes": [
                     {
                         "name": "class",
-                        "value": "form-select"
+                        "value": "form-control"
                     },
                     {
                         "name": "id",
-                        "value": "type"
+                        "value": "file-modified-on"
                     },
                     {
                         "name": "key",
-                        "value": "type"
-                    }
-                ],
-                "children": [
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": ""
-                            }
-                        ],
-                        "innerText": "Select Type"
+                        "value": "modified.on"
                     },
                     {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "file"
-                            }
-                        ],
-                        "innerText": "File"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "document"
-                            }
-                        ],
-                        "innerText": "Document"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "image"
-                            }
-                        ],
-                        "innerText": "Image"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "video"
-                            }
-                        ],
-                        "innerText": "Video"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "audio"
-                            }
-                        ],
-                        "innerText": "Audio"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "archive"
-                            }
-                        ],
-                        "innerText": "Archive"
-                    }
-                ]
-            },
-            {
-                "label": "Tags",
-                "tagName": "select",
-                "filterTemplate": "<select id=\"tags-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"tags\">\n\t\t\t\t\t\t<option value=\"\">Select Tag</option>\n\t\t\t\t\t\t<option value=\"document\">Document</option>\n\t\t\t\t\t\t<option value=\"image\">Image</option>\n\t\t\t\t\t\t<option value=\"pdf\">PDF</option>\n\t\t\t\t\t\t<option value=\"spreadsheet\">Spreadsheet</option>\n\t\t\t\t\t</select>",
-                "tableTemplate": "<span render=\"object.tags\" render-as=\"tags\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{tags}}\n</span>",
-                "attributes": [
-                    {
-                        "name": "class",
-                        "value": "form-select"
-                    },
-                    {
-                        "name": "id",
-                        "value": "tags"
-                    },
-                    {
-                        "name": "key",
-                        "value": "tags"
-                    }
-                ],
-                "children": [
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": ""
-                            }
-                        ],
-                        "innerText": "Select Tag"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "document"
-                            }
-                        ],
-                        "innerText": "Document"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "image"
-                            }
-                        ],
-                        "innerText": "Image"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "pdf"
-                            }
-                        ],
-                        "innerText": "PDF"
-                    },
-                    {
-                        "tagName": "option",
-                        "attributes": [
-                            {
-                                "name": "value",
-                                "value": "spreadsheet"
-                            }
-                        ],
-                        "innerText": "Spreadsheet"
+                        "name": "type",
+                        "value": "datetime-local"
                     }
                 ]
             }
-        ]
+        ],
+        "cardTemplate": "/apps/files/templates/card.html"
     },
     "upsert": true
 };

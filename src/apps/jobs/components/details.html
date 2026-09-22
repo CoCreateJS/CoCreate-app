@@ -1,0 +1,92 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-details app-with-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<div class="d-flex flex-wrap align-items-center gap-3">
+			<img
+				class="avatar-lg rounded object-fit-cover"
+				src=""
+				key="companyLogo"
+				alt="Company logo" />
+			<div class="flex-grow-1">
+				<h5 class="card-title app-title mb-1" key="jobTitle"></h5>
+				<p class="text-muted mb-0" key="companyName"></p>
+			</div>
+			<span
+				class="badge border border-primary text-primary"
+				key="status"></span>
+		</div>
+
+		<div class="table-responsive">
+			<table class="table table-borderless align-middle mb-0">
+				<tbody>
+					<tr>
+						<th class="text-muted" scope="row">Position</th>
+						<td key="position"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Category</th>
+						<td key="category"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Job Type</th>
+						<td key="type"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Experience</th>
+						<td key="experience"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Location</th>
+						<td key="location"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Country</th>
+						<td key="country"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">State</th>
+						<td key="state"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Posted</th>
+						<td key="postDate"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Last Apply Date</th>
+						<td key="last_apply_date"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Close Date</th>
+						<td key="close_date"></td>
+					</tr>
+					<tr>
+						<th class="text-muted" scope="row">Salary Range</th>
+						<td>
+							<span key="start_salary"></span>
+							<span aria-hidden="true"> – </span>
+							<span key="last_salary"></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div>
+			<h6 class="text-muted text-uppercase fw-semibold mb-2">
+				Description
+			</h6>
+			<p class="mb-0" key="description"></p>
+		</div>
+
+		<div>
+			<h6 class="text-muted text-uppercase fw-semibold mb-2">Tags</h6>
+			<div class="d-flex flex-wrap gap-2" key="tags"></div>
+		</div>
+	</div>
+
+</form>

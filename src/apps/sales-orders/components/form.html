@@ -1,0 +1,107 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body align-items:flex-start d-flex flex-column gap-4 h-100">
+		<section
+			class="d-flex flex-column gap-3 flex-grow:2 flex-basis:480px min-width:300px">
+			<label
+				class="form-label"
+				for="order_number">
+				Order Number
+				<input
+					type="text"
+					key="order_number"
+					id="order_number"
+					class="form-control"
+					placeholder="SO-0001" />
+			</label>
+			<label
+				class="form-label"
+				for="customer">
+				Customer
+				<input
+					type="text"
+					key="customer"
+					id="customer"
+					class="form-control"
+					placeholder="Customer name" />
+			</label>
+			<label
+				class="form-label"
+				for="items">
+				Items (JSON)
+				<textarea
+					key="items"
+					id="items"
+					class="form-control"
+					rows="4"
+					placeholder='[{"product":"SKU","qty":1,"price":0}]'></textarea>
+			</label>
+		</section>
+		<section
+			class="d-flex flex-column gap-3 flex-grow-1 flex-basis:320px min-width:260px">
+			<label
+				class="form-label"
+				for="status">
+				Status
+				<select
+					key="status"
+					id="status"
+					class="form-select"
+					aria-label="Select order status">
+					<option value="pending">Pending</option>
+					<option value="processing">Processing</option>
+					<option value="shipped">Shipped</option>
+					<option value="delivered">Delivered</option>
+					<option value="cancelled">Cancelled</option>
+				</select>
+			</label>
+			<label
+				class="form-label"
+				for="subtotal">
+				Subtotal
+				<input
+					type="number"
+					key="subtotal"
+					id="subtotal"
+					class="form-control" />
+			</label>
+			<label
+				class="form-label"
+				for="tax">
+				Tax
+				<input
+					type="number"
+					key="tax"
+					id="tax"
+					class="form-control" />
+			</label>
+			<label
+				class="form-label"
+				for="shipping_cost">
+				Shipping Cost
+				<input
+					type="number"
+					key="shipping_cost"
+					id="shipping_cost"
+					class="form-control" />
+			</label>
+			<label
+				class="form-label"
+				for="total">
+				Total
+				<input
+					type="number"
+					key="total"
+					id="total"
+					class="form-control" />
+			</label>
+		</section>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

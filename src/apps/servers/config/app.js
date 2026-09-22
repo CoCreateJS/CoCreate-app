@@ -25,7 +25,7 @@ export default {
         "name": "Servers",
         "singularName": "Server",
         "path": "/apps/servers",
-        "card": "/apps/servers/card.html",
+        "card": "/apps/servers/components/card.html",
         "cardTemplate": "/apps/servers/templates/card.html",
         "templates": {
             "card": "templates/card.html",
@@ -49,7 +49,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"server-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"name d-flex flex-column align-items-start\" state-to=\"offcanvas-app-view\" state.src=\"/apps/servers/details.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"servers\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t\t<code class=\"fs-10 text-muted\">{{object._id}}</code>\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"name d-flex flex-column align-items-start\" state-to=\"offcanvas-app-view\" state.src=\"/apps/servers/aside.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"servers\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.name}}</span>\n\t\t\t\t\t\t<code class=\"fs-10 text-muted\">{{object._id}}</code>\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     { "name": "class", "value": "form-control" },
                     { "name": "id", "value": "server-name" },

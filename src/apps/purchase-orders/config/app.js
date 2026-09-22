@@ -6,7 +6,7 @@ export default {
         "name": "Purchase Orders",
         "singularName": "Purchase Order",
         "path": "/apps/purchase-orders",
-        "card": "/apps/purchase-orders/card.html",
+        "card": "/apps/purchase-orders/components/card.html",
         "cardTemplate": "/apps/purchase-orders/templates/card.html",
         "templates": {
             "card": "templates/card.html",
@@ -30,7 +30,7 @@ export default {
             {
                 "label": "PO Number",
                 "tagName": "input",
-                "tableTemplate": "<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/purchase-orders/details.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\"><div state-to=\"offcanvas-app-form\" state.array=\"purchase_orders\" state.object=\"{{object._id}}\"></div><span>{{object.po_number}}</span></a>",
+                "tableTemplate": "<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/purchase-orders/aside.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\"><div state-to=\"offcanvas-app-form\" state.array=\"purchase_orders\" state.object=\"{{object._id}}\"></div><span>{{object.po_number}}</span></a>",
                 "attributes": [
                     {
                         "name": "class",

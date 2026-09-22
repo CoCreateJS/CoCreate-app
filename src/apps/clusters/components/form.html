@@ -1,0 +1,44 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<input
+			type="hidden"
+			key="_id" />
+		<label class="form-label d-flex flex-column gap-1">
+			Name
+			<input
+				type="text"
+				class="form-control"
+				key="name"
+				placeholder="Cluster name"
+				required />
+		</label>
+		<label class="form-label d-flex flex-column gap-1">
+			Description
+			<textarea
+				class="form-control"
+				key="description"
+				height="auto"
+				rows="3"></textarea>
+		</label>
+		<label class="form-label d-flex flex-column gap-1">
+			Status
+			<select
+				class="form-select"
+				key="status">
+				<option value="queued">Queued</option>
+				<option value="provisioning">Provisioning</option>
+				<option value="active">Active</option>
+				<option value="draining">Draining</option>
+				<option value="error">Error</option>
+			</select>
+		</label>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

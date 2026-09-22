@@ -1,0 +1,143 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-with-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<div class="position-relative d-inline-block">
+			<div class="position-absolute bottom-0 end-0">
+				<label
+					for="customer-image-input"
+					class="mb-0"
+					data-bs-placement="right"
+					title="Select Image"
+					aria-label="Select Image for Customer">
+					<div class="avatar-xs cursor-pointer">
+						<div
+							class="avatar-title bg-light border rounded-circle text-muted">
+							<i class="ri-image-fill"></i>
+						</div>
+					</div>
+				</label>
+				<input
+					class="form-control d-none"
+					value=""
+					id="customer-image-input"
+					type="file"
+					accept="image/png, image/gif, image/jpeg"
+					aria-label="Customer Image Upload" />
+			</div>
+			<div class="avatar-xl p-1">
+				<div class="avatar-title bg-light rounded-circle">
+					<img
+						src="/assets/images/users/user-dummy-img.jpg"
+						id="customer-img"
+						class="avatar-md rounded-circle object-fit-cover"
+						alt="Customer Image Preview" />
+				</div>
+			</div>
+		</div>
+		<div class="mt-3">
+			<label
+				for="customername-field"
+				class="form-label"
+				>Name</label
+			>
+			<input
+				type="text"
+				id="customername-field"
+				class="form-control"
+				placeholder="Enter name"
+				aria-label="Customer Name" />
+		</div>
+		<div>
+			<label
+				for="company-field"
+				class="form-label"
+				>Company Name</label
+			>
+			<input
+				type="text"
+				id="company-field"
+				class="form-control"
+				placeholder="Enter company name"
+				aria-label="Company Name" />
+		</div>
+		<div>
+			<label
+				for="designation-field"
+				class="form-label"
+				>Designation</label
+			>
+			<input
+				type="text"
+				id="designation-field"
+				class="form-control"
+				placeholder="Enter Designation"
+				aria-label="Designation" />
+		</div>
+		<div>
+			<label
+				for="email-field"
+				class="form-label"
+				>Email ID</label
+			>
+			<input
+				type="text"
+				id="email-field"
+				class="form-control"
+				placeholder="Enter email"
+				aria-label="Email Address" />
+		</div>
+		<div class="d-flex gap-3">
+			<div class="flex-grow-1">
+				<label
+					for="phone-field"
+					class="form-label"
+					>Phone</label
+				>
+				<input
+					type="text"
+					id="phone-field"
+					class="form-control"
+					placeholder="Enter phone no"
+					aria-label="Phone Number" />
+			</div>
+			<div class="flex-grow-1">
+				<label
+					for="lead_score-field"
+					class="form-label"
+					>Lead Score</label
+				>
+				<input
+					type="text"
+					id="lead_score-field"
+					class="form-control"
+					placeholder="Enter value"
+					aria-label="Lead Score" />
+			</div>
+		</div>
+		<div>
+			<label
+				for="taginput-choices"
+				class="form-label font-size-13 text-muted">
+				Tags
+			</label>
+			<select
+				class="form-control"
+				name="taginput-choices"
+				id="taginput-choices"
+				multiple
+				aria-label="Select Tags">
+				<option value="Lead">Lead</option>
+				<option value="Partner">Partner</option>
+				<option value="Exiting">Exiting</option>
+				<option value="Long-term">Long-term</option>
+			</select>
+		</div>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/components/list/header.css" />
+<link rel="stylesheet" href="/apps/files/components/browser.css" />
+<div class="media-picker media-picker-inline" data-file-browser aria-label="File library">
+    <header class="media-picker-header list-header">
+        <button type="button" class="list-toolbar-control list-toolbar-icon btn btn-light" data-files-menu
+            aria-label="Toggle files menu" title="Files menu" aria-controls="files-sidebar" aria-expanded="false">
+            <i class="ri-menu-2-line" aria-hidden="true"></i>
+        </button>
+        <div class="media-picker-heading">
+            
+            <div><h5 data-media-title>File library</h5></div>
+        </div>
+        <button type="button" class="list-toolbar-control btn btn-primary" data-media-upload><i class="ri-upload-cloud-2-line" aria-hidden="true"></i> Upload file</button>
+        <button type="button" class="btn btn-ghost-secondary" data-media-close aria-label="Close media picker"><i class="ri-close-line" aria-hidden="true"></i></button>
+    </header>
+    <div class="media-picker-toolbar">
+        <label>Library
+            <select class="form-select" data-media-folder>
+                <option value="">All locations</option>
+                <option value="/media/">Media</option>
+                <option value="/media/avatars/">Avatars</option>
+                <option value="/media/logos/">Logos</option>
+                <option value="/media/uploads/">Uploads</option>
+                <option value="/assets/">Website assets</option>
+            </select>
+        </label>
+        <label>Type
+            <select class="form-select" data-media-kind>
+                <option value="">All files</option>
+                <option value="image">Images</option>
+                <option value="video">Videos</option>
+                <option value="audio">Audio</option>
+                <option value="application">Documents</option>
+            </select>
+        </label>
+        <label class="media-picker-search">Search
+            <input type="search" class="form-control" data-media-search placeholder="Search files" />
+        </label>
+        <input type="file" data-media-file hidden />
+        <label class="media-picker-destination">Upload folder
+            <input type="text" class="form-control" data-media-path value="/media/uploads/" />
+        </label>
+    </div>
+    <p class="media-picker-message" role="status" aria-live="polite" data-media-message></p>
+    <div class="media-picker-content">
+        <div class="media-picker-scroll">
+            <div class="media-picker-grid" data-media-grid aria-label="Available files"></div>
+            <button type="button" class="btn btn-link" data-media-more hidden>Load more</button>
+        </div>
+        <aside class="media-picker-details" aria-label="File details">
+            <h6>File details</h6>
+            <p class="text-muted" data-media-details-empty>Select a file to preview it and see its details.</p>
+            <div data-media-details hidden>
+                <i class="ri-file-line fs-1" data-media-preview-icon aria-hidden="true" hidden></i>
+                <img data-media-preview alt="Selected image preview" />
+                <dl>
+                    <dt>Name</dt><dd data-media-name></dd>
+                    <dt>Path</dt><dd data-media-location></dd>
+                    <dt>Type</dt><dd data-media-type></dd>
+                    <dt>Size</dt><dd data-media-size></dd>
+                </dl>
+            </div>
+        </aside>
+    </div>
+    <footer class="media-picker-footer">
+        <span class="text-muted" data-media-selection>No file selected</span>
+        <button type="button" class="btn btn-light" data-media-close>Cancel</button>
+        <button type="button" class="btn btn-primary" data-media-select disabled>Open file</button>
+    </footer>
+</div>
+
+<script src="/apps/files/components/browser.js"></script>

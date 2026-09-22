@@ -1,0 +1,130 @@
+<form
+	state-id="offcanvas-app-form"
+	class="app-form app-without-image"
+	array
+	object
+	autocomplete="off">
+
+	<div class="card-body d-flex flex-column gap-4 h-100">
+		<input
+			type="hidden"
+			key="_id" />
+
+		<section>
+			<h5 class="text-uppercase fw-semibold mb-3">File identity</h5>
+			<div class="d-flex flex-wrap gap-3">
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:240px min-width:200px">
+					Name
+					<input
+						type="text"
+						key="name"
+						class="form-control"
+						placeholder="index.html"
+						required />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-2 flex-basis:360px min-width:240px">
+					Pathname
+					<input
+						type="text"
+						key="pathname"
+						class="form-control font-monospace"
+						placeholder="/index.html"
+						required />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:180px">
+					Directory
+					<input
+						type="text"
+						key="directory"
+						class="form-control font-monospace"
+						placeholder="/" />
+				</label>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h5 class="text-uppercase fw-semibold mb-3">Metadata</h5>
+			<div class="d-flex flex-wrap gap-3">
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:240px min-width:200px">
+					Content type
+					<input
+						type="text"
+						key="content-type"
+						class="form-control"
+						placeholder="text/html" />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:180px min-width:160px">
+					Type
+					<input
+						type="text"
+						key="type"
+						class="form-control"
+						placeholder="file" />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:180px min-width:160px">
+					Status
+					<input
+						type="text"
+						key="status"
+						class="form-control"
+						placeholder="active" />
+				</label>
+				<label
+					class="form-label d-flex flex-column gap-1 flex-grow-1 flex-basis:160px min-width:140px">
+					Size (bytes)
+					<input
+						type="number"
+						key="size"
+						class="form-control"
+						readonly />
+				</label>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h5 class="text-uppercase fw-semibold mb-3">
+				Serving configuration
+			</h5>
+			<div class="d-flex flex-column gap-3">
+				<label class="form-label d-flex flex-column gap-1">
+					Headers
+					<textarea
+						key="headers"
+						value-type="json"
+						class="form-control font-monospace"
+						rows="6"
+						spellcheck="false"
+						placeholder='{"cache-control":"public, max-age=3600"}'></textarea>
+				</label>
+				<label class="form-label d-flex flex-column gap-1">
+					Languages
+					<textarea
+						key="languages"
+						value-type="json"
+						class="form-control font-monospace"
+						rows="3"
+						spellcheck="false"
+						placeholder='["en", "es"]'></textarea>
+				</label>
+				<label class="form-label d-flex flex-column gap-1">
+					Sitemap
+					<textarea
+						key="sitemap"
+						value-type="json"
+						class="form-control font-monospace"
+						rows="5"
+						spellcheck="false"
+						placeholder="{}"></textarea>
+				</label>
+			</div>
+		</section>
+	</div>
+
+	<footer src="/components/offcanvas-app/footer.html" value-type="outerHtml"></footer>
+</form>

@@ -301,7 +301,9 @@
             const results = getResults(form);
 
             if (chip) {
-                chip.hidden = false;
+                chip.hidden = !hasSelectedApp(
+                    chip.querySelector('[state-id="app"]')
+                );
             }
             if (results) {
                 results.hidden = true;

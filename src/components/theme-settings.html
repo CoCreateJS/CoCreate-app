@@ -74,10 +74,14 @@
 	tabindex="-1"
 	role="dialog"
 	aria-labelledby="theme-customizer-title">
-	<div class="offcanvas offcanvas-end border-0" aria-close-on="outside">
+	<div
+		class="offcanvas offcanvas-end border-0"
+		aria-close-on="outside">
 		<div
 			class="theme-settings-topbar d-flex align-items-center offcanvas-header">
-			<h5 class="m-0 me-2" id="theme-customizer-title">
+			<h5
+				class="m-0 me-2"
+				id="theme-customizer-title">
 				Theme Customizer
 			</h5>
 
@@ -87,10 +91,13 @@
 				id="customizerclose-btn"
 				aria-label="Close"
 				aria-controls="theme-settings-dialog"
-				aria-expanded="true" aria-close></button>
+				aria-expanded="true"
+				aria-close></button>
 		</div>
 		<div class="offcanvas-body p-0">
-			<div plugin='{"$SimpleBar": ["$this", {}]}' class="h-100">
+			<div
+				plugin='{"$SimpleBar": ["$this", {}]}'
+				class="h-100">
 				<div class="p-4">
 					<h6 class="mb-0 fw-semibold text-uppercase">Layout</h6>
 					<p class="text-muted">Choose your layout</p>
@@ -461,7 +468,9 @@
 							Choose Fixed or Scrollable Layout Position.
 						</p>
 
-						<div class="btn-group radio" role="group">
+						<div
+							class="btn-group radio"
+							role="group">
 							<input
 								type="radio"
 								id="layout-position-fixed"
@@ -494,7 +503,8 @@
 						</div>
 					</div>
 
-					<div class="form-check form-switch form-switch-md mb-3 mt-4">
+					<div
+						class="form-check form-switch form-switch-md mb-3 mt-4">
 						<input
 							type="checkbox"
 							id="show-breadcrumbs"
@@ -815,7 +825,9 @@
 							input-query="$document html"
 							input.data-sidebar-user="$value"
 							class="form-check-input" />
-						<label class="form-check-label" for="sidebarUserProfile"
+						<label
+							class="form-check-label"
+							for="sidebarUserProfile"
 							>Sidebar User Profile Avatar</label
 						>
 					</div>
@@ -837,8 +849,7 @@
 										value="light"
 										input-query="$document html"
 										input.data-bs-theme="$value"
-										class="form-check-input"
-										checked />
+										class="form-check-input" />
 									<label
 										class="form-check-label p-0 avatar-md w-100 material-shadow"
 										for="layout-mode-light">
@@ -1042,26 +1053,38 @@
 									input-query="$document html"
 									input.data-topbar-color="$value"
 									class="form-check-input" />
-								<label class="form-check-label p-0 avatar-md w-100 material-shadow" for="topbar-color-dark">
-                                    <span class="d-flex gap-1 h-100">
-                                        <span class="flex-shrink-0">
-                                            <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
-                                                <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
-                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
-                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
-                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
-                                            </span>
-                                        </span>
-                                        <span class="flex-grow-1">
-                                            <span class="d-flex h-100 flex-column">
-                                                <span class="bg-primary d-block p-1"></span>
-                                                <span class="bg-light d-block p-1 mt-auto"></span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
+								<label
+									class="form-check-label p-0 avatar-md w-100 material-shadow"
+									for="topbar-color-dark">
+									<span class="d-flex gap-1 h-100">
+										<span class="flex-shrink-0">
+											<span
+												class="bg-light d-flex h-100 flex-column gap-1 p-1">
+												<span
+													class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+												<span
+													class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+												<span
+													class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+												<span
+													class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+											</span>
+										</span>
+										<span class="flex-grow-1">
+											<span
+												class="d-flex h-100 flex-column">
+												<span
+													class="bg-primary d-block p-1"></span>
+												<span
+													class="bg-light d-block p-1 mt-auto"></span>
+											</span>
+										</span>
+									</span>
+								</label>
 							</div>
-							<h5 class="fs-13 text-center mt-2">Primary Color</h5>
+							<h5 class="fs-13 text-center mt-2">
+								Primary Color
+							</h5>
 						</div>
 					</div>
 
@@ -1073,7 +1096,9 @@
 							Choose Fixed or Scrollable Navbar Position.
 						</p>
 
-						<div class="btn-group radio" role="group">
+						<div
+							class="btn-group radio"
+							role="group">
 							<input
 								type="radio"
 								id="navbar-position-fixed"
@@ -1158,7 +1183,8 @@
 								<h5 class="fs-13 text-center mt-2">Light</h5>
 							</div>
 							<div class="col-4">
-								<div class="form-check sidebar-setting card-radio">
+								<div
+									class="form-check sidebar-setting card-radio">
 									<input
 										type="radio"
 										id="sidebar-color-dark"
@@ -1249,7 +1275,9 @@
 						</div>
 						<!-- end row -->
 
-						<div class="collapse" id="collapseBgGradient">
+						<div
+							class="collapse"
+							id="collapseBgGradient">
 							<div
 								class="d-flex gap-2 flex-wrap img-switch p-2 px-3 bg-light rounded">
 								<div
@@ -1947,7 +1975,6 @@
 						</div>
 						<!-- end col -->
 					</div>
-
 				</div>
 			</div>
 		</div>

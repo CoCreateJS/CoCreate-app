@@ -1,0 +1,52 @@
+<div
+	id="servers-configs-aside"
+	class="offcanvas-app-shell app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	role="region"
+	aria-label="Servers Configs record">
+	<header
+		src="/components/offcanvas-app/header.html"
+		value-replace="/\{\{app\.name\}\}/g"
+		value-replacement="ServersConfigs"
+		value-type="outerHtml"></header>
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		onload.plugin='({"$SimpleBar": ["$this", {}]})'
+		onload-query=".offcanvas-app-view > form > .card-body[]">
+		<div
+			id="ServersConfigs-details-view"
+			class="offcanvas-app-view"
+			data-view="details"
+			role="tabpanel"
+			aria-labelledby="ServersConfigs-details-btn"
+			tabindex="0"
+			src="/apps/servers/configs/components/details.html"
+			aria-hidden="false"
+			state-id="servers-configs-details"
+			state.aria-hidden
+			hidden></div>
+		<div
+			id="ServersConfigs-form-view"
+			class="offcanvas-app-view"
+			data-view="form"
+			role="tabpanel"
+			aria-labelledby="ServersConfigs-form-btn"
+			tabindex="0"
+			src="/apps/servers/configs/components/form.html"
+			aria-hidden="true"
+			state-id="servers-configs-form"
+			state.aria-hidden
+			hidden></div>
+		<div
+			id="ServersConfigs-codearea-view"
+			class="offcanvas-app-view"
+			data-view="codearea"
+			role="tabpanel"
+			aria-labelledby="ServersConfigs-codearea-btn"
+			tabindex="0"
+			src="/components/offcanvas-app/codearea.html"
+			aria-hidden="true"
+			state-id="servers-configs-codearea"
+			state.aria-hidden
+			hidden></div>
+	</div>
+</div>

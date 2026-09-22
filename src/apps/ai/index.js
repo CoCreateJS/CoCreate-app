@@ -117,20 +117,17 @@
 	menuCloseRoot.addEventListener("click", menuCloseRoot.aiCodeMenuCloseHandler);
 	const configureDockButton = () => {
 		if (!panelDock) return;
-		const dockIcon = panelDock.querySelector("i");
 		if (shell.closest("#ai-chat-panel")) {
 			panelDock.title = "Dock left";
 			panelDock.setAttribute("aria-label", "Dock AI chat in main view");
 			panelDock.setAttribute("aria-controls", "ai-chat-panel");
 			panelDock.setAttribute("aria-close", "");
-			dockIcon?.setAttribute("src", "/assets/svg/sidebar-fold-line.svg");
 			if (panelClose) panelClose.hidden = false;
 		} else {
 			panelDock.title = "Dock right";
 			panelDock.setAttribute("aria-label", "Dock AI chat in side panel");
 			panelDock.setAttribute("aria-controls", "ai-chat-panel");
 			panelDock.removeAttribute("aria-close");
-			dockIcon?.setAttribute("src", "/assets/svg/sidebar-unfold-line.svg");
 			if (panelClose) panelClose.hidden = true;
 		}
 	};

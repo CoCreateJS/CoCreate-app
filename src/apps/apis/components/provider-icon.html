@@ -1,0 +1,35 @@
+<span
+	class="app-provider-image"
+	aria-hidden="true"
+	object="{{object.api_id}}"
+	key="api_id"
+	value
+	input.object="$value"
+	input-query="[array][]">
+	<input
+		type="hidden"
+		array="apis"
+		object="{{object.api_id}}"
+		key="alt"
+		input-query="$next"
+		input.alt="$value" />
+	<img
+		class="app-provider-default"
+		form-attributes="false"
+		array="apis"
+		key="icon"
+		object="{{object.api_id}}"
+		alt=""
+		width="36"
+		height="36"
+		onload="this.hidden = false"
+		onerror="
+			if (
+				this.getAttribute('src') === '/assets/images/providers/api.svg'
+			) {
+				this.hidden = true;
+			} else {
+				this.src = '/assets/images/providers/api.svg';
+			}
+		" />
+</span>
