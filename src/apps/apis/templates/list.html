@@ -1,10 +1,23 @@
 <div class="d-flex align-items-center gap-2">
-	<span class="avatar-xs rounded-circle overflow-hidden flex-shrink-0">
-		<span class="avatar-title bg-primary-subtle text-primary">
-			<span class="avatar-initial" key="name[0]"></span>
-		</span>
+	<span
+		class="apis-provider-image app-list-image"
+		style="width: 32px; height: 32px; flex-basis: 32px"
+		aria-hidden="true">
+		<img
+			class="apis-grid-provider-logo"
+			src="/assets/images/providers/{{object.provider}}.svg"
+			alt=""
+			onload="this.hidden = false"
+			onerror="this.hidden = true" />
+		<img
+			class="apis-custom-provider-logo"
+			src="{{object.avatar[0].src}}"
+			alt=""
+			hidden
+			onload="this.hidden = false"
+			onerror="this.hidden = true" />
 	</span>
 	<span class="flex-grow-1 text-start text-truncate">
-		<span key="name"></span>
+		<span>{{object.name}}</span>
 	</span>
 </div>

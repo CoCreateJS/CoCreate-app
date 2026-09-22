@@ -1,7 +1,22 @@
 export const storageProviderFields = {
-    mongodb: ['url'], mysql: ['url'], postgresql: ['url'], sqlite: ['url'],
+    mongodb: ['url'],
+    mysql: ['connectionUri'],
+    postgresql: ['connectionUri'],
+    sqlite: ['databaseUrl', 'authToken'],
     firestore: ['projectId', 'clientEmail', 'privateKey'],
     dynamodb: ['region', 'accessKeyId', 'secretAccessKey']
+};
+export const storageFieldLabels = {
+    url: 'Connection URI',
+    connectionUri: 'Connection URI',
+    databaseUrl: 'Database URL',
+    authToken: 'Auth token',
+    projectId: 'Project ID',
+    clientEmail: 'Client email',
+    privateKey: 'Private key',
+    region: 'AWS Region',
+    accessKeyId: 'AWS Access Key ID',
+    secretAccessKey: 'AWS Secret Access Key'
 };
 export const storageProviderLabels = {
     mongodb: 'MongoDB', mysql: 'MySQL', postgresql: 'PostgreSQL',
@@ -30,7 +45,7 @@ export const storageValue = (storage, key) => {
 export const storageKeys = storage => storageProviderFields[storage?.provider] || ['url'];
 export const storageIsConfigured = storage => storageKeys(storage).every(key => hasCredentialValue(storageValue(storage, key)));
 export const storageIsEnabled = storage => storage.enabled !== false && storage.enabled !== 'false';
-export const formatCredentialLabel = key => key.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/\bId\b/g, 'ID').replace(/^./, c => c.toUpperCase());
+export const formatCredentialLabel = key => storageFieldLabels[key] || key.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/\bId\b/g, 'ID').replace(/^./, c => c.toUpperCase());
 export const createProviderInput = ({ key, configured, storage = false }) => {
     const privateKey = /privateKey/i.test(key);
     const secret = /secret|password|token|privateKey|apiKey|accessKeyId|(^|Api)key$/i.test(key);
@@ -41,7 +56,7 @@ export const createProviderInput = ({ key, configured, storage = false }) => {
     if (storage) input.dataset.storageKey = key;
     else input.dataset.credentialKey = key;
     if (privateKey) { input.rows = 5; input.spellcheck = false; }
-    else input.type = secret || (storage && key === 'url') ? 'password' : 'text';
+    else input.type = secret || (storage && ['url', 'connectionUri', 'databaseUrl'].includes(key)) ? 'password' : 'text';
     input.placeholder = configured ? '••••••••' : `Enter ${formatCredentialLabel(key).toLowerCase()}`;
     return input;
 };

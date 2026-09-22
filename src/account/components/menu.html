@@ -319,7 +319,7 @@
 				<a
 					id="account-storage-providers-list-btn"
 					state-to="create-panel-view"
-					state.src="/apps/storage-providers/index.html"
+					state.src="/apps/apis/providers/index.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
@@ -328,13 +328,22 @@
 					title="Storage Providers">
 					<i class="ri-database-2-line"></i
 					><span>Storage Providers</span>
+					<div
+						state-to="apis-providers-list"
+						state.filter-query-value="storage"></div>
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="Storage"></div>
+					<div
+						state-to="apis-providers-heading"
+						state.data-provider-name="Storage"></div>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a
 					id="account-cloud-providers-list-btn"
 					state-to="create-panel-view"
-					state.src="/apps/cloud-providers/index.html"
+					state.src="/apps/apis/providers/index.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
@@ -342,13 +351,22 @@
 					class="nav-link menu-link"
 					title="Cloud Providers">
 					<i class="ri-cloud-line"></i><span>Cloud Providers</span>
+					<div
+						state-to="apis-providers-list"
+						state.filter-query-value="cloud"></div>
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="Cloud"></div>
+					<div
+						state-to="apis-providers-heading"
+						state.data-provider-name="Cloud"></div>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a
 					id="account-routing-providers-list-btn"
 					state-to="create-panel-view"
-					state.src="/apps/routing-providers/index.html"
+					state.src="/apps/apis/providers/index.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
@@ -356,13 +374,22 @@
 					class="nav-link menu-link"
 					title="Routing Providers">
 					<i class="ri-route-line"></i><span>Routing Providers</span>
+					<div
+						state-to="apis-providers-list"
+						state.filter-query-value="routing"></div>
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="Routing"></div>
+					<div
+						state-to="apis-providers-heading"
+						state.data-provider-name="Routing"></div>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a
 					id="account-ai-providers-list-btn"
 					state-to="create-panel-view"
-					state.src="/apps/ai-providers/index.html"
+					state.src="/apps/apis/providers/index.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
@@ -370,6 +397,15 @@
 					class="nav-link menu-link"
 					title="AI Providers">
 					<i class="ri-brain-line"></i><span>AI Providers</span>
+					<div
+						state-to="apis-providers-list"
+						state.filter-query-value="ai"></div>
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="AI"></div>
+					<div
+						state-to="apis-providers-heading"
+						state.data-provider-name="AI"></div>
 				</a>
 			</li>
 

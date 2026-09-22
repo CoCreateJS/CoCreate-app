@@ -1,6 +1,6 @@
 (async () => {
-    const { storageProviderLabels, storageValue, storageKeys, storageIsConfigured, storageIsEnabled, hasCredentialValue, formatCredentialLabel, createProviderInput } = await import("/apps/storage-providers/shared.js");
-    const { cloudProviderLabels: providerLabels, cloudProviderFields, cloudProviderUrls, cloudValue: providerValue, cloudQuery } = await import("/apps/cloud-providers/shared.js");
+    const { storageProviderLabels, storageValue, storageKeys, storageIsConfigured, storageIsEnabled, hasCredentialValue, formatCredentialLabel, createProviderInput } = await import("/apps/apis/providers/storage.js");
+    const { cloudProviderLabels: providerLabels, cloudProviderFields, cloudProviderUrls, cloudValue: providerValue, cloudQuery } = await import("/apps/apis/providers/cloud.js");
     const initialize = (root) => {
         if (!root || root.hasAttribute("data-provision-ready")) return;
         root.setAttribute("data-provision-ready", "");

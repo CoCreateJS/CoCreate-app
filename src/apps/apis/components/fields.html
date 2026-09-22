@@ -1,0 +1,87 @@
+<style>
+	.apis-credential textarea[type="password"] {
+		-webkit-text-security: disc;
+	}
+	.apis-credential textarea[type="text"] {
+		-webkit-text-security: none;
+	}
+	.apis-credential-field > textarea {
+		padding-right: 4.5rem;
+		background-color: var(--coc-body-bg);
+		resize: none;
+	}
+	.apis-credential-field:has(textarea:not([hidden])) > button {
+		top: 0.3rem;
+		transform: none;
+	}
+</style>
+<section
+	class="d-flex flex-column gap-3"
+	array="apis"
+	object="{{object._id}}"
+	render-type="object"
+	render-query="[template='api-custom-field']">
+	<div
+		class="apis-credential"
+		render="object"
+		template="api-custom-field"
+		render-as="field"
+		render-exclude="_id,avatar,name,provider,type,headers,description,enabled,created,modified,updated,deleted,permissions,$storage,$array,$database,organization_id">
+		<label
+			class="text-muted d-block mb-1"
+			for="api-custom-{{field.key}}"
+			>{{field.key === "url" || field.key === "connectionUri" ? "Connection URI" : field.key === "databaseUrl" ? "Database URL" : field.key === "authToken" ? "Auth token" : field.key === "projectId" ? "Project ID" : field.key === "clientEmail" ? "Client email" : field.key === "privateKey" ? "Private key" : field.key === "region" ? "AWS Region" : field.key === "accessKeyId" ? "AWS Access Key ID" : field.key === "secretAccessKey" ? "AWS Secret Access Key" : field.key}}</label
+		>
+		<div class="apis-credential-field position-relative">
+			<textarea
+				id="api-custom-{{field.key}}"
+				data-api-secret
+				required
+				type="password"
+				key="{{field.key}}"
+				class="form-control font-monospace"
+				aria-label="{{field.key}}"
+				placeholder="Enter {{field.key}}"
+				height="auto"
+				rows="1"
+				spellcheck="false"
+				autocomplete="off"
+				value-evaluate="false"
+				get-value-decode="atob"></textarea>
+			<button
+				type="button"
+				class="apis-credential-icon apis-credential-reveal"
+				click-query="$parent textarea"
+				click.type="text, password"
+				click.get-value-decode=",atob"
+				aria-label="Toggle {{field.key}} visibility"
+				aria-controls="api-custom-{{field.key}}">
+				<i
+					class="ri-eye-line"
+					aria-hidden="true"></i>
+				<i
+					class="ri-eye-off-line"
+					aria-hidden="true"></i>
+			</button>
+			<button
+				type="button"
+				class="apis-credential-icon apis-credential-copy"
+				actions="clipboard, copied, timeout(1200), copyreset"
+				clipboard-query="$parent textarea"
+				event-name="copied, copyreset"
+				copied.class="is-copied"
+				copied.aria-label="{{field.key}} copied"
+				copyreset.class="is-copied, "
+				copyreset.aria-label="Copy {{field.key}}"
+				aria-label="Copy {{field.key}}"
+				title="Copy {{field.key}}">
+				<i
+					class="ri-file-copy-line"
+					aria-hidden="true"></i>
+				<i
+					class="ri-check-line"
+					aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
+</section>

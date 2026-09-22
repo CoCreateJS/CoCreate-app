@@ -1,4 +1,4 @@
-import { hasCredentialValue } from '../storage-providers/shared.js';
+import { hasCredentialValue } from './storage.js';
 export const cloudProviderLabels = {
             aws: "AWS",
             gcp: "Google Cloud",
