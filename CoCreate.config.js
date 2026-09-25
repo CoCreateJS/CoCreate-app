@@ -218,7 +218,7 @@ export default {
         },
         position: {
             import: "@cocreate/position",
-            selector: "[positionable], [moveable]",
+            selector: "[positionable], [moveable], [position-query]",
             path: "../CoCreate-modules/CoCreate-position",
             repo: "github.com/CoCreate-app/CoCreate-position.git"
         },

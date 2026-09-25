@@ -58,6 +58,18 @@
 		display: block;
 	}
 
+	#apis-provider-workflow[data-provider-step="cloud"]:has(
+			> footer:not([hidden])
+		)
+		.apis-provider-option:has(
+			.apis-provider-fields [render-clone] textarea
+		):not(
+			:has(.apis-provider-fields [render-clone] textarea:invalid)
+		)
+		> .apis-provider-fields {
+		display: none;
+	}
+
 	.apis-provider-option:not(
 			:has(.apis-provider-fields [render-clone] textarea)
 		)
@@ -99,32 +111,7 @@
 		render-query="[template='api-provider']">
 		<article
 			class="apis-provider-option border rounded position-relative"
-			template="api-provider">
-			<label class="d-flex align-items-center gap-3 p-3 mb-0">
-				<input
-					type="checkbox"
-					name="storage-expansion"
-					value="{{object._id}}"
-					aria-controls="storage-provider-fields-{{object._id}}" />
-				<div
-					class="flex-grow-1 min-width:0"
-					src="/apps/apis/templates/list.html"></div>
-				<span
-					data-storage-configured-badge
-					class="badge bg-success-subtle text-success flex-shrink-0">
-					Configured
-				</span>
-			</label>
-
-			<form
-				id="storage-provider-fields-{{object._id}}"
-				class="apis-provider-fields border-top p-3"
-				array="apis"
-				object="{{object._id}}"
-				data-api-fields-parent
-				autocomplete="off">
-				<div src="/apps/apis/components/fields.html"></div>
-			</form>
-		</article>
+			template="api-provider"
+			src="/apps/apis/providers/card.html"></article>
 	</div>
 </section>

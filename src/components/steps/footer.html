@@ -1,0 +1,79 @@
+<div class="d-flex align-items-center gap-2 width:100%">
+	<div data-provider-step-controls="cloud" class="width:100% text-end">
+		<button
+			class="btn btn-primary"
+			type="button"
+			data-cluster-cloud-next
+			actions="click, validate(#cluster-providers), action($document #show-cluster-configuration)"
+			click-query="$document #cluster-providers"
+			click.value="$query($document #cluster-cloud-providers-list input[key='providers'])">
+			Continue
+		</button>
+	</div>
+	<div data-provider-step-controls="configuration" class="width:100%">
+		<button
+			class="btn btn-light"
+			type="button"
+			click-query="$document #apis-provider-workflow"
+			click.data-provider-step="configuration, cloud"
+			selected-query="$document #apis-providers-heading, $document #apis-providers-title"
+			selected.data-provider-name="Cloud">
+			Back
+		</button>
+		<button
+			class="btn btn-primary float-end"
+			type="button"
+			actions="validate(#cluster-primary), click"
+			click-query="$document #apis-provider-workflow"
+			click.data-provider-step="configuration, storage"
+			selected-query="$document #apis-providers-heading, $document #apis-providers-title"
+			selected.data-provider-name="Storage">
+			Continue
+		</button>
+	</div>
+	<div data-provider-step-controls="storage" class="width:100%">
+		<button
+			class="btn btn-light"
+			type="button"
+			click-query="$document #apis-provider-workflow"
+			click.data-provider-step="storage, configuration">
+			Back
+		</button>
+		<button
+			class="btn btn-primary float-end"
+			type="button"
+			actions="click, validate(#cluster-storage-providers), action($document #show-first-deployment)"
+			click-query="$document #cluster-storage-providers"
+			click.value="$query($document #cluster-storage-providers-list input[key='storageProviders'])">
+			Continue
+		</button>
+	</div>
+	<div data-provider-step-controls="deployment" class="width:100%">
+		<button
+			class="btn btn-light"
+			type="button"
+			click-query="$document #apis-provider-workflow"
+			click.data-provider-step="deployment, storage"
+			selected-query="$document #apis-providers-heading, $document #apis-providers-title"
+			selected.data-provider-name="Storage">
+			Back
+		</button>
+		<button
+			class="btn btn-success float-end"
+			type="button"
+			data-cluster-deploy
+			actions="validate(#first-deployment-form), action($document #run-first-deployment)">
+			Deploy
+		</button>
+	</div>
+	<div data-provider-step-controls="success" class="width:100% text-end">
+		<button
+			class="btn btn-primary"
+			type="button"
+			aria-controls="create-panel"
+			aria-expanded="true"
+			aria-close>
+			Close
+		</button>
+	</div>
+</div>

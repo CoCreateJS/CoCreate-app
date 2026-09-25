@@ -1,37 +1,56 @@
-<div
-	data-media-field
-	class="avatar-xl rounded-circle img-thumbnail p-0 position-relative d-inline-block mb-4">
-	<img
-		src="/assets/images/user.jpg"
-		key="avatar"
-		alt="image"
-		width="100%"
-		height="100%"
-		class="avatar-xl rounded-circle img-thumbnail object-fit-cover"
-		onload="this.hidden = false"
-		onerror="this.hidden = true" />
-	<input
-		type="hidden"
-		key="avatar"
-		value-type="json"
-		realtime="true"
-		set-value-bubbles="true"
-		data-media-value />
-	<button
-		type="button"
-		class="avatar-xs rounded-circle position-absolute right:0 left:auto bottom:0 overflow-hidden cursor-pointer border-0 p-0"
-		data-picker-open
-		aria-haspopup="dialog"
-		aria-expanded="false"
-		accept="image/*"
-		path="/media/avatars/"
-		filter-query-key="content-type.$regex"
-		filter-query-value="^image/"
-		title="Choose image"
-		aria-label="Choose image">
-		<i
-			class="avatar-title ri-camera-fill"
-			aria-hidden="true"></i>
-	</button>
+<link
+	rel="stylesheet"
+	href="/components/media-picker/index.css?v=20260923-20" />
+
+<div class="dropdown d-inline-block">
+	<div
+		class="avatar-xl rounded-circle img-thumbnail p-0 position-relative d-inline-block mb-4">
+		<img
+			id="profileAvatar"
+			src="/assets/images/user.jpg"
+			key="avatar"
+			alt="image"
+			width="100%"
+			height="100%"
+			class="avatar-xl rounded-circle img-thumbnail object-fit-cover"
+			onload="this.hidden = false"
+			onerror="this.hidden = true" />
+		<button
+			id="profile-image-picker-trigger"
+			type="button"
+			class="avatar-xs rounded-circle position-absolute right:0 left:auto bottom:0 overflow-hidden cursor-pointer border-0 p-0"
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			aria-controls="mediaPicker"
+			position-query="$document #mediaPicker"
+			position-placement="bottom-end"
+			position-offset="8"
+			click-query="$document #mediaPicker [file-for][]"
+			click.file-for="profile-file-controller"
+			title="Choose image"
+			aria-label="Choose image">
+			<span>
+				<i
+					class="avatar-title ri-camera-fill"
+					aria-hidden="true"></i>
+			</span>
+		</button>
+		<input
+			id="profile-file-controller"
+			class="media-picker-upload"
+			type="file"
+			hidden
+			accept="image/*"
+			path="/media/avatars/"
+			array="files"
+			object=""
+			key="{}"
+			read="false"
+			realtime="false"
+			upsert="true"
+			capture="user"
+			input-query="$document #profileAvatar"
+			input.src="$value.0.pathname"
+			form-attributes="false" />
+	</div>
 </div>
-<script src="/components/media-picker/index.js"></script>

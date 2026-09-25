@@ -238,10 +238,35 @@ export default {
                             "UserData": { "$btoa": { "$astAsync": "$payload.data.startupScript" } }
                         }
                     }
+                },
+                "instanceId": {
+                    "$aws.data.match": ["<instanceId>([^<]+)</instanceId>"]
+                },
+                "imageId": {
+                    "$aws.data.match": ["<imageId>([^<]+)</imageId>"]
+                },
+                "instanceType": {
+                    "$aws.data.match": ["<instanceType>([^<]+)</instanceType>"]
+                },
+                "state": {
+                    "$aws.data.match": ["<instanceState>[\\s\\S]*?<name>([^<]+)</name>"]
+                },
+                "availabilityZone": {
+                    "$aws.data.match": ["<availabilityZone>([^<]+)</availabilityZone>"]
+                },
+                "privateIpAddress": {
+                    "$aws.data.match": ["<privateIpAddress>([^<]+)</privateIpAddress>"]
                 }
             },
             "resolved": true,
-            "data": "$actions.aws.data",
+            "data": {
+                "instanceId": "$actions.instanceId.1",
+                "imageId": "$actions.imageId.1",
+                "instanceType": "$actions.instanceType.1",
+                "state": "$actions.state.1",
+                "availabilityZone": "$actions.availabilityZone.1",
+                "privateIpAddress": "$actions.privateIpAddress.1"
+            },
             "enabled": true
         },
         {

@@ -17,8 +17,8 @@ export default {
     "object": [
         {
             "_id": "65f8cb447b39a3c1a8904e30",
-            "type": "autoscaler",
-            "name": "Cluster Autoscale Configuration",
+            "type": "startupscript",
+            "name": "Default Server Startup Configuration",
             "enabled": true,
             "cluster": "*",
             "server": "*",
@@ -235,15 +235,14 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.aws": {
-                    "image": "ubuntu-24.04-lts",
                     "instances": [
-                        { "name": "t3a.nano", "vCPU": 2, "memoryGb": 0.5, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.small", "vCPU": 2, "memoryGb": 2, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.medium", "vCPU": 2, "memoryGb": 4, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.large", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.xlarge", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24.04-lts" },
-                        { "name": "t3a.2xlarge", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24.04-lts" },
-                        { "name": "c5a.4xlarge", "vCPU": 16, "memoryGb": 32, "image": "ubuntu-24.04-lts" }
+                        { "name": "t3a.nano", "vCPU": 2, "memoryGb": 0.5 },
+                        { "name": "t3a.small", "vCPU": 2, "memoryGb": 2, "default": true },
+                        { "name": "t3a.medium", "vCPU": 2, "memoryGb": 4 },
+                        { "name": "t3a.large", "vCPU": 2, "memoryGb": 8 },
+                        { "name": "t3a.xlarge", "vCPU": 4, "memoryGb": 16 },
+                        { "name": "t3a.2xlarge", "vCPU": 8, "memoryGb": 32 },
+                        { "name": "c5a.4xlarge", "vCPU": 16, "memoryGb": 32 }
                     ],
                     "regions": [
                         { "region": "us-east-1", "name": "N. Virginia", "country": "US", "lat": 38.9489, "lng": -77.4499 },
@@ -281,15 +280,14 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.gcp": {
-                    "image": "ubuntu-2404-lts",
                     "instances": [
-                        { "name": "e2-micro", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-2404-lts" },
-                        { "name": "e2-standard-2", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-2404-lts" },
-                        { "name": "e2-standard-4", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-2404-lts" },
-                        { "name": "e2-standard-8", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-2404-lts" },
-                        { "name": "e2-standard-16", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-2404-lts" },
-                        { "name": "e2-standard-32", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-2404-lts" },
-                        { "name": "n2-standard-64", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-2404-lts" }
+                        { "name": "e2-micro", "vCPU": 1, "memoryGb": 2, "default": true },
+                        { "name": "e2-standard-2", "vCPU": 2, "memoryGb": 8 },
+                        { "name": "e2-standard-4", "vCPU": 4, "memoryGb": 16 },
+                        { "name": "e2-standard-8", "vCPU": 8, "memoryGb": 32 },
+                        { "name": "e2-standard-16", "vCPU": 16, "memoryGb": 64 },
+                        { "name": "e2-standard-32", "vCPU": 32, "memoryGb": 128 },
+                        { "name": "n2-standard-64", "vCPU": 64, "memoryGb": 256 }
                     ],
                     "regions": [
                         { "region": "us-central1", "name": "Iowa", "country": "US", "lat": 41.2619, "lng": -95.8608 },
@@ -325,15 +323,14 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.azure": {
-                    "image": "ubuntu-24_04-lts",
                     "instances": [
-                        { "name": "Standard_B1s", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24_04-lts" },
-                        { "name": "Standard_B2s", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24_04-lts" },
-                        { "name": "Standard_B4ms", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24_04-lts" },
-                        { "name": "Standard_B8ms", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24_04-lts" },
-                        { "name": "Standard_B16ms", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24_04-lts" },
-                        { "name": "Standard_B32ms", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24_04-lts" },
-                        { "name": "Standard_D64s_v5", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24_04-lts" }
+                        { "name": "Standard_B1s", "vCPU": 1, "memoryGb": 2, "default": true },
+                        { "name": "Standard_B2s", "vCPU": 2, "memoryGb": 8 },
+                        { "name": "Standard_B4ms", "vCPU": 4, "memoryGb": 16 },
+                        { "name": "Standard_B8ms", "vCPU": 8, "memoryGb": 32 },
+                        { "name": "Standard_B16ms", "vCPU": 16, "memoryGb": 64 },
+                        { "name": "Standard_B32ms", "vCPU": 32, "memoryGb": 128 },
+                        { "name": "Standard_D64s_v5", "vCPU": 64, "memoryGb": 256 }
                     ],
                     "regions": [
                         { "region": "eastus", "name": "Virginia", "country": "US", "lat": 37.3719, "lng": -79.8164 },
@@ -369,15 +366,14 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.digitalocean": {
-                    "image": "ubuntu-24-04-x64",
                     "instances": [
-                        { "name": "s-1vcpu-2gb", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24-04-x64" },
-                        { "name": "s-2vcpu-8gb", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24-04-x64" },
-                        { "name": "s-4vcpu-16gb", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24-04-x64" },
-                        { "name": "s-8vcpu-32gb", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24-04-x64" },
-                        { "name": "s-16vcpu-64gb", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24-04-x64" },
-                        { "name": "s-32vcpu-128gb", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24-04-x64" },
-                        { "name": "s-64vcpu-256gb", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24-04-x64" }
+                        { "name": "s-1vcpu-2gb", "vCPU": 1, "memoryGb": 2, "default": true },
+                        { "name": "s-2vcpu-8gb", "vCPU": 2, "memoryGb": 8 },
+                        { "name": "s-4vcpu-16gb", "vCPU": 4, "memoryGb": 16 },
+                        { "name": "s-8vcpu-32gb", "vCPU": 8, "memoryGb": 32 },
+                        { "name": "s-16vcpu-64gb", "vCPU": 16, "memoryGb": 64 },
+                        { "name": "s-32vcpu-128gb", "vCPU": 32, "memoryGb": 128 },
+                        { "name": "s-64vcpu-256gb", "vCPU": 64, "memoryGb": 256 }
                     ],
                     "regions": [
                         { "region": "nyc1", "name": "New York 1", "country": "US", "lat": 40.7128, "lng": -74.0060 },
@@ -405,15 +401,14 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.oci": {
-                    "image": "ubuntu-24.04",
                     "instances": [
-                        { "name": "VM.Standard.E4.Flex-1v2g", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24.04" },
-                        { "name": "VM.Standard.E4.Flex-2v8g", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24.04" },
-                        { "name": "VM.Standard.E4.Flex-4v16g", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24.04" },
-                        { "name": "VM.Standard.E4.Flex-8v32g", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24.04" },
-                        { "name": "VM.Standard.E4.Flex-16v64g", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24.04" },
-                        { "name": "VM.Standard.E4.Flex-32v128g", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24.04" },
-                        { "name": "VM.Standard.E4.Flex-64v256g", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24.04" }
+                        { "name": "VM.Standard.E4.Flex-1v2g", "vCPU": 1, "memoryGb": 2, "default": true },
+                        { "name": "VM.Standard.E4.Flex-2v8g", "vCPU": 2, "memoryGb": 8 },
+                        { "name": "VM.Standard.E4.Flex-4v16g", "vCPU": 4, "memoryGb": 16 },
+                        { "name": "VM.Standard.E4.Flex-8v32g", "vCPU": 8, "memoryGb": 32 },
+                        { "name": "VM.Standard.E4.Flex-16v64g", "vCPU": 16, "memoryGb": 64 },
+                        { "name": "VM.Standard.E4.Flex-32v128g", "vCPU": 32, "memoryGb": 128 },
+                        { "name": "VM.Standard.E4.Flex-64v256g", "vCPU": 64, "memoryGb": 256 }
                     ],
                     "regions": [
                         { "region": "us-ashburn-1", "name": "Ashburn", "country": "US", "lat": 39.0438, "lng": -77.4874 },
@@ -446,15 +441,14 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.hetzner": {
-                    "image": "ubuntu-24.04",
                     "instances": [
-                        { "name": "cx11", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24.04" },
-                        { "name": "cx22", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24.04" },
-                        { "name": "cx32", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24.04" },
-                        { "name": "cx42", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24.04" },
-                        { "name": "cx52", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24.04" },
-                        { "name": "ccx43", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24.04" },
-                        { "name": "ccx63", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24.04" }
+                        { "name": "cx11", "vCPU": 1, "memoryGb": 2, "default": true },
+                        { "name": "cx22", "vCPU": 2, "memoryGb": 8 },
+                        { "name": "cx32", "vCPU": 4, "memoryGb": 16 },
+                        { "name": "cx42", "vCPU": 8, "memoryGb": 32 },
+                        { "name": "cx52", "vCPU": 16, "memoryGb": 64 },
+                        { "name": "ccx43", "vCPU": 32, "memoryGb": 128 },
+                        { "name": "ccx63", "vCPU": 64, "memoryGb": 256 }
                     ],
                     "regions": [
                         { "region": "fsn1", "name": "Falkenstein", "country": "DE", "lat": 50.4779, "lng": 12.3713 },
@@ -478,15 +472,14 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.vultr": {
-                    "image": "ubuntu-24-04-x64",
                     "instances": [
-                        { "name": "vc2-1c-2gb", "vCPU": 1, "memoryGb": 2, "image": "ubuntu-24-04-x64" },
-                        { "name": "vc2-2c-8gb", "vCPU": 2, "memoryGb": 8, "image": "ubuntu-24-04-x64" },
-                        { "name": "vc2-4c-16gb", "vCPU": 4, "memoryGb": 16, "image": "ubuntu-24-04-x64" },
-                        { "name": "vc2-8c-32gb", "vCPU": 8, "memoryGb": 32, "image": "ubuntu-24-04-x64" },
-                        { "name": "vc2-16c-64gb", "vCPU": 16, "memoryGb": 64, "image": "ubuntu-24-04-x64" },
-                        { "name": "vc2-32c-128gb", "vCPU": 32, "memoryGb": 128, "image": "ubuntu-24-04-x64" },
-                        { "name": "vc2-64c-256gb", "vCPU": 64, "memoryGb": 256, "image": "ubuntu-24-04-x64" }
+                        { "name": "vc2-1c-2gb", "vCPU": 1, "memoryGb": 2, "default": true },
+                        { "name": "vc2-2c-8gb", "vCPU": 2, "memoryGb": 8 },
+                        { "name": "vc2-4c-16gb", "vCPU": 4, "memoryGb": 16 },
+                        { "name": "vc2-8c-32gb", "vCPU": 8, "memoryGb": 32 },
+                        { "name": "vc2-16c-64gb", "vCPU": 16, "memoryGb": 64 },
+                        { "name": "vc2-32c-128gb", "vCPU": 32, "memoryGb": 128 },
+                        { "name": "vc2-64c-256gb", "vCPU": 64, "memoryGb": 256 }
                     ],
                     "regions": [
                         { "region": "ewr", "name": "New Jersey", "country": "US", "lat": 40.7128, "lng": -74.0060 },
@@ -525,15 +518,14 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.equinix": {
-                    "image": "ubuntu_24_04",
                     "instances": [
-                        { "name": "c3.small.x86", "vCPU": 1, "memoryGb": 2, "image": "ubuntu_24_04" },
-                        { "name": "c3.medium.x86", "vCPU": 2, "memoryGb": 8, "image": "ubuntu_24_04" },
-                        { "name": "c3.large.x86", "vCPU": 4, "memoryGb": 16, "image": "ubuntu_24_04" },
-                        { "name": "c3.xlarge.x86", "vCPU": 8, "memoryGb": 32, "image": "ubuntu_24_04" },
-                        { "name": "m3.large.x86", "vCPU": 16, "memoryGb": 64, "image": "ubuntu_24_04" },
-                        { "name": "m3.xlarge.x86", "vCPU": 32, "memoryGb": 128, "image": "ubuntu_24_04" },
-                        { "name": "n3.xlarge.x86", "vCPU": 64, "memoryGb": 256, "image": "ubuntu_24_04" }
+                        { "name": "c3.small.x86", "vCPU": 1, "memoryGb": 2, "default": true },
+                        { "name": "c3.medium.x86", "vCPU": 2, "memoryGb": 8 },
+                        { "name": "c3.large.x86", "vCPU": 4, "memoryGb": 16 },
+                        { "name": "c3.xlarge.x86", "vCPU": 8, "memoryGb": 32 },
+                        { "name": "m3.large.x86", "vCPU": 16, "memoryGb": 64 },
+                        { "name": "m3.xlarge.x86", "vCPU": 32, "memoryGb": 128 },
+                        { "name": "n3.xlarge.x86", "vCPU": 64, "memoryGb": 256 }
                     ],
                     "regions": [
                         { "region": "da", "name": "Dallas", "country": "US", "lat": 32.7767, "lng": -96.7970 },

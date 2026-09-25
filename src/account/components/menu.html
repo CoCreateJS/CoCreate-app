@@ -214,13 +214,19 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/clusters/provision.html"
+					state.src="/apps/apis/providers/index.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
 					aria-open
 					aria-label="Provision a cluster"
 					title="Provision a cluster">
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="Cloud"></div>
+					<div
+						state-to="apis-providers-steps"
+						state.hidden="false"></div>
 					<div
 						state-to="create-panel-form"
 						state.$reset
@@ -257,7 +263,7 @@
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/servers/provision.html"
+					state.src="/apps/apis/providers/index.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
@@ -265,9 +271,16 @@
 					aria-label="Deploy a server"
 					title="Deploy a server">
 					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="Cloud"></div>
+					<div
+						state-to="apis-providers-steps"
+						state.hidden="false"></div>
+					<div
 						state-to="create-panel-form"
-						state.array="servers"
-						state.object=""></div>
+						state.$reset
+						state.$unset="$reset"
+						state.array="servers"></div>
 					<i class="ri-add-line"></i>
 				</a>
 			</li>
@@ -337,6 +350,7 @@
 					<div
 						state-to="apis-providers-heading"
 						state.data-provider-name="Storage"></div>
+					<div state-to="apis-providers-steps" state.hidden="true"></div>
 				</a>
 			</li>
 			<li class="nav-item">
@@ -360,6 +374,7 @@
 					<div
 						state-to="apis-providers-heading"
 						state.data-provider-name="Cloud"></div>
+					<div state-to="apis-providers-steps" state.hidden="true"></div>
 				</a>
 			</li>
 			<li class="nav-item">
@@ -383,6 +398,7 @@
 					<div
 						state-to="apis-providers-heading"
 						state.data-provider-name="Routing"></div>
+					<div state-to="apis-providers-steps" state.hidden="true"></div>
 				</a>
 			</li>
 			<li class="nav-item">
@@ -406,6 +422,7 @@
 					<div
 						state-to="apis-providers-heading"
 						state.data-provider-name="AI"></div>
+					<div state-to="apis-providers-steps" state.hidden="true"></div>
 				</a>
 			</li>
 

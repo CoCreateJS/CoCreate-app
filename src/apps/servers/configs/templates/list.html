@@ -1,8 +1,32 @@
 <div class="d-flex align-items-center gap-2">
-	<span class="avatar-xs flex-shrink-0">
-		<span class="avatar-title rounded-circle bg-primary-subtle text-primary">
-			<i class="ri-settings-3-line"></i>
-		</span>
+	<span
+		class="app-provider-image app-list-image"
+		aria-hidden="true">
+		<img
+			class="app-provider-default"
+			form-attributes="false"
+			array="servers_config"
+			object="{{object._id}}"
+			src="/assets/images/providers/configuration.svg"
+			key="provider"
+			set-value-prefix="/assets/images/providers/"
+			set-value-suffix=".svg"
+			alt=""
+			width="42"
+			height="42"
+			onload="this.hidden = false"
+			onerror="this.src = '/assets/images/providers/configuration.svg'" />
+		<img
+			class="app-provider-custom"
+			form-attributes="false"
+			array="apis"
+			key="avatar[0].src"
+			alt=""
+			width="42"
+			height="42"
+			hidden
+			onload="this.hidden = false"
+			onerror="this.hidden = true" />
 	</span>
 	<span class="flex-grow-1 text-start text-truncate">
 		<span key="name"></span>

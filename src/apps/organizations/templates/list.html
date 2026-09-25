@@ -1,8 +1,12 @@
 <div class="d-flex align-items-center gap-2">
-	<span class="avatar-xs flex-shrink-0">
-		<span class="avatar-title rounded-circle bg-primary-subtle text-primary">
-			<i class="ri-building-line"></i>
-		</span>
+	<span class="app-avatar app-list-image flex-shrink-0">
+		<img
+			src="{{object.avatar[0].src}}"
+			alt=""
+			width="42"
+			height="42"
+			onload="this.hidden = false"
+			onerror="this.hidden = true" />
 	</span>
 	<span class="flex-grow-1 text-start text-truncate">
 		<span key="name"></span>

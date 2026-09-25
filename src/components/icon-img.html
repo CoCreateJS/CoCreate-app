@@ -1,7 +1,6 @@
-<div
-	data-media-field
-	class="avatar-xl p-0 position-relative d-inline-block mb-4">
+<div class="avatar-xl p-0 position-relative d-inline-block mb-4">
 	<img
+		id="apiIconPreview"
 		src="/assets/images/providers/api.svg"
 		key="icon"
 		save="false"
@@ -12,29 +11,46 @@
 		onload="this.hidden = false"
 		onerror="if (this.getAttribute('src') === '/assets/images/providers/api.svg') { this.hidden = true; } else { this.src = '/assets/images/providers/api.svg'; }" />
 	<input
+		id="apiIconValue"
 		type="hidden"
 		key="icon"
-		media-value="src"
 		input-query="$closest form [data-provider-icon][]"
 		input.save="false"
 		realtime="true"
-		set-value-bubbles="true"
-		data-media-value />
+		set-value-bubbles="true" />
 	<button
+		id="api-icon-picker-trigger"
 		type="button"
 		class="avatar-xs rounded-circle position-absolute right:0 left:auto bottom:0 overflow-hidden cursor-pointer border-0 p-0"
-		data-picker-open
 		aria-haspopup="dialog"
 		aria-expanded="false"
-		accept="image/*"
-		path="/media/logos/"
-		filter-query-key="content-type.$regex"
-		filter-query-value="^image/"
+		aria-controls="mediaPicker"
+		position-query="$document #mediaPicker"
+		position-placement="bottom-end"
+		position-offset="8"
+		click-query="$document #mediaPicker [file-for][]"
+		click.file-for="api-icon-file-controller"
 		title="Choose image"
 		aria-label="Choose image">
 		<i
 			class="avatar-title ri-camera-fill"
 			aria-hidden="true"></i>
 	</button>
+	<input
+		id="api-icon-file-controller"
+		type="file"
+		hidden
+		accept="image/*"
+		path="/media/logos/"
+		array="files"
+		object=""
+		key="{}"
+		read="false"
+		realtime="false"
+		upsert="true"
+		input-query="$document #apiIconPreview"
+		input.src="$value.0.pathname"
+		change-query="$document #apiIconValue"
+		change.value="$value.0.pathname"
+		form-attributes="false" />
 </div>
-<script src="/components/media-picker/index.js"></script>

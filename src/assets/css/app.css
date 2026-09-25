@@ -142,6 +142,38 @@
 	flex-shrink: 0;
 }
 
+.app-list-image {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+}
+
+.app-list-image .avatar-title {
+    width: 100%;
+    height: 100%;
+}
+
+.app-list-image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.app-list-image .apis-custom-provider-logo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: var(--coc-body-bg);
+}
+
+.app-list-provider-image .app-provider-image {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+}
+
 .app-card .app-provider-image {
 	--avatar-size: 50px;
 	flex: 0 0 50px;

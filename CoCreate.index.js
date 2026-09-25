@@ -464,7 +464,7 @@ lazyLoad('elements', 'form, [src], [storage], [database], [array]', () => import
 lazyLoad('api', '[actions], [template_id]', () => import(/*webpackChunkName: "api"*/ '@cocreate/api'));
 dependency('plugins', import(/*webpackChunkName: "plugins"*/ '@cocreate/plugins'));
 lazyLoad('dnd', '[sortable], [cloneables], [draggable], [droppable], [cloneable]', () => import(/*webpackChunkName: "dnd"*/ '@cocreate/dnd'));
-lazyLoad('position', '[positionable], [moveable]', () => import(/*webpackChunkName: "position"*/ '@cocreate/position'));
+lazyLoad('position', '[positionable], [moveable], [position-query]', () => import(/*webpackChunkName: "position"*/ '@cocreate/position'));
 lazyLoad('conditionalLogic', '[show], [hide]', () => import(/*webpackChunkName: "conditionalLogic"*/ '@cocreate/conditional-logic'));
 lazyLoad('scroll', '[scroll], [scroll-to], [scrollable-x], [scrollable-y]', () => import(/*webpackChunkName: "scroll"*/ '@cocreate/scroll'));
 lazyLoad('resize', '[resize], [height="auto"]', () => import(/*webpackChunkName: "resize"*/ '@cocreate/resize'));

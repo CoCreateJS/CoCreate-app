@@ -1,0 +1,143 @@
+				<h5 class="mb-1">First deployment</h5>
+				<p
+					class="text-muted"
+					data-deployment-description>
+					Choose where to deploy the first server. As resource needs
+					change, servers are automatically added or removed across
+					your selected cloud providers according to the cluster’s
+					scaling settings.
+				</p>
+				<div class="row g-3">
+					<label
+						class="col-12 form-label"
+						data-initial-provider-field>
+						Cloud provider
+						<input
+							id="first-deployment-provider-required"
+							type="text"
+							class="visually-hidden"
+							tabindex="-1"
+							aria-label="Cloud provider"
+							aria-errormessage="first-deployment-provider-error"
+							required />
+						<cocreate-select
+							id="first-deployment-provider"
+							class="first-deployment-provider-select"
+							tabindex="0"
+							placeholder="Choose a cloud provider"
+							array="servers"
+							object
+							key="infrastructure.provider"
+							required>
+							<selected></selected>
+							<cc-options
+								id="first-deployment-provider-options"
+								class="options"
+								form-attributes="false"
+								array="apis"
+								object
+								filter-query-key="type"
+								filter-query-value="cloud"
+								filter-limit="0"
+								filter-sort-key="name"
+								filter-sort-direction="asc"
+								render-query="[template='first-deployment-provider-option']">
+								<cc-option
+									template="first-deployment-provider-option"
+									value="{{object.provider}}"
+									data-api-id="{{object._id}}">
+									<span
+										class="apis-provider-image"
+										aria-hidden="true">
+										<img
+											class="apis-grid-provider-logo width:100% height:100%"
+											src="/assets/images/providers/{{object.provider}}.svg"
+											alt="" />
+									</span>
+									<span class="text-truncate">{{object.name}}</span>
+								</cc-option>
+							</cc-options>
+						</cocreate-select>
+						<span
+							id="first-deployment-provider-error"
+							class="text-danger small"
+							hidden></span>
+					</label>
+					<label class="col-12 form-label"
+						>Region<select
+							class="form-select"
+							array="servers"
+							object
+							key="infrastructure.region"
+							aws-key="region"
+							aws-response="false"
+							required></select
+					></label>
+				</div>
+				<style>
+					.first-deployment-provider-select {
+						position: relative;
+						display: block;
+						overflow: visible;
+						min-height: 38px;
+						margin-top: 0.5rem;
+						padding: 0.45rem 0.75rem;
+						cursor: pointer;
+						background: var(--coc-body-bg);
+						border: var(--coc-border-width) solid var(--coc-border-color);
+						border-radius: var(--coc-border-radius);
+					}
+
+					.first-deployment-provider-select > selected {
+						display: flex;
+						align-items: center;
+						min-height: 32px;
+					}
+
+					.first-deployment-provider-select > selected:empty::before {
+						content: "Choose a cloud provider";
+						color: var(--coc-secondary-color);
+					}
+
+					.first-deployment-provider-select > selected cc-option {
+						padding: 0;
+						margin: 0;
+						background: transparent;
+					}
+
+					.first-deployment-provider-select > selected .remove {
+						display: none;
+					}
+
+					.first-deployment-provider-select > cc-options {
+						position: absolute;
+						top: calc(100% + 0.25rem);
+						left: 0;
+						z-index: 1000;
+						width: 100%;
+						padding: 0.25rem;
+						background: var(--coc-body-bg);
+						border: var(--coc-border-width) solid var(--coc-border-color);
+						border-radius: var(--coc-border-radius);
+						box-shadow: var(--coc-box-shadow);
+					}
+
+					.first-deployment-provider-select cc-option {
+						align-items: center;
+						gap: 0.75rem;
+						padding: 0.5rem 0.75rem;
+						cursor: pointer;
+						background: transparent;
+						border-radius: var(--coc-border-radius-sm);
+					}
+
+					.first-deployment-provider-select cc-option:hover {
+						background: var(--coc-tertiary-bg);
+					}
+
+					.first-deployment-provider-select .apis-provider-image {
+						width: 28px;
+						height: 28px;
+						flex-basis: 28px;
+					}
+				</style>

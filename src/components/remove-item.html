@@ -20,11 +20,6 @@
 				aria-close></button>
 
 			<div class="mt-2 text-center">
-				<lord-icon
-					src="/assets/icons/gsqxdxog.json"
-					trigger="loop"
-					colors="primary:#f7b84b,secondary:#f06548"
-					style="width: 100px; height: 100px"></lord-icon>
 				<div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
 					<h4 id="removeItemModalLabel">Confirm deletion</h4>
 					<p
@@ -48,12 +43,10 @@
 					class="btn w-sm btn-danger"
 					id="delete-record"
 					state-id="delete-record"
-					delete-query="$document #delete-record"
+					delete-query=""
 					aria-controls="removeItemModal"
 					aria-expanded="true"
-					actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])"
-					array=""
-					object="">
+					actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])">
 					Delete
 				</button>
 			</div>

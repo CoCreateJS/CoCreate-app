@@ -1,115 +1,440 @@
 <link
 	rel="stylesheet"
-	href="/components/media-picker/index.css" />
-<div class="media-picker-toolbar">
-	<strong>Drive</strong>
-	<label class="btn btn-sm btn-light mb-0">
-		<i
-			class="ri-upload-2-line"
-			aria-hidden="true"></i>
-		Upload
-		<input
-			type="file"
-			hidden
-			data-picker-upload
-			array="files"
-			object=""
-			key="{}"
-			read="false"
-			realtime="false"
-			accept="image/*" />
-	</label>
-	<label
-		class="btn btn-sm btn-light mb-0"
-		data-picker-camera>
-		<i
-			class="ri-camera-line"
-			aria-hidden="true"></i>
-		Camera
-		<input
-			type="file"
-			hidden
-			data-picker-upload
-			array="files"
-			object=""
-			key="{}"
-			read="false"
-			realtime="false"
-			accept="image/*"
-			capture="environment" />
-	</label>
-	<button
-		type="button"
-		class="btn btn-sm btn-light"
-		data-picker-close
-		aria-label="Close image picker">
-		<i
-			class="ri-close-line"
-			aria-hidden="true"></i>
-	</button>
-</div>
-<div class="media-picker-search">
-	<input
-		type="search"
-		class="form-control form-control-sm"
-		placeholder="Search images…"
-		aria-label="Search images by name"
-		autocomplete="off"
-		filter-query="$closest .media-picker-dropdown [data-picker-results]"
-		filter-query-key="name.$regex"
-		filter-query-options="i" />
-</div>
-<div class="media-picker-scroll">
+	href="/components/media-picker/index.css?v=20260923-20" />
+
+<div class="media-picker-layer">
 	<div
-		id="media-picker-grid"
-		class="media-picker-grid"
-		data-picker-results
-		array="files"
-		object
-		filter-limit="10"
-		filter-query-key="content-type.$regex"
-		filter-query-value="^image/"
-		filter-sort-key="_id"
-		filter-sort-direction="asc"
-		render-query="[template]">
-		<input
-			type="hidden"
-			filter-query="$parent"
-			filter-key="src"
-			filter-value="0" />
-		<button
-			type="button"
-			class="media-picker-item"
-			template
-			data-picker-image
-			data-path="{{object.pathname}}"
-			data-file-id="{{object._id}}"
-			data-name="{{object.name}}"
-			title="{{object.name}}">
-			<img
-				src="{{object.pathname}}"
-				alt="{{object.name}}"
-				loading="lazy" />
-			<span class="text-truncate">{{object.name}}</span>
-		</button>
+		id="mediaPicker"
+		class="card media-picker-shell"
+		tabindex="-1"
+		role="dialog"
+		aria-label="Media picker"
+		aria-hidden="true"
+		moveable
+		resizable
+		aria-close-on="outside">
+		<div class="card-body p-0">
+			<div
+				id="media-picker-dropdown"
+				class="media-picker-dropdown bg-light p-0"
+				style="position: relative; width: 100%">
+				<div
+					class="media-picker-toolbar"
+					drag-handle>
+					<button
+						id="media-picker-cloud-control"
+						type="button"
+						class="btn btn-sm btn-light active"
+						click-group="media-picker-source"
+						click.class="active"
+						title="Cloud files"
+						aria-label="Cloud files">
+						<i
+							class="ri-cloud-line"
+							aria-hidden="true"></i>
+					</button>
+					<label
+						id="media-picker-device-control"
+						class="btn btn-sm btn-light"
+						file-for=""
+						file-capture="false"
+						click-group="media-picker-source"
+						click.class="active"
+						title="Upload from device"
+						aria-label="Upload from device">
+						<i
+							class="ri-upload-2-line"
+							aria-hidden="true"></i>
+					</label>
+					<label
+						id="media-picker-camera-control"
+						class="btn btn-sm btn-light"
+						file-for=""
+						file-capture="user"
+						click-group="media-picker-source"
+						click.class="active"
+						title="Take a photo"
+						aria-label="Take a photo">
+						<i
+							class="ri-camera-line"
+							aria-hidden="true"></i>
+					</label>
+					<button
+						type="button"
+						class="btn btn-sm btn-light"
+						title="Close"
+						aria-label="Close"
+						aria-controls="mediaPicker"
+						aria-expanded="true"
+						aria-close>
+						<i
+							class="ri-close-line"
+							aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<div class="media-picker-body">
+					<form
+						id="media-picker-pending-selection-form"
+						hidden></form>
+					<div class="media-picker-search">
+						<input
+							type="search"
+							class="form-control form-control-sm"
+							placeholder="Search images…"
+							aria-label="Search images by name"
+							autocomplete="off"
+							filter-query="$document #media-picker-grid"
+							filter-query-key="name.$regex"
+							filter-query-options="i" />
+					</div>
+
+					<form
+						id="media-picker-upload-canvas"
+						class="media-picker-pending"
+						file-for=""
+						file-dropzone
+						plugin='{"$SimpleBar": ["$this", {}]}'
+						autocomplete="off"
+						aria-label="Choose images from your device">
+						<label
+							class="media-picker-dropzone"
+							file-for=""
+							file-capture="false">
+							<i
+								class="ri-upload-cloud-2-line"
+								aria-hidden="true"></i>
+							<strong>Drop files here</strong>
+							<span class="text-muted"
+								>or click to choose from your device</span
+							>
+						</label>
+						<div class="media-picker-pending-results">
+							<article
+								template="media-picker-upload-item"
+								file-for=""
+								class="media-picker-pending-item"
+								file_id="{{object.id}}">
+								<label class="media-picker-pending-select">
+									<input
+										type="radio"
+										name="media-picker-pending-selection"
+										form="media-picker-pending-selection-form"
+										aria-label="Preview {{object.name}}" />
+									<img
+										class="media-picker-pending-preview"
+										src="{{object.src}}"
+										alt="{{object.name}}" />
+								</label>
+								<span
+									class="media-picker-pending-name text-truncate"
+									>{{object.name}}</span
+								>
+								<button
+									type="button"
+									class="media-picker-remove-upload media-picker-quick-remove"
+									actions="removeFile"
+									aria-label="Remove {{object.name}} from uploads">
+									<i
+										class="ri-close-line"
+										aria-hidden="true"></i>
+								</button>
+								<button
+									type="reset"
+									form="media-picker-pending-selection-form"
+									class="media-picker-release-selection"
+									aria-label="Close preview">
+									<i
+										class="ri-close-line"
+										aria-hidden="true"></i>
+								</button>
+								<details class="media-picker-pending-actions">
+									<summary
+										aria-label="Options for {{object.name}}">
+										<i
+											class="ri-more-2-fill"
+											aria-hidden="true"></i>
+									</summary>
+									<div class="media-picker-pending-menu">
+										<label>
+											<input
+												type="radio"
+												name="pending-editor-{{object.id}}"
+												class="media-picker-rename-toggle" />
+											<i
+												class="ri-edit-line"
+												aria-hidden="true"></i>
+											Rename
+										</label>
+										<label>
+											<input
+												type="radio"
+												name="pending-editor-{{object.id}}"
+												class="media-picker-details-toggle" />
+											<i
+												class="ri-information-line"
+												aria-hidden="true"></i>
+											File details
+										</label>
+									</div>
+								</details>
+								<div class="media-picker-editor">
+									<div class="media-picker-editor-header">
+										<strong
+											class="media-picker-rename-title"
+											>Rename</strong
+										>
+										<strong
+											class="media-picker-details-title"
+											>File details</strong
+										>
+										<label
+											class="media-picker-editor-close"
+											aria-label="Close editor">
+											<input
+												type="radio"
+												name="pending-editor-{{object.id}}"
+												class="media-picker-editor-none"
+												checked />
+											<i
+												class="ri-close-line"
+												aria-hidden="true"></i>
+										</label>
+									</div>
+									<label class="form-label mb-0">
+										Name
+										<input
+											class="form-control form-control-sm"
+											file="name"
+											value="{{object.name}}"
+											required />
+									</label>
+									<div class="media-picker-details-fields">
+										<label class="form-label mb-0">
+											Path
+											<input
+												class="form-control form-control-sm"
+												file="path"
+												value="{{object.path}}" />
+										</label>
+										<label class="form-label mb-0">
+											Pathname
+											<input
+												class="form-control form-control-sm"
+												file="pathname"
+												value="{{object.pathname}}"
+												required />
+										</label>
+										<label class="form-label mb-0">
+											Content type
+											<input
+												class="form-control form-control-sm"
+												file="content-type"
+												value="{{object.content-type}}"
+												required />
+										</label>
+									</div>
+									<input
+										type="hidden"
+										file="directory"
+										value="{{object.directory}}" />
+									<input
+										type="hidden"
+										file="public"
+										value="true"
+										value-type="boolean" />
+									<input
+										type="hidden"
+										file="host[]"
+										value="*" />
+								</div>
+							</article>
+						</div>
+					</form>
+
+					<div
+						class="media-picker-scroll"
+						plugin='{"$SimpleBar": ["$this", {}]}'>
+						<form
+							id="media-picker-library-selection-form"
+							hidden></form>
+						<input
+							type="hidden"
+							filter-query="$next"
+							filter-key="src"
+							filter-value="0" />
+						<div
+							id="media-picker-grid"
+							class="media-picker-grid"
+							file-for=""
+							array="files"
+							object
+							filter-limit="10"
+							filter-sort-key="_id"
+							filter-sort-direction="asc"
+							filter-query-key="content-type.$regex"
+							render-query="[template]">
+							<form
+								template="media-picker-library-item"
+								class="media-picker-item media-picker-library-item"
+								array="files"
+								object="{{object._id}}"
+								autocomplete="off">
+								<label
+									class="media-picker-library-select"
+									title="{{object.name}}">
+									<input
+										type="radio"
+										file-select
+										name="media-picker-library-selection"
+										form="media-picker-library-selection-form"
+										aria-label="Preview {{object.name}}" />
+									<img
+										src="{{object.pathname}}"
+										alt="{{object.name}}"
+										error-query="$closest .media-picker-library-item"
+										error.class="media-picker-broken" />
+									<span class="text-truncate"
+										>{{object.name}}</span
+									>
+								</label>
+								<button
+									type="reset"
+									form="media-picker-library-selection-form"
+									class="media-picker-release-selection"
+									aria-label="Close preview">
+									<i
+										class="ri-close-line"
+										aria-hidden="true"></i>
+								</button>
+								<details class="media-picker-pending-actions">
+									<summary
+										aria-label="Options for {{object.name}}">
+										<i
+											class="ri-more-2-fill"
+											aria-hidden="true"></i>
+									</summary>
+									<div class="media-picker-pending-menu">
+										<label>
+											<input
+												type="radio"
+												name="library-editor-{{object._id}}"
+												class="media-picker-rename-toggle" />
+											<i
+												class="ri-edit-line"
+												aria-hidden="true"></i>
+											Rename
+										</label>
+										<label>
+											<input
+												type="radio"
+												name="library-editor-{{object._id}}"
+												class="media-picker-details-toggle" />
+											<i
+												class="ri-information-line"
+												aria-hidden="true"></i>
+											File details
+										</label>
+										<button
+											type="button"
+											class="text-danger"
+											actions="disabled, delete, disabled">
+											<i
+												class="ri-delete-bin-line"
+												aria-hidden="true"></i>
+											Delete
+										</button>
+									</div>
+								</details>
+								<div class="media-picker-editor">
+									<div class="media-picker-editor-header">
+										<strong
+											class="media-picker-rename-title"
+											>Rename</strong
+										>
+										<strong
+											class="media-picker-details-title"
+											>File details</strong
+										>
+										<label
+											class="media-picker-editor-close"
+											aria-label="Close editor">
+											<input
+												type="radio"
+												name="library-editor-{{object._id}}"
+												class="media-picker-editor-none"
+												checked />
+											<i
+												class="ri-close-line"
+												aria-hidden="true"></i>
+										</label>
+									</div>
+									<label class="form-label mb-0">
+										Name
+										<input
+											class="form-control form-control-sm"
+											key="name"
+											value="{{object.name}}"
+											required />
+									</label>
+									<div class="media-picker-details-fields">
+										<label class="form-label mb-0">
+											Path
+											<input
+												class="form-control form-control-sm"
+												key="path"
+												value="{{object.path}}" />
+										</label>
+										<label class="form-label mb-0">
+											Pathname
+											<input
+												class="form-control form-control-sm"
+												key="pathname"
+												value="{{object.pathname}}"
+												required />
+										</label>
+										<label class="form-label mb-0">
+											Content type
+											<input
+												class="form-control form-control-sm"
+												key="content-type"
+												value="{{object.content-type}}"
+												required />
+										</label>
+									</div>
+									<div class="text-end">
+										<button
+											type="button"
+											class="btn btn-primary btn-sm"
+											actions="validate, disabled, save, disabled">
+											Save changes
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<div
+							style="height: 1px"
+							filter-on="scroll"
+							filter-limit="10"
+							filter-query="$previous"></div>
+					</div>
+
+			</div>
+			</div>
+		</div>
+		<div
+			resize="top"
+			aria-hidden="true"></div>
+		<div
+			resize="left"
+			aria-hidden="true"></div>
+		<div
+			resize="right"
+			aria-hidden="true"></div>
+		<div
+			resize="bottom"
+			aria-hidden="true"></div>
 	</div>
-	<div
-		style="height: 1px"
-		filter-on="scroll"
-		filter-limit="10"
-		filter-query="$previous"></div>
-</div>
-<p
-	class="media-picker-status text-muted"
-	role="status"></p>
-<div
-	class="px-3 pb-3"
-	data-picker-save-row>
-	<button
-		type="button"
-		class="btn btn-primary btn-sm"
-		data-picker-save
-		hidden>
-		Save upload
-	</button>
 </div>

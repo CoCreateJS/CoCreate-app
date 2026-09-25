@@ -92,20 +92,8 @@
 						aria-controls="removeItemModal"
 						role="menuitem"
 						state-to="delete-record"
-						state.delete-query="$document #delete-record"
-						state.actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])"
-						state.array=""
-						state.object="">
-						<input
-							key="_id"
-							input.state.object="$value"
-							input-query="$parent"
-							hidden />
-						<input
-							key="$array[0]"
-							input.state.array="$value"
-							input-query="$parent"
-							hidden />
+						state.delete-query="$document #offcanvas-app"
+						state.actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])">
 						<i
 							class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
 						Delete</a

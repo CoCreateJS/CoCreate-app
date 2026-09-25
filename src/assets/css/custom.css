@@ -8,7 +8,7 @@ File: Custom Css File
 
 #layout-wrapper {
 	--admin-gutter: clamp(0.5rem, 0.35rem + 0.5vw, 1rem);
-	--admin-padding: clamp(16px, 12px + 1vw, 24px);
+	--admin-padding: clamp(1rem, 0.75rem + 0.5vw, 1.5rem);
 	--admin-content-height: calc(100dvh - 70px);
 }
 
@@ -392,7 +392,6 @@ body:has(#offcanvas-app[docked="true"].show) #layout-wrapper .admin-view-layout 
 }
 
 #layout-wrapper .create-panel {
-	--create-panel-gutter: clamp(1rem, 0.75rem + 0.5vw, 1.5rem);
 	display: none;
 	flex: 0 0 var(--coc-offcanvas-width, 400px);
 	width: var(--coc-offcanvas-width, 400px);
@@ -422,10 +421,10 @@ body:has(#offcanvas-app[docked="true"].show) #layout-wrapper .admin-view-layout 
 }
 
 #layout-wrapper .create-panel [data-component-form] {
-	--coc-card-spacer-x: var(--create-panel-gutter);
-	--coc-card-spacer-y: var(--create-panel-gutter);
-	--coc-card-cap-padding-x: var(--create-panel-gutter);
-	--coc-card-cap-padding-y: var(--create-panel-gutter);
+	--coc-card-spacer-x: var(--admin-padding);
+	--coc-card-spacer-y: var(--admin-padding);
+	--coc-card-cap-padding-x: var(--admin-padding);
+	--coc-card-cap-padding-y: var(--admin-padding);
 }
 
 #layout-wrapper .create-panel [data-component-form] > .card-header,
@@ -436,7 +435,7 @@ body:has(#offcanvas-app[docked="true"].show) #layout-wrapper .admin-view-layout 
 	min-height: 70px;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 var(--create-panel-gutter, var(--admin-gutter));
+	padding: 0 var(--admin-padding);
 	border-bottom: 1px solid var(--coc-border-color);
 }
 

@@ -5,9 +5,235 @@
 	object
 	autocomplete="off">
 	<div class="card-body d-flex flex-column gap-4 h-100">
-		<input type="hidden" key="_id" />
+		<input
+			type="hidden"
+			key="_id" />
 		<section
 			class="app-card d-flex flex-column gap-3 pb-3 w-100"
 			src="/apps/clusters/components/card.html"></section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				Capacity management
+			</h6>
+			<div class="d-flex flex-wrap gap-3">
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 220px; min-width: 200px">
+					<div class="text-muted mb-1">Autoscaling</div>
+					<div
+						class="fw-medium"
+						key="autoscaling.enabled"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 220px; min-width: 200px">
+					<div class="text-muted mb-1">Spot capacity</div>
+					<div
+						class="fw-medium"
+						key="spot.enabled"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 220px; min-width: 200px">
+					<div class="text-muted mb-1">
+						Spot fallback to on-demand
+					</div>
+					<div
+						class="fw-medium"
+						key="spot.fallbackToOnDemand"></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				Scale out
+			</h6>
+			<div
+				class="d-grid gap-3"
+				style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">CPU threshold</div>
+					<div class="fw-medium">
+						<span key="scaleOut.cpuThreshold"></span>%
+					</div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Memory threshold</div>
+					<div class="fw-medium">
+						<span key="scaleOut.memoryThreshold"></span>%
+					</div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Consecutive flushes</div>
+					<div
+						class="fw-medium"
+						key="scaleOut.consecutiveFlushes"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Maximum cluster size</div>
+					<div
+						class="fw-medium"
+						key="scaleOut.maxClusterSize"></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">Scale in</h6>
+			<div
+				class="d-grid gap-3"
+				style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">CPU threshold</div>
+					<div class="fw-medium">
+						<span key="scaleIn.cpuThreshold"></span>%
+					</div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Memory threshold</div>
+					<div class="fw-medium">
+						<span key="scaleIn.memoryThreshold"></span>%
+					</div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Consecutive flushes</div>
+					<div
+						class="fw-medium"
+						key="scaleIn.consecutiveFlushes"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Minimum cluster size</div>
+					<div
+						class="fw-medium"
+						key="scaleIn.minClusterSize"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Preservation</div>
+					<div
+						class="fw-medium text-capitalize"
+						key="scaleIn.preservation"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Decommission strategy</div>
+					<div
+						class="fw-medium text-capitalize"
+						key="scaleIn.decommissionStrategy"></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				Geographic scaling
+			</h6>
+			<div
+				class="d-grid gap-3"
+				style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Enabled</div>
+					<div
+						class="fw-medium"
+						key="geoScale.enabled"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Shedding threshold</div>
+					<div class="fw-medium">
+						<span key="geoScale.sheddingThreshold"></span>%
+					</div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Density by</div>
+					<div
+						class="fw-medium text-capitalize"
+						key="geoScale.densityBy"></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-top border-top-dashed pt-3">
+			<h6 class="text-muted text-uppercase fw-semibold mb-3">
+				Vertical scaling
+			</h6>
+			<div
+				class="d-grid gap-3"
+				style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="min-width: 0">
+					<div class="text-muted mb-1">Enabled</div>
+					<div
+						class="fw-medium"
+						key="vertical.enabled"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="min-width: 0">
+					<div class="text-muted mb-1">Maximum nodes per tier</div>
+					<div
+						class="fw-medium"
+						key="vertical.maxNodesPerTier"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Minimum vCPU</div>
+					<div
+						class="fw-medium"
+						key="vertical.min.vCPU"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Minimum memory (GB)</div>
+					<div
+						class="fw-medium"
+						key="vertical.min.memoryGb"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Maximum vCPU</div>
+					<div
+						class="fw-medium"
+						key="vertical.max.vCPU"></div>
+				</div>
+				<div
+					class="border border-dashed rounded p-3 flex-grow-1"
+					style="flex-basis: 180px; min-width: 160px">
+					<div class="text-muted mb-1">Maximum memory (GB)</div>
+					<div
+						class="fw-medium"
+						key="vertical.max.memoryGb"></div>
+				</div>
+			</div>
+		</section>
 	</div>
 </form>

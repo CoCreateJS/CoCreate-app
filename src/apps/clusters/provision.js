@@ -298,15 +298,8 @@
         };
         const initialVmType = () => {
             const instances = providers.get(selectedProvider())?.instances || [];
-            const requiredCpu = numberValue("minVcpu");
-            const requiredMemory = numberValue("minMemory");
-            return [...instances]
-                .filter(({ vCPU, memoryGb }) =>
-                    vCPU >= requiredCpu && memoryGb >= requiredMemory
-                )
-                .sort((a, b) =>
-                    a.vCPU - b.vCPU || a.memoryGb - b.memoryGb
-                )[0]?.name;
+            return instances.find((instance) => instance.default)?.name ||
+                instances[0]?.name;
         };
         const syncInitialProviders = () => {
             const values = selectedProviders();
@@ -827,7 +820,6 @@
                     totalWorkers: 0,
                     infrastructure: {
                         provider,
-                        api_id: apiId,
                         region,
                         vmType,
                         vCPU: instance?.vCPU,
@@ -849,7 +841,10 @@
                 method: "object.read",
                 array: "servers_config",
                 filter: {
-                    query: { type: "autoscaler", enabled: true },
+                    query: {
+                        type: { $in: ["autoscaler", "startupscript"] },
+                        enabled: true
+                    },
                     limit: 100
                 }
             });
