@@ -38,6 +38,7 @@ export default {
             "worker": "*",
             "config": {
                 "enabled": true,
+                "platformCredentialFallback": true,
                 "defaultProvider": "copilot",
                 "defaultStorageTarget": "local",
                 "allowLocalFileSystem": true,

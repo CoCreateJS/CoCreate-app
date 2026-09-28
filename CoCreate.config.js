@@ -14,7 +14,7 @@ export default {
             entry: "./src",
             array: "files",
             languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
-            exclude: ["/admin/", "/account/", "/apps/"],
+            exclude: ["/admin/", "/account/", "/apps/", "/config/"],
             object: {
                 name: "{{name}}",
                 src: "{{source}}",
@@ -44,7 +44,7 @@ export default {
         },
         {
             entry: "./src",
-            include: ["/config/", "/countries/config/"],
+            include: ["/config/"],
             $data: ""
         }
     ],

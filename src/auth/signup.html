@@ -26,6 +26,14 @@
 			.signup-form button[disabled] .spinner-border {
 				display: inline-block !important;
 			}
+			#email[unique="false"] ~ #signup-email-error {
+				display: block !important;
+				content: "This email is already in use.";
+			}
+			#signup-hostname[unique="false"] ~ #signup-hostname-error {
+				display: block !important;
+				content: "Hostname is not available";
+			}
 		</style>
 
 		<section
@@ -53,6 +61,7 @@
 					class="form-control"
 					id="name"
 					name="name"
+					key="name"
 					autocomplete="name"
 					input-query="$document .name-field[]"
 					input.value="$value"
@@ -102,7 +111,10 @@
 				<span
 					id="signup-email-error"
 					class="text-danger small"
-					hidden></span>
+					role="alert"
+					hidden
+					>This email is already in use.</span
+				>
 			</div>
 
 			<div class="mb-3">
@@ -146,14 +158,16 @@
 				id="signup-btn"
 				type="button"
 				class="btn btn-success w-100 mt-2"
-				actions="disabled, validate(#signup-account-step), signUp, signIn, accountnext, focus(#signup-organization-name)"
+				actions="disabled, validate(#signup-account-step), click, focus"
 				click-query="$closest form"
-				click.data-signup-step="organization">
+				click.data-signup-step="organization"
+				focus-query="$document #signup-organization-name"
+				focus.$focus="$undefined">
 				<span
 					class="spinner-border spinner-border-sm d-none"
 					aria-hidden="true"></span>
 				<span class="button-text">Next</span>
-				<span class="button-busy">Creating your account...</span>
+				<span class="button-busy">Checking your details...</span>
 			</button>
 			<p class="mb-0 mt-3 text-center">
 				Already have an account?
@@ -208,13 +222,13 @@
 				</div>
 				<div class="mb-4">
 					<label
-						for="signup-subdomain"
+						for="signup-hostname"
 						class="form-label"
 						>Host <span class="text-danger">*</span></label
 					>
 					<div class="input-group">
 						<input
-							id="signup-subdomain"
+							id="signup-hostname"
 							array="organizations"
 							object=""
 							form-attributes="false"
@@ -230,20 +244,21 @@
 							value-suffix=".cocreatejs.com"
 							unique
 							required
-							aria-describedby="signup-subdomain-suffix signup-subdomain-help"
-							aria-errormessage="signup-subdomain-error" />
+							aria-describedby="signup-hostname-suffix signup-hostname-help"
+							aria-errormessage="signup-hostname-error" />
 						<span
-							id="signup-subdomain-suffix"
+							id="signup-hostname-suffix"
 							class="input-group-text"
 							>.cocreatejs.com</span
 						>
 					</div>
 					<span
-						id="signup-subdomain-error"
+						id="signup-hostname-error"
 						class="text-danger small"
+						role="alert"
 						hidden></span>
 					<p
-						id="signup-subdomain-help"
+						id="signup-hostname-help"
 						class="form-text mb-0">
 						Use lowercase letters, numbers, and hyphens. Start and
 						end with a letter or number.
@@ -253,15 +268,19 @@
 					id="signup-create-btn"
 					type="button"
 					class="btn btn-success w-100"
-					actions="disabled, validate(#signup-organization-step), createOrganization, click, focus(#signup-complete-title)"
+					actions="disabled, validate(#signup-form), signUp, signIn, createOrganization, click, focus"
 					click-query="$closest form"
-					click.data-signup-step="complete">
+					click.data-signup-step="complete"
+					focus-query="$document #signup-complete-title"
+					focus.$focus="$undefined">
 					<span
 						class="spinner-border spinner-border-sm d-none"
 						aria-hidden="true"></span>
-					<span class="button-text">Create organization</span>
+					<span class="button-text"
+						>Create account and organization</span
+					>
 					<span class="button-busy"
-						>Creating your organization...</span
+						>Creating your account and organization...</span
 					>
 				</button>
 			</div>
