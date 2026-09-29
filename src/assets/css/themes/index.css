@@ -1,7 +1,7 @@
 /* Faithfully extracted from the legacy SCSS build. */
 [data-theme="default"] {
-    --coc-font-family-primary: "hkgrotesk", sans-serif;
-    --coc-font-family-secondary: "Poppins", sans-serif;
+    --coc-font-family-primary: "HK Grotesk", system-ui, sans-serif;
+    --coc-font-family-secondary: "HK Grotesk", system-ui, sans-serif;
     --coc-grid-gutter-width: 1.5rem;
     --coc-headings-font-weight: 500;
     --coc-element-shadow: none;
