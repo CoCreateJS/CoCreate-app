@@ -319,7 +319,7 @@ html:not([data-navbar-position="scrollable"]):not([data-navbar-position="srollab
 	gap: 0 !important;
 }
 
-#main-view[state-id="accountView"] .dashboard-view-control {
+#main-view[state-id="adminView"] .dashboard-view-control {
 	display: none !important;
 }
 

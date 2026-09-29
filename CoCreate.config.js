@@ -21,7 +21,6 @@ export default {
                 "./scripts/",
                 "./test/",
                 "./archive/",
-                "./account/",
                 "./CHANGELOG.md",
                 "./CONTRIBUTING.md",
                 "./CoCreate.index.js",
@@ -31,7 +30,6 @@ export default {
                 "./release.config.js",
                 "./webpack.config.js",
                 "./src/admin/",
-                "./src/account/",
                 "./src/apps/",
                 "./src/config/",
                 "./src/assets/scss/",
@@ -42,7 +40,7 @@ export default {
         {
             entry: "./",
             output: "../CoCreate-app-template",
-            include: ["./src/admin/", "./src/account/", "./src/apps/"],
+            include: ["./src/admin/", "./src/apps/"],
             exclude: [
                 "./src/admin/widgets/",
                 "./src/admin/ui/",

@@ -132,15 +132,15 @@
 							class="d-flex flex-column min-height:100% min-width:200px"
 							src="/apps/ai/index.html"
 							state-id="adminView">
-							<!-- <div
-							onload.src="/apps/calendar/index.html"
-							onload-query="$parent"
-							onload-setTimeout="3000"></div> -->
+							<div
+								onload.src="/apps/ai/index.html"
+								onload-query="$parent"
+								onload-setTimeout="3000"></div>
 						</div>
 					</div>
 					<div
 						id="offcanvas-app"
-						state-id="offcanvas-app-dock"
+						state-id="offcanvas-app, offcanvas-app-dock"
 						docked="true"
 						resizable
 						role="dialog"
@@ -148,7 +148,8 @@
 						tabindex="-1"
 						aria-labelledby="offcanvas-app-label"
 						aria-close-on="button"
-						aria-hidden="true">
+						aria-hidden="true"
+						state.aria-hidden>
 						<div
 							class="offcanvas-app-content d-flex flex-column flex-grow-1 min-height:0 h-100 overflow-hidden">
 							<div
@@ -198,6 +199,14 @@
 			</div>
 		</div>
 		<!-- Preloader End -->
+
+		<!-- Theme Settings Start -->
+		<div src="/components/theme-settings.html"></div>
+		<!-- Theme Settings End -->
+
+		<!-- Media Item Start -->
+		<div src="/components/media-picker/index.html"></div>
+		<!-- Media Item End -->
 
 		<!-- Remove Item Start -->
 		<div src="/components/remove-item.html"></div>
