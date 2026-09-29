@@ -1,123 +1,81 @@
-<div
-	class="width:100%"
-	resize.class="open"
-	resize-if="249.1875px"
-	resize-query="$document .hamburger-icon"></div>
-<div
-	class="width:100%"
-	resize.class="open,"
-	resize-if="0px"
-	resize-query="$document .hamburger-icon"></div>
-
-<!-- LOGO -->
 <div class="navbar-brand-box">
-	<!-- <div src="/components/org-selector.html"></div> -->
-	<!-- Dark Logo-->
 	<a
-		href="index.html"
+		href="/account/"
 		class="logo logo-dark">
 		<span class="logo-sm m-auto">
 			<img
-				array="organizations"
-				object="$organization_id"
-				key="icon[0].src"
 				src="/assets/images/icons/512x512.png"
-				alt=""
+				alt="CoCreate"
 				height="40" />
 		</span>
 		<span class="logo-lg ps-4">
-			<!-- <img
+			<img
 				array="organizations"
 				object="$organization_id"
 				key="logo[0].src"
-				alt=""
-				height="40" /> -->
-			<img
 				src="/assets/images/logos/logo.png"
-				alt=""
+				alt="Organization"
 				height="40" />
 		</span>
 	</a>
-	<!-- Light Logo-->
 	<a
-		href="index.html"
+		href="/account/"
 		class="logo logo-light">
 		<span class="logo-sm m-auto">
 			<img
 				src="/assets/images/icons/512x512.png"
-				alt=""
+				alt="CoCreate"
 				height="40" />
 		</span>
 		<span class="logo-lg ps-4">
 			<img
 				src="/assets/images/logos/logo.png"
-				alt=""
+				alt="CoCreate"
 				height="40" />
 		</span>
 	</a>
-	<span array=""></span>
 	<style>
-		html[data-sidebar-size="sm-hover-active"] #vertical-hover,
-		html:not([data-sidebar-size="sm-hover-active"])
-			#vertical-hover-release {
+		html[data-sidebar-size="sm-hover-active"] #account-sidebar-pin,
+		html:not([data-sidebar-size="sm-hover-active"]) #account-sidebar-unpin {
 			display: none;
+		}
+
+		#account-endpoints-list-btn > i {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex: 0 0 1.75rem;
+			height: 1.75rem;
+			line-height: 1;
+			transform: translate(-6px, -1px);
+		}
+
+		#account-endpoints-list-btn > i::before {
+			transform: rotate(90deg);
 		}
 	</style>
 	<button
 		type="button"
 		class="btn btn-sm p-0 px-2 fs-20 header-item float-end btn-vertical-sm-hover"
-		id="vertical-hover"
+		id="account-sidebar-pin"
 		state-to="sidebar-size"
 		state.data-sidebar-size="sm-hover-active"
-		title="Keep sidebar open"
 		aria-label="Keep sidebar open"
-		aria-pressed="false">
+		title="Keep sidebar open">
 		<i src="/assets/svg/remix/record-circle-line.svg"></i>
 	</button>
 	<button
 		type="button"
 		class="btn btn-sm p-0 px-2 fs-20 header-item float-end btn-vertical-sm-hover"
-		id="vertical-hover-release"
+		id="account-sidebar-unpin"
 		state-to="sidebar-size"
 		state.data-sidebar-size="sm-hover"
-		title="Unpin sidebar"
 		aria-label="Unpin sidebar"
-		aria-pressed="true">
+		title="Unpin sidebar">
 		<i src="/assets/svg/remix/record-circle-line.svg"></i>
 	</button>
 </div>
 
-<div class="dropdown sidebar-user m-1 rounded">
-	<button
-		type="button"
-		class="btn material-shadow-none"
-		id="page-header-user-dropdown"
-		aria-haspopup="menu"
-		aria-expanded="false"
-		aria-controls="page-header-user-dropdown-menu">
-		<span class="d-flex align-items-center gap-2">
-			<img
-				class="rounded header-profile-user"
-				src="/assets/images/users/avatar-1.jpg"
-				alt="Header Avatar" />
-			<span class="text-start">
-				<span class="d-block fw-medium sidebar-user-name-text"
-					>Anna Adame</span
-				>
-				<span class="d-block fs-14 sidebar-user-name-sub-text"
-					><i src="/assets/svg/remix/circle-fill.svg" class="ri fs-10 text-success align-baseline"></i>
-					<span class="align-middle">Online</span></span
-				>
-			</span>
-		</span>
-	</button>
-	<div
-		class="dropdown-menu dropdown-menu-end"
-		src="/components/user-dropdown.html"
-		id="page-header-user-dropdown-menu"
-		aria-hidden="true"
-		aria-close-on="anywhere"></div>
-</div>
 <div
 	plugin='{"$SimpleBar": ["$this", {}]}'
 	class="h-100">
@@ -125,21 +83,16 @@
 		class="container-fluid"
 		click.class="vertical-sidebar-enable,"
 		click-query="$document body@xxs@xs@sm">
-		<div id="two-column-menu"></div>
 		<ul
 			class="navbar-nav"
 			id="navbar-nav">
-			<!-- Workspace Section -->
-			<li class="menu-title">
-				<span>Workspace</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
+			<li class="menu-title"><span>Workspace</span></li>
+			<li class="nav-item">
 				<a
-					id="dashboards-btn"
-					state-to="adminView"
-					state.src="/apps/dashboards/"
-					class="nav-link">
+					id="account-dashboards-btn"
+					state-to="accountView"
+					state.src="/apps/dashboards/index.html"
+					class="nav-link menu-link">
 					<i src="/assets/svg/remix/dashboard-2-line.svg"></i>
 					<span>Dashboards</span>
 					<div
@@ -151,163 +104,10 @@
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="email-list-btn"
-					class="nav-link menu-link"
-					state-to="adminView"
-					state.src="/apps/email/index.html">
-					<i src="/assets/svg/remix/mail-line.svg"></i>
-					<span>Email</span>
-					<div
-						state-to="app"
-						state.object="6a96308f0bc023f23881e962"></div>
-
-					<span
-						class="sidebar-notification fs-10 badge rounded-pill bg-danger ms-2"
-						>3</span
-					>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="chat-list-btn"
-					class="nav-link menu-link"
-					state-to="adminView"
-					state.src="/apps/chat/index.html">
-					<i src="/assets/svg/remix/chat-3-line.svg"></i>
-					<span>Chat</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00eeb"></div>
-					<span
-						class="sidebar-notification fs-10 badge rounded-pill bg-danger ms-2"
-						>5</span
-					>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="calendar-list-btn"
-					class="nav-link menu-link"
-					state-to="adminView"
-					state.src="/apps/calendar/index.html">
-					<i src="/assets/svg/remix/calendar-line.svg"></i>
-					<span>Calendar</span>
-					<!-- <span class="sidebar-notification fs-10 badge rounded-pill bg-danger ms-2">2</span> -->
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00ee8"
-						state.input.array="calendar"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.array="calendar"
-						state.filter-query-value=""></div>
-				</a>
-				<a
-					id="calendar-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/calendar/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new calendar event">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="calendar"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="projects-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/briefcase-line.svg"></i>
-					<span data-key="t-projects-main">Projects</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00ee4"
-						state.input.array="projects"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/projects/templates/card.html"></div>
-				</a>
-				<a
-					id="projects-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/projects/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new project">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="projects"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="tasks-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link"
-					data-key="t-tasks">
-					<i src="/assets/svg/remix/task-line.svg"></i>
-					<span>Tasks</span>
-					<!-- <span class="sidebar-notification fs-10 badge rounded-pill bg-danger ms-2 d-none">4</span> -->
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00f01"
-						state.input.array="tasks"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/tasks/templates/card.html"></div>
-				</a>
-				<a
-					id="tasks-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/tasks/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new task">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="tasks"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="files-list-btn"
-					state-to="adminView"
+					id="account-files-list-btn"
+					state-to="accountView"
 					state.src="/apps/files/index.html"
-					class="nav-link"
-					data-key="t-files">
+					class="nav-link menu-link">
 					<i src="/assets/svg/remix/file-2-line.svg"></i>
 					<span>Files</span>
 					<div
@@ -319,18 +119,21 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.array="files"
-						state.filter-query-value=""></div>
+						state.src="/apps/files/templates/card.html"></div>
 				</a>
 				<a
-					id="files-create-btn"
-					state-to="offcanvas-app-view"
+					class="nav-link nav-action"
+					state-to="create-panel-view"
 					state.src="/apps/files/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
+					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
-					class="nav-link nav-action"
+					aria-open
+					aria-label="Create new file"
 					title="Create new file">
 					<div
 						state-to="offcanvas-app-form"
@@ -339,668 +142,14 @@
 					<i src="/assets/svg/remix/add-line.svg"></i>
 				</a>
 			</li>
-			<!-- CRM Section: Core customer and sales management -->
-			<li class="menu-title">
-				<span>CRM</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="leads-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/user-add-line.svg"></i>
-					<span>Leads</span>
-					<div
-						state-to="app"
-						state.object="686ecb750cb20318c29a050b"
-						state.input.array="contacts"></div>
-					<div
-						state-to="table"
-						state.filter-query-value="Lead"></div>
-					<div
-						state-to="list"
-						state.src="/apps/leads/templates/card.html"></div>
-				</a>
-				<a
-					id="leads-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/leads/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new lead">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="contacts"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="opportunities-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/hand-coin-line.svg"></i>
-					<span>Opportunities</span>
-					<div
-						state-to="app"
-						state.object="686ecb750cb20318c29a050c"
-						state.input.array="opportunities"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/opportunities/templates/card.html"></div>
-				</a>
-				<a
-					id="opportunities-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/opportunities/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new opportunity">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="opportunities"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="contacts-list-btn"
-					class="nav-link"
-					state-to="adminView"
-					state.src="/components/list/index.html">
-					<i src="/assets/svg/remix/contacts-line.svg"></i>
-					<span>Contacts</span>
-					<div
-						state-to="app"
-						state.object="6a96308f28d8dece819be2d4"
-						state.input.array="contacts"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.array="contacts"
-						state.filter-query-key=""
-						state.filter-query-value=""
-						state.src="/apps/contacts/templates/card.html"></div>
-				</a>
-				<a
-					id="contacts-create-btn"
-					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
-					state.src="/apps/contacts/create.html"
-					aria-controls="offcanvas-app"
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					aria-open
-					title="Add new contact">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="contacts"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="companies-list-btn"
-					class="nav-link"
-					state-to="adminView"
-					state.src="/components/list/index.html">
-					<i src="/assets/svg/remix/building-line.svg"></i>
-					<span>Companies</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00eed"
-						state.input.array="companies"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/companies/templates/card.html"></div>
-				</a>
-				<a
-					id="companies-create-btn"
-					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
-					state.src="/apps/companies/create.html"
-					aria-controls="offcanvas-app"
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					aria-open
-					aria-label="Create new company"
-					title="Add new company">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="companies"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="support-tickets-list-btn"
-					class="nav-link"
-					state-to="adminView"
-					state.src="/components/list/index.html">
-					<i src="/assets/svg/remix/ticket-line.svg"></i>
-					<span>Support Tickets</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00f00"
-						state.input.array="support_tickets"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/support-tickets/templates/card.html"></div>
-				</a>
-				<a
-					id="support-tickets-create-btn"
-					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
-					state.src="/apps/support-tickets/create.html"
-					aria-controls="offcanvas-app"
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					aria-open
-					title="Create new ticket">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="support_tickets"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-
-			<!-- Sales & Billing Section -->
-			<li class="menu-title">
-				<span>Sales & Billing</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="items-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/box-3-line.svg"></i>
-					<span>Items</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00ee9"
-						state.input.array="items"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/items/templates/card.html"></div>
-				</a>
-				<a
-					id="items-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/items/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create an item">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="items"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="estimates-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/file-text-line.svg"></i>
-					<span>Estimates</span>
-					<div
-						state-to="app"
-						state.object="686ecb750cb20318c29a050e"
-						state.input.array="invoices"></div>
-					<div
-						state-to="table"
-						state.filter-query-value="estimate"></div>
-					<div
-						state-to="list"
-						state.src="/apps/estimates/templates/card.html"></div>
-				</a>
-				<a
-					state-to="offcanvas-app-view"
-					state.src="/apps/estimates/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new estimate">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="invoices"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="sales-orders-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/shopping-cart-line.svg"></i>
-					<span>Sales Orders</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00efb"
-						state.input.array="sales_orders"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/sales-orders/templates/card.html"></div>
-				</a>
-				<a
-					id="sales-orders-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/sales-orders/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new sales order">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="sales_orders"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="invoices-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/file-list-3-line.svg"></i>
-					<span>Invoices</span>
-					<div
-						state-to="app"
-						state.object="6a96308f1cbed14a0983e2e1"
-						state.input.array="invoices"></div>
-					<div
-						state-to="table"
-						state.filter-query-value="invoice"></div>
-					<div
-						state-to="list"
-						state.src="/apps/invoices/templates/card.html"></div>
-				</a>
-				<a
-					id="invoices-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/invoices/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new invoice">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="invoices"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/wallet-line.svg"></i>
-					<span>Payments</span>
-					<div
-						state-to="app"
-						state.object="686ecb750cb20318c29a050f"
-						state.input.array="transactions"></div>
-					<div
-						state-to="table"
-						state.filter-query-key="type"
-						state.filter-query-value="payment"></div>
-					<div
-						state-to="list"
-						state.src="/apps/payments/templates/card.html"></div>
-				</a>
-				<a
-					state-to="offcanvas-app-view"
-					state.src="/apps/payments/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Record new payment">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="transactions"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-
-			<!-- Procurement & Cost Section -->
-			<li class="menu-title">
-				<span>Procurement & Cost</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="purchase-orders-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/shopping-bag-line.svg"></i>
-					<span>Purchase Orders</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00efc"
-						state.input.array="purchase_orders"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/purchase-orders/templates/card.html"></div>
-				</a>
-				<a
-					state-to="offcanvas-app-view"
-					state.src="/apps/purchase-orders/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new purchase order">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="purchase_orders"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="expenses-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/money-dollar-circle-line.svg"></i>
-					<span>Expenses</span>
-					<div
-						state-to="app"
-						state.object="686ecb750cb20318c29a050d"
-						state.input.array="transactions"></div>
-					<div
-						state-to="table"
-						state.filter-query-key="type"
-						state.filter-query-value="expense"></div>
-					<div
-						state-to="list"
-						state.src="/apps/expenses/templates/card.html"></div>
-				</a>
-				<a
-					state-to="offcanvas-app-view"
-					state.src="/apps/expenses/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Add new expense">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="transactions"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-
-			<!-- Marketing Section -->
-			<li class="menu-title">
-				<span>Marketing</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="blog-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/rss-line.svg"></i>
-					<span>Blog</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00ee7"
-						state.input.array="posts"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.array="posts"
-						state.filter-query-key=""
-						state.filter-query-value=""
-						state.src="/apps/blog/templates/card.html"></div>
-				</a>
-				<a
-					id="blog-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/blog/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Create new blog post">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="posts"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
 
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="social-list-btn"
-					state-to="adminView"
+					id="account-apps-list-btn"
+					state-to="accountView"
 					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/share-line.svg"></i>
-					<span>Social</span>
-					<div
-						state-to="app"
-						state.object="6a96308fe438a005aaa9a967"
-						state.input.array="posts"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.array="posts"
-						state.filter-query-key=""
-						state.filter-query-value=""
-						state.src="/apps/social/templates/card.html"></div>
-				</a>
-				<a
-					id="social-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/blog/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					aria-label="Create new social post"
-					class="nav-link nav-action"
-					title="Create new social post">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="posts"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-
-			<!-- Human Resources Section -->
-			<li class="menu-title">
-				<span>Human Resources</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="job-postings-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link"
-					data-key="t-job-postings">
-					<i src="/assets/svg/remix/briefcase-2-line.svg"></i>
-					<span>Jobs</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00ef5"
-						state.input.array="jobPosts"></div>
-					<div
-						state-to="table"
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/jobs/templates/card.html"></div>
-				</a>
-				<a
-					id="job-postings-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/jobs/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					aria-label="Post a new job"
-					class="nav-link nav-action"
-					title="Post a new job">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="jobPosts"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="candidates-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link"
-					data-key="t-candidates">
-					<i src="/assets/svg/remix/user-search-line.svg"></i>
-					<span>Candidates</span>
-					<div
-						state-to="app"
-						state.object="6a96308f88ce2e69559ce874"
-						state.input.array="contacts"></div>
-					<div
-						state-to="table"
-						state.filter-query-value="candidate"></div>
-					<div
-						state-to="list"
-						state.src="/apps/candidates/templates/card.html"></div>
-				</a>
-				<a
-					id="candidates-create-btn"
-					state-to="offcanvas-app-view"
-					state.src="/apps/candidates/create.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					aria-haspopup="dialog"
-					aria-expanded="false"
-					class="nav-link nav-action"
-					title="Add new candidate">
-					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="contacts"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-
-			<!-- Settings Section -->
-			<li class="menu-title">
-				<span>Settings</span>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="speech-synthesis-btn"
-					state-to="adminView"
-					state.src="/apps/speech-synthesis/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/volume-up-line.svg"></i>
-					<span>Speech Synthesis</span>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="speech-recognition-btn"
-					state-to="adminView"
-					state.src="/apps/speech-recognition/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/mic-line.svg"></i>
-					<span>Speech Recognition</span>
-				</a>
-			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
-				<a
-					id="apps-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
+					class="nav-link menu-link">
 					<i src="/assets/svg/remix/apps-2-line.svg"></i>
 					<span>Apps</span>
 					<div
@@ -1013,17 +162,20 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/apps/templates/card.html"></div>
 				</a>
 				<a
-					id="apps-create-btn"
 					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
+					state-to="create-panel-view"
 					state.src="/apps/apps/create.html"
-					aria-controls="offcanvas-app"
+					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
 					aria-open
+					aria-label="Create new app"
 					title="Create new app">
 					<div
 						state-to="offcanvas-app-form"
@@ -1032,13 +184,16 @@
 					<i src="/assets/svg/remix/add-line.svg"></i>
 				</a>
 			</li>
+
+			<li class="menu-title"><span>Infrastructure</span></li>
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="clusters-list-btn"
-					state-to="adminView"
+					id="account-clusters-list-btn"
+					state-to="accountView"
 					state.src="/components/list/index.html"
-					class="nav-link">
+					class="nav-link menu-link"
+					title="Clusters">
 					<i src="/assets/svg/remix/stack-line.svg"></i>
 					<span>Clusters</span>
 					<div
@@ -1051,20 +206,29 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/clusters/templates/card.html"></div>
 				</a>
 				<a
-					id="clusters-create-btn"
 					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
-					state.src="/apps/clusters/provision.html"
-					aria-controls="offcanvas-app"
+					state-to="create-panel-view"
+					state.src="/apps/apis/providers/index.html"
+					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
 					aria-open
-					title="Provision new cluster">
+					aria-label="Provision a cluster"
+					title="Provision a cluster">
 					<div
-						state-to="offcanvas-app-form"
+						state-to="apis-providers-title"
+						state.data-provider-name="Cloud"></div>
+					<div
+						state-to="apis-providers-steps"
+						state.hidden="false"></div>
+					<div
+						state-to="create-panel-form"
 						state.$reset
 						state.$unset="$reset"
 						state.array="clusters"></div>
@@ -1074,10 +238,11 @@
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="servers-list-btn"
-					state-to="adminView"
+					id="account-servers-list-btn"
+					state-to="accountView"
 					state.src="/components/list/index.html"
-					class="nav-link">
+					class="nav-link menu-link"
+					title="Servers">
 					<i src="/assets/svg/remix/server-line.svg"></i>
 					<span>Servers</span>
 					<div
@@ -1090,34 +255,45 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/servers/templates/card.html"></div>
 				</a>
 				<a
-					id="servers-create-btn"
 					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
-					state.src="/apps/servers/provision.html"
-					aria-controls="offcanvas-app"
+					state-to="create-panel-view"
+					state.src="/apps/apis/providers/index.html"
+					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
 					aria-open
+					aria-label="Deploy a server"
 					title="Deploy a server">
 					<div
-						state-to="offcanvas-app-form"
-						state.array="servers"
-						state.object=""></div>
+						state-to="apis-providers-title"
+						state.data-provider-name="Cloud"></div>
+					<div
+						state-to="apis-providers-steps"
+						state.hidden="false"></div>
+					<div
+						state-to="create-panel-form"
+						state.$reset
+						state.$unset="$reset"
+						state.array="servers"></div>
 					<i src="/assets/svg/remix/add-line.svg"></i>
 				</a>
 			</li>
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="server-configs-list-btn"
-					state-to="adminView"
+					id="account-server-configs-list-btn"
+					state-to="accountView"
 					state.src="/components/list/index.html"
-					class="nav-link">
+					class="nav-link menu-link"
+					title="Configurations">
 					<i src="/assets/svg/remix/settings-3-line.svg"></i>
-					<span>Server Configs</span>
+					<span>Configurations</span>
 					<div
 						state-to="app"
 						state.object="6a96308fbe321a28ad3edec1"
@@ -1128,18 +304,21 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/servers/configs/templates/card.html"></div>
 				</a>
 				<a
-					id="server-configs-create-btn"
 					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
+					state-to="create-panel-view"
 					state.src="/apps/servers/configs/create.html"
-					aria-controls="offcanvas-app"
+					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
 					aria-open
-					title="Create new server config">
+					aria-label="Create server configuration"
+					title="Create server configuration">
 					<div
 						state-to="offcanvas-app-form"
 						state.$reset
@@ -1147,53 +326,127 @@
 					<i src="/assets/svg/remix/add-line.svg"></i>
 				</a>
 			</li>
-			<li
-				class="nav-item d-flex justify-content-between align-items-center">
+
+			<li class="menu-title"><span>Connections</span></li>
+			<li class="nav-item">
 				<a
-					id="api-keys-list-btn"
-					state-to="adminView"
-					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/key-line.svg"></i>
-					<span>API Keys</span>
-					<div
-						state-to="app"
-						state.object="68741e1d07a037d0d6d00ee6"
-						state.input.array="keys"></div>
-					<div
-						state-to="table"
-						state.filter-query-key=""
-						state.filter-query-value=""></div>
-					<div
-						state-to="list"
-						state.src="/apps/api-keys/templates/card.html"></div>
-				</a>
-				<a
-					id="api-keys-create-btn"
-					class="nav-link nav-action"
+					id="account-storage-providers-list-btn"
 					state-to="create-panel-view"
-					state.src="/apps/api-keys/create.html"
+					state.src="/apps/apis/providers/index.html"
 					aria-controls="create-panel"
 					aria-haspopup="dialog"
 					aria-expanded="false"
 					aria-open
-					title="Create new API key">
+					class="nav-link menu-link"
+					title="Storage Providers">
+					<i src="/assets/svg/remix/database-2-line.svg"></i
+					><span>Storage Providers</span>
 					<div
-						state-to="offcanvas-app-form"
-						state.$reset
-						state.array="keys"></div>
-					<i src="/assets/svg/remix/add-line.svg"></i>
+						state-to="apis-providers-list"
+						state.filter-query-value="storage"></div>
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="Storage"></div>
+					<div
+						state-to="apis-providers-heading"
+						state.data-provider-name="Storage"></div>
+					<div
+						state-to="apis-providers-steps"
+						state.hidden="true"></div>
 				</a>
 			</li>
+			<li class="nav-item">
+				<a
+					id="account-cloud-providers-list-btn"
+					state-to="create-panel-view"
+					state.src="/apps/apis/providers/index.html"
+					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					class="nav-link menu-link"
+					title="Cloud Providers">
+					<i src="/assets/svg/remix/cloud-line.svg"></i
+					><span>Cloud Providers</span>
+					<div
+						state-to="apis-providers-list"
+						state.filter-query-value="cloud"></div>
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="Cloud"></div>
+					<div
+						state-to="apis-providers-heading"
+						state.data-provider-name="Cloud"></div>
+					<div
+						state-to="apis-providers-steps"
+						state.hidden="true"></div>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a
+					id="account-routing-providers-list-btn"
+					state-to="create-panel-view"
+					state.src="/apps/apis/providers/index.html"
+					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					class="nav-link menu-link"
+					title="Routing Providers">
+					<i src="/assets/svg/remix/route-line.svg"></i
+					><span>Routing Providers</span>
+					<div
+						state-to="apis-providers-list"
+						state.filter-query-value="routing"></div>
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="Routing"></div>
+					<div
+						state-to="apis-providers-heading"
+						state.data-provider-name="Routing"></div>
+					<div
+						state-to="apis-providers-steps"
+						state.hidden="true"></div>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a
+					id="account-ai-providers-list-btn"
+					state-to="create-panel-view"
+					state.src="/apps/apis/providers/index.html"
+					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					class="nav-link menu-link"
+					title="AI Providers">
+					<i src="/assets/svg/remix/brain-line.svg"></i
+					><span>AI Providers</span>
+					<div
+						state-to="apis-providers-list"
+						state.filter-query-value="ai"></div>
+					<div
+						state-to="apis-providers-title"
+						state.data-provider-name="AI"></div>
+					<div
+						state-to="apis-providers-heading"
+						state.data-provider-name="AI"></div>
+					<div
+						state-to="apis-providers-steps"
+						state.hidden="true"></div>
+				</a>
+			</li>
+
+			<li class="menu-title"><span>Developer</span></li>
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="apis-list-btn"
-					state-to="adminView"
+					id="account-apis-list-btn"
+					state-to="accountView"
 					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/key-2-line.svg"></i>
-					<span>APIs</span>
+					class="nav-link menu-link">
+					<i src="/assets/svg/remix/key-2-line.svg"></i
+					><span>APIs</span>
 					<div
 						state-to="app"
 						state.object="68741e1d07a037d0d6d00eee"
@@ -1204,18 +457,19 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/apis/templates/card.html"></div>
 				</a>
 				<a
-					id="apis-create-btn"
 					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
+					state-to="create-panel-view"
 					state.src="/apps/apis/create.html"
-					aria-controls="offcanvas-app"
-					aria-haspopup="dialog"
-					aria-expanded="false"
+					aria-controls="create-panel"
 					aria-open
-					title="Create new API">
+					aria-label="Create API"
+					title="Create API">
 					<div
 						state-to="offcanvas-app-form"
 						state.$reset
@@ -1226,12 +480,14 @@
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="endpoints-list-btn"
-					state-to="adminView"
+					id="account-endpoints-list-btn"
+					state-to="accountView"
 					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/logout-box-line.svg" style="transform: translateY(-2px) rotate(-90deg)"></i>
-					<span>Endpoints</span>
+					class="nav-link menu-link">
+					<i
+						src="/assets/svg/remix/logout-box-line.svg"
+						aria-hidden="true"></i
+					><span>Endpoints</span>
 					<div
 						state-to="app"
 						state.object="68741e1d07a037d0d6d00eef"
@@ -1242,18 +498,19 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/apis/endpoints/templates/card.html"></div>
 				</a>
 				<a
-					id="endpoints-create-btn"
 					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
+					state-to="create-panel-view"
 					state.src="/apps/apis/endpoints/create.html"
-					aria-controls="offcanvas-app"
-					aria-haspopup="dialog"
-					aria-expanded="false"
+					aria-controls="create-panel"
 					aria-open
-					title="Create new endpoint">
+					aria-label="Create endpoint"
+					title="Create endpoint">
 					<div
 						state-to="offcanvas-app-form"
 						state.$reset
@@ -1264,12 +521,16 @@
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="webhooks-list-btn"
-					state-to="adminView"
+					id="account-webhooks-list-btn"
+					state-to="accountView"
 					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/login-box-line.svg" style="transform: translateY(-2px) rotate(-90deg)"></i>
-					<span>Webhooks</span>
+					class="nav-link menu-link">
+					<i
+						src="/assets/svg/remix/login-box-line.svg"
+						style="
+							transform: translate(-6px, 4px) rotate(90deg);
+						"></i
+					><span>Webhooks</span>
 					<div
 						state-to="app"
 						state.object="68741e1d07a037d0d6d00ef0"
@@ -1280,18 +541,19 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/apis/webhooks/templates/card.html"></div>
 				</a>
 				<a
-					id="webhooks-create-btn"
 					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
+					state-to="create-panel-view"
 					state.src="/apps/apis/webhooks/create.html"
-					aria-controls="offcanvas-app"
-					aria-haspopup="dialog"
-					aria-expanded="false"
+					aria-controls="create-panel"
 					aria-open
-					title="Create new webhook">
+					aria-label="Create webhook"
+					title="Create webhook">
 					<div
 						state-to="offcanvas-app-form"
 						state.$reset
@@ -1299,15 +561,58 @@
 					<i src="/assets/svg/remix/add-line.svg"></i>
 				</a>
 			</li>
+
+			<li class="menu-title"><span>Access</span></li>
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
 				<a
-					id="ai-instructions-list-btn"
-					state-to="adminView"
+					id="account-api-keys-list-btn"
+					state-to="accountView"
 					state.src="/components/list/index.html"
-					class="nav-link">
-					<i src="/assets/svg/remix/file-list-3-line.svg"></i>
-					<span>AI Instructions</span>
+					class="nav-link menu-link">
+					<i src="/assets/svg/remix/key-line.svg"></i
+					><span>API Keys</span>
+					<div
+						state-to="app"
+						state.object="68741e1d07a037d0d6d00ee6"
+						state.input.array="keys"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
+						state.src="/apps/api-keys/templates/card.html"></div>
+				</a>
+				<a
+					class="nav-link nav-action"
+					state-to="create-panel-view"
+					state.src="/apps/api-keys/create.html"
+					aria-controls="create-panel"
+					aria-open
+					aria-label="Create API key"
+					title="Create API key">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="keys"></div>
+					<i src="/assets/svg/remix/add-line.svg"></i>
+				</a>
+			</li>
+
+			<li class="menu-title"><span>Configuration</span></li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="account-ai-instructions-list-btn"
+					state-to="accountView"
+					state.src="/components/list/index.html"
+					class="nav-link menu-link">
+					<i src="/assets/svg/remix/file-list-3-line.svg"></i
+					><span>AI Instructions</span>
 					<div
 						state-to="app"
 						state.object="db642be613418dda0ef345a1"
@@ -1318,18 +623,19 @@
 						state.filter-query-value=""></div>
 					<div
 						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
 						state.src="/apps/ai/instructions/templates/card.html"></div>
 				</a>
 				<a
-					id="ai-instructions-create-btn"
 					class="nav-link nav-action"
-					state-to="offcanvas-app-view"
+					state-to="create-panel-view"
 					state.src="/apps/ai/instructions/create.html"
-					aria-controls="offcanvas-app"
-					aria-haspopup="dialog"
-					aria-expanded="false"
+					aria-controls="create-panel"
 					aria-open
-					title="Create new AI instruction">
+					aria-label="Create AI instruction"
+					title="Create AI instruction">
 					<div
 						state-to="offcanvas-app-form"
 						state.$reset
@@ -1339,7 +645,6 @@
 			</li>
 		</ul>
 	</div>
-	<!-- Sidebar -->
 </div>
 
 <div class="sidebar-background"></div>
