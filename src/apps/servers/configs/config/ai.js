@@ -43,7 +43,10 @@ export default {
                 "defaultStorageTarget": "local",
                 "allowLocalFileSystem": true,
                 "allowUnconfirmedLocalWrite": false,
-                "localFsRoot": "/home/ubuntu/Dev/CoCreateWS/websites",
+                "allowPlatformCommands": true,
+                "platformCommandTimeout": 600000,
+                "platformCommandMaxOutputBytes": 1048576,
+                "localFsRoot": "/home/ubuntu/Dev/CoCreateWS/organizations",
                 "publicPath": "/public",
                 "tools": {
                     "crud": {
@@ -394,7 +397,7 @@ export default {
                         }
                     },
                     "read_local_file": {
-                        "description": "Reads a line range from a local file within the authenticated organization's site workspace. Large files must be read in successive ranges; use totalLines and hasMore to continue.",
+                        "description": "Reads a line range from a local file within the authenticated organization's sites workspace. Large files must be read in successive ranges; use totalLines and hasMore to continue.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -440,7 +443,7 @@ export default {
                         }
                     },
                     "write_local_file": {
-                        "description": "Writes a file within the authenticated organization's site workspace. AI runtime metadata under .ai is outside this tool's path boundary. Only available when allowLocalFileSystem=true.",
+                        "description": "Writes a file within the authenticated organization's sites workspace. AI runtime metadata under .ai is outside this tool's path boundary. Only available when allowLocalFileSystem=true.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -458,7 +461,7 @@ export default {
                         }
                     },
                     "coc": {
-                        "description": "Downloads database-backed site files into the authenticated organization's isolated site workspace or uploads selected site files through tenant-scoped CRUD. Site downloads process one file at a time and skip existing files unless overwrite=true. AI metadata under .ai is inaccessible to this tool. This tool cannot execute commands.",
+                        "description": "Downloads database-backed site files into the authenticated organization's isolated sites workspace or uploads selected site files through tenant-scoped CRUD. Site downloads process one file at a time and skip existing files unless overwrite=true. AI metadata under .ai is inaccessible to this tool. This tool cannot execute commands.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -488,6 +491,95 @@ export default {
                             "required": [
                                 "action"
                             ]
+                        }
+                    },
+                    "git_project": {
+                        "description": "Inspects and manages local Git history in the authenticated organization's isolated project workspace. Repository cloning, remotes, credentials, and network synchronization are server-owned and unavailable to this tool. Mutating actions require explicit local-write confirmation unless the server permits unconfirmed local writes.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "action": {
+                                    "type": "string",
+                                    "enum": [
+                                        "status",
+                                        "list_files",
+                                        "diff",
+                                        "log",
+                                        "show",
+                                        "commit",
+                                        "create_branch",
+                                        "switch_branch",
+                                        "revert"
+                                    ]
+                                },
+                                "paths": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "description": "Exact project-relative paths. Absolute paths and Git pathspec magic are rejected."
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Commit message required by the commit action."
+                                },
+                                "revision": {
+                                    "type": "string",
+                                    "description": "Commit or revision required by revert and optional for show."
+                                },
+                                "branch": {
+                                    "type": "string",
+                                    "description": "Branch name required by create_branch and switch_branch."
+                                },
+                                "staged": {
+                                    "type": "boolean",
+                                    "description": "Show staged changes when action is diff."
+                                },
+                                "stat": {
+                                    "type": "boolean",
+                                    "description": "Show a diff summary instead of a patch when action is diff."
+                                },
+                                "limit": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 200,
+                                    "description": "Maximum number of files or commits to return."
+                                }
+                            },
+                            "required": [
+                                "action"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "execute_command": {
+                        "description": "Executes an unrestricted shell command on the server as the CoCreate process account. Available only when the authenticated organization is the platform organization and platform command execution is enabled. Use the organization's sites workspace by default; an explicit relative or absolute working directory may be supplied. This is the platform escape hatch for Git, package managers, builds, tests, deployment, and system operations that do not have a structured tool.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "command": {
+                                    "type": "string",
+                                    "description": "Complete shell command to execute."
+                                },
+                                "cwd": {
+                                    "type": "string",
+                                    "description": "Optional working directory. Relative paths resolve from the platform organization's sites workspace; absolute paths are accepted in platform mode."
+                                },
+                                "timeout": {
+                                    "type": "integer",
+                                    "minimum": 1000,
+                                    "maximum": 600000,
+                                    "description": "Optional timeout in milliseconds."
+                                },
+                                "input": {
+                                    "type": "string",
+                                    "description": "Optional standard input supplied to the command."
+                                }
+                            },
+                            "required": [
+                                "command"
+                            ],
+                            "additionalProperties": false
                         }
                     },
                     "send_socket_message": {

@@ -183,6 +183,8 @@ The response payload is always stored on the key named by the method target: dat
             enabled: true,
             instructions: `CoCreate files are database-backed objects in the files array. The pathname is the public virtual path and is not a path on the server binary's local disk. Use request_server_file when the served result matters because it resolves the authenticated host, organization, fallback path, visibility, rendering, language, theme, content type, and status. Use read_virtual_file when the stored source is needed, write_virtual_file for ordinary source creation or replacement, list_virtual_files for discovery, and delete_virtual_file only for an explicitly requested deletion. read_project_file and write_project_file use the configured virtual or local target; local access exists only when enabled by the server.
 
+When a local Git workspace is available, use git_project to inspect its tracked files, status, diffs, and history. Commit only explicitly selected paths after the user has requested or confirmed a commit. Prefer revert for undoing committed work. Repository cloning, credentials, remotes, and network synchronization are handled by the server rather than the AI Git tool.
+
 Before creating, relocating, or assuming a website structure, request /sitemap.xml. If it is a sitemap index, follow its referenced sitemap files and inspect their <loc> entries. Use those pathnames to understand the current public structure, while remembering that private files, sitemap-disabled files, /_ paths, and /api paths may be absent. Read an existing file before changing it when its current source or metadata matters.
 
 The standard file object fields are:
