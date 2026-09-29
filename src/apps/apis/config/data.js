@@ -149,6 +149,26 @@ export default {
             },
             "description": "GitHub OAuth 2.0 web authentication pipeline. Uses HTTP Basic Auth ($security.base64Encode) with client_id:client_secret for client authentication.",
             "enabled": true
+        },
+        {
+            "_id": "65f8ca227b39a3c1a8904e12",
+            "name": "github-organizations",
+            "type": "source-control",
+            "provider": "github",
+            "owner": "CoCreate-organizations",
+            "url": "https://api.github.com",
+            "headers": {
+                "Authorization": {
+                    "$concat": [["Bearer ", "$token"]]
+                },
+                "Accept": "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2022-11-28",
+                "User-Agent": "CoCreate-server",
+                "Content-Type": "application/json"
+            },
+            "description": "Platform-owned GitHub integration for managed organization repositories. Configure its token with a fine-grained personal access token or GitHub App installation token.",
+            "enabled": true,
+            "token": ""
         }
     ]
 };

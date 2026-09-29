@@ -56,7 +56,7 @@
 				aria-controls="offcanvas-header-dropdown"
 				aria-expanded="false"
 				aria-label="More actions">
-				<i class="ri-more-2-fill align-middle fs-22"></i>
+				<i src="/assets/svg/remix/more-2-fill.svg" class="align-middle fs-22"></i>
 			</a>
 			<ul
 				id="offcanvas-header-dropdown"
@@ -70,8 +70,7 @@
 						state-to="offcanvas-app-view"
 						state.src=""
 						role="menuitem"
-						><i class="ri-eye-fill align-bottom me-2 text-muted"></i
-						>View</a
+						><i src="/assets/svg/remix/eye-fill.svg" class="align-bottom me-2 text-muted"></i>View</a
 					>
 				</li>
 				<li>
@@ -80,8 +79,7 @@
 						state-to="offcanvas-app-view"
 						state.src=""
 						role="menuitem"
-						><i class="ri-eye-fill align-bottom me-2 text-muted"></i
-						>Edit</a
+						><i src="/assets/svg/remix/eye-fill.svg" class="align-bottom me-2 text-muted"></i>Edit</a
 					>
 				</li>
 				<li>
@@ -94,8 +92,7 @@
 						state-to="delete-record"
 						state.delete-query="$document #offcanvas-app"
 						state.actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])">
-						<i
-							class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+						<i src="/assets/svg/remix/delete-bin-fill.svg" class="align-bottom me-2 text-muted"></i>
 						Delete</a
 					>
 				</li>
@@ -115,7 +112,7 @@
 				class="btn btn-sm btn-outline-primary ms-2 details-view-btn offcanvas-app"
 				title="Details"
 				aria-label="Details">
-				<i class="ri-eye-fill align-bottom"></i>
+				<i src="/assets/svg/remix/eye-fill.svg" class="align-bottom"></i>
 				<span>Details</span>
 			</button>
 
@@ -127,7 +124,7 @@
 				class="btn btn-sm btn-outline-primary ms-2 form-view-btn offcanvas-app"
 				title="Edit"
 				aria-label="Edit">
-				<i class="ri-pencil-fill align-bottom"></i>
+				<i src="/assets/svg/remix/pencil-fill.svg" class="align-bottom"></i>
 				<span>Edit</span>
 			</button>
 		</div>
@@ -148,8 +145,9 @@
 				toggle-query="$document #offcanvas-app"
 				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
 				<i
-					toggle.class="ri-layout-right-2-line, ri-layout-right-line"
-					class="ri-layout-right-line align-middle fs-22"></i>
+					src="/assets/svg/remix/layout-right-line.svg"
+					toggle.src="/assets/svg/remix/layout-right-2-line.svg, /assets/svg/remix/layout-right-line.svg"
+					class="align-middle fs-22"></i>
 			</a>
 		</li>
 		<li class="d-none">
@@ -163,8 +161,9 @@
 				toggle-query="$document #offcanvas-app"
 				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
 				<i
-					toggle.class="ri-pushpin-2-fill, ri-pushpin-2-line"
-					class="ri-pushpin-2-line align-middle fs-22"></i>
+					src="/assets/svg/remix/pushpin-2-line.svg"
+					toggle.src="/assets/svg/remix/pushpin-2-fill.svg, /assets/svg/remix/pushpin-2-line.svg"
+					class="align-middle fs-22"></i>
 			</a>
 		</li>
 		<li title="Close">
@@ -175,7 +174,7 @@
 				aria-controls="offcanvas-app"
 				aria-expanded="true"
 				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
-				<i class="ri-close-line align-middle fs-22"></i>
+				<i src="/assets/svg/remix/close-line.svg" class="align-middle fs-22"></i>
 			</a>
 		</li>
 	</div>

@@ -42,9 +42,9 @@ function loadCandidateListData(e, t) {
 				e[i].rating[0] +
 				'</div>                        <div class="text-muted">' +
 				e[i].rating[1] +
-				'</div>                    </div>                    <div class="d-flex gap-4 mt-2 text-muted">                        <div>                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> ' +
+				'</div>                    </div>                    <div class="d-flex gap-4 mt-2 text-muted">                        <div>                            <i src="/assets/svg/remix/map-pin-2-line.svg" class="text-primary me-1 align-bottom"></i> ' +
 				e[i].location +
-				'</div>                        <div>                            <i class="ri-time-line text-primary me-1 align-bottom"></i>' +
+				'</div>                        <div>                            <i src="/assets/svg/remix/time-line.svg" class="text-primary me-1 align-bottom"></i>' +
 				isStatus(e[i].type) +
 				"                        </div>                    </div>                </div>            </div>        </div>    </div></div>"));
 	selectedPage(),

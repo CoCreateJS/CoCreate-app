@@ -24,7 +24,7 @@ function loadJobListData(e, t) {
 					.querySelector("#job-list")
 					.insertAdjacentHTML(
 						"afterbegin",
-						'<div class="col-lg-3 col-md-6" id="job-widget">        <div class="card card-height-100 bg-info bg-job">            <div class="card-body p-5">                <h2 class="lh-base text-white">CoCreateinvites young professionals for an intership!</h2>                <p class="text-white text-opacity-75 mb-0 fs-14">Don\'t miss your opportunity to improve your skills!</p>                <div class="mt-5 pt-2">                    <button type="button" class="btn btn-light w-100">View More <i class="ri-arrow-right-line align-bottom"></i></button>                </div>            </div>        </div>    </div>'
+						'<div class="col-lg-3 col-md-6" id="job-widget">        <div class="card card-height-100 bg-info bg-job">            <div class="card-body p-5">                <h2 class="lh-base text-white">CoCreateinvites young professionals for an intership!</h2>                <p class="text-white text-opacity-75 mb-0 fs-14">Don\'t miss your opportunity to improve your skills!</p>                <div class="mt-5 pt-2">                    <button type="button" class="btn btn-light w-100">View More <i src="/assets/svg/remix/arrow-right-line.svg" class="align-bottom"></i></button>                </div>            </div>        </div>    </div>'
 					))
 			: (itemsPerPage = 8);
 	for (
@@ -58,9 +58,9 @@ function loadJobListData(e, t) {
 					e[n].jobTitle +
 					'</h5></a>                <p class="text-muted">' +
 					e[n].companyName +
-					'</p>                <div class="d-flex gap-4 mb-3">                    <div><i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> ' +
+					'</p>                <div class="d-flex gap-4 mb-3">                    <div><i src="/assets/svg/remix/map-pin-2-line.svg" class="text-primary me-1 align-bottom"></i> ' +
 					e[n].location +
-					'</div>                    <div><i class="ri-time-line text-primary me-1 align-bottom"></i> ' +
+					'</div>                    <div><i src="/assets/svg/remix/time-line.svg" class="text-primary me-1 align-bottom"></i> ' +
 					e[n].postDate +
 					'</div>                </div>                <p class="text-muted">' +
 					e[n].description +

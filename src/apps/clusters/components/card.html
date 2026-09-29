@@ -2,7 +2,7 @@
 	<div class="d-flex align-items-center gap-3 min-width:0">
 		<span class="avatar-sm app-card-icon flex-shrink-0">
 			<span class="avatar-title bg-primary-subtle text-primary rounded-circle">
-				<i class="ri-stack-line" aria-hidden="true"></i>
+				<i src="/assets/svg/remix/stack-line.svg" aria-hidden="true"></i>
 			</span>
 		</span>
 		<div class="min-width:0">
@@ -16,14 +16,14 @@
 <p class="text-muted mb-0 text-break line-clamp:2" key="description"></p>
 <div class="d-flex flex-wrap align-items-center gap-2 text-muted fs-12 pt-2 border-top border-top-dashed" style="margin-top: auto">
 	<span class="d-flex align-items-center gap-1">
-		<i class="ri-server-line" aria-hidden="true"></i>
+		<i src="/assets/svg/remix/server-line.svg" aria-hidden="true"></i>
 		<input type="hidden" key="_id" input-query="$next" input.filter-query-value="$value" />
 		<span form-attributes="false" array="servers" object key="$length" filter-query-key="cluster_id" filter-limit>0</span>
 		servers
 	</span>
 	<span key="storage" render-query="$next" hidden></span>
 	<span render="storage" render-as="storage" template class="d-flex align-items-center gap-1 ms-auto min-width:0" style="max-width: 100%" title="Storage: {{storage.key}}">
-		<i class="ri-database-2-line flex-shrink-0" aria-hidden="true"></i>
+		<i src="/assets/svg/remix/database-2-line.svg" class="flex-shrink-0" aria-hidden="true"></i>
 		<span class="visually-hidden">Storage: </span>
 		<span class="text-truncate">{{storage.key}}</span>
 	</span>

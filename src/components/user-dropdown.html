@@ -13,7 +13,7 @@
 		state-to="offcanvas-app-form"
 		state.array="contacts"
 		state.object="$user_id"></span>
-	<i class="ri-account-circle-line text-muted fs-16 align-middle me-1"></i>
+	<i src="/assets/svg/remix/account-circle-line.svg" class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Profile</span>
 </a>
 <a
@@ -29,19 +29,32 @@
 		state-to="offcanvas-app-form"
 		state.array="organizations"
 		state.object="$organization_id"></span>
-	<i class="ri-building-line text-muted fs-16 align-middle me-1"></i>
+	<i src="/assets/svg/remix/building-line.svg" class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Organization</span>
 </a>
-<a
-	class="dropdown-item"
-	aria-expanded="false"
-	aria-haspopup="dialog"
-	aria-controls="theme-settings-dialog"
+<button
+	type="button"
+	array="users"
+	object="$user_id"
+	key="theme.colorScheme"
+	value=""
+	realtime="true"
+	input-query="$document html"
+	input.data-bs-theme="$value"
+	click
+	click.value="dark, light"
+	class="dropdown-item light-dark-mode"
 	role="menuitem"
-	title="Open theme editor">
-	<i class="ri-palette-line text-muted fs-16 align-middle me-1"></i>
+	title="Toggle light or dark theme"
+	aria-label="Toggle light or dark theme">
+	<i
+		src="/assets/svg/remix/moon-line.svg"
+		class="theme-icon-moon text-muted fs-16 align-middle me-1"></i>
+	<i
+		src="/assets/svg/remix/sun-line.svg"
+		class="theme-icon-sun text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Theme</span>
-</a>
+</button>
 <!-- Language Selector Dropdown -->
 <a
 	class="dropdown-item"
@@ -81,7 +94,7 @@
 	state.src="/apps/settings/index.html"
 	role="menuitem"
 	title="Global settings hub (includes Organization, Security, Integrations and more)">
-	<i class="ri-settings-3-line text-muted fs-16 align-middle me-1"></i>
+	<i src="/assets/svg/remix/settings-3-line.svg" class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Settings</span>
 	<div state-to="app" state.object="68741e1d07a037d0d6d00eff"></div>
 </a>
@@ -91,7 +104,7 @@
 	state.src="pages/faqs.html"
 	role="menuitem"
 	title="Help & FAQs">
-	<i class="ri-question-line text-muted fs-16 align-middle me-1"></i>
+	<i src="/assets/svg/remix/question-line.svg" class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Help</span>
 	<div state-to="app" state.object=""></div>
 </a>
@@ -101,6 +114,6 @@
 	href="/auth/"
 	role="menuitem"
 	title="Sign out">
-	<i class="ri-logout-box-line text-muted fs-16 align-middle me-1"></i>
+	<i src="/assets/svg/remix/logout-box-line.svg" class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle" data-key="t-logout">Logout</span>
 </a>

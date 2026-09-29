@@ -9,43 +9,45 @@ export default {
             "account-shell": "wss://dev.cocreatejs.com"
         }
     },
-    directories: [
+    template: [
         {
-            entry: "./src",
-            array: "files",
-            languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
-            exclude: ["/admin/", "/account/", "/apps/", "/config/"],
-            object: {
-                name: "{{name}}",
-                src: "{{source}}",
-                host: ["*"],
-                directory: "/",
-                path: "{{path}}",
-                pathname: "{{pathname}}",
-                "content-type": "{{content-type}}",
-                headers: { "cache-control": "public, max-age=31536000" }
-            }
+            entry: "./",
+            output: "../CoCreate-app-template",
+            exclude: [
+                "./.git/",
+                "./.github/",
+                "./.vscode/",
+                "./node_modules/",
+                "./scripts/",
+                "./test/",
+                "./archive/",
+                "./account/",
+                "./CHANGELOG.md",
+                "./CONTRIBUTING.md",
+                "./CoCreate.index.js",
+                "./package.json",
+                "./yarn.lock",
+                "./prettier.config.js",
+                "./release.config.js",
+                "./webpack.config.js",
+                "./src/admin/",
+                "./src/account/",
+                "./src/apps/",
+                "./src/config/",
+                "./src/assets/scss/",
+                "./src/renedered.html",
+                "./src/test.html"
+            ]
         },
         {
-            entry: "./src",
-            array: "files",
-            languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
-            include: ["/admin/", "/account/", "/apps/"],
-            object: {
-                name: "{{name}}",
-                src: "{{source}}",
-                host: ["*"],
-                directory: "/",
-                path: "{{path}}",
-                pathname: "{{pathname}}",
-                "content-type": "{{content-type}}",
-                headers: { "cache-control": "private, max-age=31536000" }
-            }
-        },
-        {
-            entry: "./src",
-            include: ["/config/"],
-            $data: ""
+            entry: "./",
+            output: "../CoCreate-app-template",
+            include: ["./src/admin/", "./src/account/", "./src/apps/"],
+            exclude: [
+                "./src/admin/widgets/",
+                "./src/admin/ui/",
+                "./src/admin/pages/"
+            ]
         }
     ],
 

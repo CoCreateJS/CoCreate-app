@@ -8,7 +8,7 @@
 		</div>
 		<p class="text-muted mb-0 line-clamp:2">{{object.description}}</p>
 		<div class="d-flex flex-wrap gap-3"><div><span class="text-muted fs-12 d-block">Value</span><strong>{{object.currency}} {{object.value}}</strong></div><div><span class="text-muted fs-12 d-block">Expected</span><strong>{{object.currency}} {{object.expected_revenue}}</strong></div><div><span class="text-muted fs-12 d-block">Probability</span><strong>{{object.probability}}%</strong></div></div>
-		<div class="d-flex align-items-center justify-content-between gap-3 pt-2 border-top border-top-dashed"><span class="text-muted fs-12"><i class="ri-calendar-line me-1"></i>{{object.due_date}}</span><div class="d-flex gap-1"><span class="badge border border-warning text-warning text-capitalize">{{object.priority}}</span><span class="badge border border-success text-success text-capitalize">{{object.status}}</span></div></div>
+		<div class="d-flex align-items-center justify-content-between gap-3 pt-2 border-top border-top-dashed"><span class="text-muted fs-12"><i src="/assets/svg/remix/calendar-line.svg" class="me-1"></i>{{object.due_date}}</span><div class="d-flex gap-1"><span class="badge border border-warning text-warning text-capitalize">{{object.priority}}</span><span class="badge border border-success text-success text-capitalize">{{object.status}}</span></div></div>
 		<div class="d-flex flex-wrap gap-1" key="tags" render-query="[template='opportunity-card-tag']"><span template="opportunity-card-tag" class="badge border border-secondary text-secondary">{{tags}}</span></div>
 	</div>
 </article>

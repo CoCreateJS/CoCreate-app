@@ -6,7 +6,7 @@
 	<div class="list-header-primary d-flex align-items-center gap-2">
         <button type="button" class="list-toolbar-control list-toolbar-icon list-files-menu btn btn-light"
             aria-controls="files-sidebar" aria-expanded="false" aria-label="Toggle files menu" title="Files menu">
-            <i class="ri-menu-2-line" aria-hidden="true"></i>
+            <i src="/assets/svg/remix/menu-2-line.svg" aria-hidden="true"></i>
         </button>
 		<button
 			type="button"
@@ -16,9 +16,7 @@
 			aria-expanded="false"
 			aria-label="Filters"
 			title="Filters">
-			<i
-				class="ri-filter-3-line"
-				aria-hidden="true"></i>
+			<i src="/assets/svg/remix/filter-3-line.svg" aria-hidden="true"></i>
 			<span class="list-action-label">Filters</span>
 		</button>
         <div class="list-header-extension d-flex align-items-center min-width:0"
@@ -46,11 +44,9 @@
 				aria-haspopup="menu"
 				aria-label="Change view"
 				title="Change view">
-				<i
-					class="list-view-grid-icon ri-layout-grid-line"
+				<i src="/assets/svg/remix/layout-grid-line.svg" class="list-view-grid-icon"
 					aria-hidden="true"></i>
-				<i
-					class="list-view-list-icon ri-list-unordered"
+				<i src="/assets/svg/remix/list-unordered.svg" class="list-view-list-icon"
 					aria-hidden="true"></i>
 				<span class="list-action-label"><span class="list-view-grid-label">Grid</span><span class="list-view-list-label">List</span></span>
 			</button>
@@ -67,7 +63,7 @@
 						href="#"
 						state-to="list-view"
 						state.src="/apps/files/components/grid.html">
-						<i class="ri-layout-grid-line me-2"></i>
+						<i src="/assets/svg/remix/layout-grid-line.svg" class="me-2"></i>
 						Grid
 					</a>
 				</li>
@@ -77,7 +73,7 @@
 						href="#"
 						state-to="list-view"
 						state.src="/apps/files/components/list.html">
-						<i class="ri-list-unordered me-2"></i>
+						<i src="/assets/svg/remix/list-unordered.svg" class="me-2"></i>
 						List
 					</a>
 				</li>
@@ -99,7 +95,7 @@
 			aria-open
 			aria-label="Delete selected items"
 			title="Delete selected items">
-			<i class="ri-delete-bin-2-line" aria-hidden="true"></i>
+			<i src="/assets/svg/remix/delete-bin-2-line.svg" aria-hidden="true"></i>
 		</button>
 		<button
 			type="button"
@@ -136,7 +132,7 @@
 					input-query="$parent" />
 			</div>
 
-			<i class="ri-add-line" aria-hidden="true"></i>
+			<i src="/assets/svg/remix/add-line.svg" aria-hidden="true"></i>
 			<span class="list-action-label">
 				New
 				<span
@@ -156,7 +152,7 @@
 				aria-expanded="false"
 				title="More actions"
 				aria-label="More actions">
-				<i class="ri-more-2-fill" aria-hidden="true"></i>
+				<i src="/assets/svg/remix/more-2-fill.svg" aria-hidden="true"></i>
 			</button>
 			<ul
 				id="settingsDropdownMenu"
@@ -169,14 +165,14 @@
 					<button type="button" class="dropdown-item" role="menuitem"
 						actions="import"
 						import-query='$document #list-view [data-files-results]:not([hidden])'>
-						<i class="ri-upload-2-line me-2" aria-hidden="true"></i>Import
+						<i src="/assets/svg/remix/upload-2-line.svg" class="me-2" aria-hidden="true"></i>Import
 					</button>
 				</li>
 				<li>
 					<button type="button" class="dropdown-item" role="menuitem"
 						actions="export" export-format="json"
 						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [data-files-results]:not([hidden])[]'>
-						<i class="ri-download-2-line me-2" aria-hidden="true"></i>Export JSON
+						<i src="/assets/svg/remix/download-2-line.svg" class="me-2" aria-hidden="true"></i>Export JSON
 					</button>
 				</li>
 				<li>
@@ -184,14 +180,14 @@
 						actions="export" export-format="csv"
 						export-columns-query="$document #list-view th[data-export-key]:not([template])[], $document #list-export-fields"
 						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [data-files-results]:not([hidden])[]'>
-						<i class="ri-download-2-line me-2" aria-hidden="true"></i>Export CSV
+						<i src="/assets/svg/remix/download-2-line.svg" class="me-2" aria-hidden="true"></i>Export CSV
 					</button>
 				</li>
 				<li>
 					<button type="button" class="dropdown-item" role="menuitem"
 						actions="print"
 						print-query="$document #list-view">
-						<i class="ri-printer-line me-2" aria-hidden="true"></i>Print
+						<i src="/assets/svg/remix/printer-line.svg" class="me-2" aria-hidden="true"></i>Print
 					</button>
 				</li>
 				<li><hr class="dropdown-divider" /></li>
@@ -208,7 +204,7 @@
 			aria-haspopup="dialog"
 			aria-expanded="false"
 			aria-open>
-						<i class="ri-delete-bin-2-line me-2"></i>
+						<i src="/assets/svg/remix/delete-bin-2-line.svg" class="me-2"></i>
 						Delete selected
 					</a>
 				</li>

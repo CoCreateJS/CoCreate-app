@@ -1124,3 +1124,14 @@ dialog.show {
 #offcanvas-app:has([data-component-form]) .offcanvas-app-scroll {
 	overflow: hidden !important;
 }
+.theme-icon-sun {
+	display: none;
+}
+
+[data-bs-theme="dark"] .theme-icon-moon {
+	display: none;
+}
+
+[data-bs-theme="dark"] .theme-icon-sun {
+	display: inline-flex;
+}

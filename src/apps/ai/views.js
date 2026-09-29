@@ -274,7 +274,7 @@ export function createCodeareaTools(options = {}) {
             const copy = document.createElement("button");
             copy.type = "button";
 			copy.className = "ai-code-copy";
-            copy.innerHTML = '<i class="ri-file-copy-line" aria-hidden="true"></i>';
+            copy.innerHTML = '<i src="/assets/svg/remix/file-copy-line.svg" aria-hidden="true"></i>';
             copy.setAttribute("aria-label", "Copy");
             copy.title = "Copy";
 			copy.hidden = true;
@@ -282,11 +282,11 @@ export function createCodeareaTools(options = {}) {
 				await navigator.clipboard?.writeText(
 					activeJsonEditor?.value ?? editor.value
 				);
-                copy.innerHTML = '<i class="ri-check-line" aria-hidden="true"></i>';
+                copy.innerHTML = '<i src="/assets/svg/remix/check-line.svg" aria-hidden="true"></i>';
                 copy.setAttribute("aria-label", "Copied");
                 copy.title = "Copied";
                 setTimeout(() => {
-                    copy.innerHTML = '<i class="ri-file-copy-line" aria-hidden="true"></i>';
+                    copy.innerHTML = '<i src="/assets/svg/remix/file-copy-line.svg" aria-hidden="true"></i>';
                     copy.setAttribute("aria-label", "Copy");
                     copy.title = "Copy";
                 }, 1500);
@@ -297,7 +297,7 @@ export function createCodeareaTools(options = {}) {
             const menuTrigger = document.createElement("summary");
             menuTrigger.setAttribute("aria-label", "More code options");
             menuTrigger.setAttribute("aria-expanded", "false");
-            menuTrigger.innerHTML = '<i class="ri-more-2-fill" aria-hidden="true"></i>';
+            menuTrigger.innerHTML = '<i src="/assets/svg/remix/more-2-fill.svg" aria-hidden="true"></i>';
             menu.addEventListener("toggle", () => {
                 menuTrigger.setAttribute("aria-expanded", String(menu.open));
             });
@@ -849,7 +849,7 @@ export function createCodeareaTools(options = {}) {
         menu.className = "ai-code-menu";
         const menuTrigger = document.createElement("summary");
         menuTrigger.setAttribute("aria-label", "Code options");
-        menuTrigger.innerHTML = '<i class="ri-more-2-fill" aria-hidden="true"></i>';
+        menuTrigger.innerHTML = '<i src="/assets/svg/remix/more-2-fill.svg" aria-hidden="true"></i>';
         const menuOptions = document.createElement("div");
         menuOptions.append(download);
         menu.append(menuTrigger, menuOptions);

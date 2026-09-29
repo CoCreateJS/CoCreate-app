@@ -531,7 +531,7 @@
 		button.className =
 			"ai-crud-list-item list-group-item-action d-flex align-items-center width:100%";
 		button.setAttribute("data-ai-crud-item", "");
-		button.innerHTML = markup || '<div class="d-flex align-items-center gap-2"><span class="avatar-xs rounded-circle position-relative overflow-hidden flex-shrink-0"><span class="avatar-title bg-primary-subtle text-primary"><i class="ri-database-2-line"></i></span></span><span class="flex-grow-1 text-start text-truncate"><span key="name"></span></span></div>';
+		button.innerHTML = markup || '<div class="d-flex align-items-center gap-2"><span class="avatar-xs rounded-circle position-relative overflow-hidden flex-shrink-0"><span class="avatar-title bg-primary-subtle text-primary"><i src="/assets/svg/remix/database-2-line.svg"></i></span></span><span class="flex-grow-1 text-start text-truncate"><span key="name"></span></span></div>';
 		return button;
 	};
 
@@ -1082,7 +1082,7 @@
         menu.className = "ai-tool-menu";
         const trigger = document.createElement("summary");
         trigger.setAttribute("aria-label", "More options");
-        trigger.innerHTML = '<i class="ri-more-2-fill" aria-hidden="true"></i>';
+        trigger.innerHTML = '<i src="/assets/svg/remix/more-2-fill.svg" aria-hidden="true"></i>';
         const options = document.createElement("div");
 
         const rawButton = document.createElement("button");
@@ -1212,7 +1212,7 @@
 			versions.className = "ai-message-versions";
 			const previous = document.createElement("button");
 			previous.type = "button";
-			previous.innerHTML = '<i class="ri-arrow-left-s-line" aria-hidden="true"></i>';
+			previous.innerHTML = '<i src="/assets/svg/remix/arrow-left-s-line.svg" aria-hidden="true"></i>';
 			previous.setAttribute("aria-label", "Previous version");
 			previous.disabled = index <= 0;
 			previous.addEventListener("click", () => void renderActiveBranch(siblings[index - 1]));
@@ -1220,7 +1220,7 @@
 			count.textContent = `${index + 1} of ${siblings.length}`;
 			const next = document.createElement("button");
 			next.type = "button";
-			next.innerHTML = '<i class="ri-arrow-right-s-line" aria-hidden="true"></i>';
+			next.innerHTML = '<i src="/assets/svg/remix/arrow-right-s-line.svg" aria-hidden="true"></i>';
 			next.setAttribute("aria-label", "Next version");
 			next.disabled = index >= siblings.length - 1;
 			next.addEventListener("click", () => void renderActiveBranch(siblings[index + 1]));

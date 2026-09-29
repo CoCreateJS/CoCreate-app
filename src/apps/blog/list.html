@@ -192,7 +192,7 @@
 							state-to="adminView"
 							state.src="pages/blog/form.html"
 							class="btn btn-success"
-							><i class="ri-add-line align-bottom me-1"></i> Add
+							><i src="/assets/svg/remix/add-line.svg" class="align-bottom me-1"></i> Add
 							New</a
 						>
 					</div>
@@ -208,7 +208,7 @@
 								filter-query="#blogListContainer"
 								filter-query-key="title.$regex"
 								filter-query-options="i" />
-							<i class="ri-search-line search-icon"></i>
+							<i src="/assets/svg/remix/search-line.svg" class="search-icon"></i>
 						</div>
 
 						<select
@@ -263,19 +263,19 @@
 						<div
 							class="d-flex align-items-center gap-2 mb-3 flex-wrap">
 							<span class="text-muted"
-								><i class="ri-calendar-event-line me-1"></i>
+								><i src="/assets/svg/remix/calendar-event-line.svg" class="me-1"></i>
 								{{blog.date_posted}}</span
 							>
 							|
 							<span class="text-muted"
-								><i class="ri-eye-line me-1"></i>
+								><i src="/assets/svg/remix/eye-line.svg" class="me-1"></i>
 								{{blog.views}}</span
 							>
 							|
 							<a
 								state-to="adminView"
 								state.src="{{blog.author_profile_url}}"
-								><i class="ri-user-3-line me-1"></i>
+								><i src="/assets/svg/remix/user-3-line.svg" class="me-1"></i>
 								{{blog.author_name}}</a
 							>
 						</div>
@@ -287,8 +287,7 @@
 							><div
 								state-to="form-fields"
 								state.object="{{blog._id}}"></div>
-							Read more <i class="ri-arrow-right-up-line"></i
-						></a>
+							Read more <i src="/assets/svg/remix/arrow-right-up-line.svg"></i></a>
 						<div
 							class="d-flex align-items-center gap-2 mt-3 flex-wrap"
 							render-key="tags"

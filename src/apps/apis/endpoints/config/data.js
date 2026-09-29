@@ -825,6 +825,46 @@ export default {
             },
             "description": "Deletes a Cloudflare load balancer.",
             "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e3c",
+            "api_id": "65f8ca227b39a3c1a8904e12", // GitHub Organizations API Provider Ref
+            "name": "get-organization-repository",
+            "method": "get",
+            "endpoint": {
+                "$concat": [[
+                    "/repos/",
+                    "$owner",
+                    "/",
+                    "$data.data.name"
+                ]]
+            },
+            "description": "Gets a managed private repository by organization repository name.",
+            "enabled": true
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e3d",
+            "api_id": "65f8ca227b39a3c1a8904e12", // GitHub Organizations API Provider Ref
+            "name": "create-organization-repository",
+            "method": "post",
+            "endpoint": {
+                "$concat": [[
+                    "/orgs/",
+                    "$owner",
+                    "/repos"
+                ]]
+            },
+            "data": {
+                "name": "$data.data.name",
+                "description": "$data.data.description",
+                "private": true,
+                "has_issues": false,
+                "has_projects": false,
+                "has_wiki": false,
+                "auto_init": false
+            },
+            "description": "Creates an empty private repository for a managed CoCreate organization.",
+            "enabled": true
         }
     ]
 };

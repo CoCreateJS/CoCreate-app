@@ -1016,7 +1016,7 @@
 
             if (state === "success") {
                 icon.className = "avatar-lg d-inline-flex align-items-center justify-content-center rounded-circle bg-success-subtle text-success";
-                icon.innerHTML = '<i class="ri-check-line fs-48" aria-hidden="true"></i>';
+                icon.innerHTML = '<i src="/assets/svg/remix/check-line.svg" class="fs-48" aria-hidden="true"></i>';
                 title.textContent = `${serverMode ? "Server" : "Cluster"} deployed`;
                 message.textContent = detail || `Your ${subject} has been deployed.`;
                 badge.className = "badge bg-success-subtle text-success";
@@ -1026,7 +1026,7 @@
 
             if (state === "error") {
                 icon.className = "avatar-lg d-inline-flex align-items-center justify-content-center rounded-circle bg-danger-subtle text-danger";
-                icon.innerHTML = '<i class="ri-error-warning-line fs-32" aria-hidden="true"></i>';
+                icon.innerHTML = '<i src="/assets/svg/remix/error-warning-line.svg" class="fs-32" aria-hidden="true"></i>';
                 title.textContent = "Deployment failed";
                 message.textContent = detail || `Your ${subject} could not be deployed.`;
                 badge.className = "badge bg-danger-subtle text-danger";

@@ -21,7 +21,7 @@ function loadProductData(e) {
 				e.salesType +
 				'</div>                    <img src="' +
 				e.productImg +
-				'" alt="" class="card-img-top explore-img" />                    <div class="bg-overlay"></div>                    <div class="place-bid-btn">                        <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>                    </div>                </div>                <div class="bookmark-icon position-absolute top-0 end-0 p-2">                    <button type="button" class="btn btn-icon ' +
+				'" alt="" class="card-img-top explore-img" />                    <div class="bg-overlay"></div>                    <div class="place-bid-btn">                        <a href="#!" class="btn btn-success"><i src="/assets/svg/remix/auction-fill.svg" class="align-bottom me-1"></i> Place Bid</a>                    </div>                </div>                <div class="bookmark-icon position-absolute top-0 end-0 p-2">                    <button type="button" class="btn btn-icon ' +
 				l +
 				'" aria-pressed="true" toggle.class="active" toggle.aria-pressed="true, false"><i class="mdi mdi-cards-heart fs-16"></i></button>                </div>                <div class="card-body">                    <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> ' +
 				e.totalLikes +
@@ -29,7 +29,7 @@ function loadProductData(e) {
 				e.title +
 				'</a></h5>                    <p class="text-muted mb-0">' +
 				e.category +
-				'</p>                </div>                <div class="card-footer border-top border-top-dashed">                    <div class="d-flex align-items-center">                        <div class="flex-grow-1 fs-14">                            <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">' +
+				'</p>                </div>                <div class="card-footer border-top border-top-dashed">                    <div class="d-flex align-items-center">                        <div class="flex-grow-1 fs-14">                            <i src="/assets/svg/remix/price-tag-3-fill.svg" class="text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">' +
 				e.highBid +
 				'</span>                        </div>                        <h5 class="flex-shrink-0 fs-14 text-primary mb-0">' +
 				e.price +

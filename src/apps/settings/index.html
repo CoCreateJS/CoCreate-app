@@ -1,4 +1,6 @@
-<div class="card" style="margin: var(--admin-gutter)">
+<div
+	class="card"
+	style="margin: var(--admin-gutter)">
 	<div class="card-body">
 		<h5 class="card-title mb-3">Settings</h5>
 
@@ -9,38 +11,61 @@
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="offcanvas-app-view" state.src="/apps/profile/aside.html" aria-controls="offcanvas-app" aria-expanded="false" aria-haspopup="dialog" aria-open>
+							state-to="offcanvas-app-view"
+							state.src="/apps/profile/aside.html"
+							aria-controls="offcanvas-app"
+							aria-expanded="false"
+							aria-haspopup="dialog"
+							aria-open>
 							<span>
 								<strong>Profile</strong>
-								<span class="small text-muted d-block">Personal profile and contact details</span>
+								<span class="small text-muted d-block"
+									>Personal profile and contact details</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="offcanvas-app-form" state.array="contacts" state.object="$user_id"></span>
-							<span hidden state-to="app" state.object="68741e1d07a037d0d6d00efd"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="offcanvas-app-form"
+								state.array="contacts"
+								state.object="$user_id"></span>
+							<span
+								hidden
+								state-to="app"
+								state.object="68741e1d07a037d0d6d00efd"></span>
 						</button>
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="offcanvas-app-view" state.src="/apps/organizations/aside.html" aria-controls="offcanvas-app" aria-expanded="false" aria-haspopup="dialog" aria-open>
+							state-to="offcanvas-app-view"
+							state.src="/apps/organizations/aside.html"
+							aria-controls="offcanvas-app"
+							aria-expanded="false"
+							aria-haspopup="dialog"
+							aria-open>
 							<span>
 								<strong>Organization settings</strong>
-								<span class="small text-muted d-block">Organization details and preferences</span>
+								<span class="small text-muted d-block"
+									>Organization details and preferences</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="offcanvas-app-form" state.array="organizations" state.object="$organization_id"></span>
-							<span hidden state-to="app" state.object="68741e1d07a037d0d6d70dfb"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="offcanvas-app-form"
+								state.array="organizations"
+								state.object="$organization_id"></span>
+							<span
+								hidden
+								state-to="app"
+								state.object="68741e1d07a037d0d6d70dfb"></span>
 						</button>
-						<button
-							type="button"
-							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							aria-controls="settings-language-dropdown" aria-expanded="false" aria-haspopup="menu">
-							<span>
-								<strong>Language</strong>
-								<span class="small text-muted d-block">Preferred account language</span>
-							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-						</button>
-						<div id="settings-language-dropdown" class="dropdown-menu" role="menu" aria-hidden="true" aria-close-on="anywhere" src="/components/language-dropdown.html"></div>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -48,82 +73,174 @@
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							aria-controls="theme-settings-dialog" aria-expanded="false" aria-haspopup="dialog">
-							<span>
-								<strong>Theme & Appearance</strong>
-								<span class="small text-muted d-block">Theme, colors and appearance</span>
-							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-						</button>
-						<button
-							type="button"
-							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/components/list/index.html">
+							state-to="adminView"
+							state.src="/components/list/index.html">
 							<span>
 								<strong>Apps</strong>
-								<span class="small text-muted d-block">Installed apps and app configuration</span>
+								<span class="small text-muted d-block"
+									>Installed apps and app configuration</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object="68e736cc0615d8268cc50fd6" state.input.array="apps"></span>
-							<span hidden state-to="table" state.filter-query-key="" state.filter-query-value=""></span>
-							<span hidden state-to="list" state.array="apps" state.filter-query-key="" state.filter-query-value="" state.src="/apps/apps/templates/card.html"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object="68e736cc0615d8268cc50fd6"
+								state.input.array="apps"></span>
+							<span
+								hidden
+								state-to="table"
+								state.filter-query-key=""
+								state.filter-query-value=""></span>
+							<span
+								hidden
+								state-to="list"
+								state.array="apps"
+								state.filter-query-key=""
+								state.filter-query-value=""
+								state.src="/apps/apps/templates/card.html"></span>
 						</button>
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/components/list/index.html">
+							state-to="adminView"
+							state.src="/components/list/index.html">
 							<span>
 								<strong>AI Instructions</strong>
-								<span class="small text-muted d-block">Saved instructions for AI</span>
+								<span class="small text-muted d-block"
+									>Saved instructions for AI</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object="db642be613418dda0ef345a1" state.input.array="ai-instructions"></span>
-							<span hidden state-to="table" state.filter-query-key="" state.filter-query-value=""></span>
-							<span hidden state-to="list" state.array="ai-instructions" state.filter-query-key="" state.filter-query-value="" state.src="/apps/ai/instructions/templates/card.html"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object="db642be613418dda0ef345a1"
+								state.input.array="ai-instructions"></span>
+							<span
+								hidden
+								state-to="table"
+								state.filter-query-key=""
+								state.filter-query-value=""></span>
+							<span
+								hidden
+								state-to="list"
+								state.array="ai-instructions"
+								state.filter-query-key=""
+								state.filter-query-value=""
+								state.src="/apps/ai/instructions/templates/card.html"></span>
 						</button>
 					</div>
 				</div>
-				<div class="col-12 mt-4"><h5 class="card-title mb-0">Developer Settings</h5></div>
+				<div class="col-12 mt-4">
+					<h5 class="card-title mb-0">Developer Settings</h5>
+				</div>
 				<div class="col-md-6">
 					<div class="list-group position-relative">
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/components/list/index.html">
+							state-to="adminView"
+							state.src="/components/list/index.html">
 							<span>
 								<strong>API Keys</strong>
-								<span class="small text-muted d-block">API access keys</span>
+								<span class="small text-muted d-block"
+									>API access keys</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object="68741e1d07a037d0d6d00ee6" state.input.array="keys"></span>
-							<span hidden state-to="table" state.filter-query-key="" state.filter-query-value=""></span>
-							<span hidden state-to="list" state.array="keys" state.filter-query-key="" state.filter-query-value="" state.src="/apps/api-keys/templates/card.html"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object="68741e1d07a037d0d6d00ee6"
+								state.input.array="keys"></span>
+							<span
+								hidden
+								state-to="table"
+								state.filter-query-key=""
+								state.filter-query-value=""></span>
+							<span
+								hidden
+								state-to="list"
+								state.array="keys"
+								state.filter-query-key=""
+								state.filter-query-value=""
+								state.src="/apps/api-keys/templates/card.html"></span>
 						</button>
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/components/list/index.html">
+							state-to="adminView"
+							state.src="/components/list/index.html">
 							<span>
 								<strong>APIs</strong>
-								<span class="small text-muted d-block">API definitions</span>
+								<span class="small text-muted d-block"
+									>API definitions</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object="68741e1d07a037d0d6d00eee" state.input.array="apis"></span>
-							<span hidden state-to="table" state.filter-query-key="" state.filter-query-value=""></span>
-							<span hidden state-to="list" state.array="apis" state.filter-query-key="" state.filter-query-value="" state.src="/apps/apis/templates/card.html"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object="68741e1d07a037d0d6d00eee"
+								state.input.array="apis"></span>
+							<span
+								hidden
+								state-to="table"
+								state.filter-query-key=""
+								state.filter-query-value=""></span>
+							<span
+								hidden
+								state-to="list"
+								state.array="apis"
+								state.filter-query-key=""
+								state.filter-query-value=""
+								state.src="/apps/apis/templates/card.html"></span>
 						</button>
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/components/list/index.html">
+							state-to="adminView"
+							state.src="/components/list/index.html">
 							<span>
 								<strong>Endpoints</strong>
-								<span class="small text-muted d-block">API routes and endpoints</span>
+								<span class="small text-muted d-block"
+									>API routes and endpoints</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object="68741e1d07a037d0d6d00eef" state.input.array="endpoints"></span>
-							<span hidden state-to="table" state.filter-query-key="" state.filter-query-value=""></span>
-							<span hidden state-to="list" state.array="endpoints" state.filter-query-key="" state.filter-query-value="" state.src="/apps/apis/endpoints/templates/card.html"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object="68741e1d07a037d0d6d00eef"
+								state.input.array="endpoints"></span>
+							<span
+								hidden
+								state-to="table"
+								state.filter-query-key=""
+								state.filter-query-value=""></span>
+							<span
+								hidden
+								state-to="list"
+								state.array="endpoints"
+								state.filter-query-key=""
+								state.filter-query-value=""
+								state.src="/apps/apis/endpoints/templates/card.html"></span>
 						</button>
 					</div>
 				</div>
@@ -132,94 +249,128 @@
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/components/list/index.html">
+							state-to="adminView"
+							state.src="/components/list/index.html">
 							<span>
 								<strong>Webhooks</strong>
-								<span class="small text-muted d-block">Webhook configuration</span>
+								<span class="small text-muted d-block"
+									>Webhook configuration</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object="68741e1d07a037d0d6d00ef0" state.input.array="webhooks"></span>
-							<span hidden state-to="table" state.filter-query-key="" state.filter-query-value=""></span>
-							<span hidden state-to="list" state.array="webhooks" state.filter-query-key="" state.filter-query-value="" state.src="/apps/apis/webhooks/templates/card.html"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object="68741e1d07a037d0d6d00ef0"
+								state.input.array="webhooks"></span>
+							<span
+								hidden
+								state-to="table"
+								state.filter-query-key=""
+								state.filter-query-value=""></span>
+							<span
+								hidden
+								state-to="list"
+								state.array="webhooks"
+								state.filter-query-key=""
+								state.filter-query-value=""
+								state.src="/apps/apis/webhooks/templates/card.html"></span>
 						</button>
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/components/list/index.html">
+							state-to="adminView"
+							state.src="/components/list/index.html">
 							<span>
 								<strong>Servers</strong>
-								<span class="small text-muted d-block">Servers and provisioning</span>
+								<span class="small text-muted d-block"
+									>Servers and provisioning</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object="6a96308ff9a6bb732ce54723" state.input.array="servers"></span>
-							<span hidden state-to="table" state.filter-query-key="" state.filter-query-value=""></span>
-							<span hidden state-to="list" state.array="servers" state.filter-query-key="" state.filter-query-value="" state.src="/apps/servers/templates/card.html"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object="6a96308ff9a6bb732ce54723"
+								state.input.array="servers"></span>
+							<span
+								hidden
+								state-to="table"
+								state.filter-query-key=""
+								state.filter-query-value=""></span>
+							<span
+								hidden
+								state-to="list"
+								state.array="servers"
+								state.filter-query-key=""
+								state.filter-query-value=""
+								state.src="/apps/servers/templates/card.html"></span>
 						</button>
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/components/list/index.html">
+							state-to="adminView"
+							state.src="/components/list/index.html">
 							<span>
 								<strong>Server Configs</strong>
-								<span class="small text-muted d-block">Server configuration profiles</span>
+								<span class="small text-muted d-block"
+									>Server configuration profiles</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object="6a96308fbe321a28ad3edec1" state.input.array="servers_config"></span>
-							<span hidden state-to="table" state.filter-query-key="" state.filter-query-value=""></span>
-							<span hidden state-to="list" state.array="servers_config" state.filter-query-key="" state.filter-query-value="" state.src="/apps/servers/configs/templates/card.html"></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object="6a96308fbe321a28ad3edec1"
+								state.input.array="servers_config"></span>
+							<span
+								hidden
+								state-to="table"
+								state.filter-query-key=""
+								state.filter-query-value=""></span>
+							<span
+								hidden
+								state-to="list"
+								state.array="servers_config"
+								state.filter-query-key=""
+								state.filter-query-value=""
+								state.src="/apps/servers/configs/templates/card.html"></span>
 						</button>
 					</div>
 				</div>
-				<div class="col-12 mt-4"><h5 class="card-title mb-0">Resources</h5></div>
+				<div class="col-12 mt-4">
+					<h5 class="card-title mb-0">Resources</h5>
+				</div>
 				<div class="col-md-6">
 					<div class="list-group position-relative">
 						<button
 							type="button"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/admin/components/index.html">
-							<span>
-								<strong>Components</strong>
-								<span class="small text-muted d-block">Pages, UI elements and widgets</span>
-							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object=""></span>
-						</button>
-						<button
-							type="button"
-							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/admin/pages/faqs.html">
+							state-to="adminView"
+							state.src="/admin/pages/faqs.html">
 							<span>
 								<strong>Help & FAQs</strong>
-								<span class="small text-muted d-block">Frequently asked questions</span>
+								<span class="small text-muted d-block"
+									>Frequently asked questions</span
+								>
 							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object=""></span>
-						</button>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="list-group position-relative">
-						<button
-							type="button"
-							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/apps/speech-synthesis/index.html">
-							<span>
-								<strong>Speech Synthesis</strong>
-								<span class="small text-muted d-block">Voice and speech output</span>
-							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object=""></span>
-						</button>
-						<button
-							type="button"
-							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 text-start"
-							state-to="adminView" state.src="/apps/speech-recognition/index.html">
-							<span>
-								<strong>Speech Recognition</strong>
-								<span class="small text-muted d-block">Microphone and speech input</span>
-							</span>
-							<i class="ri-arrow-right-s-line flex-shrink-0" aria-hidden="true"></i>
-							<span hidden state-to="app" state.object=""></span>
+							<i
+								src="/assets/svg/remix/arrow-right-s-line.svg"
+								class="flex-shrink-0"
+								aria-hidden="true"></i>
+							<span
+								hidden
+								state-to="app"
+								state.object=""></span>
 						</button>
 					</div>
 				</div>

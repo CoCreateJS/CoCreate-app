@@ -39,9 +39,9 @@ function loadCandidateListData(e, t) {
 				e[i].candidateName +
 				'</h5></a>                        <p class="text-muted mb-0">' +
 				e[i].designation +
-				'</p>                    </div>                    <div class="d-flex gap-4 mt-0 text-muted mx-auto">                        <div><i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> ' +
+				'</p>                    </div>                    <div class="d-flex gap-4 mt-0 text-muted mx-auto">                        <div><i src="/assets/svg/remix/map-pin-2-line.svg" class="text-primary me-1 align-bottom"></i> ' +
 				e[i].location +
-				'</div>                        <div><i class="ri-time-line text-primary me-1 align-bottom"></i> ' +
+				'</div>                        <div><i src="/assets/svg/remix/time-line.svg" class="text-primary me-1 align-bottom"></i> ' +
 				isStatus(e[i].type) +
 				'</div>                    </div>                    <div class="d-flex flex-wrap gap-2 align-items-center mx-auto my-3 my-lg-0">                        <div class="badge text-bg-success">                            <i class="mdi mdi-star me-1"></i>' +
 				e[i].rating[0] +
@@ -49,7 +49,7 @@ function loadCandidateListData(e, t) {
 				e[i].rating[1] +
 				'</div>                    </div>                    <div>                        <a href="#!" class="btn btn-soft-success">View Details</a>                        <a href="#!" class="btn btn-ghost-danger btn-icon custom-toggle ' +
 				n +
-				'" aria-pressed="false" toggle.class="active" toggle.aria-pressed="true, false">                            <span class="icon-on"><i class="ri-bookmark-line align-bottom"></i></span>                            <span class="icon-off"><i class="ri-bookmark-3-fill align-bottom"></i></span>                        </a>                    </div>                </div>            </div>        </div>    </div>'));
+				'" aria-pressed="false" toggle.class="active" toggle.aria-pressed="true, false">                            <span class="icon-on"><i src="/assets/svg/remix/bookmark-line.svg" class="align-bottom"></i></span>                            <span class="icon-off"><i src="/assets/svg/remix/bookmark-3-fill.svg" class="align-bottom"></i></span>                        </a>                    </div>                </div>            </div>        </div>    </div>'));
 	selectedPage(),
 		1 == currentPage
 			? prevButton.parentNode.classList.add("disabled")

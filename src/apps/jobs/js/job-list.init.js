@@ -90,21 +90,21 @@ function loadJobListData(e, t) {
 					e[i].jobTitle +
 					'</h5></a>                        <p class="company-name text-muted mb-0">' +
 					e[i].companyName +
-					'</p>                    </div>                    <div>                        <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" aria-pressed="false" toggle.class="active" toggle.aria-pressed="true, false">                            <span class="icon-on"><i class="ri-bookmark-line"></i></span>                            <span class="icon-off"><i class="ri-bookmark-fill"></i></span>                        </button>                    </div>                </div>                <p class="text-muted job-description">' +
+					'</p>                    </div>                    <div>                        <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" aria-pressed="false" toggle.class="active" toggle.aria-pressed="true, false">                            <span class="icon-on"><i src="/assets/svg/remix/bookmark-line.svg"></i></span>                            <span class="icon-off"><i src="/assets/svg/remix/bookmark-fill.svg"></i></span>                        </button>                    </div>                </div>                <p class="text-muted job-description">' +
 					e[i].description +
 					"</p>                <div>" +
 					a +
-					'</div>            </div>            <div class="card-footer border-top-dashed">                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">                    <div><i class="ri-briefcase-2-line align-bottom me-1"></i> <span class="job-type">' +
+					'</div>            </div>            <div class="card-footer border-top-dashed">                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">                    <div><i src="/assets/svg/remix/briefcase-2-line.svg" class="align-bottom me-1"></i> <span class="job-type">' +
 					e[i].type +
 					'</span></div>                    <div class="d-none"><span class="job-experience">' +
 					e[i].experience +
-					'</span></div>                    <div><i class="ri-map-pin-2-line align-bottom me-1"></i>  <span class="job-location">' +
+					'</span></div>                    <div><i src="/assets/svg/remix/map-pin-2-line.svg" class="align-bottom me-1"></i>  <span class="job-location">' +
 					e[i].location +
-					'</span></div>                    <div><i class="ri-user-3-line align-bottom me-1"></i> ' +
+					'</span></div>                    <div><i src="/assets/svg/remix/user-3-line.svg" class="align-bottom me-1"></i> ' +
 					e[i].applied +
-					'</div>                    <div><i class="ri-time-line align-bottom me-1"></i> <span class="job-postdate">' +
+					'</div>                    <div><i src="/assets/svg/remix/time-line.svg" class="align-bottom me-1"></i> <span class="job-postdate">' +
 					e[i].postDate +
-					'</span></div>                    <div><a href="#!" class="btn btn-primary viewjob-list">View More <i class="ri-arrow-right-line align-bottom ms-1"></i></a></div>                </div>            </div>        </div>');
+					'</span></div>                    <div><a href="#!" class="btn btn-primary viewjob-list">View More <i src="/assets/svg/remix/arrow-right-line.svg" class="align-bottom ms-1"></i></a></div>                </div>            </div>        </div>');
 	(document.getElementById("total-result").innerHTML = e.length),
 		selectedPage(),
 		1 == currentPage
