@@ -439,7 +439,8 @@
                 input.value = value;
                 input.dataset.storageProvider = storage.provider;
                 const icon = document.createElement("i");
-                icon.className = "ri-database-2-line fs-24 text-primary";
+                icon.setAttribute("src", "/assets/svg/remix/database-2-line.svg");
+                icon.className = "fs-24 text-primary";
                 const text = document.createElement("span");
                 text.className = "flex-grow-1";
                 const name = document.createElement("strong");
@@ -686,7 +687,7 @@
                     link.rel = "noopener noreferrer";
                     link.append(`Get ${providerLabels[provider] || formatCredentialLabel(provider)} credentials`);
                     const icon = document.createElement("i");
-                    icon.className = "ri-external-link-line";
+                    icon.setAttribute("src", "/assets/svg/remix/external-link-line.svg");
                     link.append(icon);
                     container.append(link);
                 }

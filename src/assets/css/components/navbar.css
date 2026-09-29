@@ -108,9 +108,11 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-.app-search span.search-widget-icon {
+.app-search .search-widget-icon {
 	position: absolute;
 	z-index: 10;
+	width: 18px;
+	height: 38px;
 	font-size: 18px;
 	line-height: 38px;
 	left: 13px;
@@ -242,6 +244,7 @@
 	}
 	.navbar-header .dropdown .dropdown-menu {
 		width: 100%;
+        min-width: 100%;
 	}
 }
 @media (max-width: 767.98px) {

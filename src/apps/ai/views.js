@@ -136,14 +136,14 @@ export function createCodeareaTools(options = {}) {
             edit.type = "button";
             const setEditAction = (action) => {
                 const states = {
-                    edit: ["ri-pencil-line", "Edit"],
-                    save: ["ri-save-line", "Save"],
-                    saving: ["ri-loader-4-line", "Saving"],
-                    retry: ["ri-refresh-line", "Retry save"]
+                    edit: ["/assets/svg/remix/pencil-line.svg", "Edit"],
+                    save: ["/assets/svg/remix/save-line.svg", "Save"],
+                    saving: ["/assets/svg/remix/loader-4-line.svg", "Saving"],
+                    retry: ["/assets/svg/remix/refresh-line.svg", "Retry save"]
                 };
                 const [icon, label] = states[action];
                 edit.dataset.action = action;
-                edit.innerHTML = `<i class="${icon}" aria-hidden="true"></i><span>${label}</span>`;
+                edit.innerHTML = `<i src="${icon}" aria-hidden="true"></i><span>${label}</span>`;
                 edit.setAttribute("aria-label", label);
                 edit.title = label;
             };

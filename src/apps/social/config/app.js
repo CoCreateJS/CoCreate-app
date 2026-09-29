@@ -13,7 +13,7 @@ export default {
             "list": "templates/list.html"
         },
         "array": "posts",
-        "icon": "ri-share-line",
+        "icon": "/assets/svg/remix/share-line.svg",
         "description": "App to manage and track Social.",
         "status": "active",
         "category": "Marketing",

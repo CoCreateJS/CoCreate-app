@@ -203,9 +203,9 @@
                         ...object,
                         $searchLabel: getResultLabel(object),
                         $searchMeta: getResultMeta(object),
-                        $appIcon:
-                            appsByArray.get(getResultArray(object))?.icon ||
-                            "ri-search-line"
+						$appIcon:
+							appsByArray.get(getResultArray(object))?.icon ||
+							"/assets/svg/remix/search-line.svg"
                     }))
                 };
                 await renderer.render({ source: element, data });

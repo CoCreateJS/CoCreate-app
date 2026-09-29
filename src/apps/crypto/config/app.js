@@ -319,7 +319,7 @@ export default {
                 ]
             }
         ],
-        "icon": "ri-money-dollar-circle-line",
+        "icon": "/assets/svg/remix/money-dollar-circle-line.svg",
         "description": "App to manage and track Crypto.",
         "status": "active"
     },

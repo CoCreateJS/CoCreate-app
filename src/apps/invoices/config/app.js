@@ -17,7 +17,7 @@ export default {
             "type": "invoice"
         },
         "category": "Sales & Billing",
-        "icon": "ri-file-list-3-line",
+        "icon": "/assets/svg/remix/file-list-3-line.svg",
         "description": "App to manage and track Invoices.",
         "status": "active",
         "mainViews": [

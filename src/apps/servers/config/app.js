@@ -41,7 +41,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-server-line",
+        "icon": "/assets/svg/remix/server-line.svg",
         "description": "Monitor server topology and manage worker control state.",
         "status": "active",
         "fields": [

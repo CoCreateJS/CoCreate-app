@@ -40,7 +40,7 @@ export default {
         "secondaryViews": [
             "form"
         ],
-        "icon": "ri-bubble-chart-line",
+        "icon": "/assets/svg/remix/bubble-chart-line.svg",
         "description": "Manage inbound provider routes, signature verification, event processing, and response AST pipelines.",
         "status": "active",
         "fields": [

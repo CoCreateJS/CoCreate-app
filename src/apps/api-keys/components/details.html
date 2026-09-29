@@ -27,10 +27,12 @@
 						const input = this.previousElementSibling;
 						input.type =
 							input.type === 'password' ? 'text' : 'password';
-						this.querySelector('i').className =
+						this.querySelector('i').setAttribute(
+							'src',
 							input.type === 'password'
-								? 'ri-eye-line'
-								: 'ri-eye-off-line';
+								? '/assets/svg/remix/eye-line.svg'
+								: '/assets/svg/remix/eye-off-line.svg'
+						);
 					"
 					aria-label="Toggle API key visibility">
 					<i src="/assets/svg/remix/eye-line.svg" aria-hidden="true"></i>

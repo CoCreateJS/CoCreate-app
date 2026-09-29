@@ -14,7 +14,7 @@ export default {
         },
         "array": "companies",
         "category": "CRM",
-        "icon": "ri-building-line",
+        "icon": "/assets/svg/remix/building-line.svg",
         "description": "App to manage and track Companies.",
         "status": "active",
         "field": {

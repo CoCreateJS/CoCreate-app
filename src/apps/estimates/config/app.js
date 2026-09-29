@@ -1045,7 +1045,7 @@ export default {
                 "options": []
             }
         ],
-        "icon": "ri-file-text-line",
+        "icon": "/assets/svg/remix/file-text-line.svg",
         "description": "App to manage and track Estimates.",
         "status": "active"
     },

@@ -23,7 +23,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-briefcase-line",
+        "icon": "/assets/svg/remix/briefcase-line.svg",
         "description": "App to manage and track Projects.",
         "status": "active",
         "fields": [

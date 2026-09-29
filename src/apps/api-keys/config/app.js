@@ -22,7 +22,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-key-line",
+        "icon": "/assets/svg/remix/key-line.svg",
         "description": "App to manage and track API Keys.",
         "status": "active",
         "fields": [

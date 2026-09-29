@@ -65,12 +65,12 @@
 	pointer-events: auto;
 }
 
-.component-codearea-copy .ri-check-line,
-.component-codearea-copy.is-copied .ri-file-copy-line {
+.component-codearea-copy i[src$="/check-line.svg"],
+.component-codearea-copy.is-copied i[src$="/file-copy-line.svg"] {
 	display: none;
 }
 
-.component-codearea-copy.is-copied .ri-check-line {
+.component-codearea-copy.is-copied i[src$="/check-line.svg"] {
 	display: inline-block;
 	color: var(--coc-success);
 	animation: codearea-copy-check 1.2s ease;
@@ -83,7 +83,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.component-codearea-copy.is-copied .ri-check-line {
+	.component-codearea-copy.is-copied i[src$="/check-line.svg"] {
 		animation: none;
 	}
 }

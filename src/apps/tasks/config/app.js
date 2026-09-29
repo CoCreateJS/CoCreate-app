@@ -14,7 +14,7 @@ export default {
         },
         "array": "tasks",
         "category": "workspace",
-        "icon": "ri-task-line",
+        "icon": "/assets/svg/remix/task-line.svg",
         "description": "App to manage and track Tasks.",
         "status": "active",
         "fields": [

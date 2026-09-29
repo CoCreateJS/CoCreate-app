@@ -20,7 +20,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-apps-2-line",
+        "icon": "/assets/svg/remix/apps-2-line.svg",
         "description": "App to manage and track NFTs.",
         "status": "active",
         "fields": [

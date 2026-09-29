@@ -18,7 +18,7 @@ export default {
         "secondaryViews": [
             "form"
         ],
-        "icon": "ri-settings-line",
+        "icon": "/assets/svg/remix/settings-line.svg",
         "description": "App to manage and track settings.",
         "status": "active",
         "fields": [

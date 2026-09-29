@@ -28,9 +28,10 @@ export default {
             "provider": "cloudflare",
             "type": "routing",
             "url": "https://api.cloudflare.com/client/v4",
+            "apiToken": "",
             "headers": {
                 "Authorization": {
-                    "$concat": ["Bearer ", "$key"]
+                    "$concat": ["Bearer ", "$config.apiToken"]
                 },
                 "Content-Type": "application/json"
             },
@@ -42,6 +43,8 @@ export default {
             "name": "DNSimple",
             "provider": "dnsimple",
             "type": "routing",
+            "accountId": "",
+            "token": "",
             "description": "DNSimple DNS and domain management connection.",
             "enabled": false
         },
@@ -50,6 +53,7 @@ export default {
             "name": "bunny.net",
             "provider": "bunny",
             "type": "routing",
+            "apiKey": "",
             "description": "bunny.net DNS and traffic routing connection.",
             "enabled": false
         },
@@ -58,6 +62,8 @@ export default {
             "name": "DNS Made Easy",
             "provider": "dnsmadeeasy",
             "type": "routing",
+            "apiKey": "",
+            "secretKey": "",
             "description": "DNS Made Easy managed DNS connection.",
             "enabled": false
         },
@@ -66,6 +72,8 @@ export default {
             "name": "easyDNS",
             "provider": "easydns",
             "type": "routing",
+            "userToken": "",
+            "apiKey": "",
             "description": "easyDNS managed DNS connection.",
             "enabled": false
         },
@@ -74,6 +82,8 @@ export default {
             "name": "ClouDNS",
             "provider": "cloudns",
             "type": "routing",
+            "authId": "",
+            "authPassword": "",
             "description": "ClouDNS managed DNS connection.",
             "enabled": false
         }

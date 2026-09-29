@@ -15,7 +15,7 @@ export default {
         },
         "array": "support_tickets",
         "category": "CRM",
-        "icon": "ri-ticket-line",
+        "icon": "/assets/svg/remix/ticket-line.svg",
         "description": "App to manage and track Support Tickets.",
         "status": "active",
         "fields": [

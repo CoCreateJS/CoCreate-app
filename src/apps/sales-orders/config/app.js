@@ -13,7 +13,7 @@ export default {
             "list": "templates/list.html"
         },
         "array": "sales_orders",
-        "icon": "ri-shopping-cart-line",
+        "icon": "/assets/svg/remix/shopping-cart-line.svg",
         "description": "App to manage and track Orders.",
         "status": "active",
         "category": "Sales & Billing",

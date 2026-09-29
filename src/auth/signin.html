@@ -11,9 +11,16 @@
 			autocomplete="on"
 			role="form"
 			aria-label="Sign in form"
-			onkeydown="if (event.key === 'Enter') document.getElementById('signin-btn').click()">
+			onkeydown="
+				if (event.key === 'Enter')
+					document.getElementById('signin-btn').click();
+			">
 			<div class="mb-3">
-				<label for="email" class="form-label">Email</label>
+				<label
+					for="email"
+					class="form-label"
+					>Email</label
+				>
 				<input
 					type="email"
 					class="form-control"
@@ -36,7 +43,9 @@
 						>Forgot password?</a
 					>
 				</div>
-				<label class="form-label" for="password-input"
+				<label
+					class="form-label"
+					for="password-input"
 					>Password</label
 				>
 				<div class="position-relative auth-pass-inputgroup mb-3">
@@ -58,12 +67,12 @@
 						click-query="$previous"
 						click.type="text, password"
 						aria-label="Toggle password visibility">
-						<i src="/assets/svg/remix/eye-fill.svg" click.src="/assets/svg/remix/eye-off-fill.svg, /assets/svg/remix/eye-fill.svg"
+						<i
+							src="/assets/svg/remix/eye-fill.svg"
+							click.src="/assets/svg/remix/eye-off-fill.svg, /assets/svg/remix/eye-fill.svg"
 							class="align-middle"></i>
 					</button>
-					<div class="invalid-feedback">
-						Please enter password
-					</div>
+					<div class="invalid-feedback">Please enter password</div>
 				</div>
 			</div>
 
@@ -73,7 +82,9 @@
 					type="checkbox"
 					value=""
 					id="auth-remember-check" />
-				<label class="form-check-label" for="auth-remember-check"
+				<label
+					class="form-check-label"
+					for="auth-remember-check"
 					>Remember me</label
 				>
 			</div>
@@ -110,7 +121,6 @@
 						Signup
 					</a>
 				</p>
-
 			</div>
 		</form>
 	</div>
@@ -122,22 +132,30 @@
 			<button
 				type="button"
 				class="btn btn-primary btn-icon waves-effect waves-light">
-				<i src="/assets/svg/remix/facebook-fill.svg" class="fs-16"></i>
+				<i
+					src="/assets/svg/remix/facebook-fill.svg"
+					class="fs-16"></i>
 			</button>
 			<button
 				type="button"
 				class="btn btn-danger btn-icon waves-effect waves-light">
-				<i src="/assets/svg/remix/google-fill.svg" class="fs-16"></i>
+				<i
+					src="/assets/svg/remix/google-fill.svg"
+					class="fs-16"></i>
 			</button>
 			<button
 				type="button"
 				class="btn btn-dark btn-icon waves-effect waves-light">
-				<i src="/assets/svg/remix/github-fill.svg" class="fs-16"></i>
+				<i
+					src="/assets/svg/remix/github-fill.svg"
+					class="fs-16"></i>
 			</button>
 			<button
 				type="button"
 				class="btn btn-info btn-icon waves-effect waves-light">
-				<i src="/assets/svg/remix/twitter-fill.svg" class="fs-16"></i>
+				<i
+					src="/assets/svg/remix/twitter-fill.svg"
+					class="fs-16"></i>
 			</button>
 		</div>
 	</div>

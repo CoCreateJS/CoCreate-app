@@ -40,7 +40,7 @@ export default {
         "secondaryViews": [
             "form"
         ],
-        "icon": "ri-settings-3-line",
+        "icon": "/assets/svg/remix/settings-3-line.svg",
         "description": "Manage scoped runtime configuration for servers, workers, storage drivers, telemetry, autoscaling, and AI.",
         "status": "active",
         "fields": [

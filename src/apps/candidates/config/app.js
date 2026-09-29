@@ -18,7 +18,7 @@ export default {
             "type": "candidate"
         },
         "category": "Human Resources",
-        "icon": "ri-user-search-line",
+        "icon": "/assets/svg/remix/user-search-line.svg",
         "description": "App to manage and track Candidates.",
         "status": "active",
         "fields": [

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/components/offcanvas-app/header.css" />
 <ul
 	class="list-inline hstack justify-content-between align-items-center gap-2 mb-0"
 	style="min-height: unset"
@@ -141,13 +142,25 @@
 				id="dock-lead-side-view"
 				title="Dock Right"
 				aria-label="Dock Right"
-				toggle.docked="true, false"
-				toggle-query="$document #offcanvas-app"
-				class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
+				state-to="offcanvas-app-dock"
+				state.docked="true"
+				class="offcanvas-app-dock btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
+				<i
+					src="/assets/svg/remix/layout-right-2-line.svg"
+					class="align-middle fs-22"
+					aria-hidden="true"></i>
+			</a>
+			<a
+				role="button"
+				title="Undock"
+				aria-label="Undock"
+				state-to="offcanvas-app-dock"
+				state.docked="false"
+				class="offcanvas-app-undock btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted">
 				<i
 					src="/assets/svg/remix/layout-right-line.svg"
-					toggle.src="/assets/svg/remix/layout-right-2-line.svg, /assets/svg/remix/layout-right-line.svg"
-					class="align-middle fs-22"></i>
+					class="align-middle fs-22"
+					aria-hidden="true"></i>
 			</a>
 		</li>
 		<li class="d-none">

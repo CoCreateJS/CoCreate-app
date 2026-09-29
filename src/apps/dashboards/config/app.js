@@ -13,7 +13,7 @@ export default {
         "array": "dashboards",
         "category": "Workspace",
         "status": "active",
-        "icon": "ri-dashboard-line",
+        "icon": "/assets/svg/remix/dashboard-line.svg",
         "description": "App to manage and track Dashboards.",
         "fields": [
             {
@@ -72,7 +72,7 @@ export default {
                         "value": "text"
                     }
                 ],
-                "tableTemplate": "<i class=\"{{object.icon}}\"></i>"
+                "tableTemplate": "<i src=\"{{object.icon}}\"></i>"
             },
             {
                 "label": "Status",

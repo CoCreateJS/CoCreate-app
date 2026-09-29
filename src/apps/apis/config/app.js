@@ -41,7 +41,7 @@ export default {
         "secondaryViews": [
             "form"
         ],
-        "icon": "ri-key-2-line",
+        "icon": "/assets/svg/remix/key-2-line.svg",
         "description": "App to manage and configure third-party API integration keys, base URLs, and connection protocols.",
         "status": "active",
         "fields": [

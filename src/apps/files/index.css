@@ -78,6 +78,8 @@
 	padding: 8px 0;
 }
 .file-manager-menu li a {
+	display: flex;
+	align-items: center;
 	color: var(--coc-body-color);
 	font-size: var(--coc-font-14);
 	font-weight: var(--coc-font-weight-medium);
@@ -244,7 +246,12 @@
     display: inline-block;
 }
 
-.files-render-sections { padding: var(--admin-gutter); }
+.files-render-sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-gutter);
+    padding: var(--admin-gutter);
+}
 .files-render-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 190px), 1fr)); align-content: start; }
 .files-render-grid > .card { width: 100%; min-width: 0 !important; max-width: none !important; }
 .files-render-grid[hidden] { display: none !important; }

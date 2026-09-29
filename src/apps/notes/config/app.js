@@ -11,7 +11,7 @@ export default {
             "list": "templates/list.html"
         },
         "array": "notes",
-        "icon": "ri-mail-line",
+        "icon": "/assets/svg/remix/mail-line.svg",
         "description": "App to manage and track Notes.",
         "status": "active",
         "fields": [

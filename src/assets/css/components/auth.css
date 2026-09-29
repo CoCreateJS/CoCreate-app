@@ -51,9 +51,6 @@
 	height: auto;
 	fill: var(--coc-body-bg);
 }
-.auth-pass-inputgroup input[type="text"] + .btn .ri-eye-fill:before {
-	content: "\ecb6";
-}
 .particles-js-canvas-el {
 	position: relative;
 }

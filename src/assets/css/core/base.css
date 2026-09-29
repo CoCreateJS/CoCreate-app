@@ -1,4 +1,16 @@
 /* Shared base element styles extracted from the legacy bundle. */
+:where(i[src]) {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	line-height: 1;
+}
+
+:where(i[src]) > svg {
+	display: block;
+}
+
 html {
 	position: relative;
 	min-height: 100%;

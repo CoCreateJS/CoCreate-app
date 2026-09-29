@@ -23,7 +23,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-money-dollar-circle-line",
+        "icon": "/assets/svg/remix/money-dollar-circle-line.svg",
         "description": "App to manage and track Expenses.",
         "status": "active",
         "fields": [

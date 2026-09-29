@@ -20,7 +20,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-file-2-line",
+        "icon": "/assets/svg/remix/file-2-line.svg",
         "description": "App to manage and track Files.",
         "status": "active",
         "fields": [
@@ -28,7 +28,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"file-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search file names\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "<span class=\"files-record-name\" data-file-kind=\"{{object.content-type}}\"><a class=\"files-folder-link text-reset text-decoration-none\" role=\"button\" tabindex=\"0\" state=\"{&quot;files-folders&quot;:{&quot;hidden&quot;:false,&quot;read&quot;:&quot;true&quot;},&quot;list&quot;:{&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;{{object.pathname}}&quot;}}\"><i class=\"ri-folder-2-fill me-2\" aria-hidden=\"true\"></i>{{object.name}}</a><a class=\"files-file-link text-reset text-decoration-none\" role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/files/aside.html\" aria-controls=\"offcanvas-app\" aria-open data-card-open><span hidden state-to=\"offcanvas-app-form\" state.array=\"files\" state.object=\"{{object._id}}\"></span><i class=\"ri-file-line me-2\" aria-hidden=\"true\"></i>{{object.name}}</a></span>",
+                "tableTemplate": "<span class=\"files-record-name\" data-file-kind=\"{{object.content-type}}\"><a class=\"files-folder-link text-reset text-decoration-none\" role=\"button\" tabindex=\"0\" state=\"{&quot;files-folders&quot;:{&quot;hidden&quot;:false,&quot;read&quot;:&quot;true&quot;},&quot;list&quot;:{&quot;filter-query-value&quot;:&quot;text/directory&quot;,&quot;filter-sort-key&quot;:&quot;name&quot;,&quot;filter-sort-direction&quot;:&quot;asc&quot;},&quot;files-path&quot;:{&quot;value&quot;:&quot;{{object.pathname}}&quot;}}\"><i src=\"/assets/svg/remix/folder-2-fill.svg\" class=\"me-2\" aria-hidden=\"true\"></i>{{object.name}}</a><a class=\"files-file-link text-reset text-decoration-none\" role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/files/aside.html\" aria-controls=\"offcanvas-app\" aria-open data-card-open><span hidden state-to=\"offcanvas-app-form\" state.array=\"files\" state.object=\"{{object._id}}\"></span><i src=\"/assets/svg/remix/file-line.svg\" class=\"me-2\" aria-hidden=\"true\"></i>{{object.name}}</a></span>",
                 "attributes": [
                     {
                         "name": "class",

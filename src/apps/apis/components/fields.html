@@ -26,7 +26,7 @@
 		render="object"
 		template="api-custom-field"
 		render-as="field"
-		render-exclude="_id,avatar,name,icon,provider,type,headers,description,enabled,created,modified,updated,deleted,permissions,$storage,$array,$database,organization_id">
+		render-exclude="_id,avatar,name,icon,provider,type,headers,description,enabled,created,modified,updated,deleted,permissions,$storage,$array,$database,organization_id,pricing,url">
 		<label
 			class="text-muted d-block mb-1"
 			for="api-custom-{{field.key}}"
@@ -56,8 +56,10 @@
 				click.get-value-decode=",atob"
 				aria-label="Toggle {{field.key}} visibility"
 				aria-controls="api-custom-{{field.key}}">
-				<i src="/assets/svg/remix/eye-line.svg" aria-hidden="true"></i>
-				<i src="/assets/svg/remix/eye-off-line.svg" aria-hidden="true"></i>
+				<i
+					src="/assets/svg/remix/eye-line.svg"
+					click.src="/assets/svg/remix/eye-off-line.svg, /assets/svg/remix/eye-line.svg"
+					aria-hidden="true"></i>
 			</button>
 			<button
 				type="button"
@@ -65,14 +67,15 @@
 				actions="clipboard, copied, timeout(1200), copyreset"
 				clipboard-query="$parent textarea"
 				event-name="copied, copyreset"
-				copied.class="is-copied"
-				copied.aria-label="{{field.key}} copied"
-				copyreset.class="is-copied, "
-				copyreset.aria-label="Copy {{field.key}}"
+				copied-query="i"
+				copied.src="/assets/svg/remix/check-line.svg"
+				copyreset-query="i"
+				copyreset.src="/assets/svg/remix/file-copy-line.svg"
 				aria-label="Copy {{field.key}}"
 				title="Copy {{field.key}}">
-				<i src="/assets/svg/remix/file-copy-line.svg" aria-hidden="true"></i>
-				<i src="/assets/svg/remix/check-line.svg" aria-hidden="true"></i>
+				<i
+					src="/assets/svg/remix/file-copy-line.svg"
+					aria-hidden="true"></i>
 			</button>
 		</div>
 	</div>

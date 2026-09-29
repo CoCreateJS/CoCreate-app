@@ -23,7 +23,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-briefcase-2-line",
+        "icon": "/assets/svg/remix/briefcase-2-line.svg",
         "description": "App to manage and track Jobs.",
         "status": "active",
         "fields": [

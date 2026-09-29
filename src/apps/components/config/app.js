@@ -12,7 +12,7 @@ export default {
         },
         "array": "components",
         "status": "active",
-        "icon": "ri-tools-line",
+        "icon": "/assets/svg/remix/tools-line.svg",
         "description": "App to manage and track Components.",
         "fields": [
             {

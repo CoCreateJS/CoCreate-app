@@ -24,7 +24,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-contacts-line",
+        "icon": "/assets/svg/remix/contacts-line.svg",
         "description": "App to manage and track Contacts.",
         "status": "active",
         "fields": [

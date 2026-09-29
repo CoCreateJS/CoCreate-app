@@ -23,7 +23,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-rss-line",
+        "icon": "/assets/svg/remix/rss-line.svg",
         "description": "App to manage and track Blog.",
         "status": "active",
         "fields": [

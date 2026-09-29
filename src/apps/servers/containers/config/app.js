@@ -39,7 +39,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-bubble-chart-line",
+        "icon": "/assets/svg/remix/bubble-chart-line.svg",
         "description": "Configure inbound webhooks, paths, dynamic signatures, and sequential event handlers natively using JSON AST.",
         "status": "active",
         "fields": [

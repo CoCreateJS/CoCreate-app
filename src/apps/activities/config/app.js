@@ -12,7 +12,7 @@ export default {
         },
         "array": "activities",
         "status": "active",
-        "icon": "ri-calendar-line",
+        "icon": "/assets/svg/remix/calendar-line.svg",
         "description": "App to manage and track Activities.",
         "fields": [
             {

@@ -9,6 +9,46 @@ export default {
             "account-shell": "wss://dev.cocreatejs.com"
         }
     },
+    directories: [
+        {
+            entry: "./src",
+            array: "files",
+            languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
+            exclude: ["/admin/", "/apps/", "/config/"],
+            object: {
+                name: "{{name}}",
+                src: "{{source}}",
+                host: ["*"],
+                directory: "/",
+                path: "{{path}}",
+                pathname: "{{pathname}}",
+                "content-type": "{{content-type}}",
+                headers: { "cache-control": "public, max-age=31536000" }
+            }
+        },
+        {
+            entry: "./src",
+            array: "files",
+            languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
+            include: ["/admin/", "/apps/"],
+            object: {
+                name: "{{name}}",
+                src: "{{source}}",
+                host: ["*"],
+                directory: "/",
+                path: "{{path}}",
+                pathname: "{{pathname}}",
+                "content-type": "{{content-type}}",
+                headers: { "cache-control": "private, max-age=31536000" }
+            }
+        },
+        {
+            entry: "./src",
+            include: ["/config/"],
+            $data: ""
+        }
+    ],
+
     template: [
         {
             entry: "./",
@@ -18,9 +58,6 @@ export default {
                 "./.github/",
                 "./.vscode/",
                 "./node_modules/",
-                "./scripts/",
-                "./test/",
-                "./archive/",
                 "./CHANGELOG.md",
                 "./CONTRIBUTING.md",
                 "./CoCreate.index.js",
@@ -30,11 +67,7 @@ export default {
                 "./release.config.js",
                 "./webpack.config.js",
                 "./src/admin/",
-                "./src/apps/",
-                "./src/config/",
-                "./src/assets/scss/",
-                "./src/renedered.html",
-                "./src/test.html"
+                "./src/apps/"
             ]
         },
         {
@@ -48,7 +81,6 @@ export default {
             ]
         }
     ],
-
     /**
      * @property {string} moduleOutputPath
      * @description Defines the destination file path where the build system (e.g., ModuleGenerator Webpack plugin) 
@@ -324,12 +356,6 @@ export default {
             path: "../CoCreate-modules/CoCreate-codearea",
             repo: "github.com/CoCreate-app/CoCreate-codearea.git"
         },
-        floatingLabel: {
-            import: "@cocreate/floating-label",
-            selector: "floating-label, .floating-label",
-            path: "../CoCreate-modules/CoCreate-floating-label",
-            repo: "github.com/CoCreate-app/CoCreate-floating-label.git"
-        },
         clipboard: {
             import: "@cocreate/clipboard",
             selector: "[actions*='clipboard'], [clipboard-query]",
@@ -359,18 +385,6 @@ export default {
             selector: "[speech-recognition]",
             path: "../CoCreate-modules/CoCreate-speech-recognition",
             repo: "github.com/CoCreate-app/CoCreate-speech-recognition.git"
-        },
-        modal: {
-            import: "@cocreate/modal",
-            selector: "[actions*='Modal']",
-            path: "../CoCreate-modules/CoCreate-modal",
-            repo: "github.com/CoCreate-app/CoCreate-modal.git"
-        },
-        parallax: {
-            import: "@cocreate/parallax",
-            selector: "[parallax-src]",
-            path: "../CoCreate-modules/CoCreate-parallax",
-            repo: "github.com/CoCreate-app/CoCreate-parallax.git"
         },
         progress: {
             import: "@cocreate/progress",

@@ -12,7 +12,7 @@ export default {
         },
         "array": "posts",
         "category": "Marketing",
-        "icon": "ri-rss-line",
+        "icon": "/assets/svg/remix/rss-line.svg",
         "description": "App to manage and track Posts.",
         "status": "active",
         "fields": [

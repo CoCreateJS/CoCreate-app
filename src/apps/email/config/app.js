@@ -12,7 +12,7 @@ export default {
         },
         "array": "email",
         "category": "workspace",
-        "icon": "ri-mail-line",
+        "icon": "/assets/svg/remix/mail-line.svg",
         "description": "App to manage and track Email.",
         "status": "active",
         "fields": [

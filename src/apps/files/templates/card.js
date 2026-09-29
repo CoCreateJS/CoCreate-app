@@ -13,9 +13,18 @@
         const kind = type === 'text/directory' ? 'Folder' : type.startsWith('image/') ? 'Image' :
             type.startsWith('video/') ? 'Video' : type.startsWith('audio/') ? 'Audio' :
             type === 'application/pdf' ? 'PDF' : /^(application|text)\//.test(type) ? 'Document' : 'File';
-        const icons = { Folder: 'folder-2', Image: 'image', Video: 'video', Audio: 'music-2', PDF: 'file-pdf', Document: 'file-text', File: 'file' };
-        card.querySelector('.files-media-placeholder i').className = `ri-${icons[kind]}-fill`;
-        card.querySelector('.files-media-kind-icon').className = `ri-${icons[kind]}-fill files-media-kind-icon`;
+        const icons = {
+            Folder: 'folder-2-line.svg',
+            Image: 'image-fill.svg',
+            Video: 'video-line.svg',
+            Audio: 'music-line.svg',
+            PDF: 'file-pdf-fill.svg',
+            Document: 'file-text-line.svg',
+            File: 'file-line.svg'
+        };
+        const icon = `/assets/svg/remix/${icons[kind]}`;
+        card.querySelector('.files-media-placeholder i').setAttribute('src', icon);
+        card.querySelector('.files-media-file-icon').setAttribute('src', icon);
         card.querySelectorAll('[data-media-label]').forEach(label => label.textContent = kind);
         card.querySelector('.files-media-preview > img')?.remove();
         if (kind === 'Image' && path.startsWith('/') && !path.startsWith('//') && !path.includes('\\')) {
@@ -36,7 +45,12 @@
         const active = Array.isArray(values) && values.includes(id);
         const button = card.querySelector('.files-media-favorite');
         button.setAttribute('aria-pressed', String(active));
-        button.querySelector('i').className = active ? 'ri-star-fill me-2' : 'ri-star-line me-2';
+        button.querySelector('i').setAttribute(
+            'src',
+            active
+                ? '/assets/svg/remix/star-fill.svg'
+                : '/assets/svg/remix/star-line.svg'
+        );
         button.querySelector('[data-media-favorite-label]').textContent = active ? 'Remove from favorites' : 'Add to favorites';
         return { values: Array.isArray(values) ? values : [], id, active };
     }

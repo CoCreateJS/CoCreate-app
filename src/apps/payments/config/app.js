@@ -24,7 +24,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-wallet-line",
+        "icon": "/assets/svg/remix/wallet-line.svg",
         "description": "App to manage and track Payments.",
         "status": "active",
         "fields": [

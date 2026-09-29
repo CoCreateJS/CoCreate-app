@@ -21,7 +21,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-calendar-line",
+        "icon": "/assets/svg/remix/calendar-line.svg",
         "description": "App to manage and track Calendar.",
         "status": "active",
         "fields": [

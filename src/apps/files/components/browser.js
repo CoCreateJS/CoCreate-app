@@ -50,7 +50,17 @@
             button.title = file.pathname;
             const image = document.createElement(isImage(file) ? "img" : "i");
             if (isImage(file)) { image.src = src; image.alt = ""; image.loading = "lazy"; }
-            else { image.className = file["content-type"]?.startsWith("video/") ? "ri-video-line" : file["content-type"]?.startsWith("audio/") ? "ri-music-line" : "ri-file-line"; image.setAttribute("aria-hidden", "true"); }
+            else {
+                image.setAttribute(
+                    "src",
+                    file["content-type"]?.startsWith("video/")
+                        ? "/assets/svg/remix/video-line.svg"
+                        : file["content-type"]?.startsWith("audio/")
+                          ? "/assets/svg/remix/music-line.svg"
+                          : "/assets/svg/remix/file-line.svg"
+                );
+                image.setAttribute("aria-hidden", "true");
+            }
             const label = document.createElement("span");
             label.textContent = file.name || file.pathname;
             button.append(image, label);

@@ -20,7 +20,7 @@ export default {
             }
         },
         "category": "CRM",
-        "icon": "ri-user-add-line",
+        "icon": "/assets/svg/remix/user-add-line.svg",
         "description": "App to manage and track Leads.",
         "status": "active",
         "mainViews": [

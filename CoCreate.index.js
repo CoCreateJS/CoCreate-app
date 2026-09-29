@@ -482,14 +482,11 @@ lazyLoad('cursors', '[array][object][key][crdt="true"]', () => import(/*webpackC
 lazyLoad('text', 'input, textarea, [contenteditable]', () => import(/*webpackChunkName: "text"*/ '@cocreate/text'));
 lazyLoad('rich-text', '[actions*="nodeName"], [actions*="cloneElement"], [actions*="deleteElement"], [node-name]', () => import(/*webpackChunkName: "rich-text"*/ '@cocreate/rich-text'));
 lazyLoad('codearea', '[type="code"]', () => import(/*webpackChunkName: "codearea"*/ '@cocreate/codearea'));
-lazyLoad('floatingLabel', 'floating-label, .floating-label', () => import(/*webpackChunkName: "floatingLabel"*/ '@cocreate/floating-label'));
 lazyLoad('clipboard', '[actions*="clipboard"], [clipboard-query]', () => import(/*webpackChunkName: "clipboard"*/ '@cocreate/clipboard'));
 lazyLoad('print', '[actions*="print"], [print-query]', () => import(/*webpackChunkName: "print"*/ '@cocreate/print'));
 lazyLoad('fullscreen', '[fullscreen]', () => import(/*webpackChunkName: "fullscreen"*/ '@cocreate/fullscreen'));
 lazyLoad('speechSynthesis', '[speech-synthesis]', () => import(/*webpackChunkName: "speechSynthesis"*/ '@cocreate/speech-synthesis'));
 lazyLoad('speechRecognition', '[speech-recognition]', () => import(/*webpackChunkName: "speechRecognition"*/ '@cocreate/speech-recognition'));
-lazyLoad('modal', '[actions*="Modal"]', () => import(/*webpackChunkName: "modal"*/ '@cocreate/modal'));
-lazyLoad('parallax', '[parallax-src]', () => import(/*webpackChunkName: "parallax"*/ '@cocreate/parallax'));
 lazyLoad('progress', '[data-progress]', () => import(/*webpackChunkName: "progress"*/ '@cocreate/progress'));
 lazyLoad('randomColor', '[background-color]', () => import(/*webpackChunkName: "randomColor"*/ '@cocreate/random-color'));
 lazyLoad('socialShare', '[share-network]', () => import(/*webpackChunkName: "socialShare"*/ '@cocreate/social-share'));

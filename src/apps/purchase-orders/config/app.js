@@ -13,7 +13,7 @@ export default {
             "list": "templates/list.html"
         },
         "array": "purchase_orders",
-        "icon": "ri-shopping-bag-line",
+        "icon": "/assets/svg/remix/shopping-bag-line.svg",
         "description": "App to manage and track Purchase Orders.",
         "status": "active",
         "category": "Procurement & Cost",

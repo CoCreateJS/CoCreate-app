@@ -40,7 +40,7 @@ export default {
         "secondaryViews": [
             "form"
         ],
-        "icon": "ri-terminal-box-line",
+        "icon": "/assets/svg/remix/terminal-box-line.svg",
         "description": "Manage reusable outbound API operations and their executable AST request configuration.",
         "status": "active",
         "fields": [

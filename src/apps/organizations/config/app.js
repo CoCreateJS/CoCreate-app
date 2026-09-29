@@ -19,7 +19,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-building-line",
+        "icon": "/assets/svg/remix/building-line.svg",
         "description": "App to manage and track Organizations.",
         "status": "active",
         "fields": [

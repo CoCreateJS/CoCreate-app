@@ -23,7 +23,7 @@ export default {
         category: "Infrastructure",
         mainViews: ["table", "grid"],
         secondaryViews: ["details", "form"],
-        icon: "ri-stack-line",
+        icon: "/assets/svg/remix/stack-line.svg",
         description: "Manage persistent clusters and inspect their server capacity.",
         status: "active",
         fields: [

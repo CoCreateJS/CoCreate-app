@@ -30,9 +30,7 @@
 	visibility: hidden;
 }
 
-.apis-credential :is(input, textarea):not([hidden]):placeholder-shown ~ button,
-.apis-credential-field:has(:is(input, textarea)[type="password"]:not([hidden])) .ri-eye-off-line,
-.apis-credential-field:has(:is(input, textarea)[type="text"]:not([hidden])) .ri-eye-line {
+.apis-credential :is(input, textarea):not([hidden]):placeholder-shown ~ button {
 	display: none;
 }
 
@@ -65,13 +63,7 @@
 	right: 0.5rem;
 }
 
-.apis-credential-copy .ri-check-line,
-.apis-credential-copy.is-copied .ri-file-copy-line {
-	display: none;
-}
-
-.apis-credential-copy.is-copied .ri-check-line {
-	display: inline-block;
+.apis-credential-copy.is-copied i[src] {
 	color: var(--coc-success);
 	animation: apis-copy-check 1.2s ease;
 }

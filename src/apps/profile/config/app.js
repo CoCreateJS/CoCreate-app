@@ -11,7 +11,7 @@ export default {
             "list": "templates/list.html"
         },
         "array": "contacts",
-        "icon": "ri-contacts-line",
+        "icon": "/assets/svg/remix/contacts-line.svg",
         "description": "App to manage and track Profile.",
         "status": "active",
         "fields": [

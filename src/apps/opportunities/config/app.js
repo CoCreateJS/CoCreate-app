@@ -23,7 +23,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-hand-coin-line",
+        "icon": "/assets/svg/remix/hand-coin-line.svg",
         "description": "App to manage and track Opportunities.",
         "status": "active",
         "fields": [

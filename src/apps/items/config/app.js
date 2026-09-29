@@ -14,7 +14,7 @@ export default {
         },
         "array": "items",
         "category": "Sales & Billing",
-        "icon": "ri-box-3-line",
+        "icon": "/assets/svg/remix/box-3-line.svg",
         "description": "App to manage and track Items.",
         "status": "active",
         "fields": [

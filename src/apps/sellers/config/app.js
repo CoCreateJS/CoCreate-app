@@ -23,7 +23,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-user-add-line",
+        "icon": "/assets/svg/remix/user-add-line.svg",
         "description": "App to manage and track Sellers.",
         "status": "active",
         "fields": [

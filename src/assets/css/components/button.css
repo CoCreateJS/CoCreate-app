@@ -7,6 +7,12 @@ button {
 	-webkit-box-shadow: var(--coc-element-shadow);
 	box-shadow: var(--coc-element-shadow);
 }
+.btn:has(:is(i[src], svg)) {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 0.375rem;
+}
 :is(.btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active) {
 	border-color: transparent;
 }
@@ -610,15 +616,12 @@ button {
 .favourite-btn {
 	border-color: transparent;
 }
-.favourite-btn .ri-star-fill {
+.favourite-btn i[src$="/star-fill.svg"] {
 	color: var(--coc-secondary-color);
 }
 .favourite-btn.active {
 	border-color: transparent;
 }
-.favourite-btn.active .ri-star-fill {
+.favourite-btn.active i[src$="/star-fill.svg"] {
 	color: var(--coc-warning);
-}
-.favourite-btn.active .ri-star-fill:before {
-	content: "\f186";
 }

@@ -434,7 +434,8 @@
 				const itemButton = item.querySelector("[data-ai-crud-item]");
 				if (!itemButton) continue;
 				const chevron = document.createElement("i");
-				chevron.className = "ai-crud-list-chevron ri-arrow-down-s-line";
+				chevron.className = "ai-crud-list-chevron";
+				chevron.setAttribute("src", "/assets/svg/remix/arrow-down-s-line.svg");
 				chevron.setAttribute("aria-hidden", "true");
 				itemButton.append(chevron);
 				itemButton.setAttribute("aria-expanded", "false");
@@ -444,8 +445,12 @@
 						const expanded = itemButton.getAttribute("aria-expanded") === "true";
 						details.hidden = expanded;
 						itemButton.setAttribute("aria-expanded", String(!expanded));
-						chevron.classList.toggle("ri-arrow-down-s-line", expanded);
-						chevron.classList.toggle("ri-arrow-up-s-line", !expanded);
+						chevron.setAttribute(
+							"src",
+							expanded
+								? "/assets/svg/remix/arrow-down-s-line.svg"
+								: "/assets/svg/remix/arrow-up-s-line.svg"
+						);
 						return;
 					}
 					details = document.createElement("div");
@@ -474,7 +479,7 @@
 					details.append(pre);
 					item.append(details);
 					itemButton.setAttribute("aria-expanded", "true");
-					chevron.classList.replace("ri-arrow-down-s-line", "ri-arrow-up-s-line");
+					chevron.setAttribute("src", "/assets/svg/remix/arrow-up-s-line.svg");
 					initializeCrudViews(details);
 				});
 			}
@@ -794,7 +799,7 @@
         const heading = document.createElement("header");
         heading.className = "ai-file-change-heading";
         const icon = document.createElement("i");
-        icon.className = "ri-file-edit-line";
+        icon.setAttribute("src", "/assets/svg/remix/file-edit-line.svg");
         const copy = document.createElement("div");
         const title = document.createElement("strong");
         title.textContent = running
@@ -1169,17 +1174,17 @@
 		const action = (icon, label, callback) => {
 			const button = document.createElement("button");
 			button.type = "button";
-			button.innerHTML = `<i class="${icon}" aria-hidden="true"></i>`;
+			button.innerHTML = `<i src="${icon}" aria-hidden="true"></i>`;
 			button.setAttribute("aria-label", label);
 			button.title = label;
 			button.addEventListener("click", callback);
 			actions.append(button);
 		};
-		action("ri-file-copy-line", "Copy", async () => {
+		action("/assets/svg/remix/file-copy-line.svg", "Copy", async () => {
 			await navigator.clipboard?.writeText(record.content || "");
 		});
 		if (record.role === "user") {
-			action("ri-pencil-line", "Edit", () => {
+			action("/assets/svg/remix/pencil-line.svg", "Edit", () => {
 				editingMessage = record;
 				prompt.value = record.content || "";
 				resizePrompt();
@@ -1187,7 +1192,7 @@
 				prompt.focus();
 			});
 		} else {
-			action("ri-restart-line", "Retry", () => {
+			action("/assets/svg/remix/restart-line.svg", "Retry", () => {
 				const parent = messageRecords.get(String(record.parent_id));
 				if (!parent?.content) return;
 				void submitPrompt(parent.content, {
@@ -1227,7 +1232,7 @@
 			versions.append(previous, count, next);
 			element.append(versions);
 		}
-		action("ri-delete-bin-line", "Delete", async () => {
+		action("/assets/svg/remix/delete-bin-line.svg", "Delete", async () => {
 			if (!window.confirm("Delete this message and its replies?")) return;
 			const ids = new Set([String(record._id)]);
 			let changed = true;

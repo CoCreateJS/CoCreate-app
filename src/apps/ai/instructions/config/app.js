@@ -41,7 +41,7 @@ export default {
             "details",
             "form"
         ],
-        "icon": "ri-file-list-3-line",
+        "icon": "/assets/svg/remix/file-list-3-line.svg",
         "description": "Manage runtime instructions and capability context used by CoCreate AI.",
         "status": "active",
         "fields": [

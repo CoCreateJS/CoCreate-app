@@ -15,7 +15,7 @@ export default {
         "array": "apps",
         "category": "Settings",
         "status": "active",
-        "icon": "ri-apps-2-line",
+        "icon": "/assets/svg/remix/apps-2-line.svg",
         "description": "App to manage and track Apps.",
         "mainViews": [
             "table",

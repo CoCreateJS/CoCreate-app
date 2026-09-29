@@ -333,7 +333,7 @@ export default {
                 ]
             }
         ],
-        "icon": "ri-chat-3-line",
+        "icon": "/assets/svg/remix/chat-3-line.svg",
         "description": "App to manage and track Chat.",
         "status": "active"
     }

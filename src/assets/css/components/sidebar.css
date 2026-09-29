@@ -423,15 +423,6 @@
 		[data-layout="semibox"]
 	)[data-sidebar-size="sm-hover"]
 	.navbar-menu
-	.btn-vertical-sm-hover
-	i.ri-record-circle-line:before {
-	content: "\eb7d";
-}
-:is(
-		[data-layout="vertical"],
-		[data-layout="semibox"]
-	)[data-sidebar-size="sm-hover"]
-	.navbar-menu
 	.navbar-nav
 	.badge {
 	display: none;

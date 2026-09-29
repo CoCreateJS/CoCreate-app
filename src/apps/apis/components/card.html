@@ -21,9 +21,24 @@
 	</div>
 
 	<div class="d-flex align-items-start gap-3 min-width:0">
-		<span
-			class="app-provider-reference"
-			src="/apps/apis/components/provider-icon.html"></span>
+		<span class="app-provider-image" aria-hidden="true">
+			<img
+				class="app-provider-default"
+				key="icon"
+				alt=""
+				width="36"
+				height="36"
+				onload="this.hidden = false"
+				onerror="
+					if (
+						this.getAttribute('src') === '/assets/images/providers/api.svg'
+					) {
+						this.hidden = true;
+					} else {
+						this.src = '/assets/images/providers/api.svg';
+					}
+				" />
+		</span>
 		<div class="min-width:0">
 			<h5
 				class="app-title mb-0 text-capitalize text-break"
