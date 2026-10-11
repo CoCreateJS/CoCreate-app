@@ -750,8 +750,8 @@ dialog.show {
 		top: 0;
 		right: 0;
 		bottom: 0;
-		height: 100dvh;
-		max-height: 100dvh;
+		height: var(--admin-content-height);
+		max-height: var(--admin-content-height);
 	}
 
 	#offcanvas-app li:has(> [toggle\.docked]) {
@@ -815,7 +815,10 @@ dialog.show {
 [template],
 .template {
 	display: none !important;
-	visibility: hidden !important;
+}
+
+[render-clone] {
+	visibility: visible !important;
 }
 
 .menu-title {

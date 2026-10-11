@@ -29,7 +29,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter Name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apps/aside.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"apps\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apps/app.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"apps\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
                 "attributes": [
                     { "name": "key", "value": "name" },
                     { "name": "type", "value": "text" },

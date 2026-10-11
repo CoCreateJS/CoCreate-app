@@ -1,0 +1,228 @@
+Reference only. This code is not loaded by the AI app.
+
+BRANCH SELECTION AND MESSAGE ACTIONS
+
+	const messageTime = (message) =>
+		new Date(message?.created?.on || 0).getTime();
+	const getLatestDescendant = (message) => {
+		let current = message;
+		while (current) {
+			const children = [...messageRecords.values()]
+				.filter((candidate) =>
+					String(candidate.parent_id || "") === String(current._id)
+				)
+				.sort((a, b) => messageTime(a) - messageTime(b));
+			if (!children.length) break;
+			current = children.at(-1);
+		}
+		return current;
+	};
+	const renderActiveBranch = async (message) => {
+		const leaf = getLatestDescendant(message);
+		activeBranchLeafId = leaf?._id ? String(leaf._id) : undefined;
+		const path = [];
+		let current = leaf;
+		while (current) {
+			path.push(current);
+			current = messageRecords.get(String(current.parent_id));
+		}
+		clearMessageElements();
+		for (const record of path.reverse()) {
+			addMessage(record.role || "assistant", record.content || "", record.views || [], record);
+		}
+		if (conversationId && leaf?._id) {
+			await socket.send({
+				method: "object.update",
+				array: "ai-conversations",
+				object: { _id: conversationId, active_message_id: leaf._id }
+			});
+		}
+	};
+
+    const addMessageActions = (element, record) => {
+		if (!record?._id) return;
+		const actions = document.createElement("div");
+		actions.className = "ai-message-actions";
+		const action = (icon, label, callback) => {
+			const button = document.createElement("button");
+			button.type = "button";
+			button.innerHTML = `<i src="${icon}" aria-hidden="true"></i>`;
+			button.setAttribute("aria-label", label);
+			button.title = label;
+			button.addEventListener("click", callback);
+			actions.append(button);
+		};
+		action("/assets/svg/remix/file-copy-line.svg", "Copy", async () => {
+			await navigator.clipboard?.writeText(record.content || "");
+		});
+		if (record.role === "user") {
+			action("/assets/svg/remix/pencil-line.svg", "Edit", () => {
+				editingMessage = record;
+				prompt.value = record.content || "";
+				prompt.focus();
+			});
+		} else {
+			action("/assets/svg/remix/restart-line.svg", "Retry", () => {
+				const parent = messageRecords.get(String(record.parent_id));
+				if (!parent?.content) return;
+				void submitPrompt(parent.content, {
+					display: false,
+					persist: false,
+					userMessageId: parent._id,
+					parentId: parent.parent_id,
+					contextBeforeId: parent.parent_id,
+					onComplete: reloadActiveConversation
+				});
+			});
+		}
+		const siblings = [...messageRecords.values()]
+			.filter((message) =>
+				message.role === record.role &&
+				String(message.parent_id || "") === String(record.parent_id || "")
+			)
+			.sort((a, b) => messageTime(a) - messageTime(b));
+		if (siblings.length > 1) {
+			const index = siblings.findIndex((message) => String(message._id) === String(record._id));
+			const versions = document.createElement("div");
+			versions.className = "ai-message-versions";
+			const previous = document.createElement("button");
+			previous.type = "button";
+			previous.innerHTML = '<i src="/assets/svg/remix/arrow-left-s-line.svg" aria-hidden="true"></i>';
+			previous.setAttribute("aria-label", "Previous version");
+			previous.disabled = index <= 0;
+			previous.addEventListener("click", () => void renderActiveBranch(siblings[index - 1]));
+			const count = document.createElement("span");
+			count.textContent = `${index + 1} of ${siblings.length}`;
+			const next = document.createElement("button");
+			next.type = "button";
+			next.innerHTML = '<i src="/assets/svg/remix/arrow-right-s-line.svg" aria-hidden="true"></i>';
+			next.setAttribute("aria-label", "Next version");
+			next.disabled = index >= siblings.length - 1;
+			next.addEventListener("click", () => void renderActiveBranch(siblings[index + 1]));
+			versions.append(previous, count, next);
+			element.append(versions);
+		}
+		action("/assets/svg/remix/delete-bin-line.svg", "Delete", async () => {
+			if (!window.confirm("Delete this message and its replies?")) return;
+			const ids = new Set([String(record._id)]);
+			let changed = true;
+			while (changed) {
+				changed = false;
+				for (const message of messageRecords.values()) {
+					if (message.parent_id && ids.has(String(message.parent_id)) &&
+						!ids.has(String(message._id))) {
+						ids.add(String(message._id));
+						changed = true;
+					}
+				}
+			}
+			await socket.send({
+				method: "object.delete",
+				array: "ai-messages",
+				object: [...ids].map((_id) => ({ _id }))
+			});
+			await reloadActiveConversation();
+		});
+		element.append(actions);
+	};
+
+
+CREDENTIAL HANDLING
+
+    const renderCredentialCard = (stream, credential) => {
+        let card = stream.element.querySelector(".ai-credential-card");
+        if (card) return card;
+
+        card = document.createElement("form");
+        card.className = "ai-credential-card";
+        card.addEventListener("submit", (event) => event.preventDefault());
+        card.setAttribute("array", credential.array);
+        card.setAttribute("object", credential.object);
+        const copy = document.createElement("div");
+        copy.className = "ai-credential-copy";
+        const title = document.createElement("strong");
+        const providerName = credential.name.charAt(0).toUpperCase() + credential.name.slice(1);
+        title.textContent = `Connect ${providerName}`;
+        const description = document.createElement("span");
+        description.textContent = `Enter your ${providerName} API key to continue. It saves securely to the integration and is never sent through the chat.`;
+        copy.append(title, description);
+
+        const input = document.createElement("input");
+        input.type = "password";
+        input.name = credential.key;
+        input.setAttribute("array", credential.array);
+        input.setAttribute("object", credential.object);
+        input.setAttribute("key", credential.key);
+        input.placeholder = "Paste API key";
+        input.autocomplete = "off";
+        input.required = true;
+        input.setAttribute("aria-label", credential.label);
+
+        const save = document.createElement("button");
+        save.type = "button";
+        save.setAttribute("actions", "save");
+        save.textContent = "Save key";
+
+        card.append(copy, input, save);
+        save.addEventListener("saved", () => {
+            input.value = "";
+            card.remove();
+            setStatus("Credential saved", "connected");
+            const continueSetup = () => submitPrompt(
+                `The ${providerName} API credential was saved successfully. Resume the pending integration setup.`,
+                {
+                    display: false,
+                    persist: false,
+                    signal: "credential.saved"
+                }
+            );
+            if (streams.has(stream.streamId)) {
+                stream.onComplete = continueSetup;
+            } else {
+                void continueSetup();
+            }
+        });
+        stream.element.append(card);
+        window.CoCreate?.elements?.init?.(input);
+        return card;
+    };
+
+
+BRANCH RETRY AND EDIT CONTEXT
+
+    const reloadActiveConversation = async () => {
+        const button = threadList.querySelector(
+            `.ai-thread[data-conversation-id="${CSS.escape(conversationId || "")}"]`
+        );
+        if (!button) return;
+        messages.setAttribute("array", "");
+        await new Promise((resolve) => queueMicrotask(resolve));
+        button.click();
+    };
+
+    const getConversationContext = (throughId) => {
+        const elements = Array.from(messages.querySelectorAll(".ai-message"));
+        const end = throughId
+            ? elements.findIndex((element) => element.dataset.messageId === String(throughId)) + 1
+            : elements.length;
+        return elements.slice(0, end || 0)
+            .map((element) => ({
+                role: element.classList.contains("user") ? "user" : "assistant",
+                content:
+                    element.querySelector(".ai-message-content")?.dataset.content ||
+                    element.querySelector(".ai-message-content")?.textContent.trim() ||
+                    ""
+            }))
+            .filter((message) => message.content)
+            .slice(-12);
+    };
+
+    // Former submit path for editing a user message. The reference above
+    // contains the matching Edit and Retry actions.
+    const edit = editingMessage;
+    editingMessage = undefined;
+    void submitPrompt(prompt.value, edit ? {
+        parentId: edit.parent_id,
+        contextBeforeId: edit.parent_id,
+        onComplete: reloadActiveConversation
+    } : {});

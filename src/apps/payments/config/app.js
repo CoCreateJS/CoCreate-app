@@ -32,7 +32,7 @@ export default {
                 "label": "Payment ID",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"payment-id-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter payment ID\" filter-query=\"$document .list-view\" filter-query-key=\"_id.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/payments/aside.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"transactions\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object._id}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/payments/app.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"transactions\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object._id}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",
@@ -100,7 +100,7 @@ export default {
                 "label": "Invoice ID",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"invoice_id-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter invoice ID\" filter-query=\"$document .list-view\" filter-query-key=\"invoice_id.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.array=\"invoices\" state.object=\"{{object.invoice_id}}\" state.src=\"/apps/invoices/aside.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t{{object.invoice_id}}\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.array=\"invoices\" state.object=\"{{object.invoice_id}}\" state.src=\"/apps/invoices/app.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t{{object.invoice_id}}\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",

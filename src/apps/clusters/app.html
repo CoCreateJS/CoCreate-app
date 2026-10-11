@@ -1,0 +1,85 @@
+<div
+	id="clusters-aside"
+	class="offcanvas-app-shell app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	role="region"
+	aria-label="Clusters record">
+	<header
+		src="/components/offcanvas-app/header.html"
+		value-replace="/\{\{app\.name\}\}/g"
+		value-replacement="Clusters"
+		value-type="outerHtml"></header>
+	<div
+		class="component-form-body flex-grow-1 min-height:0">
+		<div
+			id="Clusters-details-view"
+			class="offcanvas-app-view"
+			data-view="details"
+			role="tabpanel"
+			aria-labelledby="Clusters-details-btn"
+			tabindex="0"
+			aria-hidden="false"
+			state-id="clusters-details"
+			state.aria-hidden
+			hidden>
+			<form
+				state-id="offcanvas-app-form"
+				class="app-details app-with-image"
+				array
+				object
+				autocomplete="off">
+				<div scrollbar>
+					<div src="/apps/clusters/components/details.html"></div>
+				</div>
+			</form>
+		</div>
+		<div
+			id="Clusters-form-view"
+			class="offcanvas-app-view"
+			data-view="form"
+			role="tabpanel"
+			aria-labelledby="Clusters-form-btn"
+			tabindex="0"
+			aria-hidden="true"
+			state-id="clusters-form"
+			state.aria-hidden
+			hidden>
+			<form
+				state-id="offcanvas-app-form"
+				class="app-form app-without-image"
+				array
+				object
+				autocomplete="off">
+				<div scrollbar>
+					<div src="/apps/clusters/components/form.html"></div>
+				</div>
+				<footer
+					src="/components/offcanvas-app/footer.html"
+					value-type="outerHtml"></footer>
+			</form>
+		</div>
+		<div
+			id="Clusters-codearea-view"
+			class="offcanvas-app-view"
+			data-view="codearea"
+			role="tabpanel"
+			aria-labelledby="Clusters-codearea-btn"
+			tabindex="0"
+			aria-hidden="true"
+			state-id="clusters-codearea"
+			state.aria-hidden
+			hidden>
+			<form
+				state-id="offcanvas-app-form"
+				array
+				object
+				autocomplete="off">
+				<div scrollbar>
+					<div src="/components/offcanvas-app/codearea.html"></div>
+				</div>
+				<footer
+					src="/components/offcanvas-app/footer.html"
+					value-type="outerHtml"></footer>
+			</form>
+		</div>
+	</div>
+</div>

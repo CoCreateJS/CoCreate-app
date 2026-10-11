@@ -266,6 +266,12 @@ export default {
             path: "../CoCreate-modules/CoCreate-scroll",
             repo: "github.com/CoCreate-app/CoCreate-scroll.git"
         },
+        scrollbar: {
+            import: "@cocreate/scrollbar",
+            selector: "[scrollbar]",
+            path: "../CoCreate-modules/CoCreate-scrollbar",
+            repo: "gitlab.com/cocreatejs/CoCreate-scrollbar.git"
+        },
         resize: {
             import: "@cocreate/resize",
             selector: "[resize], [height='auto']",

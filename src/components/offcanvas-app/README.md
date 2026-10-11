@@ -3,17 +3,22 @@
 Apps with form and details views share the offcanvas header, footer, layout,
 and JSON editor. Their app-specific files are organized as follows:
 
-- `aside.html`: record shell with Details, Edit, and JSON panels.
+- `app.html`: complete offcanvas shell with its header and Details, Edit, and
+  JSON panels.
 - `components/details.html`: existing read-only record content.
-- `components/form.html`: existing fields with the shared save/cancel footer.
+- `components/form.html`: form fields only.
 - `create.html`: standalone create shell used by New buttons.
 
-The aside loads form and details directly from the app's `components/` directory
-and JSON directly from `/components/offcanvas-app/codearea.html`.
+The app shell loads form and details from the app's `components/` directory and
+JSON from `/components/offcanvas-app/codearea.html`. Each form owns a
+`scrollbar` wrapper around its empty `src` host so fetched content does not
+replace the scrollbar structure. Edit, JSON, and create forms own the shared
+save/cancel footer.
 
-Record links in card templates and app field definitions target `aside.html`.
-New buttons target `create.html`; the only `form.html` contains the fields in `components/`. There are no root details or JSON
-wrappers; record links use `aside.html`.
+Record links in card templates and app field definitions target `app.html`.
+New buttons target `create.html`; `components/form.html` contains only the
+fields. AI messages render their declared views and forms directly instead of
+loading an app shell.
 
 The header accepts `{{app.name}}`, replaced by each shell using `value-replace`
 and `value-replacement`. Use a token without whitespace because it also forms
@@ -30,6 +35,6 @@ Create actions targeting these forms must write their array and reset state to
 `offcanvas-app-form`, including actions that display them in `create-panel`.
 Special provisioning screens retain their existing state and entry points.
 
-Existing scroll containers and widgets stay inside their app's content
-fragment. Shell onload attributes initialize SimpleBar for forms with a direct
-`.card-body`; forms with their own scroll container retain their own plugin.
+App-specific scroll containers and widgets may remain inside their content
+fragment. The shell-level `scrollbar` wrapper handles the primary form scroll;
+shells do not initialize SimpleBar directly.

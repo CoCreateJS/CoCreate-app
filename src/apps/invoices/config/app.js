@@ -34,7 +34,7 @@ export default {
                 "label": "Invoice No",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"invoice_no-filter\" class=\"form-control\" type=\"text\" placeholder=\"Invoice No\" filter-query=\"$document .list-view\" filter-query-key=\"invoice.number\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/invoices/aside.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\"  aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"invoices\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.invoice.number}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/invoices/app.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\"  aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"invoices\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.invoice.number}}</span>\n          </a>\n        ",
                 "attributes": [
                     {
                         "name": "class",

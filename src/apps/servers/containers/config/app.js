@@ -71,7 +71,7 @@ export default {
                 "label": "Webhook Path",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"path-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by path (e.g. stripe/payments)\" filter-query=\"$document .list-view\" filter-query-key=\"path.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 font-monospace fs-13\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/webhooks/aside.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"webhooks\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<code>/webhooks/{{object.path}}</code>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<div class=\"d-flex align-items-center\">\n\t\t\t\t\t\t<a role=\"button\" tabindex=\"0\" class=\"flex-grow-1 font-monospace fs-13\" state-to=\"offcanvas-app-view\" state.src=\"/apps/apis/webhooks/app.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"webhooks\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t\t<code>/webhooks/{{object.path}}</code>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",

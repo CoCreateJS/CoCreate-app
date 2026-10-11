@@ -31,7 +31,7 @@ export default {
                 "label": "Project Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"project-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter project name\" filter-query=\"$document .list-view\" filter-query-key=\"name\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/projects/aside.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"projects\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/projects/app.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"projects\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",

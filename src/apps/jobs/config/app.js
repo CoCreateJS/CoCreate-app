@@ -31,7 +31,7 @@ export default {
                 "label": "Job Title",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"title-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter job title\" filter-query=\"$document .list-view\" filter-query-key=\"jobTitle\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/jobs/aside.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"jobPosts\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.jobTitle}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/jobs/app.html\" aria-controls=\"offcanvas-app\" aria-open aria-haspopup=\"dialog\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"jobPosts\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.jobTitle}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",

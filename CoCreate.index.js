@@ -467,6 +467,7 @@ lazyLoad('dnd', '[sortable], [cloneables], [draggable], [droppable], [cloneable]
 lazyLoad('position', '[positionable], [moveable], [position-query]', () => import(/*webpackChunkName: "position"*/ '@cocreate/position'));
 lazyLoad('conditionalLogic', '[show], [hide]', () => import(/*webpackChunkName: "conditionalLogic"*/ '@cocreate/conditional-logic'));
 lazyLoad('scroll', '[scroll], [scroll-to], [scrollable-x], [scrollable-y]', () => import(/*webpackChunkName: "scroll"*/ '@cocreate/scroll'));
+lazyLoad('scrollbar', '[scrollbar]', () => import(/*webpackChunkName: "scrollbar"*/ '@cocreate/scrollbar'));
 lazyLoad('resize', '[resize], [height="auto"]', () => import(/*webpackChunkName: "resize"*/ '@cocreate/resize'));
 lazyLoad('clone', '[actions*="clone"]', () => import(/*webpackChunkName: "clone"*/ '@cocreate/clone'));
 lazyLoad('remove', '[actions*="remove"]', () => import(/*webpackChunkName: "remove"*/ '@cocreate/remove'));

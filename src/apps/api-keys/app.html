@@ -1,0 +1,86 @@
+<div
+	id="api-keys-aside"
+	class="offcanvas-app-shell app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	role="region"
+	aria-label="Api Keys record">
+	<header
+		src="/components/offcanvas-app/header.html"
+		value-replace="/\{\{app\.name\}\}/g"
+		value-replacement="ApiKeys"
+		value-type="outerHtml"></header>
+	<div
+		class="component-form-body flex-grow-1 min-height:0">
+		<div
+			id="ApiKeys-details-view"
+			class="offcanvas-app-view"
+			data-view="details"
+			role="tabpanel"
+			aria-labelledby="ApiKeys-details-btn"
+			tabindex="0"
+			aria-hidden="false"
+			state-id="api-keys-details"
+			state.aria-hidden
+			hidden>
+			<form
+				state-id="offcanvas-app-form"
+				class="app-details app-without-image"
+				array
+				object
+				autocomplete="off">
+				<div scrollbar>
+					<div src="/apps/api-keys/components/details.html"></div>
+				</div>
+			</form>
+		</div>
+		<div
+			id="ApiKeys-form-view"
+			class="offcanvas-app-view"
+			data-view="form"
+			role="tabpanel"
+			aria-labelledby="ApiKeys-form-btn"
+			tabindex="0"
+			aria-hidden="true"
+			state-id="api-keys-form"
+			state.aria-hidden
+			hidden>
+			<form
+				state-id="offcanvas-app-form"
+				class="app-form"
+				data-create-panel-title="API Key"
+				array
+				object
+				autocomplete="off">
+				<div scrollbar>
+					<div src="/apps/api-keys/components/form.html"></div>
+				</div>
+				<footer
+					src="/components/offcanvas-app/footer.html"
+					value-type="outerHtml"></footer>
+			</form>
+		</div>
+		<div
+			id="ApiKeys-codearea-view"
+			class="offcanvas-app-view"
+			data-view="codearea"
+			role="tabpanel"
+			aria-labelledby="ApiKeys-codearea-btn"
+			tabindex="0"
+			aria-hidden="true"
+			state-id="api-keys-codearea"
+			state.aria-hidden
+			hidden>
+			<form
+				state-id="offcanvas-app-form"
+				array
+				object
+				autocomplete="off">
+				<div scrollbar>
+					<div src="/components/offcanvas-app/codearea.html"></div>
+				</div>
+				<footer
+					src="/components/offcanvas-app/footer.html"
+					value-type="outerHtml"></footer>
+			</form>
+		</div>
+	</div>
+</div>

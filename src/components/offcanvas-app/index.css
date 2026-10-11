@@ -1,43 +1,130 @@
-.offcanvas-app-shell > .component-form-body,
-.offcanvas-app-create > .component-form-body {
-	flex: 1 1 0;
-	height: auto !important;
+#offcanvas-app {
+	height: 100dvh;
+	max-height: 100dvh;
+	overflow: hidden;
+}
+
+#offcanvas-app[docked="true"].show {
+	height: var(--admin-content-height, calc(100dvh - 70px));
+	max-height: var(--admin-content-height, calc(100dvh - 70px));
+	overflow: hidden;
+}
+
+#offcanvas-app .offcanvas-app-content,
+#offcanvas-app .offcanvas-app-scroll,
+#offcanvas-app-view {
+	min-height: 0;
+	max-height: 100%;
+	overflow: hidden !important;
+}
+
+#offcanvas-app-view {
+	height: 100%;
+}
+
+.offcanvas-app-shell,
+.offcanvas-app-create {
+	--offcanvas-app-header-height: 70px;
+	--offcanvas-app-footer-height: 70px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
 	min-height: 0;
 	overflow: hidden;
 }
 
-.offcanvas-app-view,
+.offcanvas-app-shell > header,
+.offcanvas-app-create > header {
+	flex: 0 0 var(--offcanvas-app-header-height);
+	height: var(--offcanvas-app-header-height);
+	min-height: var(--offcanvas-app-header-height);
+}
+
+.offcanvas-app-shell > .component-form-body,
+.offcanvas-app-create > .component-form-body {
+	display: flex;
+	flex: 0 0 calc(100% - var(--offcanvas-app-header-height));
+	flex-direction: column;
+	height: calc(100% - var(--offcanvas-app-header-height)) !important;
+	max-height: calc(100% - var(--offcanvas-app-header-height));
+	min-height: 0;
+	overflow: hidden;
+}
+
 .offcanvas-app-view > form,
 .offcanvas-app-create > .component-form-body > form {
 	height: 100%;
+	max-height: 100%;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.offcanvas-app-shell > .component-form-body > .offcanvas-app-view {
+	flex: 1 1 0;
+	height: 0 !important;
+	max-height: 100%;
 	min-height: 0;
 	overflow: hidden;
 }
 
 .offcanvas-app-view > form,
 .offcanvas-app-create > .component-form-body > form {
-	display: flex;
-	flex-direction: column;
+	display: block;
+	position: relative;
+	flex: 1 1 0;
+	width: 100%;
 	margin: 0;
+}
+
+.offcanvas-app-view > form > [scrollbar],
+.offcanvas-app-create > .component-form-body > form > [scrollbar],
+.offcanvas-app-view > form > :is(.card-body, .component-form-body),
+.offcanvas-app-create > .component-form-body > form > :is(.card-body, .component-form-body) {
+	position: relative;
+	height: 100% !important;
+	max-height: 100%;
+	min-height: 0;
+	width: 100%;
+	min-width: 0;
+	overscroll-behavior: contain;
+}
+
+.offcanvas-app-view > form:has(> footer) > [scrollbar],
+.offcanvas-app-create > .component-form-body > form:has(> footer) > [scrollbar],
+.offcanvas-app-view > form:has(> footer) > :is(.card-body, .component-form-body),
+.offcanvas-app-create
+	> .component-form-body
+	> form:has(> footer)
+	> :is(.card-body, .component-form-body) {
+	height: calc(100% - var(--offcanvas-app-footer-height)) !important;
+	max-height: calc(100% - var(--offcanvas-app-footer-height));
+}
+
+.offcanvas-app-view > form > [scrollbar],
+.offcanvas-app-create > .component-form-body > form > [scrollbar] {
+	overflow: hidden;
 }
 
 .offcanvas-app-view > form > :is(.card-body, .component-form-body),
 .offcanvas-app-create > .component-form-body > form > :is(.card-body, .component-form-body) {
-	position: relative;
-	flex: 1 1 0;
-	height: auto !important;
-	min-height: 0;
 	overflow: auto;
-}
-
-.offcanvas-app-view > form > :is(.card-body, .component-form-body) > .simplebar-wrapper,
-.offcanvas-app-create > .component-form-body > form > :is(.card-body, .component-form-body) > .simplebar-wrapper {
-	height: 100%;
 }
 
 .offcanvas-app-view > form > footer,
 .offcanvas-app-create form > footer {
-	flex-shrink: 0;
+	display: flex !important;
+	position: absolute;
+	z-index: 2;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: var(--offcanvas-app-footer-height);
+	min-height: var(--offcanvas-app-footer-height);
+	align-items: center;
+	width: 100%;
+	background: var(--coc-body-bg);
 }
 
 .offcanvas-app-shell > header [role="tab"][aria-selected="true"],
@@ -46,10 +133,6 @@
 #create-panel .offcanvas-app-record-actions,
 #create-panel .offcanvas-app-dock-control {
 	display: none !important;
-}
-
-.offcanvas-app-view[data-view="codearea"] .simplebar-content {
-	min-height: 100%;
 }
 
 .offcanvas-app-view[data-view="codearea"] .component-codearea > textarea,

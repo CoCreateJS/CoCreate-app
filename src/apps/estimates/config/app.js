@@ -31,7 +31,7 @@ export default {
                 "label": "Estimate No",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"estimate_no-filter\" class=\"form-control\" type=\"text\" placeholder=\"Estimate No\" filter-query=\"$document .list-view\" filter-query-key=\"estimate_no\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/estimates/aside.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"invoices\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.estimate_no}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/estimates/app.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"invoices\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.estimate_no}}</span>\n          </a>\n        ",
                 "attributes": [
                     {
                         "name": "class",
@@ -62,7 +62,7 @@ export default {
             {
                 "label": "Title",
                 "tagName": "input",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/estimates/aside.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\">\n            <div state-to=\"offcanvas-app-form\" state.array=\"invoices\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.title}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/estimates/app.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\">\n            <div state-to=\"offcanvas-app-form\" state.array=\"invoices\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.title}}</span>\n          </a>\n        ",
                 "attributes": [
                     {
                         "name": "class",

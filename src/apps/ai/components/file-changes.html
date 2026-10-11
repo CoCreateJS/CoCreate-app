@@ -1,0 +1,47 @@
+<header class="ai-file-change-heading">
+	<i src="/assets/svg/remix/file-edit-line.svg" aria-hidden="true"></i>
+	<div>
+		<strong data-ai-file-change-title>Edited files</strong>
+		<span class="ai-file-change-stats">
+			<b data-ai-file-added>+0</b>
+			<em data-ai-file-removed>-0</em>
+		</span>
+	</div>
+	<div class="ai-file-change-actions">
+		<button
+			type="button"
+			data-ai-file-undo
+			disabled
+			title="Undo is available when original file data is present">Undo ↶</button>
+		<button
+			type="button"
+			click-query="$closest .ai-tool-file-changes .ai-file-review"
+			click.class="show, "
+			aria-label="Review file changes">Review</button>
+	</div>
+</header>
+<div
+	class="ai-file-change-list"
+	render="object.changes"
+	render-as="change"
+	render-query="[template='ai-file-change-row']">
+	<div template="ai-file-change-row" class="ai-file-change">
+		<span>{{change.path}}</span>
+		<span class="ai-file-change-stats">
+			<b>+{{change.added}}</b>
+			<em>-{{change.removed}}</em>
+		</span>
+	</div>
+</div>
+<div
+	class="ai-file-review"
+	role="region"
+	aria-label="File change diffs"
+	render="object.changes"
+	render-as="change"
+	render-query="[template='ai-file-review-entry']">
+	<div template="ai-file-review-entry" class="ai-file-review-entry">
+		<strong>{{change.path}}</strong>
+		<pre class="ai-file-diff"><code class="language-diff" data-ai-file-diff></code></pre>
+	</div>
+</div>

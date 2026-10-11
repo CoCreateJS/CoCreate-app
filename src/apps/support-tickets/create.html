@@ -8,8 +8,19 @@
 		value-replacement="SupportTickets"
 		value-type="outerHtml"></header>
 	<div
-		class="component-form-body flex-grow-1 min-height:0"
-		src="/apps/support-tickets/components/form.html"
-		onload.plugin='({"$SimpleBar": ["$this", {}]})'
-		onload-query="form > .card-body[]"></div>
+		class="component-form-body flex-grow-1 min-height:0">
+		<form
+			state-id="offcanvas-app-form"
+			class="app-form app-without-image"
+			array
+			object
+			autocomplete="off">
+			<div scrollbar>
+				<div src="/apps/support-tickets/components/form.html"></div>
+			</div>
+			<footer
+				src="/components/offcanvas-app/footer.html"
+				value-type="outerHtml"></footer>
+		</form>
+	</div>
 </div>

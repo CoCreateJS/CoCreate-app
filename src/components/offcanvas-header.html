@@ -15,7 +15,7 @@
 		class="offcanvas-path"
 		input.state.src="$value"
 		input-query="$parent .details-view-btn[]"
-		value-suffix="/aside.html" />
+		value-suffix="/app.html" />
 	<input
 		type="hidden"
 		class="offcanvas-path"
@@ -31,7 +31,7 @@
 		}
 		/* Prefer the view owned by this form; retain the host src as a fallback. */
 		form:has(> header[aria-label="Details controls"]) #form-btn,
-		.offcanvas-app-content:has(#offcanvas-app-view[src*="/aside.html"]) #form-btn,
+		.offcanvas-app-content:has(#offcanvas-app-view[src*="/app.html"]) #form-btn,
 		.offcanvas-app-content:has(#offcanvas-app-view[src*="/profile/index.html"]) #form-btn {
 			display: inline-flex;
 		}

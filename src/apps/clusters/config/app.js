@@ -32,7 +32,7 @@ export default {
                 tagName: "input",
                 filterTemplate: '<input id="cluster-name-filter" class="form-control" type="text" placeholder="Filter by name" filter-query="$document .list-view" filter-query-key="name.$regex" filter-query-options="i" />',
                 tableTemplate: `
-                    <a role="button" tabindex="0" class="name" state-to="offcanvas-app-view" state.src="/apps/clusters/aside.html" aria-controls="offcanvas-app" aria-expanded="false" aria-open>
+                    <a role="button" tabindex="0" class="name" state-to="offcanvas-app-view" state.src="/apps/clusters/app.html" aria-controls="offcanvas-app" aria-expanded="false" aria-open>
                         <div state-to="offcanvas-app-form" state.array="clusters" state.object="{{object._id}}"></div>
                         <span>{{object.name}}</span>
                     </a>

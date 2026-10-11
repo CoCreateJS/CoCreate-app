@@ -23,7 +23,7 @@ export default {
                 "label": "Ticket ID",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"ticketId-filter\" class=\"form-control\" type=\"text\" placeholder=\"ID\" filter-query=\"$document .list-view\" filter-query-key=\"_id\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/support-tickets/aside.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"support_tickets\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object._id}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/support-tickets/app.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\" aria-open>\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"support_tickets\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object._id}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",
@@ -55,7 +55,7 @@ export default {
                 "label": "Title",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"title-filter\" class=\"form-control\" type=\"text\" placeholder=\"Title\" filter-query=\"$document .list-view\" filter-query-key=\"title\" />",
-                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/support-tickets/aside.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"support_tickets\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.title}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
+                "tableTemplate": "\n\t\t\t\t\t<a role=\"button\" tabindex=\"0\" state-to=\"offcanvas-app-view\" state.src=\"/apps/support-tickets/app.html\" aria-controls=\"offcanvas-app\" aria-expanded=\"false\">\n\t\t\t\t\t\t<div state-to=\"offcanvas-app-form\" state.array=\"support_tickets\" state.object=\"{{object._id}}\"></div>\n\t\t\t\t\t\t<span>{{object.title}}</span>\n\t\t\t\t\t</a>\n\t\t\t\t",
                 "attributes": [
                     {
                         "name": "class",

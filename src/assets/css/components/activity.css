@@ -5,6 +5,16 @@
 	margin-top: calc(1px - var(--coc-grid-gutter-width) * 1.1);
 	height: calc(100% + var(--coc-grid-gutter-width) * 1.1);
 }
+
+/* aria-hidden describes accessibility state but does not hide layout by itself. */
+.layout-rightside-col[aria-hidden="true"] {
+	display: none !important;
+}
+
+.layout-rightside-col[aria-hidden="false"] {
+	display: block;
+}
+
 @media (max-width: 1699.98px) {
 	.layout-rightside-col {
 		display: none;
