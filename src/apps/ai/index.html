@@ -17,13 +17,13 @@
 			<button
 				class="ai-new-chat"
 				type="button"
-				selected-query="$document #ai-conversations-sidebar"
+				selected-query="$closest .ai-shell #ai-conversations-sidebar"
 				selected.class="show, "
 				selected.aria-hidden="true"
-				toggle-query="$document #ai-sidebar-toggle"
+				toggle-query="$closest .ai-shell #ai-sidebar-toggle"
 				toggle.aria-expanded="false"
 				click-group="ai-conversation"
-				state='{"ai-conversation-messages":{"filter-query-value":"","array":"","$renderValue":{"object":[]}},"aiChat":{"conversation-id":""}}'
+				state='{"ai-conversation-messages":{"filter-query-value":"","array":"","$renderValue":{"object":[]}},"ai-queue-conversation-filter":{"filter-query-value":""},"aiChat":{"conversation-id":""},"ai-chat-conversation-id":{"value":""},"ai-chat-model":{"value":"openai:gpt-5.4-nano","array":"ai-conversations","object":"","realtime":"false"}}'
 				aria-label="New conversation"
 				title="New conversation">
 				<i
@@ -66,19 +66,17 @@
 						type="button"
 						class="ai-thread"
 						data-conversation-id="{{object._id}}"
-						selected-query="$document #ai-conversations-sidebar"
+						selected-query="$closest .ai-shell #ai-conversations-sidebar"
 						selected.class="show, "
 						selected.aria-hidden="true"
-						toggle-query="$document #ai-sidebar-toggle"
+						toggle-query="$closest .ai-shell #ai-sidebar-toggle"
 						toggle.aria-expanded="false"
 						click-group="ai-conversation"
 						click.class="active"
 						state-to="ai-conversation-messages"
 						state.filter-query-value="{{object._id}}"
 						state.array="ai-messages"
-						state='{"aiChat":{"conversation-id":"{{object._id}}"},"ai-chat-model":{"value":"{{object.provider}}:{{object.model}}"}}'
-						data-provider="{{object.provider}}"
-						data-model="{{object.model}}">
+						state='{"aiChat":{"conversation-id":"{{object._id}}"},"ai-chat-conversation-id":{"value":"{{object._id}}"},"ai-queue-conversation-filter":{"filter-query-value":"{{object._id}}"},"ai-chat-model":{"value":"{{object.provider}}:{{object.model}}","array":"ai-conversations","object":"{{object._id}}","realtime":"true"}}'>
 						<div class="ai-thread-title">
 							<span>{{object.title}}</span>
 						</div>
@@ -97,11 +95,6 @@
 		class="ai-sidebar-backdrop"
 		aria-label="Close conversations"
 		aria-controls="ai-conversations-sidebar"
-		click-query="$document #ai-conversations-sidebar"
-		click.class="show, "
-		click.aria-hidden="true"
-		toggle-query="$document #ai-sidebar-toggle"
-		toggle.aria-expanded="false"
 		aria-close
 		state-to="ai-chat-btn"
 		state.$unset="$click"></button>
@@ -115,10 +108,6 @@
 				id="ai-sidebar-toggle"
 				class="ai-sidebar-toggle"
 				type="button"
-				click-query="$document #ai-conversations-sidebar"
-				click.class="show, "
-				click.aria-hidden="false, true"
-				toggle.aria-expanded="true, false"
 				aria-label="Toggle conversations"
 				aria-controls="ai-conversations-sidebar"
 				aria-expanded="false"
@@ -132,7 +121,7 @@
 				class="ai-new-chat"
 				type="button"
 				click-group="ai-conversation"
-				state='{"ai-conversation-messages":{"filter-query-value":"","array":"","$renderValue":{"object":[]}},"aiChat":{"conversation-id":""}}'
+				state='{"ai-conversation-messages":{"filter-query-value":"","array":"","$renderValue":{"object":[]}},"ai-queue-conversation-filter":{"filter-query-value":""},"aiChat":{"conversation-id":""},"ai-chat-conversation-id":{"value":""},"ai-chat-model":{"value":"openai:gpt-5.4-nano","array":"ai-conversations","object":"","realtime":"false"}}'
 				aria-label="New conversation"
 				title="New conversation">
 				<i
@@ -166,7 +155,7 @@
 					click.innerHTML=""
 					click.insertAdjacentElement="beforeend"
 					click-element="$closest .ai-shell"
-					state='{"adminView":{"rendered":"","src":"/apps/ai/index.html"},"ai-chat-panel-content":{"src":""},"ai-chat-panel":{"aria-hidden":"true"},"ai-chat-btn":{"state-to":"adminView","state.src":"/apps/ai/index.html","aria-controls":""}}'
+					state='{"ai-chat-panel-content":{"src":""},"ai-chat-panel":{"aria-hidden":"true"},"ai-chat-btn":{"state-to":"adminView","state.src":"/apps/ai/index.html","aria-controls":""}}'
 					aria-label="Dock AI chat in main view"
 					aria-controls="ai-chat-panel"
 					aria-close
@@ -188,7 +177,7 @@
 					click.innerHTML=""
 					click.insertAdjacentElement="beforeend"
 					click-element="$closest .ai-shell"
-					state='{"adminView":{"rendered":"","src":""},"ai-chat-panel-content":{"rendered":"","src":"/apps/ai/index.html"},"ai-chat-panel":{"aria-hidden":"false"},"ai-chat-btn":{"state-to":"ai-chat-panel-content","state.src":"/apps/ai/index.html","aria-controls":"ai-chat-panel"}}'
+					state='{"ai-chat-panel-content":{"src":""},"ai-chat-panel":{"aria-hidden":"false"},"ai-chat-btn":{"state-to":"ai-chat-panel-content","state.src":"/apps/ai/index.html","aria-controls":"ai-chat-panel"}}'
 					aria-label="Dock AI chat in side panel"
 					aria-controls="ai-chat-panel"
 					aria-expanded="false"
@@ -217,6 +206,23 @@
 				</button>
 			</div>
 		</header>
+		<div
+			class="ai-queue-filters"
+			hidden>
+			<div
+				state-id="ai-queue-conversation-filter"
+				filter-query="$closest .ai-shell #ai-queued-messages"
+				filter-query-key="conversation_id"
+				filter-query-value=""></div>
+			<div
+				filter-query="$closest .ai-shell #ai-queued-messages"
+				filter-query-key="status"
+				filter-query-value="queued"></div>
+			<div
+				filter-query="$closest .ai-shell #ai-queued-messages"
+				filter-query-key="steer.$ne"
+				filter-query-value="true"></div>
+		</div>
 
 		<section
 			class="ai-message-scroll"
@@ -246,9 +252,10 @@
 					aria-live="polite">
 					<article
 						template="ai-message-template"
-						class="ai-message {{object.role}}"
+						class="ai-message {{object.role}} {{object.status}}"
+						data-steer="{{object.steer}}"
 						data-message-id="{{object._id}}"
-						data-parent-id="{{object.parent_id}}">
+						data-message-id="{{object._id}}">
 						<div class="ai-message-content">{{object.content}}</div>
 						<div class="ai-message-views">
 							<div
@@ -602,21 +609,60 @@
 					src="/apps/ai/components/stream.html"
 					hidden
 					aria-live="polite"></div>
-				<section
+				<div
+					id="ai-queued-messages"
 					class="ai-message-queue"
-					hidden
-					aria-label="Queued messages">
-					<div class="ai-steer-queue-heading">
-						<i src="/assets/svg/remix/stack-line.svg" aria-hidden="true"></i>
-						<span class="ai-steer-count">0 queued messages</span>
-					</div>
-					<div class="ai-steer-items"></div>
-				</section>
+					array="ai-messages"
+					object
+					filter-limit="20"
+					filter-sort-key="created.on"
+					filter-sort-direction="asc"
+					render-query="[template='ai-queued-message-template']">
+					<article
+						template="ai-queued-message-template"
+						class="ai-queued-message"
+						data-message-id="{{object._id}}">
+						<div class="ai-queued-message-content">
+							{{object.content}}
+						</div>
+						<form
+							class="ai-queued-message-actions"
+							socket="ai.message.update">
+							<input
+								type="hidden"
+								socket-key="ai.patch.steer"
+								value="true"
+								value-type="boolean"
+								value-evaluate="false" />
+							<input
+								type="hidden"
+								socket-key="ai.conversation_id"
+								value="{{object.conversation_id}}" />
+							<input
+								type="hidden"
+								socket-key="ai.user_message_id"
+								value="{{object._id}}" />
+							<button
+								type="button"
+								class="ai-steer-now"
+								actions="send"
+								aria-label="Mark message as steering guidance"
+								title="Steer this message">
+								<i
+									src="/assets/svg/remix/arrow-go-forward-line.svg"
+									aria-hidden="true"></i>
+							</button>
+						</form>
+					</article>
+				</div>
 			</div>
 		</section>
 		<form
 			class="ai-composer"
 			src="/apps/ai/components/composer.html"
+			array="ai-messages"
+			object=""
+			upsert="true"
 			socket="ai.chat"></form>
 	</main>
 </div>
