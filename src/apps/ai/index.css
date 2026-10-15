@@ -1172,11 +1172,11 @@
 	white-space: pre-wrap;
 }
 
-.ai-message.user {
+.ai-message[data-role="user"] {
 	text-align: right;
 }
 
-.ai-message.user > .ai-message-content {
+.ai-message[data-role="user"] > .ai-message-content {
 	width: fit-content;
 	max-width: 82%;
 	margin-left: auto;
@@ -1267,7 +1267,7 @@
 	transition: opacity 0.15s ease;
 }
 
-.ai-message.user > .ai-message-tools {
+.ai-message[data-role="user"] > .ai-message-tools {
 	justify-content: flex-end;
 }
 
@@ -1595,7 +1595,7 @@
 		padding-inline: 17px;
 	}
 
-	.ai-message.user > .ai-message-content {
+	.ai-message[data-role="user"] > .ai-message-content {
 		max-width: 92%;
 	}
 
