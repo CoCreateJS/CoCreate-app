@@ -12,7 +12,9 @@
 					type="button"
 					class="btn btn-soft-success btn-sm material-shadow-none"
 					aria-label="Add Contact">
-					<i src="/assets/svg/remix/add-line.svg" class="align-bottom"></i>
+					<i
+						src="/assets/svg/remix/add-line.svg"
+						class="align-bottom"></i>
 				</button>
 			</div>
 		</div>
@@ -24,7 +26,9 @@
 				filter-query="$document .chat-list[]"
 				filter-query-key="name.$regex"
 				filter-query-options="i" />
-			<i src="/assets/svg/remix/search-2-line.svg" class="search-icon"></i>
+			<i
+				src="/assets/svg/remix/search-2-line.svg"
+				class="search-icon"></i>
 		</div>
 	</div>
 
@@ -53,9 +57,12 @@
 
 	<div
 		class="text-muted chat-room-list"
-		plugin='{"$SimpleBar": ["$this", {}]}'>
+		scrollbar>
 		<div class="tab-content">
-			<div class="tab-pane pt-3 show" id="chats" role="tabpanel">
+			<div
+				class="tab-pane pt-3 show"
+				id="chats"
+				role="tabpanel">
 				<ul
 					class="list-unstyled chat-list"
 					array="chats"
@@ -94,7 +101,10 @@
 					</li>
 				</ul>
 			</div>
-			<div class="tab-pane pt-3" id="contacts" role="tabpanel">
+			<div
+				class="tab-pane pt-3"
+				id="contacts"
+				role="tabpanel">
 				<ul
 					class="list-unstyled chat-list"
 					array="contacts"
@@ -102,7 +112,9 @@
 					render-query="[template='chat-contact-tab-template']"
 					filter-sort-key="name"
 					filter-sort-direction="asc">
-					<li template="chat-contact-tab-template" class="mb-2">
+					<li
+						template="chat-contact-tab-template"
+						class="mb-2">
 						<a class="d-flex align-items-center">
 							<div class="flex-shrink-0 me-2">
 								<div

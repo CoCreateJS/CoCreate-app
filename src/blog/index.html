@@ -1,49 +1,243 @@
-<!DOCTYPE html>
-<html state-id="theme" lang="en" data-layout="vertical" data-topbar-color="default" data-theme="default" data-theme-colors="default" data-bs-theme="" session src="">
+<!doctype html>
+<html
+	state-id="theme"
+	lang="en"
+	data-layout="vertical"
+	data-topbar-color="default"
+	data-theme="default"
+	data-theme-colors="default"
+	data-bs-theme=""
+	session
+	src="">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
 		<title>CoCreateJS Blog — Runtime Architecture and Engineering</title>
-		<meta name="description" content="Articles about the CoCreateJS distributed runtime, application-aware routing, AST workflows, realtime systems, storage, autoscaling, and open-source infrastructure." />
-		<meta name="keywords" content="CoCreateJS blog, distributed runtime architecture, JavaScript infrastructure, AST workflows, realtime systems, autoscaling" />
-		<meta name="author" content="CoCreate" />
-		<meta name="robots" content="index, follow" />
-		<link rel="canonical" href="https://cocreatejs.com/blog/" />
-		<link rel="icon" type="image/png" href="/assets/images/icons/icon.png" />
-		<link rel="apple-touch-icon" href="/assets/images/icons/180x180.png" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="CoCreateJS Blog" />
-		<meta property="og:description" content="Architecture, engineering, and ideas behind the CoCreateJS distributed runtime." />
-		<meta property="og:url" content="https://cocreatejs.com/blog/" />
-		<meta property="og:image" content="https://cocreatejs.com/assets/images/icons/1640x1640.png" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/css/menu-icon.css" rel="stylesheet" type="text/css" />
+		<meta
+			name="description"
+			content="Articles about the CoCreateJS distributed runtime, application-aware routing, AST workflows, realtime systems, storage, autoscaling, and open-source infrastructure." />
+		<meta
+			name="keywords"
+			content="CoCreateJS blog, distributed runtime architecture, JavaScript infrastructure, AST workflows, realtime systems, autoscaling" />
+		<meta
+			name="author"
+			content="CoCreate" />
+		<meta
+			name="robots"
+			content="index, follow" />
+		<link
+			rel="canonical"
+			href="https://cocreatejs.com/blog/" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/images/icons/icon.png" />
+		<link
+			rel="apple-touch-icon"
+			href="/assets/images/icons/180x180.png" />
+		<meta
+			property="og:type"
+			content="website" />
+		<meta
+			property="og:title"
+			content="CoCreateJS Blog" />
+		<meta
+			property="og:description"
+			content="Architecture, engineering, and ideas behind the CoCreateJS distributed runtime." />
+		<meta
+			property="og:url"
+			content="https://cocreatejs.com/blog/" />
+		<meta
+			property="og:image"
+			content="https://cocreatejs.com/assets/images/icons/1640x1640.png" />
+		<meta
+			name="twitter:card"
+			content="summary_large_image" />
+		<link
+			href="/assets/css/bootstrap.min.css"
+			rel="stylesheet"
+			type="text/css" />
+
+		<link
+			href="/assets/css/menu-icon.css"
+			rel="stylesheet"
+			type="text/css" />
 		<link plugins />
-		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" parse="true" save="false" />
-		<link rel="manifest" href="/manifest.webmanifest" />
+		<link
+			href="/assets/css/index.css"
+			rel="stylesheet"
+			type="text/css" />
+		<link
+			href="/assets/css/custom.css"
+			rel="stylesheet"
+			type="text/css"
+			parse="true"
+			save="false" />
+		<link
+			rel="manifest"
+			href="/manifest.webmanifest" />
 	</head>
 	<body data-bs-spy="scroll">
 		<div class="layout-wrapper landing">
-			<nav src="/components/nav.html" value-type="outerHTML"></nav>
-			<section class="section hero-section bg-light"><div class="container position-relative pt-5"><div class="text-center mx-auto cocreate-section-intro"><p class="text-primary text-uppercase fw-semibold mb-2">CoCreateJS Blog</p><h1 class="display-4 fw-semibold mb-3">Architecture, engineering, and open infrastructure.</h1><p class="lead text-muted mb-0">Explore why the runtime exists, how its pieces work together, and what we are learning while building it.</p></div></div></section>
+			<nav
+				src="/components/nav.html"
+				value-type="outerHTML"></nav>
+			<section class="section hero-section bg-light">
+				<div class="container position-relative pt-5">
+					<div class="text-center mx-auto cocreate-section-intro">
+						<p class="text-primary text-uppercase fw-semibold mb-2">
+							CoCreateJS Blog
+						</p>
+						<h1 class="display-4 fw-semibold mb-3">
+							Architecture, engineering, and open infrastructure.
+						</h1>
+						<p class="lead text-muted mb-0">
+							Explore why the runtime exists, how its pieces work
+							together, and what we are learning while building
+							it.
+						</p>
+					</div>
+				</div>
+			</section>
 
 			<main class="section">
 				<div class="container">
 					<div class="d-flex flex-wrap gap-4">
-						<article class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><span class="badge bg-primary-subtle text-primary">Runtime</span><i src="/assets/svg/remix/cpu-line.svg" class="d-block fs-42 text-primary mt-4"></i><h2 class="fs-20 mt-3">Why CoCreateJS Is a Runtime, Not a Framework</h2><p class="text-muted mb-0">The distinction between rendering applications and providing the distributed capabilities beneath them.</p></div></article>
-						<article class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><span class="badge bg-success-subtle text-success">Architecture</span><i src="/assets/svg/remix/node-tree.svg" class="d-block fs-42 text-success mt-4"></i><h2 class="fs-20 mt-3">Every Node Is a Complete Participant</h2><p class="text-muted mb-0">Why complete peer nodes simplify deployment, replacement, routing, and multi-cloud operation.</p></div></article>
-						<article class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><span class="badge bg-info-subtle text-info">Routing</span><i src="/assets/svg/remix/route-line.svg" class="d-block fs-42 text-info mt-4"></i><h2 class="fs-20 mt-3">Application-Aware Routing with Native HTTP</h2><p class="text-muted mb-0">Keep routing policy in JavaScript and redirect clients without permanently proxying traffic.</p></div></article>
-						<article class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><span class="badge bg-warning-subtle text-warning">API and AST</span><i src="/assets/svg/remix/code-box-line.svg" class="d-block fs-42 text-warning mt-4"></i><h2 class="fs-20 mt-3">Provider-Native APIs Without Provider SDKs</h2><p class="text-muted mb-0">Use documented provider payloads while the runtime manages credentials, authorization, and transport.</p></div></article>
-						<article class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><span class="badge bg-danger-subtle text-danger">Operations</span><i src="/assets/svg/remix/heart-pulse-line.svg" class="d-block fs-42 text-danger mt-4"></i><h2 class="fs-20 mt-3">Self-Healing Workers Without an External Orchestrator</h2><p class="text-muted mb-0">Observe, cordon, redistribute, recover, and scale through integrated runtime coordination.</p></div></article>
-						<article class="card border-0 shadow-sm w-300 flex-grow-1"><div class="card-body p-4"><span class="badge bg-secondary-subtle text-secondary">Data</span><i src="/assets/svg/remix/database-2-line.svg" class="d-block fs-42 text-secondary mt-4"></i><h2 class="fs-20 mt-3">Application Definitions as Structured Data</h2><p class="text-muted mb-0">How shared definitions let stateless nodes change behavior without rebuilding or redeploying.</p></div></article>
+						<article
+							class="card border-0 shadow-sm w-300 flex-grow-1">
+							<div class="card-body p-4">
+								<span
+									class="badge bg-primary-subtle text-primary"
+									>Runtime</span
+								><i
+									src="/assets/svg/remix/cpu-line.svg"
+									class="d-block fs-42 text-primary mt-4"></i>
+								<h2 class="fs-20 mt-3">
+									Why CoCreateJS Is a Runtime, Not a Framework
+								</h2>
+								<p class="text-muted mb-0">
+									The distinction between rendering
+									applications and providing the distributed
+									capabilities beneath them.
+								</p>
+							</div>
+						</article>
+						<article
+							class="card border-0 shadow-sm w-300 flex-grow-1">
+							<div class="card-body p-4">
+								<span
+									class="badge bg-success-subtle text-success"
+									>Architecture</span
+								><i
+									src="/assets/svg/remix/node-tree.svg"
+									class="d-block fs-42 text-success mt-4"></i>
+								<h2 class="fs-20 mt-3">
+									Every Node Is a Complete Participant
+								</h2>
+								<p class="text-muted mb-0">
+									Why complete peer nodes simplify deployment,
+									replacement, routing, and multi-cloud
+									operation.
+								</p>
+							</div>
+						</article>
+						<article
+							class="card border-0 shadow-sm w-300 flex-grow-1">
+							<div class="card-body p-4">
+								<span class="badge bg-info-subtle text-info"
+									>Routing</span
+								><i
+									src="/assets/svg/remix/route-line.svg"
+									class="d-block fs-42 text-info mt-4"></i>
+								<h2 class="fs-20 mt-3">
+									Application-Aware Routing with Native HTTP
+								</h2>
+								<p class="text-muted mb-0">
+									Keep routing policy in JavaScript and
+									redirect clients without permanently
+									proxying traffic.
+								</p>
+							</div>
+						</article>
+						<article
+							class="card border-0 shadow-sm w-300 flex-grow-1">
+							<div class="card-body p-4">
+								<span
+									class="badge bg-warning-subtle text-warning"
+									>API and AST</span
+								><i
+									src="/assets/svg/remix/code-box-line.svg"
+									class="d-block fs-42 text-warning mt-4"></i>
+								<h2 class="fs-20 mt-3">
+									Provider-Native APIs Without Provider SDKs
+								</h2>
+								<p class="text-muted mb-0">
+									Use documented provider payloads while the
+									runtime manages credentials, authorization,
+									and transport.
+								</p>
+							</div>
+						</article>
+						<article
+							class="card border-0 shadow-sm w-300 flex-grow-1">
+							<div class="card-body p-4">
+								<span class="badge bg-danger-subtle text-danger"
+									>Operations</span
+								><i
+									src="/assets/svg/remix/heart-pulse-line.svg"
+									class="d-block fs-42 text-danger mt-4"></i>
+								<h2 class="fs-20 mt-3">
+									Self-Healing Workers Without an External
+									Orchestrator
+								</h2>
+								<p class="text-muted mb-0">
+									Observe, cordon, redistribute, recover, and
+									scale through integrated runtime
+									coordination.
+								</p>
+							</div>
+						</article>
+						<article
+							class="card border-0 shadow-sm w-300 flex-grow-1">
+							<div class="card-body p-4">
+								<span
+									class="badge bg-secondary-subtle text-secondary"
+									>Data</span
+								><i
+									src="/assets/svg/remix/database-2-line.svg"
+									class="d-block fs-42 text-secondary mt-4"></i>
+								<h2 class="fs-20 mt-3">
+									Application Definitions as Structured Data
+								</h2>
+								<p class="text-muted mb-0">
+									How shared definitions let stateless nodes
+									change behavior without rebuilding or
+									redeploying.
+								</p>
+							</div>
+						</article>
 					</div>
-					<div class="alert alert-primary text-center mt-5 mb-0"><i src="/assets/svg/remix/draft-line.svg" class="me-2"></i>Technical articles are being prepared. Follow the project on <a href="https://gitlab.com/CoCreateJS" target="_blank" rel="noopener noreferrer">GitLab</a> for current source and development updates.</div>
+					<div class="alert alert-primary text-center mt-5 mb-0">
+						<i
+							src="/assets/svg/remix/draft-line.svg"
+							class="me-2"></i
+						>Technical articles are being prepared. Follow the
+						project on
+						<a
+							href="https://gitlab.com/CoCreateJS"
+							target="_blank"
+							rel="noopener noreferrer"
+							>GitLab</a
+						>
+						for current source and development updates.
+					</div>
 				</div>
 			</main>
-			<footer src="/components/footer.html" value-type="outerHTML"></footer>
+			<footer
+				src="/components/footer.html"
+				value-type="outerHTML"></footer>
 			<div src="/components/scroll-to-top.html"></div>
 		</div>
 		<script src="../dist/CoCreate.js"></script>

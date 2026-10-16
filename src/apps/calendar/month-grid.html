@@ -74,7 +74,7 @@
 						<p class="text-muted">Don't miss scheduled events</p>
 						<div
 							class="pe-2 me-n1 mb-3"
-							plugin='{"$SimpleBar": ["$this", {}]}'
+							scrollbar
 							style="height: 400px">
 							<div id="upcoming-event-list"></div>
 						</div>
@@ -84,7 +84,9 @@
 						<div class="card-body bg-info-subtle">
 							<div class="d-flex">
 								<div class="flex-shrink-0">
-									<i src="/assets/svg/remix/calendar-line.svg" class="text-info"></i>
+									<i
+										src="/assets/svg/remix/calendar-line.svg"
+										class="text-info"></i>
 								</div>
 								<div class="flex-grow-1 ms-3">
 									<h6 class="fs-15">
@@ -117,15 +119,25 @@
 			<div style="clear: both"></div>
 
 			<!-- Add New Event MODAL -->
-			<div class="modal fade" id="event-modal" tabindex="-1">
+			<div
+				class="modal fade"
+				id="event-modal"
+				tabindex="-1">
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content border-0">
 						<div class="modal-header p-3 bg-info-subtle">
-							<h5 class="modal-title" id="modal-title">Event</h5>
+							<h5
+								class="modal-title"
+								id="modal-title">
+								Event
+							</h5>
 							<button
 								type="button"
 								class="btn-close"
-								aria-hidden="true" aria-controls="event-modal" aria-close aria-expanded="true"></button>
+								aria-hidden="true"
+								aria-controls="event-modal"
+								aria-close
+								aria-expanded="true"></button>
 						</div>
 						<div class="modal-body p-4">
 							<form
@@ -149,7 +161,9 @@
 										<div
 											class="flex-grow-1 d-flex align-items-center">
 											<div class="flex-shrink-0 me-3">
-												<i src="/assets/svg/remix/calendar-event-line.svg" class="text-muted fs-16"></i>
+												<i
+													src="/assets/svg/remix/calendar-event-line.svg"
+													class="text-muted fs-16"></i>
 											</div>
 											<div class="flex-grow-1">
 												<h6
@@ -160,7 +174,9 @@
 									</div>
 									<div class="d-flex align-items-center mb-2">
 										<div class="flex-shrink-0 me-3">
-											<i src="/assets/svg/remix/time-line.svg" class="text-muted fs-16"></i>
+											<i
+												src="/assets/svg/remix/time-line.svg"
+												class="text-muted fs-16"></i>
 										</div>
 										<div class="flex-grow-1">
 											<h6
@@ -175,7 +191,9 @@
 									</div>
 									<div class="d-flex align-items-center mb-2">
 										<div class="flex-shrink-0 me-3">
-											<i src="/assets/svg/remix/map-pin-line.svg" class="text-muted fs-16"></i>
+											<i
+												src="/assets/svg/remix/map-pin-line.svg"
+												class="text-muted fs-16"></i>
 										</div>
 										<div class="flex-grow-1">
 											<h6
@@ -187,7 +205,9 @@
 									</div>
 									<div class="d-flex mb-3">
 										<div class="flex-shrink-0 me-3">
-											<i src="/assets/svg/remix/discuss-line.svg" class="text-muted fs-16"></i>
+											<i
+												src="/assets/svg/remix/discuss-line.svg"
+												class="text-muted fs-16"></i>
 										</div>
 										<div class="flex-grow-1">
 											<p
@@ -205,8 +225,7 @@
 											<select
 												class="form-select d-none"
 												name="category"
-												id="event-category"
-												>
+												id="event-category">
 												<option
 													value="bg-danger-subtle">
 													Danger
@@ -248,7 +267,6 @@
 												type="text"
 												name="title"
 												id="event-title"
-
 												value="" />
 											<div class="invalid-feedback">
 												Please provide a valid event
@@ -266,15 +284,18 @@
 													id="event-start-date"
 													class="form-control flatpickr flatpickr-input"
 													placeholder="Select date"
-													readonly
-													 />
+													readonly />
 												<span class="input-group-text"
-													><i src="/assets/svg/remix/calendar-event-line.svg"></i></span>
+													><i
+														src="/assets/svg/remix/calendar-event-line.svg"></i
+												></span>
 											</div>
 										</div>
 									</div>
 									<!--end col-->
-									<div class="col-12" id="event-time">
+									<div
+										class="col-12"
+										id="event-time">
 										<div class="row">
 											<div class="col-6">
 												<div class="mb-3">
@@ -291,7 +312,9 @@
 															readonly />
 														<span
 															class="input-group-text"
-															><i src="/assets/svg/remix/time-line.svg"></i></span>
+															><i
+																src="/assets/svg/remix/time-line.svg"></i
+														></span>
 													</div>
 												</div>
 											</div>
@@ -310,7 +333,9 @@
 															readonly />
 														<span
 															class="input-group-text"
-															><i src="/assets/svg/remix/time-line.svg"></i></span>
+															><i
+																src="/assets/svg/remix/time-line.svg"></i
+														></span>
 													</div>
 												</div>
 											</div>
@@ -359,7 +384,9 @@
 										type="button"
 										class="btn btn-soft-danger"
 										id="btn-delete-event">
-										<i src="/assets/svg/remix/close-line.svg" class="align-bottom"></i>
+										<i
+											src="/assets/svg/remix/close-line.svg"
+											class="align-bottom"></i>
 										Delete
 									</button>
 									<button

@@ -44,13 +44,21 @@
 </script>
 
 <div class="col-lg-12">
-	<label for="tasks-progress" class="form-label">Add Team Member</label>
-	<div plugin='{"$SimpleBar": ["$this", {}]}' style="height: 95px">
+	<label
+		for="tasks-progress"
+		class="form-label"
+		>Add Team Member</label
+	>
+	<div
+		scrollbar
+		style="height: 95px">
 		<ul
 			class="list-unstyled vstack gap-2 mb-0"
 			render="members"
 			render-as="member">
-			<li template object="{{member.id}}">
+			<li
+				template
+				object="{{member.id}}">
 				<div class="form-check d-flex align-items-center">
 					<input
 						class="form-check-input me-3"

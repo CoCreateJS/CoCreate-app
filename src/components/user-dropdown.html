@@ -1,5 +1,12 @@
 <!-- item-->
-<h6 class="dropdown-header">Welcome <span array="contacts" object="$user_id" key="first_name"></span>!</h6>
+<h6 class="dropdown-header">
+	Welcome
+	<span
+		array="contacts"
+		object="$user_id"
+		key="first_name"></span
+	>!
+</h6>
 <a
 	class="dropdown-item"
 	state-to="offcanvas-app-view"
@@ -13,7 +20,9 @@
 		state-to="offcanvas-app-form"
 		state.array="contacts"
 		state.object="$user_id"></span>
-	<i src="/assets/svg/remix/account-circle-line.svg" class="text-muted fs-16 align-middle me-1"></i>
+	<i
+		src="/assets/svg/remix/account-circle-line.svg"
+		class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Profile</span>
 </a>
 <a
@@ -29,7 +38,9 @@
 		state-to="offcanvas-app-form"
 		state.array="organizations"
 		state.object="$organization_id"></span>
-	<i src="/assets/svg/remix/building-line.svg" class="text-muted fs-16 align-middle me-1"></i>
+	<i
+		src="/assets/svg/remix/building-line.svg"
+		class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Organization</span>
 </a>
 <button
@@ -64,13 +75,13 @@
 	aria-close="false"
 	aria-controls="language-dropdown"
 	title="Select language">
-	<input 
+	<input
 		array="contacts"
 		object="$user_id"
-		key="lang.flag" 
-		input-query="$next" 
+		key="lang.flag"
+		input-query="$next"
 		input.src="$value"
-		hidden>
+		hidden />
 	<i
 		src="/assets/svg/globe.svg"
 		class="d-inline-flex flex-shrink-0 align-middle text-muted me-1 width:16px height:16px"></i>
@@ -78,15 +89,14 @@
 </a>
 
 <div
-	class="dropdown-menu"
+	class="dropdown-menu w-100"
 	id="language-dropdown"
 	role="menu"
 	style="box-shadow: none"
 	aria-close-on="anywhere"
 	aria-hidden="true"
 	aria-close="true"
-	src="/components/language-dropdown.html">
-</div>
+	src="/components/language-dropdown.html"></div>
 
 <div class="dropdown-divider"></div>
 <a
@@ -95,9 +105,13 @@
 	state.src="/apps/settings/index.html"
 	role="menuitem"
 	title="Global settings hub (includes Organization, Security, Integrations and more)">
-	<i src="/assets/svg/remix/settings-3-line.svg" class="text-muted fs-16 align-middle me-1"></i>
+	<i
+		src="/assets/svg/remix/settings-3-line.svg"
+		class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Settings</span>
-	<div state-to="app" state.object="68741e1d07a037d0d6d00eff"></div>
+	<div
+		state-to="app"
+		state.object="68741e1d07a037d0d6d00eff"></div>
 </a>
 <a
 	class="dropdown-item"
@@ -105,9 +119,13 @@
 	state.src="pages/faqs.html"
 	role="menuitem"
 	title="Help & FAQs">
-	<i src="/assets/svg/remix/question-line.svg" class="text-muted fs-16 align-middle me-1"></i>
+	<i
+		src="/assets/svg/remix/question-line.svg"
+		class="text-muted fs-16 align-middle me-1"></i>
 	<span class="align-middle">Help</span>
-	<div state-to="app" state.object=""></div>
+	<div
+		state-to="app"
+		state.object=""></div>
 </a>
 <a
 	class="dropdown-item"
@@ -115,6 +133,12 @@
 	href="/auth/"
 	role="menuitem"
 	title="Sign out">
-	<i src="/assets/svg/remix/logout-box-line.svg" class="text-muted fs-16 align-middle me-1"></i>
-	<span class="align-middle" data-key="t-logout">Logout</span>
+	<i
+		src="/assets/svg/remix/logout-box-line.svg"
+		class="text-muted fs-16 align-middle me-1"></i>
+	<span
+		class="align-middle"
+		data-key="t-logout"
+		>Logout</span
+	>
 </a>

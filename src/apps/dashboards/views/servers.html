@@ -62,166 +62,286 @@
 		min-width: 145px;
 	}
 
-		.server-flex-grid {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 1rem;
-		}
+	.server-flex-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
 
-		.server-summary-item {
-			flex: 1 1 155px;
-			min-width: min(155px, 100%);
-		}
+	.server-summary-item {
+		flex: 1 1 155px;
+		min-width: min(155px, 100%);
+	}
 
-		.server-content-wide {
-			flex: 2 1 560px;
-			min-width: min(320px, 100%);
-		}
+	.server-content-wide {
+		flex: 2 1 560px;
+		min-width: min(320px, 100%);
+	}
 
-		.server-content-narrow {
-			flex: 1 1 280px;
-			min-width: min(260px, 100%);
-		}
+	.server-content-narrow {
+		flex: 1 1 280px;
+		min-width: min(260px, 100%);
+	}
 
-		.server-provider-item {
-			flex: 1 1 145px;
-			min-width: min(135px, 100%);
-		}
+	.server-provider-item {
+		flex: 1 1 145px;
+		min-width: min(135px, 100%);
+	}
 
-		.server-filter-controls {
-			display: flex;
-			flex: 1 1 520px;
-			flex-wrap: wrap;
-			gap: 0.5rem;
-		}
+	.server-filter-controls {
+		display: flex;
+		flex: 1 1 520px;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
 
-		.server-filter-controls > * {
-			flex: 1 1 140px;
-			width: auto !important;
-			min-width: min(140px, 100%);
-		}
+	.server-filter-controls > * {
+		flex: 1 1 140px;
+		width: auto !important;
+		min-width: min(140px, 100%);
+	}
 </style>
 
 <div
 	class="h-100 overflow:unset"
-	plugin='{"$SimpleBar": ["$this", {}]}'>
+	scrollbar>
 	<div class="container-fluid py-3">
 		<div class="d-flex align-items-lg-center flex-lg-row flex-column mb-4">
 			<div class="flex-grow-1">
 				<h4 class="mb-1">Multi-cloud server fleet</h4>
 				<p class="text-muted mb-0">
-					Monitor capacity, health, regions, and worker state across providers.
+					Monitor capacity, health, regions, and worker state across
+					providers.
 				</p>
 			</div>
 			<div class="mt-3 mt-lg-0">
 				<div class="row g-3 mb-0 align-items-center">
 					<div class="col-auto">
-						<button type="button" class="btn btn-primary text-nowrap" state-to="offcanvas-app-view" state.src="/apps/servers/provision.html" aria-controls="offcanvas-app" aria-expanded="false" aria-open>
-							<div state-to="offcanvas-app-form" state.array="servers" state.object=""></div>
-							<i src="/assets/svg/remix/add-line.svg" class="me-1"></i>Provision server
+						<button
+							type="button"
+							class="btn btn-primary text-nowrap"
+							state-to="create-panel-view"
+							state.src="/apps/apis/providers/index.html"
+							aria-controls="create-panel"
+							aria-haspopup="dialog"
+							aria-expanded="false"
+							aria-open
+							aria-label="Deploy a server"
+							title="Deploy a server">
+							<div
+								state-to="apis-providers-title"
+								state.data-provider-name="Cloud"></div>
+							<div
+								state-to="apis-providers-steps"
+								state.hidden="false"></div>
+							<div
+								state-to="create-panel-form"
+								state.$reset
+								state.$unset="$reset"
+								state.array="servers"></div>
+							<i
+								src="/assets/svg/remix/add-line.svg"
+								class="me-1"></i
+							>Provision server
 						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
-			<div class="server-flex-grid mb-4" data-server-state-summary>
-				<div class="server-summary-item">
+		<div
+			class="server-flex-grid mb-4"
+			data-server-state-summary>
+			<div class="server-summary-item">
 				<div class="card h-100 mb-0">
 					<div class="card-body d-flex align-items-center gap-3">
 						<span class="avatar-sm flex-shrink-0">
-							<span class="avatar-title rounded bg-primary-subtle text-primary fs-22">
+							<span
+								class="avatar-title rounded bg-primary-subtle text-primary fs-22">
 								<i src="/assets/svg/remix/server-line.svg"></i>
 							</span>
 						</span>
 						<div>
-							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Servers</p>
-							<h4 class="mb-0" data-state-count="total">0</h4>
+							<p
+								class="text-muted text-uppercase fs-11 fw-semibold mb-1">
+								Servers
+							</p>
+							<h4
+								class="mb-0"
+								data-state-count="total">
+								0
+							</h4>
 						</div>
 					</div>
 				</div>
 			</div>
-				<div class="server-summary-item">
+			<div class="server-summary-item">
 				<div class="card h-100 mb-0">
 					<div class="card-body d-flex align-items-center gap-3">
 						<span class="avatar-sm flex-shrink-0">
-							<span class="avatar-title rounded bg-success-subtle text-success fs-22">
-								<i src="/assets/svg/remix/checkbox-circle-line.svg"></i>
+							<span
+								class="avatar-title rounded bg-success-subtle text-success fs-22">
+								<i
+									src="/assets/svg/remix/checkbox-circle-line.svg"></i>
 							</span>
 						</span>
 						<div>
-							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Running</p>
-							<h4 class="mb-0" data-state-count="running">0</h4>
+							<p
+								class="text-muted text-uppercase fs-11 fw-semibold mb-1">
+								Running
+							</p>
+							<h4
+								class="mb-0"
+								data-state-count="running">
+								0
+							</h4>
 						</div>
 					</div>
 				</div>
 			</div>
-				<div class="server-summary-item">
+			<div class="server-summary-item">
 				<div class="card h-100 mb-0">
 					<div class="card-body d-flex align-items-center gap-3">
 						<span class="avatar-sm flex-shrink-0">
-							<span class="avatar-title rounded bg-warning-subtle text-warning fs-22">
-								<i src="/assets/svg/remix/shield-flash-line.svg"></i>
+							<span
+								class="avatar-title rounded bg-warning-subtle text-warning fs-22">
+								<i
+									src="/assets/svg/remix/shield-flash-line.svg"></i>
 							</span>
 						</span>
 						<div>
-							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Cordoned</p>
-							<h4 class="mb-0" data-state-count="cordoned">0</h4>
+							<p
+								class="text-muted text-uppercase fs-11 fw-semibold mb-1">
+								Cordoned
+							</p>
+							<h4
+								class="mb-0"
+								data-state-count="cordoned">
+								0
+							</h4>
 						</div>
 					</div>
 				</div>
 			</div>
-				<div class="server-summary-item">
+			<div class="server-summary-item">
 				<div class="card h-100 mb-0">
 					<div class="card-body d-flex align-items-center gap-3">
-						<span class="avatar-sm flex-shrink-0"><span class="avatar-title rounded bg-info-subtle text-info fs-22"><i src="/assets/svg/remix/route-line.svg"></i></span></span>
-						<div><p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Shedding</p><h4 class="mb-0" data-state-count="shedding">0</h4></div>
+						<span class="avatar-sm flex-shrink-0"
+							><span
+								class="avatar-title rounded bg-info-subtle text-info fs-22"
+								><i
+									src="/assets/svg/remix/route-line.svg"></i></span
+						></span>
+						<div>
+							<p
+								class="text-muted text-uppercase fs-11 fw-semibold mb-1">
+								Shedding
+							</p>
+							<h4
+								class="mb-0"
+								data-state-count="shedding">
+								0
+							</h4>
+						</div>
 					</div>
 				</div>
 			</div>
-				<div class="server-summary-item">
+			<div class="server-summary-item">
 				<div class="card h-100 mb-0">
 					<div class="card-body d-flex align-items-center gap-3">
-						<span class="avatar-sm flex-shrink-0"><span class="avatar-title rounded bg-warning-subtle text-warning fs-22"><i src="/assets/svg/remix/hourglass-line.svg"></i></span></span>
-						<div><p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Draining</p><h4 class="mb-0" data-state-count="draining">0</h4></div>
+						<span class="avatar-sm flex-shrink-0"
+							><span
+								class="avatar-title rounded bg-warning-subtle text-warning fs-22"
+								><i
+									src="/assets/svg/remix/hourglass-line.svg"></i></span
+						></span>
+						<div>
+							<p
+								class="text-muted text-uppercase fs-11 fw-semibold mb-1">
+								Draining
+							</p>
+							<h4
+								class="mb-0"
+								data-state-count="draining">
+								0
+							</h4>
+						</div>
 					</div>
 				</div>
 			</div>
-				<div class="server-summary-item">
+			<div class="server-summary-item">
 				<div class="card h-100 mb-0">
 					<div class="card-body d-flex align-items-center gap-3">
-						<span class="avatar-sm flex-shrink-0"><span class="avatar-title rounded bg-primary-subtle text-primary fs-22"><i src="/assets/svg/remix/restart-line.svg"></i></span></span>
-						<div><p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Rebooting</p><h4 class="mb-0" data-state-count="rebooting">0</h4></div>
+						<span class="avatar-sm flex-shrink-0"
+							><span
+								class="avatar-title rounded bg-primary-subtle text-primary fs-22"
+								><i
+									src="/assets/svg/remix/restart-line.svg"></i></span
+						></span>
+						<div>
+							<p
+								class="text-muted text-uppercase fs-11 fw-semibold mb-1">
+								Rebooting
+							</p>
+							<h4
+								class="mb-0"
+								data-state-count="rebooting">
+								0
+							</h4>
+						</div>
 					</div>
 				</div>
 			</div>
-				<div class="server-summary-item">
+			<div class="server-summary-item">
 				<div class="card h-100 mb-0">
 					<div class="card-body d-flex align-items-center gap-3">
 						<span class="avatar-sm flex-shrink-0">
-							<span class="avatar-title rounded bg-danger-subtle text-danger fs-22">
-								<i src="/assets/svg/remix/stop-circle-line.svg"></i>
+							<span
+								class="avatar-title rounded bg-danger-subtle text-danger fs-22">
+								<i
+									src="/assets/svg/remix/stop-circle-line.svg"></i>
 							</span>
 						</span>
 						<div>
-							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Stopped</p>
-							<h4 class="mb-0" data-state-count="stopped">0</h4>
+							<p
+								class="text-muted text-uppercase fs-11 fw-semibold mb-1">
+								Stopped
+							</p>
+							<h4
+								class="mb-0"
+								data-state-count="stopped">
+								0
+							</h4>
 						</div>
 					</div>
 				</div>
 			</div>
-				<div class="server-summary-item">
+			<div class="server-summary-item">
 				<div class="card h-100 mb-0">
 					<div class="card-body d-flex align-items-center gap-3">
 						<span class="avatar-sm flex-shrink-0">
-							<span class="avatar-title rounded bg-info-subtle text-info fs-22">
+							<span
+								class="avatar-title rounded bg-info-subtle text-info fs-22">
 								<i src="/assets/svg/remix/pulse-line.svg"></i>
 							</span>
 						</span>
 						<div>
-							<p class="text-muted text-uppercase fs-11 fw-semibold mb-1">Average usage</p>
-							<div class="text-nowrap fs-12">CPU <strong><span data-average-cpu>—</span>%</strong></div>
-							<div class="text-nowrap fs-12">Memory <strong><span data-average-memory>—</span>%</strong></div>
+							<p
+								class="text-muted text-uppercase fs-11 fw-semibold mb-1">
+								Average usage
+							</p>
+							<div class="text-nowrap fs-12">
+								CPU
+								<strong
+									><span data-average-cpu>—</span>%</strong
+								>
+							</div>
+							<div class="text-nowrap fs-12">
+								Memory
+								<strong
+									><span data-average-memory>—</span>%</strong
+								>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -233,25 +353,57 @@
 				<div class="flex-grow-1">
 					<h5 class="card-title mb-1">Global server footprint</h5>
 					<p class="text-muted fs-12 mb-0">
-						Select a marker to inspect the server operating at that location.
+						Select a marker to inspect the server operating at that
+						location.
 					</p>
 				</div>
-				<div class="d-flex flex-wrap align-items-center gap-3 fs-12 text-muted">
-					<span><i src="/assets/svg/remix/checkbox-blank-circle-fill.svg" class="text-success me-1"></i>Running</span>
-					<span><i src="/assets/svg/remix/checkbox-blank-circle-fill.svg" class="text-warning me-1"></i>Cordoned</span>
-					<span><i src="/assets/svg/remix/checkbox-blank-circle-fill.svg" class="text-info me-1"></i>Shedding</span>
-					<span><i src="/assets/svg/remix/checkbox-blank-circle-fill.svg" class="text-warning-emphasis me-1"></i>Draining</span>
-					<span><i src="/assets/svg/remix/checkbox-blank-circle-fill.svg" class="text-primary me-1"></i>Rebooting</span>
-					<span><i src="/assets/svg/remix/checkbox-blank-circle-fill.svg" class="text-danger me-1"></i>Stopped</span>
+				<div
+					class="d-flex flex-wrap align-items-center gap-3 fs-12 text-muted">
+					<span
+						><i
+							src="/assets/svg/remix/checkbox-blank-circle-fill.svg"
+							class="text-success me-1"></i
+						>Running</span
+					>
+					<span
+						><i
+							src="/assets/svg/remix/checkbox-blank-circle-fill.svg"
+							class="text-warning me-1"></i
+						>Cordoned</span
+					>
+					<span
+						><i
+							src="/assets/svg/remix/checkbox-blank-circle-fill.svg"
+							class="text-info me-1"></i
+						>Shedding</span
+					>
+					<span
+						><i
+							src="/assets/svg/remix/checkbox-blank-circle-fill.svg"
+							class="text-warning-emphasis me-1"></i
+						>Draining</span
+					>
+					<span
+						><i
+							src="/assets/svg/remix/checkbox-blank-circle-fill.svg"
+							class="text-primary me-1"></i
+						>Rebooting</span
+					>
+					<span
+						><i
+							src="/assets/svg/remix/checkbox-blank-circle-fill.svg"
+							class="text-danger me-1"></i
+						>Stopped</span
+					>
 				</div>
 			</div>
-				<div class="card-body server-map-scroll">
-					<div
-						id="server-world-map"
-						data-server-map
-						dir="ltr"
-						style="height: calc(100dvh - 190px); min-height: 520px"
-						plugin='{"$jsVectorMap": [{"map": "world", "selector": "#server-world-map", "zoomOnScroll": false, "zoomButtons": true, "markers": [], "regionStyle": {"initial": {"stroke": "#9599ad", "strokeWidth": 0.25, "fill": "#e9ebec", "fillOpacity": 1}}, "markerStyle": {"initial": {"r": 7, "fill": "#0ab39c", "stroke": "#ffffff", "strokeWidth": 3}}}]}'></div>
+			<div class="card-body server-map-scroll">
+				<div
+					id="server-world-map"
+					data-server-map
+					dir="ltr"
+					style="height: calc(100dvh - 190px); min-height: 520px"
+					plugin='{"$jsVectorMap": [{"map": "world", "selector": "#server-world-map", "zoomOnScroll": false, "zoomButtons": true, "markers": [], "regionStyle": {"initial": {"stroke": "#9599ad", "strokeWidth": 0.25, "fill": "#e9ebec", "fillOpacity": 1}}, "markerStyle": {"initial": {"r": 7, "fill": "#0ab39c", "stroke": "#ffffff", "strokeWidth": 3}}}]}'></div>
 				<div
 					class="d-none"
 					data-server-map-records
@@ -279,7 +431,10 @@
 							aria-controls="offcanvas-app"
 							aria-expanded="false"
 							aria-open>
-							<div state-to="offcanvas-app-form" state.array="servers" state.object="{{object._id}}"></div>
+							<div
+								state-to="offcanvas-app-form"
+								state.array="servers"
+								state.object="{{object._id}}"></div>
 						</button>
 					</div>
 				</div>
@@ -296,57 +451,122 @@
 			</div>
 		</div>
 
-			<div class="server-flex-grid mb-4">
-				<div class="server-content-wide">
+		<div class="server-flex-grid mb-4">
+			<div class="server-content-wide">
 				<div class="card h-100 mb-0">
-					<div class="card-header d-flex flex-wrap align-items-center gap-2">
+					<div
+						class="card-header d-flex flex-wrap align-items-center gap-2">
 						<div class="flex-grow-1">
 							<h5 class="card-title mb-1">Fleet capacity</h5>
-							<p class="text-muted fs-12 mb-0">Current distribution by cloud provider</p>
+							<p class="text-muted fs-12 mb-0">
+								Current distribution by cloud provider
+							</p>
 						</div>
-						<span class="badge bg-primary-subtle text-primary">Live inventory</span>
+						<span class="badge bg-primary-subtle text-primary"
+							>Live inventory</span
+						>
 					</div>
-						<div class="card-body">
-							<div class="server-flex-grid text-center">
-								<div class="server-provider-item">
-								<div class="border border-dashed rounded p-3 h-100">
-									<i src="/assets/svg/remix/amazon-line.svg" class="fs-24 text-warning"></i>
-									<h4 class="mt-2 mb-1" array="servers" object key="$length" filter-query-key="infrastructure.provider.$regex" filter-query-value="aws|amazon" filter-query-options="i" filter-limit>0</h4>
+					<div class="card-body">
+						<div class="server-flex-grid text-center">
+							<div class="server-provider-item">
+								<div
+									class="border border-dashed rounded p-3 h-100">
+									<i
+										src="/assets/svg/remix/amazon-line.svg"
+										class="fs-24 text-warning"></i>
+									<h4
+										class="mt-2 mb-1"
+										array="servers"
+										object
+										key="$length"
+										filter-query-key="infrastructure.provider.$regex"
+										filter-query-value="aws|amazon"
+										filter-query-options="i"
+										filter-limit>
+										0
+									</h4>
 									<span class="text-muted fs-12">AWS</span>
 								</div>
 							</div>
-								<div class="server-provider-item">
-								<div class="border border-dashed rounded p-3 h-100">
-									<i src="/assets/svg/remix/google-line.svg" class="fs-24 text-primary"></i>
-									<h4 class="mt-2 mb-1" array="servers" object key="$length" filter-query-key="infrastructure.provider.$regex" filter-query-value="gcp|google" filter-query-options="i" filter-limit>0</h4>
-									<span class="text-muted fs-12">Google Cloud</span>
+							<div class="server-provider-item">
+								<div
+									class="border border-dashed rounded p-3 h-100">
+									<i
+										src="/assets/svg/remix/google-line.svg"
+										class="fs-24 text-primary"></i>
+									<h4
+										class="mt-2 mb-1"
+										array="servers"
+										object
+										key="$length"
+										filter-query-key="infrastructure.provider.$regex"
+										filter-query-value="gcp|google"
+										filter-query-options="i"
+										filter-limit>
+										0
+									</h4>
+									<span class="text-muted fs-12"
+										>Google Cloud</span
+									>
 								</div>
 							</div>
-								<div class="server-provider-item">
-								<div class="border border-dashed rounded p-3 h-100">
-									<i src="/assets/svg/remix/microsoft-line.svg" class="fs-24 text-info"></i>
-									<h4 class="mt-2 mb-1" array="servers" object key="$length" filter-query-key="infrastructure.provider.$regex" filter-query-value="azure|microsoft" filter-query-options="i" filter-limit>0</h4>
+							<div class="server-provider-item">
+								<div
+									class="border border-dashed rounded p-3 h-100">
+									<i
+										src="/assets/svg/remix/microsoft-line.svg"
+										class="fs-24 text-info"></i>
+									<h4
+										class="mt-2 mb-1"
+										array="servers"
+										object
+										key="$length"
+										filter-query-key="infrastructure.provider.$regex"
+										filter-query-value="azure|microsoft"
+										filter-query-options="i"
+										filter-limit>
+										0
+									</h4>
 									<span class="text-muted fs-12">Azure</span>
 								</div>
 							</div>
-								<div class="server-provider-item">
-								<div class="border border-dashed rounded p-3 h-100">
-									<i src="/assets/svg/remix/cloud-line.svg" class="fs-24 text-danger"></i>
-									<h4 class="mt-2 mb-1" array="servers" object key="$length" filter-query-key="infrastructure.provider.$regex" filter-query-value="oci|oracle" filter-query-options="i" filter-limit>0</h4>
-									<span class="text-muted fs-12">Oracle Cloud</span>
+							<div class="server-provider-item">
+								<div
+									class="border border-dashed rounded p-3 h-100">
+									<i
+										src="/assets/svg/remix/cloud-line.svg"
+										class="fs-24 text-danger"></i>
+									<h4
+										class="mt-2 mb-1"
+										array="servers"
+										object
+										key="$length"
+										filter-query-key="infrastructure.provider.$regex"
+										filter-query-value="oci|oracle"
+										filter-query-options="i"
+										filter-limit>
+										0
+									</h4>
+									<span class="text-muted fs-12"
+										>Oracle Cloud</span
+									>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-				<div class="server-content-narrow">
-					<div class="card h-100 mb-0">
+			<div class="server-content-narrow">
+				<div class="card h-100 mb-0">
 					<div class="card-header">
 						<h5 class="card-title mb-1">Active fleet telemetry</h5>
-						<p class="text-muted fs-12 mb-0">Average of each active server's latest sample</p>
+						<p class="text-muted fs-12 mb-0">
+							Average of each active server's latest sample
+						</p>
 					</div>
-					<div class="card-body" data-active-telemetry-summary>
+					<div
+						class="card-body"
+						data-active-telemetry-summary>
 						<div class="d-flex justify-content-between mb-3">
 							<span class="text-muted">Active servers</span>
 							<span data-active-server-count>0</span>
@@ -365,11 +585,15 @@
 						</div>
 						<div class="d-flex justify-content-between">
 							<span class="text-muted">Latest sample</span>
-							<span class="text-muted fs-12" data-latest-sample>—</span>
+							<span
+								class="text-muted fs-12"
+								data-latest-sample
+								>—</span
+							>
 						</div>
 					</div>
+				</div>
 			</div>
-		</div>
 		</div>
 
 		<div class="card mb-3">
@@ -377,7 +601,9 @@
 				<div class="d-flex flex-wrap align-items-center gap-3">
 					<div class="flex-grow-1">
 						<h5 class="card-title mb-1">Servers</h5>
-						<p class="text-muted fs-12 mb-0">Filter and inspect the active multi-region fleet.</p>
+						<p class="text-muted fs-12 mb-0">
+							Filter and inspect the active multi-region fleet.
+						</p>
 					</div>
 					<div class="server-filter-controls">
 						<input
@@ -423,7 +649,10 @@
 			</div>
 			<div class="card-body p-0">
 				<div class="table-responsive">
-					<table id="server-fleet-table" class="table table-hover align-middle mb-0" aria-label="Multi-cloud server fleet">
+					<table
+						id="server-fleet-table"
+						class="table table-hover align-middle mb-0"
+						aria-label="Multi-cloud server fleet">
 						<thead>
 							<tr>
 								<th>Server</th>
@@ -443,7 +672,10 @@
 							filter-sort-key="modified.on"
 							filter-sort-direction="desc"
 							filter-limit="100">
-							<tr template="server-fleet-row" data-server-row data-server-id="{{object._id}}">
+							<tr
+								template="server-fleet-row"
+								data-server-row
+								data-server-id="{{object._id}}">
 								<td>
 									<a
 										role="button"
@@ -454,21 +686,45 @@
 										aria-controls="offcanvas-app"
 										aria-expanded="false"
 										aria-open>
-										<div state-to="offcanvas-app-form" state.array="servers" state.object="{{object._id}}"></div>
+										<div
+											state-to="offcanvas-app-form"
+											state.array="servers"
+											state.object="{{object._id}}"></div>
 										{{object.host}}
 									</a>
-									<div class="text-muted fs-12"><code>{{object.ip}}</code></div>
+									<div class="text-muted fs-12">
+										<code>{{object.ip}}</code>
+									</div>
 								</td>
 								<td>{{object.infrastructure.provider}}</td>
 								<td>
 									<div>{{object.infrastructure.region}}</div>
-									<div class="text-muted fs-12">{{object.infrastructure.zone}}</div>
+									<div class="text-muted fs-12">
+										{{object.infrastructure.zone}}
+									</div>
 								</td>
 								<td>{{object.totalWorkers}}</td>
-								<td><span class="badge bg-secondary-subtle text-secondary text-uppercase">{{object.status}}</span></td>
+								<td>
+									<span
+										class="badge bg-secondary-subtle text-secondary text-uppercase"
+										>{{object.status}}</span
+									>
+								</td>
 								<td class="text-nowrap">
-									<div class="fs-12">CPU <strong><span data-server-cpu>—</span>%</strong></div>
-									<div class="fs-12">Memory <strong><span data-server-memory>—</span>%</strong></div>
+									<div class="fs-12">
+										CPU
+										<strong
+											><span data-server-cpu>—</span
+											>%</strong
+										>
+									</div>
+									<div class="fs-12">
+										Memory
+										<strong
+											><span data-server-memory>—</span
+											>%</strong
+										>
+									</div>
 								</td>
 								<td class="text-end">
 									<button
@@ -480,8 +736,12 @@
 										aria-controls="offcanvas-app"
 										aria-expanded="false"
 										aria-open>
-										<div state-to="offcanvas-app-form" state.array="servers" state.object="{{object._id}}"></div>
-										<i src="/assets/svg/remix/eye-line.svg"></i>
+										<div
+											state-to="offcanvas-app-form"
+											state.array="servers"
+											state.object="{{object._id}}"></div>
+										<i
+											src="/assets/svg/remix/eye-line.svg"></i>
 									</button>
 								</td>
 							</tr>

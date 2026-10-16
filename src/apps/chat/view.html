@@ -8,7 +8,7 @@
 			<div
 				class="chat-conversation p-3 p-lg-4"
 				id="chat-conversation"
-				plugin='{"$SimpleBar": ["$this", {}]}'>
+				scrollbar>
 				<div></div>
 				<ul
 					class="list-unstyled chat-conversation-list"
@@ -87,7 +87,8 @@
 
 											<span
 												class="text-success check-message-icon">
-												<i src="/assets/svg/remix/check-double-line.svg"></i>
+												<i
+													src="/assets/svg/remix/check-double-line.svg"></i>
 											</span>
 										</div>
 									</div>
@@ -100,7 +101,8 @@
 											aria-controls="message-menu-{{object._id}}"
 											aria-haspopup="true"
 											aria-expanded="false">
-											<i src="/assets/svg/remix/more-2-fill.svg"></i>
+											<i
+												src="/assets/svg/remix/more-2-fill.svg"></i>
 										</a>
 										<div
 											class="dropdown-menu"
@@ -111,25 +113,33 @@
 											<a
 												class="dropdown-item reply-message"
 												href="#">
-												<i src="/assets/svg/remix/reply-line.svg" class="me-2 text-muted align-bottom"></i>
+												<i
+													src="/assets/svg/remix/reply-line.svg"
+													class="me-2 text-muted align-bottom"></i>
 												Reply
 											</a>
 											<a
 												class="dropdown-item"
 												href="#">
-												<i src="/assets/svg/remix/share-line.svg" class="me-2 text-muted align-bottom"></i>
+												<i
+													src="/assets/svg/remix/share-line.svg"
+													class="me-2 text-muted align-bottom"></i>
 												Forward
 											</a>
 											<a
 												class="dropdown-item copy-message"
 												href="#">
-												<i src="/assets/svg/remix/file-copy-line.svg" class="me-2 text-muted align-bottom"></i>
+												<i
+													src="/assets/svg/remix/file-copy-line.svg"
+													class="me-2 text-muted align-bottom"></i>
 												Copy
 											</a>
 											<a
 												class="dropdown-item"
 												href="#">
-												<i src="/assets/svg/remix/bookmark-line.svg" class="me-2 text-muted align-bottom"></i>
+												<i
+													src="/assets/svg/remix/bookmark-line.svg"
+													class="me-2 text-muted align-bottom"></i>
 												Bookmark
 											</a>
 											<a
@@ -143,7 +153,9 @@
 												state.actions="delete, action($document [aria-controls='offcanvas-app'][aria-label='Close'])"
 												state.array=""
 												state.object="{{object._id}}">
-												<i src="/assets/svg/remix/delete-bin-5-line.svg" class="me-2 text-muted align-bottom"></i>
+												<i
+													src="/assets/svg/remix/delete-bin-5-line.svg"
+													class="me-2 text-muted align-bottom"></i>
 												Delete
 											</a>
 										</div>
@@ -202,7 +214,9 @@
 									type="button"
 									class="btn btn-link text-decoration-none emoji-btn"
 									id="emoji-btn">
-									<i src="/assets/svg/remix/emotion-line.svg" class="align-middle"></i>
+									<i
+										src="/assets/svg/remix/emotion-line.svg"
+										class="align-middle"></i>
 								</button>
 							</div>
 						</div>
@@ -239,7 +253,9 @@
 									click-query="$closest .chat-content .simplebar-content-wrapper"
 									click.scroll-to="bottom"
 									actions="save, click, reset">
-									<i src="/assets/svg/remix/send-plane-2-fill.svg" class="align-bottom"></i>
+									<i
+										src="/assets/svg/remix/send-plane-2-fill.svg"
+										class="align-bottom"></i>
 								</button>
 							</div>
 						</div>
@@ -266,7 +282,9 @@
 								type="button"
 								id="close_toggle"
 								class="btn btn-sm btn-link mt-n2 me-n3 fs-18">
-								<i src="/assets/svg/remix/close-line.svg" class="align-middle"></i>
+								<i
+									src="/assets/svg/remix/close-line.svg"
+									class="align-middle"></i>
 							</button>
 						</div>
 					</div>

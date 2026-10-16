@@ -8,7 +8,9 @@
 		key="{{object.type === 'storage' ? 'storageProviders' : 'providers'}}"
 		value="{{object._id}}"
 		data-provider="{{object.provider}}"
-		data-api-url="{{object.url}}" />
+		data-api-url="{{object.url}}"
+		filter-query="$document #first-deployment-provider-options"
+		filter-query-key="_id.$in" />
 	<div
 		class="flex-grow-1 min-width:0"
 		src="/apps/apis/templates/list.html"></div>

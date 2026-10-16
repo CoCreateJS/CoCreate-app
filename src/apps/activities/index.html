@@ -4,7 +4,8 @@
 <link
 	rel="stylesheet"
 	href="/components/offcanvas-app/header.css" />
-<header class="card-header offcanvas-app-topbar flex-shrink-0 justify-content-between">
+<header
+	class="card-header offcanvas-app-topbar flex-shrink-0 justify-content-between">
 	<h5 class="mb-0">Recent activities</h5>
 	<div class="d-flex align-items-center gap-1">
 		<button
@@ -14,7 +15,10 @@
 			state.docked="true"
 			aria-label="Dock"
 			title="Dock">
-			<i src="/assets/svg/remix/layout-right-line.svg" class="fs-22" aria-hidden="true"></i>
+			<i
+				src="/assets/svg/remix/layout-right-line.svg"
+				class="fs-22"
+				aria-hidden="true"></i>
 		</button>
 		<button
 			type="button"
@@ -23,7 +27,10 @@
 			state.docked="false"
 			aria-label="Undock"
 			title="Undock">
-			<i src="/assets/svg/remix/layout-right-2-line.svg" class="fs-22" aria-hidden="true"></i>
+			<i
+				src="/assets/svg/remix/layout-right-2-line.svg"
+				class="fs-22"
+				aria-hidden="true"></i>
 		</button>
 		<button
 			type="button"
@@ -34,13 +41,16 @@
 			aria-close
 			aria-expanded="true"
 			title="Close">
-			<i src="/assets/svg/remix/close-line.svg" class="fs-22" aria-hidden="true"></i>
+			<i
+				src="/assets/svg/remix/close-line.svg"
+				class="fs-22"
+				aria-hidden="true"></i>
 		</button>
 	</div>
 </header>
 <div
 	class="card-body activities-scroll"
-	plugin='{"$SimpleBar": ["$this", {}]}'>
+	scrollbar>
 	<div
 		id="activities-list"
 		class="activity-panel d-flex flex-column gap-3"

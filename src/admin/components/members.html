@@ -5,18 +5,25 @@
 	aria-labelledby="inviteMembersModalLabel"
 	aria-modal="true"
 	role="dialog">
-	<div class="card card-sm" aria-close-on="outside">
+	<div
+		class="card card-sm"
+		aria-close-on="outside">
 		<div
 			class="card-header d-flex justify-content-between ps-4 bg-success-subtle">
-			<h5 class="card-title" id="inviteMembersModalLabel">Members</h5>
+			<h5
+				class="card-title"
+				id="inviteMembersModalLabel">
+				Members
+			</h5>
 			<button
 				type="button"
 				class="btn-close"
 				aria-label="Close"
 				aria-controls="inviteMembersModal"
-				aria-expanded="true" aria-close></button>
+				aria-expanded="true"
+				aria-close></button>
 		</div>
-		<div class="card-body p-4" >
+		<div class="card-body p-4">
 			<div class="mb-4 d-flex align-items-center">
 				<div class="me-2">
 					<h5 class="mb-0 fs-13">Members :</h5>
@@ -28,7 +35,6 @@
 					key="members"
 					render-query="[template='member-avatar-template']">
 					<div
-
 						template="member-avatar-template"
 						class="avatar-group-item"
 						data-bs-trigger="hover"
@@ -37,10 +43,20 @@
 						data-bs-original-title="{{members}}"
 						click.object="{{members}}"
 						click-query="$closest .card-body .member-view">
-						<div class="avatar-xs rounded-circle position-relative overflow-hidden">
-							<div class="avatar-title bg-secondary-subtle text-secondary material-shadow">
-								<span array="contacts" object="{{members}}" key="first_name" class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"></span>
-								<span array="contacts" object="{{members}}" key="last_name" class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"></span>
+						<div
+							class="avatar-xs rounded-circle position-relative overflow-hidden">
+							<div
+								class="avatar-title bg-secondary-subtle text-secondary material-shadow">
+								<span
+									array="contacts"
+									object="{{members}}"
+									key="first_name"
+									class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"></span>
+								<span
+									array="contacts"
+									object="{{members}}"
+									key="last_name"
+									class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"></span>
 								<img
 									src="/assets/images/transparent.png"
 									alt=""
@@ -50,7 +66,11 @@
 									key="avatar[0].src"
 									width="100%"
 									height="100%"
-									onerror="this.onerror=null; this.src='../assets/images/transparent.png';" />
+									onerror="
+										this.onerror = null;
+										this.src =
+											'../assets/images/transparent.png';
+									" />
 							</div>
 						</div>
 					</div>
@@ -62,14 +82,15 @@
 					type="text"
 					class="form-control bg-light border-light"
 					placeholder="Search here..." />
-				<i src="/assets/svg/remix/search-line.svg" class="search-icon"></i>
+				<i
+					src="/assets/svg/remix/search-line.svg"
+					class="search-icon"></i>
 			</div>
 
 			<div
 				class="simplebar-scrollable-y"
-				plugin='{"$SimpleBar": ["$this", {}]}'
+				scrollbar
 				style="max-height: 225px">
-
 				<div
 					id="members-list"
 					class="vstack gap-3"
@@ -79,13 +100,23 @@
 					filter-sort-direction="asc"
 					filter-limit
 					render-query="div[template]">
-					<div class="d-flex align-items-center" template>
+					<div
+						class="d-flex align-items-center"
+						template>
 						<!-- avatar start -->
 						<div class="d-flex align-items-center w-100">
-							<div class="avatar-xs rounded-circle position-relative overflow-hidden">
-								<div class="avatar-title bg-secondary-subtle text-secondary material-shadow">
-									<span class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem">{{object.first_name}}</span>
-									<span class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem">{{object.last_name}}</span>
+							<div
+								class="avatar-xs rounded-circle position-relative overflow-hidden">
+								<div
+									class="avatar-title bg-secondary-subtle text-secondary material-shadow">
+									<span
+										class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"
+										>{{object.first_name}}</span
+									>
+									<span
+										class="overflow-hidden max-width:1.3ch letter-spacing:1em height:1rem"
+										>{{object.last_name}}</span
+									>
 									<img
 										class="position-absolute object-fit-cover"
 										src="/assets/images/transparent.png"
@@ -94,27 +125,40 @@
 										key="avatar[0].src"
 										alt="Member Avatar"
 										width="100%"
-										height="100%"/>
+										height="100%" />
 								</div>
 							</div>
 							<div class="flex-grow-1">
-								<span class="d-none d-sm-inline-block ms-1 fw-medium user-name-text">
+								<span
+									class="d-none d-sm-inline-block ms-1 fw-medium user-name-text">
 									<span>{{object.name}}</span>
 								</span>
-								<span class="d-none d-sm-block ms-1 fs-12 user-name-sub-text">{{object.title}}</span>
+								<span
+									class="d-none d-sm-block ms-1 fs-12 user-name-sub-text"
+									>{{object.title}}</span
+								>
 							</div>
 							<div class="flex-shrink-0">
-								<button type="button" class="btn btn-light btn-sm" key="members.$push" value="{{object._id}}" click.save click-query="next">Add</button>
-								<input type="hidden" key="members.$push" value="{{object._id}}" />
+								<button
+									type="button"
+									class="btn btn-light btn-sm"
+									key="members.$push"
+									value="{{object._id}}"
+									click.save
+									click-query="next">
+									Add
+								</button>
+								<input
+									type="hidden"
+									key="members.$push"
+									value="{{object._id}}" />
 							</div>
 						</div>
 						<!-- avatar end -->
 					</div>
 				</div>
 			</div>
-			<div class="member-view">
-
-			</div>
+			<div class="member-view"></div>
 		</div>
 		<!-- End Card Body-->
 		<div class="card-footer d-flex justify-content-end gap-2">
@@ -122,10 +166,15 @@
 				type="button"
 				class="btn btn-light w-xs"
 				aria-controls="inviteMembersModal"
-				aria-expanded="true" aria-close>
+				aria-expanded="true"
+				aria-close>
 				Cancel
 			</button>
-			<button type="button" class="btn btn-success w-xs">Invite</button>
+			<button
+				type="button"
+				class="btn btn-success w-xs">
+				Invite
+			</button>
 		</div>
 		<!-- end modal-content -->
 	</div>
