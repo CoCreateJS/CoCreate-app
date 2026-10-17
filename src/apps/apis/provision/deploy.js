@@ -4,62 +4,28 @@
     if (!root || root.dataset.clusterDeployReady === "true") return;
     root.dataset.clusterDeployReady = "true";
 
-    const waitForCrud = () => {
-        const crud = globalThis.CoCreate?.crud;
-        if (crud?.send) return Promise.resolve(crud);
-        return new Promise((resolve) => {
-            const loaded = () => {
-                const current = globalThis.CoCreate?.crud;
-                if (!current?.send) return;
-                document.removeEventListener("crudLoaded", loaded);
-                resolve(current);
-            };
-            document.addEventListener("crudLoaded", loaded);
-        });
+    const loadProfile = (provider) => {
+        const records = root.querySelectorAll(
+            '#first-deployment-profiles [data-provider][data-enabled="true"]'
+        );
+        const record = Array.from(records).find(
+            (item) => item.dataset.provider === provider
+        );
+        const config = record?.querySelector("pre")?.textContent;
+        if (!config) return {};
+        try {
+            return JSON.parse(config)[`clouds.${provider}`] || {};
+        } catch {
+            return {};
+        }
     };
 
-    const getResponseObjects = (response) => Array.isArray(response)
-        ? response
-        : Array.isArray(response?.object)
-            ? response.object
-            : Array.isArray(response?.data?.object)
-                ? response.data.object
-                : [];
-
-    const profiles = new Map();
-    const loadProfile = async (provider) => {
-        if (profiles.has(provider)) return profiles.get(provider);
-        const crud = await waitForCrud();
-        const response = await crud.send({
-            method: "object.read",
-            array: "servers_config",
-            filter: {
-                query: { type: "autoscaler", provider, enabled: true },
-                limit: 1
-            }
-        });
-        const record = getResponseObjects(response)[0];
-        const profile = record?.config?.[`clouds.${provider}`] || {};
-        profiles.set(provider, profile);
-        return profile;
-    };
-
-    const syncProvider = async () => {
+    const syncProvider = () => {
         const select = root.querySelector(
             '#first-deployment-form [key="infrastructure.provider"]'
         );
-        const apiId = select?.selectedOptions?.[0]?.dataset.apiId || "";
-        for (const input of root.querySelectorAll(
-            "#first-deployment-api-id, #first-deployment-infrastructure-api-id"
-        )) {
-            input.value = apiId;
-        }
         const provider = select?.getValue?.() || select?.value;
-        const requiredProvider = root.querySelector(
-            "#first-deployment-provider-required"
-        );
-        if (requiredProvider) requiredProvider.value = provider || "";
-        const profile = await loadProfile(provider);
+        const profile = loadProfile(provider);
         syncRegions(profile);
         syncInstance(profile);
     };
@@ -92,18 +58,9 @@
         const instances = profile.instances || [];
         const instance = instances.find((candidate) => candidate.default) ||
             instances[0];
-        if (!instance) return;
-        root.querySelector("#first-deployment-vm-type").value = instance.name;
-        root.querySelector("#first-deployment-vcpu").value = instance.vCPU;
-        root.querySelector("#first-deployment-memory").value = instance.memoryGb;
-    };
-
-    const syncEnvironment = (serverId, clusterId) => {
-        root.querySelector("#first-deployment-server-id").value = serverId;
-        root.querySelector("#first-deployment-environment").value = [
-            `server_id=${serverId}`,
-            `cluster_id=${clusterId}`
-        ].join("\n");
+        root.querySelector("#first-deployment-vm-type").value = instance?.name || "";
+        root.querySelector("#first-deployment-vcpu").value = instance?.vCPU ?? "";
+        root.querySelector("#first-deployment-memory").value = instance?.memoryGb ?? "";
     };
 
     root.addEventListener("change", (event) => {
@@ -111,9 +68,12 @@
         syncProvider();
     });
 
+    root.addEventListener("fetchedData", (event) => {
+        if (event.target.id === "first-deployment-profiles") syncProvider();
+    });
+
     root.addEventListener("click", (event) => {
         if (!event.target.closest("#show-first-deployment")) return;
-        syncProvider();
         const selected = root.querySelector(
             '#cluster-storage-providers-list input[key="storageProviders"]:checked'
         );
@@ -128,8 +88,6 @@
         const serverId = root.querySelector("#first-deployment-server-id")
             ?.value || root.querySelector("#first-deployment-form")
             ?.getAttribute("object");
-        const clusterId = root.querySelector("#first-deployment-cluster-id")
-            ?.value;
-        if (serverId && clusterId) syncEnvironment(serverId, clusterId);
+        if (serverId) root.querySelector("#first-deployment-server-id").value = serverId;
     });
 })();

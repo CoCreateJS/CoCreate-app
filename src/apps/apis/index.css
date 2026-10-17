@@ -88,3 +88,22 @@
 .apis-status:has(input:checked) .apis-status-enabled {
 	display: inline-block;
 }
+
+.apis-credential textarea[type="password"] {
+    -webkit-text-security: disc;
+}
+
+.apis-credential textarea[type="text"] {
+    -webkit-text-security: none;
+}
+
+.apis-credential-field>textarea {
+    padding-right: 4.5rem;
+    background-color: var(--coc-body-bg);
+    resize: none;
+}
+
+.apis-credential-field:has(textarea:not([hidden]))>button {
+    top: 0.3rem;
+    transform: none;
+}

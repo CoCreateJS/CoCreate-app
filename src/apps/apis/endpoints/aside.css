@@ -1,8 +1,0 @@
-.endpoint-status .endpoint-status-enabled,
-.endpoint-status:has(input:checked) .endpoint-status-disabled {
-	display: none;
-}
-
-.endpoint-status:has(input:checked) .endpoint-status-enabled {
-	display: inline-block;
-}

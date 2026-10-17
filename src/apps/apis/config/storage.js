@@ -27,6 +27,7 @@ export default {
             "name": "mongodb",
             "type": "storage",
             "provider": "mongodb",
+            "connectionString": "",
             "description": "Default CoCreate platform MongoDB storage connection.",
             "enabled": true
         },
@@ -35,6 +36,7 @@ export default {
             "name": "MySQL",
             "type": "storage",
             "provider": "mysql",
+            "connectionUri": "",
             "description": "MySQL storage connection.",
             "enabled": false
         },
@@ -43,6 +45,7 @@ export default {
             "name": "PostgreSQL",
             "type": "storage",
             "provider": "postgresql",
+            "connectionUri": "",
             "description": "PostgreSQL storage connection.",
             "enabled": false
         },
@@ -51,6 +54,8 @@ export default {
             "name": "SQLite / libSQL",
             "type": "storage",
             "provider": "sqlite",
+            "databaseUrl": "",
+            "authToken": "",
             "description": "SQLite / libSQL storage connection.",
             "enabled": false
         },
@@ -59,6 +64,9 @@ export default {
             "name": "Firestore",
             "type": "storage",
             "provider": "firestore",
+            "projectId": "",
+            "clientEmail": "",
+            "privateKey": "",
             "description": "Firestore storage connection.",
             "enabled": false
         },
@@ -67,6 +75,9 @@ export default {
             "name": "DynamoDB",
             "type": "storage",
             "provider": "dynamodb",
+            "region": "",
+            "accessKeyId": "",
+            "secretAccessKey": "",
             "description": "DynamoDB storage connection.",
             "enabled": false
         }

@@ -9,5 +9,4 @@
 .apis-provider-option > label > input[name="storage-expansion"] { position: absolute; opacity: 0; pointer-events: none; }
 .apis-provider-fields { display: none; }
 .apis-provider-option:has(input[name="storage-expansion"]:checked) > .apis-provider-fields { display: block; }
-#apis-provider-workflow[data-provider-step="cloud"]:has(> footer:not([hidden])) .apis-provider-option:has(.apis-provider-fields [render-clone] textarea):not(:has(.apis-provider-fields [render-clone] textarea:invalid)) > .apis-provider-fields { display: none; }
 .apis-provider-option:not(:has(.apis-provider-fields [render-clone] textarea)) [data-storage-configured-badge], .apis-provider-option:has(.apis-provider-fields [render-clone] textarea:invalid) [data-storage-configured-badge] { display: none; }

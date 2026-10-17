@@ -71,15 +71,31 @@
 				class="min-height:100%"
 				data-provider-workflow-view="providers"
 				state-id="storage-providers-create-view"
-				src="/apps/apis/providers/list/storage.html"></div>
+				src="/apps/apis/providers/storage.html"></div>
 			<div
 				class="min-height:100%"
 				data-provider-workflow-view="cloud"
-				src="/apps/apis/providers/list/cloud.html"></div>
+				src="/apps/apis/providers/cloud.html"></div>
 			<div
 				class="min-height:100%"
 				data-provider-workflow-view="storage"
-				src="/apps/apis/providers/list/storage.html"></div>
+				src="/apps/apis/providers/storage.html"></div>
+			<div
+				id="first-deployment-profiles"
+				hidden
+				array="servers_config"
+				object
+				filter-query-key="type"
+				filter-query-value="autoscaler"
+				filter-limit="0"
+				render-query="[template='first-deployment-profile']">
+				<div
+					template="first-deployment-profile"
+					data-provider="{{object.provider}}"
+					data-enabled="{{object.enabled}}">
+					<pre>{{object.config}}</pre>
+				</div>
+			</div>
 			<form
 				id="cluster-configuration-form"
 				class="cluster-provision-data card-body min-height:100%"
@@ -156,13 +172,15 @@
 					type="hidden"
 					array="servers"
 					object
-					key="api_id" />
+					key="api_id"
+					value="$query($document #first-deployment-provider selected cc-option).dataset.apiId" />
 				<input
 					id="first-deployment-infrastructure-api-id"
 					type="hidden"
 					array="servers"
 					object
-					key="infrastructure.api_id" />
+					key="infrastructure.api_id"
+					value="$query($document #first-deployment-provider selected cc-option).dataset.apiId" />
 				<input
 					id="first-deployment-status"
 					type="hidden"
@@ -230,7 +248,8 @@
 					id="first-deployment-environment"
 					type="hidden"
 					aws-key="environment"
-					aws-response="false" />
+					aws-response="false"
+					value="server_id=$query($document #first-deployment-server-id).getValue()&#10;cluster_id=$query($document #first-deployment-cluster-id).getValue()" />
 				<input
 					id="first-deployment-vm-type"
 					type="hidden"

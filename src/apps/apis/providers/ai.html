@@ -6,41 +6,38 @@
 	href="/apps/apis/index.css" />
 <link
 	rel="stylesheet"
-	href="/apps/apis/providers/list/style.css" />
+	href="/apps/apis/providers/index.css" />
 <section
 	class="card-body d-flex flex-column gap-4 min-height:100%"
 	data-storage-providers-create>
 	<header>
 		<div>
-			<h5 class="mb-1">Cloud Providers</h5>
+			<h5 class="mb-1">AI Providers</h5>
 			<p class="text-muted mb-0">
 				Configure your provider credentials. Enable the connections you
 				want available to your organization.
 			</p>
 		</div>
 	</header>
-	<span
-		id="cluster-providers-error"
-		class="text-danger small"
-		hidden></span>
 	<div
-		id="cluster-cloud-providers-list"
+		id="apis-providers-list"
 		state-id="apis-providers-list"
 		class="d-flex flex-column gap-3"
 		array="apis"
 		object
 		filter-query-key="type"
-		filter-query-value="cloud"
+		filter-query-value="ai"
 		filter-sort-key="name"
 		filter-sort-direction="asc"
 		filter-limit="0"
-		render-query="[template='api-provider']">
-		<article
-			class="apis-provider-option border rounded position-relative"
-			template="api-provider">
-			<div
-				src="/apps/apis/providers/card.html"
-				value-type="outerHTML"></div>
-		</article>
+		render-query="template">
+		<template>
+			<article
+				class="apis-provider-option border rounded position-relative">
+				<div
+					value-type="outerHTML"
+					src="/apps/apis/providers/templates/card.html"></div>
+			</article>
+		</template>
 	</div>
 </section>
