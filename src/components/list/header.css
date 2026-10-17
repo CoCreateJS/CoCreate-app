@@ -106,5 +106,5 @@
 	}
 }
 
-.list-header .list-files-menu { display: none; }
-.files-app .list-header .list-files-menu { display: inline-flex; }
+.list-header .list-toolbar-control.list-files-menu { display: none; }
+.files-app .list-header .list-toolbar-control.list-files-menu { display: inline-flex; }

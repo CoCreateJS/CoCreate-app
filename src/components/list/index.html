@@ -5,18 +5,16 @@
 		class="app-panel-header flex-shrink-0"
 		src="/components/list/header.html"></div>
 
-	<div
-		class="d-flex flex-column flex-grow-1 min-height:0 overflow-hidden">
+	<div class="d-flex flex-column flex-grow-1 min-height:0 overflow-hidden">
 		<div
 			id="list-view"
 			state-id="list-view"
 			class="w-100 flex-grow-1 min-height:0 overflow-hidden"
-			src="/components/list/grid.html"></div>
-
-		<!-- <template
-		observe.target="#table-view td[field='']"
-		observe.query="$document .message.assistant codearea:not(.message.assistant .code-tools + codearea)[]"
-		observe.insert-adjacent="beforebegin">
-	</template> -->
+			src="">
+			<div
+				onload.src="/components/list/grid.html"
+				onload-query="$parent"
+				onload-setTimeout="3000"></div>
+		</div>
 	</div>
 </div>

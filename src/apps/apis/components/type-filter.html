@@ -1,9 +1,8 @@
 <style>
 	#apiTypeMoreButton {
-		border-bottom-left-radius: 0;
 		border-left: 0;
 		border-top-left-radius: 0;
-		border-left-width: 0;
+		border-bottom-left-radius: 0;
 	}
 
 	#apiTypeMoreMenu .btn-check:checked + .dropdown-item {
@@ -21,8 +20,6 @@
 		background-color: var(--coc-primary);
 	}
 </style>
-
-<!-- Checkbox Buttons -->
 <div
 	class="btn-group"
 	role="group"
@@ -60,7 +57,6 @@
 		for="api-type-storage"
 		>Storage</label
 	>
-
 	<input
 		type="checkbox"
 		class="btn-check"
@@ -76,7 +72,6 @@
 		for="api-type-cloud"
 		>Cloud</label
 	>
-
 	<input
 		type="checkbox"
 		class="btn-check"
@@ -92,7 +87,6 @@
 		for="api-type-routing"
 		>Routing</label
 	>
-
 	<input
 		type="checkbox"
 		class="btn-check"
@@ -108,7 +102,6 @@
 		for="api-type-ai"
 		>AI</label
 	>
-
 	<div class="dropdown flex-shrink-0">
 		<button
 			type="button"
@@ -135,8 +128,7 @@
 					value="payments"
 					aria-controls="list-view"
 					filter-query-key="type.$in"
-					filter-query='$document [state-id="list"][]' />
-				<label
+					filter-query='$document [state-id="list"][]' /><label
 					class="dropdown-item"
 					for="api-type-payments"
 					>Payments</label
@@ -152,8 +144,7 @@
 					value="communications"
 					aria-controls="list-view"
 					filter-query-key="type.$in"
-					filter-query='$document [state-id="list"][]' />
-				<label
+					filter-query='$document [state-id="list"][]' /><label
 					class="dropdown-item"
 					for="api-type-communications"
 					>Communications</label
@@ -169,8 +160,7 @@
 					value="authentication"
 					aria-controls="list-view"
 					filter-query-key="type.$in"
-					filter-query='$document [state-id="list"][]' />
-				<label
+					filter-query='$document [state-id="list"][]' /><label
 					class="dropdown-item"
 					for="api-type-authentication"
 					>Authentication</label
@@ -179,4 +169,3 @@
 		</ul>
 	</div>
 </div>
-<script src="/apps/apis/components/type-filter.js"></script>

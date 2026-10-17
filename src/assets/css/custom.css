@@ -7,7 +7,7 @@ File: Custom Css File
 */
 
 #layout-wrapper {
-	--admin-gutter: clamp(0.5rem, 0.35rem + 0.5vw, 1rem);
+	--admin-gutter: clamp(0.9rem, 0.35rem + 0.5vw, 1rem);
 	--admin-padding: clamp(1rem, 0.75rem + 0.5vw, 1.5rem);
 	--admin-content-height: calc(100dvh - 70px);
 }

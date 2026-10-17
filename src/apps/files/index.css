@@ -237,13 +237,18 @@
 .files-app .file-menu-sidebar-scroll { flex: 1; min-height: 0; height: auto; overflow: auto; }
 .files-app .file-manager-menu { height: auto; max-height: none; }
 
-.files-app:has(#list-view[src="/apps/files/components/list.html"]) .list-view-grid-label,
-.files-app:has(#list-view[src="/apps/files/components/list.html"]) .list-view-grid-icon {
+.files-app:has(#list-view[src="/apps/files/components/table.html"]) .list-view-grid-label,
+.files-app:has(#list-view[src="/apps/files/components/table.html"]) .list-view-grid-icon {
     display: none;
 }
-.files-app:has(#list-view[src="/apps/files/components/list.html"]) .list-view-list-label,
-.files-app:has(#list-view[src="/apps/files/components/list.html"]) .list-view-list-icon {
+.files-app:has(#list-view[src="/apps/files/components/table.html"]) .list-view-list-label,
+.files-app:has(#list-view[src="/apps/files/components/table.html"]) .list-view-list-icon {
     display: inline-block;
+}
+
+.files-app #list-view[src="/apps/files/components/table.html"] {
+    height: 100%;
+    min-height: 0;
 }
 
 .files-render-sections {

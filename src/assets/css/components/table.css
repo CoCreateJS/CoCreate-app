@@ -1,4 +1,7 @@
 /* Faithfully extracted from the legacy SCSS build. */
+.table {
+	margin-bottom: 0;
+}
 .table > thead {
 	border-color: var(--coc-border-color);
 }
@@ -8,9 +11,6 @@
 .table-nowrap td,
 .table-nowrap th {
 	white-space: nowrap;
-}
-.table-card {
-	margin: -1rem -1rem;
 }
 .table-card td:first-child,
 .table-card th:first-child {

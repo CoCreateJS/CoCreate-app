@@ -1,13 +1,24 @@
 <div
 	class="list-header d-flex flex-wrap justify-content-between align-items-center gap-2">
-	<link rel="stylesheet" href="/components/list/header.css" />
-	<link rel="stylesheet" href="/components/list/selection.css" />
+	<link
+		rel="stylesheet"
+		href="/components/list/header.css" />
+	<link
+		rel="stylesheet"
+		href="/components/list/selection.css" />
 
 	<div class="list-header-primary d-flex align-items-center gap-2">
-        <button type="button" class="list-toolbar-control list-toolbar-icon list-files-menu btn btn-light"
-            aria-controls="files-sidebar" aria-expanded="false" aria-label="Toggle files menu" title="Files menu">
-            <i src="/assets/svg/remix/menu-2-line.svg" aria-hidden="true"></i>
-        </button>
+		<button
+			type="button"
+			class="list-toolbar-control list-toolbar-icon list-files-menu btn btn-light"
+			aria-controls="files-sidebar"
+			aria-expanded="false"
+			aria-label="Toggle files menu"
+			title="Files menu">
+			<i
+				src="/assets/svg/remix/menu-2-line.svg"
+				aria-hidden="true"></i>
+		</button>
 		<button
 			type="button"
 			class="list-toolbar-control list-compact-action list-filter-button btn btn-light"
@@ -16,7 +27,9 @@
 			aria-expanded="false"
 			aria-label="Filters"
 			title="Filters">
-			<i src="/assets/svg/remix/filter-3-line.svg" aria-hidden="true"></i>
+			<i
+				src="/assets/svg/remix/filter-3-line.svg"
+				aria-hidden="true"></i>
 			<span class="list-action-label">Filters</span>
 		</button>
 		<div
@@ -33,13 +46,35 @@
 		</div>
 	</div>
 
-	<textarea id="list-export-fields" state-id="app" array="apps" object
-		key="fields" value-type="json" value-evaluate="false" hidden></textarea>
+	<textarea
+		id="list-export-fields"
+		state-id="app"
+		array="apps"
+		object
+		key="fields"
+		value-type="json"
+		value-evaluate="false"
+		hidden></textarea>
 
-	<div data-selection-summary hidden>
-		<span data-selection-count class="text-muted fs-12" aria-live="polite"></span>
-		<button type="button" class="btn btn-sm btn-link p-0" data-selection-all>Select all loaded</button>
-		<button type="button" class="btn btn-sm btn-link p-0" data-selection-clear>Clear</button>
+	<div
+		data-selection-summary
+		hidden>
+		<span
+			data-selection-count
+			class="text-muted fs-12"
+			aria-live="polite"></span>
+		<button
+			type="button"
+			class="btn btn-sm btn-link p-0"
+			data-selection-all>
+			Select all loaded
+		</button>
+		<button
+			type="button"
+			class="btn btn-sm btn-link p-0"
+			data-selection-clear>
+			Clear
+		</button>
 	</div>
 
 	<!-- List actions -->
@@ -54,11 +89,18 @@
 				aria-haspopup="menu"
 				aria-label="Change view"
 				title="Change view">
-				<i src="/assets/svg/remix/layout-grid-line.svg" class="list-view-grid-icon"
+				<i
+					src="/assets/svg/remix/layout-grid-line.svg"
+					class="list-view-grid-icon"
 					aria-hidden="true"></i>
-				<i src="/assets/svg/remix/list-unordered.svg" class="list-view-list-icon"
+				<i
+					src="/assets/svg/remix/list-unordered.svg"
+					class="list-view-list-icon"
 					aria-hidden="true"></i>
-				<span class="list-action-label"><span class="list-view-grid-label">Grid</span><span class="list-view-list-label">List</span></span>
+				<span class="list-action-label"
+					><span class="list-view-grid-label">Grid</span
+					><span class="list-view-list-label">List</span></span
+				>
 			</button>
 			<ul
 				id="viewDropdownMenu"
@@ -73,7 +115,9 @@
 						href="#"
 						state-to="list-view"
 						state.src="/components/list/grid.html">
-						<i src="/assets/svg/remix/layout-grid-line.svg" class="me-2"></i>
+						<i
+							src="/assets/svg/remix/layout-grid-line.svg"
+							class="me-2"></i>
 						Grid
 					</a>
 				</li>
@@ -83,7 +127,9 @@
 						href="#"
 						state-to="list-view"
 						state.src="/components/list/table.html">
-						<i src="/assets/svg/remix/list-unordered.svg" class="me-2"></i>
+						<i
+							src="/assets/svg/remix/list-unordered.svg"
+							class="me-2"></i>
 						List
 					</a>
 				</li>
@@ -96,7 +142,7 @@
 			id="remove-actions"
 			aria-controls="removeItemModal"
 			state-to="delete-record"
-			state.delete-query="$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected=&quot;true&quot;]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]"
+			state.delete-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]'
 			state.actions="delete"
 			state.array=""
 			state.object=""
@@ -105,7 +151,9 @@
 			aria-open
 			aria-label="Delete selected items"
 			title="Delete selected items">
-			<i src="/assets/svg/remix/delete-bin-2-line.svg" aria-hidden="true"></i>
+			<i
+				src="/assets/svg/remix/delete-bin-2-line.svg"
+				aria-hidden="true"></i>
 		</button>
 		<button
 			type="button"
@@ -131,7 +179,8 @@
 			<div
 				state-to="offcanvas-app-form"
 				state.$reset
-				state.array="">
+				state.array=""
+				hidden>
 				<input
 					type="hidden"
 					state-id="app"
@@ -142,7 +191,9 @@
 					input-query="$parent" />
 			</div>
 
-			<i src="/assets/svg/remix/add-line.svg" aria-hidden="true"></i>
+			<i
+				src="/assets/svg/remix/add-line.svg"
+				aria-hidden="true"></i>
 			<span class="list-action-label">
 				New
 				<span
@@ -162,7 +213,9 @@
 				aria-expanded="false"
 				title="More actions"
 				aria-label="More actions">
-				<i src="/assets/svg/remix/more-2-fill.svg" aria-hidden="true"></i>
+				<i
+					src="/assets/svg/remix/more-2-fill.svg"
+					aria-hidden="true"></i>
 			</button>
 			<ul
 				id="settingsDropdownMenu"
@@ -172,32 +225,62 @@
 				aria-hidden="true"
 				aria-close-on="anywhere">
 				<li>
-					<button type="button" class="dropdown-item" role="menuitem"
+					<button
+						type="button"
+						class="dropdown-item"
+						role="menuitem"
 						actions="import"
 						import-query='$document #list-view [state-id="list"]'>
-						<i src="/assets/svg/remix/upload-2-line.svg" class="me-2" aria-hidden="true"></i>Import
+						<i
+							src="/assets/svg/remix/upload-2-line.svg"
+							class="me-2"
+							aria-hidden="true"></i
+						>Import
 					</button>
 				</li>
 				<li>
-					<button type="button" class="dropdown-item" role="menuitem"
-						actions="export" export-format="json"
+					<button
+						type="button"
+						class="dropdown-item"
+						role="menuitem"
+						actions="export"
+						export-format="json"
 						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [state-id="list"][]'>
-						<i src="/assets/svg/remix/download-2-line.svg" class="me-2" aria-hidden="true"></i>Export JSON
+						<i
+							src="/assets/svg/remix/download-2-line.svg"
+							class="me-2"
+							aria-hidden="true"></i
+						>Export JSON
 					</button>
 				</li>
 				<li>
-					<button type="button" class="dropdown-item" role="menuitem"
-						actions="export" export-format="csv"
+					<button
+						type="button"
+						class="dropdown-item"
+						role="menuitem"
+						actions="export"
+						export-format="csv"
 						export-columns-query="$document #list-view th[data-export-key]:not([template])[], $document #list-export-fields"
 						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [state-id="list"][]'>
-						<i src="/assets/svg/remix/download-2-line.svg" class="me-2" aria-hidden="true"></i>Export CSV
+						<i
+							src="/assets/svg/remix/download-2-line.svg"
+							class="me-2"
+							aria-hidden="true"></i
+						>Export CSV
 					</button>
 				</li>
 				<li>
-					<button type="button" class="dropdown-item" role="menuitem"
+					<button
+						type="button"
+						class="dropdown-item"
+						role="menuitem"
 						actions="print"
 						print-query="$document #list-view">
-						<i src="/assets/svg/remix/printer-line.svg" class="me-2" aria-hidden="true"></i>Print
+						<i
+							src="/assets/svg/remix/printer-line.svg"
+							class="me-2"
+							aria-hidden="true"></i
+						>Print
 					</button>
 				</li>
 				<li><hr class="dropdown-divider" /></li>
@@ -206,15 +289,17 @@
 						class="dropdown-item text-danger"
 						role="menuitem"
 						aria-controls="removeItemModal"
-			state-to="delete-record"
-			state.delete-query="$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected=&quot;true&quot;]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]"
-			state.actions="delete"
-			state.array=""
-			state.object=""
-			aria-haspopup="dialog"
-			aria-expanded="false"
-			aria-open>
-						<i src="/assets/svg/remix/delete-bin-2-line.svg" class="me-2"></i>
+						state-to="delete-record"
+						state.delete-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]'
+						state.actions="delete"
+						state.array=""
+						state.object=""
+						aria-haspopup="dialog"
+						aria-expanded="false"
+						aria-open>
+						<i
+							src="/assets/svg/remix/delete-bin-2-line.svg"
+							class="me-2"></i>
 						Delete selected
 					</a>
 				</li>

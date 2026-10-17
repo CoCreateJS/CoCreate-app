@@ -5,15 +5,17 @@
 		name="storage-expansion"
 		array="clusters"
 		object
-		key="{{object.type === 'storage' ? 'storageProviders' : 'providers'}}"
+		key="{{object.type}}"
 		value="{{object._id}}"
 		data-provider="{{object.provider}}"
 		data-api-url="{{object.url}}"
 		filter-query="$document #first-deployment-provider-options"
 		filter-query-key="_id.$in" />
-	<div
-		class="flex-grow-1 min-width:0"
-		src="/apps/apis/templates/list.html"></div>
+	<div class="flex-grow-1 min-width:0">
+		<div
+			src="/apps/apis/templates/list.html"
+			value-type="outerHTML"></div>
+	</div>
 	<span
 		data-storage-configured-badge
 		class="badge bg-success-subtle text-success flex-shrink-0 pe-none">

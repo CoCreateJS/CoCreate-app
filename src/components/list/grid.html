@@ -4,38 +4,42 @@
 <div
 	class="h-100"
 	scrollbar>
-	<style>
-		#grid {
-			display: grid;
-			grid-template-columns: repeat(
-				auto-fit,
-				minmax(min(100%, 320px), 1fr)
-			);
-			align-content: start;
-		}
+	<div>
+		<style>
+			#grid {
+				display: grid;
+				grid-template-columns: repeat(
+					auto-fit,
+					minmax(min(100%, 320px), 1fr)
+				);
+				align-content: start;
+				padding: var(--admin-gutter);
+				padding-bottom: 5px;
+			}
 
-		#grid > .card {
-			width: 100%;
-			min-width: 0 !important;
-			max-width: none !important;
-		}
-	</style>
-	<div
-		id="grid"
-		data-grid-selection
-		array=""
-		object
-		filter-limit="30"
-		render-query="[template]"
-		state-id="list"
-		class="list-view gap-3"
-		style="padding: var(--admin-gutter)"
-		src=""></div>
-	<div
-		style="height: 20px"
-		filter-on="scroll"
-		filter-query="$previous"></div>
+			#grid > .card {
+				width: 100%;
+				min-width: 0 !important;
+				max-width: none !important;
+			}
+		</style>
+		<div
+			id="grid"
+			data-grid-selection
+			array=""
+			object
+			filter-limit="30"
+			render-query="[template]"
+			state-id="list"
+			class="list-view gap-3"
+			src=""></div>
+		<div
+			style="height: 3px"
+			filter-on="scroll"
+			filter-query="$previous"></div>
+	</div>
 </div>
+
 <!-- end grid -->
 
 <script src="/components/list/selection.js"></script>
