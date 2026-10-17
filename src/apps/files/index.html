@@ -44,6 +44,11 @@
 		filter-key="modified.on"
 		filter-value="1"
 		filter-query="$document #list-view [data-files-results][]" />
+	<input
+		type="hidden"
+		filter-key="deleted.on"
+		filter-value="1"
+		filter-query="$document #list-view [data-files-results][]" />
 
 	<input
 		type="hidden"
@@ -71,11 +76,12 @@
 		filter-query="$document #list-view [data-files-results][]" />
 	<input
 		type="hidden"
-		state-id="files-deleted"
-		value='{"$ne":true}'
+		state-id="files-deletion"
+		value='[{"deleted":{"$exists":false}},{"deleted":false}]'
 		value-type="json"
 		value-evaluate="false"
-		filter-query-key="deleted"
+		set-value-type="string"
+		filter-query-key="$or"
 		filter-query="$document #list-view [data-files-results][]" />
 
 	<div class="chat-wrapper d-lg-flex">
@@ -106,7 +112,7 @@
 				scrollbar>
 				<div
 					id="list-view"
-					state-id="list-view"
+					state-id="files-list-view"
 					class="w-100"
 					src="/apps/files/components/grid.html"></div>
 			</div>

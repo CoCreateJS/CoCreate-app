@@ -76,7 +76,7 @@
 	display: none;
 }
 
-.component-list:has(#list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)) > .app-panel-header #remove-actions {
+.component-list:has(#list-view :is([role="row"][aria-selected="true"], [role="row"] input[type="checkbox"][name="selected[]"]:checked):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)) > .app-panel-header #remove-actions {
 	display: inline-flex;
 }
 

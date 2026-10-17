@@ -8,7 +8,9 @@
 		<div class="table-card">
 			<table
 				id="table"
-				data-row-selection
+				role="grid"
+				aria-label="Records"
+				aria-multiselectable="true"
 				state-id="app"
 				array="apps"
 				object=""
@@ -24,17 +26,7 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th
-							class="table-selection-column"
-							scope="col">
-							<div class="form-check mb-0">
-								<input
-									class="form-check-input"
-									type="checkbox"
-									data-select-all
-									aria-label="Select all loaded rows" />
-							</div>
-						</th>
+						<th class="table-selection-column" scope="col" aria-label="Select rows"></th>
 						<!-- Render each column header dynamically -->
 						<th
 							template="column"
@@ -72,7 +64,7 @@
 					object
 					filter-limit="30"
 					render-query="tr[template]">
-					<tr template>
+					<tr template role="row" array="{{object.$array[0]}}" object="{{object._id}}">
 						<td class="table-selection-column">
 							<div class="form-check mb-0">
 								<input
@@ -82,7 +74,6 @@
 									value="{{object._id}}"
 									array="{{object.$array[0]}}"
 									object="{{object._id}}"
-									data-select-row
 									aria-label="Select row {{object._id}}" />
 							</div>
 						</td>
@@ -123,4 +114,3 @@
 	</div>
 </div>
 <!--end card-->
-<script src="/components/list/selection.js"></script>

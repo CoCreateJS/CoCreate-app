@@ -1,38 +1,34 @@
-[data-grid-selection] [data-select-card] {
+[role="grid"] [role="row"][aria-selected] {
     cursor: pointer;
 }
 
-[data-grid-selection] [data-select-card][aria-selected="true"] {
+[role="grid"] [role="row"][aria-selected="true"] {
     outline: 2px solid var(--coc-primary);
     outline-offset: -2px;
     background-color: var(--coc-primary-bg-subtle);
 }
 
-[data-grid-selection] [data-select-card]:focus-visible {
+[role="grid"] [role="row"][aria-selected]:focus-visible {
     outline: 2px solid var(--coc-primary);
     outline-offset: 2px;
 }
 
-[data-card-open]:hover,
-[data-card-open]:focus-visible {
+[role="grid"] [role="row"] a[state-to^="offcanvas-app"]:hover,
+[role="grid"] [role="row"] a[state-to^="offcanvas-app"]:focus-visible {
     text-decoration: underline !important;
 }
 
-[data-selection-summary] {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-[data-selection-summary][hidden] {
-    display: none;
-}
-
-table[data-row-selection] tbody > tr:has([data-select-row]):not([template]) {
-    cursor: pointer;
-}
-
-table[data-row-selection] tbody > tr:focus-visible {
+table[role="grid"] tbody > tr:has(input[type="checkbox"][name="selected[]"]:checked) {
     outline: 2px solid var(--coc-primary);
     outline-offset: -2px;
+    background-color: var(--coc-primary-bg-subtle);
+}
+
+@media print {
+    #list-view:has([role="row"][aria-selected="true"]:not(:is([hidden] *)))
+        [role="row"][aria-selected="false"],
+    #list-view table[role="grid"]:has(tbody:not([hidden]) input[type="checkbox"][name="selected[]"]:checked)
+        tbody:not([hidden]) > tr:not(:has(input[type="checkbox"][name="selected[]"]:checked)) {
+        display: none !important;
+    }
 }

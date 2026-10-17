@@ -8,44 +8,87 @@
 		<div class="table-card">
 			<table
 				id="table"
-				data-row-selection
-				state-id="app"
-				array="apps"
-				object=""
-				key="fields"
-				filter-limit
-				render-query="[template='column'][]"
+				role="grid"
+				aria-label="Files"
+				aria-multiselectable="true"
 				class="table align-middle">
 				<colgroup>
 					<col class="table-selection-track" />
 				</colgroup>
 				<thead>
 					<tr>
+						<th class="table-selection-column" scope="col" aria-label="Select rows"></th>
 						<th
-							class="table-selection-column"
-							scope="col">
-							<div class="form-check mb-0">
-								<input
-									class="form-check-input"
-									type="checkbox"
-									data-select-all
-									aria-label="Select all loaded rows" />
-							</div>
-						</th>
-						<!-- Render each column header dynamically -->
-						<th
-							template="column"
-							render-as="column"
-							data-export-key="{{column.key}}"
-							data-export-label="{{column.label}}"
+							data-export-key="name"
+							data-export-label="Name"
 							scope="col">
 							<div
 								class="d-flex align-items-center justify-content-between gap-2">
-								<span>{{column.label}}</span>
+								<span>Name</span>
 								<a
 									class="float-end"
-									filter-query="$closest table tbody:not([hidden])[]"
-									filter-sort-key="{{column.key}}"
+									filter-query="$document #list-view [data-files-results][]"
+									filter-sort-key="name"
+									filter-sort-direction=""
+									click
+									click.filter-sort-direction="asc, desc">
+									<i
+										toggle.src="/assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+										src="/assets/svg/sort.svg"></i>
+								</a>
+							</div>
+						</th>
+						<th
+							data-export-key="content-type"
+							data-export-label="Type"
+							scope="col">
+							<div
+								class="d-flex align-items-center justify-content-between gap-2">
+								<span>Type</span>
+								<a
+									class="float-end"
+									filter-query="$document #list-view [data-files-results][]"
+									filter-sort-key="content-type"
+									filter-sort-direction=""
+									click
+									click.filter-sort-direction="asc, desc">
+									<i
+										toggle.src="/assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+										src="/assets/svg/sort.svg"></i>
+								</a>
+							</div>
+						</th>
+						<th
+							data-export-key="path"
+							data-export-label="Folder"
+							scope="col">
+							<div
+								class="d-flex align-items-center justify-content-between gap-2">
+								<span>Folder</span>
+								<a
+									class="float-end"
+									filter-query="$document #list-view [data-files-results][]"
+									filter-sort-key="path"
+									filter-sort-direction=""
+									click
+									click.filter-sort-direction="asc, desc">
+									<i
+										toggle.src="/assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+										src="/assets/svg/sort.svg"></i>
+								</a>
+							</div>
+						</th>
+						<th
+							data-export-key="pathname"
+							data-export-label="Pathname"
+							scope="col">
+							<div
+								class="d-flex align-items-center justify-content-between gap-2">
+								<span>Pathname</span>
+								<a
+									class="float-end"
+									filter-query="$document #list-view [data-files-results][]"
+									filter-sort-key="pathname"
 									filter-sort-direction=""
 									click
 									click.filter-sort-direction="asc, desc">
@@ -75,8 +118,12 @@
 					object
 					filter-limit="20"
 					render-query="tr[template]">
-					<tr template>
+					<tr template role="row" array="{{object.$array[0]}}" object="{{object._id}}">
 						<td class="table-selection-column">
+							<form hidden>
+								<input type="hidden" key="deleted.by" value="$user_id" array="{{object.$array[0]}}" object="{{object._id}}" read="false" />
+								<input type="date" hidden now key="deleted.on" array="{{object.$array[0]}}" object="{{object._id}}" read="false" />
+							</form>
 							<div class="form-check mb-0">
 								<input
 									class="form-check-input"
@@ -85,16 +132,40 @@
 									value="{{object._id}}"
 									array="{{object.$array[0]}}"
 									object="{{object._id}}"
-									data-select-row
 									aria-label="Select row {{object._id}}" />
 							</div>
 						</td>
-						<td
-							template="column"
-							render-as="column"
-							value-type="html">
-							{{column.tableTemplate}}
+						<td>
+							<span
+								class="files-record-name"
+								data-file-kind="{{object.content-type}}">
+								<a
+									class="files-folder-link text-reset text-decoration-none"
+									role="button"
+									tabindex="0"
+									state='{"files-folders":{"hidden":false,"array":"files"},"files-list":{"filter-query-key":"content-type.$ne","filter-query-value":"text/directory","filter-sort-key":"name","filter-sort-direction":"asc"},"files-path":{"value":"{{object.pathname}}"}}'
+									>{{object.name}}</a
+								>
+								<a
+									class="files-file-link text-reset text-decoration-none"
+									role="button"
+									tabindex="0"
+									state-to="offcanvas-app-view"
+									state.src="/apps/files/app.html"
+									aria-controls="offcanvas-app"
+									aria-open
+									><span
+										hidden
+										state-to="offcanvas-app-form"
+										state.array="files"
+										state.object="{{object._id}}"></span
+									>{{object.name}}</a
+								>
+							</span>
 						</td>
+						<td>{{object.content-type}}</td>
+						<td><code>{{object.path}}</code></td>
+						<td><code>{{object.pathname}}</code></td>
 						<td
 							class="table-fill-column"
 							aria-hidden="true"></td>
@@ -114,8 +185,12 @@
 					object
 					filter-limit="20"
 					render-query="tr[template]">
-					<tr template>
+					<tr template role="row" array="{{object.$array[0]}}" object="{{object._id}}">
 						<td class="table-selection-column">
+							<form hidden>
+								<input type="hidden" key="deleted.by" value="$user_id" array="{{object.$array[0]}}" object="{{object._id}}" read="false" />
+								<input type="date" hidden now key="deleted.on" array="{{object.$array[0]}}" object="{{object._id}}" read="false" />
+							</form>
 							<div class="form-check mb-0">
 								<input
 									class="form-check-input"
@@ -124,16 +199,40 @@
 									value="{{object._id}}"
 									array="{{object.$array[0]}}"
 									object="{{object._id}}"
-									data-select-row
 									aria-label="Select row {{object._id}}" />
 							</div>
 						</td>
-						<td
-							template="column"
-							render-as="column"
-							value-type="html">
-							{{column.tableTemplate}}
+						<td>
+							<span
+								class="files-record-name"
+								data-file-kind="{{object.content-type}}">
+								<a
+									class="files-folder-link text-reset text-decoration-none"
+									role="button"
+									tabindex="0"
+									state='{"files-folders":{"hidden":false,"array":"files"},"files-list":{"filter-query-key":"content-type.$ne","filter-query-value":"text/directory","filter-sort-key":"name","filter-sort-direction":"asc"},"files-path":{"value":"{{object.pathname}}"}}'
+									>{{object.name}}</a
+								>
+								<a
+									class="files-file-link text-reset text-decoration-none"
+									role="button"
+									tabindex="0"
+									state-to="offcanvas-app-view"
+									state.src="/apps/files/app.html"
+									aria-controls="offcanvas-app"
+									aria-open
+									><span
+										hidden
+										state-to="offcanvas-app-form"
+										state.array="files"
+										state.object="{{object._id}}"></span
+									>{{object.name}}</a
+								>
+							</span>
 						</td>
+						<td>{{object.content-type}}</td>
+						<td><code>{{object.path}}</code></td>
+						<td><code>{{object.pathname}}</code></td>
 						<td
 							class="table-fill-column"
 							aria-hidden="true"></td>
@@ -149,4 +248,3 @@
 	</div>
 </div>
 <!--end card-->
-<script src="/components/list/selection.js"></script>

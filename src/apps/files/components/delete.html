@@ -17,9 +17,20 @@
 		<div class="card-body">
 			<input
 				type="hidden"
-				key="deleted"
-				value="true"
-				value-type="boolean"
+				state-id="delete-file-record"
+				array="files"
+				object=""
+				key="deleted.by"
+				value="$user_id"
+				read="false" />
+			<input
+				type="date"
+				hidden
+				now
+				state-id="delete-file-record"
+				array="files"
+				object=""
+				key="deleted.on"
 				read="false" />
 
 			<button
@@ -59,6 +70,7 @@
 				<button
 					type="button"
 					class="btn w-sm btn-danger"
+					save-query='$document #delete-file-modal form[object]:not([object=""]), $document body:has(#delete-file-modal form[object=""]) #list-view [role="row"]:is([aria-selected="true"], :has(input[type="checkbox"][name="selected[]"]:checked)):not([template],[hidden]):not(:is([template], [hidden]) *) form:has([key="deleted.on"])[]'
 					actions="disabled, save, action($document #delete-file-close), disabled">
 					Move to Trash
 				</button>

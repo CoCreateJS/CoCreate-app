@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="/components/list/selection.css" />
-<div class="files-render-sections" data-grid-selection>
+<div class="files-render-sections" role="grid" aria-label="Files" aria-multiselectable="true">
 	<div
 		id="files-folders"
 		state-id="files-folders"
 		data-files-results
 		data-files-kind="folders"
+		role="rowgroup"
 		class="list-view files-render-grid gap-3"
 		array=""
 		object
@@ -21,6 +22,7 @@
 		state-id="files-list"
 		data-files-results
 		data-files-kind="files"
+		role="rowgroup"
 		class="list-view files-render-grid gap-3"
 		array="files"
 		object
@@ -31,6 +33,5 @@
 		filter-limit="20"
 		render-query="[template]"
 		src="/apps/files/templates/card.html"></div>
-	<div style="height: 20px" filter-limit="10" filter-on="scroll" filter-query="$previous"></div>
+	<div style="height: 20px" filter-limit="10" filter-on="scroll" filter-query="$previous" aria-hidden="true"></div>
 </div>
-<script src="/components/list/selection.js"></script>

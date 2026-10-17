@@ -47,27 +47,6 @@
 		value-evaluate="false"
 		hidden></textarea>
 
-	<div
-		data-selection-summary
-		hidden>
-		<span
-			data-selection-count
-			class="text-muted fs-12"
-			aria-live="polite"></span>
-		<button
-			type="button"
-			class="btn btn-sm btn-link p-0"
-			data-selection-all>
-			Select all loaded
-		</button>
-		<button
-			type="button"
-			class="btn btn-sm btn-link p-0"
-			data-selection-clear>
-			Clear
-		</button>
-	</div>
-
 	<!-- List actions -->
 	<div class="list-header-actions hstack gap-2 ms-auto">
 		<div class="dropdown">
@@ -104,7 +83,7 @@
 					<a
 						class="dropdown-item"
 						href="#"
-						state-to="list-view"
+						state-to="files-list-view"
 						state.src="/apps/files/components/grid.html">
 						<i
 							src="/assets/svg/remix/layout-grid-line.svg"
@@ -116,7 +95,7 @@
 					<a
 						class="dropdown-item"
 						href="#"
-						state-to="list-view"
+						state-to="files-list-view"
 						state.src="/apps/files/components/table.html">
 						<i
 							src="/assets/svg/remix/list-unordered.svg"
@@ -131,11 +110,9 @@
 			type="button"
 			class="list-toolbar-control list-toolbar-icon btn btn-soft-danger"
 			id="remove-actions"
-			aria-controls="removeItemModal"
-			state-to="delete-record"
-			state.delete-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]'
-			state.actions="delete"
-			state.array=""
+			aria-controls="delete-file-modal"
+			state-to="delete-file-record"
+			state.array="files"
 			state.object=""
 			aria-haspopup="dialog"
 			aria-expanded="false"
@@ -236,7 +213,7 @@
 						role="menuitem"
 						actions="export"
 						export-format="json"
-						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [data-files-results]:not([hidden])[]'>
+						export-query='$document #list-view :is([role="row"][aria-selected="true"], [role="row"] input[type="checkbox"][name="selected[]"]:checked):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([role="row"][aria-selected="true"], [role="row"] input[type="checkbox"][name="selected[]"]:checked):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [data-files-results]:not([hidden])[]'>
 						<i
 							src="/assets/svg/remix/download-2-line.svg"
 							class="me-2"
@@ -252,7 +229,7 @@
 						actions="export"
 						export-format="csv"
 						export-columns-query="$document #list-view th[data-export-key]:not([template])[], $document #list-export-fields"
-						export-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [data-files-results]:not([hidden])[]'>
+						export-query='$document #list-view :is([role="row"][aria-selected="true"], [role="row"] input[type="checkbox"][name="selected[]"]:checked):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[], $document #list-view:not(:has(:is([role="row"][aria-selected="true"], [role="row"] input[type="checkbox"][name="selected[]"]:checked):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *))) [data-files-results]:not([hidden])[]'>
 						<i
 							src="/assets/svg/remix/download-2-line.svg"
 							class="me-2"
@@ -279,11 +256,9 @@
 					<a
 						class="dropdown-item text-danger"
 						role="menuitem"
-						aria-controls="removeItemModal"
-						state-to="delete-record"
-						state.delete-query='$document #list-view :is([data-select-row]:checked, [data-select-card][aria-selected="true"]):not(:disabled):not([template],[hidden]):not(:is([template], [hidden]) *)[]'
-						state.actions="delete"
-						state.array=""
+						aria-controls="delete-file-modal"
+						state-to="delete-file-record"
+						state.array="files"
 						state.object=""
 						aria-haspopup="dialog"
 						aria-expanded="false"
