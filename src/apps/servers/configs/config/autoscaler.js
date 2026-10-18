@@ -549,6 +549,19 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
                     ]
                 }
             }
+        },
+        {
+            "_id": "65f8cb447b39a3c1a8904e31",
+            "type": "autoscaler",
+            "name": "Cloud instance operations",
+            "enabled": true,
+            "cluster": "*",
+            "server": "*",
+            "worker": "*",
+            "config": {
+                "endpoint.create": "create-instance",
+                "endpoint.delete": "delete-instance"
+            }
         }
     ]
 };

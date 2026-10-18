@@ -1,0 +1,74 @@
+<div class="d-flex align-items-center gap-2 width:100%">
+	<div data-provision-step-controls="cloud" class="width:100% text-end">
+		<button
+			class="btn btn-primary"
+			type="button"
+			actions="validate(#cluster-cloud-providers), click, selected"
+			click-query="$closest #provision-workflow"
+			click.data-provision-step="cloud, configuration"
+			selected-query="$closest #provision-workflow #first-deployment-provider-options"
+			selected.array="apis">
+			Continue
+		</button>
+	</div>
+	<div data-provision-step-controls="configuration" class="width:100%">
+		<button
+			class="btn btn-light"
+			type="button"
+			click-query="$closest #provision-workflow"
+			click.data-provision-step="configuration, cloud">
+			Back
+		</button>
+		<button
+			class="btn btn-primary float-end"
+			type="button"
+			actions="validate(#provision-workflow #cluster-configuration-form #cluster-primary), click"
+			click-query="$closest #provision-workflow"
+			click.data-provision-step="configuration, storage">
+			Continue
+		</button>
+	</div>
+	<div data-provision-step-controls="storage" class="width:100%">
+		<button
+			class="btn btn-light"
+			type="button"
+			click-query="$closest #provision-workflow"
+			click.data-provision-step="storage, configuration">
+			Back
+		</button>
+		<button
+			class="btn btn-primary float-end"
+			type="button"
+			actions="validate(#cluster-storage-providers), click"
+			click-query="$closest #provision-workflow"
+			click.data-provision-step="storage, deployment">
+			Continue
+		</button>
+	</div>
+	<div data-provision-step-controls="deployment" class="width:100%">
+		<button
+			class="btn btn-light"
+			type="button"
+			click-query="$closest #provision-workflow"
+			click.data-provision-step="deployment, storage">
+			Back
+		</button>
+		<button
+			class="btn btn-success float-end"
+			type="button"
+			save-query="$closest #provision-workflow #cluster-configuration-form"
+			actions="validate(#provision-workflow #cluster-configuration-form), save, action($closest #provision-workflow #save-deployment-server)">
+			Deploy
+		</button>
+	</div>
+	<div data-provision-step-controls="server-status" class="width:100% text-end">
+		<button
+			class="btn btn-primary"
+			type="button"
+			aria-controls="create-panel"
+			aria-expanded="true"
+			aria-close>
+			Close
+		</button>
+	</div>
+</div>

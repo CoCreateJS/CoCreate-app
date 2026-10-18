@@ -8,9 +8,8 @@
 		key="{{object.type}}"
 		value="{{object._id}}"
 		get-value-type="string"
-		data-provider="{{object.provider}}"
 		data-api-url="{{object.url}}"
-		input-query="$document #cluster-{{object.type}}-providers"
+		input-query="$closest #provision-workflow #cluster-{{object.type}}-providers"
 		input.value="$value" />
 	<div class="flex-grow-1 min-width:0">
 		<div
@@ -28,7 +27,6 @@
 	class="apis-provider-fields border-top p-3"
 	array="apis"
 	object="{{object._id}}"
-	data-api-fields-parent
 	autocomplete="off">
 	<div
 		value-type="outerHTML"

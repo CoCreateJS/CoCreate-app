@@ -212,9 +212,6 @@
 					aria-label="Provision a cluster"
 					title="Provision a cluster">
 					<div
-						state-to="apis-providers-steps"
-						state.hidden="false"></div>
-					<div
 						state-to="create-panel-form"
 						state.$reset
 						state.$unset="$reset"
@@ -257,9 +254,6 @@
 					aria-open
 					aria-label="Deploy a server"
 					title="Deploy a server">
-					<div
-						state-to="apis-providers-steps"
-						state.hidden="false"></div>
 					<div
 						state-to="create-panel-form"
 						state.$reset
@@ -449,12 +443,12 @@
 						state.filter-query-key=""
 						state.filter-query-value=""
 						state.filter-query-options=""
-						state.src="/apps/apis/endpoints/templates/card.html"></div>
+						state.src="/apps/endpoints/templates/card.html"></div>
 				</a>
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/apis/endpoints/create.html"
+					state.src="/apps/endpoints/create.html"
 					aria-controls="create-panel"
 					aria-open
 					aria-label="Create endpoint"
@@ -492,12 +486,12 @@
 						state.filter-query-key=""
 						state.filter-query-value=""
 						state.filter-query-options=""
-						state.src="/apps/apis/webhooks/templates/card.html"></div>
+						state.src="/apps/webhooks/templates/card.html"></div>
 				</a>
 				<a
 					class="nav-link nav-action"
 					state-to="create-panel-view"
-					state.src="/apps/apis/webhooks/create.html"
+					state.src="/apps/webhooks/create.html"
 					aria-controls="create-panel"
 					aria-open
 					aria-label="Create webhook"

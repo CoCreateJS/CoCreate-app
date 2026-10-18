@@ -1,0 +1,108 @@
+<style>
+	[data-provision-steps] {
+		--step-color: var(--coc-secondary-color);
+	}
+	[data-provision-steps] [data-step-indicator] {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		flex: 0 0 32px;
+		color: var(--coc-secondary-color);
+		background: var(--coc-secondary-bg);
+		border: var(--coc-border-width) solid var(--coc-border-color);
+		border-radius: 50%;
+		font-size: 13px;
+		font-weight: 600;
+	}
+	[data-provision-steps] [data-step-label] {
+		color: var(--coc-secondary-color);
+		font-size: 12px;
+	}
+	[data-provision-steps] [data-step-line] {
+		min-width: 12px;
+		border-color: var(--coc-border-color) !important;
+	}
+	[data-provision-workflow][data-provision-step="cloud"]
+		[data-provision-step-item="cloud"],
+	[data-provision-workflow][data-provision-step="configuration"]
+		[data-provision-step-item="configuration"],
+	[data-provision-workflow][data-provision-step="storage"]
+		[data-provision-step-item="storage"],
+	[data-provision-workflow][data-provision-step="deployment"]
+		[data-provision-step-item="deployment"] {
+		--step-color: var(--coc-primary);
+	}
+	[data-provision-workflow][data-provision-step="configuration"]
+		[data-provision-step-item="cloud"],
+	[data-provision-workflow][data-provision-step="storage"]
+		[data-provision-step-item="cloud"],
+	[data-provision-workflow][data-provision-step="storage"]
+		[data-provision-step-item="configuration"],
+	[data-provision-workflow][data-provision-step="deployment"]
+		[data-provision-step-item="cloud"],
+	[data-provision-workflow][data-provision-step="deployment"]
+		[data-provision-step-item="configuration"],
+	[data-provision-workflow][data-provision-step="deployment"]
+		[data-provision-step-item="storage"],
+	[data-provision-workflow][data-provision-step="server-status"]
+		[data-provision-step-item] {
+		--step-color: var(--coc-success);
+	}
+	[data-provision-steps] [data-provision-step-item] [data-step-indicator] {
+		color: var(--step-color);
+		border-color: var(--step-color);
+	}
+	[data-provision-steps] [data-provision-step-item] [data-step-label] {
+		color: var(--step-color);
+	}
+	[data-provision-workflow][data-provision-step="cloud"]
+		[data-provision-step-item="cloud"] [data-step-indicator],
+	[data-provision-workflow][data-provision-step="configuration"]
+		[data-provision-step-item="configuration"] [data-step-indicator],
+	[data-provision-workflow][data-provision-step="storage"]
+		[data-provision-step-item="storage"] [data-step-indicator],
+	[data-provision-workflow][data-provision-step="deployment"]
+		[data-provision-step-item="deployment"] [data-step-indicator] {
+		color: #fff;
+		background: var(--coc-primary);
+	}
+	[data-provision-workflow][data-provision-step="server-status"]
+		[data-provision-step-item] [data-step-indicator] {
+		color: #fff;
+		background: var(--coc-success);
+	}
+</style>
+<nav
+	class="d-flex align-items-start gap-2"
+	data-provision-steps
+	aria-label="Cluster setup progress">
+	<div
+		class="d-flex flex-column align-items-center gap-1"
+		data-provision-step-item="cloud">
+		<span data-step-indicator>1</span>
+		<span data-step-label>Cloud</span>
+	</div>
+	<span class="flex-grow-1 border-top mt-3" data-step-line></span>
+	<div
+		class="d-flex flex-column align-items-center gap-1"
+		data-provision-step-item="configuration">
+		<span data-step-indicator>2</span>
+		<span data-step-label>Config</span>
+	</div>
+	<span class="flex-grow-1 border-top mt-3" data-step-line></span>
+	<div
+		class="d-flex flex-column align-items-center gap-1"
+		data-provision-step-item="storage">
+		<span data-step-indicator>3</span>
+		<span data-step-label>Storage</span>
+	</div>
+	<span class="flex-grow-1 border-top mt-3" data-step-line></span>
+	<div
+		class="d-flex flex-column align-items-center gap-1"
+		data-provision-step-item="deployment">
+		<span data-step-indicator>4</span>
+		<span data-step-label>Deploy</span>
+	</div>
+</nav>

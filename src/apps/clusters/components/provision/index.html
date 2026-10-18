@@ -1,0 +1,503 @@
+<section
+	id="provision-workflow"
+	class="app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
+	data-provision-workflow
+	data-provision-step="cloud"
+	data-server-state="starting"
+	data-component-form>
+	<style>
+		[data-provision-workflow] [data-provision-view],
+		[data-provision-workflow] [data-provision-step-controls] {
+			display: none;
+		}
+		[data-provision-workflow][data-provision-step="cloud"]
+			[data-provision-view="cloud"],
+		[data-provision-workflow][data-provision-step="cloud"]
+			[data-provision-step-controls="cloud"],
+		[data-provision-workflow][data-provision-step="configuration"]
+			[data-provision-view="configuration"],
+		[data-provision-workflow][data-provision-step="configuration"]
+			[data-provision-step-controls="configuration"],
+		[data-provision-workflow][data-provision-step="storage"]
+			[data-provision-view="storage"],
+		[data-provision-workflow][data-provision-step="storage"]
+			[data-provision-step-controls="storage"],
+		[data-provision-workflow][data-provision-step="deployment"]
+			[data-provision-view="deployment"],
+		[data-provision-workflow][data-provision-step="deployment"]
+			[data-provision-step-controls="deployment"],
+		[data-provision-workflow][data-provision-step="server-status"]
+			[data-provision-view="server-status"],
+		[data-provision-workflow][data-provision-step="server-status"]
+			[data-provision-step-controls="server-status"] {
+			display: block;
+		}
+		[data-provision-view="server-status"] .server-status-running,
+		[data-provision-view="server-status"] .server-status-error,
+		[data-provision-workflow][data-server-state="running"]
+			[data-provision-view="server-status"]
+			.server-status-starting,
+		[data-provision-workflow][data-server-state="error"]
+			[data-provision-view="server-status"]
+			.server-status-starting {
+			display: none;
+		}
+		[data-provision-workflow][data-server-state="running"]
+			[data-provision-view="server-status"]
+			.server-status-running,
+		[data-provision-workflow][data-server-state="error"]
+			[data-provision-view="server-status"]
+			.server-status-error {
+			display: block;
+		}
+		#provision-workflow
+			.apis-provider-option:has(input.cluster-provision-data:checked) {
+			border-color: var(--coc-primary) !important;
+			background: rgba(var(--coc-primary-rgb), 0.08);
+		}
+		.first-deployment-provider-select,
+		.first-deployment-region-select {
+			width: 100%;
+		}
+
+		#first-deployment-provider-options,
+		#first-deployment-region-options {
+			width: 100%;
+			max-height: 18rem;
+			overflow-y: auto;
+		}
+
+		#first-deployment-provider-options .dropdown-item,
+		#first-deployment-region-options .dropdown-item {
+			cursor: pointer;
+			position: relative;
+		}
+
+		#first-deployment-provider-options input[type="radio"],
+		#first-deployment-region-options input[type="radio"] {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+		}
+
+		#first-deployment-provider-options .dropdown-item:focus-within,
+		#first-deployment-region-options .dropdown-item:focus-within {
+			outline: 2px solid var(--coc-primary);
+			outline-offset: -2px;
+		}
+
+		#first-deployment-provider-options .dropdown-item:has(input:checked),
+		#first-deployment-region-options .dropdown-item:has(input:checked) {
+			background: var(--coc-tertiary-bg);
+		}
+
+		#first-deployment-provider-options .apis-provider-image {
+			width: 28px;
+			height: 28px;
+			flex-basis: 28px;
+		}
+	</style>
+	<header
+		class="card-header d-flex align-items-center justify-content-between flex-shrink-0">
+		<span class="fw-medium">Provision</span>
+		<button
+			type="button"
+			class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted"
+			aria-label="Close provisioning"
+			title="Close"
+			aria-controls="create-panel"
+			aria-expanded="true"
+			aria-close>
+			<i
+				src="/assets/svg/remix/close-line.svg"
+				class="align-middle fs-22"
+				aria-hidden="true"></i>
+		</button>
+	</header>
+	<div
+		class="component-form-body flex-grow-1 min-height:0"
+		scrollbar>
+		<div>
+			<div
+				class="card-body pb-0"
+				src="/apps/clusters/components/provision/header.html"></div>
+			<div
+				class="min-height:100%"
+				data-provision-view="cloud"
+				src="/apps/apis/providers/cloud.html"></div>
+			<div
+				class="min-height:100%"
+				data-provision-view="storage"
+				src="/apps/apis/providers/storage.html"></div>
+			<form
+				id="cluster-configuration-form"
+				class="cluster-provision-data card-body min-height:100%"
+				data-provision-view="configuration"
+				state-id="cluster-configuration-form"
+				array="clusters"
+				object>
+				<input
+					id="cluster-object-id"
+					type="hidden"
+					key="_id"
+					save="false"
+					input-query="$closest #provision-workflow #first-deployment-cluster-id"
+					input.value="$value" />
+				<input
+					id="cluster-storage-providers"
+					type="text"
+					class="visually-hidden"
+					tabindex="-1"
+					aria-label="Storage provider"
+					aria-errormessage="cluster-storage-providers-error"
+					key="storageProvider"
+					required />
+				<div
+					data-cluster-configuration
+					src="/apps/clusters/components/form.html"></div>
+			</form>
+			<form
+				id="first-deployment-form"
+				class="server-provision-data card-body min-height:100%"
+				data-provision-view="deployment"
+				array="servers"
+				object>
+				<h5 class="mb-1">First deployment</h5>
+				<p class="text-muted">
+					Choose where to deploy the first server. As resource needs change, servers
+					are automatically added or removed across your selected cloud providers
+					according to the cluster’s scaling settings.
+				</p>
+
+				<div>
+					<span class="form-label d-block">Cloud provider</span>
+					<div class="dropdown">
+						<button
+							type="button"
+							id="first-deployment-provider"
+							class="first-deployment-provider-select form-select text-start"
+							aria-controls="first-deployment-provider-options"
+							aria-expanded="false"
+							aria-label="Cloud provider">
+							Choose a cloud provider
+						</button>
+						<div
+							id="first-deployment-provider-options"
+							class="dropdown-menu"
+							role="radiogroup"
+							aria-label="Cloud provider"
+							aria-hidden="true"
+							aria-close-on="anywhere"
+							form-attributes="false"
+							array=""
+							object
+							filter-query-key="type"
+							filter-query-value="cloud"
+							filter-limit="0"
+							filter-sort-key="name"
+							filter-sort-direction="asc"
+							render-query="template">
+							<template>
+								<label class="dropdown-item">
+									<input
+										type="radio"
+										name="first-deployment-provider"
+										array="servers"
+										object
+										key="infrastructure.provider"
+										value="{{object.provider}}"
+										aria-errormessage="first-deployment-provider-error"
+										input-query="$closest form #first-deployment-api-request"
+										input.object="{{object._id}}"
+										input.array="apis"
+										required />
+									<div
+										src="/apps/apis/templates/list.html"
+										click-query="$closest .dropdown #first-deployment-provider"
+										click.value="$value"></div>
+								</label>
+							</template>
+						</div>
+					</div>
+					<span
+						id="first-deployment-provider-error"
+						class="text-danger small"
+						hidden></span>
+				</div>
+
+				<input
+					id="first-deployment-status"
+					type="hidden"
+					array="servers"
+					object
+					key="status"
+					value="provisioning" />
+				<input
+					type="hidden"
+					key="master.status"
+					save="false"
+					input-query="$closest #provision-workflow"
+					input.data-server-state="$value" />
+				<input
+					type="hidden"
+					array="servers"
+					object
+					key="totalWorkers"
+					value="0"
+					value-type="number" />
+				<div
+					id="first-deployment-api-request"
+					form-attributes="false"
+					array=""
+					object=""
+					render-query="template">
+					<template>
+						<div
+							api="{{object.name}}"
+							{{object.name}}-endpoint="create-instance"
+							{{object.name}}-method="post">
+							<input
+								id="first-deployment-api-id"
+								type="hidden"
+								array="servers"
+								object
+								key="api_id"
+								value="{{object._id}}" />
+							<input
+								id="first-deployment-infrastructure-api-id"
+								type="hidden"
+								array="servers"
+								object
+								key="infrastructure.api_id"
+								value="{{object._id}}" />
+							<div
+								id="first-deployment-profile"
+								form-attributes="false"
+								array="servers_config"
+								object
+								filter-query-key="provider"
+								filter-query-value="{{object.provider}}"
+								filter-limit="1"
+								render-query="template">
+								<template>
+									<div>
+										<div
+											template="first-deployment-profile"
+											render="object.config"
+											render-as="profile">
+											<div class="dropdown mt-3">
+												<span class="form-label d-block">Region</span>
+												<button
+													type="button"
+													id="first-deployment-region"
+													class="first-deployment-region-select form-select text-start"
+													aria-controls="first-deployment-region-options"
+													aria-expanded="false"
+													aria-label="Region">
+													Choose a region
+												</button>
+												<div
+													id="first-deployment-region-options"
+													class="dropdown-menu"
+													role="radiogroup"
+													aria-label="Region"
+													aria-hidden="true"
+													aria-close-on="anywhere">
+													<label
+														template
+														render="profile.value.regions"
+														render-as="region"
+														class="dropdown-item d-flex align-items-center gap-2">
+														<input
+															type="radio"
+															name="first-deployment-region"
+															array="servers"
+															object
+															key="infrastructure.region"
+															value="{{region.region}}"
+															change-query="$closest .dropdown #first-deployment-region"
+															change.value="{{region.name}} ({{region.region}})"
+															required />
+														<span
+															>{{region.name}}
+															({{region.region}})</span
+														>
+													</label>
+												</div>
+											</div>
+											<select
+												id="first-deployment-vm-type"
+												hidden
+												array="servers"
+												object
+												key="infrastructure.vmType">
+												<option
+													template
+													render="profile.value.instances"
+													render-as="instance"
+													value="{{instance.name}}"
+													data-vcpu="{{instance.vCPU}}"
+													data-memory-gb="{{instance.memoryGb}}"
+													data-default="{{instance.default}}"
+													onload-query="$closest select option[data-default='true']"
+													onload.selected="true">
+													{{instance.name}}
+												</option>
+											</select>
+										</div>
+									</div>
+								</template>
+							</div>
+							<input
+								type="hidden"
+								form-attributes="false"
+								{{object.name}}-key="region"
+								{{object.name}}-response="false"
+								value="$query($closest form #first-deployment-region-options input:checked).getValue()" />
+							<input
+								type="hidden"
+								form-attributes="false"
+								{{object.name}}-key="vmType"
+								{{object.name}}-response="false"
+								value="$query($closest form #first-deployment-vm-type).getValue()" />
+							<input
+								id="first-deployment-server-id"
+								type="hidden"
+								array="servers"
+								object
+								key="_id"
+								{{object.name}}-key="server_id"
+								{{object.name}}-response="false"
+								save="false" />
+							<input
+								id="first-deployment-cluster-id"
+								type="hidden"
+								array="servers"
+								object
+								key="cluster_id"
+								{{object.name}}-key="cluster_id"
+								{{object.name}}-response="false" />
+							<div
+								id="first-deployment-startup-script"
+								component
+								hidden
+								form-attributes="false"
+								array="servers_config"
+								object
+								key="config.startupScript"
+								filter-query-key="type"
+								filter-query-value="startupscript"
+								filter-limit="1"
+								{{object.name}}-key="startupScript"
+								{{object.name}}-response="false"
+								save="false"></div>
+							<input
+								id="first-deployment-binary-url"
+								type="hidden"
+								form-attributes="false"
+								{{object.name}}-key="binaryUrl"
+								{{object.name}}-response="false"
+								value="$query($closest #provision-workflow #cluster-configuration-form [key='binaryUrl']).getValue()" />
+							<input
+								id="first-deployment-host"
+								type="hidden"
+								form-attributes="false"
+								{{object.name}}-key="host"
+								{{object.name}}-response="false"
+								value="$query($closest #provision-workflow #cluster-configuration-form [key='host']).getValue()" />
+							<input
+								id="first-deployment-storage"
+								type="hidden"
+								{{object.name}}-key="storage"
+								{{object.name}}-response="false"
+								value="$query($closest #provision-workflow #cluster-storage-providers-list input[key='storage']:checked).dataset.apiUrl" />
+							<input
+								id="first-deployment-environment"
+								type="hidden"
+								{{object.name}}-key="environment"
+								{{object.name}}-response="false"
+								value="server_id=$query($closest form #first-deployment-server-id).getValue()&#10;cluster_id=$query($closest form #first-deployment-cluster-id).getValue()" />
+							<input
+								id="first-deployment-vcpu"
+								type="hidden"
+								array="servers"
+								object
+								key="infrastructure.vCPU"
+								{{object.name}}-key="vCPU"
+								{{object.name}}-response="false"
+								value="$query($closest form #first-deployment-vm-type option:checked).dataset.vcpu"
+								value-type="number" />
+							<input
+								id="first-deployment-memory"
+								type="hidden"
+								array="servers"
+								object
+								key="infrastructure.memoryGb"
+								{{object.name}}-key="memoryGb"
+								{{object.name}}-response="false"
+								value="$query($closest form #first-deployment-vm-type option:checked).dataset.memoryGb"
+								value-type="number" />
+							<button
+								type="button"
+								hidden
+								error-query="$closest #provision-workflow"
+								error.data-provision-step="server-status"
+								error.data-server-state="error"
+								actions="{{object.name}}.create-instance, action($closest form #mark-server-starting)"></button>
+						</div>
+					</template>
+				</div>
+				<button
+					id="save-deployment-server"
+					type="button"
+					hidden
+					actions="validate, save, action($closest form #first-deployment-api-request button[actions])"></button>
+				<button
+					id="mark-server-starting"
+					type="button"
+					hidden
+					actions="click, save, selected"
+					click-query="$closest form #first-deployment-status"
+					click.value="starting"
+					selected-query="$closest #provision-workflow"
+					selected.data-provision-step="deployment, server-status"></button>
+			</form>
+			<section
+				class="card-body min-height:100% text-center"
+				data-provision-view="server-status"
+				aria-live="polite">
+				<div class="server-status-starting">
+					<div class="d-flex flex-column align-items-center gap-3">
+						<span
+							class="avatar-lg d-inline-flex align-items-center justify-content-center rounded-circle bg-info-subtle text-info">
+							<span
+								class="spinner-border spinner-border-sm"
+								role="status"
+								aria-label="Provisioning"></span>
+						</span>
+						<div>
+							<h4 class="mb-2">Starting server</h4>
+							<p class="text-muted mb-0">
+								The first server is starting. Its status will update here.
+							</p>
+						</div>
+						<span class="badge bg-info-subtle text-info">Provisioning</span>
+					</div>
+				</div>
+				<div class="server-status-running">
+					<h4 class="mb-2 text-success">Server is running</h4>
+					<p class="text-muted mb-0">The first server is ready.</p>
+				</div>
+				<div class="server-status-error">
+					<h4 class="mb-2 text-danger">Deployment failed</h4>
+					<p class="text-muted mb-0">The server could not be started. Check its status for details.</p>
+				</div>
+			</section>
+		</div>
+	</div>
+	<footer
+		class="card-footer width:100% flex-shrink-0"
+		src="/apps/clusters/components/provision/footer.html"></footer>
+</section>
+

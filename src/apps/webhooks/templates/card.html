@@ -20,15 +20,15 @@
 								role="button"
 								tabindex="0"
 								state-to="offcanvas-app-view"
-								state.src="/apps/apis/endpoints/app.html"
+								state.src="/apps/webhooks/app.html"
 								aria-controls="offcanvas-app"
 								aria-open
 								><span
 									hidden
 									state-to="offcanvas-app-form"
-									state.array="endpoints"
+									state.array="webhooks"
 									state.object="{{object._id}}"></span
-								>{{object.name}}</a
+								>{{object.path}}</a
 							>
 						</h5>
 					</div>
@@ -36,7 +36,7 @@
 				<div class="app-badges">
 					<span
 						class="badge border border-primary text-primary text-uppercase"
-						>{{object.method}}</span
+						>POST</span
 					><span
 						class="app-enabled-status"
 						data-enabled="{{object.enabled}}"
@@ -56,5 +56,5 @@
 	</article>
 </template>
 <div
-	onload.array="endpoints"
+	onload.array="webhooks"
 	onload-query="$parent"></div>

@@ -1,3 +1,539 @@
+<style>
+	[data-cluster-configuration]:has([key="autoscaling.enabled"]:not(:checked))
+		[data-enabled-fields="autoscalingEnabled"],
+	[data-cluster-configuration]:has([key="autoscaling.enabled"]:not(:checked))
+		[data-enabled-badge="autoscalingEnabled"],
+	[data-cluster-configuration]:has([key="geoScale.enabled"]:not(:checked))
+		[data-enabled-fields="geoScaleEnabled"],
+	[data-cluster-configuration]:has([key="geoScale.enabled"]:not(:checked))
+		[data-enabled-badge="geoScaleEnabled"],
+	[data-cluster-configuration]:has([key="vertical.enabled"]:not(:checked))
+		[data-enabled-fields="verticalEnabled"],
+	[data-cluster-configuration]:has([key="vertical.enabled"]:not(:checked))
+		[data-enabled-badge="verticalEnabled"] {
+		display: none !important;
+	}
+	[data-cluster-picker] {
+		display: none !important;
+	}
+	[data-provision-mode="server"] [data-cluster-picker] {
+		display: block !important;
+	}
+	[data-cluster-clear] {
+		display: none;
+	}
+	[data-provision-mode="server"] form[data-cluster-selected="true"]
+		[data-cluster-clear] {
+		display: block;
+	}
+	[data-provision-mode="server"] [data-cluster-name-field] .form-control {
+		padding-right: 2.5rem;
+	}
+	[data-cluster-options] {
+		max-height: 18rem;
+		overflow-y: auto;
+	}
+</style>
+<div
+	id="cluster-cloud-providers"
+	component
+	key="providers"
+	set-value-type="array"
+	filter-query="$closest #provision-workflow #first-deployment-provider-options"
+	filter-query-key="_id.$in"
+	aria-label="Cloud providers"
+	aria-errormessage="cluster-providers-error"
+	required></div>
+<h5 class="mb-1">Configure the cluster</h5>
+<p class="text-muted">
+	Define how the cluster scales and distributes capacity.
+</p>
+<div class="d-flex flex-column gap-3">
 	<div
-		class="card-body d-flex flex-column gap-4 h-100"
-		src="/apps/clusters/components/configuration.html"></div>
+		class="col-12"
+		data-cluster-name-field>
+		<label
+			class="form-label"
+			for="cluster-primary"
+			>Cluster name</label
+		>
+		<div
+			class="position-relative"
+			data-cluster-picker-container>
+			<input
+				id="cluster-primary"
+				class="form-control"
+				key="name"
+				placeholder="Production cluster"
+				filter-query="$closest form #cluster-options"
+				filter-query-key="name.$regex"
+				filter-query-options="i"
+				input-events="beforeinput"
+				input.aria-expanded="true"
+				aria-controls="cluster-options"
+				aria-expanded="false"
+				required />
+			<a
+				href="#cluster-primary"
+				class="position-absolute top-50 end-0 translate-middle-y me-2 text-muted fs-20 lh-1"
+				data-cluster-clear
+				aria-label="Clear selected cluster"
+				title="Clear selected cluster"
+				actions="selected, click, change"
+				selected-query="$closest form #cluster-object-id"
+				selected.value=""
+				click-query="$closest form"
+				click.object=""
+				click.data-cluster-selected=""
+				change-query="$closest form [data-cluster-configuration]"
+				change.src="/apps/clusters/components/form.html#clear-a,/apps/clusters/components/form.html#clear-b">
+				<i src="/assets/svg/remix/close-line.svg" aria-hidden="true"></i>
+			</a>
+			<div data-cluster-picker>
+				<div
+					id="cluster-options"
+					class="dropdown-menu w-100"
+					data-cluster-options
+					aria-hidden="true"
+					aria-close-on="anywhere"
+					form-attributes="false"
+					array="clusters"
+					object
+					filter-limit="0"
+					filter-sort-key="name"
+					filter-sort-direction="asc"
+					render-query="template">
+					<template>
+						<button
+							type="button"
+							class="dropdown-item"
+							click-query="$closest form"
+							click.object="{{object._id}}"
+							click.data-cluster-selected="true">
+							<div
+								value-type="outerHTML"
+								src="/apps/clusters/templates/list.html"></div>
+						</button>
+					</template>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class="col-12 border-top border-top-dashed pt-3">
+		<div class="d-flex align-items-center justify-content-between gap-3">
+			<div class="d-flex align-items-center gap-2">
+				<h6 class="mb-0">Autoscaling</h6>
+				<span
+					class="badge bg-success-subtle text-success"
+					data-enabled-badge="autoscalingEnabled"
+					>Enabled</span
+				>
+			</div>
+			<label class="form-check form-switch mb-0">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					key="autoscaling.enabled"
+					checked
+					aria-label="Enable autoscaling" />
+			</label>
+		</div>
+	</section>
+	<section
+		class="col-12 border-top border-top-dashed pt-3"
+		data-enabled-fields="autoscalingEnabled">
+		<input
+			type="hidden"
+			key="spot.fallbackToOnDemand"
+			value="true"
+			value-type="boolean" />
+		<div class="d-flex align-items-center justify-content-between gap-3">
+			<div class="d-flex align-items-center gap-2">
+				<h6 class="mb-0">Spot capacity</h6>
+				<span
+					class="badge bg-success-subtle text-success"
+					data-enabled-badge="spotEnabled"
+					>Enabled</span
+				>
+			</div>
+			<label class="form-check form-switch mb-0">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					key="spot.enabled"
+					checked
+					aria-label="Enable spot capacity" />
+			</label>
+		</div>
+	</section>
+	<section
+		class="col-12 border-top border-top-dashed pt-3"
+		data-enabled-fields="autoscalingEnabled">
+		<h6>Scale out</h6>
+		<div
+			class="d-grid gap-3"
+			style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+			<label class="form-label min-width:0"
+				>CPU threshold (%)
+				<input
+					class="form-control"
+					type="number"
+					key="scaleOut.cpuThreshold"
+					value="85"
+					min="0"
+					max="100"
+			/></label>
+			<label class="form-label min-width:0"
+				>Memory threshold (%)
+				<input
+					class="form-control"
+					type="number"
+					key="scaleOut.memoryThreshold"
+					value="85"
+					min="0"
+					max="100"
+			/></label>
+			<label class="form-label min-width:0"
+				><span class="d-flex align-items-center gap-1"
+					>Consecutive flushes
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Number of consecutive telemetry intervals that must exceed a scale-out threshold."
+						title="Number of consecutive telemetry intervals that must exceed a scale-out threshold."></i
+				></span>
+				<input
+					class="form-control"
+					type="number"
+					key="scaleOut.consecutiveFlushes"
+					value="3"
+					min="1"
+			/></label>
+			<label class="form-label min-width:0"
+				><span class="d-flex align-items-center gap-1"
+					>Maximum cluster size
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Maximum number of active servers allowed in this cluster. Zero means unlimited."
+						title="Maximum number of active servers allowed in this cluster. Zero means unlimited."></i
+				></span>
+				<input
+					class="form-control"
+					type="number"
+					key="scaleOut.maxClusterSize"
+					value="0"
+					min="0"
+			/></label>
+		</div>
+	</section>
+	<section
+		class="col-12 border-top border-top-dashed pt-3"
+		data-enabled-fields="autoscalingEnabled">
+		<h6>Scale in</h6>
+		<div
+			class="d-grid gap-3"
+			style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+			<label class="form-label min-width:0"
+				>CPU threshold (%)
+				<input
+					class="form-control"
+					type="number"
+					key="scaleIn.cpuThreshold"
+					value="10"
+					min="0"
+					max="100"
+			/></label>
+			<label class="form-label min-width:0"
+				>Memory threshold (%)
+				<input
+					class="form-control"
+					type="number"
+					key="scaleIn.memoryThreshold"
+					value="45"
+					min="0"
+					max="100"
+			/></label>
+			<label class="form-label min-width:0"
+				><span class="d-flex align-items-center gap-1"
+					>Consecutive flushes
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Number of consecutive telemetry intervals that must remain below the scale-in thresholds."
+						title="Number of consecutive telemetry intervals that must remain below the scale-in thresholds."></i
+				></span>
+				<input
+					class="form-control"
+					type="number"
+					key="scaleIn.consecutiveFlushes"
+					value="10"
+					min="1"
+			/></label>
+			<label class="form-label min-width:0"
+				><span class="d-flex align-items-center gap-1"
+					>Minimum cluster size
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Minimum number of active servers retained across the entire cluster."
+						title="Minimum number of active servers retained across the entire cluster."></i
+				></span>
+				<input
+					class="form-control"
+					type="number"
+					key="scaleIn.minClusterSize"
+					value="2"
+					min="0"
+			/></label>
+			<label class="form-label min-width:0"
+				>Drain observation (seconds)
+				<input
+					class="form-control"
+					type="number"
+					key="scaleIn.drainWaitSeconds"
+					value="60"
+					min="1"
+			/></label>
+			<label class="form-label min-width:0"
+				><span class="d-flex align-items-center gap-1"
+					>Preservation
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Geographic boundary the autoscaler should preserve while removing capacity."
+						title="Geographic boundary the autoscaler should preserve while removing capacity."></i
+				></span>
+				<select
+					class="form-select"
+					key="scaleIn.preservation">
+					<option value="global">Global</option>
+					<option
+						value="continent"
+						selected>
+						Continent
+					</option>
+					<option value="country">Country</option>
+					<option value="region">Region</option>
+				</select></label
+			>
+			<label class="form-label min-width:0"
+				><span class="d-flex align-items-center gap-1"
+					>Decommission strategy
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Oldest removes the earliest-created eligible server. Local lets the autoscaler node decommission itself."
+						title="Oldest removes the earliest-created eligible server. Local lets the autoscaler node decommission itself."></i
+				></span>
+				<select
+					class="form-select"
+					key="scaleIn.decommissionStrategy">
+					<option value="oldest">Oldest</option>
+					<option value="local">Local</option>
+				</select></label
+			>
+		</div>
+	</section>
+	<section
+		class="col-12 border-top border-top-dashed pt-3"
+		data-enabled-fields="autoscalingEnabled">
+		<div
+			class="d-flex align-items-center justify-content-between gap-3 mb-3">
+			<div class="d-flex align-items-center gap-2">
+				<h6 class="mb-0">Geographic scaling</h6>
+				<span
+					class="badge bg-success-subtle text-success"
+					data-enabled-badge="geoScaleEnabled"
+					>Enabled</span
+				>
+			</div>
+			<label class="form-check form-switch mb-0">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					key="geoScale.enabled"
+					checked
+					aria-label="Enable geographic scaling" />
+			</label>
+		</div>
+		<div
+			class="d-grid gap-3"
+			style="grid-template-columns: repeat(2, minmax(0, 1fr))"
+			data-enabled-fields="geoScaleEnabled">
+			<label class="form-label min-width:0"
+				><span class="d-flex align-items-center gap-1"
+					>Shedding threshold (%)
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Minimum percentage of active client load in an unserved geographic area required to place capacity there."
+						title="Minimum percentage of active client load in an unserved geographic area required to place capacity there."></i
+				></span>
+				<input
+					class="form-control"
+					type="number"
+					key="geoScale.sheddingThreshold"
+					value="20"
+					min="0"
+					max="100"
+			/></label>
+			<label class="form-label min-width:0"
+				><span class="d-flex align-items-center gap-1"
+					>Density by
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Geographic level used to group client demand when selecting where to add capacity."
+						title="Geographic level used to group client demand when selecting where to add capacity."></i
+				></span>
+				<select
+					class="form-select"
+					key="geoScale.densityBy">
+					<option value="continent">Continent</option>
+					<option value="country">Country</option>
+					<option value="region">Region</option>
+				</select></label
+			>
+		</div>
+	</section>
+	<section
+		class="col-12 border-top border-top-dashed pt-3"
+		data-enabled-fields="autoscalingEnabled">
+		<div
+			class="d-flex align-items-center justify-content-between gap-3 mb-3">
+			<div class="d-flex align-items-center gap-2">
+				<h6 class="mb-0">Vertical scaling</h6>
+				<span
+					class="badge bg-success-subtle text-success"
+					data-enabled-badge="verticalEnabled"
+					>Enabled</span
+				>
+			</div>
+			<label class="form-check form-switch mb-0">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					key="vertical.enabled"
+					checked
+					aria-label="Enable vertical scaling" />
+			</label>
+		</div>
+		<div
+			class="d-flex flex-column gap-3"
+			data-enabled-fields="verticalEnabled">
+			<label class="form-label mb-0"
+				><span class="d-flex align-items-center gap-1"
+					>Maximum nodes per tier
+					<i
+						src="/assets/svg/remix/information-line.svg"
+						class="text-muted"
+						role="img"
+						tabindex="0"
+						aria-label="Servers allowed at the current resource size in a region before the next server target doubles in size."
+						title="Servers allowed at the current resource size in a region before the next server target doubles in size."></i
+				></span>
+				<input
+					class="form-control"
+					type="number"
+					key="vertical.maxNodesPerTier"
+					value="2"
+					min="1"
+			/></label>
+			<div>
+				<h6 class="text-muted fs-12 mb-2">Minimum server size</h6>
+				<div
+					class="d-grid gap-3"
+					style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+					<label class="form-label min-width:0 mb-0"
+						>vCPU
+						<input
+							class="form-control"
+							type="number"
+							key="vertical.min.vCPU"
+							value="1"
+							min="1"
+					/></label>
+					<label class="form-label min-width:0 mb-0"
+						>Memory (GB)
+						<input
+							class="form-control"
+							type="number"
+							key="vertical.min.memoryGb"
+							value="2"
+							min="2"
+					/></label>
+				</div>
+			</div>
+			<div>
+				<h6 class="text-muted fs-12 mb-2">Maximum server size</h6>
+				<div
+					class="d-grid gap-3"
+					style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+					<label class="form-label min-width:0 mb-0"
+						>vCPU
+						<input
+							class="form-control"
+							type="number"
+							key="vertical.max.vCPU"
+							value="64"
+							min="1"
+					/></label>
+					<label class="form-label min-width:0 mb-0"
+						>Memory (GB)
+						<input
+							class="form-control"
+							type="number"
+							key="vertical.max.memoryGb"
+							value="256"
+							min="1"
+					/></label>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="col-12 border-top border-top-dashed pt-3">
+		<details>
+			<summary class="fw-semibold">Advanced</summary>
+			<div class="d-flex flex-column gap-3 mt-3">
+				<label class="form-label mb-0"
+					>Host (optional)
+					<input
+						class="form-control"
+						type="text"
+						key="host"
+						placeholder="Enter a host if needed" />
+				</label>
+				<label class="form-label mb-0"
+					>Binary URL
+					<input
+						class="form-control"
+						type="url"
+						key="binaryUrl"
+						value="https://github.com/cocreate-js/CoCreateWS/releases/download/dev-2026-09-17/cocreatews-node-linux-x64.tar.gz" />
+				</label>
+			</div>
+		</details>
+	</section>
+</div>
+<div
+	class="alert alert-info py-2 mb-0 mt-3"
+	data-step-status
+	data-cluster-status
+	hidden></div>
