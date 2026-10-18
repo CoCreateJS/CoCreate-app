@@ -1,86 +1,90 @@
-<article
-	class="apis-grid-card card flex-grow-1 mb-0"
-	style="flex-basis: 320px; min-width: min(280px, 100%); max-width: 460px"
-	template
-	role="row" aria-selected="false"
-	array="{{object.$array[0]}}"
-	object="{{object._id}}"
-	read="false">
-	<link
-		rel="stylesheet"
-		href="/apps/apis/templates/card.css" />
-	<div class="card-body d-flex flex-column gap-3 text-reset">
-		<div class="apis-grid-heading">
-			<div class="d-flex align-items-start gap-3 min-width:0">
-				<span class="apis-provider-image flex-shrink-0"
-					><img
-						class="apis-grid-provider-logo flex-shrink-0"
-						src="/assets/images/providers/{{object.provider}}.svg"
-						alt=""
-						width="50"
-						height="50"
-						onload="this.hidden = false"
-						onerror="this.hidden = true" />
-					<img
-						class="apis-custom-provider-logo"
-						src="{{object.avatar[0].src}}"
-						alt=""
-						width="50"
-						height="50"
-						hidden
-						onload="this.hidden = false"
-						onerror="this.hidden = true" />
-				</span>
-				<div class="min-width:0">
-					<h4 class="apis-grid-name mb-0 text-capitalize text-break">
-						<a
-							class="text-reset text-decoration-none"
-							role="button"
-							tabindex="0"
-							state-to="offcanvas-app-view"
-							state.src="/apps/apis/app.html"
-							aria-controls="offcanvas-app"
-							aria-haspopup="dialog"
-							aria-expanded="false"
-							aria-label="Open API {{object.name}}"
-							aria-open
-							><span
-								hidden
-								state-to="offcanvas-app-form"
-								state.array="apis"
-								state.object="{{object._id}}"></span>
-							{{object.name}}
-						</a>
-					</h4>
+<template>
+	<article
+		class="apis-grid-card card flex-grow-1 mb-0"
+		style="flex-basis: 320px; min-width: min(280px, 100%); max-width: 460px"
+		role="row"
+		aria-selected="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}">
+		<div class="card-body d-flex flex-column gap-3 text-reset">
+			<div class="apis-grid-heading">
+				<div class="d-flex align-items-start gap-3 min-width:0">
+					<span class="apis-provider-image flex-shrink-0"
+						><img
+							class="apis-grid-provider-logo flex-shrink-0"
+							src="/assets/images/providers/{{object.provider}}.svg"
+							alt=""
+							width="50"
+							height="50"
+							onload="this.hidden = false"
+							onerror="this.hidden = true" />
+						<img
+							class="apis-custom-provider-logo"
+							src="{{object.avatar[0].src}}"
+							alt=""
+							width="50"
+							height="50"
+							hidden
+							onload="this.hidden = false"
+							onerror="this.hidden = true" />
+					</span>
+					<div class="min-width:0">
+						<h4
+							class="apis-grid-name mb-0 text-capitalize text-break">
+							<a
+								class="text-reset text-decoration-none"
+								role="button"
+								tabindex="0"
+								state-to="offcanvas-app-view"
+								state.src="/apps/apis/app.html"
+								aria-controls="offcanvas-app"
+								aria-haspopup="dialog"
+								aria-expanded="false"
+								aria-label="Open API {{object.name}}"
+								aria-open
+								><span
+									hidden
+									state-to="offcanvas-app-form"
+									state.array="apis"
+									state.object="{{object._id}}"></span>
+								{{object.name}}
+							</a>
+						</h4>
+					</div>
 				</div>
-			</div>
-			<div
-				class="apis-grid-badges d-flex flex-wrap align-items-start gap-2">
-				<span
-					class="badge border border-primary text-primary text-capitalize"
-					aria-label="Type"
-					>{{object.type}}</span
-				>
 				<div
-					class="apis-grid-status"
-					data-enabled="{{object.enabled}}"
-					role="status"
-					aria-label="API status">
+					class="apis-grid-badges d-flex flex-wrap align-items-start gap-2">
 					<span
-						class="apis-grid-enabled badge border border-success text-success"
-						>Enabled</span
+						class="badge border border-primary text-primary text-capitalize"
+						aria-label="Type"
+						>{{object.type}}</span
 					>
-					<span class="apis-grid-disabled badge border text-muted"
-						>Disabled</span
-					>
+					<div
+						class="apis-grid-status"
+						data-enabled="{{object.enabled}}"
+						role="status"
+						aria-label="API status">
+						<span
+							class="apis-grid-enabled badge border border-success text-success"
+							>Enabled</span
+						>
+						<span class="apis-grid-disabled badge border text-muted"
+							>Disabled</span
+						>
+					</div>
 				</div>
 			</div>
+			<p class="text-muted mb-0 text-break line-clamp:2">
+				{{object.description}}
+			</p>
 		</div>
-		<p class="text-muted mb-0 text-break line-clamp:2">
-			{{object.description}}
-		</p>
-	</div>
-</article>
+	</article>
+</template>
+
+<link
+	rel="stylesheet"
+	href="/apps/apis/templates/card.css" />
+
 <div
 	onload.array="apis"
 	onload-query="$parent"></div>

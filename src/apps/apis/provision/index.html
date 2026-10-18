@@ -80,22 +80,6 @@
 				class="min-height:100%"
 				data-provider-workflow-view="storage"
 				src="/apps/apis/providers/storage.html"></div>
-			<div
-				id="first-deployment-profiles"
-				hidden
-				array="servers_config"
-				object
-				filter-query-key="type"
-				filter-query-value="autoscaler"
-				filter-limit="0"
-				render-query="[template='first-deployment-profile']">
-				<div
-					template="first-deployment-profile"
-					data-provider="{{object.provider}}"
-					data-enabled="{{object.enabled}}">
-					<pre>{{object.config}}</pre>
-				</div>
-			</div>
 			<form
 				id="cluster-configuration-form"
 				class="cluster-provision-data card-body min-height:100%"
@@ -111,18 +95,6 @@
 					input-query="$document #first-deployment-cluster-id"
 					input.value="$value" />
 				<input
-					id="cluster-providers"
-					type="text"
-					class="visually-hidden"
-					tabindex="-1"
-					aria-label="Cloud provider"
-					aria-errormessage="cluster-providers-error"
-					array="clusters"
-					object
-					key="providers"
-					value-type="array"
-					required />
-				<input
 					id="cluster-storage-providers"
 					type="text"
 					class="visually-hidden"
@@ -131,8 +103,7 @@
 					aria-errormessage="cluster-storage-providers-error"
 					array="clusters"
 					object
-					key="storageProviders"
-					value-type="array"
+					key="storageProvider"
 					required />
 				<div src="/apps/clusters/components/configuration.html"></div>
 				<button
@@ -146,136 +117,7 @@
 				class="server-provision-data card-body min-height:100%"
 				data-provider-workflow-view="deployment"
 				array="servers"
-				object
-				api="aws"
-				aws-endpoint="create-instance"
-				aws-method="post">
-				<input
-					id="first-deployment-server-id"
-					type="hidden"
-					array="servers"
-					object
-					key="_id"
-					aws-key="server_id"
-					aws-response="false"
-					save="false" />
-				<input
-					id="first-deployment-cluster-id"
-					type="hidden"
-					array="servers"
-					object
-					key="cluster_id"
-					aws-key="cluster_id"
-					aws-response="false" />
-				<input
-					id="first-deployment-api-id"
-					type="hidden"
-					array="servers"
-					object
-					key="api_id"
-					value="$query($document #first-deployment-provider selected cc-option).dataset.apiId" />
-				<input
-					id="first-deployment-infrastructure-api-id"
-					type="hidden"
-					array="servers"
-					object
-					key="infrastructure.api_id"
-					value="$query($document #first-deployment-provider selected cc-option).dataset.apiId" />
-				<input
-					id="first-deployment-status"
-					type="hidden"
-					array="servers"
-					object
-					key="status"
-					value="provisioning" />
-				<input
-					type="hidden"
-					array="servers"
-					object
-					key="totalWorkers"
-					value="0"
-					value-type="number" />
-				<textarea
-					id="first-deployment-startup-script"
-					hidden
-					form-attributes="false"
-					array="servers_config"
-					object
-					key="config.startupScript"
-					filter-query-key="type"
-					filter-query-value="startupscript"
-					filter-limit="1"
-					aws-key="startupScript"
-					aws-response="false"
-					value-type="json"
-					value-evaluate="false"
-					save="false"
-					readonly></textarea>
-				<input
-					id="first-deployment-binary-url"
-					type="hidden"
-					form-attributes="false"
-					array="servers_config"
-					object
-					key="config.binaryUrl"
-					filter-query-key="type"
-					filter-query-value="startupscript"
-					filter-limit="1"
-					aws-key="binaryUrl"
-					aws-response="false"
-					save="false"
-					readonly />
-				<input
-					id="first-deployment-host"
-					type="hidden"
-					form-attributes="false"
-					array="servers_config"
-					object
-					key="config.host"
-					filter-query-key="type"
-					filter-query-value="startupscript"
-					filter-limit="1"
-					aws-key="host"
-					aws-response="false"
-					save="false"
-					readonly />
-				<input
-					id="first-deployment-storage"
-					type="hidden"
-					aws-key="storage"
-					aws-response="false" />
-				<input
-					id="first-deployment-environment"
-					type="hidden"
-					aws-key="environment"
-					aws-response="false"
-					value="server_id=$query($document #first-deployment-server-id).getValue()&#10;cluster_id=$query($document #first-deployment-cluster-id).getValue()" />
-				<input
-					id="first-deployment-vm-type"
-					type="hidden"
-					array="servers"
-					object
-					key="infrastructure.vmType"
-					aws-key="vmType"
-					aws-response="false" />
-				<input
-					id="first-deployment-vcpu"
-					type="hidden"
-					array="servers"
-					object
-					key="infrastructure.vCPU"
-					aws-key="vCPU"
-					aws-response="false"
-					value-type="number" />
-				<input
-					id="first-deployment-memory"
-					type="hidden"
-					array="servers"
-					object
-					key="infrastructure.memoryGb"
-					aws-key="memoryGb"
-					aws-response="false"
-					value-type="number" />
+				object>
 				<div src="/apps/clusters/components/deployment.html"></div>
 				<button
 					id="run-first-deployment"
@@ -286,7 +128,7 @@
 					id="save-first-deployment-server"
 					type="button"
 					hidden
-					actions="save, action($document #prepare-server-api), aws.create-instance, action($document #mark-server-starting)"></button>
+					actions="save, action($document #first-deployment-api-request button[actions])"></button>
 				<button
 					id="mark-server-starting"
 					type="button"
@@ -300,17 +142,15 @@
 				type="button"
 				hidden
 				click-query="$document #apis-provider-workflow"
-				click.data-provider-step="cloud, configuration"></button>
+				click.data-provider-step="cloud, configuration"
+				selected-query="$document #first-deployment-provider-options"
+				selected.array="apis"></button>
 			<button
 				id="show-first-deployment"
 				type="button"
 				hidden
 				click-query="$document #apis-provider-workflow"
 				click.data-provider-step="storage, deployment"></button>
-			<button
-				id="prepare-server-api"
-				type="button"
-				hidden></button>
 			<button
 				id="show-deployment-success"
 				type="button"
@@ -330,4 +170,3 @@
 		src="/components/steps/footer.html"></footer>
 </section>
 
-<script src="/apps/apis/provision/deploy.js"></script>

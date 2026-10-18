@@ -14,6 +14,17 @@
 		display: none !important;
 	}
 </style>
+<div
+	id="cluster-cloud-providers"
+	component
+	array="clusters"
+	object
+	key="preferredProviders"
+	filter-query="$document #first-deployment-provider-options"
+	filter-query-key="_id.$in"
+	aria-label="Cloud providers"
+	aria-errormessage="cluster-providers-error"
+	required></div>
 <h5 class="mb-1">Configure the cluster</h5>
 <p class="text-muted">
 	Define how the cluster scales and distributes capacity.
@@ -454,6 +465,33 @@
 				</div>
 			</div>
 		</div>
+	</section>
+	<section class="col-12 border-top border-top-dashed pt-3">
+		<details>
+			<summary class="fw-semibold">Advanced</summary>
+			<div class="d-flex flex-column gap-3 mt-3">
+				<label class="form-label mb-0"
+					>Host (optional)
+					<input
+						class="form-control"
+						type="text"
+						array="clusters"
+						object
+						key="host"
+						placeholder="Enter a host if needed" />
+				</label>
+				<label class="form-label mb-0"
+					>Binary URL
+					<input
+						class="form-control"
+						type="url"
+						array="clusters"
+						object
+						key="binaryUrl"
+						value="https://github.com/cocreate-js/CoCreateWS/releases/download/dev-2026-09-17/cocreatews-node-linux-x64.tar.gz" />
+				</label>
+			</div>
+		</details>
 	</section>
 </div>
 <div

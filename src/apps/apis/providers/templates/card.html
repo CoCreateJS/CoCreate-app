@@ -1,16 +1,17 @@
 <label class="d-flex align-items-center gap-3 p-3 mb-0">
 	<input
-		type="checkbox"
+		type="radio"
 		class="cluster-provision-data"
-		name="storage-expansion"
+		name="{{object.type}}-provider"
 		array="clusters"
 		object
 		key="{{object.type}}"
 		value="{{object._id}}"
+		get-value-type="string"
 		data-provider="{{object.provider}}"
 		data-api-url="{{object.url}}"
-		filter-query="$document #first-deployment-provider-options"
-		filter-query-key="_id.$in" />
+		input-query="$document #cluster-{{object.type}}-providers"
+		input.value="$value" />
 	<div class="flex-grow-1 min-width:0">
 		<div
 			value-type="outerHTML"

@@ -1,58 +1,60 @@
-<article
-	class="card flex-grow-1 mb-0 app-card app-with-image app-service-card"
-	style="flex-basis: 320px; min-width: min(280px, 100%); max-width: 460px"
-	template
-	role="row" aria-selected="false"
-	array="{{object.$array[0]}}"
-	object="{{object._id}}"
-	read="false">
-	<div class="card-body d-flex flex-column gap-3">
-		<div class="app-heading">
-			<div class="d-flex align-items-start gap-3 min-width:0">
-				<span
-					class="app-provider-reference"
-					src="/apps/apis/components/provider-icon.html"></span>
-				<div class="min-width:0">
-					<h5 class="app-title mb-0 text-break">
-						<a
-							class="text-reset text-decoration-none"
-							role="button"
-							tabindex="0"
-							state-to="offcanvas-app-view"
-							state.src="/apps/apis/webhooks/app.html"
-							aria-controls="offcanvas-app"
-							aria-open
-							><span
-								hidden
-								state-to="offcanvas-app-form"
-								state.array="webhooks"
-								state.object="{{object._id}}"></span
-							>{{object.path}}</a
-						>
-					</h5>
+<template>
+	<article
+		class="card flex-grow-1 mb-0 app-card app-with-image app-service-card"
+		style="flex-basis: 320px; min-width: min(280px, 100%); max-width: 460px"
+		role="row"
+		aria-selected="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}"
+		read="false">
+		<div class="card-body d-flex flex-column gap-3">
+			<div class="app-heading">
+				<div class="d-flex align-items-start gap-3 min-width:0">
+					<div
+						value-type="outerHTML"
+						src="/apps/apis/components/provider-icon.html"></div>
+					<div class="min-width:0">
+						<h5 class="app-title mb-0 text-break">
+							<a
+								class="text-reset text-decoration-none"
+								role="button"
+								tabindex="0"
+								state-to="offcanvas-app-view"
+								state.src="/apps/apis/webhooks/app.html"
+								aria-controls="offcanvas-app"
+								aria-open
+								><span
+									hidden
+									state-to="offcanvas-app-form"
+									state.array="webhooks"
+									state.object="{{object._id}}"></span
+								>{{object.path}}</a
+							>
+						</h5>
+					</div>
+				</div>
+				<div class="app-badges">
+					<span
+						class="badge border border-primary text-primary text-uppercase"
+						>POST</span
+					><span
+						class="app-enabled-status"
+						data-enabled="{{object.enabled}}"
+						role="status"
+						aria-label="Status"
+						><span
+							class="app-enabled badge border border-success text-success"
+							>Enabled</span
+						><span class="app-disabled badge border text-muted"
+							>Disabled</span
+						></span
+					>
 				</div>
 			</div>
-			<div class="app-badges">
-				<span
-					class="badge border border-primary text-primary text-uppercase"
-					>POST</span
-				><span
-					class="app-enabled-status"
-					data-enabled="{{object.enabled}}"
-					role="status"
-					aria-label="Status"
-					><span
-						class="app-enabled badge border border-success text-success"
-						>Enabled</span
-					><span class="app-disabled badge border text-muted"
-						>Disabled</span
-					></span
-				>
-			</div>
+			<p class="text-muted mb-0 line-clamp:2">{{object.description}}</p>
 		</div>
-		<p class="text-muted mb-0 line-clamp:2">{{object.description}}</p>
-	</div>
-</article>
+	</article>
+</template>
 <div
 	onload.array="webhooks"
 	onload-query="$parent"></div>

@@ -1,6 +1,7 @@
 
 <link rel="stylesheet" href="/apps/apps/components/card.css" />
-<article class="card flex-grow-1 mb-0 app-card app-with-image" style="flex-basis:320px;min-width:min(280px,100%);max-width:460px" template role="row" aria-selected="false" array="{{object.$array[0]}}" object="{{object._id}}" read="false">
+<template>
+<article class="card flex-grow-1 mb-0 app-card app-with-image" style="flex-basis:320px;min-width:min(280px,100%);max-width:460px" role="row" aria-selected="false" array="{{object.$array[0]}}" object="{{object._id}}" read="false">
 <div class="card-body d-flex flex-column gap-3 text-reset">
 	<div class="app-heading"><div class="d-flex align-items-center gap-3 min-width:0"><div class="avatar-sm flex-shrink-0"><span class="avatar-title bg-primary-subtle rounded-circle fs-2 material-shadow"><i src="{{object.icon}}" style="font-size:1.5rem" aria-hidden="true"></i></span></div><div class="min-width:0"><h5 class="text-truncate app-title mb-1"><a class="text-reset text-decoration-none" role="button" tabindex="0" state-to="offcanvas-app-form" state.array="apps" state.object="{{object._id}}" aria-controls="offcanvas-app" aria-haspopup="dialog" aria-expanded="false" aria-open><span state-to="offcanvas-app-view" state.src="/apps/apps/app.html" hidden></span>{{object.name}}</a></h5></div></div><div class="app-badges"><span class="badge border border-primary text-primary">{{object.category}}</span><span class="apps-card-status" data-status="{{object.status}}"><span class="apps-card-enabled badge border border-success text-success">Enabled</span><span class="apps-card-disabled badge border text-muted">Disabled</span></span></div></div>
 	<p class="text-muted mb-0 line-clamp:2">{{object.description}}</p>
@@ -15,4 +16,6 @@
 			<span class="text-truncate">{{object.array}}</span>
 		</span>
 	</div>
-</div></article><div onload.array="apps" onload-query="$parent"></div>
+</div></article>
+</template>
+<div onload.array="apps" onload-query="$parent"></div>

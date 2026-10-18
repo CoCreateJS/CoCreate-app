@@ -5,8 +5,9 @@
 [data-provider-name]::before { content: attr(data-provider-name); }
 .apis-provider-option > label { cursor: pointer; }
 .apis-provider-option { transition: border-color 0.15s ease, background-color 0.15s ease; }
-#apis-provider-workflow:has(> footer:not([hidden])) .apis-provider-option:has(input[name="storage-expansion"]:checked) { border-color: var(--coc-primary) !important; background: rgba(var(--coc-primary-rgb), 0.08); }
-.apis-provider-option > label > input[name="storage-expansion"] { position: absolute; opacity: 0; pointer-events: none; }
+.apis-provider-option:has(> label > input.cluster-provision-data:focus-visible) { border-color: var(--coc-primary) !important; }
+#apis-provider-workflow:has(> footer:not([hidden])) .apis-provider-option:has(input.cluster-provision-data:checked) { border-color: var(--coc-primary) !important; background: rgba(var(--coc-primary-rgb), 0.08); }
+.apis-provider-option > label > input.cluster-provision-data { position: absolute; opacity: 0; pointer-events: none; }
 .apis-provider-fields { display: none; }
-.apis-provider-option:has(input[name="storage-expansion"]:checked) > .apis-provider-fields { display: block; }
+.apis-provider-option:has(input.cluster-provision-data:checked) > .apis-provider-fields { display: block; }
 .apis-provider-option:not(:has(.apis-provider-fields [render-clone] textarea)) [data-storage-configured-badge], .apis-provider-option:has(.apis-provider-fields [render-clone] textarea:invalid) [data-storage-configured-badge] { display: none; }
