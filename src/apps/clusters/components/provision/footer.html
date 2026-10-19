@@ -46,20 +46,31 @@
 		</button>
 	</div>
 	<div data-provision-step-controls="deployment" class="width:100%">
-		<button
-			class="btn btn-light"
-			type="button"
-			click-query="$closest #provision-workflow"
-			click.data-provision-step="deployment, storage">
-			Back
-		</button>
-		<button
-			class="btn btn-success float-end"
-			type="button"
-			save-query="$closest #provision-workflow #cluster-configuration-form"
-			actions="validate(#provision-workflow #cluster-configuration-form), save, action($closest #provision-workflow #save-deployment-server)">
-			Deploy
-		</button>
+		<div class="d-flex justify-content-between">
+			<button
+				class="btn btn-light"
+				type="button"
+				click-query="$closest #provision-workflow"
+				click.data-provision-step="deployment, storage">
+				Back
+			</button>
+			<button
+				id="deploy-cluster"
+				class="btn btn-success btn-spinner"
+				type="button"
+				aria-errormessage="deploy-cluster-error"
+				save-query="$closest #provision-workflow #cluster-configuration-form"
+				actions="disabled, validate(#provision-workflow #cluster-configuration-form), save, action($closest #provision-workflow #save-deployment-server), disabled">
+				<span class="spinner-border spinner-border-sm display:none" role="status" aria-hidden="true"></span>
+				<span class="button-text">Deploy</span>
+			</button>
+		</div>
+		<p
+			id="deploy-cluster-error"
+			class="text-danger small text-end mb-0 pt-2"
+			role="alert"
+			value-type="textContent"
+			hidden></p>
 	</div>
 	<div data-provision-step-controls="server-status" class="width:100% text-end">
 		<button
