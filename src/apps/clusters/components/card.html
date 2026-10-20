@@ -21,10 +21,10 @@
 		<span form-attributes="false" array="servers" object key="$length" filter-query-key="cluster_id" filter-limit>0</span>
 		servers
 	</span>
-	<span key="storage" render-query="$next" hidden></span>
-	<span render="storage" render-as="storage" template class="d-flex align-items-center gap-1 ms-auto min-width:0" style="max-width: 100%" title="Storage: {{storage.key}}">
+	<span class="d-flex align-items-center gap-1 ms-auto min-width:0" style="max-width: 100%" title="Storage provider">
 		<i src="/assets/svg/remix/database-2-line.svg" class="flex-shrink-0" aria-hidden="true"></i>
 		<span class="visually-hidden">Storage: </span>
-		<span class="text-truncate">{{storage.key}}</span>
+		<input type="hidden" key="storage" input-query="$next" input.filter-query-value="$value" />
+		<span class="text-truncate" form-attributes="false" array="apis" object key="name" filter-query-key="_id" filter-limit="1"></span>
 	</span>
 </div>

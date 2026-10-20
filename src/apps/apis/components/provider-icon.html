@@ -1,7 +1,7 @@
 <span
 	class="app-provider-image"
 	aria-hidden="true"
-	object="{{object.api_id}}"
+	object="{{object.api_id}}{{object.cloud}}"
 	key="api_id"
 	value
 	input.object="$value"
@@ -9,7 +9,7 @@
 	<input
 		type="hidden"
 		array="apis"
-		object="{{object.api_id}}"
+		object="{{object.api_id}}{{object.cloud}}"
 		key="alt"
 		input-query="$next"
 		input.alt="$value" />
@@ -18,7 +18,7 @@
 		form-attributes="false"
 		array="apis"
 		key="icon"
-		object="{{object.api_id}}"
+		object="{{object.api_id}}{{object.cloud}}"
 		alt=""
 		width="36"
 		height="36"

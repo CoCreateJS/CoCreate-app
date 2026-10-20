@@ -37,7 +37,7 @@
 <div
 	id="cluster-cloud-providers"
 	component
-	key="providers"
+	key="clouds"
 	set-value-type="array"
 	filter-query="$closest #provision-workflow #first-deployment-provider-options"
 	filter-query-key="_id.$in"
@@ -513,11 +513,12 @@
 			<summary class="fw-semibold">Advanced</summary>
 			<div class="d-flex flex-column gap-3 mt-3">
 				<label class="form-label mb-0"
-					>Host (optional)
+					>Host
 					<input
 						class="form-control"
 						type="text"
 						key="host"
+						value="dev.cocreatejs.com"
 						placeholder="Enter a host if needed" />
 				</label>
 				<label class="form-label mb-0"
@@ -526,7 +527,7 @@
 						class="form-control"
 						type="url"
 						key="binaryUrl"
-						value="https://github.com/cocreate-js/CoCreateWS/releases/download/dev-2026-09-17/cocreatews-node-linux-x64.tar.gz" />
+						value="https://github.com/cocreate-js/CoCreateWS/releases/download/dev-latest/cocreatews-node-linux-x64.tar.gz" />
 				</label>
 			</div>
 		</details>

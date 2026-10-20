@@ -22,6 +22,69 @@
  * (AWS, GCP, Azure, DigitalOcean, OCI, Hetzner, Vultr, and Equinix).
  */
 
+const requiredText = (path, message) => ({
+    [`$if.${path}.$type`]: {
+        string: {
+            [`$if.${path}.$regex`]: {
+                "\\S": { [`${path}.trim`]: [] },
+                $else: { $throw: message }
+            }
+        },
+        $else: { $throw: message }
+    }
+});
+
+// Each create-instance endpoint resolves the caller's storage ID immediately
+// before provisioning. The incoming ID remains intact; only startup user data
+// receives the current storage connection record.
+const storageActions = {
+    storageId: requiredText('$payload.data.storage', 'create-instance requires a storage API record ID.'),
+    storageResponse: {
+        "$crud.send": {
+            method: 'object.read',
+            array: 'apis',
+            filter: {
+                query: { _id: '$storageId', type: 'storage', enabled: true },
+                key: {
+                    avatar: 0,
+                    icon: 0,
+                    type: 0,
+                    headers: 0,
+                    url: 0,
+                    description: 0,
+                    enabled: 0,
+                    created: 0,
+                    modified: 0,
+                    updated: 0,
+                    deleted: 0,
+                    permissions: 0,
+                    organization_id: 0,
+                    pricing: 0
+                },
+                limit: 1
+            }
+        }
+    },
+    storageConfig: {
+        "$if.$storageResponse.error.length.$gt": {
+            "0": { $throw: 'Unable to read the selected storage API record.' },
+            $else: {
+                "$if.$storageResponse.object.0.$exists": {
+                    $true: '$storageResponse.object.0',
+                    $else: { $throw: 'The selected enabled storage API record is unavailable.' }
+                }
+            }
+        }
+    },
+    storageName: requiredText('$storageConfig.name', 'The storage API record requires a name.'),
+    storageProvider: requiredText('$storageConfig.provider', 'The storage API record requires a provider.'),
+    storageBytes: { "$Buffer.from": [{ "$JSON.stringify": '$storageConfig' }, 'utf8'] },
+    storageBase64: { "$storageBytes.toString": 'base64' },
+    bootstrapScript: { "$astAsync": '$payload.data.startupScript' },
+    bootstrapScriptBytes: { "$Buffer.from": ['$bootstrapScript', 'utf8'] },
+    bootstrapScriptBase64: { "$bootstrapScriptBytes.toString": 'base64' }
+};
+
 export default {
     "method": "object.update",
     "array": "endpoints",
@@ -96,6 +159,7 @@ export default {
             "endpoint": "/instances",
             "description": "Provisions EC2 instances with cluster-scoped network security.",
             "actions": {
+                ...storageActions,
                 "image": {
                     "$api.send": {
                         "api": "$config.name",
@@ -235,7 +299,10 @@ export default {
                             "MinCount": 1,
                             "MaxCount": 1,
                             "SecurityGroupId.1": "$securityGroupId",
-                            "UserData": { "$btoa": { "$astAsync": "$payload.data.startupScript" } }
+                            "TagSpecification.1.ResourceType": "instance",
+                            "TagSpecification.1.Tag.1.Key": "Name",
+                            "TagSpecification.1.Tag.1.Value": "$payload.data.name",
+                            "UserData": "$bootstrapScriptBase64"
                         }
                     }
                 },
@@ -294,6 +361,7 @@ export default {
                 ]
             },
             "description": "Launches a Google Compute Engine VM instance in the specified GCP zone.",
+            "actions": { ...storageActions },
             "data": {
                 "name": "$payload.data.vmId",
                 "machineType": { "$concat": ["zones/", { "$null": ["$payload.data.zone", "$payload.data.region"] }, "/machineTypes/", "$payload.data.vmType"] },
@@ -316,7 +384,7 @@ export default {
                     "items": [
                         {
                             "key": "startup-script",
-                            "value": { "$astAsync": "$payload.data.startupScript" }
+                            "value": "$bootstrapScript"
                         }
                     ]
                 }
@@ -360,6 +428,7 @@ export default {
             },
             "description": "Creates or updates an Azure Virtual Machine resource within a resource group.",
             "actions": {
+                ...storageActions,
                 "existingNsg": {
                     "$api.send": {
                         "api": "$config.name",
@@ -421,7 +490,7 @@ export default {
                     },
                     "osProfile": {
                         "computerName": "$payload.data.vmId",
-                        "customData": { "$base64": { "$astAsync": "$payload.data.startupScript" } }
+                        "customData": "$bootstrapScriptBase64"
                     }
                 }
             },
@@ -454,12 +523,13 @@ export default {
             "method": "post",
             "endpoint": "/v2/droplets",
             "description": "Spins up a new DigitalOcean Droplet compute instance.",
+            "actions": { ...storageActions },
             "data": {
                 "name": { "$null": ["$payload.data.vmId", "$payload.data.name"] },
                 "region": "$payload.data.region",
                 "size": "$payload.data.vmType",
                 "image": "ubuntu-24-04-x64",
-                "user_data": { "$astAsync": "$payload.data.startupScript" }
+                "user_data": "$bootstrapScript"
             },
             "enabled": true
         },
@@ -481,6 +551,7 @@ export default {
             "endpoint": "/20160918/instances",
             "description": "Launches a new compute instance on Oracle Cloud Infrastructure (OCI).",
             "actions": {
+                ...storageActions,
                 "existingOciNsg": {
                     "$api.send": {
                         "api": "$config.name",
@@ -523,7 +594,7 @@ export default {
                     ]
                 },
                 "metadata": {
-                    "user_data": { "$base64": { "$astAsync": "$payload.data.startupScript" } }
+                    "user_data": "$bootstrapScriptBase64"
                 }
             },
             "enabled": true
@@ -545,12 +616,13 @@ export default {
             "method": "post",
             "endpoint": "/v1/servers",
             "description": "Creates a new Hetzner Cloud server instance.",
+            "actions": { ...storageActions },
             "data": {
                 "name": "$payload.data.vmId",
                 "server_type": "$payload.data.vmType",
                 "location": "$payload.data.region",
                 "image": "ubuntu-24.04",
-                "user_data": { "$astAsync": "$payload.data.startupScript" }
+                "user_data": "$bootstrapScript"
             },
             "enabled": true
         },
@@ -571,12 +643,13 @@ export default {
             "method": "post",
             "endpoint": "/v2/instances",
             "description": "Deploys a new Vultr cloud compute instance.",
+            "actions": { ...storageActions },
             "data": {
                 "region": "$payload.data.region",
                 "plan": "$payload.data.vmType",
                 "label": "$payload.data.vmId",
                 "os_id": 215, // 215 = Ubuntu 24.04 LTS x64
-                "user_data": { "$base64": { "$astAsync": "$payload.data.startupScript" } }
+                "user_data": "$bootstrapScriptBase64"
             },
             "enabled": true
         },
@@ -603,12 +676,13 @@ export default {
                 ]
             },
             "description": "Provisions bare metal compute hardware on Equinix Metal.",
+            "actions": { ...storageActions },
             "data": {
                 "hostname": "$payload.data.vmId",
                 "plan": "$payload.data.vmType",
                 "metro": "$payload.data.region",
                 "operating_system": "ubuntu_24_04",
-                "userdata": { "$astAsync": "$payload.data.startupScript" }
+                "userdata": "$bootstrapScript"
             },
             "enabled": true
         },

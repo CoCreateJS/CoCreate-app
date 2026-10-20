@@ -147,9 +147,7 @@
 					id="cluster-object-id"
 					type="hidden"
 					key="_id"
-					save="false"
-					input-query="$closest #provision-workflow #first-deployment-cluster-id"
-					input.value="$value" />
+					save="false" />
 				<input
 					id="cluster-storage-providers"
 					type="text"
@@ -157,7 +155,7 @@
 					tabindex="-1"
 					aria-label="Storage provider"
 					aria-errormessage="cluster-storage-providers-error"
-					key="storageProvider"
+					key="storage"
 					required />
 				<div
 					data-cluster-configuration
@@ -269,15 +267,18 @@
 								type="hidden"
 								array="servers"
 								object
-								key="api_id"
-								value="{{object._id}}" />
+								key="cloud"
+								value="{{object._id}}"
+								{{object.name}}-key="cloud"
+								{{object.name}}-response="false" />
 							<input
-								id="first-deployment-infrastructure-api-id"
 								type="hidden"
 								array="servers"
 								object
-								key="infrastructure.api_id"
-								value="{{object._id}}" />
+								key="name"
+								value="$concat([$query($closest #provision-workflow #cluster-configuration-form [key='name']).getValue(), '-', '{{object.name}}', '-', $query($closest form #first-deployment-region-options input:checked).getValue(), '-', $uuid(6)])"
+								{{object.name}}-key="name"
+								{{object.name}}-response="false" />
 							<div
 								id="first-deployment-profile"
 								form-attributes="false"
@@ -381,12 +382,19 @@
 								save="false" />
 							<input
 								id="first-deployment-cluster-id"
-								type="hidden"
+								type="text"
+								class="visually-hidden"
+								tabindex="-1"
+								aria-label="Cluster ID"
+								aria-errormessage="deploy-cluster-error"
 								array="servers"
 								object
 								key="cluster_id"
+								read="false"
+								value="$query($closest #provision-workflow #cluster-object-id).getValue()"
 								{{object.name}}-key="cluster_id"
-								{{object.name}}-response="false" />
+								{{object.name}}-response="false"
+								required />
 							<div
 								id="first-deployment-startup-script"
 								component
@@ -411,16 +419,26 @@
 							<input
 								id="first-deployment-host"
 								type="hidden"
+								array="servers"
+								object
+								key="host"
 								form-attributes="false"
 								{{object.name}}-key="host"
 								{{object.name}}-response="false"
 								value="$query($closest #provision-workflow #cluster-configuration-form [key='host']).getValue()" />
 							<input
 								id="first-deployment-storage"
-								type="hidden"
+								type="text"
+								class="visually-hidden"
+								tabindex="-1"
+								aria-label="Storage provider"
+								array="servers"
+								object
+								key="storage"
 								{{object.name}}-key="storage"
 								{{object.name}}-response="false"
-								value="$query($closest #provision-workflow #cluster-storage-providers-list input[key='storage']:checked).dataset.apiUrl" />
+								value="$query($closest #provision-workflow #cluster-configuration-form [key='storage']).getValue()"
+								required />
 							<input
 								id="first-deployment-environment"
 								type="hidden"

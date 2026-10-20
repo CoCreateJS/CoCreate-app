@@ -25,7 +25,7 @@ export default {
             "worker": "*",
             "config": {
                 "host": "dev.cocreatejs.com",
-                "binaryUrl": "https://github.com/cocreate-js/CoCreateWS/releases/download/dev-2026-09-17/cocreatews-node-linux-x64.tar.gz",
+                "binaryUrl": "https://github.com/cocreate-js/CoCreateWS/releases/download/dev-latest/cocreatews-node-linux-x64.tar.gz",
                 "startupScript": {
                     "$concat": [[`#!/usr/bin/env bash
 # ==============================================================================
@@ -82,7 +82,7 @@ fi
 ln -sfn /opt/node-v24.18.0 /opt/node
 /opt/node/bin/node --version
 
-if [ -s /opt/cocreatews/index.js ] && [ -x /opt/cocreatews/copilot-linux-x64 ]; then
+if [ -s /opt/cocreatews/index.js ] && [ -x /opt/cocreatews/plugins/ai/copilot-linux-x64 ]; then
   echo "[CoCreate] Node runtime bundle already present, skipping download."
 else
   echo "[CoCreate] Fetching the configured Node runtime bundle from GitHub Releases..."
@@ -94,10 +94,10 @@ else
   rm -f /tmp/cocreatews-node.tar.gz
 fi
 test -s /opt/cocreatews/index.js
-test -x /opt/cocreatews/copilot-linux-x64
+test -x /opt/cocreatews/plugins/ai/copilot-linux-x64
 echo "[CoCreate] Node runtime bundle is ready:"
-ls -lh /opt/cocreatews/index.js /opt/cocreatews/copilot-linux-x64
-sha256sum /opt/cocreatews/index.js /opt/cocreatews/copilot-linux-x64
+ls -lh /opt/cocreatews/index.js /opt/cocreatews/plugins/ai/copilot-linux-x64
+sha256sum /opt/cocreatews/index.js /opt/cocreatews/plugins/ai/copilot-linux-x64
 apt-get clean
 
 # ------------------------------------------------------------------------------
@@ -113,7 +113,7 @@ chmod 600 /etc/cocreatews/environment
 
 # Storage is passed as base64 so connection strings and punctuation cannot be
 # misinterpreted by cloud-init, the shell, or systemd's EnvironmentFile parser.
-printf '%s' '`, "$payload.data.storage", `' | base64 --decode > /etc/cocreatews/storage.json
+printf '%s' '`, "$storageBase64", `' | base64 --decode > /etc/cocreatews/storage.json
 test -s /etc/cocreatews/storage.json
 chmod 600 /etc/cocreatews/storage.json
 
@@ -181,10 +181,18 @@ if command -v ufw >/dev/null 2>&1; then
   ufw --force enable || true
 fi
 
-# Stop, disable, and mask SSH daemon so it cannot be started.
-systemctl stop sshd || systemctl stop ssh || true
-systemctl disable sshd || systemctl disable ssh || true
-systemctl mask sshd || systemctl mask ssh || true
+# Stop, disable, and mask SSH services and socket activation. Ubuntu may leave
+# ssh.socket listening on port 22 after ssh.service has stopped.
+for unit in ssh.socket ssh.service sshd.service; do
+  systemctl disable --now "$unit" >/dev/null 2>&1 || true
+  systemctl mask "$unit" >/dev/null 2>&1 || true
+done
+
+if ss -H -lnt | awk '{ print $4 }' | grep -Eq '(^|:)22$'; then
+  echo "[CoCreate] SSH shutdown failed: a local process is still listening on port 22." >&2
+  exit 1
+fi
+echo "[CoCreate] SSH services and socket activation are disabled; port 22 has no local listener."
 
 # ------------------------------------------------------------------------------
 # 6. Boot WebService via Systemd

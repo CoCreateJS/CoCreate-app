@@ -66,17 +66,21 @@
 			</span>
 
 			<span
-				render="object.storage"
-				render-as="storage"
-				value-type="object"
-				template
 				class="d-flex align-items-center gap-1 ms-auto min-width:0"
 				style="max-width: 100%"
-				title="Storage: {{storage.key}}">
+				title="Storage provider">
 				<i src="/assets/svg/remix/database-2-line.svg" class="flex-shrink-0"
 					aria-hidden="true"></i>
 				<span class="visually-hidden">Storage: </span>
-				<span class="text-truncate">{{storage.key}}</span>
+				<span
+					class="text-truncate"
+					form-attributes="false"
+					array="apis"
+					object
+					key="name"
+					filter-query-key="_id"
+					filter-query-value="{{object.storage}}"
+					filter-limit="1"></span>
 			</span>
 		</div>
 	</div>
