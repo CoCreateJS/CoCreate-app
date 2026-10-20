@@ -410,18 +410,6 @@ export default {
             path: "../CoCreate-modules/CoCreate-social-share",
             repo: "github.com/CoCreate-app/CoCreate-social-share.git"
         },
-        select: {
-            import: "@cocreate/select",
-            selector: "cocreate-select",
-            path: "../CoCreate-modules/CoCreate-select",
-            repo: "github.com/CoCreate-app/CoCreate-select.git"
-        },
-        toolbar: {
-            import: "@cocreate/toolbar",
-            selector: "[toolbar-query]",
-            path: "../CoCreate-modules/CoCreate-toolbar",
-            repo: "github.com/CoCreate-app/CoCreate-toolbar.git"
-        },
         vdom: {
             import: "@cocreate/vdom",
             selector: "[vdom-query], [vdom-id]",
@@ -434,10 +422,6 @@ export default {
             path: "../CoCreate-modules/CoCreate-notification",
             repo: "github.com/CoCreate-app/CoCreate-notification.git"
         },
-        webpack: {
-            path: "../CoCreate-plugins/CoCreate-webpack",
-            repo: "github.com/CoCreate-app/CoCreate-webpack.git"
-        }
     },
 
     /**
@@ -450,13 +434,13 @@ export default {
      * seamlessly whitelisted, configured, and initialized dynamically via HTML attributes or inline scripts.
      */
     plugins: {
+        webpack: {
+            path: "../CoCreate-plugins/CoCreate-webpack",
+            repo: "github.com/CoCreate-app/CoCreate-webpack.git"
+        },
         Toastify: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/toastify-js", crossOrigin: "anonymous" }],
             css: ["https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"]
-        },
-        Choices: {
-            js: [{ src: "https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js", crossOrigin: "anonymous" }],
-            css: ["https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"]
         },
         flatpickr: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/flatpickr", crossOrigin: "anonymous" }],
@@ -473,14 +457,6 @@ export default {
         ClassicEditor: {
             js: [{ src: "https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js", crossOrigin: "anonymous" }]
         },
-        Dropzone: {
-            js: [{ src: "https://unpkg.com/dropzone@5/dist/min/dropzone.min.js", crossOrigin: "anonymous" }],
-            css: ["https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"]
-        },
-        SimpleBar: {
-            js: [{ src: "https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js", crossOrigin: "anonymous" }],
-            css: ["https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"]
-        },
         GLightbox: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js", crossOrigin: "anonymous" }],
             css: ["https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"]
@@ -495,9 +471,6 @@ export default {
             js: [{ src: "https://cdn.jsdelivr.net/npm/node-waves/dist/waves.min.js", crossOrigin: "anonymous" }],
             css: ["https://cdn.jsdelivr.net/npm/node-waves/dist/waves.min.css"]
         },
-        feather: {
-            js: [{ src: "https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js", crossOrigin: "anonymous" }]
-        },
         ApexCharts: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/apexcharts", crossOrigin: "anonymous" }]
         },
@@ -511,12 +484,6 @@ export default {
         Swiper: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js", crossOrigin: "anonymous" }],
             css: ["https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"]
-        },
-        List: {
-            js: [
-                { src: "https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js", crossOrigin: "anonymous" },
-                { src: "https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js", crossOrigin: "anonymous" }
-            ]
         },
         Swal: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/sweetalert2@11", crossOrigin: "anonymous" }],
@@ -534,13 +501,6 @@ export default {
         },
         wNumb: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/wnumb/wNumb.min.js", crossOrigin: "anonymous" }]
-        },
-        Grid: {
-            js: [
-                { src: "https://unpkg.com/gridjs/dist/gridjs.umd.js", crossOrigin: "anonymous" },
-                { src: "https://unpkg.com/gridjs/plugins/selection/dist/selection.umd.js", crossOrigin: "anonymous" }
-            ],
-            css: ["https://unpkg.com/gridjs/dist/theme/mermaid.min.css"]
         },
         FilePond: {
             js: [
@@ -572,10 +532,6 @@ export default {
         particlesJS: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js", crossOrigin: "anonymous" }]
         },
-        dragula: {
-            js: [{ src: "https://cdn.jsdelivr.net/npm/dragula/dist/dragula.min.js", crossOrigin: "anonymous" }],
-            css: ["https://cdn.jsdelivr.net/npm/dragula/dist/dragula.min.css"]
-        },
         DomAutoscroller: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/dom-autoscroller", crossOrigin: "anonymous" }]
         },
@@ -587,10 +543,6 @@ export default {
         },
         echarts: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js", crossOrigin: "anonymous" }]
-        },
-        Multi: {
-            js: [{ src: "https://cdn.jsdelivr.net/npm/multi.js/dist/multi.min.js", crossOrigin: "anonymous" }],
-            css: ["https://cdn.jsdelivr.net/npm/multi.js/dist/multi.min.css"]
         },
         autoComplete: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js", crossOrigin: "anonymous" }],
