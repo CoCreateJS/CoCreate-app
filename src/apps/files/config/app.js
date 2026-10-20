@@ -158,11 +158,11 @@ export default {
                 ]
             },
             {
-                "label": "Modified",
-                "key": "modified.on",
+                "label": "Updated",
+                "key": "updated.on",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"file-modified-on-filter\" class=\"form-control\" type=\"datetime-local\" placeholder=\"Filter modified\" filter-query=\"$document .list-view[]\" filter-query-key=\"modified.on.$gte\" />",
-                "tableTemplate": "{{object.modified.on}}",
+                "filterTemplate": "<input id=\"file-updated-on-filter\" class=\"form-control\" type=\"datetime-local\" placeholder=\"Filter updated\" filter-query=\"$document .list-view[]\" filter-query-key=\"updated.on.$gte\" />",
+                "tableTemplate": "{{object.updated.on}}",
                 "attributes": [
                     {
                         "name": "class",
@@ -170,11 +170,11 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "file-modified-on"
+                        "value": "file-updated-on"
                     },
                     {
                         "name": "key",
-                        "value": "modified.on"
+                        "value": "updated.on"
                     },
                     {
                         "name": "type",

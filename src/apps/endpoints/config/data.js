@@ -54,7 +54,7 @@ const storageActions = {
                     description: 0,
                     enabled: 0,
                     created: 0,
-                    modified: 0,
+                    updated: 0,
                     updated: 0,
                     deleted: 0,
                     permissions: 0,

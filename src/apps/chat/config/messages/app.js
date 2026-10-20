@@ -277,10 +277,10 @@ export default {
                 ]
             },
             {
-                "label": "Modified On",
+                "label": "Updated On",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"modified-on-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter modified date\" filter-query=\"$document .list-view\" filter-query-key=\"modified.on\" />",
-                "tableTemplate": "{{object.modified.on}}",
+                "filterTemplate": "<input id=\"updated-on-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter updated date\" filter-query=\"$document .list-view\" filter-query-key=\"updated.on\" />",
+                "tableTemplate": "{{object.updated.on}}",
                 "attributes": [
                     {
                         "name": "class",
@@ -288,15 +288,15 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "chat-modified-on-field"
+                        "value": "chat-updated-on-field"
                     },
                     {
                         "name": "placeholder",
-                        "value": "Enter modified date"
+                        "value": "Enter updated date"
                     },
                     {
                         "name": "key",
-                        "value": "modified.on"
+                        "value": "updated.on"
                     },
                     {
                         "name": "type",
@@ -305,10 +305,10 @@ export default {
                 ]
             },
             {
-                "label": "Modified By",
+                "label": "Updated By",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"modified-by-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter modifier id\" filter-query=\"$document .list-view\" filter-query-key=\"modified.by.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "{{object.modified.by}}",
+                "filterTemplate": "<input id=\"updated-by-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter updater id\" filter-query=\"$document .list-view\" filter-query-key=\"updated.by.$regex\" filter-query-options=\"i\" />",
+                "tableTemplate": "{{object.updated.by}}",
                 "attributes": [
                     {
                         "name": "class",
@@ -316,15 +316,15 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "chat-modified-by-field"
+                        "value": "chat-updated-by-field"
                     },
                     {
                         "name": "placeholder",
-                        "value": "Enter modifier id"
+                        "value": "Enter updater id"
                     },
                     {
                         "name": "key",
-                        "value": "modified.by"
+                        "value": "updated.by"
                     },
                     {
                         "name": "type",

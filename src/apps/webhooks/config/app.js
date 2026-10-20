@@ -95,14 +95,14 @@ export default {
                 ]
             },
             {
-                "label": "Modified",
+                "label": "Updated",
                 "tagName": "input",
                 "filterTemplate": "",
-                "tableTemplate": "{{object.modified.on}}",
+                "tableTemplate": "{{object.updated.on}}",
                 "attributes": [
                     { "name": "class", "value": "form-control" },
-                    { "name": "id", "value": "webhook-modified" },
-                    { "name": "key", "value": "modified.on" },
+                    { "name": "id", "value": "webhook-updated" },
+                    { "name": "key", "value": "updated.on" },
                     { "name": "type", "value": "date" },
                     { "name": "readonly", "value": true }
                 ]
