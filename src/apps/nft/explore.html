@@ -1,10 +1,10 @@
 <!-- nouisliderribute css -->
-<link rel="stylesheet" href="/assets/libs/nouislider/nouislider.min.css" />
+
 
 <div class="container-fluid">
 	<!-- start page title -->
-	<div class="row">
-		<div class="col-12">
+	<div class="d-flex flex-wrap">
+		<div class="width:100%">
 			<div
 				class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
 				<h4 class="mb-sm-0">Explore Now</h4>
@@ -22,8 +22,8 @@
 	</div>
 	<!-- end page title -->
 
-	<div class="row">
-		<div class="col-lg-12">
+	<div class="d-flex flex-wrap">
+		<div class="width:100%">
 			<div class="card">
 				<div class="card-header border-0">
 					<div class="d-flex align-items-center">
@@ -40,8 +40,8 @@
 					</div>
 					<div class="collaps show" id="collapseExample">
 						<div
-							class="row row-cols-xxl-5 row-cols-lg-3 row-cols-md-2 row-cols-1 mt-3 g-3">
-							<div class="col">
+							class="d-flex flex-wrap mt-3 gap-3">
+							<div class="flex-grow-1 flex-basis:180px min-width:180px">
 								<h6 class="text-uppercase fs-12 mb-2">
 									Search
 								</h6>
@@ -52,7 +52,7 @@
 									autocomplete="off"
 									id="searchProductList" />
 							</div>
-							<div class="col">
+							<div class="flex-grow-1 flex-basis:180px min-width:180px">
 								<h6 class="text-uppercase fs-12 mb-2">
 									Select Category
 								</h6>
@@ -78,7 +78,7 @@
 									<option value="Music">Music</option>
 								</select>
 							</div>
-							<div class="col">
+							<div class="flex-grow-1 flex-basis:180px min-width:180px">
 								<h6 class="text-uppercase fs-12 mb-2">
 									File Type
 								</h6>
@@ -95,7 +95,7 @@
 									<option value="gif">Gif</option>
 								</select>
 							</div>
-							<div class="col">
+							<div class="flex-grow-1 flex-basis:180px min-width:180px">
 								<h6 class="text-uppercase fs-12 mb-2">
 									Sales Type
 								</h6>
@@ -114,7 +114,7 @@
 									</option>
 								</select>
 							</div>
-							<div class="col">
+							<div class="flex-grow-1 flex-basis:180px min-width:180px">
 								<h6 class="text-uppercase fs-12 mb-4">Price</h6>
 								<div
 									class="slider"
@@ -135,7 +135,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-12">
+		<div class="width:100%">
 			<div class="d-flex align-items-center mb-4">
 				<div class="flex-grow-1">
 					<p class="text-muted fs-14 mb-0">Result: 8745</p>
@@ -175,7 +175,7 @@
 	<!-- end row -->
 
 	<div
-		class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1"
+		class="d-flex flex-wrap"
 		id="explorecard-list"></div>
 	<!-- end row -->
 	<div class="py-4 text-center" id="noresult" style="display: none">
@@ -198,7 +198,7 @@
 <!-- container-fluid -->
 
 <!-- nouisliderribute js -->
-<script src="/assets/libs/nouislider/nouislider.min.js"></script>
-<script src="/assets/libs/wnumb/wNumb.min.js"></script>
+
+
 
 <script src="/assets/js/pages/apps/nft/explore.init.js"></script>

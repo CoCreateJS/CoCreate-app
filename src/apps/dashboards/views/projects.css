@@ -41,8 +41,9 @@
 	}
 }
 @media (min-width: 1400px) and (max-width: 1599.98px) {
-	.project-wrapper .col-xxl-4,
-.project-wrapper > .col-xxl-8 {
+	.project-wrapper [class~="flex-basis:33.333%"],
+	.project-wrapper > [class~="flex-basis:66.667%"] {
+		flex-basis: 100% !important;
 		width: 100%;
 	}
 }

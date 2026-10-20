@@ -1,0 +1,45 @@
+
+
+/* Migrated from custom.css. */
+
+
+/* Base star container */
+.star-rating {
+	display: inline-block;
+	position: relative;
+	font-size: 1rem;
+	/* Adjust size here */
+	line-height: 1;
+}
+
+/* Empty stars (Background) */
+.stars-empty {
+	color: #d1d5db;
+	/* Gray-300 */
+	display: flex;
+	gap: 2px;
+}
+
+/* Filled stars (Foreground) */
+.star-ratings {
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	color: #fbbf24;
+	/* Golden Yellow */
+	display: flex;
+	gap: 2px;
+	/* This is the value your system targets */
+	width: 84%;
+}
+
+/* Product review progress rows */
+.progress-bar-style-02 .rating-progress-row {
+	gap: 10px;
+}
+
+.progress-bar-style-02 .rating-progress-row .progress {
+	min-width: 180px;
+}

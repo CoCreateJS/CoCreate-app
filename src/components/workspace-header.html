@@ -58,18 +58,24 @@
 			<form
 				class="app-search d-none d-md-block"
 				data-search-scope="view">
-				<div class="position-relative">
-					<input
-						type="text"
-						class="form-control"
-						placeholder="Search anything..."
-						autocomplete="off"
-						id="search-options"
-						data-search-results-target="search-dropdown"
-						value="" />
-					<i
-						src="/assets/svg/remix/search-line.svg"
-						class="search-widget-icon"></i>
+				<div class="search-scope-row">
+					<div class="search-scope-field">
+						<input
+							type="text"
+							class="form-control"
+							placeholder="Search anything..."
+							autocomplete="off"
+							id="search-options"
+							data-search-results-target="search-dropdown"
+							value="" />
+						<i
+							src="/assets/svg/remix/search-line.svg"
+							class="search-widget-icon"></i>
+						<i
+							src="/assets/svg/remix/close-circle-line.svg"
+							class="search-widget-icon search-widget-icon-close d-none"
+							id="search-close-options"></i>
+					</div>
 					<label
 						class="search-scope-chip"
 						data-search-scope-chip
@@ -90,10 +96,6 @@
 							>
 						</span>
 					</label>
-					<i
-						src="/assets/svg/remix/close-circle-line.svg"
-						class="search-widget-icon search-widget-icon-close d-none"
-						id="search-close-options"></i>
 				</div>
 				<button
 					type="button"
@@ -134,18 +136,20 @@
 				<form
 					class="app-search app-search-mobile"
 					data-search-scope="view">
-					<div class="position-relative">
-						<input
-							id="header-search-options"
-							type="text"
-							class="form-control width:100%"
-							placeholder="Search anything..."
-							autocomplete="off"
-							data-search-results-target="header-search-results"
-							aria-label="Search" />
-						<i
-							src="/assets/svg/remix/search-line.svg"
-							class="search-widget-icon"></i>
+					<div class="search-scope-row">
+						<div class="search-scope-field">
+							<input
+								id="header-search-options"
+								type="text"
+								class="form-control"
+								placeholder="Search anything..."
+								autocomplete="off"
+								data-search-results-target="header-search-results"
+								aria-label="Search" />
+							<i
+								src="/assets/svg/remix/search-line.svg"
+								class="search-widget-icon"></i>
+						</div>
 						<label
 							class="search-scope-chip"
 							data-search-scope-chip

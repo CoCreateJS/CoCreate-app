@@ -1,638 +1,678 @@
+<div class="card-body d-flex flex-column gap-4 h-100">
+	<div class="position-relative d-flex justify-content-center w-100">
+		<img
+			src="/assets/svg/boxes.svg"
+			key="images[0].src"
+			alt="image"
+			class="avatar-xl rounded img-thumbnail material-shadow margin:auto"
+			onerror="
+				this.onerror = null;
+				this.src = '/assets/svg/boxes.svg';
+			" />
+	</div>
 
-	<div class="card-body d-flex flex-column gap-4 h-100">
-		<div class="position-relative d-flex justify-content-center w-100">
-			<img
-				src="/assets/svg/boxes.svg"
-				key="images[0].src"
-				alt="image"
-				class="avatar-xl rounded img-thumbnail material-shadow margin:auto"
-				onerror="
-					this.onerror = null;
-					this.src = '/assets/svg/boxes.svg';
-				" />
-		</div>
-
-		<div class="item-img-slider d-none">
-			<div class="swiper item-thumbnail-slider p-2 rounded bg-light">
+	<div class="item-img-slider d-none">
+		<div class="swiper item-thumbnail-slider p-2 rounded bg-light">
+			<div
+				class="swiper-wrapper"
+				key="gallery"
+				render-query="[template]">
 				<div
-					class="swiper-wrapper"
-					key="gallery"
-					render-query="[template]">
-					<div class="swiper-slide" template>
+					class="swiper-slide"
+					template>
+					<img
+						src="{{gallery.src}}"
+						alt="Item Image"
+						class="img-fluid d-block" />
+				</div>
+			</div>
+			<div
+				class="swiper-button-next material-shadow"
+				role="button"
+				tabindex="0"
+				aria-label="Next slide"></div>
+			<div
+				class="swiper-button-prev material-shadow"
+				role="button"
+				tabindex="0"
+				aria-label="Previous slide"></div>
+		</div>
+		<!-- end swiper thumbnail slide -->
+		<div class="swiper item-nav-slider mt-2">
+			<div
+				class="swiper-wrapper"
+				key="gallery"
+				render-query="[template]">
+				<div
+					class="swiper-slide"
+					template>
+					<div class="nav-slide-item">
 						<img
 							src="{{gallery.src}}"
-							alt="Item Image"
+							key="src"
+							alt="Item Thumbnail"
 							class="img-fluid d-block" />
 					</div>
 				</div>
-				<div
-					class="swiper-button-next material-shadow"
-					role="button"
-					tabindex="0"
-					aria-label="Next slide"></div>
-				<div
-					class="swiper-button-prev material-shadow"
-					role="button"
-					tabindex="0"
-					aria-label="Previous slide"></div>
 			</div>
-			<!-- end swiper thumbnail slide -->
-			<div class="swiper item-nav-slider mt-2">
-				<div
-					class="swiper-wrapper"
-					key="gallery"
-					render-query="[template]">
-					<div class="swiper-slide" template>
-						<div class="nav-slide-item">
-							<img
-								src="{{gallery.src}}"
-								key="src"
-								alt="Item Thumbnail"
-								class="img-fluid d-block" />
-						</div>
-					</div>
+		</div>
+		<!-- end swiper nav slide -->
+	</div>
+
+	<div class="flex-grow-1">
+		<div class="d-flex flex-wrap gap-3 justify-content-between mb-3">
+			<h4
+				key="name"
+				aria-label="Item Name"
+				class="app-title mb-1"></h4>
+			<div class="d-flex gap-3 flex-wrap">
+				<div>
+					<a
+						href="#"
+						class="text-primary d-block"
+						key="brand"
+						aria-label="Brand Name"></a>
+				</div>
+				<div class="vr"></div>
+				<div class="text-muted">
+					Seller :
+					<span
+						class="text-body fw-medium"
+						key="seller_id"
+						aria-label="Seller Name"></span>
+				</div>
+				<div class="vr"></div>
+				<div class="text-muted">
+					Published :
+					<span
+						class="text-body fw-medium"
+						key="publish.on"
+						aria-label="Published Date"></span>
 				</div>
 			</div>
-			<!-- end swiper nav slide -->
 		</div>
 
-		<div class="flex-grow-1">
+		<div class="d-flex flex-wrap gap-2 align-items-center mb-3">
 			<div
-				class="d-flex flex-wrap gap-3 justify-content-between mb-3">
-				<h4 key="name" aria-label="Item Name" class="app-title mb-1"></h4>
-				<div class="d-flex gap-3 flex-wrap">
-					<div>
-						<a
-							href="#"
-							class="text-primary d-block"
-							key="brand"
-							aria-label="Brand Name"></a>
+				class="text-muted fs-16"
+				aria-label="Star Rating">
+				<!-- Stars to be rendered dynamically based on rating -->
+			</div>
+			<div
+				class="text-muted"
+				key="rating.count"
+				aria-label="Number of Ratings"></div>
+		</div>
+
+		<div class="d-flex flex-wrap gap-3">
+			<div class="d-flex flex-wrap gap-3 flex-grow-1">
+				<div
+					class="p-2 border border-dashed rounded flex-grow-1 width:150px">
+					<div class="d-flex align-items-center">
+						<div class="avatar-sm me-2">
+							<div
+								class="avatar-title rounded bg-transparent text-success fs-24">
+								<i
+									src="/assets/svg/remix/money-dollar-circle-fill.svg"
+									aria-hidden="true"></i>
+							</div>
+						</div>
+						<div class="flex-grow-1">
+							<p class="text-muted mb-1">Price :</p>
+							<h5
+								class="mb-0"
+								key="price"
+								aria-label="Item Price"></h5>
+						</div>
 					</div>
-					<div class="vr"></div>
-					<div class="text-muted">
-						Seller :
-						<span
-							class="text-body fw-medium"
-							key="seller_id"
-							aria-label="Seller Name"></span>
-					</div>
-					<div class="vr"></div>
-					<div class="text-muted">
-						Published :
-						<span
-							class="text-body fw-medium"
-							key="publish.on"
-							aria-label="Published Date"></span>
+				</div>
+				<div
+					class="p-2 border border-dashed rounded flex-grow-1 width:150px">
+					<div class="d-flex align-items-center">
+						<div class="avatar-sm me-2">
+							<div
+								class="avatar-title rounded bg-transparent text-success fs-24">
+								<i
+									src="/assets/svg/remix/file-copy-2-fill.svg"
+									aria-hidden="true"></i>
+							</div>
+						</div>
+						<div class="flex-grow-1">
+							<p class="text-muted mb-1">Orders :</p>
+							<h5
+								class="mb-0"
+								key="orders"
+								aria-label="Number of Orders"></h5>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="d-flex flex-wrap gap-2 align-items-center mb-3">
-				<div class="text-muted fs-16" aria-label="Star Rating">
-					<!-- Stars to be rendered dynamically based on rating -->
+			<div class="d-flex flex-wrap gap-3 flex-grow-1">
+				<div
+					class="p-2 border border-dashed rounded flex-grow-1 width:150px">
+					<div class="d-flex align-items-center">
+						<div class="avatar-sm me-2">
+							<div
+								class="avatar-title rounded bg-transparent text-success fs-24">
+								<i
+									src="/assets/svg/remix/stack-fill.svg"
+									aria-hidden="true"></i>
+							</div>
+						</div>
+						<div class="flex-grow-1">
+							<p class="text-muted mb-1">Stock :</p>
+							<h5
+								class="mb-0"
+								key="stock"
+								aria-label="Available Stock"></h5>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="p-2 border border-dashed rounded flex-grow-1 width:150px">
+					<div class="d-flex align-items-center">
+						<div class="avatar-sm me-2">
+							<div
+								class="avatar-title rounded bg-transparent text-success fs-24">
+								<i
+									src="/assets/svg/remix/inbox-archive-fill.svg"
+									aria-hidden="true"></i>
+							</div>
+						</div>
+						<div class="flex-grow-1">
+							<p class="text-muted mb-1">Revenue :</p>
+							<h5
+								class="mb-0"
+								key="revenue"
+								aria-label="Total Revenue"></h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="d-flex flex-wrap">
+			<div class="flex-grow-1 flex-basis:50.000% min-width:260px">
+				<div class="mt-4">
+					<h5 class="fs-14">Sizes :</h5>
+					<div
+						class="d-flex flex-wrap gap-2"
+						key="sizes"
+						render-query="[template]">
+						<div
+							template
+							data-bs-trigger="hover"
+							data-bs-placement="top"
+							title="Out of Stock">
+							<input
+								type="radio"
+								class="btn-check"
+								name="itemsize-radio"
+								id="itemsize-radio-{{value}}"
+								disabled />
+							<label
+								class="btn btn-soft-primary avatar-xs rounded-circle p-0 d-flex justify-content-center align-items-center"
+								for="itemsize-radio-{{value}}"
+								key="value"
+								aria-label="Size"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end col -->
+
+			<div class="flex-grow-1 flex-basis:50.000% min-width:260px">
+				<div class="mt-4">
+					<h5 class="fs-14">Colors :</h5>
+					<div
+						class="d-flex flex-wrap gap-2"
+						key="colors"
+						render-query="[template]">
+						<div
+							template
+							data-bs-trigger="hover"
+							data-bs-placement="top"
+							title="Out of Stock">
+							<button
+								type="button"
+								class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-20 text-primary"
+								disabled
+								aria-label="Color Option">
+								<i
+									src="/assets/svg/remix/checkbox-blank-circle-fill.svg"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end col -->
+		</div>
+		<!-- end row -->
+
+		<div class="mt-4 text-muted">
+			<h5 class="fs-14">Description :</h5>
+			<div
+				key="description"
+				aria-label="Item Description"></div>
+		</div>
+
+		<div class="mt-3">
+			<h5 class="fs-14">Features :</h5>
+			<ul
+				class="list-unstyled"
+				key="features"
+				render-query="[template]">
+				<li
+					class="py-1"
+					template
+					aria-label="Feature">
+					<i
+						class="mdi mdi-circle-medium me-1 text-muted align-middle"
+						aria-hidden="true"></i>
+					{{features}}
+				</li>
+			</ul>
+		</div>
+
+		<div class="mt-3">
+			<h5 class="fs-14">Services :</h5>
+			<ul
+				class="list-unstyled item-desc-list"
+				key="services"
+				render-query="[template]">
+				<li
+					class="py-1"
+					template
+					aria-label="Service">
+					{{services}}
+				</li>
+			</ul>
+		</div>
+
+		<div class="item-content mt-5">
+			<h5 class="fs-14 mb-3">Item Description :</h5>
+			<nav>
+				<ul
+					class="nav nav-tabs nav-tabs-custom nav-success"
+					id="nav-tab"
+					role="tablist">
+					<li class="nav-item">
+						<a
+							class="nav-link active"
+							id="nav-speci-tab"
+							href="#nav-speci"
+							role="tab"
+							aria-controls="nav-speci"
+							aria-selected="true">
+							Specification
+						</a>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link"
+							id="nav-detail-tab"
+							href="#nav-detail"
+							role="tab"
+							aria-controls="nav-detail"
+							aria-selected="false">
+							Description
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div
+				class="tab-content border border-top-0 p-4"
+				id="nav-tabContent">
+				<div
+					class="tab-pane fade show active"
+					id="nav-speci"
+					role="tabpanel"
+					aria-labelledby="nav-speci-tab">
+					<div class="table-responsive">
+						<table class="table mb-0">
+							<tbody
+								key="specifications"
+								filter-limit
+								render-query="[template]">
+								<tr template>
+									<th
+										scope="row"
+										style="width: 200px"
+										aria-label="Specification Key">
+										{{specifications.key}}
+									</th>
+									<td aria-label="Specification Value">
+										{{specifications.value}}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div
-					class="text-muted"
-					key="rating.count"
-					aria-label="Number of Ratings"></div>
+					class="tab-pane fade"
+					id="nav-detail"
+					role="tabpanel"
+					aria-labelledby="nav-detail-tab">
+					<div
+						key="detail"
+						aria-label="Detailed HTML Content"></div>
+				</div>
 			</div>
+		</div>
+		<!-- item-content -->
+
+		<div class="mt-5">
+			<h5 class="fs-14 mb-3">Ratings & Reviews</h5>
 
 			<div class="d-flex flex-wrap gap-3">
-				<div class="d-flex flex-wrap gap-3 flex-grow-1">
-					<div
-						class="p-2 border border-dashed rounded flex-grow-1 width:150px">
-						<div class="d-flex align-items-center">
-							<div class="avatar-sm me-2">
-								<div
-									class="avatar-title rounded bg-transparent text-success fs-24">
-									<i src="/assets/svg/remix/money-dollar-circle-fill.svg" aria-hidden="true"></i>
+				<div class="d-flex flex-column gap-3 flex-grow-1 width:300px">
+					<div class="pb-3">
+						<div class="bg-light px-3 py-2 rounded-2 mb-2">
+							<div class="d-flex align-items-center">
+								<div class="flex-grow-1">
+									<div
+										class="fs-16 align-middle text-warning"
+										aria-label="Star Rating">
+										<i
+											src="/assets/svg/remix/star-fill.svg"></i>
+										<i
+											src="/assets/svg/remix/star-fill.svg"></i>
+										<i
+											src="/assets/svg/remix/star-fill.svg"></i>
+										<i
+											src="/assets/svg/remix/star-fill.svg"></i>
+										<i
+											src="/assets/svg/remix/star-half-fill.svg"></i>
+									</div>
+								</div>
+								<div class="flex-shrink-0">
+									<h6 class="mb-0">4.5 out of 5</h6>
 								</div>
 							</div>
-							<div class="flex-grow-1">
-								<p class="text-muted mb-1">Price :</p>
-								<h5
-									class="mb-0"
-									key="price"
-									aria-label="Item Price"></h5>
+						</div>
+						<div class="text-center">
+							<div class="text-muted">
+								Total
+								<span class="fw-medium">5.50k</span>
+								reviews
 							</div>
 						</div>
 					</div>
-					<div
-						class="p-2 border border-dashed rounded flex-grow-1 width:150px">
-						<div class="d-flex align-items-center">
-							<div class="avatar-sm me-2">
-								<div
-									class="avatar-title rounded bg-transparent text-success fs-24">
-									<i src="/assets/svg/remix/file-copy-2-fill.svg" aria-hidden="true"></i>
+
+					<div class="mt-3">
+						<div class="d-flex flex-wrap align-items-center gap-2">
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0">5 star</h6>
 								</div>
 							</div>
-							<div class="flex-grow-1">
-								<p class="text-muted mb-1">Orders :</p>
-								<h5
-									class="mb-0"
-									key="orders"
-									aria-label="Number of Orders"></h5>
+							<div
+								class="flex-grow-1 flex-basis:180px min-width:180px">
+								<div class="p-2">
+									<div
+										class="progress animated-progress progress-sm">
+										<div
+											class="progress-bar bg-success"
+											role="progressbar"
+											style="width: 50.16%"
+											aria-valuenow="50.16"
+											aria-valuemin="0"
+											aria-valuemax="100"
+											aria-label="5-star rating progress"></div>
+									</div>
+								</div>
+							</div>
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0 text-muted">2758</h6>
+								</div>
 							</div>
 						</div>
+						<!-- end row -->
+
+						<div class="d-flex flex-wrap align-items-center gap-2">
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0">4 star</h6>
+								</div>
+							</div>
+							<div
+								class="flex-grow-1 flex-basis:180px min-width:180px">
+								<div class="p-2">
+									<div
+										class="progress animated-progress progress-sm">
+										<div
+											class="progress-bar bg-success"
+											role="progressbar"
+											style="width: 19.32%"
+											aria-valuenow="19.32"
+											aria-valuemin="0"
+											aria-valuemax="100"
+											aria-label="4-star rating progress"></div>
+									</div>
+								</div>
+							</div>
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0 text-muted">1063</h6>
+								</div>
+							</div>
+						</div>
+						<!-- end row -->
+
+						<div class="d-flex flex-wrap align-items-center gap-2">
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0">3 star</h6>
+								</div>
+							</div>
+							<div
+								class="flex-grow-1 flex-basis:180px min-width:180px">
+								<div class="p-2">
+									<div
+										class="progress animated-progress progress-sm">
+										<div
+											class="progress-bar bg-success"
+											role="progressbar"
+											style="width: 18.12%"
+											aria-valuenow="18.12"
+											aria-valuemin="0"
+											aria-valuemax="100"
+											aria-label="3-star rating progress"></div>
+									</div>
+								</div>
+							</div>
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0 text-muted">997</h6>
+								</div>
+							</div>
+						</div>
+						<!-- end row -->
+
+						<div class="d-flex flex-wrap align-items-center gap-2">
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0">2 star</h6>
+								</div>
+							</div>
+							<div
+								class="flex-grow-1 flex-basis:180px min-width:180px">
+								<div class="p-2">
+									<div
+										class="progress animated-progress progress-sm">
+										<div
+											class="progress-bar bg-warning"
+											role="progressbar"
+											style="width: 7.42%"
+											aria-valuenow="7.42"
+											aria-valuemin="0"
+											aria-valuemax="100"
+											aria-label="2-star rating progress"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0 text-muted">408</h6>
+								</div>
+							</div>
+						</div>
+						<!-- end row -->
+
+						<div class="d-flex flex-wrap align-items-center gap-2">
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0">1 star</h6>
+								</div>
+							</div>
+							<div
+								class="flex-grow-1 flex-basis:180px min-width:180px">
+								<div class="p-2">
+									<div
+										class="progress animated-progress progress-sm">
+										<div
+											class="progress-bar bg-danger"
+											role="progressbar"
+											style="width: 4.98%"
+											aria-valuenow="4.98"
+											aria-valuemin="0"
+											aria-valuemax="100"
+											aria-label="1-star rating progress"></div>
+									</div>
+								</div>
+							</div>
+							<div class="flex-shrink-0">
+								<div class="p-2">
+									<h6 class="mb-0 text-muted">274</h6>
+								</div>
+							</div>
+						</div>
+						<!-- end row -->
 					</div>
 				</div>
 
-				<div class="d-flex flex-wrap gap-3 flex-grow-1">
-					<div
-						class="p-2 border border-dashed rounded flex-grow-1 width:150px">
-						<div class="d-flex align-items-center">
-							<div class="avatar-sm me-2">
-								<div
-									class="avatar-title rounded bg-transparent text-success fs-24">
-									<i src="/assets/svg/remix/stack-fill.svg" aria-hidden="true"></i>
-								</div>
-							</div>
-							<div class="flex-grow-1">
-								<p class="text-muted mb-1">Stock :</p>
-								<h5
-									class="mb-0"
-									key="stock"
-									aria-label="Available Stock"></h5>
-							</div>
-						</div>
-					</div>
-
-					<div
-						class="p-2 border border-dashed rounded flex-grow-1 width:150px">
-						<div class="d-flex align-items-center">
-							<div class="avatar-sm me-2">
-								<div
-									class="avatar-title rounded bg-transparent text-success fs-24">
-									<i src="/assets/svg/remix/inbox-archive-fill.svg" aria-hidden="true"></i>
-								</div>
-							</div>
-							<div class="flex-grow-1">
-								<p class="text-muted mb-1">Revenue :</p>
-								<h5
-									class="mb-0"
-									key="revenue"
-									aria-label="Total Revenue"></h5>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-xl-6">
-					<div class="mt-4">
-						<h5 class="fs-14">Sizes :</h5>
+				<div class="d-flex flex-grow-1 width:300px position:relative">
+					<div class="ps-lg-4">
 						<div
-							class="d-flex flex-wrap gap-2"
-							key="sizes"
-							render-query="[template]">
-							<div
-								template
-								data-bs-trigger="hover"
-								data-bs-placement="top"
-								title="Out of Stock">
-								<input
-									type="radio"
-									class="btn-check"
-									name="itemsize-radio"
-									id="itemsize-radio-{{value}}"
-									disabled />
-								<label
-									class="btn btn-soft-primary avatar-xs rounded-circle p-0 d-flex justify-content-center align-items-center"
-									for="itemsize-radio-{{value}}"
-									key="value"
-									aria-label="Size"></label>
-							</div>
+							class="d-flex flex-wrap align-items-start gap-3 mb-3">
+							<h5 class="fs-14">Reviews:</h5>
 						</div>
-					</div>
-				</div>
-				<!-- end col -->
 
-				<div class="col-xl-6">
-					<div class="mt-4">
-						<h5 class="fs-14">Colors :</h5>
 						<div
-							class="d-flex flex-wrap gap-2"
-							key="colors"
-							render-query="[template]">
-							<div
-								template
-								data-bs-trigger="hover"
-								data-bs-placement="top"
-								title="Out of Stock">
-								<button
-									type="button"
-									class="btn avatar-xs p-0 d-flex align-items-center justify-content-center border rounded-circle fs-20 text-primary"
-									disabled
-									aria-label="Color Option">
-									<i src="/assets/svg/remix/checkbox-blank-circle-fill.svg"></i>
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end col -->
-			</div>
-			<!-- end row -->
-
-			<div class="mt-4 text-muted">
-				<h5 class="fs-14">Description :</h5>
-				<div key="description" aria-label="Item Description"></div>
-			</div>
-
-			<div class="mt-3">
-				<h5 class="fs-14">Features :</h5>
-				<ul
-					class="list-unstyled"
-					key="features"
-					render-query="[template]">
-					<li class="py-1" template aria-label="Feature">
-						<i
-							class="mdi mdi-circle-medium me-1 text-muted align-middle"
-							aria-hidden="true"></i>
-						{{features}}
-					</li>
-				</ul>
-			</div>
-
-			<div class="mt-3">
-				<h5 class="fs-14">Services :</h5>
-				<ul
-					class="list-unstyled item-desc-list"
-					key="services"
-					render-query="[template]">
-					<li class="py-1" template aria-label="Service">
-						{{services}}
-					</li>
-				</ul>
-			</div>
-
-			<div class="item-content mt-5">
-				<h5 class="fs-14 mb-3">Item Description :</h5>
-				<nav>
-					<ul
-						class="nav nav-tabs nav-tabs-custom nav-success"
-						id="nav-tab"
-						role="tablist">
-						<li class="nav-item">
-							<a
-								class="nav-link active"
-								id="nav-speci-tab"
-								href="#nav-speci"
-								role="tab"
-								aria-controls="nav-speci"
-								aria-selected="true">
-								Specification
-							</a>
-						</li>
-						<li class="nav-item">
-							<a
-								class="nav-link"
-								id="nav-detail-tab"
-								href="#nav-detail"
-								role="tab"
-								aria-controls="nav-detail"
-								aria-selected="false">
-								Description
-							</a>
-						</li>
-					</ul>
-				</nav>
-				<div
-					class="tab-content border border-top-0 p-4"
-					id="nav-tabContent">
-					<div
-						class="tab-pane fade show active"
-						id="nav-speci"
-						role="tabpanel"
-						aria-labelledby="nav-speci-tab">
-						<div class="table-responsive">
-							<table class="table mb-0">
-								<tbody
-									key="specifications"
-									filter-limit
-									render-query="[template]">
-									<tr template>
-										<th
-											scope="row"
-											style="width: 200px"
-											aria-label="Specification Key">
-											{{specifications.key}}
-										</th>
-										<td
-											aria-label="Specification Value">
-											{{specifications.value}}
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div
-						class="tab-pane fade"
-						id="nav-detail"
-						role="tabpanel"
-						aria-labelledby="nav-detail-tab">
-						<div
-							key="detail"
-							aria-label="Detailed HTML Content"></div>
-					</div>
-				</div>
-			</div>
-			<!-- item-content -->
-
-			<div class="mt-5">
-				<h5 class="fs-14 mb-3">Ratings & Reviews</h5>
-
-				<div class="d-flex flex-wrap gap-3">
-					<div
-						class="d-flex flex-column gap-3 flex-grow-1 width:300px">
-						<div class="pb-3">
-							<div class="bg-light px-3 py-2 rounded-2 mb-2">
-								<div class="d-flex align-items-center">
-									<div class="flex-grow-1">
+							class="me-lg-n3 pe-lg-4"
+							plugin='{"$SimpleBar":["$this",{}]}'
+							style="max-height: 225px">
+							<input
+								type="hidden"
+								key="_id"
+								input.filter-query-value="$value"
+								filter-query="$next" />
+							<ul
+								class="list-unstyled mb-0"
+								array="reviews"
+								object
+								filter-query-key="item_id"
+								filter-query-value="_id"
+								render-query="[template]">
+								<li
+									class="py-2"
+									template>
+									<div
+										class="border border-dashed rounded p-3">
 										<div
-											class="fs-16 align-middle text-warning"
-											aria-label="Star Rating">
-											<i src="/assets/svg/remix/star-fill.svg"></i>
-											<i src="/assets/svg/remix/star-fill.svg"></i>
-											<i src="/assets/svg/remix/star-fill.svg"></i>
-											<i src="/assets/svg/remix/star-fill.svg"></i>
-											<i src="/assets/svg/remix/star-half-fill.svg"></i>
-										</div>
-									</div>
-									<div class="flex-shrink-0">
-										<h6 class="mb-0">4.5 out of 5</h6>
-									</div>
-								</div>
-							</div>
-							<div class="text-center">
-								<div class="text-muted">
-									Total
-									<span class="fw-medium">5.50k</span>
-									reviews
-								</div>
-							</div>
-						</div>
-
-						<div class="mt-3">
-							<div class="row align-items-center g-2">
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0">5 star</h6>
-									</div>
-								</div>
-								<div class="col">
-									<div class="p-2">
-										<div
-											class="progress animated-progress progress-sm">
-											<div
-												class="progress-bar bg-success"
-												role="progressbar"
-												style="width: 50.16%"
-												aria-valuenow="50.16"
-												aria-valuemin="0"
-												aria-valuemax="100"
-												aria-label="5-star rating progress"></div>
-										</div>
-									</div>
-								</div>
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0 text-muted">
-											2758
-										</h6>
-									</div>
-								</div>
-							</div>
-							<!-- end row -->
-
-							<div class="row align-items-center g-2">
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0">4 star</h6>
-									</div>
-								</div>
-								<div class="col">
-									<div class="p-2">
-										<div
-											class="progress animated-progress progress-sm">
-											<div
-												class="progress-bar bg-success"
-												role="progressbar"
-												style="width: 19.32%"
-												aria-valuenow="19.32"
-												aria-valuemin="0"
-												aria-valuemax="100"
-												aria-label="4-star rating progress"></div>
-										</div>
-									</div>
-								</div>
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0 text-muted">
-											1063
-										</h6>
-									</div>
-								</div>
-							</div>
-							<!-- end row -->
-
-							<div class="row align-items-center g-2">
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0">3 star</h6>
-									</div>
-								</div>
-								<div class="col">
-									<div class="p-2">
-										<div
-											class="progress animated-progress progress-sm">
-											<div
-												class="progress-bar bg-success"
-												role="progressbar"
-												style="width: 18.12%"
-												aria-valuenow="18.12"
-												aria-valuemin="0"
-												aria-valuemax="100"
-												aria-label="3-star rating progress"></div>
-										</div>
-									</div>
-								</div>
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0 text-muted">997</h6>
-									</div>
-								</div>
-							</div>
-							<!-- end row -->
-
-							<div class="row align-items-center g-2">
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0">2 star</h6>
-									</div>
-								</div>
-								<div class="col">
-									<div class="p-2">
-										<div
-											class="progress animated-progress progress-sm">
-											<div
-												class="progress-bar bg-warning"
-												role="progressbar"
-												style="width: 7.42%"
-												aria-valuenow="7.42"
-												aria-valuemin="0"
-												aria-valuemax="100"
-												aria-label="2-star rating progress"></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0 text-muted">408</h6>
-									</div>
-								</div>
-							</div>
-							<!-- end row -->
-
-							<div class="row align-items-center g-2">
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0">1 star</h6>
-									</div>
-								</div>
-								<div class="col">
-									<div class="p-2">
-										<div
-											class="progress animated-progress progress-sm">
-											<div
-												class="progress-bar bg-danger"
-												role="progressbar"
-												style="width: 4.98%"
-												aria-valuenow="4.98"
-												aria-valuemin="0"
-												aria-valuemax="100"
-												aria-label="1-star rating progress"></div>
-										</div>
-									</div>
-								</div>
-								<div class="col-auto">
-									<div class="p-2">
-										<h6 class="mb-0 text-muted">274</h6>
-									</div>
-								</div>
-							</div>
-							<!-- end row -->
-						</div>
-					</div>
-
-					<div
-						class="d-flex flex-grow-1 width:300px position:relative">
-						<div class="ps-lg-4">
-							<div
-								class="d-flex flex-wrap align-items-start gap-3 mb-3">
-								<h5 class="fs-14">Reviews:</h5>
-							</div>
-
-							<div
-								class="me-lg-n3 pe-lg-4"
-								plugin='{"$SimpleBar":["$this",{}]}'
-
-								style="max-height: 225px">
-								<input
-									type="hidden"
-									key="_id"
-									input.filter-query-value="$value"
-									filter-query="$next" />
-								<ul
-									class="list-unstyled mb-0"
-									array="reviews"
-									object
-									filter-query-key="item_id"
-									filter-query-value="_id"
-									render-query="[template]">
-									<li class="py-2" template>
-										<div
-											class="border border-dashed rounded p-3">
-											<div
-												class="d-flex align-items-start mb-3">
-												<div class="hstack gap-3">
-													<div
-														class="badge rounded-pill border border-success mb-0">
-														<i
-															class="mdi mdi-star"></i>
-														<span
-															aria-label="Review Rating"
-															>{{object.rating}}</span
-														>
-													</div>
-													<div class="vr"></div>
-													<div
-														class="flex-grow-1">
-														<p
-															class="text-muted mb-0"
-															aria-label="Review Comment">
-															{{object.comment}}
-														</p>
-													</div>
+											class="d-flex align-items-start mb-3">
+											<div class="hstack gap-3">
+												<div
+													class="badge rounded-pill border border-success mb-0">
+													<i class="mdi mdi-star"></i>
+													<span
+														aria-label="Review Rating"
+														>{{object.rating}}</span
+													>
 												</div>
-											</div>
-
-											<div
-												class="d-flex flex-grow-1 gap-2 mb-3"
-												render="images">
-												<a
-													class="d-block"
-													template
-													aria-label="Review Image">
-													<img
-														src="{{images.src}}"
-														alt="Review Image"
-														class="avatar-sm rounded object-fit-cover material-shadow" />
-												</a>
-											</div>
-
-											<div
-												class="d-flex align-items-end">
+												<div class="vr"></div>
 												<div class="flex-grow-1">
-													<h5
-														class="fs-14 mb-0"
-														aria-label="Customer Name">
-														<span
-															array="contacts"
-															object="{{object.customer_id}}"
-															key="first_name"></span>
-														<span
-															array="contacts"
-															object="{{object.customer_id}}"
-															key="last_name"></span>
-													</h5>
-												</div>
-
-												<div class="flex-shrink-0">
 													<p
-														class="text-muted fs-13 mb-0"
-														aria-label="Review Date">
-														{{object.date}}
+														class="text-muted mb-0"
+														aria-label="Review Comment">
+														{{object.comment}}
 													</p>
 												</div>
 											</div>
 										</div>
-									</li>
-								</ul>
-							</div>
+
+										<div
+											class="d-flex flex-grow-1 gap-2 mb-3"
+											render="images">
+											<a
+												class="d-block"
+												template
+												aria-label="Review Image">
+												<img
+													src="{{images.src}}"
+													alt="Review Image"
+													class="avatar-sm rounded object-fit-cover material-shadow" />
+											</a>
+										</div>
+
+										<div class="d-flex align-items-end">
+											<div class="flex-grow-1">
+												<h5
+													class="fs-14 mb-0"
+													aria-label="Customer Name">
+													<span
+														array="contacts"
+														object="{{object.customer_id}}"
+														key="first_name"></span>
+													<span
+														array="contacts"
+														object="{{object.customer_id}}"
+														key="last_name"></span>
+												</h5>
+											</div>
+
+											<div class="flex-shrink-0">
+												<p
+													class="text-muted fs-13 mb-0"
+													aria-label="Review Date">
+													{{object.date}}
+												</p>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
 						</div>
 					</div>
-					<!-- end col -->
 				</div>
-				<!-- end Ratings & Reviews -->
+				<!-- end col -->
 			</div>
+			<!-- end Ratings & Reviews -->
 		</div>
 	</div>
+</div>
 
 <!-- ecommerce item details init -->
 <script>
-var productNavSlider=new Swiper(".product-nav-slider",{loop:!1,spaceBetween:10,slidesPerView:4,freeMode:!0,watchSlidesProgress:!0}),productThubnailSlider=new Swiper(".product-thumbnail-slider",{loop:!1,spaceBetween:24,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},thumbs:{swiper:productNavSlider}});
+	var productNavSlider = new Swiper(".product-nav-slider", {
+			loop: !1,
+			spaceBetween: 10,
+			slidesPerView: 4,
+			freeMode: !0,
+			watchSlidesProgress: !0
+		}),
+		productThubnailSlider = new Swiper(".product-thumbnail-slider", {
+			loop: !1,
+			spaceBetween: 24,
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev"
+			},
+			thumbs: { swiper: productNavSlider }
+		});
 </script>

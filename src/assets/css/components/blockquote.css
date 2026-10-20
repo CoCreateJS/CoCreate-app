@@ -2,6 +2,8 @@
 .blockquote {
 	padding: 10px 20px;
 	border-left: 4px solid var(--coc-border-color);
+	margin-bottom: 1rem;
+	font-size: calc(var(--coc-font-base) * 1.1);
 }
 .blockquote-reverse {
 	border-left: 0;
@@ -73,3 +75,7 @@
 .custom-blockquote.blockquote.blockquote-outline.blockquote-dark {
 	border-color: var(--coc-dark);
 }
+.blockquote > :last-child {
+	margin-bottom: 0;
+}
+

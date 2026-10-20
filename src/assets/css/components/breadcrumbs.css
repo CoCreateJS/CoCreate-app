@@ -56,6 +56,10 @@
 	font-family: "Material Design Icons";
 	font-size: 15px;
 	line-height: 20px;
+	float: left;
+	padding-right: var(--coc-breadcrumb-item-padding-x);
+	color: var(--coc-breadcrumb-divider-color);
+	content: var(--coc-breadcrumb-divider, "\f0142");
 }
 [data-layout="semibox"] .page-title-box {
 	padding: 10px 0;
@@ -68,4 +72,40 @@
 	.page-title-box {
 		display: none !important;
 	}
+}
+.breadcrumb {
+	--coc-breadcrumb-padding-x: 0;
+	--coc-breadcrumb-padding-y: 0;
+	--coc-breadcrumb-margin-bottom: 1rem;
+	--coc-breadcrumb-divider-color: var(--coc-secondary-color);
+	--coc-breadcrumb-item-padding-x: 0.5rem;
+	--coc-breadcrumb-item-active-color: var(--coc-secondary-color);
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	padding: var(--coc-breadcrumb-padding-y) var(--coc-breadcrumb-padding-x);
+	margin-bottom: var(--coc-breadcrumb-margin-bottom);
+	font-size: var(--coc-breadcrumb-font-size);
+	list-style: none;
+	background-color: var(--coc-breadcrumb-bg);
+	border-radius: var(--coc-breadcrumb-border-radius);
+}
+.breadcrumb-item + .breadcrumb-item {
+	padding-left: var(--coc-breadcrumb-item-padding-x);
+}
+.breadcrumb-item.active {
+	color: var(--coc-breadcrumb-item-active-color);
+}
+
+/* RTL direction overrides migrated from pruned-rtl.css. */
+[dir="rtl"] .breadcrumb-item + .breadcrumb-item {
+	padding-left: 0;
+	padding-right: var(--coc-breadcrumb-item-padding-x);
+}
+[dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+	float: right;
+	padding-right: 0;
+	padding-left: var(--coc-breadcrumb-item-padding-x);
 }

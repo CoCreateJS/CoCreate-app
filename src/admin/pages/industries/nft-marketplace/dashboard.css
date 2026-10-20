@@ -35,8 +35,9 @@
 	backdrop-filter: blur(5px);
 }
 @media (max-width: 1441.98px) {
-	.dash-nft .col-xxl-3,
-.dash-nft .col-xxl-9 {
+	.dash-nft > [class~="flex-basis:75.000%"],
+	.dash-nft > [class~="flex-basis:25.000%"] {
+		flex-basis: 100% !important;
 		width: 100% !important;
 		max-width: 100% !important;
 	}

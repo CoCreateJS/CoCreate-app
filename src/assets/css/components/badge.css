@@ -1,6 +1,21 @@
 /* Faithfully extracted from the legacy SCSS build. */
 .badge {
 	line-height: 0.95;
+	--coc-badge-padding-x: 0.65em;
+	--coc-badge-padding-y: 0.35em;
+	--coc-badge-font-size: 0.75em;
+	--coc-badge-font-weight: var(--coc-font-weight-semibold);
+	--coc-badge-color: #fff;
+	--coc-badge-border-radius: 0.25rem;
+	display: inline-block;
+	padding: var(--coc-badge-padding-y) var(--coc-badge-padding-x);
+	font-size: var(--coc-badge-font-size);
+	font-weight: var(--coc-badge-font-weight);
+	color: var(--coc-badge-color);
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: var(--coc-badge-border-radius);
 }
 .badge-label.bg-primary:before {
 	border-right-color: var(--coc-primary);
@@ -78,3 +93,11 @@
 .badge-gradient-dark {
 	background: linear-gradient(135deg, #212529 0, var(--coc-primary) 100%);
 }
+.badge:empty {
+	display: none;
+}
+.btn .badge {
+	position: relative;
+	top: -1px;
+}
+

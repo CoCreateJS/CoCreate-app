@@ -51,11 +51,6 @@
 .job-list-view-card .background {
 	height: 130px;
 }
-@media (min-width: 1400px) and (max-width: 1499.98px) {
-	.job-list-row.row .col-xxl-3 {
-		width: 33%;
-	}
-}
 @media (max-width: 991.98px) {
 	.job-navbar {
 		background-color: var(--coc-secondary-bg);

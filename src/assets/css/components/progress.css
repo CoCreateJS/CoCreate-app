@@ -207,3 +207,83 @@
 .progress-dark .progress-bar:nth-child(2)::after {
 	border-left-color: rgba(var(--coc-dark-rgb), 0.1);
 }
+@-webkit-keyframes progress-bar-stripes {
+	0% {
+		background-position-x: 0.625rem;
+	}
+}
+@keyframes progress-bar-stripes {
+	0% {
+		background-position-x: 0.625rem;
+	}
+}
+.progress {
+	--coc-progress-height: 0.625rem;
+	--coc-progress-font-size: calc(var(--coc-font-base) * 0.75);
+	--coc-progress-bg: var(--coc-tertiary-bg);
+	--coc-progress-border-radius: var(--coc-border-radius);
+	--coc-progress-box-shadow: var(--coc-box-shadow-inset);
+	--coc-progress-bar-color: #fff;
+	--coc-progress-bar-bg: var(--coc-primary);
+	--coc-progress-bar-transition: width 0.6s ease;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	height: var(--coc-progress-height);
+	overflow: hidden;
+	font-size: var(--coc-progress-font-size);
+	background-color: var(--coc-progress-bg);
+	border-radius: var(--coc-progress-border-radius);
+}
+.progress-bar {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	overflow: hidden;
+	color: var(--coc-progress-bar-color);
+	text-align: center;
+	white-space: nowrap;
+	background-color: var(--coc-progress-bar-bg);
+	-webkit-transition: var(--coc-progress-bar-transition);
+	transition: var(--coc-progress-bar-transition);
+}
+@media (prefers-reduced-motion: reduce) {
+	.progress-bar {
+		-webkit-transition: none;
+		transition: none;
+	}
+}
+.progress-bar-striped {
+	background-image: linear-gradient(
+		45deg,
+		rgba(255, 255, 255, 0.15) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, 0.15) 50%,
+		rgba(255, 255, 255, 0.15) 75%,
+		transparent 75%,
+		transparent
+	);
+	background-size: var(--coc-progress-height) var(--coc-progress-height);
+}
+
+/* RTL direction overrides migrated from pruned-rtl.css. */
+[dir="rtl"] .progress-bar-striped {
+	background-image: linear-gradient(
+		-45deg,
+		rgba(255, 255, 255, 0.15) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, 0.15) 50%,
+		rgba(255, 255, 255, 0.15) 75%,
+		transparent 75%,
+		transparent
+	);
+}

@@ -1,6 +1,6 @@
 <form action="#" data-aria-dismissible id="task-form-modal-1">
-	<div class="row g-3">
-		<div class="col-lg-12">
+	<div class="d-flex flex-wrap gap-3">
+		<div class="width:100%">
 			<label for="projectName" class="form-label">Project Name</label>
 			<input
 				type="text"
@@ -9,7 +9,7 @@
 				placeholder="Enter project name" />
 		</div>
 		<!--end col-->
-		<div class="col-lg-12">
+		<div class="width:100%">
 			<label for="sub-tasks" class="form-label">Task Title</label>
 			<input
 				type="text"
@@ -18,7 +18,7 @@
 				placeholder="Task title" />
 		</div>
 		<!--end col-->
-		<div class="col-lg-12">
+		<div class="width:100%">
 			<label for="task-description" class="form-label"
 				>Task Description</label
 			>
@@ -29,14 +29,14 @@
 				placeholder="Task description"></textarea>
 		</div>
 		<!--end col-->
-		<div class="col-lg-12">
+		<div class="width:100%">
 			<label for="formFile" class="form-label">Tasks Images</label>
 			<input class="form-control" type="file" id="formFile" />
 		</div>
 		<!--end col-->
 		<div src="components/members.html"></div>
 		<!--end col-->
-		<div class="col-lg-4">
+		<div class="flex-grow-1 flex-basis:250px">
 			<label for="due-date" class="form-label">Due Date</label>
 			<input
 				type="text"
@@ -46,7 +46,7 @@
 				placeholder="Select date" />
 		</div>
 		<!--end col-->
-		<div class="col-lg-4">
+		<div class="flex-grow-1 flex-basis:250px">
 			<label for="categories" class="form-label">Tags</label>
 			<input
 				type="text"
@@ -55,7 +55,7 @@
 				placeholder="Enter tag" />
 		</div>
 		<!--end col-->
-		<div class="col-lg-4">
+		<div class="flex-grow-1 flex-basis:250px">
 			<label for="tasks-progress" class="form-label"
 				>Tasks Progress</label
 			>
@@ -79,5 +79,5 @@
 		</div>
 		<!--end col-->
 	</div>
-	<!--end row-->
+	<!--end flex container-->
 </form>

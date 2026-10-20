@@ -38,3 +38,7 @@
 	button[click\.data-carousel-state="3"] {
 	opacity: 1;
 }
+.carousel {
+	position: relative;
+}
+

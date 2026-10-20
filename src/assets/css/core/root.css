@@ -1,4 +1,188 @@
 /* Faithfully extracted from the legacy SCSS build. */
+:root,
+[data-bs-theme="light"] {
+	--coc-blue: #3577f1;
+	--coc-indigo: #405189;
+	--coc-purple: #6559cc;
+	--coc-pink: #f672a7;
+	--coc-red: #f06548;
+	--coc-orange: #f1963b;
+	--coc-yellow: #f7b84b;
+	--coc-green: #0ab39c;
+	--coc-teal: #02a8b5;
+	--coc-cyan: #299cdb;
+	--coc-white: #fff;
+	--coc-gray: #878a99;
+	--coc-gray-dark: #343a40;
+	--coc-gray-100: #f3f6f9;
+	--coc-gray-200: #eff2f7;
+	--coc-gray-300: #e9ebec;
+	--coc-gray-400: #ced4da;
+	--coc-gray-500: #adb5bd;
+	--coc-gray-600: #878a99;
+	--coc-gray-700: #495057;
+	--coc-gray-800: #343a40;
+	--coc-gray-900: #212529;
+	--coc-primary: #405189;
+	--coc-secondary: #3577f1;
+	--coc-success: #0ab39c;
+	--coc-info: #299cdb;
+	--coc-warning: #f7b84b;
+	--coc-danger: #f06548;
+	--coc-light: #f3f6f9;
+	--coc-dark: #212529;
+	--coc-primary-rgb: 64, 81, 137;
+	--coc-secondary-rgb: 53, 119, 241;
+	--coc-success-rgb: 10, 179, 156;
+	--coc-info-rgb: 41, 156, 219;
+	--coc-warning-rgb: 247, 184, 75;
+	--coc-danger-rgb: 240, 101, 72;
+	--coc-light-rgb: 243, 246, 249;
+	--coc-dark-rgb: 33, 37, 41;
+	--coc-primary-text-emphasis: #364574;
+	--coc-secondary-text-emphasis: #2d65cd;
+	--coc-success-text-emphasis: #099885;
+	--coc-info-text-emphasis: #2385ba;
+	--coc-warning-text-emphasis: #d29c40;
+	--coc-danger-text-emphasis: #cc563d;
+	--coc-light-text-emphasis: #ced4da;
+	--coc-dark-text-emphasis: #343a40;
+	--coc-primary-bg-subtle: #e2e5ed;
+	--coc-secondary-bg-subtle: #e1ebfd;
+	--coc-success-bg-subtle: #daf4f0;
+	--coc-info-bg-subtle: #dff0fa;
+	--coc-warning-bg-subtle: #fef4e4;
+	--coc-danger-bg-subtle: #fde8e4;
+	--coc-light-bg-subtle: #f9fbfc;
+	--coc-dark-bg-subtle: #e9ebec;
+	--coc-primary-border-subtle: #b3b9d0;
+	--coc-secondary-border-subtle: #aec9f9;
+	--coc-success-border-subtle: #9de1d7;
+	--coc-info-border-subtle: #a9d7f1;
+	--coc-warning-border-subtle: #fce3b7;
+	--coc-danger-border-subtle: #f9c1b6;
+	--coc-light-border-subtle: #eff2f7;
+	--coc-dark-border-subtle: #adb5bd;
+	--coc-white-rgb: 255, 255, 255;
+	--coc-black-rgb: 0, 0, 0;
+	--coc-font-sans-serif: var(--coc-font-family-secondary);
+	--coc-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
+	--coc-gradient: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.15),
+		rgba(255, 255, 255, 0)
+	);
+	--coc-body-font-family: var(--coc-font-sans-serif);
+	--coc-body-font-size: var(--coc-font-base);
+	--coc-body-font-weight: var(--coc-font-weight-normal);
+	--coc-body-line-height: 1.5;
+	--coc-body-color: #212529;
+	--coc-body-color-rgb: 33, 37, 41;
+	--coc-body-bg: #f3f3f9;
+	--coc-body-bg-rgb: 243, 243, 249;
+	--coc-emphasis-color: #212529;
+	--coc-emphasis-color-rgb: 33, 37, 41;
+	--coc-secondary-color: #878a99;
+	--coc-secondary-color-rgb: 135, 138, 153;
+	--coc-secondary-bg: #fff;
+	--coc-secondary-bg-rgb: 255, 255, 255;
+	--coc-tertiary-color: rgba(33, 37, 41, 0.5);
+	--coc-tertiary-color-rgb: 33, 37, 41;
+	--coc-tertiary-bg: #eff2f7;
+	--coc-tertiary-bg-rgb: 239, 242, 247;
+	--coc-heading-color: #495057;
+	--coc-link-color: #405189;
+	--coc-link-color-rgb: 64, 81, 137;
+	--coc-link-decoration: none;
+	--coc-link-hover-color: #405189;
+	--coc-link-hover-color-rgb: 64, 81, 137;
+	--coc-code-color: #f672a7;
+	--coc-highlight-color: #212529;
+	--coc-highlight-bg: #fcf8e3;
+	--coc-border-width: 1px;
+	--coc-border-style: solid;
+	--coc-border-color: #e9ebec;
+	--coc-border-color-translucent: #ced4da;
+	--coc-border-radius: 0.25rem;
+	--coc-border-radius-sm: 0.2rem;
+	--coc-border-radius-lg: 0.3rem;
+	--coc-border-radius-xl: 1rem;
+	--coc-border-radius-xxl: 2rem;
+	--coc-border-radius-2xl: var(--coc-border-radius-xxl);
+	--coc-border-radius-pill: 50rem;
+	--coc-box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+	--coc-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	--coc-box-shadow-lg: 0 5px 10px rgba(30, 32, 37, 0.12);
+	--coc-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+	--coc-focus-ring-width: 0.25rem;
+	--coc-focus-ring-opacity: 0.25;
+	--coc-focus-ring-color: rgba(var(--coc-primary-rgb), 0.25);
+	--coc-form-valid-color: #0ab39c;
+	--coc-form-valid-border-color: #0ab39c;
+	--coc-form-invalid-color: #f06548;
+	--coc-form-invalid-border-color: #f06548;
+}
+[data-bs-theme="dark"] {
+	color-scheme: dark;
+	--coc-body-color: #ced4da;
+	--coc-body-color-rgb: 206, 212, 218;
+	--coc-body-bg: #1a1d21;
+	--coc-body-bg-rgb: 26, 29, 33;
+	--coc-emphasis-color: #fff;
+	--coc-emphasis-color-rgb: 255, 255, 255;
+	--coc-secondary-color: #878a99;
+	--coc-secondary-color-rgb: 135, 138, 153;
+	--coc-secondary-bg: #212529;
+	--coc-secondary-bg-rgb: 33, 37, 41;
+	--coc-tertiary-color: rgba(206, 212, 218, 0.75);
+	--coc-tertiary-color-rgb: 206, 212, 218;
+	--coc-tertiary-bg: #2a2d31;
+	--coc-tertiary-bg-rgb: 42, 45, 49;
+	--coc-primary-text-emphasis: #6674a1;
+	--coc-secondary-text-emphasis: #5d92f4;
+	--coc-success-text-emphasis: #3bc2b0;
+	--coc-info-text-emphasis: #54b0e2;
+	--coc-warning-text-emphasis: #f9c66f;
+	--coc-danger-text-emphasis: #f3846d;
+	--coc-light-text-emphasis: #535659;
+	--coc-dark-text-emphasis: #5f6164;
+	--coc-primary-bg-subtle: rgba(64, 81, 137, 0.15);
+	--coc-secondary-bg-subtle: rgba(53, 119, 241, 0.15);
+	--coc-success-bg-subtle: rgba(10, 179, 156, 0.15);
+	--coc-info-bg-subtle: rgba(41, 156, 219, 0.15);
+	--coc-warning-bg-subtle: rgba(247, 184, 75, 0.15);
+	--coc-danger-bg-subtle: rgba(240, 101, 72, 0.15);
+	--coc-light-bg-subtle: #25282c;
+	--coc-dark-bg-subtle: #313437;
+	--coc-primary-border-subtle: #2a3559;
+	--coc-secondary-border-subtle: #1b3c79;
+	--coc-success-border-subtle: #055a4e;
+	--coc-info-border-subtle: #154e6e;
+	--coc-warning-border-subtle: #7c5c26;
+	--coc-danger-border-subtle: #783324;
+	--coc-light-border-subtle: #35383c;
+	--coc-dark-border-subtle: #3c3f42;
+	--coc-heading-color: #ced4da;
+	--coc-link-color: #d9dce7;
+	--coc-link-hover-color: #e1e3ec;
+	--coc-link-color-rgb: 217, 220, 231;
+	--coc-link-hover-color-rgb: 225, 227, 236;
+	--coc-code-color: #f672a7;
+	--coc-highlight-color: #dee2e6;
+	--coc-highlight-bg: #664d03;
+	--coc-border-color: #32383e;
+	--coc-border-color-translucent: #32383e;
+	--coc-form-valid-color: #3bc2b0;
+	--coc-form-valid-border-color: #3bc2b0;
+	--coc-form-invalid-color: #f3846d;
+	--coc-form-invalid-border-color: #f3846d;
+}
+@media (prefers-reduced-motion: no-preference) {
+	:root {
+		scroll-behavior: smooth;
+	}
+}
 :root {
 	--coc-card-logo-dark: block;
 	--coc-card-logo-light: none;
@@ -15,6 +199,12 @@
 	--coc-semibox-width: 110px;
 	--coc-input-bg-custom: #fff;
 	--coc-input-border-custom: #ced4da;
+	--coc-breakpoint-xs: 0;
+	--coc-breakpoint-sm: 576px;
+	--coc-breakpoint-md: 768px;
+	--coc-breakpoint-lg: 992px;
+	--coc-breakpoint-xl: 1200px;
+	--coc-breakpoint-xxl: 1400px;
 }
 :root:is(
 		[data-sidebar-color="gradient"],

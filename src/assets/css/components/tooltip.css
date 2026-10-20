@@ -1,0 +1,93 @@
+/* Component styles extracted from the pruned legacy bundle. */
+.tooltip {
+	--coc-tooltip-zindex: 1080;
+	--coc-tooltip-max-width: 200px;
+	--coc-tooltip-padding-x: 0.7rem;
+	--coc-tooltip-padding-y: 0.4rem;
+	--coc-tooltip-font-size: calc(var(--coc-font-base) * 0.875);
+	--coc-tooltip-color: var(--coc-body-bg);
+	--coc-tooltip-bg: var(--coc-emphasis-color);
+	--coc-tooltip-border-radius: var(--coc-border-radius);
+	--coc-tooltip-opacity: 0.9;
+	--coc-tooltip-arrow-width: 0.8rem;
+	--coc-tooltip-arrow-height: 0.4rem;
+	z-index: var(--coc-tooltip-zindex);
+	display: block;
+	margin: var(--coc-tooltip-margin);
+	font-family: var(--coc-font-sans-serif);
+	font-style: normal;
+	font-weight: var(--coc-font-weight-normal);
+	line-height: 1.5;
+	text-align: left;
+	text-align: start;
+	text-decoration: none;
+	text-shadow: none;
+	text-transform: none;
+	letter-spacing: normal;
+	word-break: normal;
+	white-space: normal;
+	word-spacing: normal;
+	line-break: auto;
+	font-size: var(--coc-tooltip-font-size);
+	word-wrap: break-word;
+	opacity: 0;
+}
+.tooltip.show {
+	opacity: var(--coc-tooltip-opacity);
+}
+.popover {
+	--coc-popover-zindex: 1070;
+	--coc-popover-max-width: 276px;
+	--coc-popover-font-size: var(--coc-font-base);
+	--coc-popover-bg: var(--coc-secondary-bg);
+	--coc-popover-border-width: var(--coc-border-width);
+	--coc-popover-border-color: var(--coc-border-color);
+	--coc-popover-border-radius: var(--coc-border-radius);
+	--coc-popover-inner-border-radius: calc(
+		var(--coc-border-radius) - var(--coc-border-width)
+	);
+	--coc-popover-box-shadow: 0 5px 10px rgba(30, 32, 37, 0.12);
+	--coc-popover-header-padding-x: 1rem;
+	--coc-popover-header-padding-y: 0.7rem;
+	--coc-popover-header-font-size: var(--coc-font-base);
+	--coc-popover-header-color: var(--coc-body-color);
+	--coc-popover-header-bg: var(--coc-secondary-bg);
+	--coc-popover-body-padding-x: 1rem;
+	--coc-popover-body-padding-y: 1rem;
+	--coc-popover-body-color: var(--coc-body-color);
+	--coc-popover-arrow-width: 1rem;
+	--coc-popover-arrow-height: 0.5rem;
+	--coc-popover-arrow-border: var(--coc-popover-border-color);
+	z-index: var(--coc-popover-zindex);
+	display: block;
+	max-width: var(--coc-popover-max-width);
+	font-family: var(--coc-font-sans-serif);
+	font-style: normal;
+	font-weight: var(--coc-font-weight-normal);
+	line-height: 1.5;
+	text-align: left;
+	text-align: start;
+	text-decoration: none;
+	text-shadow: none;
+	text-transform: none;
+	letter-spacing: normal;
+	word-break: normal;
+	white-space: normal;
+	word-spacing: normal;
+	line-break: auto;
+	font-size: var(--coc-popover-font-size);
+	word-wrap: break-word;
+	background-color: var(--coc-popover-bg);
+	background-clip: padding-box;
+	border: var(--coc-popover-border-width) solid
+		var(--coc-popover-border-color);
+	border-radius: var(--coc-popover-border-radius);
+}
+
+/* RTL direction overrides migrated from pruned-rtl.css. */
+[dir="rtl"] .tooltip {
+	text-align: right;
+}
+[dir="rtl"] .popover {
+	text-align: right;
+}

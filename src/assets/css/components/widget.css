@@ -1,25 +1,4 @@
 /* Shared widget styles extracted from the legacy bundle. */
-.crm-widget .col {
-	border-right: 1px solid var(--coc-border-color);
-}
-.crm-widget .col:last-child {
-	border: 0;
-}
-@media (min-width: 768px) and (max-width: 1399.98px) {
-	.crm-widget .col:nth-child(3) {
-		border-right: 0;
-	}
-	.crm-widget .col:last-child {
-		border-right: 1px solid var(--coc-border-color);
-	}
-}
-@media (max-width: 767.98px) {
-	.crm-widget .col {
-		border-right: 0;
-		border-bottom: 1px solid var(--coc-border-color);
-	}
-}
-
 .notification-elem {
 	position: absolute;
 	top: 0;

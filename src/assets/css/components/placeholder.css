@@ -1,0 +1,36 @@
+/* Placeholder component styles extracted from the pruned legacy bundle. */
+.placeholder {
+	display: inline-block;
+	min-height: 1em;
+	vertical-align: middle;
+	cursor: wait;
+	background-color: currentcolor;
+	opacity: 0.5;
+}
+.placeholder.btn::before {
+	display: inline-block;
+	content: "";
+}
+@-webkit-keyframes placeholder-glow {
+	50% {
+		opacity: 0.2;
+	}
+}
+@keyframes placeholder-glow {
+	50% {
+		opacity: 0.2;
+	}
+}
+@-webkit-keyframes placeholder-wave {
+	100% {
+		-webkit-mask-position: -200% 0;
+		mask-position: -200% 0;
+	}
+}
+@keyframes placeholder-wave {
+	100% {
+		-webkit-mask-position: -200% 0;
+		mask-position: -200% 0;
+	}
+}
+

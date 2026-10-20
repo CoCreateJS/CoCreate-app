@@ -1,7 +1,7 @@
 <div class="">
-	<div class="col-xl-9">
-		<div class="row">
-			<div class="col-lg-3">
+	<div class="flex-grow-1 flex-basis:75.000% min-width:320px">
+		<div class="d-flex flex-wrap">
+			<div class="flex-grow-1 flex-basis:25.000% min-width:220px">
 				<div class="card">
 					<div class="card-body d-flex gap-3 align-items-center">
 						<div class="avatar-sm">
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<!--end col-->
-			<div class="col-lg-3">
+			<div class="flex-grow-1 flex-basis:25.000% min-width:220px">
 				<div class="card">
 					<div class="card-body d-flex gap-3 align-items-center">
 						<div class="avatar-sm">
@@ -39,7 +39,7 @@
 				</div>
 			</div>
 			<!--end col-->
-			<div class="col-lg-3">
+			<div class="flex-grow-1 flex-basis:25.000% min-width:220px">
 				<div class="card">
 					<div class="card-body d-flex gap-3 align-items-center">
 						<div class="avatar-sm">
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 			<!--end col-->
-			<div class="col-lg-3">
+			<div class="flex-grow-1 flex-basis:25.000% min-width:220px">
 				<div class="card">
 					<div class="card-body d-flex gap-3 align-items-center">
 						<div class="avatar-sm">
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 			<!--end col-->
-			<div class="col-lg-8">
+			<div class="flex-grow-1 flex-basis:66.667% min-width:320px">
 				<div class="card">
 					<div class="card-header align-items-center d-flex">
 						<h5 class="card-title mb-0 flex-grow-1">
@@ -139,7 +139,7 @@
 				</div>
 			</div>
 			<!--end col-->
-			<div class="col-lg-4">
+			<div class="flex-grow-1 flex-basis:33.333% min-width:260px">
 				<div class="card">
 					<div class="card-header align-items-center d-flex">
 						<h5 class="card-title mb-0 flex-grow-1">
@@ -273,7 +273,7 @@
 		<!--end row-->
 	</div>
 	<!--end col-->
-	<div class="col-xl-3">
+	<div class="flex-grow-1 flex-basis:25.000% min-width:220px">
 		<div class="card">
 			<div class="card-header align-items-center d-flex">
 				<h4 class="card-title mb-0 flex-grow-1">Recent Comment</h4>
@@ -431,7 +431,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xl-8">
+	<div class="flex-grow-1 flex-basis:66.667% min-width:320px">
 		<div class="card">
 			<div class="card-header align-items-center d-flex">
 				<h4 class="card-title mb-0 flex-grow-1">Recent Article</h4>
@@ -632,15 +632,15 @@
 					<!-- end table -->
 				</div>
 				<div
-					class="align-items-center mt-3 row g-3 text-center text-sm-start">
-					<div class="col-sm">
+					class="align-items-center mt-3 d-flex flex-wrap text-center text-sm-start gap-3">
+					<div class="flex-grow-1 min-width:180px">
 						<div class="text-muted">
 							Showing
 							<span class="fw-semibold">5</span> of
 							<span class="fw-semibold">14</span> Results
 						</div>
 					</div>
-					<div class="col-sm-auto">
+					<div class="flex-shrink-0">
 						<ul
 							class="pagination pagination-separated pagination-sm justify-content-center justify-content-sm-start mb-0">
 							<li class="page-item disabled">
@@ -685,9 +685,9 @@
 		</div>
 	</div>
 	<!--end col-->
-	<div class="col-xl-4">
-		<div class="row">
-			<div class="col-xl-12">
+	<div class="flex-grow-1 flex-basis:33.333% min-width:260px">
+		<div class="d-flex flex-wrap">
+			<div class="width:100%">
 				<div class="card">
 					<div class="card-body">
 						<div class="d-flex">
@@ -740,8 +740,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="row mt-3">
-									<div class="col-4">
+								<div class="d-flex flex-wrap mt-3">
+									<div class="flex-grow-1 flex-basis:33.333% min-width:260px">
 										<div
 											class="border p-2 rounded border-dashed">
 											<p
@@ -751,7 +751,7 @@
 											<h5 class="mb-0">26</h5>
 										</div>
 									</div>
-									<div class="col-4">
+									<div class="flex-grow-1 flex-basis:33.333% min-width:260px">
 										<div
 											class="border p-2 rounded border-dashed">
 											<p
@@ -761,7 +761,7 @@
 											<h5 class="mb-0">17k</h5>
 										</div>
 									</div>
-									<div class="col-4">
+									<div class="flex-grow-1 flex-basis:33.333% min-width:260px">
 										<div
 											class="border p-2 rounded border-dashed">
 											<p
@@ -778,7 +778,7 @@
 				</div>
 			</div>
 			<!--end col-->
-			<div class="col-xl-12">
+			<div class="width:100%">
 				<div class="card">
 					<div class="card-header align-items-center d-flex">
 						<h5 class="card-title mb-0 flex-grow-1">Used Device</h5>
@@ -841,125 +841,4 @@
 	<!--end col-->
 </div>
 
-<script>
-	function getChartColorsArray(t) {
-		if (null !== document.getElementById(t)) {
-			var e = document.getElementById(t).getAttribute("data-colors");
-			if (e)
-				return (e = JSON.parse(e)).map(function (t) {
-					var e = t.replace(" ", "");
-					return -1 === e.indexOf(",")
-						? getComputedStyle(
-								document.documentElement
-							).getPropertyValue(e) || e
-						: 2 == (t = t.split(",")).length
-							? "rgba(" +
-								getComputedStyle(
-									document.documentElement
-								).getPropertyValue(t[0]) +
-								"," +
-								t[1] +
-								")"
-							: e;
-				});
-			console.warn("data-colors Attribute not found on:", t);
-		}
-	}
-	var options,
-		chart,
-		chartColumnDatatalabelColors = getChartColorsArray(
-			"column_chart_datalabel"
-		),
-		chartPieGradientColors =
-			(chartColumnDatatalabelColors &&
-				((options = {
-					chart: { height: 275, type: "bar", toolbar: { show: !1 } },
-					plotOptions: { bar: { dataLabels: { position: "top" } } },
-					dataLabels: {
-						enabled: !0,
-						formatter: function (t) {
-							return t + "%";
-						},
-						offsetY: -20,
-						style: { fontSize: "12px", colors: ["#adb5bd"] }
-					},
-					series: [
-						{
-							name: "Visitors",
-							data: [
-								2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2,
-								3.5, 0.8
-							]
-						}
-					],
-					colors: chartColumnDatatalabelColors,
-					grid: { borderStyle: "dashed" },
-					xaxis: {
-						categories: [
-							"Jan",
-							"Feb",
-							"Mar",
-							"Apr",
-							"May",
-							"Jun",
-							"Jul",
-							"Aug",
-							"Sep",
-							"Oct",
-							"Nov",
-							"Dec"
-						],
-						crosshairs: {
-							fill: {
-								type: "gradient",
-								gradient: {
-									colorFrom: "#D8E3F0",
-									colorTo: "#BED1E6",
-									stops: [0, 100],
-									opacityFrom: 0.4,
-									opacityTo: 0.5
-								}
-							}
-						}
-					},
-					fill: {
-						gradient: {
-							shade: "light",
-							type: "horizontal",
-							shadeIntensity: 0.25,
-							gradientToColors: void 0,
-							inverseColors: !0,
-							opacityFrom: 1,
-							opacityTo: 1,
-							stops: [50, 0, 100, 100]
-						}
-					},
-					yaxis: {
-						labels: {
-							formatter: function (t) {
-								return t + "%";
-							}
-						}
-					}
-				}),
-				(chart = new ApexCharts(
-					document.querySelector("#column_chart_datalabel"),
-					options
-				)).render()),
-			getChartColorsArray("gradient_chart"));
-	chartPieGradientColors &&
-		((options = {
-			series: [44, 55, 24],
-			chart: { height: 210, type: "donut" },
-			plotOptions: { pie: { startAngle: -90, endAngle: 270 } },
-			labels: ["Desktop", "Mobile", "Laptop"],
-			dataLabels: { enabled: !1 },
-			fill: { type: "gradient" },
-			legend: { position: "bottom" },
-			colors: chartPieGradientColors
-		}),
-		(chart = new ApexCharts(
-			document.querySelector("#gradient_chart"),
-			options
-		)).render());
-</script>
+<script src="/apps/dashboards/views/blog.js"></script>

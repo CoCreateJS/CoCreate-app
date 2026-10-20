@@ -263,13 +263,6 @@
 .sidebar-user {
 	display: none;
 }
-:is([data-layout="vertical"], [data-layout="semibox"]) .app-menu .row {
-	margin: 0;
-}
-:is([data-layout="vertical"], [data-layout="semibox"]) .app-menu .row > * {
-	width: 100%;
-	padding: 0;
-}
 @media (max-width: 767.98px) {
 	:is([data-layout="vertical"], [data-layout="semibox"]) .app-menu {
 		margin-left: -100%;
@@ -1401,19 +1394,6 @@
 	display: block !important;
 	height: auto !important;
 }
-[data-layout="twocolumn"] .app-menu .navbar-nav .nav-item .menu-dropdown .row {
-	margin: 0;
-}
-[data-layout="twocolumn"]
-	.app-menu
-	.navbar-nav
-	.nav-item
-	.menu-dropdown
-	.row
-	.col-lg-4 {
-	width: 100%;
-	padding: 0;
-}
 [data-layout="twocolumn"]:is(
 		[data-sidebar-color="dark"],
 		[data-sidebar-color="gradient"],
@@ -1496,3 +1476,23 @@
 		padding: 0 1.3rem;
 	}
 }
+
+/* Migrated from custom.css. */
+
+.menu-title {
+	padding-top: 2rem;
+}
+
+/* Migrated from custom.css. */
+
+[data-sidebar-size="sm-hover"] .navbar-menu:not(:hover) .sidebar-notification {
+	display: block !important;
+	position: absolute;
+	font-size: 0px !important;
+	width: 6px !important;
+	height: 6px !important;
+	color: transparent;
+	top: 12px;
+	right: 28px;
+}
+

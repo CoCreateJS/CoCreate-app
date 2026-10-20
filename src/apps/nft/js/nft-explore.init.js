@@ -15,7 +15,7 @@ function loadProductData(e) {
 		Array.from(e).forEach(function (e, t) {
 			var l = e.like ? "active" : "";
 			(document.querySelector("#explorecard-list").innerHTML +=
-				'<div class="col list-element">            <div class="card explore-box card-animate">                <div class="explore-place-bid-img">                    <input type="hidden" class="form-control" id="' +
+				'<div class="list-element flex-grow-1 flex-basis:25.000% min-width:220px">            <div class="card explore-box card-animate">                <div class="explore-place-bid-img">                    <input type="hidden" class="form-control" id="' +
 				e.id +
 				'">                    <div class="d-none">' +
 				e.salesType +

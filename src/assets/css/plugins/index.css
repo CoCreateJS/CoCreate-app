@@ -1,21 +1,15 @@
 /* CoCreate overrides for externally supplied plugin styles. */
-@import url("./simplebar.css");
 @import url("./waves.css");
 @import url("./prismjs.css");
 @import url("./sweetalert2.css");
-@import url("./dropzone.css");
 @import url("./range-slider.css");
-@import url("./sortablejs.css");
 @import url("./tour.css");
 @import url("./swiper.css");
-@import url("./multijs.css");
 @import url("./colorpicker.css");
 @import url("./filepond.css");
 @import url("./form-input-spin.css");
 @import url("./ckeditor.css");
 @import url("./quilljs.css");
-@import url("./gridjs.css");
-@import url("./listjs.css");
 @import url("./apexcharts.css");
 @import url("./chartjs.css");
 @import url("./echarts.css");
@@ -25,9 +19,6 @@
 @import url("./leaflet-maps.css");
 @import url("./fullcalendar.css");
 @import url("./emoji-picker.css");
-@import url("./datatables.css");
-@import url("./select2.css");
 @import url("./toastify.css");
-@import url("./choices.css");
 @import url("./flatpickr.css");
 @import url("./flag-input.css");

@@ -1,9 +1,27 @@
 /* Faithfully extracted from the legacy SCSS build. */
 .table {
 	margin-bottom: 0;
+	--coc-table-color-type: initial;
+	--coc-table-bg-type: initial;
+	--coc-table-color-state: initial;
+	--coc-table-bg-state: initial;
+	--coc-table-color: var(--coc-body-color);
+	--coc-table-bg: transparent;
+	--coc-table-border-color: var(--coc-border-color);
+	--coc-table-accent-bg: transparent;
+	--coc-table-striped-color: var(--coc-body-color);
+	--coc-table-striped-bg: rgba(var(--coc-body-color-rgb), 0.02);
+	--coc-table-active-color: var(--coc-body-color);
+	--coc-table-active-bg: rgba(var(--coc-body-color-rgb), 0.04);
+	--coc-table-hover-color: var(--coc-body-color);
+	--coc-table-hover-bg: rgba(var(--coc-body-color-rgb), 0.04);
+	width: 100%;
+	vertical-align: top;
+	border-color: var(--coc-table-border-color);
 }
 .table > thead {
 	border-color: var(--coc-border-color);
+	vertical-align: bottom;
 }
 .table > :not(:first-child) {
 	border-top-width: var(--coc-border-width);
@@ -75,6 +93,19 @@
 .table > :not(caption) > * > * {
 	color: var(--coc-table-color-state),
 		var(--coc-table-color-type, var(--coc-table-color));
+	padding: 0.75rem 0.6rem;
+	background-color: var(--coc-table-bg);
+	border-bottom-width: var(--coc-border-width);
+	-webkit-box-shadow: inset 0 0 0 9999px
+		var(
+			--coc-table-bg-state,
+			var(--coc-table-bg-type, var(--coc-table-accent-bg))
+		);
+	box-shadow: inset 0 0 0 9999px
+		var(
+			--coc-table-bg-state,
+			var(--coc-table-bg-type, var(--coc-table-accent-bg))
+		);
 }
 .table .form-check {
 	padding-left: 0;
@@ -109,3 +140,48 @@
 .invoice-table tbody:last-child {
 	border: none;
 }
+.table > tbody {
+	vertical-align: inherit;
+}
+.table-sm > :not(caption) > * > * {
+	padding: 0.3rem 0.25rem;
+}
+.table-bordered > :not(caption) > * {
+	border-width: var(--coc-border-width) 0;
+}
+.table-bordered > :not(caption) > * > * {
+	border-width: 0 var(--coc-border-width);
+}
+.table-borderless > :not(caption) > * > * {
+	border-bottom-width: 0;
+}
+.table-borderless > :not(:first-child) {
+	border-top-width: 0;
+}
+.table-active {
+	--coc-table-color-state: var(--coc-table-active-color);
+	--coc-table-bg-state: var(--coc-table-active-bg);
+}
+.table-hover > tbody > tr:hover > * {
+	--coc-table-color-state: var(--coc-table-hover-color);
+	--coc-table-bg-state: var(--coc-table-hover-bg);
+}
+.table-light {
+	--coc-table-color: #000;
+	--coc-table-bg: #f3f6f9;
+	--coc-table-border-color: #dbdde0;
+	--coc-table-striped-bg: #eef1f4;
+	--coc-table-striped-color: #000;
+	--coc-table-active-bg: #e9ecef;
+	--coc-table-active-color: #000;
+	--coc-table-hover-bg: #e9ecef;
+	--coc-table-hover-color: #000;
+	color: var(--coc-table-color);
+	fill: var(--coc-table-color);
+	border-color: var(--coc-table-border-color);
+}
+.table-responsive {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+

@@ -1,11 +1,12 @@
 /* Member invite list grid and list presentation. */
 .team-list.grid-view-filter {
+	display: flex;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
 }
-.team-list.grid-view-filter .col {
+.team-list.grid-view-filter .team-box {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 auto;
 	flex: 0 0 auto;
@@ -14,18 +15,31 @@
 .team-list.grid-view-filter .team-box {
 	overflow: hidden;
 }
+.team-list.grid-view-filter .team-section {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	width: 100%;
+}
+.team-list.grid-view-filter .team-settings-cell,
+.team-list.grid-view-filter .team-stat-cell {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 50%;
+	flex: 0 0 50%;
+	width: 50%;
+}
 .team-list.grid-view-filter .team-box .team-row {
 	-webkit-box-align: start;
 	-ms-flex-align: start;
 	align-items: start;
 }
-.team-list.grid-view-filter .team-box .team-row .col {
+.team-list.grid-view-filter .team-box .team-row .team-section {
 	width: 100%;
 }
 .team-list.grid-view-filter .team-box .team-cover {
 	display: block;
 }
-.team-list.grid-view-filter .team-box .team-settings .col {
+.team-list.grid-view-filter .team-box .team-settings .team-settings-cell {
 	width: 50% !important;
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 auto;
@@ -64,7 +78,7 @@
 	margin-top: 25px;
 }
 @media (min-width: 1200px) and (max-width: 1399.98px) {
-	.team-list.grid-view-filter .col {
+	.team-list.grid-view-filter .team-box {
 		-webkit-box-flex: 0;
 		-ms-flex: 0 0 auto;
 		flex: 0 0 auto;
@@ -72,7 +86,7 @@
 	}
 }
 @media (max-width: 1199.98px) {
-	.team-list.grid-view-filter .col {
+	.team-list.grid-view-filter .team-box {
 		-webkit-box-flex: 0;
 		-ms-flex: 0 0 auto;
 		flex: 0 0 auto;
@@ -80,7 +94,7 @@
 	}
 }
 @media (max-width: 767.98px) {
-	.team-list.grid-view-filter .col {
+	.team-list.grid-view-filter .team-box {
 		-webkit-box-flex: 0;
 		-ms-flex: 0 0 auto;
 		flex: 0 0 auto;
@@ -88,13 +102,29 @@
 	}
 }
 .team-list.list-view-filter {
+	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
 	flex-direction: column;
 }
 .team-list.list-view-filter .team-box {
+	width: 100%;
 	margin-bottom: 10px;
+}
+.team-list.list-view-filter .team-section {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+}
+.team-list.list-view-filter .team-profile-section {
+	flex-basis: 33.333%;
+}
+.team-list.list-view-filter .team-stats-section {
+	flex-basis: 33.333%;
+}
+.team-list.list-view-filter .team-actions-section {
+	flex-basis: 16.667%;
 }
 .team-list.list-view-filter .team-box .team-row {
 	-webkit-box-align: center;
@@ -139,7 +169,7 @@
 		-ms-flex-direction: row;
 		flex-direction: row;
 	}
-	.team-list.list-view-filter .col {
+	.team-list.list-view-filter .team-section {
 		-webkit-box-flex: 0;
 		-ms-flex: 0 0 auto;
 		flex: 0 0 auto;
@@ -155,7 +185,7 @@
 		order: -1;
 		margin-bottom: 10px;
 	}
-	.team-list.list-view-filter .team-box .team-settings .col {
+	.team-list.list-view-filter .team-box .team-settings .team-settings-cell {
 		width: 50%;
 	}
 	.team-list.list-view-filter .team-box .team-profile-img {
