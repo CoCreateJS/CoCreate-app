@@ -1,16 +1,13 @@
 	
 	<link
 		rel="stylesheet"
-		href="/apps/apps/components/card.css" />
-	<link
-		rel="stylesheet"
 		href="/apps/apps/components/details.css" />
-	<div class="card-body apps-details-body d-flex flex-column gap-4 h-100">
+	<div class="card-body min-width:0 d-flex flex-column gap-4 h-100">
 		<section
 			class="d-flex flex-column gap-3 pb-3 border-bottom border-bottom-dashed"
 			aria-label="App overview">
-			<div class="apps-details-identity">
-				<span class="apps-details-icon flex-shrink-0">
+			<div class="d-flex align-items-center gap-3 min-width:0 min-height:50px">
+				<span class="d-inline-flex width:50px height:50px app-card-icon flex-shrink-0">
 					<span
 						class="avatar-title bg-primary-subtle rounded-circle material-shadow">
 						<i src="/assets/svg/remix/apps-2-line.svg" key="icon"
@@ -24,28 +21,12 @@
 					key="name"
 					aria-label="App name"></h4>
 			</div>
-			<div class="apps-details-badges app-badges">
+			<div class="app-badges">
 				<span
 					class="badge border border-primary text-primary"
 					key="category"
 					aria-label="Category"></span>
-				<span
-					class="apps-card-status"
-					role="status"
-					aria-label="App status">
-					<input
-						type="hidden"
-						key="status"
-						input-query="$parent"
-						input.data-status="$value" />
-					<span
-						class="apps-card-enabled badge border border-success text-success"
-						>Enabled</span
-					>
-					<span class="apps-card-disabled badge border text-muted"
-						>Disabled</span
-					>
-				</span>
+				<span class="badge text-capitalize" role="status" aria-label="Enabled status" key="enabled" data-value input.data-value="$value"></span>
 			</div>
 			<p
 				class="text-muted text-break mb-0"

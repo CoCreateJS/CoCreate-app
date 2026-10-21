@@ -23,9 +23,6 @@
 			.signup-form button[disabled] .button-busy {
 				display: inline;
 			}
-			.signup-form button[disabled] .spinner-border {
-				display: inline-block !important;
-			}
 			#email[unique="false"] ~ #signup-email-error {
 				display: block !important;
 				content: "This email is already in use.";
@@ -156,14 +153,14 @@
 			<button
 				id="signup-btn"
 				type="button"
-				class="btn btn-success w-100 mt-2"
+				class="btn btn-success btn-spinner w-100 mt-2"
 				actions="disabled, validate(#signup-account-step), click, focus"
 				click-query="$closest form"
 				click.data-signup-step="organization"
 				focus-query="$document #signup-organization-name"
 				focus.$focus="$undefined">
 				<span
-					class="spinner-border spinner-border-sm d-none"
+					class="spinner-border spinner-border-sm" hidden
 					aria-hidden="true"></span>
 				<span class="button-text">Next</span>
 				<span class="button-busy">Checking your details...</span>
@@ -266,14 +263,14 @@
 				<button
 					id="signup-create-btn"
 					type="button"
-					class="btn btn-success w-100"
+					class="btn btn-success btn-spinner w-100"
 					actions="disabled, validate(#signup-form), signUp, signIn, createOrganization, click, focus"
 					click-query="$closest form"
 					click.data-signup-step="complete"
 					focus-query="$document #signup-complete-title"
 					focus.$focus="$undefined">
 					<span
-						class="spinner-border spinner-border-sm d-none"
+						class="spinner-border spinner-border-sm" hidden
 						aria-hidden="true"></span>
 					<span class="button-text"
 						>Create account and organization</span

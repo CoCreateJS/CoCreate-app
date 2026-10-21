@@ -1,4 +1,10 @@
 /* Shared base element styles extracted from the legacy bundle. */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	font-family: var(--coc-body-font-family);

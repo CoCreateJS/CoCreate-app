@@ -1,6 +1,5 @@
 /* Faithfully extracted from the legacy SCSS build. */
 .card {
-	margin-bottom: var(--coc-grid-gutter-width);
 	-webkit-box-shadow: var(--coc-card-shadow);
 	box-shadow: var(--coc-card-shadow);
 	--coc-card-spacer-y: 1rem;

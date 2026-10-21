@@ -145,7 +145,7 @@ export default {
                 "label": "Enabled",
                 "tagName": "input",
                 "filterTemplate": "<select id=\"api-enabled-filter\" class=\"form-select\" filter-query=\"$document .list-view\" filter-query-key=\"enabled\"><option value=\"\">Any state</option><option value=\"true\" value-type=\"boolean\">Enabled</option><option value=\"false\" value-type=\"boolean\">Disabled</option></select>",
-                "tableTemplate": "<link rel=\"stylesheet\" href=\"/apps/apis/templates/card.css\" /><span class=\"apis-grid-badges apis-grid-status\" data-enabled=\"{{object.enabled}}\" role=\"status\" aria-label=\"API status\"><span class=\"apis-grid-enabled badge border border-success text-success\">Enabled</span><span class=\"apis-grid-disabled badge border text-muted\">Disabled</span></span>",
+                "tableTemplate": "<span class=\"badge text-capitalize\" key=\"enabled\" data-value=\"{{object.enabled}}\" role=\"status\" aria-label=\"API enabled status\">{{object.enabled}}</span>",
                 "attributes": [
                     {
                         "name": "class",

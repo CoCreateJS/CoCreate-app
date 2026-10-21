@@ -1,6 +1,6 @@
 <div class="app-heading">
-	<div class="d-flex align-items-center gap-3 min-width:0">
-		<span class="app-provider-image" aria-hidden="true">
+	<div class="app-identity">
+		<span class="app-provider-image app-identity-image" aria-hidden="true">
 			<img class="app-provider-default" src="/assets/svg/providers/configuration.svg" key="provider" set-value-prefix="/assets/svg/providers/" set-value-suffix=".svg" alt="" width="36" height="36" onload="this.hidden = false" onerror="if (this.getAttribute('src') === '/assets/svg/providers/configuration.svg') { this.hidden = true; } else { this.src = '/assets/svg/providers/configuration.svg'; }" />
 			<img class="app-provider-custom" form-attributes="false" array="apis" key="avatar[0].src" alt="" width="36" height="36" hidden onload="this.hidden = false" onerror="this.hidden = true" />
 		</span>
@@ -9,12 +9,8 @@
 		</div>
 	</div>
 	<div class="app-badges">
-		<span class="badge border border-primary text-primary text-uppercase" key="type"></span>
-		<span class="app-enabled-status" role="status" aria-label="Status">
-			<input type="hidden" key="enabled" input-query="$parent" input.data-enabled="$value" />
-			<span class="app-enabled badge border border-success text-success">Enabled</span>
-			<span class="app-disabled badge border text-muted">Disabled</span>
-		</span>
+		<span class="badge text-uppercase" key="type" data-value input.data-value="$value"></span>
+		<span class="badge text-capitalize" role="status" aria-label="Enabled status" key="enabled" data-value input.data-value="$value"></span>
 	</div>
 </div>
 <div class="d-flex flex-wrap gap-3">

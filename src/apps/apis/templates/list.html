@@ -1,23 +1,22 @@
-<div class="d-flex align-items-center gap-2">
+<div class="app-identity app-list-identity">
 	<span
-		class="apis-provider-image app-list-image"
-		style="width: 32px; height: 32px; flex-basis: 32px"
+		class="app-provider-image app-list-image app-identity-image"
 		aria-hidden="true">
 		<img
-			class="apis-grid-provider-logo"
+			class="app-provider-default"
 			src="/assets/svg/providers/{{object.provider}}.svg"
 			alt=""
 			onload="this.hidden = false"
 			onerror="this.hidden = true" />
 		<img
-			class="apis-custom-provider-logo"
+			class="app-provider-custom"
 			src="{{object.avatar[0].src}}"
 			alt=""
 			hidden
 			onload="this.hidden = false"
 			onerror="this.hidden = true" />
 	</span>
-	<span class="flex-grow-1 text-start text-truncate">
+	<span class="app-title">
 		<span>{{object.name}}</span>
 	</span>
 </div>

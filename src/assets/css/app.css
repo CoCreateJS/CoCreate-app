@@ -1,3 +1,104 @@
+/* Hide declarative badges when their bound value is empty. */
+.badge[key][data-value=""] {
+	display: none;
+}
+
+/* Shared badge colors are derived from the bound value. */
+.badge[key][data-value] {
+	color: var(--coc-primary-text-emphasis);
+	background-color: var(--coc-primary-bg-subtle);
+}
+
+.badge[key="enabled"][data-value="true"],
+.badge[key="status"][data-value="active" i],
+.badge[key="status"][data-value="activated" i],
+.badge[key="status"][data-value="accepted" i],
+.badge[key="status"][data-value="approved" i],
+.badge[key="status"][data-value="completed" i],
+.badge[key="status"][data-value="delivered" i],
+.badge[key="status"][data-value="paid" i],
+.badge[key="status"][data-value="published" i],
+.badge[key="status"][data-value="received" i],
+.badge[key="status"][data-value="resolved" i],
+.badge[key="status"][data-value="sent" i],
+.badge[key="status"][data-value="success" i],
+.badge[key="status"][data-value="won" i],
+.badge[key="payment.status"][data-value="paid" i],
+.badge[key="payment.status"][data-value="completed" i],
+.badge[key="publish_status"][data-value="published" i],
+.badge[key="payment_status"][data-value="paid" i] {
+	color: var(--coc-success-text-emphasis);
+	background-color: var(--coc-success-bg-subtle);
+}
+
+.badge[key="enabled"][data-value="false"],
+.badge[key="status"][data-value="inactive" i],
+.badge[key="status"][data-value="disabled" i] {
+	color: var(--coc-secondary-text-emphasis);
+	background-color: var(--coc-secondary-bg-subtle);
+}
+
+/* Keep the boolean value for styling, and show a readable label from that value. */
+.badge[key="enabled"][data-value="true"],
+.badge[key="enabled"][data-value="false"] {
+	font-size: 0;
+	padding: 3.5px 6.5px;
+}
+
+.badge[key="enabled"][data-value="true"]::before,
+.badge[key="enabled"][data-value="false"]::before {
+	font-size: 10px;
+}
+
+.badge[key="enabled"][data-value="true"]::before {
+	content: "Enabled";
+}
+
+.badge[key="enabled"][data-value="false"]::before {
+	content: "Disabled";
+}
+
+.badge[key="enabled"][data-value]::before {
+	line-height: 1;
+}
+
+.badge[key="status"][data-value="pending" i],
+.badge[key="status"][data-value="draft" i],
+.badge[key="status"][data-value="planning" i],
+.badge[key="status"][data-value="processing" i],
+.badge[key="status"][data-value="scheduled" i],
+.badge[key="publish_status"][data-value="draft" i],
+.badge[key="publish_status"][data-value="scheduled" i],
+.badge[key="payment_status"][data-value="pending" i],
+.badge[key="payment_status"][data-value="unpaid" i],
+.badge[key="payment.status"][data-value="pending" i],
+.badge[key="payment.status"][data-value="unpaid" i] {
+	color: var(--coc-warning-text-emphasis);
+	background-color: var(--coc-warning-bg-subtle);
+}
+
+.badge[key="status"][data-value="cancelled" i],
+.badge[key="status"][data-value="canceled" i],
+.badge[key="status"][data-value="failed" i] {
+	color: var(--coc-danger-text-emphasis);
+	background-color: var(--coc-danger-bg-subtle);
+}
+
+.badge[key="priority"][data-value="low" i] {
+	color: var(--coc-success-text-emphasis);
+	background-color: var(--coc-success-bg-subtle);
+}
+
+.badge[key="priority"][data-value="medium" i] {
+	color: var(--coc-warning-text-emphasis);
+	background-color: var(--coc-warning-bg-subtle);
+}
+
+.badge[key="priority"][data-value="high" i] {
+	color: var(--coc-danger-text-emphasis);
+	background-color: var(--coc-danger-bg-subtle);
+}
+
 .app-card .badge,
 .app-details .badge {
     flex-shrink: 0;
@@ -5,6 +106,25 @@
     line-height: 1;
     padding: 0.35em 0.65em;
     background-color: transparent;
+}
+
+.app-details .card-body {
+	position: relative;
+}
+
+.app-details .app-badges {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	max-width: calc(100% - 30px);
+}
+
+/* Shared sizing for app cards rendered in collection templates. */
+.app-card[role="row"] {
+	flex-grow: 1;
+	flex-basis: 320px;
+	min-width: min(280px, 100%);
+	max-width: 460px;
 }
 
 :is(.app-card, .app-details) .badge.text-muted {
@@ -34,6 +154,51 @@
     margin-top: 0;
 }
 
+.app-card .app-identity {
+	flex: 1 1 auto;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 0.75rem;
+	width: auto;
+	min-width: 0;
+}
+.app-card .app-identity > :not(.app-identity-image) {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.app-card .app-identity-image {
+	flex: 0 0 50px;
+	width: 50px;
+	height: 50px;
+}
+.app-card .app-identity > .app-title {
+	margin: 0;
+}
+
+.app-list-identity {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+	min-width: 0;
+}
+.app-list-identity > .app-identity-image {
+	flex: 0 0 42px;
+	width: 42px;
+	height: 42px;
+}
+.app-list-identity > .app-title {
+	flex: 1 1 auto;
+	min-width: 0;
+	margin: 0;
+	font-size: inherit;
+	line-height: inherit;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .app-fields { min-width: 0; }
 .app-field { min-width: 0; padding: 0; }
 .app-field-full { flex: 1 1 100%; width: 100%; }
@@ -52,12 +217,6 @@
 .app-image-editor .avatar-xl { --avatar-size: 100px; }
 .app-image-editor > div { margin-bottom: 0 !important; }
 
-.app-enabled-status .app-enabled,
-.app-enabled-status[data-enabled="true"] .app-disabled,
-.app-enabled-status:has(input:checked) .app-disabled { display: none; }
-.app-enabled-status[data-enabled="true"] .app-enabled,
-.app-enabled-status:has(input:checked) .app-enabled { display: inline-block; }
-
 .app-heading {
     display: flex;
     flex-wrap: wrap;
@@ -68,9 +227,7 @@
 }
 .app-heading > :first-child { flex: 1 1 12rem; min-width: 0; }
 .app-badges { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: flex-end; gap: 0.5rem; }
-.app-badges .app-enabled-status { display: inline-flex; }
 .app-details .app-identity > img { --avatar-size: 36px; width: 36px; height: 36px; object-fit: contain; }
-.app-form .app-enabled-status .badge { font-size: 10px; }
 
 .app-avatar { display: inline-flex; flex: 0 0 36px; width: 36px; height: 36px; }
 .app-avatar img { width: 100%; height: 100%; object-fit: contain; }
@@ -101,7 +258,8 @@
     right: -6px;
     max-width: calc(100% - 50px);
 }
-.app-card .app-heading > .app-badges .badge {
+.app-card .app-heading > .app-badges .badge,
+.app-details .app-badges .badge {
     font-size: 9px;
 }
 
@@ -157,15 +315,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
-
-.app-list-image .apis-custom-provider-logo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: var(--coc-body-bg);
 }
 
 .app-list-provider-image .app-provider-image {

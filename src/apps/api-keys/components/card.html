@@ -1,6 +1,6 @@
 <div class="app-heading">
-	<div class="d-flex align-items-start gap-3 min-width:0">
-		<span class="avatar-sm app-card-icon flex-shrink-0">
+	<div class="app-identity">
+		<span class="avatar-sm app-card-icon flex-shrink-0 app-identity-image">
 			<span class="avatar-title bg-primary-subtle text-primary rounded-circle">
 				<i src="/assets/svg/remix/key-line.svg" aria-hidden="true"></i>
 			</span>
@@ -11,12 +11,12 @@
 	</div>
 	<div class="app-badges">
 		<span
-			class="badge border border-primary text-primary text-capitalize"
-			aria-label="Type" key="type"></span>
+			class="badge text-capitalize"
+			aria-label="Type" key="type" data-value input.data-value="$value"></span>
 		<span
-			class="badge border border-success text-success text-capitalize"
+			class="badge text-capitalize"
 			role="status"
-			aria-label="API key status" key="status"></span>
+			aria-label="API key status" key="status" data-value input.data-value="$value"></span>
 	</div>
 </div>
 <p class="text-muted mb-0 text-break line-clamp:2" key="description"></p>

@@ -1,11 +1,10 @@
 <template>
 <article
-	class="card flex-grow-1 mb-0 app-card app-with-image"
-	style="flex-basis:320px;min-width:min(280px,100%);max-width:460px"
+	class="card app-card"
 	role="row" aria-selected="false" array="{{object.$array[0]}}" object="{{object._id}}" read="false">
 
-	<div class="card-body d-flex align-items-center gap-3">
-		<span class="app-avatar"><img src="{{object.logo[0].src}}" alt="" width="50" height="50" onload="this.hidden = false" onerror="this.hidden = true" /></span>
+	<div class="card-body app-identity">
+		<span class="app-avatar app-identity-image"><img src="{{object.logo[0].src}}" alt="" width="50" height="50" onload="this.hidden = false" onerror="this.hidden = true" /></span>
 		<div class="min-width:0">
 			<h5 class="text-truncate app-title mb-1">{{object.name}}</h5>
 			<p class="mb-0 text-muted text-truncate">{{object.description}}</p>

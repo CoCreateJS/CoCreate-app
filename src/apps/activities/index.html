@@ -1,13 +1,8 @@
-<link
-	rel="stylesheet"
-	href="/apps/activities/index.css" />
-<link
-	rel="stylesheet"
-	href="/components/offcanvas-app/header.css" />
 <header
 	class="card-header offcanvas-app-topbar flex-shrink-0 justify-content-between">
 	<h5 class="mb-0">Recent activities</h5>
-	<div class="d-flex align-items-center gap-1">
+	<div
+		class="d-flex flex-grow-1 align-items-center justify-content-end gap-1">
 		<button
 			type="button"
 			class="offcanvas-app-dock btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle text-muted"
@@ -49,12 +44,34 @@
 	</div>
 </header>
 <div
-	class="card-body activities-scroll"
+	class="card-body app-panel"
 	scrollbar>
 	<div
 		id="activities-list"
 		class="activity-panel d-flex flex-column gap-3"
-		aria-live="polite"></div>
+		aria-live="polite"
+		array="activities"
+		object
+		filter-sort-key="_id"
+		filter-sort-direction="desc"
+		filter-limit="20"
+		render-query="[template='activity-card']"
+		render-reverse>
+		<section
+			template="activity-card"
+			class="activity-panel-item min-width:0">
+			<div>
+				<form
+					array="{{object.array}}"
+					object="{{object._id}}">
+					<div
+						src="/apps/{{object.array}}/components/card.html"></div>
+				</form>
+			</div>
+		</section>
+		<div
+			style="min-height: 3px; max-height: 3px"
+			filter-on="scroll"
+			filter-query="$parent"></div>
+	</div>
 </div>
-
-<script src="/apps/activities/index.js"></script>

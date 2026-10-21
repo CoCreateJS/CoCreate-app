@@ -973,8 +973,7 @@ button {
 	margin-right: 0;
 }
 
-/* Migrated from custom.css. */
-
+/* Show a hidden spinner while an action button is disabled; [hidden] hides it again when enabled. */
 .btn-spinner[disabled] .spinner-border {
 	display: inline-block !important;
 }

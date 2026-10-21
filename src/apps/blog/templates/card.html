@@ -1,41 +1,64 @@
 <template>
-<article
-	class="card flex-grow-1 mb-0 app-card app-with-image"
-	style="flex-basis: 320px; min-width: min(280px, 100%)"
-	role="row" aria-selected="false" array="{{object.$array[0]}}" object="{{object._id}}" read="false">
-
-	<div class="card-body d-flex flex-column gap-3 text-reset"><span
-			state-to="offcanvas-app-form"
-			state.array="posts"
-			state.object="{{object._id}}" hidden></span>
-		<div class="d-flex align-items-start justify-content-between gap-3">
-			<div class="d-flex align-items-center gap-3 min-width:0">
-				<span class="app-avatar"><img src="{{object.image}}" alt="" width="50" height="50" onload="this.hidden = false" onerror="this.hidden = true" /></span>
-				<div class="min-width:0">
-					<h5 class="text-truncate app-title mb-1"><a
-	 class="text-reset text-decoration-none"
-		role="button"
-		tabindex="0"
-		state-to="offcanvas-app-view"
-		state.src="/apps/blog/app.html"
-		aria-controls="offcanvas-app"
-		aria-open>{{object.title}}</a></h5>
-					<span class="text-muted fs-12">By {{object.author}}</span>
+	<article
+		class="card app-card"
+		role="row"
+		aria-selected="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}"
+		read="false">
+		<div class="card-body d-flex flex-column gap-3 text-reset">
+			<span
+				state-to="offcanvas-app-form"
+				state.array="posts"
+				state.object="{{object._id}}"
+				hidden></span>
+			<div class="d-flex align-items-start justify-content-between gap-3">
+				<div class="app-identity">
+					<span class="app-avatar app-identity-image"
+						><img
+							src="{{object.image}}"
+							alt=""
+							width="50"
+							height="50"
+							onload="this.hidden = false"
+							onerror="this.hidden = true"
+					/></span>
+					<div class="min-width:0">
+						<h5 class="text-truncate app-title mb-1">
+							<a
+								class="text-reset text-decoration-none"
+								role="button"
+								tabindex="0"
+								state-to="offcanvas-app-view"
+								state.src="/apps/blog/app.html"
+								aria-controls="offcanvas-app"
+								aria-open
+								>{{object.title}}</a
+							>
+						</h5>
+						<span class="text-muted fs-12"
+							>By {{object.author}}</span
+						>
+					</div>
 				</div>
+				<span
+					class="badge text-capitalize"
+					 key="publish_status" data-value="{{object.publish_status}}">{{object.publish_status}}</span
+				>
 			</div>
-			<span class="badge border border-success text-success text-capitalize"
-				>{{object.publish_status}}</span
-			>
+			<p class="text-muted mb-0 line-clamp:2">{{object.caption}}</p>
+			<div
+				class="d-flex justify-content-between pt-2 border-top border-top-dashed text-muted fs-12">
+				<span>Published: {{object.publish_date}}</span
+				><span
+					><i
+						src="/assets/svg/remix/map-pin-line.svg"
+						class="me-1"></i
+					>{{object.location}}</span
+				>
+			</div>
 		</div>
-		<p class="text-muted mb-0 line-clamp:2">{{object.caption}}</p>
-		<div
-			class="d-flex justify-content-between pt-2 border-top border-top-dashed text-muted fs-12">
-			<span>Published: {{object.publish_date}}</span
-			><span
-				><i src="/assets/svg/remix/map-pin-line.svg" class="me-1"></i>{{object.location}}</span
-			>
-		</div></div>
-</article>
+	</article>
 </template>
 <div
 	hidden

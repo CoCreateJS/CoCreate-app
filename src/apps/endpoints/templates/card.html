@@ -1,7 +1,6 @@
 <template>
 	<article
-		class="card flex-grow-1 mb-0 app-card app-with-image app-service-card"
-		style="flex-basis: 320px; min-width: min(280px, 100%); max-width: 460px"
+		class="card app-card"
 		role="row"
 		aria-selected="false"
 		array="{{object.$array[0]}}"
@@ -9,10 +8,10 @@
 		read="false">
 		<div class="card-body d-flex flex-column gap-3">
 			<div class="app-heading">
-				<div class="d-flex align-items-start gap-3 min-width:0">
+				<div class="app-identity">
 					<div
 						value-type="outerHTML"
-						src="/apps/apis/components/provider-icon.html"></div>
+						src="/apps/apis/components/provider-icon.html" class="app-identity-image"></div>
 					<div class="min-width:0">
 						<h5 class="app-title mb-0 text-break">
 							<a
@@ -35,20 +34,9 @@
 				</div>
 				<div class="app-badges">
 					<span
-						class="badge border border-primary text-primary text-uppercase"
-						>{{object.method}}</span
-					><span
-						class="app-enabled-status"
-						data-enabled="{{object.enabled}}"
-						role="status"
-						aria-label="Status"
-						><span
-							class="app-enabled badge border border-success text-success"
-							>Enabled</span
-						><span class="app-disabled badge border text-muted"
-							>Disabled</span
-						></span
-					>
+						class="badge text-uppercase"
+						 key="method" data-value="{{object.method}}">{{object.method}}</span
+					><span class="badge text-capitalize" role="status" aria-label="Enabled status" key="enabled" data-value="{{object.enabled}}">{{object.enabled}}</span>
 				</div>
 			</div>
 			<p class="text-muted mb-0 line-clamp:2">{{object.description}}</p>

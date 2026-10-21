@@ -90,22 +90,17 @@
 			</div>
 
 			<div class="mt-4">
-				<style>
-					#signin-btn[disabled] .spinner-border {
-						display: inline-block !important;
-					}
-				</style>
 				<button
 					id="signin-btn"
 					href="/admin/"
-					class="btn btn-success w-100"
+					class="btn btn-success btn-spinner w-100"
 					actions="validate, click, disabled, signIn, disabled, click"
 					click.value="Sigining In..., Sign In"
 					click-query=".button-text"
 					type="button"
 					aria-label="Sign in">
 					<span
-						class="spinner-border spinner-border-sm d-none"
+						class="spinner-border spinner-border-sm" hidden
 						role="status"
 						aria-hidden="true">
 					</span>

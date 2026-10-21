@@ -1,28 +1,12 @@
 <div class="app-heading">
 	<div class="app-badges">
-		<span class="badge border border-primary text-primary text-uppercase"
-			>POST</span
-		><span
-			class="app-enabled-status"
-			role="status"
-			aria-label="Status"
-			><input
-				type="hidden"
-				key="enabled"
-				input-query="$parent"
-				input.data-enabled="$value" /><span
-				class="app-enabled badge border border-success text-success"
-				>Enabled</span
-			><span class="app-disabled badge border text-muted"
-				>Disabled</span
-			></span
-		>
+		<span class="badge text-uppercase" key="method" data-value="POST">POST</span><span class="badge text-capitalize" role="status" aria-label="Enabled status" key="enabled" data-value input.data-value="$value"></span>
 	</div>
 
-	<div class="d-flex align-items-start gap-3 min-width:0">
+	<div class="app-identity">
 		<div
 			value-type="outerHTML"
-			src="/apps/apis/components/provider-icon.html"></div>
+			src="/apps/apis/components/provider-icon.html" class="app-identity-image"></div>
 		<div class="min-width:0">
 			<h5
 				class="app-title mb-0 text-break"

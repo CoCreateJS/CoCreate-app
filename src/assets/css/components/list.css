@@ -1,4 +1,18 @@
 /* List component styles extracted from the residual legacy bundle. */
+#grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+	align-content: start;
+	padding: var(--admin-gutter);
+	padding-bottom: 5px;
+}
+
+#grid > .card {
+	width: 100%;
+	min-width: 0 !important;
+	max-width: none !important;
+}
+
 .list-group-fill-primary.list-group-item {
 	color: #fff;
 	background-color: var(--coc-primary) !important;

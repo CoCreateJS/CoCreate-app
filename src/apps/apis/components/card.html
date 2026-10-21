@@ -1,27 +1,6 @@
 <div class="app-heading">
-	<div class="app-badges">
-		<span
-			class="badge border border-primary text-primary text-capitalize"
-			key="type"></span
-		><span
-			class="app-enabled-status"
-			role="status"
-			aria-label="Status"
-			><input
-				type="hidden"
-				key="enabled"
-				input-query="$parent"
-				input.data-enabled="$value" /><span
-				class="app-enabled badge border border-success text-success"
-				>Enabled</span
-			><span class="app-disabled badge border text-muted"
-				>Disabled</span
-			></span
-		>
-	</div>
-
-	<div class="d-flex align-items-start gap-3 min-width:0">
-		<span class="app-provider-image" aria-hidden="true">
+	<div class="app-identity">
+		<span class="app-provider-image app-identity-image" aria-hidden="true">
 			<img
 				class="app-provider-default"
 				key="icon"
@@ -44,6 +23,12 @@
 				class="app-title mb-0 text-capitalize text-break"
 				key="name"></h5>
 		</div>
+	</div>
+	<div class="app-badges">
+		<span
+			class="badge text-capitalize"
+			key="type" data-value input.data-value="$value"></span
+		><span class="badge text-capitalize" role="status" aria-label="Enabled status" key="enabled" data-value input.data-value="$value"></span>
 	</div>
 </div>
 <p
