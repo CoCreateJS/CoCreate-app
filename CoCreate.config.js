@@ -75,9 +75,6 @@ export default {
             output: "../CoCreate-app-template",
             include: ["./src/admin/", "./src/apps/"],
             exclude: [
-                "./src/admin/widgets/",
-                "./src/admin/ui/",
-                "./src/admin/pages/"
             ]
         }
     ],
