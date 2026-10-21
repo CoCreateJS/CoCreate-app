@@ -750,24 +750,18 @@
 }
 :is([data-layout="vertical"], [data-layout="semibox"])[data-sidebar-size="sm"]
 	.navbar-menu
-	.simplebar-content-wrapper,
-:is([data-layout="vertical"], [data-layout="semibox"])[data-sidebar-size="sm"]
-	.navbar-menu
-	.simplebar-mask {
+	> .scrollbar-viewport {
 	overflow: visible !important;
 }
 :is([data-layout="vertical"], [data-layout="semibox"])[data-sidebar-size="sm"]
 	.navbar-menu
-	.simplebar-scrollbar,
-:is([data-layout="vertical"], [data-layout="semibox"])[data-sidebar-size="sm"]
-	.navbar-menu
-	.vertical-menu-btn {
+	> .scrollbar-track {
 	display: none !important;
 }
 :is([data-layout="vertical"], [data-layout="semibox"])[data-sidebar-size="sm"]
 	.navbar-menu
-	.simplebar-offset {
-	bottom: 0 !important;
+	.vertical-menu-btn {
+	display: none !important;
 }
 :is([data-layout="vertical"], [data-layout="semibox"])[data-sidebar-size="sm"]
 	.navbar-menu

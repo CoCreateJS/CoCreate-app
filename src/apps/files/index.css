@@ -198,7 +198,6 @@
 .files-app:has([data-file-browser]) .files-content-header .dropdown { display: none; }
 .files-app:has([data-file-browser]) .files-content-header { padding: 0; }
 .file-manager-content-scroll:has([data-file-browser]) { overflow: hidden; }
-.file-manager-content-scroll:has([data-file-browser]) :is(.simplebar-wrapper, .simplebar-mask, .simplebar-offset, .simplebar-content-wrapper, .simplebar-content) { height: 100%; min-height: 0; }
 .file-manager-content-scroll #file-view:has([data-file-browser]) { height: 100%; min-height: 0; padding: 0; gap: 0; }
 .files-app { container-type: inline-size; }
 
@@ -276,7 +275,7 @@
     min-height: 0;
     overflow: auto;
 }
-.files-main-body > .simplebar-wrapper { height: 100%; }
+.files-main-body > .scrollbar-viewport { height: 100%; min-height: 0; }
 
 .files-app #table { table-layout: fixed; }
 .files-app #table :is(th, td):not(.table-selection-column):not(.table-fill-column) {

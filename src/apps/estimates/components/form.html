@@ -528,7 +528,12 @@
 									<button
 										type="button"
 										class="minus"
-										aria-label="Decrease Quantity">
+										aria-label="Decrease Quantity"
+										calculate="($next) - 1"
+										click-query="$next"
+										click.value="$value"
+										click.if=">=0"
+										value>
 										-
 									</button>
 									<input
@@ -541,7 +546,11 @@
 									<button
 										type="button"
 										class="plus"
-										aria-label="Increase Quantity">
+										aria-label="Increase Quantity"
+										calculate="($previous) + 1"
+										click-query="$previous"
+										click.value="$value"
+										value>
 										+
 									</button>
 								</div>
@@ -554,6 +563,7 @@
 										id="productPrice-1"
 										placeholder="$0.00"
 										readonly
+										calculate="($document #productRate-1) * ($document #product-qty-1)"
 										aria-label="Product Line Amount" />
 								</div>
 							</td>

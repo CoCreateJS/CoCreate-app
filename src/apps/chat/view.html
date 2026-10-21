@@ -9,6 +9,7 @@
 				class="chat-conversation p-3 p-lg-4"
 				id="chat-conversation"
 				scrollbar>
+				<div>
 				<div></div>
 				<ul
 					class="list-unstyled chat-conversation-list"
@@ -165,13 +166,13 @@
 						</div>
 					</li>
 				</ul>
-			</div>
 			<div
 				class="alert alert-warning alert-dismissible copyclipboard-alert px-4 fade"
 				id="copyClipBoard"
 				role="alert">
 				Message copied
 			</div>
+				</div>
 		</div>
 
 		<div class="chat-input-section p-3 border-top">
@@ -250,7 +251,7 @@
 									id="chat-message-send"
 									type="button"
 									class="btn btn-success chat-send waves-effect waves-light"
-									click-query="$closest .chat-content .simplebar-content-wrapper"
+									click-query="$closest .chat-content .scrollbar-viewport"
 									click.scroll-to="bottom"
 									actions="save, click, reset">
 									<i

@@ -12,7 +12,7 @@
 				<div class="card-body">
 					<p class="text-muted">
 						Use
-						<code>plugin='{"SimpleBar": ["$this", {}]}'</code>
+						<code>scrollbar</code>
 						attribute and add <code>max-height: **px</code> to set
 						default scrollbar.
 					</p>
@@ -22,6 +22,7 @@
 							scrollbar
 							style="max-height: 220px"
 							class="px-3">
+							<div>
 							<p>
 								If several languages coalesce, the grammar of
 								the resulting language is more simple and
@@ -54,7 +55,8 @@
 								grammar, their pronunciation and their most
 								common words.
 							</p>
-						</div>
+
+							</div></div>
 					</div>
 				</div>
 				<!-- end card-body -->
@@ -68,7 +70,7 @@
 				class="card"
 				show="preview">
 				<div class="card-header">
-					<h4 class="card-title mb-0">Auto Hide False</h4>
+					<h4 class="card-title mb-0">Always Visible</h4>
 				</div>
 				<!-- end card header -->
 
@@ -76,20 +78,19 @@
 					<p class="text-muted">
 						Use
 						<code
-							>plugin='{"SimpleBar": ["$this",
-							{}]}'-auto-hide="false"</code
+							>scrollbar scrollbar-visible="show"</code
 						>
 						attribute and add <code>max-height: **px</code> to show
-						simplebar as default.
+						CoCreate scrollbar as default.
 					</p>
 
 					<div class="mx-n3">
 						<div
 							scrollbar
-							scrollbar
-							-auto-hide="false"
-							style="max-height: 220px"
-							class="px-3">
+							scrollbar-visible="show"
+							class="px-3"
+							style="max-height: 220px">
+							<div>
 							<p>
 								If several languages coalesce, the grammar of
 								the resulting language is more simple and
@@ -122,7 +123,8 @@
 								grammar, their pronunciation and their most
 								common words.
 							</p>
-						</div>
+
+							</div></div>
 					</div>
 				</div>
 				<!-- end card-body -->
@@ -147,20 +149,19 @@
 					<p class="text-muted">
 						Use
 						<code
-							>plugin='{"SimpleBar": ["$this",
-							{}]}'-direction="rtl"</code
+							>scrollbar scrollbar-pos="left bottom"</code
 						>
 						attribute and add <code>max-height: **px</code> to set
-						simplebar at right side.
+						CoCreate scrollbar at right side.
 					</p>
 
 					<div class="mx-n3">
 						<div
 							scrollbar
-							scrollbar
-							-direction="rtl"
+							scrollbar-pos="left bottom"
 							style="max-height: 220px"
 							class="px-3">
+							<div>
 							<p>
 								If several languages coalesce, the grammar of
 								the resulting language is more simple and
@@ -193,7 +194,8 @@
 								grammar, their pronunciation and their most
 								common words.
 							</p>
-						</div>
+
+							</div></div>
 					</div>
 				</div>
 				<!-- end card-body -->
@@ -208,7 +210,7 @@
 		<div class="w-100">
 			<div class="justify-content-between d-flex align-items-center mb-3">
 				<h5 class="mb-0 pb-1 text-decoration-underline">
-					Simplebar Track Color
+					Scrollbar Themes
 				</h5>
 			</div>
 
@@ -218,7 +220,7 @@
 						class="card"
 						show="preview">
 						<div class="card-header">
-							<h4 class="card-title mb-0">Primary Track</h4>
+							<h4 class="card-title mb-0">Primary Theme</h4>
 						</div>
 						<!-- end card header -->
 
@@ -226,20 +228,18 @@
 							<p class="text-muted">
 								Use
 								<code
-									>plugin='{"SimpleBar": ["$this",
-									{}]}'-track="primary"</code
+									>scrollbar scrollbar-visible="show"</code
 								>
-								attribute to set primary color simplebar track.
+								Use the theme-indigo class to style the scrollbar thumb.
 							</p>
 
 							<div class="mx-n3">
 								<div
 									scrollbar
-									scrollbar
-									-auto-hide="false"
-									scrollbar
-									-track="primary"
+									scrollbar-visible="show"
+									class="theme-indigo"
 									style="max-height: 275px">
+									<div>
 									<a
 										href="#!"
 										class="text-reset notification-item d-block dropdown-item">
@@ -414,7 +414,8 @@
 											Load more
 										</a>
 									</div>
-								</div>
+
+									</div></div>
 							</div>
 						</div>
 						<!-- end card-body -->
@@ -427,7 +428,7 @@
 						class="card"
 						show="preview">
 						<div class="card-header">
-							<h4 class="card-title mb-0">Secondary Track</h4>
+							<h4 class="card-title mb-0">Secondary Theme</h4>
 						</div>
 						<!-- end card header -->
 
@@ -435,21 +436,18 @@
 							<p class="text-muted">
 								Use
 								<code
-									>plugin='{"SimpleBar": ["$this",
-									{}]}'-track="secondary"</code
+									>scrollbar scrollbar-visible="show"</code
 								>
-								attribute to set secondary color simplebar
-								track.
+								Apply the matching theme class to style the scrollbar thumb.
 							</p>
 
 							<div class="mx-n3">
 								<div
 									scrollbar
-									scrollbar
-									-auto-hide="false"
-									scrollbar
-									-track="secondary"
+									scrollbar-visible="show"
+									class="theme-dark"
 									style="max-height: 274px">
+									<div>
 									<div class="list-group list-group-flush">
 										<a
 											href="#"
@@ -631,7 +629,8 @@
 											</div>
 										</a>
 									</div>
-								</div>
+
+									</div></div>
 							</div>
 						</div>
 						<!-- end card-body -->
@@ -644,7 +643,7 @@
 						class="card"
 						show="preview">
 						<div class="card-header">
-							<h4 class="card-title mb-0">Success Track</h4>
+							<h4 class="card-title mb-0">Success Theme</h4>
 						</div>
 						<!-- end card header -->
 
@@ -652,20 +651,18 @@
 							<p class="text-muted">
 								Use
 								<code
-									>plugin='{"SimpleBar": ["$this",
-									{}]}'-track="success"</code
+									>scrollbar scrollbar-visible="show"</code
 								>
-								attribute to set success color simplebar track.
+								Use the theme-emerald class to style the scrollbar thumb.
 							</p>
 
 							<div class="mx-n3">
 								<div
 									scrollbar
-									scrollbar
-									-auto-hide="false"
-									scrollbar
-									-track="success"
+									scrollbar-visible="show"
+									class="theme-emerald"
 									style="max-height: 274px">
+									<div>
 									<ul class="list-group list-group-flush">
 										<li class="list-group-item py-3">
 											<div
@@ -779,7 +776,8 @@
 											</div>
 										</li>
 									</ul>
-								</div>
+
+									</div></div>
 							</div>
 						</div>
 						<!-- end card-body -->
@@ -793,7 +791,7 @@
 						class="card"
 						show="preview">
 						<div class="card-header">
-							<h4 class="card-title mb-0">Info Track</h4>
+							<h4 class="card-title mb-0">Info Theme</h4>
 						</div>
 						<!-- end card header -->
 
@@ -801,20 +799,18 @@
 							<p class="text-muted">
 								Use
 								<code
-									>plugin='{"SimpleBar": ["$this",
-									{}]}'-track="info"</code
+									>scrollbar scrollbar-visible="show"</code
 								>
-								attribute to set info color simplebar track.
+								Use the theme-indigo class to style the scrollbar thumb.
 							</p>
 
 							<div class="mx-n3">
 								<div
 									scrollbar
-									scrollbar
-									-auto-hide="false"
-									scrollbar
-									-track="info"
+									scrollbar-visible="show"
+									class="theme-indigo"
 									style="max-height: 238px">
+									<div>
 									<ol
 										class="list-group list-group-flush list-group-numbered">
 										<li
@@ -866,7 +862,8 @@
 											>
 										</li>
 									</ol>
-								</div>
+
+									</div></div>
 							</div>
 						</div>
 						<!-- end card-body -->
@@ -880,7 +877,7 @@
 						class="card"
 						show="preview">
 						<div class="card-header">
-							<h4 class="card-title mb-0">Warning Track</h4>
+							<h4 class="card-title mb-0">Warning Theme</h4>
 						</div>
 						<!-- end card header -->
 
@@ -888,21 +885,18 @@
 							<p class="text-muted">
 								Use
 								<code
-									>plugin='{"SimpleBar": ["$this",
-									{}]}'-track="warning"</code
+									>scrollbar scrollbar-visible="show"</code
 								>
-								attribute to set warning color simplebar track.
+								Use the theme-amber class to style the scrollbar thumb.
 							</p>
 
 							<div class="mx-n3">
 								<div
 									scrollbar
-									scrollbar
-									-auto-hide="false"
-									scrollbar
-									-track="warning"
-									style="max-height: 220px"
-									class="px-3">
+									scrollbar-visible="show"
+									class="theme-amber"
+									style="max-height: 220px">
+									<div>
 									<div class="d-flex align-items-center py-3">
 										<div
 											class="avatar-xs flex-shrink-0 me-3">
@@ -1017,7 +1011,8 @@
 											</button>
 										</div>
 									</div>
-								</div>
+
+									</div></div>
 							</div>
 						</div>
 						<!-- end card-body -->
@@ -1031,7 +1026,7 @@
 						class="card"
 						show="preview">
 						<div class="card-header">
-							<h4 class="card-title mb-0">Danger Track</h4>
+							<h4 class="card-title mb-0">Danger Theme</h4>
 						</div>
 						<!-- end card header -->
 
@@ -1039,21 +1034,18 @@
 							<p class="text-muted">
 								Use
 								<code
-									>plugin='{"SimpleBar": ["$this",
-									{}]}'-track="danger"</code
+									>scrollbar scrollbar-visible="show"</code
 								>
-								attribute to set danger color simplebar track.
+								Use the theme-rose class to style the scrollbar thumb.
 							</p>
 
 							<div class="mx-n3">
 								<div
 									scrollbar
-									scrollbar
-									-auto-hide="false"
-									scrollbar
-									-track="danger"
-									style="max-height: 220px"
-									class="px-3">
+									scrollbar-visible="show"
+									class="theme-rose"
+									style="max-height: 220px">
+									<div>
 									<a
 										href="#"
 										class="d-flex align-items-center py-2">
@@ -1187,7 +1179,8 @@
 											</div>
 										</div>
 									</a>
-								</div>
+
+									</div></div>
 							</div>
 						</div>
 						<!-- end card-body -->
@@ -1201,7 +1194,7 @@
 						class="card"
 						show="preview">
 						<div class="card-header">
-							<h4 class="card-title mb-0">Dark Track</h4>
+							<h4 class="card-title mb-0">Dark Theme</h4>
 						</div>
 						<!-- end card header -->
 
@@ -1209,20 +1202,18 @@
 							<p class="text-muted">
 								Use
 								<code
-									>plugin='{"SimpleBar": ["$this",
-									{}]}'-track="dark"</code
+									>scrollbar scrollbar-visible="show"</code
 								>
-								attribute to set dark color simplebar track.
+								Use the theme-dark class to style the scrollbar thumb.
 							</p>
 
 							<div class="mx-n3">
 								<div
 									scrollbar
-									scrollbar
-									-auto-hide="false"
-									scrollbar
-									-track="dark"
+									scrollbar-visible="show"
+									class="theme-dark"
 									style="max-height: 220px">
+									<div>
 									<ul class="list-group list-group-flush">
 										<li class="list-group-item">
 											<div>
@@ -1301,6 +1292,7 @@
 																	id="dropdown-admin-ui-scrollbar-1"
 																	aria-hidden="true"
 																	aria-close-on="anywhere">
+																	<div>
 																	<a
 																		class="dropdown-item"
 																		href="#"
@@ -1319,7 +1311,8 @@
 																		else
 																		here</a
 																	>
-																</div>
+
+																	</div></div>
 															</div>
 														</div>
 													</div>
@@ -1401,6 +1394,7 @@
 																	id="dropdown-admin-ui-scrollbar-2"
 																	aria-hidden="true"
 																	aria-close-on="anywhere">
+																	<div>
 																	<a
 																		class="dropdown-item"
 																		href="#"
@@ -1419,7 +1413,8 @@
 																		else
 																		here</a
 																	>
-																</div>
+
+																	</div></div>
 															</div>
 														</div>
 													</div>
@@ -1503,6 +1498,7 @@
 																	id="dropdown-admin-ui-scrollbar-3"
 																	aria-hidden="true"
 																	aria-close-on="anywhere">
+																	<div>
 																	<a
 																		class="dropdown-item"
 																		href="#"
@@ -1521,7 +1517,8 @@
 																		else
 																		here</a
 																	>
-																</div>
+
+																	</div></div>
 															</div>
 														</div>
 													</div>
@@ -1605,6 +1602,7 @@
 																	id="dropdown-admin-ui-scrollbar-4"
 																	aria-hidden="true"
 																	aria-close-on="anywhere">
+																	<div>
 																	<a
 																		class="dropdown-item"
 																		href="#"
@@ -1623,7 +1621,8 @@
 																		else
 																		here</a
 																	>
-																</div>
+
+																	</div></div>
 															</div>
 														</div>
 													</div>
@@ -1631,7 +1630,8 @@
 											</div>
 										</li>
 									</ul>
-								</div>
+
+									</div></div>
 							</div>
 						</div>
 						<!-- end card-body -->

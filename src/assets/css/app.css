@@ -659,7 +659,7 @@ body:has(#ai-chat-panel[aria-hidden="true"]) #offcanvas-app {
 	width: 100%;
 }
 
-#offcanvas-app .form-container > .simplebar-wrapper {
+#offcanvas-app .form-container > .scrollbar-viewport {
 	height: 100%;
 }
 

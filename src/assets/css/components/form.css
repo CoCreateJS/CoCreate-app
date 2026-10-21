@@ -1109,10 +1109,3 @@ textarea.form-control-lg {
 	height: auto !important;
 	min-height: 0;
 }
-
-[data-component-form] > .component-form-body > .simplebar-wrapper,
-[data-component-form] > .component-form-body > .simplebar-wrapper > .simplebar-mask,
-[data-component-form] > .component-form-body .simplebar-content-wrapper {
-	height: 100%;
-	max-height: 100%;
-}

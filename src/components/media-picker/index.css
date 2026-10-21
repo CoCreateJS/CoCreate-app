@@ -15,10 +15,6 @@
 .media-picker-pending { position: absolute; inset: 0; z-index: 5; display: none; min-height: 100%; overflow: auto; background: var(--coc-body-bg); }
 #media-picker-dropdown:has(#media-picker-device-control.active) .media-picker-pending,
 #media-picker-dropdown:has(#media-picker-camera-control.active) .media-picker-pending { display: block; }
-.media-picker-pending > .simplebar-wrapper,
-.media-picker-pending > .simplebar-wrapper > .simplebar-mask,
-.media-picker-pending .simplebar-content-wrapper { height: 100%; min-height: 0; }
-.media-picker-pending .simplebar-content { height: 100%; min-height: 100%; padding: 0; }
 .media-picker-pending[file-drop-active] { background: rgba(var(--coc-primary-rgb), .06); }
 .media-picker-pending[file-drop-active] .media-picker-dropzone { border-color: var(--coc-primary); }
 .media-picker-dropzone { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 112px; margin-bottom: 8px; padding: 16px; overflow: hidden; cursor: pointer; text-align: center; border: 1px dashed var(--coc-border-color); border-radius: 6px; background: var(--coc-secondary-bg); }
@@ -66,10 +62,6 @@
 .media-picker-pending-item:has(.media-picker-pending-select > input:checked) .media-picker-pending-actions { display: block; }
 .media-picker-pending-item:has(.media-picker-pending-select > input:checked) .media-picker-release-selection { display: inline-flex; }
 .media-picker-scroll { flex: 1 1 auto; height: min(320px, 50dvh); min-height: 0; padding: 8px; overflow: auto; }
-.media-picker-scroll > .simplebar-wrapper,
-.media-picker-scroll > .simplebar-wrapper > .simplebar-mask,
-.media-picker-scroll .simplebar-content-wrapper { height: 100%; min-height: 0; }
-.media-picker-scroll .simplebar-content { height: 100%; min-height: 100%; padding: 0; }
 .media-picker-grid { position: relative; display: grid; min-height: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .media-picker-item { position: relative; display: block; width: 100%; min-width: 0; overflow: hidden; padding: 3px; border: 1px solid var(--coc-border-color); border-radius: 6px; color: var(--coc-body-color); background: var(--coc-body-bg); }
 .media-picker-item:hover, .media-picker-item:focus-visible { border-color: var(--coc-primary); outline: 1px solid var(--coc-primary); }

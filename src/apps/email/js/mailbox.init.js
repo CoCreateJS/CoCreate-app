@@ -112,9 +112,10 @@ getJSON("mail-list.init.json", function (e, t) {
 var currentChatId = "users-chat";
 function scrollToBottom(e) {
 	setTimeout(() => {
-		new SimpleBar(
-			document.getElementById("chat-conversation")
-		).getScrollElement().scrollTop =
+		const chatConversation = document.getElementById("chat-conversation");
+		const chatViewport = chatConversation && chatConversation.firstElementChild;
+		if (!chatViewport) return;
+		chatViewport.scrollTop =
 			document.getElementById("users-conversation").scrollHeight;
 	}, 100);
 }

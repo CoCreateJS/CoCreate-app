@@ -4,10 +4,6 @@
 	overflow: auto;
 }
 
-.activities-scroll > .simplebar-wrapper {
-	height: 100%;
-}
-
 .activity-panel-item > form,
 .activity-panel-item > [render] > form,
 .activity-panel-item .activity-card-view > form,

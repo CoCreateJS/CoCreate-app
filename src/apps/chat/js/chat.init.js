@@ -320,14 +320,10 @@ function searchMessages() {
 		setTimeout(function () {
 			var e = document
 					.getElementById(s)
-					.querySelector(
-						"#chat-conversation .simplebar-content-wrapper"
-					)
+						.querySelector("#chat-conversation > .scrollbar-viewport")
 					? document
 							.getElementById(s)
-							.querySelector(
-								"#chat-conversation .simplebar-content-wrapper"
-							)
+							.querySelector("#chat-conversation > .scrollbar-viewport")
 					: "",
 				t = document.getElementsByClassName("chat-conversation-list")[0]
 					? document
@@ -835,6 +831,8 @@ function searchMessages() {
 		}, 0);
 	});
 })();
-var scrollEl = new SimpleBar(document.getElementById("chat-conversation"));
-scrollEl.getScrollElement().scrollTop =
-	document.getElementById("users-conversation").scrollHeight;
+var chatConversation = document.getElementById("chat-conversation");
+var chatViewport = chatConversation && chatConversation.firstElementChild;
+if (chatViewport)
+	chatViewport.scrollTop =
+		document.getElementById("users-conversation").scrollHeight;

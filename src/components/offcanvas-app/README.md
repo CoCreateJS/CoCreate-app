@@ -37,4 +37,4 @@ Special provisioning screens retain their existing state and entry points.
 
 App-specific scroll containers and widgets may remain inside their content
 fragment. The shell-level `scrollbar` wrapper handles the primary form scroll;
-shells do not initialize SimpleBar directly.
+shells do not initialize the scrollbar plugin directly.
