@@ -431,8 +431,8 @@ strong {
     bottom: 35px;
 }
 
-[data-bs-theme="dark"] .layout-wrapper.landing .demo-img-patten-bottom,
-[data-bs-theme="dark"] .layout-wrapper.landing .demo-img-patten-top {
+[data-color-scheme="dark"] .layout-wrapper.landing .demo-img-patten-bottom,
+[data-color-scheme="dark"] .layout-wrapper.landing .demo-img-patten-top {
     opacity: 0.2;
 }
 

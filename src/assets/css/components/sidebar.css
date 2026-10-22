@@ -1147,7 +1147,7 @@
 	display: flex;
 }
 @media (min-width: 1024.1px) {
-	[data-layout="vertical"][data-bs-theme="dark"][data-layout-style="detached"]:is(
+	[data-layout="vertical"][data-color-scheme="dark"][data-layout-style="detached"]:is(
 			[data-sidebar-color="light"],
 			[data-sidebar-color="dark"],
 			[data-sidebar-color="gradient"],
@@ -1158,7 +1158,7 @@
 		.logo-dark {
 		display: none;
 	}
-	[data-layout="vertical"][data-bs-theme="dark"][data-layout-style="detached"]:is(
+	[data-layout="vertical"][data-color-scheme="dark"][data-layout-style="detached"]:is(
 			[data-sidebar-color="light"],
 			[data-sidebar-color="dark"],
 			[data-sidebar-color="gradient"],

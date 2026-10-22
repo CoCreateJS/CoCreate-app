@@ -13,7 +13,7 @@
 	--coc-prism-selection: rgba(var(--coc-primary-rgb), 0.2);
 }
 
-[data-bs-theme="dark"] {
+[data-color-scheme="dark"] {
 	--coc-prism-bg: var(--coc-tertiary-bg);
 	--coc-prism-color: #ced4da;
 	--coc-prism-comment: #878a99;

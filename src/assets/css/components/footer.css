@@ -242,7 +242,7 @@
 	background-color: var(--coc-primary);
 }
 
-[data-bs-theme="dark"] .layout-wrapper.landing footer.bg-dark {
+[data-color-scheme="dark"] .layout-wrapper.landing footer.bg-dark {
 	background-color: var(--coc-secondary-bg) !important;
 }
 

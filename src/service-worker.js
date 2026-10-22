@@ -127,6 +127,32 @@ function canUseAssetCache(response) {
     return age && Number.isFinite(elapsed) && elapsed < Number(age[1]);
 }
 
+function logAdminColorScheme(event, request, response, source) {
+    const pathname = new URL(request.url).pathname;
+    if (!/^\/admin\/(?:index\.html)?$/.test(pathname) || !response) return;
+
+    // Read a clone so diagnostics do not consume the response sent to the page.
+    const inspection = response.clone().text().then((html) => {
+        const htmlTag = html.match(/<html\b[^>]*>/i)?.[0];
+        const scheme = htmlTag?.match(/\bdata-color-scheme\s*=\s*(["'])(.*?)\1/i);
+        console.warn("[Service Worker] Admin color scheme\n" + JSON.stringify({
+            source,
+            url: request.url,
+            responseUrl: response.url,
+            mode: request.mode,
+            status: response.status,
+            requestColorScheme: request.headers.get("X-Prefers-Color-Scheme"),
+            hasState: request.headers.has("X-State"),
+            colorScheme: scheme ? scheme[2] : null,
+            cacheControl: response.headers.get("Cache-Control"),
+            age: response.headers.get("Age")
+        }, null, 2));
+    }).catch((error) => {
+        console.warn("[Service Worker] Could not inspect admin color scheme", error);
+    });
+    event.waitUntil(inspection);
+}
+
 // Ask the requesting page for its current Config token; do not persist a second copy.
 async function applySessionToken(event, request = event.request) {
     if (new URL(request.url).origin !== self.location.origin) return request;
@@ -198,7 +224,11 @@ self.addEventListener("fetch", async (e) => {
                     if (!canUseAssetCache(cacheResponse)) cacheResponse = null;
                     const sessionRequest = await applySessionToken(e);
                     const stateRequest = await applyActiveState(sessionRequest);
-                    if (sessionRequest.headers.has("Authorization")) return fetch(stateRequest.request);
+                    if (sessionRequest.headers.has("Authorization")) {
+                        const response = await fetch(stateRequest.request);
+                        logAdminColorScheme(e, stateRequest.request, response, "network");
+                        return response;
+                    }
                     if (stateRequest.hasState) cacheResponse = null;
                     let fetchedOn;
                     if (cacheResponse && cacheType !== "false") {
@@ -222,11 +252,13 @@ self.addEventListener("fetch", async (e) => {
                             organization,
                             lastModified
                         );
+                        logAdminColorScheme(e, stateRequest.request, cacheResponse, "cache");
                         return cacheResponse;
                     } else {
                         // console.log('fetching fetchOn less', fetchedOn > updatedOn)
 
                         const networkResponse = await fetch(stateRequest.request);
+                        logAdminColorScheme(e, stateRequest.request, networkResponse, "network");
                         if (!canUseAssetCache(networkResponse)) return networkResponse;
 
                         if (!organization_id)
@@ -305,11 +337,14 @@ self.addEventListener("fetch", async (e) => {
                         cacheType !== "false" &&
                         cacheType !== "offline"
                     ) {
+                        logAdminColorScheme(e, stateRequest.request, cacheResponse, "cache");
                         return cacheResponse;
                     }
                 })
-                .catch(function () {
-                    return caches.match("./offline.html");
+                .catch(async function () {
+                    const response = await caches.match("./offline.html");
+                    logAdminColorScheme(e, e.request, response, "offline");
+                    return response;
                 })
         );
     } catch (error) {
