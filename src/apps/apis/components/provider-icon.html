@@ -1,5 +1,5 @@
 <span
-	class="app-provider-image app-identity-image"
+	class="app-image"
 	aria-hidden="true"
 	object="{{object.api_id}}{{object.cloud}}"
 	key="api_id"
@@ -14,13 +14,21 @@
 		input-query="$next"
 		input.alt="$value" />
 	<img
-		class="app-provider-default"
 		form-attributes="false"
 		array="apis"
 		key="icon"
 		object="{{object.api_id}}{{object.cloud}}"
 		alt=""
-		width="36"
-		height="36"
-		onerror="this.src = '/assets/svg/providers/api.svg'" />
+		onload="this.hidden = false"
+		onerror="this.hidden = true" />
+	<img
+		class="app-custom-image"
+		form-attributes="false"
+		array="apis"
+		key="avatar[0].src"
+		object="{{object.api_id}}{{object.cloud}}"
+		alt=""
+		hidden
+		onload="this.hidden = false"
+		onerror="this.hidden = true" />
 </span>

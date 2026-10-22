@@ -6,61 +6,44 @@
 		array="{{object.$array[0]}}"
 		object="{{object._id}}"
 		read="false">
-		<div class="card-body d-flex flex-column gap-3 text-reset">
-			<span
-				state-to="offcanvas-app-form"
-				state.array="posts"
-				state.object="{{object._id}}"
-				hidden></span>
-			<div class="d-flex align-items-start justify-content-between gap-3">
+		<div class="card-body app-card-body">
+			<div class="app-heading">
 				<div class="app-identity">
-					<span class="app-avatar app-identity-image"
-						><img
+					<span class="app-image">
+						<span class="app-icon">
+							<i src="/assets/svg/remix/rss-line.svg" aria-hidden="true"></i>
+						</span>
+						<img
+							class="app-custom-image"
 							src="{{object.image}}"
 							alt=""
-							width="50"
-							height="50"
+							hidden
 							onload="this.hidden = false"
-							onerror="this.hidden = true"
-					/></span>
-					<div class="min-width:0">
-						<h5 class="text-truncate app-title mb-1">
-							<a
-								class="text-reset text-decoration-none"
-								role="button"
-								tabindex="0"
-								state-to="offcanvas-app-view"
-								state.src="/apps/blog/app.html"
-								aria-controls="offcanvas-app"
-								aria-open
-								>{{object.title}}</a
-							>
-						</h5>
-						<span class="text-muted fs-12"
-							>By {{object.author}}</span
-						>
-					</div>
+							onerror="this.hidden = true" />
+					</span>
+					<h5 class="app-title">
+						<a
+							role="button"
+							tabindex="0"
+							state-to="offcanvas-app-view"
+							state.src="/apps/blog/app.html"
+							aria-controls="offcanvas-app"
+							aria-open
+							aria-haspopup="dialog"
+							aria-expanded="false"><span state-to="offcanvas-app-form" state.array="posts" state.object="{{object._id}}" hidden></span>{{object.title}}</a>
+					</h5>
 				</div>
-				<span
-					class="badge text-capitalize"
-					 key="publish_status" data-value="{{object.publish_status}}">{{object.publish_status}}</span
-				>
+				<span class="text-muted fs-12">By {{object.author}}</span>
+				<div class="app-badges">
+					<span class="badge app-badge" key="publish_status" data-value="{{object.publish_status}}">{{object.publish_status}}</span>
+				</div>
 			</div>
-			<p class="text-muted mb-0 line-clamp:2">{{object.caption}}</p>
-			<div
-				class="d-flex justify-content-between pt-2 border-top border-top-dashed text-muted fs-12">
-				<span>Published: {{object.publish_date}}</span
-				><span
-					><i
-						src="/assets/svg/remix/map-pin-line.svg"
-						class="me-1"></i
-					>{{object.location}}</span
-				>
+			<p class="app-description">{{object.caption}}</p>
+			<div class="d-flex justify-content-between pt-2 border-top border-top-dashed text-muted fs-12">
+				<span>Published: {{object.publish_date}}</span>
+				<span><i src="/assets/svg/remix/map-pin-line.svg" class="me-1"></i>{{object.location}}</span>
 			</div>
 		</div>
 	</article>
 </template>
-<div
-	hidden
-	onload.array="posts"
-	onload-query="$parent"></div>
+<div hidden onload.array="posts" onload-query="$parent"></div>

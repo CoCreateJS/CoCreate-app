@@ -1,11 +1,15 @@
-<div class="app-identity app-list-identity">
-	<span class="avatar-xs app-list-image flex-shrink-0 app-identity-image">
-		<span
-			class="avatar-title rounded-circle bg-primary-subtle text-primary">
-			<i src="/assets/svg/remix/bank-card-line.svg"></i>
+<div class="app-identity app-list">
+	<span class="app-image">
+		<span class="app-icon">
+			<i src="/assets/svg/remix/bank-card-line.svg" aria-hidden="true"></i>
 		</span>
+		<img
+			class="app-custom-image"
+			key="avatar[0].src"
+			alt=""
+			hidden
+			onload="this.hidden = false"
+			onerror="this.hidden = true" />
 	</span>
-	<span class="app-title">
-		<span key="reference"></span>
-	</span>
+	<span class="app-title" key="reference"></span>
 </div>

@@ -1,14 +1,15 @@
-<div class="app-identity app-list-identity">
-	<span class="app-avatar app-list-image flex-shrink-0 app-identity-image">
+<div class="app-identity app-list">
+	<span class="app-image">
+		<span class="app-icon">
+			<i src="/assets/svg/remix/shopping-bag-line.svg" aria-hidden="true"></i>
+		</span>
 		<img
-			src="{{object.images[0].src}}"
+			class="app-custom-image"
+			key="images[0].src"
 			alt=""
-			width="42"
-			height="42"
+			hidden
 			onload="this.hidden = false"
 			onerror="this.hidden = true" />
 	</span>
-	<span class="app-title">
-		<span key="name"></span>
-	</span>
+	<span class="app-title" key="name"></span>
 </div>

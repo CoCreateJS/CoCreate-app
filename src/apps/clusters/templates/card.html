@@ -1,23 +1,28 @@
 <template>
-<article
-	class="card app-card"
-	role="row" aria-selected="false"
-	array="{{object.$array[0]}}"
-	object="{{object._id}}"
-	read="false">
-	<div class="card-body d-flex flex-column gap-3 text-reset">
-		<div class="app-heading">
-			<div class="app-identity">
-				<span class="avatar-sm app-card-icon flex-shrink-0 app-identity-image">
-					<span
-						class="avatar-title bg-primary-subtle text-primary rounded-circle">
-						<i src="/assets/svg/remix/stack-line.svg" aria-hidden="true"></i>
+	<article
+		class="card app-card"
+		role="row"
+		aria-selected="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}"
+		read="false">
+		<div class="card-body app-card-body">
+			<div class="app-heading">
+				<div class="app-identity">
+					<span class="app-image">
+						<span class="app-icon">
+							<i src="/assets/svg/remix/stack-line.svg" aria-hidden="true"></i>
+						</span>
+						<img
+							class="app-custom-image"
+							src="{{object.avatar[0].src}}"
+							alt=""
+							hidden
+							onload="this.hidden = false"
+							onerror="this.hidden = true" />
 					</span>
-				</span>
-				<div class="min-width:0">
-					<h5 class="app-title mb-0 text-break">
+					<h5 class="app-title">
 						<a
-							class="text-reset text-decoration-none"
 							role="button"
 							tabindex="0"
 							state-to="offcanvas-app-view"
@@ -25,66 +30,36 @@
 							aria-controls="offcanvas-app"
 							aria-haspopup="dialog"
 							aria-expanded="false"
-							aria-open
-							><span
-								state-to="offcanvas-app-form"
-								state.array="clusters"
-								state.object="{{object._id}}"
-								hidden></span
-							>{{object.name}}</a
-						>
+							aria-open><span state-to="offcanvas-app-form" state.array="clusters" state.object="{{object._id}}" hidden></span>{{object.name}}</a>
 					</h5>
 				</div>
+				<div class="app-badges">
+					<span class="badge app-badge" role="status" key="status" data-value="{{object.status}}">{{object.status}}</span>
+				</div>
 			</div>
-			<div class="app-badges">
+			<p class="app-description">{{object.description}}</p>
+			<div
+				class="d-flex flex-wrap align-items-center gap-2 text-muted fs-12 pt-2 border-top border-top-dashed"
+				style="margin-top: auto">
+				<span class="d-flex align-items-center gap-1"><i src="/assets/svg/remix/server-line.svg" aria-hidden="true"></i> <span array="servers" object key="$length" filter-query-key="cluster_id" filter-query-value="{{object._id}}" filter-limit>0</span> servers</span>
 				<span
-					class="badge text-uppercase"
-					role="status"
-					 key="status" data-value="{{object.status}}">{{object.status}}</span
-				>
+					class="d-flex align-items-center gap-1 ms-auto min-width:0"
+					style="max-width: 100%"
+					title="Storage provider">
+					<i src="/assets/svg/remix/database-2-line.svg" class="flex-shrink-0" aria-hidden="true"></i>
+					<span class="visually-hidden">Storage:</span>
+					<span
+						class="text-truncate"
+						form-attributes="false"
+						array="apis"
+						object
+						key="name"
+						filter-query-key="_id"
+						filter-query-value="{{object.storage}}"
+						filter-limit="1"></span>
+				</span>
 			</div>
 		</div>
-		<p class="text-muted mb-0 text-break line-clamp:2">
-			{{object.description}}
-		</p>
-		<div
-			class="d-flex flex-wrap align-items-center gap-2 text-muted fs-12 pt-2 border-top border-top-dashed"
-			style="margin-top: auto">
-			<span class="d-flex align-items-center gap-1">
-				<i src="/assets/svg/remix/server-line.svg" aria-hidden="true"></i>
-				<span
-					array="servers"
-					object
-					key="$length"
-					filter-query-key="cluster_id"
-					filter-query-value="{{object._id}}"
-					filter-limit
-					>0</span
-				>
-				servers
-			</span>
-
-			<span
-				class="d-flex align-items-center gap-1 ms-auto min-width:0"
-				style="max-width: 100%"
-				title="Storage provider">
-				<i src="/assets/svg/remix/database-2-line.svg" class="flex-shrink-0"
-					aria-hidden="true"></i>
-				<span class="visually-hidden">Storage: </span>
-				<span
-					class="text-truncate"
-					form-attributes="false"
-					array="apis"
-					object
-					key="name"
-					filter-query-key="_id"
-					filter-query-value="{{object.storage}}"
-					filter-limit="1"></span>
-			</span>
-		</div>
-	</div>
-</article>
+	</article>
 </template>
-<div
-	onload.array="clusters"
-	onload-query="$parent"></div>
+<div onload.array="clusters" onload-query="$parent"></div>

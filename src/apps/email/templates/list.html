@@ -1,11 +1,15 @@
-<div class="app-identity app-list-identity">
-	<span class="avatar-xs app-list-image flex-shrink-0 app-identity-image">
-		<span
-			class="avatar-title rounded-circle bg-primary-subtle text-primary">
-			<i src="/assets/svg/remix/mail-line.svg"></i>
+<div class="app-identity app-list">
+	<span class="app-image">
+		<span class="app-icon">
+			<i src="/assets/svg/remix/mail-line.svg" aria-hidden="true"></i>
 		</span>
+		<img
+			class="app-custom-image"
+			alt=""
+			hidden
+			onload="this.hidden = false"
+			onerror="this.hidden = true"
+			key="avatar[0].src" />
 	</span>
-	<span class="app-title">
-		<span key="name"></span>
-	</span>
+	<span class="app-title" key="name"></span>
 </div>

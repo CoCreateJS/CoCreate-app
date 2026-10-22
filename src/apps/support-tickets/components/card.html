@@ -1,23 +1,64 @@
-
-<article class="app-card card mb-0">
-	<div class="card-body d-flex flex-column gap-3">
-		<div class="d-flex align-items-start justify-content-between gap-3">
+<article class="card app-card">
+	<div class="app-card-body">
+		<div class="app-heading">
 			<div class="app-identity">
-				<div class="avatar-sm rounded-circle overflow-hidden flex-shrink-0 app-identity-image"><div class="avatar-title bg-info-subtle text-info"><i src="/assets/svg/remix/ticket-line.svg" class="fs-4"></i></div></div>
-				<div class="min-width:0"><span class="text-muted fs-12" key="ticketId"></span><h5 class="mb-0 text-truncate app-title" key="title"></h5></div>
+				<span class="app-image">
+					<span class="app-icon">
+						<i src="/assets/svg/remix/ticket-line.svg" aria-hidden="true"></i>
+					</span>
+					<img
+						class="app-custom-image"
+						key="avatar[0].src"
+						alt=""
+						hidden
+						onload="this.hidden = false"
+						onerror="this.hidden = true" />
+				</span>
+				<h5 class="app-title" key="title"></h5>
 			</div>
-			<span class="badge text-capitalize" key="status" data-value input.data-value="$value"></span>
+			<span class="text-muted fs-12" key="ticketId"></span>
+			<div class="app-badges">
+				<span
+					class="badge app-badge"
+					key="status"
+					data-value
+					input.data-value="$value"
+					input.value="$value"></span>
+			</div>
 		</div>
-		<p class="text-muted mb-0 line-clamp:2" key="description"></p>
+		<p class="app-description" key="description"></p>
 		<div class="d-flex flex-wrap gap-3">
-			<div><span class="text-muted fs-12 d-block">Client</span><strong key="client_name"></strong></div>
-			<div><span class="text-muted fs-12 d-block">Assigned to</span><strong key="assigned_to"></strong></div>
-			<div><span class="text-muted fs-12 d-block">Stage</span><strong class="text-capitalize" key="stage"></strong></div>
+			<div>
+				<span class="text-muted fs-12 d-block">Client</span>
+				<strong key="client_name"></strong>
+			</div>
+			<div>
+				<span class="text-muted fs-12 d-block">Assigned to</span>
+				<strong key="assigned_to"></strong>
+			</div>
+			<div>
+				<span class="text-muted fs-12 d-block">Stage</span>
+				<strong class="text-capitalize" key="stage"></strong>
+			</div>
 		</div>
-		<div class="d-flex align-items-center justify-content-between gap-3 pt-2 border-top border-top-dashed">
-			<div class="text-muted fs-12"><span><i src="/assets/svg/remix/calendar-check-line.svg" class="me-1"></i>Created: <span key="create_date"></span></span><span class="ms-3"><i src="/assets/svg/remix/calendar-event-line.svg" class="me-1"></i>Due: <span key="due_date"></span></span></div>
-			<span class="badge text-capitalize" key="priority" data-value input.data-value="$value"></span>
+		<div
+			class="d-flex align-items-center justify-content-between gap-3 pt-2 border-top border-top-dashed">
+			<div class="text-muted fs-12">
+				<span><i src="/assets/svg/remix/calendar-check-line.svg" class="me-1"></i>Created: <span key="create_date"></span></span>
+				<span class="ms-3"><i src="/assets/svg/remix/calendar-event-line.svg" class="me-1"></i>Due: <span key="due_date"></span></span>
+			</div>
+			<span
+				class="badge app-badge"
+				key="priority"
+				data-value
+				input.data-value="$value"
+				input.value="$value"></span>
 		</div>
-		<div class="d-flex flex-wrap gap-1" key="tags" render-query="[template='support-ticket-card-tag']"><span template="support-ticket-card-tag" class="badge border border-secondary text-secondary">{{tags}}</span></div>
+		<div
+			class="d-flex flex-wrap gap-1"
+			key="tags"
+			render-query="[template='support-ticket-card-tag']">
+			<span template="support-ticket-card-tag" class="badge border border-secondary text-secondary">{{tags}}</span>
+		</div>
 	</div>
 </article>

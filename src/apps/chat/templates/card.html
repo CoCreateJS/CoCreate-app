@@ -1,17 +1,30 @@
 <template>
-<article
-	class="card app-card"
-	role="row" aria-selected="false" array="{{object.$array[0]}}" object="{{object._id}}" read="false">
-	<div class="card-body app-identity">
-		<div class="avatar-sm rounded-circle overflow-hidden flex-shrink-0 app-identity-image">
-			<div class="avatar-title bg-primary-subtle text-primary">
-				<i src="/assets/svg/remix/chat-3-line.svg" class="fs-4"></i>
+	<article
+		class="card app-card"
+		role="row"
+		aria-selected="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}"
+		read="false">
+		<div class="card-body app-card-body">
+			<div class="app-heading">
+				<div class="app-identity">
+					<span class="app-image">
+						<span class="app-icon">
+							<i src="/assets/svg/remix/chat-3-line.svg" aria-hidden="true"></i>
+						</span>
+						<img
+							class="app-custom-image"
+							src="{{object.avatar[0].src}}"
+							alt=""
+							hidden
+							onload="this.hidden = false"
+							onerror="this.hidden = true" />
+					</span>
+					<h5 class="app-title">{{object.name}}</h5>
+				</div>
 			</div>
+			<p class="app-description">{{object.description}}</p>
 		</div>
-		<div class="min-width:0">
-			<h5 class="mb-1 text-truncate app-title">{{object.name}}</h5>
-			<p class="mb-0 text-muted text-truncate">{{object.description}}</p>
-		</div>
-	</div>
-</article>
+	</article>
 </template>

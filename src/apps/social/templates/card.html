@@ -1,51 +1,51 @@
 <template>
-<article
-	class="card app-card"
-	role="row" aria-selected="false" array="{{object.$array[0]}}" object="{{object._id}}" read="false">
-	<div class="card-body d-flex flex-column gap-3 text-reset"><span
-			state-to="offcanvas-app-form"
-			state.array="posts"
-			state.object="{{object._id}}" hidden></span>
-		<div class="d-flex align-items-start justify-content-between gap-3">
-			<div class="app-identity">
-				<div
-					class="avatar-sm rounded-circle overflow-hidden flex-shrink-0 app-identity-image">
-					<div class="avatar-title bg-info-subtle text-info">
-						<i src="/assets/svg/remix/share-line.svg" class="fs-4"></i>
-					</div>
+	<article
+		class="card app-card"
+		role="row"
+		aria-selected="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}"
+		read="false">
+		<div class="card-body app-card-body">
+			<div class="app-heading">
+				<div class="app-identity">
+					<span class="app-image">
+						<span class="app-icon">
+							<i src="/assets/svg/remix/share-line.svg" aria-hidden="true"></i>
+						</span>
+						<img
+							class="app-custom-image"
+							src="{{object.avatar[0].src}}"
+							alt=""
+							hidden
+							onload="this.hidden = false"
+							onerror="this.hidden = true" />
+					</span>
+					<h5 class="app-title">
+						<a
+							role="button"
+							tabindex="0"
+							state-to="offcanvas-app-view"
+							state.src="/apps/blog/app.html"
+							aria-controls="offcanvas-app"
+							aria-open
+							aria-haspopup="dialog"
+							aria-expanded="false"><span state-to="offcanvas-app-form" state.array="posts" state.object="{{object._id}}" hidden></span>{{object.title}}</a>
+					</h5>
 				</div>
-				<div class="min-width:0">
-					<h5 class="mb-1 text-truncate app-title"><a
-	 class="text-reset text-decoration-none"
-		role="button"
-		tabindex="0"
-		state-to="offcanvas-app-view"
-		state.src="/apps/blog/app.html"
-		aria-controls="offcanvas-app"
-		aria-open>{{object.title}}</a></h5>
-					<span class="text-muted fs-12">By {{object.author}}</span>
+				<span class="text-muted fs-12">By {{object.author}}</span>
+				<div class="app-badges">
+					<span class="badge app-badge" key="status" data-value="{{object.status}}">{{object.status}}</span>
 				</div>
 			</div>
-			<span class="badge text-capitalize"
-				 key="status" data-value="{{object.status}}">{{object.status}}</span
-			>
+			<p class="app-description">{{object.caption}}</p>
+			<div class="d-flex flex-wrap gap-3">
+				<span><i src="/assets/svg/remix/heart-line.svg" class="me-1"></i>{{object.engagement.likes}}</span>
+				<span><i src="/assets/svg/remix/chat-3-line.svg" class="me-1"></i>{{object.engagement.comments}}</span>
+				<span><i src="/assets/svg/remix/share-forward-line.svg" class="me-1"></i>{{object.engagement.shares}}</span>
+			</div>
+			<div class="text-muted fs-12 pt-2 border-top border-top-dashed">Scheduled: {{object.scheduled_time}}</div>
 		</div>
-		<p class="text-muted mb-0 line-clamp:2">{{object.caption}}</p>
-		<div class="d-flex flex-wrap gap-3">
-			<span
-				><i src="/assets/svg/remix/heart-line.svg" class="me-1"></i>{{object.engagement.likes}}</span
-			><span
-				><i src="/assets/svg/remix/chat-3-line.svg" class="me-1"></i>{{object.engagement.comments}}</span
-			><span
-				><i src="/assets/svg/remix/share-forward-line.svg" class="me-1"></i>{{object.engagement.shares}}</span
-			>
-		</div>
-		<div class="text-muted fs-12 pt-2 border-top border-top-dashed">
-			Scheduled: {{object.scheduled_time}}
-		</div></div>
-</article>
+	</article>
 </template>
-<div
-	hidden
-	onload.array="posts"
-	onload-query="$parent"></div>
+<div hidden onload.array="posts" onload-query="$parent"></div>

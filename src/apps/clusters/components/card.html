@@ -1,30 +1,50 @@
-<div class="app-heading">
-	<div class="app-identity">
-		<span class="avatar-sm app-card-icon flex-shrink-0 app-identity-image">
-			<span class="avatar-title bg-primary-subtle text-primary rounded-circle">
-				<i src="/assets/svg/remix/stack-line.svg" aria-hidden="true"></i>
+<div class="app-card-body">
+	<div class="app-heading">
+		<div class="app-identity">
+			<span class="app-image">
+				<span class="app-icon">
+					<i src="/assets/svg/remix/stack-line.svg" aria-hidden="true"></i>
+				</span>
+				<img
+					class="app-custom-image"
+					key="avatar[0].src"
+					alt=""
+					hidden
+					onload="this.hidden = false"
+					onerror="this.hidden = true" />
 			</span>
-		</span>
-		<div class="min-width:0">
-			<h5 class="app-title mb-0 text-break" key="name"></h5>
+			<h5 class="app-title" key="name"></h5>
+		</div>
+		<div class="app-badges">
+			<span
+				class="badge app-badge"
+				role="status"
+				key="status"
+				data-value
+				input.data-value="$value"
+				input.value="$value"></span>
 		</div>
 	</div>
-	<div class="app-badges">
-		<span class="badge text-uppercase" role="status" key="status" data-value input.data-value="$value"></span>
+	<p class="app-description" key="description"></p>
+	<div
+		class="d-flex flex-wrap align-items-center gap-2 text-muted fs-12 pt-2 border-top border-top-dashed"
+		style="margin-top: auto">
+		<span class="d-flex align-items-center gap-1"><i src="/assets/svg/remix/server-line.svg" aria-hidden="true"></i> <input type="hidden" key="_id" input-query="$next" input.filter-query-value="$value" /> <span form-attributes="false" array="servers" object key="$length" filter-query-key="cluster_id" filter-limit>0</span> servers</span>
+		<span
+			class="d-flex align-items-center gap-1 ms-auto min-width:0"
+			style="max-width: 100%"
+			title="Storage provider">
+			<i src="/assets/svg/remix/database-2-line.svg" class="flex-shrink-0" aria-hidden="true"></i>
+			<span class="visually-hidden">Storage:</span>
+			<input type="hidden" key="storage" input-query="$next" input.filter-query-value="$value" />
+			<span
+				class="text-truncate"
+				form-attributes="false"
+				array="apis"
+				object
+				key="name"
+				filter-query-key="_id"
+				filter-limit="1"></span>
+		</span>
 	</div>
-</div>
-<p class="text-muted mb-0 text-break line-clamp:2" key="description"></p>
-<div class="d-flex flex-wrap align-items-center gap-2 text-muted fs-12 pt-2 border-top border-top-dashed" style="margin-top: auto">
-	<span class="d-flex align-items-center gap-1">
-		<i src="/assets/svg/remix/server-line.svg" aria-hidden="true"></i>
-		<input type="hidden" key="_id" input-query="$next" input.filter-query-value="$value" />
-		<span form-attributes="false" array="servers" object key="$length" filter-query-key="cluster_id" filter-limit>0</span>
-		servers
-	</span>
-	<span class="d-flex align-items-center gap-1 ms-auto min-width:0" style="max-width: 100%" title="Storage provider">
-		<i src="/assets/svg/remix/database-2-line.svg" class="flex-shrink-0" aria-hidden="true"></i>
-		<span class="visually-hidden">Storage: </span>
-		<input type="hidden" key="storage" input-query="$next" input.filter-query-value="$value" />
-		<span class="text-truncate" form-attributes="false" array="apis" object key="name" filter-query-key="_id" filter-limit="1"></span>
-	</span>
 </div>

@@ -1,14 +1,42 @@
 <template>
-<article
-	class="card app-card"
-	role="row" aria-selected="false" array="{{object.$array[0]}}" object="{{object._id}}" read="false">
-
-	<div class="card-body app-identity">
-		<span class="app-avatar app-identity-image"><img src="{{object.avatar[0].src}}" alt="" width="50" height="50" onload="this.hidden = false" onerror="this.hidden = true" /></span>
-		<div class="min-width:0">
-			<h5 class="text-truncate app-title mb-1">{{object.name}}</h5>
-			<p class="mb-0 text-muted text-truncate">{{object.description}}</p>
+	<article
+		class="card app-card"
+		role="row"
+		aria-selected="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}"
+		read="false">
+		<div class="card-body app-card-body">
+			<div class="app-heading">
+				<div class="app-identity">
+					<span class="app-image">
+						<span class="app-icon bg-secondary-subtle text-secondary">
+							<span class="avatar-initial">{{object.first_name[0]}}</span>
+							<span class="avatar-initial">{{object.last_name[0]}}</span>
+							<img
+								class="app-custom-image object-fit-cover"
+								src="{{object.avatar[0].src}}"
+								alt=""
+								hidden
+								onload="this.hidden = false"
+								onerror="this.hidden = true" />
+						</span>
+					</span>
+					<h5 class="app-title">
+						<a
+							role="button"
+							tabindex="0"
+							state-to="offcanvas-app-view"
+							state.src="/apps/profile/app.html"
+							aria-controls="offcanvas-app"
+							aria-haspopup="dialog"
+							aria-expanded="false"
+							aria-open><span hidden state-to="offcanvas-app-form" state.array="{{object.$array[0]}}" state.object="{{object._id}}"></span>{{object.name}}</a>
+					</h5>
+				</div>
+			</div>
+			<p class="app-description">{{object.description}}</p>
+			<p class="text-muted mb-0">{{object.title}}</p>
 		</div>
-	</div>
-</article>
+	</article>
 </template>

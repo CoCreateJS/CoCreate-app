@@ -1,34 +1,20 @@
-<div class="app-identity app-list-identity">
-	<span
-		class="app-provider-image app-list-image app-identity-image"
-		aria-hidden="true">
+<div class="app-identity app-list">
+	<span class="app-image" aria-hidden="true">
 		<img
-			class="app-provider-default"
-			form-attributes="false"
-			array="servers_config"
-			object="{{object._id}}"
 			src="/assets/svg/providers/configuration.svg"
 			key="provider"
 			set-value-prefix="/assets/svg/providers/"
 			set-value-suffix=".svg"
 			alt=""
-			width="42"
-			height="42"
 			onload="this.hidden = false"
-			onerror="this.src = '/assets/svg/providers/configuration.svg'" />
+			onerror="if (this.getAttribute('src') === '/assets/svg/providers/configuration.svg') { this.hidden = true; } else { this.src = '/assets/svg/providers/configuration.svg'; }" />
 		<img
-			class="app-provider-custom"
-			form-attributes="false"
-			array="apis"
+			class="app-custom-image"
 			key="avatar[0].src"
 			alt=""
-			width="42"
-			height="42"
 			hidden
 			onload="this.hidden = false"
 			onerror="this.hidden = true" />
 	</span>
-	<span class="app-title">
-		<span key="name"></span>
-	</span>
+	<span class="app-title" key="name"></span>
 </div>

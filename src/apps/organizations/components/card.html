@@ -1,15 +1,22 @@
-<div class="app-heading">
-	<div class="app-identity">
-		<img
-			class="app-avatar object-fit-contain flex-shrink-0"
-			src="/assets/images/icons/512x512.png"
-			key="avatar[0].src"
-			alt="Organization image"
-			onload="this.hidden = false"
-			onerror="this.hidden = true" />
-		<div class="min-width:0">
-			<h5 class="app-title mb-0 text-break"><span key="name"></span></h5>
+<div class="app-card-body">
+	<div class="app-heading">
+		<div class="app-identity">
+			<span class="app-image">
+				<img
+					src="/assets/images/icons/512x512.png"
+					alt="Organization image"
+					onload="this.hidden = false"
+					onerror="this.hidden = true" />
+				<img
+					class="app-custom-image"
+					key="avatar[0].src"
+					alt="Organization image"
+					hidden
+					onload="this.hidden = false"
+					onerror="this.hidden = true" />
+			</span>
+			<h5 class="app-title" key="name"></h5>
 		</div>
 	</div>
+	<p class="text-muted mb-0" key="tagline"></p>
 </div>
-<p class="text-muted mb-0" key="tagline"></p>

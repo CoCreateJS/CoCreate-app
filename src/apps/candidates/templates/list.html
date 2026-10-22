@@ -1,27 +1,16 @@
-<div class="app-identity app-list-identity">
-	<span
-		class="avatar-xs app-list-image rounded-circle position-relative overflow-hidden flex-shrink-0 app-identity-image">
-		<span class="avatar-title bg-info-subtle text-info">
-			<span
-				class="avatar-initial"
-				key="first_name[0]"></span>
-			<span
-				class="avatar-initial"
-				key="last_name[0]"></span>
+<div class="app-identity app-list">
+	<span class="app-image">
+		<span class="app-icon bg-secondary-subtle text-secondary">
+			<span class="avatar-initial" key="first_name[0]"></span>
+			<span class="avatar-initial" key="last_name[0]"></span>
 			<img
-				class="position-absolute object-fit-cover"
+				class="app-custom-image object-fit-cover"
 				key="avatar[0].src"
-				src="/assets/images/transparent.png"
 				alt="Candidate avatar"
-				width="100%"
-				height="100%"
-				onerror="
-					this.onerror = null;
-					this.src = '/assets/images/transparent.png';
-				" />
+				onerror="this.hidden = true"
+				hidden
+				onload="this.hidden = false" />
 		</span>
 	</span>
-	<span class="app-title">
-		<span key="name"></span>
-	</span>
+	<span class="app-title" key="name"></span>
 </div>

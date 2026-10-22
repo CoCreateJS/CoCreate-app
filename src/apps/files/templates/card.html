@@ -1,153 +1,142 @@
-<link
-	rel="stylesheet"
-	href="/apps/files/templates/card.css" />
+<link rel="stylesheet" href="/apps/files/templates/card.css" />
 <template>
-<article
-	class="card files-media-card app-card"
-	role="row"
-	aria-selected="false"
-	array="{{object.$array[0]}}"
-	object="{{object._id}}"
-	data-media-type="{{object.content-type}}"
-	data-media-path="{{object.pathname}}">
-	<form hidden>
-		<input type="hidden" key="deleted.by" value="$user_id" array="{{object.$array[0]}}" object="{{object._id}}" read="false" />
-		<input type="date" hidden now key="deleted.on" array="{{object.$array[0]}}" object="{{object._id}}" read="false" />
-	</form>
-	<div class="files-media-header" role="gridcell">
-		<i
-			src="/assets/svg/remix/file-fill.svg"
-			class="files-media-kind-icon files-media-icon files-media-icon-file"
-			aria-hidden="true"></i>
-		<i
-			src="/assets/svg/remix/folder-2-line.svg"
-			class="files-media-kind-icon files-media-icon files-media-icon-folder"
-			aria-hidden="true"></i>
-		<i
-			src="/assets/svg/remix/image-fill.svg"
-			class="files-media-kind-icon files-media-icon files-media-icon-image"
-			aria-hidden="true"></i>
-		<i
-			src="/assets/svg/remix/video-line.svg"
-			class="files-media-kind-icon files-media-icon files-media-icon-video"
-			aria-hidden="true"></i>
-		<i
-			src="/assets/svg/remix/music-line.svg"
-			class="files-media-kind-icon files-media-icon files-media-icon-audio"
-			aria-hidden="true"></i>
-		<i
-			src="/assets/svg/remix/file-pdf-fill.svg"
-			class="files-media-kind-icon files-media-icon files-media-icon-pdf"
-			aria-hidden="true"></i>
-		<i
-			src="/assets/svg/remix/file-text-line.svg"
-			class="files-media-kind-icon files-media-icon files-media-icon-document"
-			aria-hidden="true"></i>
-		<h5
-			class="files-media-name"
-			title="{{object.name}}">
-			<span
-				class="files-record-name"
-				data-file-kind="{{object.content-type}}"
-				><a
-					class="files-folder-link text-reset text-decoration-none"
-					role="button"
-					tabindex="0"
-					state='{"files-folders":{"hidden":false,"array":"files"},"files-list":{"filter-query-key":"content-type.$ne","filter-query-value":"text/directory","filter-sort-key":"name","filter-sort-direction":"asc"},"files-path":{"value":"{{object.pathname}}"}}'
-					>{{object.name}}</a
-				><a
-					class="files-file-link text-reset text-decoration-none"
-					role="button"
-					tabindex="0"
-					state-to="offcanvas-app-view"
-					state.src="/apps/files/app.html"
-					aria-controls="offcanvas-app"
-					aria-open
-					><span
-						hidden
-						state-to="offcanvas-app-form"
-						state.array="files"
-						state.object="{{object._id}}"></span
-					>{{object.name}}</a
-				></span
-			>
-		</h5>
-		<button
-			type="button"
-			class="files-media-menu-toggle"
-			aria-expanded="false"
-			aria-haspopup="menu"
-			aria-controls="file-card-menu-{{object._id}}"
-			aria-label="Actions for {{object.name}}">
-			<i
-				src="/assets/svg/remix/more-2-fill.svg"
-				aria-hidden="true"></i>
-		</button>
-		<ul
-			id="file-card-menu-{{object._id}}"
-			class="dropdown-menu dropdown-menu-end"
-			aria-hidden="true"
-			aria-close-on="anywhere">
-			<li>
-				<label class="dropdown-item files-media-favorite mb-0">
-					<input
-						type="checkbox"
-						array="files"
-						object="{{object._id}}"
-						key="starred"
-						value="$user_id"
-						realtime="true"
-						aria-label="Favorite {{object.name}}" />
-					<i
-						src="/assets/svg/remix/star-line.svg"
-						class="files-media-favorite-line me-2"
-						aria-hidden="true"></i>
-					<i
-						src="/assets/svg/remix/star-fill.svg"
-						class="files-media-favorite-fill me-2"
-						aria-hidden="true"></i
-					><span class="files-media-favorite-add"
-						>Add to favorites</span
-					>
-					<span class="files-media-favorite-remove"
-						>Remove from favorites</span
-					>
-				</label>
-			</li>
-		</ul>
-	</div>
-	<div class="files-media-preview" role="gridcell">
-		<img
-			class="files-media-preview-image"
-			src="{{object.pathname}}"
-			alt=""
-			loading="lazy"
-			decoding="async" />
-		<div
-			class="files-media-placeholder"
-			aria-hidden="true">
-			<i
-				src="/assets/svg/remix/file-line.svg"
-				class="files-media-icon files-media-icon-file"></i>
-			<i
-				src="/assets/svg/remix/folder-2-line.svg"
-				class="files-media-icon files-media-icon-folder"></i>
-			<i
-				src="/assets/svg/remix/image-fill.svg"
-				class="files-media-icon files-media-icon-image"></i>
-			<i
-				src="/assets/svg/remix/video-line.svg"
-				class="files-media-icon files-media-icon-video"></i>
-			<i
-				src="/assets/svg/remix/music-line.svg"
-				class="files-media-icon files-media-icon-audio"></i>
-			<i
-				src="/assets/svg/remix/file-pdf-fill.svg"
-				class="files-media-icon files-media-icon-pdf"></i>
-			<i
-				src="/assets/svg/remix/file-text-line.svg"
-				class="files-media-icon files-media-icon-document"></i>
+	<article
+		class="card files-media-card app-card"
+		role="row"
+		aria-selected="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}"
+		data-media-type="{{object.content-type}}"
+		data-media-path="{{object.pathname}}">
+		<form hidden>
+			<input
+				type="hidden"
+				key="deleted.by"
+				value="$user_id"
+				array="{{object.$array[0]}}"
+				object="{{object._id}}"
+				read="false" />
+			<input
+				type="date"
+				hidden
+				now
+				key="deleted.on"
+				array="{{object.$array[0]}}"
+				object="{{object._id}}"
+				read="false" />
+		</form>
+		<div class="card-body app-card-body">
+			<div class="app-heading files-media-header" role="gridcell">
+				<div class="app-identity">
+					<span class="app-image">
+						<span class="app-icon">
+							<i
+								src="/assets/svg/remix/file-fill.svg"
+								class="files-media-icon files-media-icon-file"
+								aria-hidden="true"></i>
+							<i
+								src="/assets/svg/remix/folder-2-line.svg"
+								class="files-media-icon files-media-icon-folder"
+								aria-hidden="true"></i>
+							<i
+								src="/assets/svg/remix/image-fill.svg"
+								class="files-media-icon files-media-icon-image"
+								aria-hidden="true"></i>
+							<i
+								src="/assets/svg/remix/video-line.svg"
+								class="files-media-icon files-media-icon-video"
+								aria-hidden="true"></i>
+							<i
+								src="/assets/svg/remix/music-line.svg"
+								class="files-media-icon files-media-icon-audio"
+								aria-hidden="true"></i>
+							<i
+								src="/assets/svg/remix/file-pdf-fill.svg"
+								class="files-media-icon files-media-icon-pdf"
+								aria-hidden="true"></i>
+							<i
+								src="/assets/svg/remix/file-text-line.svg"
+								class="files-media-icon files-media-icon-document"
+								aria-hidden="true"></i>
+						</span>
+					</span>
+					<h5 class="app-title" title="{{object.name}}">
+						<span class="files-record-name" data-file-kind="{{object.content-type}}">
+							<a
+								class="files-folder-link"
+								role="button"
+								tabindex="0"
+								state='{"files-folders":{"hidden":false,"array":"files"},"files-list":{"filter-query-key":"content-type.$ne","filter-query-value":"text/directory","filter-sort-key":"name","filter-sort-direction":"asc"},"files-path":{"value":"{{object.pathname}}"}}'>{{object.name}}</a>
+							<a
+								class="files-file-link"
+								role="button"
+								tabindex="0"
+								state-to="offcanvas-app-view"
+								state.src="/apps/files/app.html"
+								aria-controls="offcanvas-app"
+								aria-open><span hidden state-to="offcanvas-app-form" state.array="files" state.object="{{object._id}}"></span>{{object.name}}</a>
+						</span>
+					</h5>
+				</div>
+				<div class="app-badges">
+					<button
+						type="button"
+						class="files-media-menu-toggle"
+						aria-expanded="false"
+						aria-haspopup="menu"
+						aria-controls="file-card-menu-{{object._id}}"
+						aria-label="Actions for {{object.name}}">
+						<i src="/assets/svg/remix/more-2-fill.svg" aria-hidden="true"></i>
+					</button>
+					<ul
+						id="file-card-menu-{{object._id}}"
+						class="dropdown-menu dropdown-menu-end"
+						aria-hidden="true"
+						aria-close-on="anywhere">
+						<li>
+							<label class="dropdown-item files-media-favorite mb-0">
+								<input
+									type="checkbox"
+									array="files"
+									object="{{object._id}}"
+									key="starred"
+									value="$user_id"
+									realtime="true"
+									aria-label="Favorite {{object.name}}" />
+								<i
+									src="/assets/svg/remix/star-line.svg"
+									class="files-media-favorite-line me-2"
+									aria-hidden="true"></i>
+								<i
+									src="/assets/svg/remix/star-fill.svg"
+									class="files-media-favorite-fill me-2"
+									aria-hidden="true"></i>
+								<span class="files-media-favorite-add">Add to favorites</span>
+								<span class="files-media-favorite-remove">Remove from favorites</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-	</div>
-</article>
+		<div class="files-media-preview" role="gridcell">
+			<img
+				class="files-media-preview-image"
+				src="{{object.pathname}}"
+				alt=""
+				loading="lazy"
+				decoding="async" />
+			<div class="files-media-placeholder" aria-hidden="true">
+				<i src="/assets/svg/remix/file-line.svg" class="files-media-icon files-media-icon-file"></i>
+				<i src="/assets/svg/remix/folder-2-line.svg" class="files-media-icon files-media-icon-folder"></i>
+				<i src="/assets/svg/remix/image-fill.svg" class="files-media-icon files-media-icon-image"></i>
+				<i src="/assets/svg/remix/video-line.svg" class="files-media-icon files-media-icon-video"></i>
+				<i src="/assets/svg/remix/music-line.svg" class="files-media-icon files-media-icon-audio"></i>
+				<i src="/assets/svg/remix/file-pdf-fill.svg" class="files-media-icon files-media-icon-pdf"></i>
+				<i
+					src="/assets/svg/remix/file-text-line.svg"
+					class="files-media-icon files-media-icon-document"></i>
+			</div>
+		</div>
+	</article>
 </template>

@@ -31,35 +31,16 @@
 	background-color: var(--coc-success-bg-subtle);
 }
 
-.badge[key="enabled"][data-value="false"],
 .badge[key="status"][data-value="inactive" i],
 .badge[key="status"][data-value="disabled" i] {
 	color: var(--coc-secondary-text-emphasis);
 	background-color: var(--coc-secondary-bg-subtle);
 }
 
-/* Keep the boolean value for styling, and show a readable label from that value. */
-.badge[key="enabled"][data-value="true"],
+/* Keep disabled state subdued while the bound value supplies its label. */
 .badge[key="enabled"][data-value="false"] {
-	font-size: 0;
-	padding: 3.5px 6.5px;
-}
-
-.badge[key="enabled"][data-value="true"]::before,
-.badge[key="enabled"][data-value="false"]::before {
-	font-size: 10px;
-}
-
-.badge[key="enabled"][data-value="true"]::before {
-	content: "Enabled";
-}
-
-.badge[key="enabled"][data-value="false"]::before {
-	content: "Disabled";
-}
-
-.badge[key="enabled"][data-value]::before {
-	line-height: 1;
+	color: var(--coc-secondary-color);
+	background-color: var(--coc-light);
 }
 
 .badge[key="status"][data-value="pending" i],
@@ -99,17 +80,27 @@
 	background-color: var(--coc-danger-bg-subtle);
 }
 
+.app-badge {
+	flex-shrink: 0;
+	text-transform: capitalize;
+}
+
 .app-card .badge,
 .app-details .badge {
     flex-shrink: 0;
     font-size: 10px;
     line-height: 1;
     padding: 0.35em 0.65em;
-    background-color: transparent;
 }
 
 .app-details .card-body {
 	position: relative;
+}
+
+.app-card-body {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .app-details .app-badges {
@@ -133,7 +124,31 @@
 
 .app-title {
     font-size: 1.125rem;
+	margin-bottom: 0;
+	text-transform: capitalize;
     overflow-wrap: anywhere;
+}
+.app-title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.app-description {
+	margin: 0;
+	color: var(--coc-secondary-color);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	overflow-wrap: anywhere;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.app-description-expanded {
+	display: block;
+	overflow: visible;
+	text-overflow: clip;
+	-webkit-line-clamp: unset;
 }
 
 .app-identity {
@@ -162,7 +177,7 @@
 	width: auto;
 	min-width: 0;
 }
-.app-card .app-identity > :not(.app-identity-image) {
+.app-card .app-identity > :not(.app-identity-image, .app-image) {
 	flex: 1 1 auto;
 	min-width: 0;
 }
@@ -173,30 +188,6 @@
 }
 .app-card .app-identity > .app-title {
 	margin: 0;
-}
-
-.app-list-identity {
-	display: flex;
-	flex-wrap: nowrap;
-	align-items: center;
-	gap: 0.5rem;
-	width: 100%;
-	min-width: 0;
-}
-.app-list-identity > .app-identity-image {
-	flex: 0 0 42px;
-	width: 42px;
-	height: 42px;
-}
-.app-list-identity > .app-title {
-	flex: 1 1 auto;
-	min-width: 0;
-	margin: 0;
-	font-size: inherit;
-	line-height: inherit;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 
 .app-fields { min-width: 0; }
@@ -263,35 +254,59 @@
     font-size: 9px;
 }
 
-.app-card-icon .avatar-title { position: relative; font-size: 1.5rem; }
-.app-card-icon .app-card-logo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--coc-body-bg); }
-.app-card-icon:has(.app-card-logo:not([hidden])) .avatar-title > i { visibility: hidden; }
-
-.app-provider-image {
-	display: inline-flex;
+.app-icon {
 	position: relative;
-	flex: 0 0 36px;
-	width: 36px;
-	height: 36px;
-}
-.app-provider-image img {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
 	height: 100%;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: var(--coc-primary-bg-subtle);
+	color: var(--coc-primary-text-emphasis);
+	font-weight: var(--coc-font-weight-medium);
+	white-space: nowrap;
+}
+.app-icon:has(> .app-custom-image:not([hidden])) > :not(.app-custom-image) {
+	visibility: hidden;
+}
+.app-icon > .avatar-initial:last-of-type {
+	letter-spacing: 0;
+}
+
+.app-image {
+	display: inline-flex;
+	position: relative;
+	flex: 0 0 50px;
+	--avatar-size: 50px;
+	width: 50px;
+	height: 50px;
+	min-width: 0;
+	min-height: 0;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.app-image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 	object-fit: contain;
 }
-.app-provider-image .app-provider-custom {
+.app-image .app-custom-image {
 	position: absolute;
 	inset: 0;
 	background: var(--coc-body-bg);
 }
-.app-provider-image:has(.app-provider-custom:not([hidden]))
-	.app-provider-default {
+.app-image:has(> .app-custom-image:not([hidden])) > :not(.app-custom-image) {
 	visibility: hidden;
 }
-.app-provider-image:not(:has(img:not([hidden]))) {
+.app-image:not(:has(> img:not([hidden]), > .app-icon)) {
 	display: none;
 }
-.app-form .app-provider-image {
+.app-form .app-image {
 	flex-basis: 100px;
 	width: 100px;
 	height: 100px;
@@ -300,34 +315,32 @@
 	flex-shrink: 0;
 }
 
-.app-list-image {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
+.app-identity.app-list {
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+	min-width: 0;
 }
 
-.app-list-image .avatar-title {
-    width: 100%;
-    height: 100%;
+.app-identity.app-list .app-image {
+	flex-basis: 42px;
+	--avatar-size: 42px;
+	width: 42px;
+	height: 42px;
 }
 
-.app-list-image > img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.app-list-provider-image .app-provider-image {
-    flex-basis: 42px;
-    width: 42px;
-    height: 42px;
-}
-
-.app-card .app-provider-image {
-	--avatar-size: 50px;
-	flex: 0 0 50px;
-	width: 50px;
-	height: 50px;
+.app-identity.app-list > .app-title {
+	display: block;
+	flex: 1 1 auto;
+	min-width: 0;
+	min-height: 0;
+	margin: 0;
+	font-size: inherit;
+	line-height: inherit;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .app-profile {

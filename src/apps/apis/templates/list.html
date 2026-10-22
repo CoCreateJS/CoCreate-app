@@ -1,22 +1,17 @@
-<div class="app-identity app-list-identity">
-	<span
-		class="app-provider-image app-list-image app-identity-image"
-		aria-hidden="true">
+<div class="app-identity app-list">
+	<span class="app-image">
 		<img
-			class="app-provider-default"
 			src="/assets/svg/providers/{{object.provider}}.svg"
 			alt=""
 			onload="this.hidden = false"
 			onerror="this.hidden = true" />
 		<img
-			class="app-provider-custom"
+			class="app-custom-image"
 			src="{{object.avatar[0].src}}"
 			alt=""
 			hidden
 			onload="this.hidden = false"
 			onerror="this.hidden = true" />
 	</span>
-	<span class="app-title">
-		<span>{{object.name}}</span>
-	</span>
+	<span class="app-title">{{object.name}}</span>
 </div>

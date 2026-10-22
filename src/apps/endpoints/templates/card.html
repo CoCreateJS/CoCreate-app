@@ -6,43 +6,35 @@
 		array="{{object.$array[0]}}"
 		object="{{object._id}}"
 		read="false">
-		<div class="card-body d-flex flex-column gap-3">
+		<div class="card-body app-card-body">
 			<div class="app-heading">
 				<div class="app-identity">
-					<div
-						value-type="outerHTML"
-						src="/apps/apis/components/provider-icon.html" class="app-identity-image"></div>
-					<div class="min-width:0">
-						<h5 class="app-title mb-0 text-break">
-							<a
-								class="text-reset text-decoration-none"
-								role="button"
-								tabindex="0"
-								state-to="offcanvas-app-view"
-								state.src="/apps/endpoints/app.html"
-								aria-controls="offcanvas-app"
-								aria-open
-								><span
-									hidden
-									state-to="offcanvas-app-form"
-									state.array="endpoints"
-									state.object="{{object._id}}"></span
-								>{{object.name}}</a
-							>
-						</h5>
-					</div>
+					<div value-type="outerHTML" src="/apps/apis/components/provider-icon.html" class="app-image"></div>
+					<h5 class="app-title">
+						<a
+							role="button"
+							tabindex="0"
+							state-to="offcanvas-app-view"
+							state.src="/apps/endpoints/app.html"
+							aria-controls="offcanvas-app"
+							aria-open
+							aria-haspopup="dialog"
+							aria-expanded="false"><span hidden state-to="offcanvas-app-form" state.array="endpoints" state.object="{{object._id}}"></span>{{object.name}}</a>
+					</h5>
 				</div>
 				<div class="app-badges">
+					<span class="badge app-badge" key="method" data-value="{{object.method}}">{{object.method}}</span>
 					<span
-						class="badge text-uppercase"
-						 key="method" data-value="{{object.method}}">{{object.method}}</span
-					><span class="badge text-capitalize" role="status" aria-label="Enabled status" key="enabled" data-value="{{object.enabled}}">{{object.enabled}}</span>
+						class="badge app-badge"
+						role="status"
+						aria-label="Enabled status"
+						key="enabled"
+						data-value="{{object.enabled}}"
+						onload.value="$('{{object.enabled}}' === 'true' ? 'Enabled' : 'Disabled')"></span>
 				</div>
 			</div>
-			<p class="text-muted mb-0 line-clamp:2">{{object.description}}</p>
+			<p class="app-description">{{object.description}}</p>
 		</div>
 	</article>
 </template>
-<div
-	onload.array="endpoints"
-	onload-query="$parent"></div>
+<div onload.array="endpoints" onload-query="$parent"></div>

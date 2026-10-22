@@ -1,118 +1,127 @@
-	
-	<link
-		rel="stylesheet"
-		href="/apps/apps/components/details.css" />
-	<div class="card-body min-width:0 d-flex flex-column gap-4 h-100">
-		<section
-			class="d-flex flex-column gap-3 pb-3 border-bottom border-bottom-dashed"
-			aria-label="App overview">
-			<div class="d-flex align-items-center gap-3 min-width:0 min-height:50px">
-				<span class="d-inline-flex width:50px height:50px app-card-icon flex-shrink-0">
-					<span
-						class="avatar-title bg-primary-subtle rounded-circle material-shadow">
-						<i src="/assets/svg/remix/apps-2-line.svg" key="icon"
-							value
-							input.class="$value"
-							aria-hidden="true"></i>
-					</span>
-				</span>
-				<h4
-					class="mb-0 text-break"
-					key="name"
-					aria-label="App name"></h4>
-			</div>
-			<div class="app-badges">
-				<span
-					class="badge border border-primary text-primary"
-					key="category"
-					aria-label="Category"></span>
-				<span class="badge text-capitalize" role="status" aria-label="Enabled status" key="enabled" data-value input.data-value="$value"></span>
-			</div>
-			<p
-				class="text-muted text-break mb-0"
-				key="description"></p>
-		</section>
-		<dl class="apps-details-fields mb-0">
-			<div>
-				<dt>Singular name</dt>
-				<dd key="singularName"></dd>
-			</div>
-			<div>
-				<dt>Array</dt>
-				<dd><code key="array"></code></dd>
-			</div>
-			<div class="w-100">
-				<dt>Path</dt>
-				<dd><code key="path"></code></dd>
-			</div>
-			<div>
-				<dt>Main views</dt>
-				<dd
-					class="d-flex flex-wrap gap-2"
-					key="mainViews"
-					render-query="[template]">
-					<span
-						template
-						class="badge border border-secondary text-secondary text-capitalize"
-						>{{mainViews}}</span
-					>
-				</dd>
-			</div>
-			<div>
-				<dt>Secondary views</dt>
-				<dd
-					class="d-flex flex-wrap gap-2"
-					key="secondaryViews"
-					render-query="[template]">
-					<span
-						template
-						class="badge border border-secondary text-secondary text-capitalize"
-						>{{secondaryViews}}</span
-					>
-				</dd>
-			</div>
-			<div>
-				<dt>Statuses</dt>
-				<dd
-					class="d-flex flex-wrap gap-2"
-					key="statuses"
-					render-query="[template]">
-					<span
-						template
-						class="badge border border-secondary text-secondary"
-						>{{statuses.label}}</span
-					>
-				</dd>
-			</div>
-			<div>
-				<dt>Types</dt>
-				<dd
-					class="d-flex flex-wrap gap-2"
-					key="type"
-					render-query="[template]">
-					<span
-						template
-						class="badge border border-secondary text-secondary"
-						>{{type}}</span
-					>
-				</dd>
-			</div>
-			<div class="w-100">
-				<dt>Tags</dt>
-				<dd
-					class="d-flex flex-wrap gap-2"
-					key="tags"
-					render-query="[template]">
-					<span
-						template
-						class="badge border border-secondary text-secondary"
-						>{{tags}}</span
-					>
-				</dd>
-			</div>
-		</dl>
+<link
+	rel="stylesheet"
+	href="/apps/apps/components/details.css" />
+<div class="card-body min-width:0 d-flex flex-column gap-4 h-100">
+	<section
+		class="d-flex flex-column gap-3 pb-3 border-bottom border-bottom-dashed"
+		aria-label="App overview">
 		<div
-			class="w-100"
-			src="/components/activities.html"
-			aria-label="App activities"></div>
-	</div>
+			class="d-flex align-items-center gap-3 min-width:0 min-height:50px">
+			<span
+				class="d-inline-flex width:50px height:50px">
+				<span
+						class="app-icon bg-primary-subtle rounded-circle material-shadow">
+					<i
+						src="/assets/svg/remix/apps-2-line.svg"
+						key="icon"
+						value
+						input.class="$value"
+						aria-hidden="true"></i>
+				</span>
+			</span>
+			<h4
+				class="mb-0 text-break"
+				key="name"
+				aria-label="App name"></h4>
+		</div>
+		<div class="app-badges">
+			<span
+				class="badge border border-primary text-primary"
+				key="category"
+				aria-label="Category"></span>
+			<span
+				class="badge text-capitalize"
+				role="status"
+				aria-label="Enabled status"
+				key="enabled"
+				data-value
+				input.data-value="$value"></span>
+		</div>
+		<p
+			class="text-muted text-break mb-0"
+			key="description"></p>
+	</section>
+	<dl class="apps-details-fields mb-0">
+		<div>
+			<dt>Singular name</dt>
+			<dd key="singularName"></dd>
+		</div>
+		<div>
+			<dt>Array</dt>
+			<dd><code key="array"></code></dd>
+		</div>
+		<div class="w-100">
+			<dt>Path</dt>
+			<dd><code key="path"></code></dd>
+		</div>
+		<div>
+			<dt>Main views</dt>
+			<dd
+				class="d-flex flex-wrap gap-2"
+				key="mainViews"
+				render-query="[template]">
+				<span
+					template
+					class="badge border border-secondary text-secondary text-capitalize"
+					>{{mainViews}}</span
+				>
+			</dd>
+		</div>
+		<div>
+			<dt>Secondary views</dt>
+			<dd
+				class="d-flex flex-wrap gap-2"
+				key="secondaryViews"
+				render-query="[template]">
+				<span
+					template
+					class="badge border border-secondary text-secondary text-capitalize"
+					>{{secondaryViews}}</span
+				>
+			</dd>
+		</div>
+		<div>
+			<dt>Statuses</dt>
+			<dd
+				class="d-flex flex-wrap gap-2"
+				key="statuses"
+				render-query="[template]">
+				<span
+					template
+					class="badge border border-secondary text-secondary"
+					>{{statuses.label}}</span
+				>
+			</dd>
+		</div>
+		<div>
+			<dt>Types</dt>
+			<dd
+				class="d-flex flex-wrap gap-2"
+				key="type"
+				render-query="[template]">
+				<span
+					template
+					class="badge border border-secondary text-secondary"
+					>{{type}}</span
+				>
+			</dd>
+		</div>
+		<div class="w-100">
+			<dt>Tags</dt>
+			<dd
+				class="d-flex flex-wrap gap-2"
+				key="tags"
+				render-query="[template]">
+				<span
+					template
+					class="badge border border-secondary text-secondary"
+					>{{tags}}</span
+				>
+			</dd>
+		</div>
+	</dl>
+	<div
+		class="w-100"
+		src="/components/activities.html"
+		aria-label="App activities"></div>
+</div>

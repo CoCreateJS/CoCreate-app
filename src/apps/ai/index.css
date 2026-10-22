@@ -1057,7 +1057,6 @@
 
 .ai-message-scroll {
 	position: relative;
-	z-index: 2;
 	min-height: 0;
 	flex: 1 1 auto;
 	overflow: hidden;
@@ -1344,7 +1343,6 @@
 .ai-composer {
 	display: flex;
 	position: relative;
-	z-index: 2;
 	flex: 0 0 auto;
 	flex-direction: column;
 	width: min(calc(100% - 48px), 850px);
