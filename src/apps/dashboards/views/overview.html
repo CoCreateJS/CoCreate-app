@@ -574,94 +574,96 @@
 								<table
 									class="table table-hover table-centered align-middle table-nowrap mb-0">
 									
-									<tbody array="items" object render-query="[template]" filter-sort-key="orders" filter-sort-order="desc" filter-limit="10">
-										<tr template>
-											<td>
-												<div
-													class="d-flex align-items-center">
-													<div class="d-flex align-items-center">
-														<div class="flex-shrink-0">
+									<tbody array="items" object render-query="template" filter-sort-key="orders" filter-sort-order="desc" filter-limit="10">
+										<template>
+											<tr>
+												<td>
+													<div
+														class="d-flex align-items-center">
+														<div class="d-flex align-items-center">
+															<div class="flex-shrink-0">
+																<a 
+																	role="button" 
+																	tabindex="0" 
+																	state-to="offcanvas-app-view" 
+																	state.src="/apps/items/app.html"
+																	aria-controls="offcanvas-app" 
+																	aria-haspopup="dialog" 
+																	aria-expanded="false">
+																	<div state-to="offcanvas-app-form" state.array="items" state.object="{{object._id}}"></div>
+																	<div 
+																		class="avatar-xs rounded position-relative overflow-hidden" 
+																		state-to="offcanvas-app-form" 
+																		state.array="items" 
+																		state.object="{{object._id}}">
+																		<div class="avatar-title bg-secondary-subtle text-secondary material-shadow">
+																			<span class="overflow-hidden" style="width:1ch; letter-spacing:1em;">{{object.name}}</span>
+																			<img
+																				class="position-absolute object-fit-cover"
+																				src="{{object.image[0].src}}"
+																				alt="Avatar"
+																				style="width:100%; height:100%;"
+																				array="items"
+																				object="{{object._id}}"
+																				key="image[0].src"
+																				onerror="this.onerror=null; this.src='/assets/images/transparent.png';"/>
+																		</div>
+																	</div>
+																</a>
+															</div>
 															<a 
 																role="button" 
 																tabindex="0" 
+																class="flex-grow-1 ms-2 name" 
 																state-to="offcanvas-app-view" 
 																state.src="/apps/items/app.html"
 																aria-controls="offcanvas-app" 
 																aria-haspopup="dialog" 
 																aria-expanded="false">
 																<div state-to="offcanvas-app-form" state.array="items" state.object="{{object._id}}"></div>
-																<div 
-																	class="avatar-xs rounded position-relative overflow-hidden" 
-																	state-to="offcanvas-app-form" 
-																	state.array="items" 
-																	state.object="{{object._id}}">
-																	<div class="avatar-title bg-secondary-subtle text-secondary material-shadow">
-																		<span class="overflow-hidden" style="width:1ch; letter-spacing:1em;">{{object.name}}</span>
-																		<img
-																			class="position-absolute object-fit-cover"
-																			src="{{object.image[0].src}}"
-																			alt="Avatar"
-																			style="width:100%; height:100%;"
-																			array="items"
-																			object="{{object._id}}"
-																			key="image[0].src"
-																			onerror="this.onerror=null; this.src='/assets/images/transparent.png';"/>
-																	</div>
-																</div>
+																<div>{{object.name}}</div>
+																<div class="text-muted">{{object.created.on}}</div>
 															</a>
 														</div>
-														<a 
-															role="button" 
-															tabindex="0" 
-															class="flex-grow-1 ms-2 name" 
-															state-to="offcanvas-app-view" 
-															state.src="/apps/items/app.html"
-															aria-controls="offcanvas-app" 
-															aria-haspopup="dialog" 
-															aria-expanded="false">
-															<div state-to="offcanvas-app-form" state.array="items" state.object="{{object._id}}"></div>
-															<div>{{object.name}}</div>
-															<div class="text-muted">{{object.created.on}}</div>
-														</a>
-													</div>
 												
-												</div>
-											</td>
-											<td>
-												<h5
-													class="fs-14 my-1 fw-normal">
-													{{object.price}}
-												</h5>
-												<span class="text-muted">Price</span>
-											</td>
-											<td>
-												<h5
-													class="fs-14 my-1 fw-normal">
-													{{object.orders}}
-												</h5>
-												<span class="text-muted"
-													>Orders</span
-												>
-											</td>
-											<td>
-												<h5
-													class="fs-14 my-1 fw-normal">
-													{{object.stock}}
-													<!-- <span
-														class="badge bg-danger-subtle text-danger"
-														>Out of stock</span
-													> -->
-												</h5>
-												<span class="text-muted">Stock</span>
-											</td>
-											<td>
-												<h5
-													class="fs-14 my-1 fw-normal">
-													{{object.amount}}
-												</h5>
-												<span class="text-muted">Amount</span>
-											</td>
-										</tr>
+													</div>
+												</td>
+												<td>
+													<h5
+														class="fs-14 my-1 fw-normal">
+														{{object.price}}
+													</h5>
+													<span class="text-muted">Price</span>
+												</td>
+												<td>
+													<h5
+														class="fs-14 my-1 fw-normal">
+														{{object.orders}}
+													</h5>
+													<span class="text-muted"
+														>Orders</span
+													>
+												</td>
+												<td>
+													<h5
+														class="fs-14 my-1 fw-normal">
+														{{object.stock}}
+														<!-- <span
+															class="badge bg-danger-subtle text-danger"
+															>Out of stock</span
+														> -->
+													</h5>
+													<span class="text-muted">Stock</span>
+												</td>
+												<td>
+													<h5
+														class="fs-14 my-1 fw-normal">
+														{{object.amount}}
+													</h5>
+													<span class="text-muted">Amount</span>
+												</td>
+											</tr>
+										</template>
 									</tbody>
 								</table>
 							</div>
@@ -705,64 +707,66 @@
 										filter-query-key="type.$in" 
 										filter-query-value='$parse(["seller"])'
 										filter-limit="10"
-										render-query="tr[template]"
+										render-query="template"
 										class="card-data">
-										<tr template>
-											<td
-												template="column"
-												render-as="column"
-												value-type="html">
-												<div class="d-flex align-items-center">
-													<div class="flex-shrink-0 me-2">
-														<div 
-															class="avatar-xs rounded position-relative overflow-hidden"
-															state-to="offcanvas-app-form"
-															state.array="sellers"
-															state.object="{{object._id}}">
-															<div class="avatar-title bg-secondary-subtle text-secondary material-shadow">
-																<span class="overflow-hidden" style="width:1ch; letter-spacing:1em;">{{object.company}}</span>
-																<img
-																	class="position-absolute object-fit-cover"
-																	src="{{object.image[0].src}}"
-																	alt="Avatar"
-																	style="width:100%; height:100%;"
-																	array="sellers"
-																	object="{{object._id}}"
-																	key="image[0].src"
-																	onerror="this.onerror=null; this.src='/assets/images/transparent.png';"/>
+										<template>
+											<tr>
+												<td
+													template="column"
+													render-as="column"
+													value-type="html">
+													<div class="d-flex align-items-center">
+														<div class="flex-shrink-0 me-2">
+															<div 
+																class="avatar-xs rounded position-relative overflow-hidden"
+																state-to="offcanvas-app-form"
+																state.array="sellers"
+																state.object="{{object._id}}">
+																<div class="avatar-title bg-secondary-subtle text-secondary material-shadow">
+																	<span class="overflow-hidden" style="width:1ch; letter-spacing:1em;">{{object.company}}</span>
+																	<img
+																		class="position-absolute object-fit-cover"
+																		src="{{object.image[0].src}}"
+																		alt="Avatar"
+																		style="width:100%; height:100%;"
+																		array="sellers"
+																		object="{{object._id}}"
+																		key="image[0].src"
+																		onerror="this.onerror=null; this.src='/assets/images/transparent.png';"/>
+																</div>
 															</div>
 														</div>
+														<div>
+															<h5 class="fs-14 my-1 fw-medium">
+																<a
+																	state-to="adminView"
+																	state.src="/apps/ecommerce/seller-details.html"
+																	class="text-reset">
+																	{{object.company}}
+																</a>
+															</h5>
+															<span class="text-muted">{{object.name}}</span>
+														</div>
 													</div>
-													<div>
-														<h5 class="fs-14 my-1 fw-medium">
-															<a
-																state-to="adminView"
-																state.src="/apps/ecommerce/seller-details.html"
-																class="text-reset">
-																{{object.company}}
-															</a>
-														</h5>
-														<span class="text-muted">{{object.name}}</span>
-													</div>
-												</div>
-											</td>
-											<td>
-												<span class="text-muted">{{object.category}}</span>
-											</td>
-											<td>
-												<p class="mb-0">{{object.stock}}</p>
-												<span class="text-muted">Stock</span>
-											</td>
-											<td>
-												<span class="text-muted">{{object.amount}}</span>
-											</td>
-											<td>
-												<h5 class="fs-14 mb-0">
-													{{object.percent}}%
-													<i src="/assets/svg/remix/bar-chart-fill.svg" class="text-success fs-16 align-middle ms-2"></i>
-												</h5>
-											</td>
-										</tr>
+												</td>
+												<td>
+													<span class="text-muted">{{object.category}}</span>
+												</td>
+												<td>
+													<p class="mb-0">{{object.stock}}</p>
+													<span class="text-muted">Stock</span>
+												</td>
+												<td>
+													<span class="text-muted">{{object.amount}}</span>
+												</td>
+												<td>
+													<h5 class="fs-14 mb-0">
+														{{object.percent}}%
+														<i src="/assets/svg/remix/bar-chart-fill.svg" class="text-success fs-16 align-middle ms-2"></i>
+													</h5>
+												</td>
+											</tr>
+										</template>
 									</tbody>
 
 								</table>
@@ -849,57 +853,59 @@
 											<th scope="col">Rating</th>
 										</tr>
 									</thead>
-									<tbody array="orders" object render-query="[template]" filter-sort-key="created.on" filter-sort-order="desc" filter-limit="10">
-										<tr template>
-											<td>
-												<a
-													state-to="adminView"
-													state.src="/apps/ecommerce/orders/details.html"
-													class="fw-medium link-primary">
-													{{object.order_id}}
-												</a>
-											</td>
-											<td>
-												<div class="d-flex align-items-center">
-													<div class="flex-shrink-0 me-2">
-														<div 
-															class="avatar-xs rounded-circle position-relative overflow-hidden"
-															state-to="offcanvas-app-form"
-															state.array="orders"
-															state.object="{{object._id}}">
-															<div class="avatar-title bg-secondary-subtle text-secondary material-shadow">
-																<img
-																	class="position-absolute object-fit-cover"
-																	src="{{object.customer.image}}"
-																	alt="Avatar"
-																	style="width:100%; height:100%;"
-																	array="orders"
-																	object="{{object._id}}"
-																	key="customer.image"
-																	onerror="this.onerror=null; this.src='/assets/images/transparent.png';"/>
+									<tbody array="orders" object render-query="template" filter-sort-key="created.on" filter-sort-order="desc" filter-limit="10">
+										<template>
+											<tr>
+												<td>
+													<a
+														state-to="adminView"
+														state.src="/apps/ecommerce/orders/details.html"
+														class="fw-medium link-primary">
+														{{object.order_id}}
+													</a>
+												</td>
+												<td>
+													<div class="d-flex align-items-center">
+														<div class="flex-shrink-0 me-2">
+															<div 
+																class="avatar-xs rounded-circle position-relative overflow-hidden"
+																state-to="offcanvas-app-form"
+																state.array="orders"
+																state.object="{{object._id}}">
+																<div class="avatar-title bg-secondary-subtle text-secondary material-shadow">
+																	<img
+																		class="position-absolute object-fit-cover"
+																		src="{{object.customer.image}}"
+																		alt="Avatar"
+																		style="width:100%; height:100%;"
+																		array="orders"
+																		object="{{object._id}}"
+																		key="customer.image"
+																		onerror="this.onerror=null; this.src='/assets/images/transparent.png';"/>
+																</div>
 															</div>
 														</div>
+														<div class="flex-grow-1">
+															{{object.customer.name}}
+														</div>
 													</div>
-													<div class="flex-grow-1">
-														{{object.customer.name}}
-													</div>
-												</div>
-											</td>
-											<td>{{object.product}}</td>
-											<td>
-												<span class="text-success">${{object.amount}}</span>
-											</td>
-											<td>{{object.vendor}}</td>
-											<td>
-												<span class="badge bg-success-subtle text-success">{{object.status}}</span>
-											</td>
-											<td>
-												<h5 class="fs-14 fw-medium mb-0">
-													{{object.rating}}
-													<span class="text-muted fs-11 ms-1">({{object.votes}} votes)</span>
-												</h5>
-											</td>
-										</tr>
+												</td>
+												<td>{{object.product}}</td>
+												<td>
+													<span class="text-success">${{object.amount}}</span>
+												</td>
+												<td>{{object.vendor}}</td>
+												<td>
+													<span class="badge bg-success-subtle text-success">{{object.status}}</span>
+												</td>
+												<td>
+													<h5 class="fs-14 fw-medium mb-0">
+														{{object.rating}}
+														<span class="text-muted fs-11 ms-1">({{object.votes}} votes)</span>
+													</h5>
+												</td>
+											</tr>
+										</template>
 									</tbody>
 									<!-- end tbody -->
 								</table>

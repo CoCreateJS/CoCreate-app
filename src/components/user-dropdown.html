@@ -48,7 +48,17 @@
 	class="dropdown-item light-dark-mode"
 	role="menuitem"
 	title="Toggle light or dark theme"
-	aria-label="Toggle light or dark theme">
+	aria-label="Toggle light or dark theme"
+	array="users"
+	object="$user_id"
+	key="theme.colorScheme"
+	value=""
+	input-query="$document html"
+	input.data-color-scheme="$value"
+	click.value="dark, light"
+	click.$save
+	state.data-color-scheme="$value"
+	state-id="theme">
 	<i
 		src="/assets/svg/remix/moon-line.svg"
 		class="theme-icon-moon text-muted fs-16 align-middle me-1"></i>

@@ -110,145 +110,148 @@
 							>
 						</label>
 						<div class="media-picker-pending-results">
-							<article
-								template="media-picker-upload-item"
-								file-for=""
-								class="media-picker-pending-item"
-								file_id="{{object.id}}">
-								<label class="media-picker-pending-select">
-									<input
-										type="radio"
-										name="media-picker-pending-selection"
-										form="media-picker-pending-selection-form"
-										aria-label="Preview {{object.name}}" />
-									<img
-										class="media-picker-pending-preview"
-										src="{{object.src}}"
-										alt="{{object.name}}" />
-								</label>
-								<span
-									class="media-picker-pending-name text-truncate"
-									>{{object.name}}</span
-								>
-								<button
-									type="button"
-									class="media-picker-remove-upload media-picker-quick-remove"
-									actions="removeFile"
-									aria-label="Remove {{object.name}} from uploads">
-									<i
-										src="/assets/svg/remix/close-line.svg"
-										aria-hidden="true"></i>
-								</button>
-								<button
-									type="reset"
-									form="media-picker-pending-selection-form"
-									class="media-picker-release-selection"
-									aria-label="Close preview">
-									<i
-										src="/assets/svg/remix/close-line.svg"
-										aria-hidden="true"></i>
-								</button>
-								<details class="media-picker-pending-actions">
-									<summary
-										aria-label="Options for {{object.name}}">
-										<i
-											src="/assets/svg/remix/more-2-fill.svg"
-											aria-hidden="true"></i>
-									</summary>
-									<div class="media-picker-pending-menu">
-										<label>
-											<input
-												type="radio"
-												name="pending-editor-{{object.id}}"
-												class="media-picker-rename-toggle" />
-											<i
-												src="/assets/svg/remix/edit-line.svg"
-												aria-hidden="true"></i>
-											Rename
-										</label>
-										<label>
-											<input
-												type="radio"
-												name="pending-editor-{{object.id}}"
-												class="media-picker-details-toggle" />
-											<i
-												src="/assets/svg/remix/information-line.svg"
-												aria-hidden="true"></i>
-											File details
-										</label>
-									</div>
-								</details>
-								<div class="media-picker-editor">
-									<div class="media-picker-editor-header">
-										<strong
-											class="media-picker-rename-title"
-											>Rename</strong
-										>
-										<strong
-											class="media-picker-details-title"
-											>File details</strong
-										>
-										<label
-											class="media-picker-editor-close"
-											aria-label="Close editor">
-											<input
-												type="radio"
-												name="pending-editor-{{object.id}}"
-												class="media-picker-editor-none"
-												checked />
-											<i
-												src="/assets/svg/remix/close-line.svg"
-												aria-hidden="true"></i>
-										</label>
-									</div>
-									<label class="form-label mb-0">
-										Name
+							<template file-for="">
+								<article
+									file-for=""
+									class="media-picker-pending-item"
+									file_id="{{object.id}}">
+									<label class="media-picker-pending-select">
 										<input
-											class="form-control form-control-sm"
-											file="name"
-											value="{{object.name}}"
-											required />
+											type="radio"
+											name="media-picker-pending-selection"
+											form="media-picker-pending-selection-form"
+											aria-label="Preview {{object.name}}" />
+										<img
+											class="media-picker-pending-preview"
+											src="{{object.src}}"
+											alt="{{object.name}}" />
 									</label>
-									<div class="media-picker-details-fields">
+									<span
+										class="media-picker-pending-name text-truncate"
+										>{{object.name}}</span
+									>
+									<button
+										type="button"
+										class="media-picker-remove-upload media-picker-quick-remove"
+										actions="removeFile"
+										aria-label="Remove {{object.name}} from uploads">
+										<i
+											src="/assets/svg/remix/close-line.svg"
+											aria-hidden="true"></i>
+									</button>
+									<button
+										type="reset"
+										form="media-picker-pending-selection-form"
+										class="media-picker-release-selection"
+										aria-label="Close preview">
+										<i
+											src="/assets/svg/remix/close-line.svg"
+											aria-hidden="true"></i>
+									</button>
+									<details
+										class="media-picker-pending-actions">
+										<summary
+											aria-label="Options for {{object.name}}">
+											<i
+												src="/assets/svg/remix/more-2-fill.svg"
+												aria-hidden="true"></i>
+										</summary>
+										<div class="media-picker-pending-menu">
+											<label>
+												<input
+													type="radio"
+													name="pending-editor-{{object.id}}"
+													class="media-picker-rename-toggle" />
+												<i
+													src="/assets/svg/remix/edit-line.svg"
+													aria-hidden="true"></i>
+												Rename
+											</label>
+											<label>
+												<input
+													type="radio"
+													name="pending-editor-{{object.id}}"
+													class="media-picker-details-toggle" />
+												<i
+													src="/assets/svg/remix/information-line.svg"
+													aria-hidden="true"></i>
+												File details
+											</label>
+										</div>
+									</details>
+									<div class="media-picker-editor">
+										<div class="media-picker-editor-header">
+											<strong
+												class="media-picker-rename-title"
+												>Rename</strong
+											>
+											<strong
+												class="media-picker-details-title"
+												>File details</strong
+											>
+											<label
+												class="media-picker-editor-close"
+												aria-label="Close editor">
+												<input
+													type="radio"
+													name="pending-editor-{{object.id}}"
+													class="media-picker-editor-none"
+													checked />
+												<i
+													src="/assets/svg/remix/close-line.svg"
+													aria-hidden="true"></i>
+											</label>
+										</div>
 										<label class="form-label mb-0">
-											Path
+											Name
 											<input
 												class="form-control form-control-sm"
-												file="path"
-												value="{{object.path}}" />
-										</label>
-										<label class="form-label mb-0">
-											Pathname
-											<input
-												class="form-control form-control-sm"
-												file="pathname"
-												value="{{object.pathname}}"
+												file="name"
+												value="{{object.name}}"
 												required />
 										</label>
-										<label class="form-label mb-0">
-											Content type
-											<input
-												class="form-control form-control-sm"
-												file="content-type"
-												value="{{object.content-type}}"
-												required />
-										</label>
+										<div
+											class="media-picker-details-fields">
+											<label class="form-label mb-0">
+												Path
+												<input
+													class="form-control form-control-sm"
+													file="path"
+													value="{{object.path}}" />
+											</label>
+											<label class="form-label mb-0">
+												Pathname
+												<input
+													class="form-control form-control-sm"
+													file="pathname"
+													value="{{object.pathname}}"
+													required />
+											</label>
+											<label class="form-label mb-0">
+												Content type
+												<input
+													class="form-control form-control-sm"
+													file="content-type"
+													value="{{object.content-type}}"
+													required />
+											</label>
+										</div>
+										<input
+											type="hidden"
+											file="directory"
+											value="{{object.directory}}" />
+										<input
+											type="hidden"
+											file="public"
+											value="true"
+											value-type="boolean" />
+										<input
+											type="hidden"
+											file="host[]"
+											value="*" />
 									</div>
-									<input
-										type="hidden"
-										file="directory"
-										value="{{object.directory}}" />
-									<input
-										type="hidden"
-										file="public"
-										value="true"
-										value-type="boolean" />
-									<input
-										type="hidden"
-										file="host[]"
-										value="*" />
-								</div>
-							</article>
+								</article>
+							</template>
 						</div>
 					</form>
 
@@ -273,145 +276,148 @@
 							filter-sort-key="_id"
 							filter-sort-direction="asc"
 							filter-query-key="content-type.$regex"
-							render-query="[template]">
-							<form
-								template="media-picker-library-item"
-								class="media-picker-item media-picker-library-item"
-								array="files"
-								object="{{object._id}}"
-								autocomplete="off">
-								<label
-									class="media-picker-library-select"
-									title="{{object.name}}">
-									<input
-										type="radio"
-										file-select
-										name="media-picker-library-selection"
-										form="media-picker-library-selection-form"
-										aria-label="Preview {{object.name}}" />
-									<img
-										src="{{object.pathname}}"
-										alt="{{object.name}}"
-										error-query="$closest .media-picker-library-item"
-										error.class="media-picker-broken" />
-									<span class="text-truncate"
-										>{{object.name}}</span
-									>
-								</label>
-								<button
-									type="reset"
-									form="media-picker-library-selection-form"
-									class="media-picker-release-selection"
-									aria-label="Close preview">
-									<i
-										src="/assets/svg/remix/close-line.svg"
-										aria-hidden="true"></i>
-								</button>
-								<details class="media-picker-pending-actions">
-									<summary
-										aria-label="Options for {{object.name}}">
-										<i
-											src="/assets/svg/remix/more-2-fill.svg"
-											aria-hidden="true"></i>
-									</summary>
-									<div class="media-picker-pending-menu">
-										<label>
-											<input
-												type="radio"
-												name="library-editor-{{object._id}}"
-												class="media-picker-rename-toggle" />
-											<i
-												src="/assets/svg/remix/edit-line.svg"
-												aria-hidden="true"></i>
-											Rename
-										</label>
-										<label>
-											<input
-												type="radio"
-												name="library-editor-{{object._id}}"
-												class="media-picker-details-toggle" />
-											<i
-												src="/assets/svg/remix/information-line.svg"
-												aria-hidden="true"></i>
-											File details
-										</label>
-										<button
-											type="button"
-											class="text-danger"
-											actions="disabled, delete, disabled">
-											<i
-												src="/assets/svg/remix/delete-bin-line.svg"
-												aria-hidden="true"></i>
-											Delete
-										</button>
-									</div>
-								</details>
-								<div class="media-picker-editor">
-									<div class="media-picker-editor-header">
-										<strong
-											class="media-picker-rename-title"
-											>Rename</strong
-										>
-										<strong
-											class="media-picker-details-title"
-											>File details</strong
-										>
-										<label
-											class="media-picker-editor-close"
-											aria-label="Close editor">
-											<input
-												type="radio"
-												name="library-editor-{{object._id}}"
-												class="media-picker-editor-none"
-												checked />
-											<i
-												src="/assets/svg/remix/close-line.svg"
-												aria-hidden="true"></i>
-										</label>
-									</div>
-									<label class="form-label mb-0">
-										Name
+							render-query="template">
+							<template>
+								<form
+									class="media-picker-item media-picker-library-item"
+									array="files"
+									object="{{object._id}}"
+									autocomplete="off">
+									<label
+										class="media-picker-library-select"
+										title="{{object.name}}">
 										<input
-											class="form-control form-control-sm"
-											key="name"
-											value="{{object.name}}"
-											required />
+											type="radio"
+											file-select
+											name="media-picker-library-selection"
+											form="media-picker-library-selection-form"
+											aria-label="Preview {{object.name}}" />
+										<img
+											src="{{object.pathname}}"
+											alt="{{object.name}}"
+											error-query="$closest .media-picker-library-item"
+											error.class="media-picker-broken" />
+										<span class="text-truncate"
+											>{{object.name}}</span
+										>
 									</label>
-									<div class="media-picker-details-fields">
+									<button
+										type="reset"
+										form="media-picker-library-selection-form"
+										class="media-picker-release-selection"
+										aria-label="Close preview">
+										<i
+											src="/assets/svg/remix/close-line.svg"
+											aria-hidden="true"></i>
+									</button>
+									<details
+										class="media-picker-pending-actions">
+										<summary
+											aria-label="Options for {{object.name}}">
+											<i
+												src="/assets/svg/remix/more-2-fill.svg"
+												aria-hidden="true"></i>
+										</summary>
+										<div class="media-picker-pending-menu">
+											<label>
+												<input
+													type="radio"
+													name="library-editor-{{object._id}}"
+													class="media-picker-rename-toggle" />
+												<i
+													src="/assets/svg/remix/edit-line.svg"
+													aria-hidden="true"></i>
+												Rename
+											</label>
+											<label>
+												<input
+													type="radio"
+													name="library-editor-{{object._id}}"
+													class="media-picker-details-toggle" />
+												<i
+													src="/assets/svg/remix/information-line.svg"
+													aria-hidden="true"></i>
+												File details
+											</label>
+											<button
+												type="button"
+												class="text-danger"
+												actions="disabled, delete, disabled">
+												<i
+													src="/assets/svg/remix/delete-bin-line.svg"
+													aria-hidden="true"></i>
+												Delete
+											</button>
+										</div>
+									</details>
+									<div class="media-picker-editor">
+										<div class="media-picker-editor-header">
+											<strong
+												class="media-picker-rename-title"
+												>Rename</strong
+											>
+											<strong
+												class="media-picker-details-title"
+												>File details</strong
+											>
+											<label
+												class="media-picker-editor-close"
+												aria-label="Close editor">
+												<input
+													type="radio"
+													name="library-editor-{{object._id}}"
+													class="media-picker-editor-none"
+													checked />
+												<i
+													src="/assets/svg/remix/close-line.svg"
+													aria-hidden="true"></i>
+											</label>
+										</div>
 										<label class="form-label mb-0">
-											Path
+											Name
 											<input
 												class="form-control form-control-sm"
-												key="path"
-												value="{{object.path}}" />
-										</label>
-										<label class="form-label mb-0">
-											Pathname
-											<input
-												class="form-control form-control-sm"
-												key="pathname"
-												value="{{object.pathname}}"
+												key="name"
+												value="{{object.name}}"
 												required />
 										</label>
-										<label class="form-label mb-0">
-											Content type
-											<input
-												class="form-control form-control-sm"
-												key="content-type"
-												value="{{object.content-type}}"
-												required />
-										</label>
+										<div
+											class="media-picker-details-fields">
+											<label class="form-label mb-0">
+												Path
+												<input
+													class="form-control form-control-sm"
+													key="path"
+													value="{{object.path}}" />
+											</label>
+											<label class="form-label mb-0">
+												Pathname
+												<input
+													class="form-control form-control-sm"
+													key="pathname"
+													value="{{object.pathname}}"
+													required />
+											</label>
+											<label class="form-label mb-0">
+												Content type
+												<input
+													class="form-control form-control-sm"
+													key="content-type"
+													value="{{object.content-type}}"
+													required />
+											</label>
+										</div>
+										<div class="text-end">
+											<button
+												type="button"
+												class="btn btn-primary btn-sm"
+												actions="validate, disabled, save, disabled">
+												Save changes
+											</button>
+										</div>
 									</div>
-									<div class="text-end">
-										<button
-											type="button"
-											class="btn btn-primary btn-sm"
-											actions="validate, disabled, save, disabled">
-											Save changes
-										</button>
-									</div>
-								</div>
-							</form>
+								</form>
+							</template>
 						</div>
 
 						<div

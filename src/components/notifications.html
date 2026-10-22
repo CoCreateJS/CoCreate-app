@@ -74,50 +74,51 @@
 			<div
 				array="notifications"
 				object
-				render-query="[template]"
+				render-query="template"
 				filter-limit="20">
-				<div
-					template
-					class="text-reset notification-item d-block dropdown-item position-relative">
-					<div class="d-flex">
-						<div class="avatar-xs me-3 flex-shrink-0">
-							<span
-								class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
-								<i src="{{object.icon}}"></i>
-							</span>
-						</div>
-						<div class="flex-grow-1">
-							<a
-								href="#!"
-								class="stretched-link">
-								<h6 class="mt-0 mb-2 lh-base">
-									{{object.title}}
-								</h6>
-							</a>
-							<p
-								class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-								<span>
-									<i class="mdi mdi-clock-outline"></i>
-									<span>{{object.time}}</span>
+				<template>
+					<div
+						class="text-reset notification-item d-block dropdown-item position-relative">
+						<div class="d-flex">
+							<div class="avatar-xs me-3 flex-shrink-0">
+								<span
+									class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
+									<i src="{{object.icon}}"></i>
 								</span>
-							</p>
-						</div>
-						<div class="px-2 fs-15">
-							<div class="form-check notification-check">
-								<input
-									class="form-check-input"
-									type="checkbox"
-									value="{{object._id}}"
-									toggle.class="active"
-									toggle-query="$closest .notification-item"
-									id="notification-check-{{object._id}}" />
-								<label
-									class="form-check-label"
-									for="notification-check-{{object._id}}"></label>
+							</div>
+							<div class="flex-grow-1">
+								<a
+									href="#!"
+									class="stretched-link">
+									<h6 class="mt-0 mb-2 lh-base">
+										{{object.title}}
+									</h6>
+								</a>
+								<p
+									class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+									<span>
+										<i class="mdi mdi-clock-outline"></i>
+										<span>{{object.time}}</span>
+									</span>
+								</p>
+							</div>
+							<div class="px-2 fs-15">
+								<div class="form-check notification-check">
+									<input
+										class="form-check-input"
+										type="checkbox"
+										value="{{object._id}}"
+										toggle.class="active"
+										toggle-query="$closest .notification-item"
+										id="notification-check-{{object._id}}" />
+									<label
+										class="form-check-label"
+										for="notification-check-{{object._id}}"></label>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</template>
 			</div>
 
 			<div class="my-3 text-center view-all">
@@ -148,51 +149,52 @@
 				object
 				filter-query-key="type"
 				filter-query-value="message"
-				render-query="[template]"
+				render-query="template"
 				filter-limit="20">
-				<div
-					template
-					class="text-reset notification-item d-block dropdown-item">
-					<div class="d-flex">
-						<img
-							src="{{object.image}}"
-							class="me-3 rounded-circle avatar-xs"
-							alt="user-pic" />
-						<div class="flex-grow-1">
-							<a
-								href="#!"
-								class="stretched-link">
-								<h6 class="mt-0 mb-1 fs-13 fw-semibold">
-									{{object.title}}
-								</h6>
-							</a>
-							<div class="fs-13 text-muted">
-								<p class="mb-1">{{object.message}}</p>
+				<template>
+					<div
+						class="text-reset notification-item d-block dropdown-item">
+						<div class="d-flex">
+							<img
+								src="{{object.image}}"
+								class="me-3 rounded-circle avatar-xs"
+								alt="user-pic" />
+							<div class="flex-grow-1">
+								<a
+									href="#!"
+									class="stretched-link">
+									<h6 class="mt-0 mb-1 fs-13 fw-semibold">
+										{{object.title}}
+									</h6>
+								</a>
+								<div class="fs-13 text-muted">
+									<p class="mb-1">{{object.message}}</p>
+								</div>
+								<p
+									class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+									<span>
+										<i class="mdi mdi-clock-outline"></i>
+										{{object.time}}
+									</span>
+								</p>
 							</div>
-							<p
-								class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-								<span>
-									<i class="mdi mdi-clock-outline"></i>
-									{{object.time}}
-								</span>
-							</p>
-						</div>
-						<div class="px-2 fs-15">
-							<div class="form-check notification-check">
-								<input
-									class="form-check-input"
-									type="checkbox"
-									value="{{object._id}}"
-									toggle.class="active"
-									toggle-query="$closest .notification-item"
-									id="messages-notification-check-{{object._id}}" />
-								<label
-									class="form-check-label"
-									for="messages-notification-check-{{object._id}}"></label>
+							<div class="px-2 fs-15">
+								<div class="form-check notification-check">
+									<input
+										class="form-check-input"
+										type="checkbox"
+										value="{{object._id}}"
+										toggle.class="active"
+										toggle-query="$closest .notification-item"
+										id="messages-notification-check-{{object._id}}" />
+									<label
+										class="form-check-label"
+										for="messages-notification-check-{{object._id}}"></label>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</template>
 			</div>
 
 			<div class="my-3 text-center view-all">

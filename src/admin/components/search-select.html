@@ -10,7 +10,7 @@
 
   3) To insert a selected item into a specific form area after selection:
      - Option A (simple): change the "Select" button attributes to set the values directly:
-         click-query="#newlink" click.innerHTML="(render HTML or template string)"
+         click-query="#newlink" click.innerHTML="`render HTML or template string`"
      - Option B (preferred): listen for the passValues action or passValues event from the Select button and handle insertion.
        The Select button currently calls click.action="passValues" with click.value set to the selected item JSON;
        your page can handle that action or read from the emitted value and insert it where you want.
