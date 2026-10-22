@@ -1,0 +1,20 @@
+<div class="app-identity app-list">
+	<span class="app-image" aria-hidden="true">
+		<img
+			src="/assets/svg/providers/configuration.svg"
+			key="provider"
+			set-value-prefix="/assets/svg/providers/"
+			set-value-suffix=".svg"
+			alt=""
+			onload="this.hidden = false"
+			onerror="if (this.getAttribute('src') === '/assets/svg/providers/configuration.svg') { this.hidden = true; } else { this.src = '/assets/svg/providers/configuration.svg'; }" />
+		<img
+			class="app-custom-image"
+			key="avatar[0].src"
+			alt=""
+			hidden
+			onload="this.hidden = false"
+			onerror="this.hidden = true" />
+	</span>
+	<span class="app-title" key="name"></span>
+</div>
