@@ -1109,3 +1109,74 @@ textarea.form-control-lg {
 	height: auto !important;
 	min-height: 0;
 }
+
+/* Shared structure for declarative select fields and removable selections. */
+.select-control {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+.select-values {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    max-width: 100%;
+}
+.select-values:empty {
+    display: none;
+}
+.select-control > .dropdown-menu {
+    position: static;
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+}
+.select-search {
+    flex: 1 1 8rem;
+    width: auto;
+    min-width: min(8rem, 100%);
+    max-width: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+}
+.select-control:focus-within {
+    border-color: var(--coc-primary-border-subtle);
+}
+.select-option:has(input:checked) {
+    display: none !important;
+}
+.select-chip {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 1 auto;
+    gap: 0.5rem;
+    max-width: 100%;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--coc-border-radius);
+    background-color: var(--coc-primary-bg-subtle);
+    color: var(--coc-primary-text-emphasis);
+}
+.select-chip > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.select-chip .btn-close {
+    flex-shrink: 0;
+    font-size: 0.65rem;
+}
+.select-option > .select-chip {
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    pointer-events: none;
+}
+.select-option .btn-close {
+    display: none;
+}

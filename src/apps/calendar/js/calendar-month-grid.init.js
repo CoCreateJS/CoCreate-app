@@ -461,8 +461,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				.getElementById("edit-event-btn")
 				.setAttribute("hidden", !0);
 	}
-	var r = new Choices("#event-category", { searchEnabled: !1 }),
-		b = new FullCalendar.Calendar(e, {
+	var b = new FullCalendar.Calendar(e, {
 			timeZone: "local",
 			editable: !0,
 			droppable: !0,
@@ -531,10 +530,8 @@ document.addEventListener("DOMContentLoaded", function () {
 							: v.extendedProps.description),
 					(document.getElementById("eventid").value = v.id),
 					v.classNames[0] &&
-						(r.destroy(),
-						(r = new Choices("#event-category", {
-							searchEnabled: !1
-						})).setChoiceByValue(v.classNames[0]));
+						(document.getElementById("event-category").value =
+							v.classNames[0]);
 				function t(e) {
 					var t = "" + ((e = new Date(e)).getMonth() + 1),
 						n = "" + e.getDate();

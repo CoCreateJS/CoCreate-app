@@ -307,7 +307,7 @@ export default {
         },
         search: {
             import: "@cocreate/search",
-            selector: "[search_id]",
+            selector: "[search-query]",
             path: "../CoCreate-modules/CoCreate-search",
             repo: "github.com/CoCreate-app/CoCreate-search.git"
         },
@@ -532,9 +532,6 @@ export default {
         DomAutoscroller: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/dom-autoscroller", crossOrigin: "anonymous" }]
         },
-        Card: {
-            js: [{ src: "https://cdn.jsdelivr.net/npm/card/dist/card.js", crossOrigin: "anonymous" }]
-        },
         Chart: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/chart.js", crossOrigin: "anonymous" }]
         },
@@ -562,9 +559,6 @@ export default {
         },
         Masonry: {
             js: [{ src: "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js", crossOrigin: "anonymous" }]
-        },
-        raterJs: {
-            js: [{ src: "https://cdn.jsdelivr.net/npm/rater-js/index.js", crossOrigin: "anonymous" }]
         },
         Anime: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js", crossOrigin: "anonymous" }]

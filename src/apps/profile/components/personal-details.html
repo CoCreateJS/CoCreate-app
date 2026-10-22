@@ -88,27 +88,82 @@
 				class="form-label"
 				>Skills</label
 			>
-			<select
-				class="form-control"
-				name="skillsInput"
-				plugin='{"$Choices":["$this",{}]}'
-				data-choices-text-unique-true
-				multiple
-				id="skillsInput"
-				key="skills[]"
-				aria-label="Skills">
-				<option value="illustrator">Illustrator</option>
-				<option value="photoshop">Photoshop</option>
-				<option value="css">CSS</option>
-				<option value="html">HTML</option>
-				<option
-					value="javascript"
-					selected>
-					Javascript
-				</option>
-				<option value="python">Python</option>
-				<option value="php">PHP</option>
-			</select>
+			<div
+				class="dropdown form-control select-control"
+				search_id="profile-skills"
+				data-options
+				click-query="$this :scope > input[type=search]"
+				click.$focus="$undefined">
+				<div class="select-values" data-selected-options aria-label="Selected skills"></div>
+				<input
+					id="skillsInput"
+					type="search"
+					class="select-search"
+					placeholder="Search skills"
+					aria-label="Search and select skills"
+					role="combobox"
+					aria-autocomplete="list"
+					aria-controls="profile-skills-options"
+					aria-expanded="false"
+					aria-haspopup="dialog"
+					aria-open
+					focus.aria-expanded="true"
+					input.aria-expanded="true"
+					autocomplete="off"
+					save="false"
+					search_id="profile-skills"
+					search-query="$next [data-option]" />
+				<div
+					id="profile-skills-options"
+					class="dropdown-menu w-100 p-3"
+					role="dialog"
+					aria-label="Select skills"
+					aria-hidden="true"
+					aria-close-on="outside"
+					aria-close="false">
+					<div
+						role="group"
+						aria-label="Skills"
+						render="options"
+						render-data='{"options":["Illustrator","Photoshop","Figma","Sketch","InDesign"]}'
+						render-query="template">
+						<template render-as="skill">
+							<div>
+								<label
+									class="dropdown-item select-option d-flex align-items-center gap-2 mb-0"
+									data-option>
+									<input
+										type="checkbox"
+										class="form-check-input mt-0"
+										name="skillsInput"
+										key="skills"
+										value="{{skill}}"
+										input-query="$this:checked $closest [data-options] [data-selected-options]:not(:has([data-selected-option='{{skill}}']))"
+										input-value="$query($this:checked $parent $next).getValue()"
+										input.insertAdjacentHTML="beforeend"
+										change-query="$this:not(:checked) $closest [data-options] [data-selected-options] > [data-selected-option='{{skill}}']"
+										change.$remove="" />
+									<span>{{skill}}</span>
+								</label>
+								<div hidden get-value-evaluate="false">
+									<span
+										class="select-chip"
+										data-selected-option="{{skill}}">
+										<span>{{skill}}</span>
+										<button
+											type="button"
+											class="btn-close"
+											aria-label="Remove {{skill}}"
+											click-query="$closest [data-options] input[value='{{skill}}']:checked"
+											click-stop-propagation="true"
+											click.click="$true"></button>
+									</span>
+								</div>
+							</div>
+						</template>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="app-field app-field-half">
 			<label

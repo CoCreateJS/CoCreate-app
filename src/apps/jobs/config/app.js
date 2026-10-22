@@ -106,10 +106,6 @@ export default {
                         "value": "category-Input"
                     },
                     {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
                         "name": "required",
                         "value": true
                     },
@@ -224,10 +220,6 @@ export default {
                     {
                         "name": "name",
                         "value": "type-Input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
                     },
                     {
                         "name": "required",
@@ -372,10 +364,6 @@ export default {
                     {
                         "name": "name",
                         "value": "experience-Input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
                     },
                     {
                         "name": "key",

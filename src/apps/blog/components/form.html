@@ -456,42 +456,37 @@
 							<!-- Category -->
 							<div class="mb-3">
 								<label
-									for="choices-categories-input"
+									for="blog-category"
 									class="form-label">
 									Category
 									<i src="/assets/svg/remix/information-line.svg" class="ms-1"
 										style="cursor: pointer"
 										title="Select the main topic or section for this post. Categories help organize your blog content."></i>
 								</label>
-								<input
-									type="text"
-									class="form-control"
-									id="choices-categories-input"
-									key="category"
-									placeholder="Enter or select category"
-									aria-label="Post Category"
-									plugin='{
-										"$Choices": ["$this", {"maxItemCount": 3, "removeItemButton": true}]
-									}' />
+								<div
+									src="/components/category.html"
+									input-query="$this input[type=search]"
+									input.id="blog-category"
+									onload-query="$this input[type=search]"
+									onload.id="blog-category"></div>
 							</div>
 
 							<!-- Tags (moved here, after Category) -->
 							<div class="mb-3">
 								<label
-									for="choices-text-input"
+									for="blog-tags"
 									class="form-label">
 									Tags
 									<i src="/assets/svg/remix/information-line.svg" class="ms-1"
 										style="cursor: pointer"
 										title="Add relevant keywords to help organize and filter posts. Separate tags with commas or press Enter."></i>
 								</label>
-								<input
-									class="form-control"
-									id="choices-text-input"
-									aria-label="Post Tags"
-									plugin='{
-										"$Choices": ["$this", {"maxItemCount": 3, "removeItemButton": true}]
-									}' />
+								<div
+									src="/components/tags.html"
+									input-query="$this [key]"
+									input.id="blog-tags"
+									onload-query="$this [key]"
+									onload.id="blog-tags"></div>
 							</div>
 
 							<!-- Slug field (moved here,after Tags, before Author) -->
@@ -692,24 +687,37 @@
 
 							<div>
 								<label
-									for="meta-keywords"
+									for="meta-keyword-entry"
 									class="form-label">
 									Meta Keywords
 									<i src="/assets/svg/remix/information-line.svg" class="ms-1"
 										style="cursor: pointer"
-										title="Comma-separated keywords to help search engines understand your post topic."></i>
+										title="Add keywords to help search engines understand your post topic."></i>
 								</label>
-								<input
-									class="form-control"
-									id="meta-keywords"
-									placeholder="Enter Keywords"
-									type="text"
-									value="UI/UX, Figma, HTML, CSS, Javascript, C#, Nodejs"
-									key="meta-keywords"
-									aria-label="Meta Keywords"
-									plugin='{
-										"$Choices": ["$this", {"maxItemCount": 3, "removeItemButton": true}]
-									}' />
+								<div
+									class="form-control meta-keyword-control"
+									onclick="if (event.target === this) document.getElementById('meta-keyword-entry').focus()">
+									<div
+										id="meta-keyword-chips"
+										class="meta-keyword-chips"
+										aria-live="polite"></div>
+									<input
+										id="meta-keyword-entry"
+										class="meta-keyword-entry"
+										type="text"
+										placeholder="Type a keyword and press Enter"
+										aria-label="Add meta keyword"
+										autocomplete="off"
+										onkeydown="if (event.key === 'Enter') { event.preventDefault(); addMetaKeyword(this); }" />
+									<input
+										id="meta-keywords"
+										type="hidden"
+										key="meta-keywords"
+										value="UI/UX, Figma, HTML, CSS, Javascript, C#, Nodejs"
+										aria-label="Meta Keywords"
+										oninput="renderMetaKeywords(this.value)"
+										onchange="renderMetaKeywords(this.value)" />
+								</div>
 							</div>
 						</div>
 					</section>
@@ -723,8 +731,113 @@
 	</div>
 
 	<!-- container-fluid -->
+	<style>
+		.meta-keyword-control {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.5rem;
+			min-height: 2.5rem;
+			height: auto;
+			cursor: text;
+		}
+
+		.meta-keyword-chips {
+			display: contents;
+		}
+
+		.meta-keyword-chip {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			padding: 0.2rem 0.55rem;
+			border-radius: 999px;
+			background: var(--bs-secondary-bg, #e9ecef);
+			color: var(--bs-body-color, #212529);
+			font-size: 0.875rem;
+		}
+
+		.meta-keyword-chip button {
+			padding: 0;
+			border: 0;
+			background: transparent;
+			color: inherit;
+			font: inherit;
+			line-height: 1;
+			cursor: pointer;
+		}
+
+		.meta-keyword-entry {
+			flex: 1 1 12rem;
+			min-width: 8rem;
+			padding: 0.15rem 0;
+			border: 0;
+			outline: 0;
+			background: transparent;
+			color: inherit;
+		}
+
+		.meta-keyword-entry:focus {
+			box-shadow: none;
+		}
+	</style>
 
 	<script>
+			function renderMetaKeywords(value) {
+				const chips = document.getElementById("meta-keyword-chips");
+				if (!chips) return;
+
+				const keywords = String(value || "")
+					.split(",")
+					.map((keyword) => keyword.trim())
+					.filter(Boolean);
+				chips.replaceChildren();
+
+				keywords.forEach((keyword, index) => {
+					const chip = document.createElement("span");
+					chip.className = "meta-keyword-chip";
+
+					const label = document.createElement("span");
+					label.textContent = keyword;
+
+					const remove = document.createElement("button");
+					remove.type = "button";
+					remove.setAttribute("aria-label", `Remove ${keyword}`);
+					remove.textContent = "×";
+					remove.addEventListener("click", () => {
+						keywords.splice(index, 1);
+						setMetaKeywords(keywords);
+					});
+
+					chip.append(label, remove);
+					chips.append(chip);
+				});
+			}
+
+			function setMetaKeywords(keywords) {
+				const field = document.getElementById("meta-keywords");
+				if (!field) return;
+				field.value = keywords.join(", ");
+				field.dispatchEvent(new Event("input", { bubbles: true }));
+				field.dispatchEvent(new Event("change", { bubbles: true }));
+			}
+
+			function addMetaKeyword(input) {
+				const keyword = input.value.replace(/,$/, "").trim();
+				if (!keyword) return;
+
+				const field = document.getElementById("meta-keywords");
+				const keywords = field.value
+					.split(",")
+					.map((item) => item.trim())
+					.filter(Boolean);
+				if (!keywords.some((item) => item.toLowerCase() === keyword.toLowerCase())) {
+					keywords.push(keyword);
+					setMetaKeywords(keywords);
+				}
+				input.value = "";
+			}
+
 			function toggleCounter(el, counterId) {
 				const counter = document.getElementById(counterId);
 				if (el === document.activeElement || el.value.length > 0) {
@@ -757,4 +870,6 @@
 					);
 				}
 			});
+
+			renderMetaKeywords(document.getElementById("meta-keywords")?.value);
 		</script>

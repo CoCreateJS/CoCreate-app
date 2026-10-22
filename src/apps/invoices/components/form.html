@@ -131,10 +131,8 @@
 				Payment Status
 				<select
 					class="form-control bg-light border-0"
-					plugin='{"$Choices":["$this",{}]}'
-					data-choices-search-false
-					id="choices-payment-status"
-					aria-labelledby="choices-payment-status"
+					id="invoice-payment-status"
+					aria-labelledby="invoice-payment-status"
 					key="payment.status">
 					<option value="">Select Payment Status</option>
 					<option value="Paid">Paid</option>
@@ -290,9 +288,7 @@
 									Rate
 									<select
 										class="form-select border-0 bg-light"
-										plugin='{"$Choices":["$this",{}]}'
-										data-choices-search-false
-										id="choices-payment-currency"
+										id="invoice-payment-currency"
 										onchange="otherPayment()"
 										aria-label="Select currency for rate"
 										key="currencySelector">
@@ -623,17 +619,14 @@
 					</div>
 					<div class="d-flex flex-column gap-1">
 						<label
-							for="choices-payment-type"
+							for="invoice-payment-method"
 							class="form-label"
 							>Payment Method</label
 						>
 						<div class="input-light">
 							<select
 								class="form-control bg-light border-0"
-								plugin='{"$Choices":["$this",{}]}'
-								data-choices-search-false
-								data-choices-removeItem
-								id="choices-payment-type"
+								id="invoice-payment-method"
 								aria-label="Select payment method"
 								key="payment.method">
 								<option value="">Payment Method</option>

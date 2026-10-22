@@ -1,0 +1,78 @@
+<div
+	class="dropdown form-control select-control"
+	search_id="category-options"
+	data-options
+	click-query="$this :scope > input[type=search]"
+	click.$focus="$undefined">
+	<div
+		class="select-values"
+		data-selected-options
+		aria-label="Selected categories"></div>
+	<input
+		type="search"
+		class="select-search"
+		placeholder="Search or select categories"
+		aria-label="Search or select categories"
+		role="combobox"
+		aria-autocomplete="list"
+		aria-controls="category-options"
+		aria-expanded="false"
+		aria-haspopup="dialog"
+		aria-open
+		focus.aria-expanded="true"
+		input.aria-expanded="true"
+		autocomplete="off"
+		save="false"
+		search_id="category-options"
+		search-query="$next [data-option]" />
+	<div
+		id="category-options"
+		class="dropdown-menu w-100 p-3"
+		role="dialog"
+		aria-label="Select categories"
+		aria-hidden="true"
+		aria-close-on="outside"
+		aria-close="false">
+		<div
+			role="group"
+			aria-label="Categories"
+			data-category-options
+			render="options"
+			render-query="template">
+			<template render-as="category">
+				<div>
+					<label
+						class="dropdown-item select-option d-flex align-items-center gap-2 mb-0"
+						data-option>
+						<input
+							type="checkbox"
+							class="form-check-input mt-0"
+							name="category"
+							key="category"
+							value="{{category}}"
+							input-query="$this:checked $closest [data-options] [data-selected-options]:not(:has([data-selected-option='{{category}}']))"
+							input-value="$query($this:checked $parent $next).getValue()"
+							input.insertAdjacentHTML="beforeend"
+							change-query="$this:not(:checked) $closest [data-options] [data-selected-options] > [data-selected-option='{{category}}']"
+							change.$remove="" />
+						<span>{{category}}</span>
+					</label>
+					<div hidden get-value-evaluate="false">
+						<span
+							class="select-chip"
+							data-selected-option="{{category}}">
+							<span>{{category}}</span>
+							<button
+								type="button"
+								class="btn-close"
+								aria-label="Remove {{category}}"
+								click-query="$closest [data-options] input[value='{{category}}']:checked"
+								click-stop-propagation="true"
+								click.click="$true"></button>
+						</span>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
+</div>

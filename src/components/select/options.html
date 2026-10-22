@@ -1,0 +1,48 @@
+<div
+	id="select-options"
+	class="dropdown-menu w-100 p-3"
+	role="dialog"
+	aria-label="Select options"
+	aria-hidden="true"
+	aria-close-on="outside"
+	aria-close="false"
+	render="options"
+	render-data='{"options":["Illustrator","Photoshop","Figma","Sketch","InDesign"]}'
+	render-query="template">
+	<template>
+		<div>
+			<label
+				class="dropdown-item select-option d-flex align-items-center gap-2 mb-0"
+				data-option>
+				<input
+					type="checkbox"
+					class="form-check-input mt-0"
+					name="skillsInput"
+					key="skills"
+					value="{{options}}"
+					input-query="$this:checked $closest [data-options] [data-selected-options]:not(:has([data-selected-option='{{options}}']))"
+					input-value="$query($this:checked $parent $next).getValue()"
+					input.insertAdjacentHTML="beforeend"
+					change-query="$this:not(:checked) $closest [data-options] [data-selected-options] > [data-selected-option='{{options}}']"
+					change.$remove="" />
+				<span>{{options}}</span>
+			</label>
+			<div
+				hidden
+				get-value-evaluate="false">
+				<span
+					class="select-chip"
+					data-selected-option="{{options}}">
+					<span>{{options}}</span>
+					<button
+						type="button"
+						class="btn-close"
+						aria-label="Remove {{options}}"
+						click-query="$closest [data-options] input[value='{{options}}']:checked"
+						click-stop-propagation="true"
+						click.click="$true"></button>
+				</span>
+			</div>
+		</div>
+	</template>
+</div>

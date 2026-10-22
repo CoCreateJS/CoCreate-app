@@ -189,16 +189,14 @@
 				<div
 					class="d-flex flex-column gap-1 flex-grow-1 flex-basis:220px min-width:200px">
 					<label
-						for="choices-payment-status"
+						for="estimate-payment-status"
 						class="form-label"
 						>Payment Status</label
 					>
 					<div class="input-light">
 						<select
 							class="form-control bg-light border-0"
-							plugin='{"$Choices":["$this",{}]}'
-							data-choices-search-false
-							id="choices-payment-status"
+							id="estimate-payment-status"
 							aria-label="Payment Status">
 							<option value="">Select Payment Status</option>
 							<option value="Paid">Paid</option>
@@ -447,9 +445,7 @@
 									Rate
 									<select
 										class="form-select border-0 bg-light"
-										plugin='{"$Choices":["$this",{}]}'
-										data-choices-search-false
-										id="choices-payment-currency"
+										id="estimate-payment-currency"
 										onchange="otherPayment()"
 										aria-label="Currency Selection">
 										<option value="$">($)</option>
@@ -693,24 +689,21 @@
 					class="form-container flex-column gap-3 flex-grow-1 flex-basis:320px min-width:250px">
 					<div class="d-flex flex-column gap-1">
 						<label
-							for="choices-payment-type"
+							for="estimate-payment-type"
 							class="form-label text-muted text-uppercase fw-semibold"
 							>Payment Details</label
 						>
 					</div>
 					<div class="d-flex flex-column gap-1">
 						<label
-							for="choices-payment-type"
+							for="estimate-payment-type"
 							class="form-label"
 							>Payment Method</label
 						>
 						<div class="input-light">
 							<select
 								class="form-control bg-light border-0"
-								plugin='{"$Choices":["$this",{}]}'
-								data-choices-search-false
-								data-choices-removeItem
-								id="choices-payment-type"
+								id="estimate-payment-type"
 								aria-label="Payment Method">
 								<option value="">Payment Method</option>
 								<option value="Mastercard">

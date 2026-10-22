@@ -454,15 +454,7 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-publish-status-input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
+                        "value": "diagnostic-publish-status-input"
                     },
                     {
                         "name": "key",
@@ -514,15 +506,7 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-publish-visibility-input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
+                        "value": "diagnostic-publish-visibility-input"
                     },
                     {
                         "name": "key",
@@ -632,19 +616,11 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-category-input"
+                        "value": "diagnostic-category-input"
                     },
                     {
                         "name": "name",
-                        "value": "choices-category-input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
+                        "value": "category"
                     },
                     {
                         "name": "key",

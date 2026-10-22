@@ -16,15 +16,21 @@
 				aria-expanded="true" aria-close></button>
 		</div>
 		<div class="card-body">
+			<div src="/apps/email/components/contact-options.html"></div>
 			<div>
 				<div class="mb-3 position-relative">
-					<input
-						type="text"
-						class="form-control email-compose-input"
-						plugin='{"$Choices":["$this",{"limit":15,"removeItem":true}]}'
-
-						value="support@themesbrand.com"
-						placeholder="To" />
+					<div
+						src="/apps/email/components/recipient-select.html"
+						input-query="$this [key]"
+						input.key="to"
+						input.id="email-to"
+						input.class="email-compose-input"
+						input.value="support@themesbrand.com"
+						onload-query="$this [key]"
+						onload.key="to"
+						onload.id="email-to"
+						onload.class="email-compose-input"
+						onload.value="support@themesbrand.com"></div>
 					<div class="position-absolute top-0 end-0">
 						<div class="d-flex">
 							<button
@@ -50,24 +56,28 @@
 				</div>
 				<div class="collapse" id="CcRecipientsCollapse">
 					<div class="mb-3">
-						<label>Cc:</label>
-						<input
-							type="text"
-							class="form-control"
-							plugin='{"$Choices":["$this",{"limit":15,"removeItem":true}]}'
-
-							placeholder="Cc recipients" />
+						<label for="email-cc" class="form-label">Cc:</label>
+						<div
+							src="/apps/email/components/recipient-select.html"
+							input-query="$this [key]"
+							input.key="cc"
+							input.id="email-cc"
+							onload-query="$this [key]"
+							onload.key="cc"
+							onload.id="email-cc"></div>
 					</div>
 				</div>
 				<div class="collapse" id="BccRecipientsCollapse">
 					<div class="mb-3">
-						<label>Bcc:</label>
-						<input
-							type="text"
-							class="form-control"
-							plugin='{"$Choices":["$this",{"limit":15,"removeItem":true}]}'
-
-							placeholder="Bcc recipients" />
+						<label for="email-bcc" class="form-label">Bcc:</label>
+						<div
+							src="/apps/email/components/recipient-select.html"
+							input-query="$this [key]"
+							input.key="bcc"
+							input.id="email-bcc"
+							onload-query="$this [key]"
+							onload.key="bcc"
+							onload.id="email-bcc"></div>
 					</div>
 				</div>
 

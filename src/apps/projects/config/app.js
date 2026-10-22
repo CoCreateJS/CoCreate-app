@@ -99,15 +99,7 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-priority-input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
+                        "value": "priority-input"
                     },
                     {
                         "name": "key",
@@ -480,15 +472,7 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-privacy-status-input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
+                        "value": "project-privacy-input"
                     },
                     {
                         "name": "key",
@@ -550,15 +534,7 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-categories-input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
+                        "value": "project-categories-input"
                     },
                     {
                         "name": "key",
@@ -646,15 +622,7 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-lead-input"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
+                        "value": "project-team-lead-input"
                     },
                     {
                         "name": "key",

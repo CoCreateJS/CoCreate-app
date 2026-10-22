@@ -210,15 +210,7 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-payment-status"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
+                        "value": "estimate-payment-status"
                     },
                     {
                         "name": "required",
@@ -242,19 +234,7 @@ export default {
                     },
                     {
                         "name": "id",
-                        "value": "choices-payment-type"
-                    },
-                    {
-                        "name": "plugin",
-                        "value": "choices"
-                    },
-                    {
-                        "name": "data-choices-search-false",
-                        "value": true
-                    },
-                    {
-                        "name": "data-choices-removeItem",
-                        "value": true
+                        "value": "estimate-payment-type"
                     },
                     {
                         "name": "key",

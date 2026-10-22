@@ -42,136 +42,72 @@ getJSON("nft-explore-product-list.json", function (e, t) {
 		? console.log("Something went wrong: " + e)
 		: loadProductData((allproductlist = t));
 });
-var searchProductList = document.getElementById("searchProductList"),
-	productCategoryInput =
-		(searchProductList.addEventListener("keyup", function () {
-			var e = searchProductList.value.toLowerCase();
-			t = e;
-			var t,
-				e = allproductlist.filter(function (e) {
-					return (
-						-1 !== e.title.toLowerCase().indexOf(t.toLowerCase())
-					);
-				});
-			0 == e.length
-				? ((document.getElementById("noresult").style.display =
-						"block"),
-				  (document.getElementById("loadmore").style.display = "none"))
-				: ((document.getElementById("noresult").style.display = "none"),
-				  (document.getElementById("loadmore").style.display =
-						"block")),
-				loadProductData(e);
-		}),
-		new Choices(document.getElementById("select-category"), {
-			searchEnabled: !1
-		})),
-	productFileTypeInput =
-		(productCategoryInput.passedElement.element.addEventListener(
-			"change",
-			function (e) {
-				var t,
-					l = e.detail.value;
-				e.detail.value
-					? 0 ==
-					  (t = allproductlist.filter((e) => e.category === l))
-							.length
-						? ((document.getElementById("noresult").style.display =
-								"block"),
-						  (document.getElementById("loadmore").style.display =
-								"none"))
-						: ((document.getElementById("noresult").style.display =
-								"none"),
-						  (document.getElementById("loadmore").style.display =
-								"block"))
-					: (t = allproductlist),
-					loadProductData(t);
-			},
-			!1
-		),
-		new Choices(document.getElementById("file-type"), {
-			searchEnabled: !1
-		}));
-productFileTypeInput.passedElement.element.addEventListener(
-	"change",
-	function (e) {
-		var t,
-			l = e.detail.value;
-		e.detail.value
-			? 0 ==
-			  (t = allproductlist.filter(
-					(e) => e.productImg.split(".").pop() == l
-			  )).length
-				? ((document.getElementById("noresult").style.display =
-						"block"),
-				  (document.getElementById("loadmore").style.display = "none"))
-				: ((document.getElementById("noresult").style.display = "none"),
-				  (document.getElementById("loadmore").style.display = "block"))
-			: (t = allproductlist),
-			loadProductData(t);
-	},
-	!1
-);
-(productCategoryInput = new Choices(
-	document.getElementById("select-category"),
-	{ searchEnabled: !1 }
-)).passedElement.element.addEventListener(
-	"change",
-	function (e) {
-		var t,
-			l = e.detail.value;
-		e.detail.value
-			? 0 == (t = allproductlist.filter((e) => e.category === l)).length
-				? ((document.getElementById("noresult").style.display =
-						"block"),
-				  (document.getElementById("loadmore").style.display = "none"))
-				: ((document.getElementById("noresult").style.display = "none"),
-				  (document.getElementById("loadmore").style.display = "block"))
-			: (t = allproductlist),
-			loadProductData(t);
-	},
-	!1
-);
-var productSalesInputInput = new Choices(
-		document.getElementById("all-sales-type"),
-		{ searchEnabled: !1 }
-	),
-	rangeProductPrice =
-		(productSalesInputInput.passedElement.element.addEventListener(
-			"change",
-			function (e) {
-				var t,
-					l = e.detail.value;
-				e.detail.value
-					? 0 ==
-					  (t = allproductlist.filter((e) => e.salesType === l))
-							.length
-						? ((document.getElementById("noresult").style.display =
-								"block"),
-						  (document.getElementById("loadmore").style.display =
-								"none"))
-						: ((document.getElementById("noresult").style.display =
-								"none"),
-						  (document.getElementById("loadmore").style.display =
-								"block"))
-					: (t = allproductlist),
-					loadProductData(t);
-			},
-			!1
-		),
-		document.getElementById("range-product-price")),
-	minCostInput =
-		(noUiSlider.create(rangeProductPrice, {
-			start: [0, 1e3],
-			step: 10,
-			margin: 20,
-			connect: !0,
-			behaviour: "tap-drag",
-			tooltips: [!0, !0],
-			range: { min: 0, max: 2e3 },
-			format: wNumb({ decimals: 0 })
-		}),
-		mergeTooltips(rangeProductPrice, 5, " - "),
-		document.getElementById("minCost")),
+var searchProductList = document.getElementById("searchProductList");
+searchProductList.addEventListener("keyup", function () {
+	var query = searchProductList.value.toLowerCase();
+	var products = allproductlist.filter(function (product) {
+		return product.title.toLowerCase().includes(query);
+	});
+	updateProductResults(products);
+});
+
+function updateProductResults(products) {
+	if (products.length === 0) {
+		document.getElementById("noresult").style.display = "block";
+		document.getElementById("loadmore").style.display = "none";
+	} else {
+		document.getElementById("noresult").style.display = "none";
+		document.getElementById("loadmore").style.display = "block";
+	}
+	loadProductData(products);
+}
+
+var productCategoryInput = document.getElementById("explore-category-filter");
+productCategoryInput.addEventListener("change", function () {
+	var category = productCategoryInput.value;
+	var products = category
+		? allproductlist.filter(function (product) {
+			return product.category === category;
+		})
+		: allproductlist;
+	updateProductResults(products);
+});
+
+var productFileTypeInput = document.getElementById("explore-file-type-filter");
+productFileTypeInput.addEventListener("change", function () {
+	var fileType = productFileTypeInput.value;
+	var products = fileType
+		? allproductlist.filter(function (product) {
+			return product.productImg.split(".").pop() === fileType;
+		})
+		: allproductlist;
+	updateProductResults(products);
+});
+
+var productSalesInputInput = document.getElementById("explore-sales-type-filter");
+productSalesInputInput.addEventListener("change", function () {
+	var salesType = productSalesInputInput.value;
+	var products = salesType
+		? allproductlist.filter(function (product) {
+			return product.salesType === salesType;
+		})
+		: allproductlist;
+	updateProductResults(products);
+});
+
+var rangeProductPrice = document.getElementById("range-product-price");
+noUiSlider.create(rangeProductPrice, {
+	start: [0, 1e3],
+	step: 10,
+	margin: 20,
+	connect: !0,
+	behaviour: "tap-drag",
+	tooltips: [!0, !0],
+	range: { min: 0, max: 2e3 },
+	format: wNumb({ decimals: 0 })
+});
+mergeTooltips(rangeProductPrice, 5, " - ");
+var minCostInput = document.getElementById("minCost"),
 	maxCostInput = document.getElementById("maxCost"),
 	filterDataAll = "";
 function mergeTooltips(e, c, u) {

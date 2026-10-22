@@ -64,14 +64,12 @@
 				</label>
 				<div class="d-flex flex-wrap gap-3 width:100%">
 					<label
-						for="choices-priority-input"
+						for="priority-input"
 						class="form-label flex-grow-1 flex-basis:140px min-width:140px">
 						Priority
 						<select
 							class="form-select"
-							plugin='{"$Choices":["$this",{}]}'
-							data-choices-search-false
-							id="choices-priority-input"
+							id="priority-input"
 							key="priority"
 							aria-label="Select project priority">
 							<option
@@ -84,14 +82,12 @@
 						</select>
 					</label>
 					<label
-						for="choices-status-input"
+						for="status-input"
 						class="form-label flex-grow-1 flex-basis:140px min-width:140px">
 						Status
 						<select
 							class="form-select"
-							plugin='{"$Choices":["$this",{}]}'
-							data-choices-search-false
-							id="choices-status-input"
+							id="status-input"
 							key="status"
 							aria-label="Select project status">
 							<option
@@ -200,14 +196,12 @@
 				</div>
 				<div>
 					<label
-						for="choices-privacy-status-input"
+						for="project-privacy-input"
 						class="form-label flex-grow-1">
 						Status
 						<select
 							class="form-select"
-							plugin='{"$Choices":["$this",{}]}'
-							data-choices-search-false
-							id="choices-privacy-status-input"
+							id="project-privacy-input"
 							aria-label="Select privacy status">
 							<option
 								value="Private"
@@ -227,14 +221,12 @@
 				</div>
 				<div class="d-flex flex-wrap gap-3">
 					<label
-						for="choices-categories-input"
+						for="project-categories-input"
 						class="form-label flex-grow-1 flex-basis:160px">
 						Categories
 						<select
 							class="form-select"
-							plugin='{"$Choices":["$this",{}]}'
-							data-choices-search-false
-							id="choices-categories-input"
+							id="project-categories-input"
 							aria-label="Select project categories">
 							<option
 								value="Designing"
@@ -244,20 +236,89 @@
 							<option value="Development">Development</option>
 						</select>
 					</label>
-					<label
-						for="choices-text-input"
-						class="form-label flex-grow:2 flex-basis:220px">
-						Skills
-						<input
-							class="form-control"
-							id="choices-text-input"
-							plugin='{"$Choices":["$this",{}]}'
-							data-choices-limit=" Limit"
-							placeholder="Enter Skills"
-							type="text"
-							value="UI/UX, Figma, HTML, CSS, Javascript, C#, Nodejs"
-							aria-label="Enter project skills" />
-					</label>
+					<div class="app-field app-field-full">
+						<label
+							for="skillsInput"
+							class="form-label"
+							>Skills</label
+						>
+						<div
+							class="dropdown form-control select-control"
+							search_id="profile-skills"
+							data-options
+							click-query="$this :scope > input[type=search]"
+							click.$focus="$undefined">
+							<div class="select-values" data-selected-options aria-label="Selected skills"></div>
+							<input
+								id="skillsInput"
+								type="search"
+								class="select-search"
+								placeholder="Search skills"
+								aria-label="Search and select skills"
+								role="combobox"
+								aria-autocomplete="list"
+								aria-controls="profile-skills-options"
+								aria-expanded="false"
+								aria-haspopup="dialog"
+								aria-open
+								focus.aria-expanded="true"
+								input.aria-expanded="true"
+								autocomplete="off"
+								save="false"
+								search_id="profile-skills"
+								search-query="$next [data-option]" />
+							<div
+								id="profile-skills-options"
+								class="dropdown-menu w-100 p-3"
+								role="dialog"
+								aria-label="Select skills"
+								aria-hidden="true"
+								aria-close-on="outside"
+								aria-close="false">
+								<div
+									role="group"
+									aria-label="Skills"
+									render="options"
+									render-data='{"options":["Illustrator","Photoshop","Figma","Sketch","InDesign"]}'
+									render-query="template">
+									<template render-as="skill">
+										<div>
+											<label
+												class="dropdown-item select-option d-flex align-items-center gap-2 mb-0"
+												data-option>
+												<input
+													type="checkbox"
+													class="form-check-input mt-0"
+													name="skillsInput"
+													key="skills"
+													value="{{skill}}"
+													input-query="$this:checked $closest [data-options] [data-selected-options]:not(:has([data-selected-option='{{skill}}']))"
+													input-value="$query($this:checked $parent $next).getValue()"
+													input.insertAdjacentHTML="beforeend"
+													change-query="$this:not(:checked) $closest [data-options] [data-selected-options] > [data-selected-option='{{skill}}']"
+													change.$remove="" />
+												<span>{{skill}}</span>
+											</label>
+											<div hidden get-value-evaluate="false">
+												<span
+													class="select-chip"
+													data-selected-option="{{skill}}">
+													<span>{{skill}}</span>
+													<button
+														type="button"
+														class="btn-close"
+														aria-label="Remove {{skill}}"
+														click-query="$closest [data-options] input[value='{{skill}}']:checked"
+														click-stop-propagation="true"
+														click.click="$true"></button>
+												</span>
+											</div>
+										</div>
+									</template>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="width:100%">
@@ -266,14 +327,12 @@
 				</div>
 				<div class="d-flex flex-wrap gap-3">
 					<label
-						for="choices-lead-input"
+						for="project-team-lead-input"
 						class="form-label flex-grow-1 flex-basis:180px">
 						Team Lead
 						<select
 							class="form-select"
-							plugin='{"$Choices":["$this",{}]}'
-							data-choices-search-false
-							id="choices-lead-input"
+							id="project-team-lead-input"
 							aria-label="Select team lead">
 							<option
 								value="Brent Gonzalez"
