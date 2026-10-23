@@ -111,7 +111,12 @@
 							id="main-view"
 							class="d-flex flex-column min-height:100% min-width:200px"
 							state-id="adminView"
-							src="/apps/ai/index.html"></div>
+							src="">
+							<div
+								onload-query="previous"
+								onload.src="/apps/ai/index.html"
+								onload-set-timeout="3000"></div>
+						</div>
 					</div>
 					<div
 						id="offcanvas-app"

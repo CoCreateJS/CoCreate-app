@@ -245,14 +245,6 @@ if (typeof window !== 'undefined') {
             }
         ]
     },
-    "Card": {
-        "js": [
-            {
-                "src": "https://cdn.jsdelivr.net/npm/card/dist/card.js",
-                "crossOrigin": "anonymous"
-            }
-        ]
-    },
     "Chart": {
         "js": [
             {
@@ -329,14 +321,6 @@ if (typeof window !== 'undefined') {
             }
         ]
     },
-    "raterJs": {
-        "js": [
-            {
-                "src": "https://cdn.jsdelivr.net/npm/rater-js/index.js",
-                "crossOrigin": "anonymous"
-            }
-        ]
-    },
     "Anime": {
         "js": [
             {
@@ -384,7 +368,7 @@ lazyLoad("remove", "[actions*='remove']", () => import(/* webpackChunkName: "rem
 lazyLoad("attributes", "[attribute]", () => import(/* webpackChunkName: "attributes" */ "@cocreate/attributes"));
 lazyLoad("users", "[session], [actions*='signUp'], [actions*='signIn'], [actions*='signOut'], [user-status]", () => import(/* webpackChunkName: "users" */ "@cocreate/users"));
 lazyLoad("unique", "[unique]", () => import(/* webpackChunkName: "unique" */ "@cocreate/unique"));
-lazyLoad("search", "[search_id]", () => import(/* webpackChunkName: "search" */ "@cocreate/search"));
+lazyLoad("search", "[search-query]", () => import(/* webpackChunkName: "search" */ "@cocreate/search"));
 lazyLoad("elementConfig", "[config-query]", () => import(/* webpackChunkName: "elementConfig" */ "@cocreate/element-config"));
 lazyLoad("validation", "[actions*='validate'], [required]", () => import(/* webpackChunkName: "validation" */ "@cocreate/validation"));
 lazyLoad("calculate", "[calculate]", () => import(/* webpackChunkName: "calculate" */ "@cocreate/calculate"));
