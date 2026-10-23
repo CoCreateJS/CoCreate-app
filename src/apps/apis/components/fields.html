@@ -9,8 +9,7 @@
 		render="object"
 		template="api-custom-field"
 		render-as="field"
-		render-reference="false"
-		render-exclude="_id, avatar, name, icon, provider, type, headers, url, description, enabled, created, updated, deleted, permissions, organization_id, pricing">
+		render-exclude="_id, avatar, name, icon, provider, type, headers, url, description, enabled, created, updated, deleted, permissions, organization_id, pricing, $storage, $database, $array">
 		<label
 			class="text-muted d-block mb-1"
 			for="api-custom-{{field.key}}"
