@@ -54,11 +54,7 @@ export default {
                 "filterTemplate": "<input id=\"content-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search content\" filter-query=\"$document .list-view\" filter-query-key=\"content\" />",
                 "tableTemplate": "{{object.content}}",
                 "attributes": [
-                    {
-                        "name": "editor",
-                        "value": "ckeditor-classic"
-                    },
-                    {
+{
                         "name": "id",
                         "value": "post-content"
                     },

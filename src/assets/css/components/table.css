@@ -1,5 +1,5 @@
-/* Faithfully extracted from the legacy SCSS build. */
-.table {
+/* Shared table defaults and optional presentation modifiers. */
+table {
 	margin-bottom: 0;
 	--coc-table-color-type: initial;
 	--coc-table-bg-type: initial;
@@ -19,11 +19,11 @@
 	vertical-align: top;
 	border-color: var(--coc-table-border-color);
 }
-.table > thead {
+table > thead {
 	border-color: var(--coc-border-color);
 	vertical-align: bottom;
 }
-.table > :not(:first-child) {
+table > :not(:first-child) {
 	border-top-width: var(--coc-border-width);
 }
 .table-nowrap td,
@@ -38,13 +38,13 @@
 .table-card th:last-child {
 	padding-right: 16px;
 }
-.table-card .table > :not(:first-child) {
+.table-card table > :not(:first-child) {
 	border-top-width: var(--coc-border-width);
 }
-.table .table-selection-track {
+table .table-selection-track {
 	width: calc(1.1em + 32px);
 }
-.table .table-selection-column {
+table .table-selection-column {
 	position: sticky;
 	left: 0;
 	z-index: 2;
@@ -56,43 +56,43 @@
 	padding-right: 16px;
 	white-space: nowrap;
 }
-.table thead .table-selection-column {
+table thead .table-selection-column {
 	z-index: 3;
 }
-.table .table-fill-column {
+table .table-fill-column {
 	width: auto;
 	min-width: 0;
 	max-width: none;
 	padding-left: 0;
 	padding-right: 0;
 }
-.table-primary.table > thead {
+table.table-primary > thead {
 	border-bottom-color: var(--coc-primary-border-subtle) !important;
 }
-.table-secondary.table > thead {
+table.table-secondary > thead {
 	border-bottom-color: var(--coc-secondary-border-subtle) !important;
 }
-.table-success.table > thead {
+table.table-success > thead {
 	border-bottom-color: var(--coc-success-border-subtle) !important;
 }
-.table-info.table > thead {
+table.table-info > thead {
 	border-bottom-color: var(--coc-info-border-subtle) !important;
 }
-.table-warning.table > thead {
+table.table-warning > thead {
 	border-bottom-color: var(--coc-warning-border-subtle) !important;
 }
-.table-danger.table > thead {
+table.table-danger > thead {
 	border-bottom-color: var(--coc-danger-border-subtle) !important;
 }
-.table-light.table > thead {
+table.table-light > thead {
 	border-bottom-color: var(--coc-light-border-subtle) !important;
 }
-.table-dark.table > thead {
+table.table-dark > thead {
 	border-bottom-color: var(--coc-dark-border-subtle) !important;
 }
-.table > :not(caption) > * > * {
-	color: var(--coc-table-color-state),
-		var(--coc-table-color-type, var(--coc-table-color));
+table > :not(caption) > * > * {
+	color: var(--coc-table-color-state,
+		var(--coc-table-color-type, var(--coc-table-color)));
 	padding: 0.75rem 0.6rem;
 	background-color: var(--coc-table-bg);
 	border-bottom-width: var(--coc-border-width);
@@ -107,20 +107,20 @@
 			var(--coc-table-bg-type, var(--coc-table-accent-bg))
 		);
 }
-.table .form-check {
+table .form-check {
 	padding-left: 0;
 	margin-bottom: 0;
 }
-.table .form-check .form-check-input {
+table .form-check .form-check-input {
 	margin-left: 0;
 	margin-top: 0;
 	float: none;
 	vertical-align: middle;
 }
-.table .sort {
+table .sort {
 	position: relative;
 }
-.table .sort::before {
+table .sort::before {
 	content: "\f035d";
 	position: absolute;
 	right: 0.5rem;
@@ -128,7 +128,7 @@
 	font-size: 0.8rem;
 	font-family: "Material Design Icons";
 }
-.table .sort::after {
+table .sort::after {
 	position: absolute;
 	right: 0.5rem;
 	content: "\f0360";
@@ -140,7 +140,7 @@
 .invoice-table tbody:last-child {
 	border: none;
 }
-.table > tbody {
+table > tbody {
 	vertical-align: inherit;
 }
 .table-sm > :not(caption) > * > * {
@@ -181,7 +181,22 @@
 	border-color: var(--coc-table-border-color);
 }
 .table-responsive {
+	min-width: 0;
+	max-width: 100%;
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
 }
 
+/* Sticky headers for all tables. */
+table > thead {
+	position: sticky;
+	top: 0;
+	z-index: 3;
+	border-top: 0;
+	background: var(--coc-body-bg);
+}
+
+table > thead > tr > th {
+	border-top: 0;
+	background-color: var(--coc-body-bg);
+}

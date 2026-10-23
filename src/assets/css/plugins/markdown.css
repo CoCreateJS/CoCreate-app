@@ -1,0 +1,62 @@
+/* Override Crepe's fixed palette even when its theme is lazy-loaded later. */
+.markdown-editor.milkdown,
+.markdown-editor .milkdown {
+	--crepe-color-background: var(--coc-secondary-bg);
+	--crepe-color-on-background: var(--coc-body-color);
+	--crepe-color-surface: var(--coc-tertiary-bg);
+	--crepe-color-surface-low: var(--coc-body-bg);
+	--crepe-color-on-surface: var(--coc-body-color);
+	--crepe-color-on-surface-variant: var(--coc-secondary-color);
+	--crepe-color-outline: var(--coc-border-color);
+	--crepe-color-primary: var(--coc-primary);
+	--crepe-color-secondary: var(--coc-primary-bg-subtle);
+	--crepe-color-on-secondary: var(--coc-primary-text-emphasis);
+	--crepe-color-inverse: var(--coc-emphasis-color);
+	--crepe-color-on-inverse: var(--coc-secondary-bg);
+	--crepe-color-inline-code: var(--coc-code-color);
+	--crepe-color-error: var(--coc-danger);
+	--crepe-color-hover: var(--coc-tertiary-bg);
+	--crepe-color-selected: var(--coc-primary-bg-subtle);
+	--crepe-color-inline-area: var(--coc-tertiary-bg);
+	--crepe-base-font-size: var(--coc-body-font-size);
+	--crepe-font-title: var(--coc-font-family-secondary, system-ui, sans-serif);
+	--crepe-font-default: var(--coc-font-family-primary, system-ui, sans-serif);
+	--crepe-font-code: var(--coc-font-monospace);
+	--crepe-shadow-1: var(--coc-box-shadow-sm);
+	--crepe-shadow-2: var(--coc-box-shadow-lg);
+	--crepe-color-diff-added: var(--coc-success);
+	--crepe-color-diff-removed: var(--coc-danger);
+	--crepe-color-diff-added-bg: color-mix(in srgb, var(--crepe-color-diff-added), transparent 88%);
+	--crepe-color-diff-added-text: color-mix(in srgb, var(--crepe-color-diff-added), var(--crepe-color-on-background) 40%);
+	--crepe-color-diff-removed-bg: color-mix(in srgb, var(--crepe-color-diff-removed), transparent 88%);
+	--crepe-color-diff-removed-text: color-mix(in srgb, var(--crepe-color-diff-removed), var(--crepe-color-on-background) 40%);
+}
+
+.markdown-editor.milkdown .ProseMirror,
+.markdown-editor .milkdown .ProseMirror {
+	padding: 8px 16px;
+	--prosemirror-virtual-cursor-color: var(--crepe-color-on-background);
+}
+
+.markdown-editor .ProseMirror:not(.virtual-cursor-enabled) {
+	caret-color: var(--crepe-color-on-background);
+}
+
+/* Opt in on the Markdown field or a surrounding container. */
+[markdown-menu="fixed"] .markdown-editor :is(.milkdown-slash-menu, .milkdown-block-handle, .milkdown-toolbar),
+.markdown-editor[markdown-menu="fixed"] :is(.milkdown-slash-menu, .milkdown-block-handle, .milkdown-toolbar),
+[markdown-menu="fixed"] + .markdown-editor :is(.milkdown-slash-menu, .milkdown-block-handle, .milkdown-toolbar) {
+	position: fixed;
+}
+
+/* Crepe's lazy theme assigns SVG colors through several specific selectors. */
+.markdown-editor .milkdown-icon svg {
+	color: var(--crepe-color-on-surface) !important;
+	fill: currentColor !important;
+}
+
+.markdown-editor .milkdown .milkdown-toolbar .toolbar-item.active svg,
+.markdown-editor .milkdown .milkdown-block-handle .operation-item.active svg {
+	color: var(--crepe-color-primary) !important;
+	fill: currentColor !important;
+}

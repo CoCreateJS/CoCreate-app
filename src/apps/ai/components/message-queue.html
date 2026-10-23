@@ -1,0 +1,61 @@
+<div
+	id="ai-queued-messages"
+	class="ai-message-queue"
+	array="ai-messages"
+	object
+	filter-limit="20"
+	filter-sort-key="created.on"
+	filter-sort-direction="asc"
+	render-query="[template='ai-queued-message-template']">
+	<div
+		hidden
+		state-id="ai-queue-conversation-filter"
+		filter-query="$parent"
+		filter-query-key="conversation_id"
+		filter-query-value=""></div>
+	<div
+		hidden
+		filter-query="$parent"
+		filter-query-key="status"
+		filter-query-value="queued"></div>
+	<div
+		hidden
+		filter-query="$parent"
+		filter-query-key="steer.$ne"
+		filter-query-value="true"></div>
+
+	<article
+		template="ai-queued-message-template"
+		class="ai-queued-message"
+		data-message-id="{{object._id}}">
+		<div class="ai-queued-message-content">{{object.content}}</div>
+		<form
+			class="ai-queued-message-actions"
+			socket="ai.message.update">
+			<input
+				type="hidden"
+				socket-key="ai.patch.steer"
+				value="true"
+				value-type="boolean"
+				value-evaluate="false" />
+			<input
+				type="hidden"
+				socket-key="ai.conversation_id"
+				value="{{object.conversation_id}}" />
+			<input
+				type="hidden"
+				socket-key="ai.user_message_id"
+				value="{{object._id}}" />
+			<button
+				type="button"
+				class="ai-steer-now"
+				actions="send"
+				aria-label="Mark message as steering guidance"
+				title="Steer this message">
+				<i
+					src="/assets/svg/remix/arrow-go-forward-line.svg"
+					aria-hidden="true"></i>
+			</button>
+		</form>
+	</article>
+</div>

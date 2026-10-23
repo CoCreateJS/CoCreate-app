@@ -1,0 +1,106 @@
+<header
+	class="ai-topbar"
+	role="toolbar"
+	aria-label="AI chat controls">
+	<button
+		id="ai-aside-toggle"
+		class="ai-aside-toggle"
+		type="button"
+		aria-label="Toggle conversations"
+		aria-controls="ai-conversations-aside"
+		aria-expanded="false"
+		title="Conversations">
+		<i
+			src="/assets/svg/remix/menu-2-line.svg"
+			class="align-middle fs-22"
+			aria-hidden="true"></i>
+	</button>
+	<button
+		class="ai-new-chat"
+		type="button"
+		click-group="ai-conversation"
+		state='{"ai-conversation-messages":{"filter-query-value":"","array":"","$renderValue":{"object":[]}},"ai-queue-conversation-filter":{"filter-query-value":""},"aiChat":{"conversation-id":""},"ai-chat-conversation-id":{"value":""},"ai-chat-model":{"value":"openai:gpt-5.4-nano","array":"ai-conversations","object":"","realtime":"false"}}'
+		aria-label="New conversation"
+		title="New conversation">
+		<i
+			src="/assets/svg/remix/add-line.svg"
+			aria-hidden="true"></i>
+	</button>
+	<div
+		class="ai-topbar-actions"
+		role="group"
+		aria-label="Window controls">
+		<button
+			type="button"
+			class="ai-chat-panel-fullscreen"
+			fullscreen
+			fullscreen-query="$closest .ai-shell"
+			aria-label="Toggle fullscreen"
+			title="Fullscreen">
+			<i
+				src="/assets/svg/remix/fullscreen-line.svg"
+				class="align-middle fs-22"
+				aria-hidden="true"></i>
+			<i
+				src="/assets/svg/remix/fullscreen-exit-line.svg"
+				class="align-middle fs-22"
+				aria-hidden="true"></i>
+		</button>
+		<button
+			type="button"
+			class="ai-chat-panel-dock ai-dock-to-main d-none d-md-grid"
+			click-query="$document #main-view"
+			click.innerHTML=""
+			click.insertAdjacentElement="beforeend"
+			click-element="$closest .ai-shell"
+			state='{"ai-chat-panel-content":{"src":""},"ai-chat-panel":{"aria-hidden":"true"},"ai-chat-btn":{"state-to":"adminView","state.src":"/apps/ai/index.html","aria-controls":""}}'
+			aria-label="Dock AI chat in main view"
+			aria-controls="ai-chat-panel"
+			aria-close
+			aria-expanded="true"
+			title="Dock left">
+			<i
+				class="ai-dock-main-icon align-middle fs-22"
+				src="/assets/svg/sidebar-fold-line.svg"
+				aria-hidden="true"></i>
+			<i
+				class="ai-dock-side-icon align-middle fs-22"
+				src="/assets/svg/sidebar-unfold-line.svg"
+				aria-hidden="true"></i>
+		</button>
+		<button
+			type="button"
+			class="ai-chat-panel-dock ai-dock-to-panel d-none d-md-grid"
+			click-query="$document .ai-chat-panel-content"
+			click.innerHTML=""
+			click.insertAdjacentElement="beforeend"
+			click-element="$closest .ai-shell"
+			state='{"ai-chat-panel-content":{"src":""},"ai-chat-panel":{"aria-hidden":"false"},"ai-chat-btn":{"state-to":"ai-chat-panel-content","state.src":"/apps/ai/index.html","aria-controls":"ai-chat-panel"}}'
+			aria-label="Dock AI chat in side panel"
+			aria-controls="ai-chat-panel"
+			aria-expanded="false"
+			title="Dock right">
+			<i
+				class="ai-dock-main-icon align-middle fs-22"
+				src="/assets/svg/sidebar-fold-line.svg"
+				aria-hidden="true"></i>
+			<i
+				class="ai-dock-side-icon align-middle fs-22"
+				src="/assets/svg/sidebar-unfold-line.svg"
+				aria-hidden="true"></i>
+		</button>
+		<button
+			type="button"
+			class="ai-chat-panel-close"
+			aria-label="Close AI chat"
+			aria-controls="ai-chat-panel"
+			aria-close
+			aria-expanded="false"
+			title="Close">
+			<i
+				src="/assets/svg/remix/close-line.svg"
+				class="align-middle fs-22"
+				aria-hidden="true"></i>
+		</button>
+	</div>
+</header>

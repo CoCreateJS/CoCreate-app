@@ -1,10 +1,80 @@
-<div class="d-flex flex-column gap-2" data-tags>
-	<select
-		key="tags"
-		name="tags"
-		class="form-select"
-		multiple
-		plugin='{"$Choices":["$this",{}]}'
-		aria-label="Tags"></select>
-	<div data-tag-options hidden></div>
+<div
+	class="dropdown form-control select-control"
+	search_id="tag-options"
+	data-options
+	click-query="$this :scope > input[type=search]"
+	click.$focus="$undefined">
+	<div
+		class="select-values"
+		data-selected-options
+		aria-label="Selected tags"></div>
+	<input
+		type="search"
+		class="select-search"
+		placeholder="Search or select tags"
+		aria-label="Search or select tags"
+		role="combobox"
+		aria-autocomplete="list"
+		aria-controls="tag-options"
+		aria-expanded="false"
+		aria-haspopup="dialog"
+		aria-open
+		focus.aria-expanded="true"
+		input.aria-expanded="true"
+		autocomplete="off"
+		save="false"
+		search_id="tag-options"
+		search-query="$next [data-option]" />
+	<div
+		id="tag-options"
+		class="dropdown-menu w-100 p-3"
+		role="dialog"
+		aria-label="Select tags"
+		aria-hidden="true"
+		aria-close-on="outside"
+		aria-close="false">
+		<div
+			role="group"
+			aria-label="Tags"
+			data-tag-options
+			render="options"
+			render-query="template">
+			<template render-as="tag">
+				<div>
+					<label
+						class="dropdown-item select-option d-flex align-items-center gap-2 mb-0"
+						data-option>
+						<input
+							type="checkbox"
+							class="form-check-input mt-0"
+							name="tag"
+							key="tag"
+							value="{{tag}}"
+							input-query="$this:checked $closest [data-options] [data-selected-options]:not(:has([data-selected-option='{{tag}}']))"
+							input-value="$query($this:checked $parent $next).getValue()"
+							input.insertAdjacentHTML="beforeend"
+							change-query="$this:not(:checked) $closest [data-options] [data-selected-options] > [data-selected-option='{{tag}}']"
+							change.$remove="" />
+						<span>{{tag}}</span>
+					</label>
+					<div
+						hidden
+						get-value-evaluate="false">
+						<span
+							class="select-chip"
+							data-selected-option="{{tag}}">
+							<span>{{tag}}</span>
+							<button
+								type="button"
+								class="btn-close"
+								aria-label="Remove {{tag}}"
+								click-query="$closest [data-options] input[value='{{tag}}']:checked"
+								click-stop-propagation="true"
+								click.click="$true"></button>
+						</span>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
 </div>

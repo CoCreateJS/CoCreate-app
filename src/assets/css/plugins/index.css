@@ -1,6 +1,7 @@
 /* CoCreate overrides for externally supplied plugin styles. */
 @import url("./waves.css");
 @import url("./prismjs.css");
+@import url("./markdown.css");
 @import url("./sweetalert2.css");
 @import url("./range-slider.css");
 @import url("./tour.css");
@@ -8,8 +9,6 @@
 @import url("./colorpicker.css");
 @import url("./filepond.css");
 @import url("./form-input-spin.css");
-@import url("./ckeditor.css");
-@import url("./quilljs.css");
 @import url("./apexcharts.css");
 @import url("./chartjs.css");
 @import url("./echarts.css");

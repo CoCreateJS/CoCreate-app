@@ -34,11 +34,9 @@
         value-type="json" value-evaluate="false" height="auto" rows="1"
         class="form-control font-monospace" spellcheck="false"
         aria-label="Runtime configuration" readonly save="false"></textarea>
-    <button type="button" class="component-codearea-copy"
-        actions="clipboard, copied, timeout(1200), copyreset"
-        clipboard-query="$parent textarea" event-name="copied, copyreset"
-        copied.class="is-copied" copied.aria-label="Configuration copied"
-        copyreset.class="is-copied," copyreset.aria-label="Copy configuration"
+    <button type="button" class="btn position-absolute top-0 end-0 m-2 p-1 border-0 bg-transparent fs-24"
+        clipboard
+        clipboard-query="$parent textarea"
         aria-label="Copy configuration" title="Copy configuration">
         <i src="/assets/svg/remix/file-copy-line.svg" aria-hidden="true"></i>
         <i src="/assets/svg/remix/check-line.svg" aria-hidden="true"></i>

@@ -1,0 +1,129 @@
+<div
+	id="markdown-plugin"
+	hidden
+	plugin='{
+    "markdownParser": {
+        "$markdownit": {
+            "html": false
+        }
+    },
+    "$markdownParser.renderer.rules.table_open": {
+        "$function": {
+            "body": "<div class=\"table-responsive\"><table>\n"
+        }
+    },
+    "$markdownParser.renderer.rules.table_close": {
+        "$function": {
+            "body": "</table></div>\n"
+        }
+    },
+    "$markdownParser.renderAsync": {
+        "$async": {
+            "$function": {
+                "params": [
+                    "content"
+                ],
+                "body": {
+                    "$CoCreate.plugins.init": [
+                        "#prism-plugin"
+                    ],
+                    "$return": {
+                        "$window.markdown.render": "$content"
+                    }
+                }
+            }
+        }
+    },
+    "$window.markdown": "$markdownParser",
+    "$window.document.addEventListener": [
+        "markdownLoaded",
+        {
+            "$function": {
+                "body": {
+                    "$CoCreate.markdown.setRenderer": "$markdownParser"
+                }
+            }
+        }
+    ],
+    "$return": {
+        "$if": {
+            "$CoCreate.markdown.setRenderer": {
+                "$exists": {
+                    "$true": {
+                        "$CoCreate.markdown.setRenderer": "$markdownParser"
+                    }
+                }
+            }
+        }
+    }
+}'></div>
+
+<div
+	id="prism-plugin"
+	hidden
+	plugin='{
+    "$Prism.manual": true,
+    "$CoCreate.plugins.init": [
+        "#markdown-plugin"
+    ],
+    "highlightCode": {
+        "$function": {
+            "params": [
+                "code",
+                "language"
+            ],
+            "body": {
+                "grammar": {
+                    "$getObjectValue": [
+                        "$Prism.languages",
+                        "$language"
+                    ]
+                },
+                "$return": {
+                    "$if": {
+                        "$grammar": {
+                            "$eq": {
+                                "$undefined": "",
+                                "$else": {
+                                    "$Prism.highlight": [
+                                        "$code",
+                                        "$grammar",
+                                        "$language"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "$window.markdown.set": {
+        "highlight": "$highlightCode"
+    },
+    "$window.document.addEventListener": [
+        "codeareaLoaded",
+        {
+            "$function": {
+                "body": {
+                    "$CoCreate.codearea.set": {
+                        "highlight": "$highlightCode"
+                    }
+                }
+            }
+        }
+    ],
+    "$return": {
+        "$if": {
+            "$CoCreate.codearea.set": {
+                "$exists": {
+                    "$true": {
+                        "$CoCreate.codearea.set": {
+                            "highlight": "$highlightCode"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}'></div>

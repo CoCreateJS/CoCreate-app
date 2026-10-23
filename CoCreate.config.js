@@ -361,7 +361,7 @@ export default {
         },
         clipboard: {
             import: "@cocreate/clipboard",
-            selector: "[actions*='clipboard'], [clipboard-query]",
+            selector: "[actions*='clipboard'], [clipboard], [clipboard-query]",
             path: "../CoCreate-modules/CoCreate-clipboard",
             repo: "github.com/CoCreate-app/CoCreate-clipboard.git"
         },
@@ -425,12 +425,18 @@ export default {
      * @namespace plugins
      * @description External plugins (CDN links, styling) and associated configurations.
      * Used to define external dependencies and their JS and CSS sources.
-     * * IMPORTANT: The key for each plugin (e.g., 'Toastify', 'Quill') MUST be the exact 
+     * * IMPORTANT: The key for each plugin (e.g., 'Toastify') MUST be the exact
      * global reference name used by the plugin. The system uses this exact key to dynamically 
      * access the object and initialize the plugin once fetched. This allows any plugin to be 
      * seamlessly whitelisted, configured, and initialized dynamically via HTML attributes or inline scripts.
      */
     plugins: {
+        markdown: {
+            import: "@cocreate/markdown",
+            selector: "[markdown]",
+            path: "../CoCreate-plugins/CoCreate-markdown",
+            repo: "github.com/CoCreate-app/CoCreate-markdown.git"
+        },
         webpack: {
             path: "../CoCreate-plugins/CoCreate-webpack",
             repo: "github.com/CoCreate-app/CoCreate-webpack.git"
@@ -442,17 +448,6 @@ export default {
         flatpickr: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/flatpickr", crossOrigin: "anonymous" }],
             css: ["https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"]
-        },
-        Quill: {
-            js: [{ src: "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.min.js", crossOrigin: "anonymous" }],
-            css: [
-                "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.core.css",
-                "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css",
-                "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.bubble.css"
-            ]
-        },
-        ClassicEditor: {
-            js: [{ src: "https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js", crossOrigin: "anonymous" }]
         },
         GLightbox: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js", crossOrigin: "anonymous" }],
@@ -512,12 +507,19 @@ export default {
                 "https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css"
             ]
         },
+        markdownit: {
+            js: [{ src: "https://cdn.jsdelivr.net/npm/markdown-it@15.0.3/dist/browser/markdown-it.umd.min.js", crossOrigin: "anonymous" }]
+        },
         Prism: {
             js: [
-                { src: "https://cdn.jsdelivr.net/npm/prismjs/prism.min.js", crossOrigin: "anonymous" },
-                { src: "https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js", crossOrigin: "anonymous" }
+                { src: "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js", crossOrigin: "anonymous" },
+                { src: "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-bash.min.js", crossOrigin: "anonymous" },
+                { src: "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js", crossOrigin: "anonymous" },
+                { src: "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-python.min.js", crossOrigin: "anonymous" },
+                { src: "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-typescript.min.js", crossOrigin: "anonymous" },
+                { src: "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js", crossOrigin: "anonymous" }
             ],
-            css: ["https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css"]
+            css: ["https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.min.css"]
         },
         AOS: {
             js: [{ src: "https://unpkg.com/aos@2.3.4/dist/aos.js", crossOrigin: "anonymous" }],

@@ -1,0 +1,138 @@
+<div
+	id="ai-stream-output"
+	class="ai-stream-output"
+	hidden
+	aria-live="polite">
+	<article class="ai-message assistant ai-stream-message">
+		<div class="ai-message-content ai-stream-content"></div>
+		<div
+			class="ai-stream-progress"
+			socket-on="ai.chat"
+			data-ai-stream-status="progress"
+			socket-on-matches='{"ai.status":"progress"}'
+			socket-on-key="ai.message"
+			set-value-type="text"></div>
+	</article>
+	<input
+		type="hidden"
+		socket-on="ai.chat"
+		socket-on-key="ai.status"
+		input-query="$closest .ai-stream-output"
+		input.data-ai-status="$value" />
+	<div class="ai-tool-results" hidden>
+		<section
+			class="ai-tool-result ai-tool-file-changes"
+			src="/apps/ai/components/file-changes.html"></section>
+	</div>
+	<input
+		type="hidden"
+		class="ai-stream-delta"
+		socket-on="ai.chat"
+		data-ai-stream-status="streaming"
+		socket-on-matches='{"ai.status":"streaming"}'
+		socket-on-key="ai.delta"
+		input-query="$closest .ai-stream-output .ai-stream-content"
+		input.insertAdjacentText="beforeend" />
+	<input
+		type="hidden"
+		socket-on="ai.chat"
+		socket-on-matches='{"ai.status":"credentials"}'
+		socket-on-key="ai.conversation_id"
+		input-query="$closest .ai-shell #ai-chat-conversation-id"
+		input.value="$value" />
+	<input
+		type="hidden"
+		socket-on="ai.chat"
+		socket-on-matches='{"ai.status":"credentials"}'
+		socket-on-key="ai.conversation_id"
+		input-query="$closest .ai-shell"
+		input.conversation-id="$value" />
+	<input
+		type="hidden"
+		socket-on="ai.chat"
+		socket-on-matches='{"ai.status":"credentials"}'
+		socket-on-key="ai.conversation_id"
+		input-query="$closest .ai-shell #ai-conversation-messages, $closest .ai-shell #ai-queue-conversation-filter"
+		input.filter-query-value="$value" />
+	<input
+		type="hidden"
+		socket-on="ai.chat"
+		socket-on-matches='{"ai.status":"processing"}'
+		socket-on-key="ai.conversation_id"
+		input-query="$closest .ai-shell"
+		input.conversation-id="$value" />
+	<input
+		type="hidden"
+		socket-on="ai.chat"
+		socket-on-matches='{"ai.status":"processing"}'
+		socket-on-key="ai.conversation_id"
+		input-query="$closest .ai-shell #ai-conversation-messages, $closest .ai-shell #ai-queue-conversation-filter"
+		input.filter-query-value="$value" />
+	<div
+		id="ai-credential-card"
+		class="ai-credential-card"
+		hidden>
+		<input
+			type="hidden"
+			socket-on="ai.chat"
+			data-ai-stream-status="credentials"
+			socket-on-matches='{"ai.status":"credentials"}'
+			socket-on-key="ai.credential.array"
+			input-query="$closest .ai-credential-card"
+			input.$removeAttribute="hidden" />
+		<input
+			type="hidden"
+			socket-on="ai.chat"
+			data-ai-stream-status="credentials"
+			socket-on-matches='{"ai.status":"credentials"}'
+			socket-on-key="ai.credential.object"
+			input-query="$closest .ai-credential-card #ai-credential-form"
+			input.object="$value" />
+		<div class="ai-credential-copy">
+			<strong>Connect API credentials</strong>
+			<span>Enter the requested provider credentials to continue.</span>
+		</div>
+		<form
+			id="ai-credential-form"
+			array="apis"
+			socket="ai.credentials.complete"
+			autocomplete="off">
+			<input
+				type="hidden"
+				socket-on="ai.chat"
+				socket-on-matches='{"ai.status":"credentials"}'
+				socket-on-key="ai.user_message_id"
+				socket-key="ai.user_message_id" />
+			<input
+				type="hidden"
+				socket-on="ai.chat"
+				socket-on-matches='{"ai.status":"credentials"}'
+				socket-on-key="ai.conversation_id"
+				socket-key="ai.conversation_id" />
+			<div
+				id="ai-credential-fields"
+				socket-on="ai.chat"
+				data-ai-stream-status="credentials"
+				socket-on-matches='{"ai.status":"credentials"}'
+				socket-on-key="ai.credential"
+				render="object.fields"
+				render-as="field"
+				render-query="[template='ai-credential-key']">
+				<div
+					template="ai-credential-key"
+					class="ai-credential-field">
+					<label>{{field.label}}</label>
+					<input
+						type="password"
+						key="{{field.key}}"
+						placeholder="{{field.label}}"
+						autocomplete="off"
+						required />
+				</div>
+			</div>
+			<button
+				type="button"
+				actions="save, send">Save credentials</button>
+		</form>
+	</div>
+</div>

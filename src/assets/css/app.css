@@ -324,10 +324,10 @@
 }
 
 .app-identity.app-list .app-image {
-	flex-basis: 42px;
-	--avatar-size: 42px;
-	width: 42px;
-	height: 42px;
+	flex-basis: 36px;
+	--avatar-size: 36px;
+	width: 36px;
+	height: 36px;
 }
 
 .app-identity.app-list > .app-title {

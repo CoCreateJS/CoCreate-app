@@ -63,23 +63,6 @@
 	right: 0.5rem;
 }
 
-.apis-credential-copy.is-copied i[src] {
-	color: var(--coc-success);
-	animation: apis-copy-check 1.2s ease;
-}
-
-@keyframes apis-copy-check {
-	0% { opacity: 0; transform: scale(0.6); }
-	15%, 85% { opacity: 1; transform: scale(1); }
-	100% { opacity: 0; transform: scale(1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-	@keyframes apis-copy-check {
-		from, to { opacity: 1; }
-	}
-}
-
 .apis-status .apis-status-enabled,
 .apis-status:has(input:checked) .apis-status-disabled {
 	display: none;

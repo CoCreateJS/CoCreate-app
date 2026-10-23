@@ -28,27 +28,6 @@ if (typeof window !== 'undefined') {
             "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
         ]
     },
-    "Quill": {
-        "js": [
-            {
-                "src": "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.min.js",
-                "crossOrigin": "anonymous"
-            }
-        ],
-        "css": [
-            "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.core.css",
-            "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css",
-            "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.bubble.css"
-        ]
-    },
-    "ClassicEditor": {
-        "js": [
-            {
-                "src": "https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js",
-                "crossOrigin": "anonymous"
-            }
-        ]
-    },
     "GLightbox": {
         "js": [
             {
@@ -195,19 +174,43 @@ if (typeof window !== 'undefined') {
             "https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css"
         ]
     },
+    "markdownit": {
+        "js": [
+            {
+                "src": "https://cdn.jsdelivr.net/npm/markdown-it@15.0.3/dist/browser/markdown-it.umd.min.js",
+                "crossOrigin": "anonymous"
+            }
+        ]
+    },
     "Prism": {
         "js": [
             {
-                "src": "https://cdn.jsdelivr.net/npm/prismjs/prism.min.js",
+                "src": "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js",
                 "crossOrigin": "anonymous"
             },
             {
-                "src": "https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js",
+                "src": "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-bash.min.js",
+                "crossOrigin": "anonymous"
+            },
+            {
+                "src": "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-json.min.js",
+                "crossOrigin": "anonymous"
+            },
+            {
+                "src": "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-python.min.js",
+                "crossOrigin": "anonymous"
+            },
+            {
+                "src": "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-typescript.min.js",
+                "crossOrigin": "anonymous"
+            },
+            {
+                "src": "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js",
                 "crossOrigin": "anonymous"
             }
         ],
         "css": [
-            "https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css"
+            "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.min.css"
         ]
     },
     "AOS": {
@@ -333,6 +336,7 @@ if (typeof window !== 'undefined') {
     );
 }
 
+lazyLoad("markdown", "[markdown]", () => import(/* webpackChunkName: "markdown" */ "@cocreate/markdown"));
 dependency("element-prototype", import(/* webpackChunkName: "element-prototype" */ "@cocreate/element-prototype"));
 dependency("observer", import(/* webpackChunkName: "observer" */ "@cocreate/observer"));
 dependency("utils", import(/* webpackChunkName: "utils" */ "@cocreate/utils"));
@@ -377,7 +381,7 @@ lazyLoad("cursors", "[array][object][key][crdt='true']", () => import(/* webpack
 lazyLoad("text", "input, textarea, [contenteditable]", () => import(/* webpackChunkName: "text" */ "@cocreate/text"));
 lazyLoad("rich-text", "[actions*='nodeName'], [actions*='cloneElement'], [actions*='deleteElement'], [node-name]", () => import(/* webpackChunkName: "rich-text" */ "@cocreate/rich-text"));
 lazyLoad("codearea", "[type='code']", () => import(/* webpackChunkName: "codearea" */ "@cocreate/codearea"));
-lazyLoad("clipboard", "[actions*='clipboard'], [clipboard-query]", () => import(/* webpackChunkName: "clipboard" */ "@cocreate/clipboard"));
+lazyLoad("clipboard", "[actions*='clipboard'], [clipboard], [clipboard-query]", () => import(/* webpackChunkName: "clipboard" */ "@cocreate/clipboard"));
 lazyLoad("print", "[actions*='print'], [print-query]", () => import(/* webpackChunkName: "print" */ "@cocreate/print"));
 lazyLoad("fullscreen", "[fullscreen]", () => import(/* webpackChunkName: "fullscreen" */ "@cocreate/fullscreen"));
 lazyLoad("speechSynthesis", "[speech-synthesis]", () => import(/* webpackChunkName: "speechSynthesis" */ "@cocreate/speech-synthesis"));

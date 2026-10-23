@@ -56,11 +56,7 @@ export default {
                 "filterTemplate": "<input id=\"description-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search description\" filter-query=\"$document .list-view\" filter-query-key=\"description\" />",
                 "tableTemplate": "{{object.description}}",
                 "attributes": [
-                    {
-                        "name": "editor",
-                        "value": "ckeditor-classic"
-                    },
-                    {
+{
                         "name": "key",
                         "value": "description"
                     },
@@ -76,11 +72,7 @@ export default {
                 "filterTemplate": "<input id=\"detail-filter\" class=\"form-control\" type=\"text\" placeholder=\"Search detail\" filter-query=\"$document .list-view\" filter-query-key=\"detail\" />",
                 "tableTemplate": "{{object.detail}}",
                 "attributes": [
-                    {
-                        "name": "editor",
-                        "value": "ckeditor-classic"
-                    },
-                    {
+{
                         "name": "key",
                         "value": "detail"
                     },

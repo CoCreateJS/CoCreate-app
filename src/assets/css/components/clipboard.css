@@ -1,0 +1,10 @@
+/* Clipboard controls share icon state; components own layout and positioning. */
+:is([clipboard], [clipboard-query]) i[src$="/check-line.svg"],
+[clipboard="copied"] i[src$="/file-copy-line.svg"] {
+	display: none;
+}
+
+[clipboard="copied"] i[src$="/check-line.svg"] {
+	display: inline-block;
+	color: var(--coc-success);
+}

@@ -1,0 +1,246 @@
+<form
+	class="ai-composer"
+	array="ai-messages"
+	object=""
+	upsert="true"
+	socket="ai.chat">
+	<div
+		class="ai-prompt"
+		markdown
+		markdown-menu="fixed"
+		component
+		value-evaluate="false"
+		array="ai-messages"
+		object=""
+		key="content"
+		socket-key="ai.prompt"
+		placeholder="Message CoCreate AI…"
+		aria-label="Prompt"
+		required></div>
+	<!-- CRUD owns the message before dispatch; socket status updates its saved record. -->
+	<input
+		type="hidden"
+		socket-key="uuid" />
+	<input
+		type="hidden"
+		socket-key="ai.signal"
+		value-evaluate="false" />
+	<input
+		type="hidden"
+		id="ai-chat-conversation-id"
+		state-id="ai-chat-conversation-id"
+		array="ai-messages"
+		object=""
+		key="conversation_id"
+		socket-key="ai.conversation_id"
+		value=""
+		reset="false"
+		socket-on="ai.chat"
+		socket-on-matches='{"ai.status":"processing"}'
+		socket-on-key="ai.conversation_id" />
+	<input
+		type="hidden"
+		socket-key="ai.persist"
+		value-type="boolean" />
+	<input
+		type="hidden"
+		array="ai-messages"
+		object=""
+		key="role"
+		value="user"
+		value-evaluate="false" />
+	<input
+		type="hidden"
+		array="ai-messages"
+		object=""
+		key="status"
+		value="pending"
+		value-evaluate="false" />
+	<input
+		type="hidden"
+		array="ai-messages"
+		object=""
+		socket-key="ai.user_message_id"
+		value="$attributes(object)" />
+	<input
+		type="hidden"
+		socket-key="ai.model"
+		value-query="$closest .ai-composer .ai-model" />
+	<div class="ai-composer-toolbar">
+		<div class="ai-attach-picker">
+			<button
+				class="ai-attach"
+				type="button"
+				aria-label="Add to message"
+				aria-controls="ai-attach-options"
+				aria-expanded="false"
+				aria-haspopup="menu"
+				title="Add to message">
+				<i
+					src="/assets/svg/remix/add-line.svg"
+					aria-hidden="true"></i>
+			</button>
+			<div
+				id="ai-attach-options"
+				class="ai-attach-options"
+				role="menu"
+				aria-label="Add to message"
+				aria-hidden="true"
+				aria-close-on="inside, outside">
+				<button
+					class="ai-attach-option"
+					type="button"
+					role="menuitem">
+					<i
+						src="/assets/svg/remix/attachment-2.svg"
+						aria-hidden="true"></i>
+					<span>Upload</span>
+				</button>
+			</div>
+		</div>
+		<div class="ai-composer-actions">
+			<span
+				class="ai-status"
+				socket-status
+				socket-status-connected="Connected"
+				socket-status-disconnected="Disconnected">Connecting</span>
+			<label class="ai-model-picker">
+				<span class="visually-hidden">AI model</span>
+				<select
+					class="ai-model"
+					state-id="ai-chat-model"
+					array="ai-conversations"
+					object=""
+					key="model"
+					realtime="false"
+					aria-label="AI model">
+					<optgroup label="Copilot">
+						<option
+							value="copilot:gpt-5-mini">
+							gpt-5-mini
+						</option>
+					</optgroup>
+					<optgroup label="OpenAI">
+						<option
+							value="openai:gpt-5.4-nano"
+							selected>
+							gpt-5.4-nano
+						</option>
+						<option
+							value="openai:gpt-5.6-sol">
+							gpt-5.6-sol
+						</option>
+						<option
+							value="openai:gpt-5.6-luna">
+							gpt-5.6-luna
+						</option>
+						<option
+							value="openai:gpt-5.5">
+							gpt-5.5
+						</option>
+						<option
+							value="openai:gpt-5.5-pro">
+							gpt-5.5-pro
+						</option>
+						<option
+							value="openai:gpt-5.4">
+							gpt-5.4
+						</option>
+						<option
+							value="openai:gpt-5.4-pro">
+							gpt-5.4-pro
+						</option>
+						<option
+							value="openai:gpt-5.4-mini">
+							gpt-5.4-mini
+						</option>
+						<option
+							value="openai:gpt-5.4-nano">
+							gpt-5.4-nano
+						</option>
+						<option
+							value="openai:gpt-5.3-codex">
+							gpt-5.3-codex
+						</option>
+						<option
+							value="openai:gpt-5.2">
+							gpt-5.2
+						</option>
+						<option
+							value="openai:gpt-5.2-pro">
+							gpt-5.2-pro
+						</option>
+						<option
+							value="openai:gpt-5.1">
+							gpt-5.1
+						</option>
+						<option
+							value="openai:gpt-5-pro">
+							gpt-5-pro
+						</option>
+						<option
+							value="openai:gpt-5">
+							gpt-5
+						</option>
+						<option
+							value="openai:gpt-5-mini">
+							gpt-5-mini
+						</option>
+						<option
+							value="openai:gpt-4.1">
+							gpt-4.1
+						</option>
+					</optgroup>
+					<optgroup label="Gemini">
+						<option
+							value="gemini:gemini-1.5-flash">
+							gemini-1.5-flash
+						</option>
+						<option
+							value="gemini:gemini-1.5-pro">
+							gemini-1.5-pro
+						</option>
+					</optgroup>
+				</select>
+			</label>
+			<button
+				class="ai-dictate"
+				type="button"
+				speech-recognition
+				speech-recognition-query="$closest .ai-composer .ai-prompt"
+				speech-recognition-lang="en-US"
+				speech-recognition-interim-results="true"
+				aria-label="Start dictation"
+				event-name="speech-recognition-start,speech-recognition-end"
+				speech-recognition-start-events="speech-recognition-start"
+				speech-recognition-start.aria-label="Stop dictation"
+				speech-recognition-end-events="speech-recognition-end,speech-recognition-error,speech-recognition-abort"
+				speech-recognition-end.aria-label="Start dictation">
+				<i
+					src="/assets/svg/remix/mic-line.svg"
+					aria-hidden="true"></i>
+				<i
+					src="/assets/svg/remix/stop-fill.svg"
+					aria-hidden="true"></i>
+			</button>
+			<button
+				class="ai-send"
+				type="button"
+				actions="save, send, reset"
+				aria-label="Send message">
+				<i
+					src="/assets/svg/remix/arrow-up-line.svg"
+					aria-hidden="true"></i>
+			</button>
+			<button
+				class="ai-stop"
+				type="button"
+				aria-label="Stop generating"
+				hidden>
+				<i
+					src="/assets/svg/remix/stop-fill.svg"
+					aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
+</form>

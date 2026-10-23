@@ -1,0 +1,365 @@
+<div
+	id="ai-conversation-messages"
+	class="ai-messages"
+	state-id="ai-conversation-messages"
+	array=""
+	object
+	filter-query-key="conversation_id"
+	filter-query-value=""
+	filter-sort-key="created.on"
+	filter-sort-direction="desc"
+	filter-limit="20"
+	render-query="[template='ai-message-template']"
+	render-reverse
+	scroll-to=""
+	observe-target=".ai-message"
+	observe-attribute="scroll-to"
+	observe-value="bottom"
+	scroll="bottom, false"
+	scroll-element=""
+	scroll-up="10"
+	scroll-attribute="observe-value"
+	aria-live="polite">
+	<article
+		template="ai-message-template"
+		class="ai-message {{object.role}} {{object.status}}"
+		data-role="{{object.role}}"
+		data-steer="{{object.steer}}"
+		data-message-id="{{object._id}}"
+		data-message-id="{{object._id}}">
+		<div
+			class="ai-message-content"
+			value-type="html">
+			{{$(window.markdown.renderAsync(object.content))}}
+		</div>
+		<div class="ai-message-views">
+			<div
+				template
+				render="object.views"
+				render-as="view"
+				data-ai-crud-reference
+				data-app-path="{{view.path}}"
+				data-array="{{view.array}}"
+				app-id="{{view.app_id}}">
+				<form
+					class="ai-crud-list-form"
+					storage="{{view.storage}}"
+					database="{{view.database}}"
+					array="{{view.array}}"
+					object="{{view.object}}"
+					autocomplete="off">
+					<button
+						type="button"
+						class="ai-crud-list-item"
+						data-ai-crud-item
+						aria-controls="ai-view-{{object._id}}-{{view.object}}"
+						aria-expanded="false">
+						<span
+							class="ai-crud-list-content"
+							src="{{view.path}}/templates/list.html"></span>
+						<i
+							class="ai-crud-list-chevron"
+							src="/assets/svg/remix/arrow-down-s-line.svg"
+							aria-hidden="true"></i>
+					</button>
+				</form>
+				<div
+					id="ai-view-{{object._id}}-{{view.object}}"
+					class="ai-crud-list-details"
+					aria-hidden="true">
+					<ul
+						class="ai-crud-view-toolbar ai-edit-tabs nav nav-tabs nav-tabs-custom nav-success"
+						role="tablist"
+						aria-label="Record views">
+						<li class="nav-item">
+							<button
+								id="ai-view-{{object._id}}-{{view.object}}-details-tab"
+								type="button"
+								role="tab"
+								class="ai-crud-view-button nav-link text-decoration-none"
+								aria-controls="ai-view-{{object._id}}-{{view.object}}-details"
+								aria-selected="true"
+								aria-label="Show details"
+								title="Details">
+								<i
+									src="/assets/svg/remix/eye-fill.svg"
+									aria-hidden="true"></i>
+								<span>Details</span>
+							</button>
+						</li>
+						<li class="nav-item">
+							<button
+								id="ai-view-{{object._id}}-{{view.object}}-form-tab"
+								type="button"
+								role="tab"
+								class="ai-crud-view-button nav-link text-decoration-none"
+								aria-controls="ai-view-{{object._id}}-{{view.object}}-form"
+								aria-selected="false"
+								aria-label="Edit record"
+								title="Edit">
+								<i
+									src="/assets/svg/remix/pencil-fill.svg"
+									aria-hidden="true"></i>
+								<span>Edit</span>
+							</button>
+						</li>
+						<li class="nav-item">
+							<button
+								id="ai-view-{{object._id}}-{{view.object}}-codearea-tab"
+								type="button"
+								role="tab"
+								class="ai-crud-view-button nav-link text-decoration-none"
+								aria-controls="ai-view-{{object._id}}-{{view.object}}-codearea"
+								aria-selected="false"
+								aria-label="Show JSON"
+								title="JSON">
+								<i
+									src="/assets/svg/remix/code-s-slash-line.svg"
+									aria-hidden="true"></i>
+								<span>JSON</span>
+							</button>
+						</li>
+						<li
+							class="nav-item"
+							data-ai-file-preview-tab>
+							<button
+								id="ai-view-{{object._id}}-{{view.object}}-preview-tab"
+								type="button"
+								role="tab"
+								class="ai-crud-view-button nav-link text-decoration-none"
+								aria-controls="ai-view-{{object._id}}-{{view.object}}-preview"
+								aria-selected="false"
+								aria-label="Preview file"
+								title="Preview">
+								<i
+									src="/assets/svg/remix/file-search-line.svg"
+									aria-hidden="true"></i>
+								<span>Preview</span>
+							</button>
+						</li>
+						<li class="nav-item dropdown ms-auto">
+							<button
+								type="button"
+								class="ai-crud-view-options nav-link text-decoration-none"
+								aria-controls="ai-view-{{object._id}}-{{view.object}}-options"
+								aria-haspopup="menu"
+								aria-expanded="false"
+								aria-label="More record actions"
+								title="More actions">
+								<i
+									src="/assets/svg/remix/more-2-fill.svg"
+									aria-hidden="true"></i>
+							</button>
+							<ul
+								id="ai-view-{{object._id}}-{{view.object}}-options"
+								class="dropdown-menu dropdown-menu-end"
+								aria-close-on="anywhere"
+								role="menu"
+								aria-label="Record actions">
+								<li>
+									<button
+										type="button"
+										class="dropdown-item"
+										role="menuitem"
+										actions="export"
+										export-format="json"
+										export-query="$document #ai-view-{{object._id}}-{{view.object}}-details">
+										<i
+											src="/assets/svg/remix/download-2-line.svg"
+											class="me-2"
+											aria-hidden="true"></i
+										>Download JSON
+									</button>
+								</li>
+								<li>
+									<button
+										type="button"
+										class="dropdown-item text-danger"
+										role="menuitem"
+										aria-controls="removeItemModal"
+										aria-haspopup="dialog"
+										aria-expanded="false"
+										aria-open
+										state-to="delete-record"
+										state.delete-query="$document #ai-view-{{object._id}}-{{view.object}}-details"
+										state.actions="delete">
+										<i
+											src="/assets/svg/remix/delete-bin-line.svg"
+											class="me-2"
+											aria-hidden="true"></i
+										>Delete
+									</button>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="ai-crud-app">
+						<form
+							id="ai-view-{{object._id}}-{{view.object}}-details"
+							role="tabpanel"
+							aria-labelledby="ai-view-{{object._id}}-{{view.object}}-details-tab"
+							aria-hidden="false"
+							storage="{{view.storage}}"
+							database="{{view.database}}"
+							array="{{view.array}}"
+							object="{{view.object}}"
+							autocomplete="off">
+							<div
+								src="{{view.path}}/components/details.html"></div>
+						</form>
+						<form
+							id="ai-view-{{object._id}}-{{view.object}}-form"
+							role="tabpanel"
+							aria-labelledby="ai-view-{{object._id}}-{{view.object}}-form-tab"
+							aria-hidden="true"
+							storage="{{view.storage}}"
+							database="{{view.database}}"
+							array="{{view.array}}"
+							object="{{view.object}}"
+							autocomplete="off">
+							<div src="{{view.path}}/components/form.html"></div>
+							<footer class="ai-crud-view-footer card-footer">
+								<div class="hstack gap-2 justify-content-end">
+									<button
+										type="button"
+										class="btn btn-light"
+										actions="remove, timeout(0), action($document #ai-view-{{object._id}}-{{view.object}}-form-restore)"
+										remove-query="$document #ai-view-{{object._id}}-{{view.object}}-form"
+										remove-attribute="object">
+										Cancel
+									</button>
+									<button
+										class="btn btn-success btn-spinner"
+										actions="validate, disabled, save, timeout(2000), disabled">
+										<span
+											class="spinner-border spinner-border-sm"
+											hidden
+											role="status"
+											aria-hidden="true"></span>
+										<span class="button-text">Save</span>
+									</button>
+									<button
+										id="ai-view-{{object._id}}-{{view.object}}-form-restore"
+										type="button"
+										actions="attributes"
+										attribute="object"
+										attribute-query="#ai-view-{{object._id}}-{{view.object}}-form"
+										value="{{view.object}}"
+										hidden></button>
+								</div>
+							</footer>
+						</form>
+						<form
+							id="ai-view-{{object._id}}-{{view.object}}-codearea"
+							role="tabpanel"
+							aria-labelledby="ai-view-{{object._id}}-{{view.object}}-codearea-tab"
+							aria-hidden="true"
+							storage="{{view.storage}}"
+							database="{{view.database}}"
+							array="{{view.array}}"
+							object="{{view.object}}"
+							autocomplete="off">
+							<div
+								src="/components/offcanvas-app/codearea.html"></div>
+							<footer class="ai-crud-view-footer card-footer">
+								<div class="hstack gap-2 justify-content-end">
+									<button
+										type="button"
+										class="btn btn-light"
+										actions="remove, timeout(0), action($document #ai-view-{{object._id}}-{{view.object}}-codearea-restore)"
+										remove-query="$document #ai-view-{{object._id}}-{{view.object}}-codearea"
+										remove-attribute="object">
+										Cancel
+									</button>
+									<button
+										class="btn btn-success btn-spinner"
+										actions="validate, disabled, save, timeout(2000), disabled">
+										<span
+											class="spinner-border spinner-border-sm"
+											hidden
+											role="status"
+											aria-hidden="true"></span>
+										<span class="button-text">Save</span>
+									</button>
+									<button
+										id="ai-view-{{object._id}}-{{view.object}}-codearea-restore"
+										type="button"
+										actions="attributes"
+										attribute="object"
+										attribute-query="#ai-view-{{object._id}}-{{view.object}}-codearea"
+										value="{{view.object}}"
+										hidden></button>
+								</div>
+							</footer>
+						</form>
+						<iframe
+							id="ai-view-{{object._id}}-{{view.object}}-preview"
+							class="ai-file-preview-panel ai-file-preview-frame"
+							data-ai-file-preview-panel
+							role="tabpanel"
+							aria-labelledby="ai-view-{{object._id}}-{{view.object}}-preview-tab"
+							aria-hidden="true"
+							storage="{{view.storage}}"
+							database="{{view.database}}"
+							array="{{view.array}}"
+							object="{{view.object}}"
+							key="pathname"
+							src=""
+							title="File preview"
+							referrerpolicy="no-referrer"
+							sandbox="allow-forms allow-scripts"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="ai-message-tools"
+			role="toolbar"
+			aria-label="Message actions">
+			<button
+				type="button"
+				value="{{object.content}}"
+				clipboard
+				clipboard-query="$this"
+				aria-label="Copy message"
+				title="Copy message">
+				<i
+					src="/assets/svg/remix/file-copy-line.svg"
+					aria-hidden="true"></i>
+				<i
+					src="/assets/svg/remix/check-line.svg"
+					aria-hidden="true"></i>
+			</button>
+			<button
+				type="button"
+				class="text-danger"
+				array="ai-messages"
+				object="{{object._id}}"
+				read="false"
+				data-message-delete-target="{{object._id}}"
+				aria-controls="removeItemModal"
+				aria-haspopup="dialog"
+				aria-expanded="false"
+				aria-open
+				state-to="delete-record"
+				state.delete-query="$document [data-message-delete-target='{{object._id}}']"
+				state.actions="delete"
+				aria-label="Delete message"
+				title="Delete message">
+				<i
+					src="/assets/svg/remix/delete-bin-line.svg"
+					aria-hidden="true"></i>
+			</button>
+		</div>
+	</article>
+	<div
+		filter-on="scroll"
+		filter-query="$parent"></div>
+	<div class="ai-empty">
+		<h1>What will you build today?</h1>
+		<p>
+			Build apps and websites, manage servers, organize CRM work, and turn
+			your next business task into action—without leaving CoCreate.
+		</p>
+	</div>
+</div>

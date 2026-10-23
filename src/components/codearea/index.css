@@ -1,89 +1,33 @@
-.component-codearea {
-	display: block;
-	position: relative;
-	width: 100%;
-	min-width: 0;
-	height: auto;
-	min-height: 100%;
-	background: var(--coc-body-bg);
+
+codearea > pre,
+codearea > pre > code {
+	background: transparent !important;
 }
 
-.component-codearea[hidden] {
-	display: none;
-}
-
-.component-codearea > pre,
-.component-codearea > textarea[type="code"] {
-	width: 100%;
-	height: auto;
-	max-height: none;
-	margin: 0;
-}
-
-.component-codearea > pre,
-.component-codearea > pre > code {
-	background: var(--coc-body-bg) !important;
-}
-
-.component-codearea > pre > code {
+codearea > pre > code {
 	color: var(--coc-body-color);
 }
 
-.component-codearea > textarea[type="code"] {
-	display: block;
+textarea[type="code"] {
 	field-sizing: content;
-	background: transparent;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	overflow: hidden;
 }
 
 
-.component-codearea > .component-codearea-copy {
-	position: absolute;
-	top: 0.5rem;
-	right: 0.5rem;
+/* Placement uses button utilities; codearea controls visibility only. */
+codearea > :is([clipboard], [clipboard-query]) {
 	z-index: 2;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 0.25rem;
-	border: 0;
-	background: transparent;
-	color: var(--coc-body-color);
-	font-size: 1.5rem;
-	line-height: 1;
-	cursor: pointer;
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 0.15s ease;
 }
 
-.component-codearea:hover > .component-codearea-copy {
+codearea:is(:hover, :focus-within) > :is([clipboard], [clipboard-query]) {
 	opacity: 1;
 	pointer-events: auto;
 }
 
-.component-codearea-copy i[src$="/check-line.svg"],
-.component-codearea-copy.is-copied i[src$="/file-copy-line.svg"] {
-	display: none;
-}
-
-.component-codearea-copy.is-copied i[src$="/check-line.svg"] {
-	display: inline-block;
-	color: var(--coc-success);
-	animation: codearea-copy-check 1.2s ease;
-}
-
-@keyframes codearea-copy-check {
-	0% { opacity: 0; transform: scale(0.6); }
-	15%, 85% { opacity: 1; transform: scale(1); }
-	100% { opacity: 0; transform: scale(1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.component-codearea-copy.is-copied i[src$="/check-line.svg"] {
-		animation: none;
+@media (hover: none) {
+	codearea > :is([clipboard], [clipboard-query]) {
+		opacity: 1;
+		pointer-events: auto;
 	}
 }

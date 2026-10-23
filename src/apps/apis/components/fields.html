@@ -47,18 +47,14 @@
 			<button
 				type="button"
 				class="apis-credential-icon apis-credential-copy"
-				actions="clipboard, copied, timeout(1200), copyreset"
+				clipboard
 				clipboard-query="$parent textarea"
-				event-name="copied, copyreset"
-				copied-query="i"
-				copied.src="/assets/svg/remix/check-line.svg"
-				copyreset-query="i"
-				copyreset.src="/assets/svg/remix/file-copy-line.svg"
 				aria-label="Copy {{field.key}}"
 				title="Copy {{field.key}}">
 				<i
 					src="/assets/svg/remix/file-copy-line.svg"
 					aria-hidden="true"></i>
+				<i src="/assets/svg/remix/check-line.svg" aria-hidden="true"></i>
 			</button>
 		</div>
 	</div>
