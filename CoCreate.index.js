@@ -336,7 +336,7 @@ if (typeof window !== 'undefined') {
     );
 }
 
-lazyLoad("markdown", "[markdown]", () => import(/* webpackChunkName: "markdown" */ "@cocreate/markdown"));
+lazyLoad("editor", '[editor], [contenteditable]:not([contenteditable="false"]), input[crdt="true"], textarea[crdt="true"], iframe[crdt="true"]', () => import(/* webpackChunkName: "editor" */ "@cocreate/editor"));
 dependency("element-prototype", import(/* webpackChunkName: "element-prototype" */ "@cocreate/element-prototype"));
 dependency("observer", import(/* webpackChunkName: "observer" */ "@cocreate/observer"));
 dependency("utils", import(/* webpackChunkName: "utils" */ "@cocreate/utils"));

@@ -36,21 +36,21 @@
     },
     "$window.markdown": "$markdownParser",
     "$window.document.addEventListener": [
-        "markdownLoaded",
+        "editorLoaded",
         {
             "$function": {
                 "body": {
-                    "$CoCreate.markdown.setRenderer": "$markdownParser"
+                    "$CoCreate.editor.setRenderer": "$markdownParser"
                 }
             }
         }
     ],
     "$return": {
         "$if": {
-            "$CoCreate.markdown.setRenderer": {
+            "$CoCreate.editor.setRenderer": {
                 "$exists": {
                     "$true": {
-                        "$CoCreate.markdown.setRenderer": "$markdownParser"
+                        "$CoCreate.editor.setRenderer": "$markdownParser"
                     }
                 }
             }

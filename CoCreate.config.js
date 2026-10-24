@@ -341,6 +341,12 @@ export default {
             path: "../CoCreate-modules/CoCreate-cursors",
             repo: "github.com/CoCreate-app/CoCreate-cursors.git"
         },
+        editor: {
+            import: "@cocreate/editor",
+            selector: "[editor], [contenteditable]:not([contenteditable=\"false\"]), input[crdt=\"true\"], textarea[crdt=\"true\"], iframe[crdt=\"true\"]",
+            path: "../CoCreate-modules/CoCreate-editor",
+            repo: "gitlab.com/cocreatejs/CoCreate-editor.git"
+        },
         text: {
             import: "@cocreate/text",
             selector: "input, textarea, [contenteditable]",
@@ -431,12 +437,6 @@ export default {
      * seamlessly whitelisted, configured, and initialized dynamically via HTML attributes or inline scripts.
      */
     plugins: {
-        markdown: {
-            import: "@cocreate/markdown",
-            selector: "[markdown]",
-            path: "../CoCreate-plugins/CoCreate-markdown",
-            repo: "github.com/CoCreate-app/CoCreate-markdown.git"
-        },
         webpack: {
             path: "../CoCreate-plugins/CoCreate-webpack",
             repo: "github.com/CoCreate-app/CoCreate-webpack.git"
