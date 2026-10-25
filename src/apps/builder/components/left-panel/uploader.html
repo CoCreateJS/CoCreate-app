@@ -1,0 +1,32 @@
+<div id="uploader" class="left-panel active" role="tabpanel" aria-labelledby="builder-uploader-btn" data-view="uploader">
+			<form>
+				<input
+					type="file"
+					directory
+					render-query="$closest #uploader; [template]"
+					array="files"
+					class="form-control" />
+				<button actions="upload">upload</button>
+			</form>
+
+			<div template>
+				<input
+					file="name"
+					value="{{name}}"
+					class="form-control" />
+				<input
+					file="directory"
+					value="{{directory}}"
+					class="form-control" />
+				<input
+					file="content-type"
+					value="{{content-type}}"
+					class="form-control" />
+
+				<textarea
+					file="src"
+					value-type="string" class="form-control">
+{{src}}</textarea
+				>
+			</div>
+</div>

@@ -1,0 +1,144 @@
+<div class="p-2 builder-left-panel-root">
+	<ul
+		class="builder-sidebar-tabs nav nav-tabs nav-tabs-custom nav-success"
+		role="tablist"
+		aria-label="Builder component views">
+		<li class="nav-item">
+			<button
+				id="builder-vdom-btn"
+				type="button"
+				role="tab"
+				aria-controls="builder-left-vdom-view"
+				aria-selected="false"
+				class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
+				toggle="#canvas"
+				toggle-query="#vdom"
+				toggle-attribute="vdom-selector"
+				title="Virtual DOM"
+				aria-label="Virtual DOM">
+				<i src="/assets/svg/stream.svg" aria-hidden="true"></i>
+			</button>
+		</li>
+		<li class="nav-item">
+			<button
+				id="builder-assets-btn"
+				type="button"
+				role="tab"
+				aria-controls="builder-left-assets-view"
+				aria-selected="false"
+				class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
+				toggle="files"
+				toggle-query="#fetch-assets"
+				toggle-attribute="array"
+				title="Assets"
+				aria-label="Assets">
+				<i src="/assets/svg/photo-video.svg" aria-hidden="true"></i>
+			</button>
+		</li>
+		<li class="nav-item">
+			<button
+				id="builder-files-btn"
+				type="button"
+				role="tab"
+				aria-controls="builder-left-files-view"
+				aria-selected="false"
+				class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
+				toggle="files"
+				toggle-query=".fetch-files"
+				toggle-attribute="array"
+				title="Files"
+				aria-label="Files">
+				<i src="/assets/svg/folder.svg" aria-hidden="true"></i>
+			</button>
+		</li>
+		<li class="nav-item">
+			<button
+				id="builder-uploader-btn"
+				type="button"
+				role="tab"
+				aria-controls="builder-left-uploader-view"
+				aria-selected="false"
+				class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
+				title="Upload"
+				aria-label="Upload">
+				<i src="/assets/svg/cloud-upload-alt.svg" aria-hidden="true"></i>
+			</button>
+		</li>
+		<li class="nav-item">
+			<button
+				id="builder-blocks-btn"
+				type="button"
+				role="tab"
+				aria-controls="builder-left-blocks-view"
+				aria-selected="true"
+				class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
+				title="Blocks"
+				aria-label="Blocks">
+				<i src="/assets/svg/th-large.svg" aria-hidden="true"></i>
+			</button>
+		</li>
+	</ul>
+
+	<div
+		class="builder-panel-scroll"
+		scrollbar
+		scrollbar-type="scrolly">
+		<div class="builder-left-panel-views">
+			<div
+				id="builder-left-vdom-view"
+				class="builder-panel-view"
+				role="tabpanel"
+				aria-labelledby="builder-vdom-btn"
+				tabindex="0"
+				aria-hidden="true"
+				aria-label="Virtual DOM"
+				state-id="builder-left-vdom-view"
+				state.aria-hidden
+				src="/apps/builder/components/left-panel/vdom.html"></div>
+			<div
+				id="builder-left-assets-view"
+				class="builder-panel-view"
+				role="tabpanel"
+				aria-labelledby="builder-assets-btn"
+				tabindex="0"
+				aria-hidden="true"
+				aria-label="Assets"
+				state-id="builder-left-assets-view"
+				state.aria-hidden
+				src="/apps/builder/components/left-panel/assets.html"></div>
+			<div
+				id="builder-left-files-view"
+				class="builder-panel-view"
+				role="tabpanel"
+				aria-labelledby="builder-files-btn"
+				tabindex="0"
+				aria-hidden="true"
+				aria-label="Files"
+				state-id="builder-left-files-view"
+				state.aria-hidden
+				src="/apps/builder/components/left-panel/files.html"></div>
+			<div
+				id="builder-left-uploader-view"
+				class="builder-panel-view"
+				role="tabpanel"
+				aria-labelledby="builder-uploader-btn"
+				tabindex="0"
+				aria-hidden="true"
+				aria-label="Upload"
+				state-id="builder-left-uploader-view"
+				state.aria-hidden
+				src="/apps/builder/components/left-panel/uploader.html"></div>
+			<div
+				id="builder-left-blocks-view"
+				class="builder-panel-view"
+				role="tabpanel"
+				aria-labelledby="builder-blocks-btn"
+				tabindex="0"
+				aria-hidden="false"
+				aria-label="Blocks"
+				state-id="builder-left-blocks-view"
+				state.aria-hidden
+				src="/apps/builder/components/left-panel/blocks.html"></div>
+		</div>
+	</div>
+</div>

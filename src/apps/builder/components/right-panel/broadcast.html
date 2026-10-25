@@ -1,0 +1,127 @@
+					<div
+						class="builder-panel-section-heading"
+						click-query=".broadcast"
+						click.class="show,hide">
+						<span class="broadcast hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="broadcast show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Broadcast</span>
+					</div>
+					<div class="broadcast show builder-panel-section-body">
+						<cocreate-select
+							class="floating-label"
+							id="state-array"
+							placeholder="broadcast"
+							attribute="state-array"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="true"
+									><span>true</span></cc-option
+								>
+								<cc-option value="false"
+									><span>false</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+						<cocreate-select
+							class="floating-label"
+							id="state-object"
+							placeholder="broadcast-sender"
+							attribute="state-object"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="true"
+									><span>true</span></cc-option
+								>
+								<cc-option value="false"
+									><span>false</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+						<input
+							type="text"
+							class="form-control"
+							placeholder="namespace"
+							id="namespace"
+							input-query="$document #canvas $contentDocument $clickedElement"
+							input.namespace="$value" />
+						<input
+							type="hidden"
+							id="namespace-reader"
+							onload.value="$($query($document #canvas $contentDocument $clickedElement) ? $query($document #canvas $contentDocument $clickedElement).getAttribute('namespace') : '')" />
+						<input
+							attribute="room"
+							type="text"
+							class="form-control"
+							placeholder="room"
+							id="room"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+					</div>
+					<!--Messages -->
+					<div
+						class="builder-panel-section-heading"
+						click-query=".messages"
+						click.class="show,hide">
+						<span class="messages hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="messages show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>messages</span>
+					</div>
+					<div class="messages show builder-panel-section-body">
+						<input
+							attribute="message"
+							type="text"
+							class="form-control"
+							placeholder="messages"
+							id="message"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+					</div>
+				

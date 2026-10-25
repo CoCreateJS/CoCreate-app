@@ -166,9 +166,10 @@
 									</span>
 								</span>
 								<button
+									type="button"
 									class="btn btn-sm ms-auto delete-btn"
-									actions="remove"
-									remove-query="$parent"
+									click-query="$parent"
+									click.$remove=""
 									aria-label="Remove Attribute"
 									title="Click to remove this attribute.">
 									<i src="/assets/svg/remix/delete-bin-line.svg"></i>
@@ -268,9 +269,10 @@
 											>{{child.tagName}}</span
 										>
 										<button
+											type="button"
 											class="btn btn-sm ms-auto delete-btn"
-											actions="remove"
-											remove-query="$parent"
+											click-query="$parent"
+											click.$remove=""
 											aria-label="Remove Nested Element"
 											title="Click to remove this nested element.">
 											<i src="/assets/svg/remix/delete-bin-line.svg"></i>
@@ -343,9 +345,10 @@
 													</span>
 												</span>
 												<button
+													type="button"
 													class="btn btn-sm ms-auto delete-btn"
-													actions="remove"
-													remove-query="$parent"
+													click-query="$parent"
+													click.$remove=""
 													aria-label="Remove Attribute"
 													title="Click to remove this attribute.">
 													<i src="/assets/svg/remix/delete-bin-line.svg"></i>

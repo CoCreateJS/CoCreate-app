@@ -1,0 +1,91 @@
+<div id="assets" class="left-panel active" role="tabpanel" aria-labelledby="builder-assets-btn" data-view="assets">
+			<!-- Search Assets-->
+			<form class="px-2 pb-4">
+				<input
+					type="text"
+					class="form-control"
+					state-to="results" />
+				<span
+					class="builder-panel-search-action">
+					<a
+						actions="state, openModal"
+						state_to="render"
+						array="website-pages"
+						object=""
+						state-key="src"
+						modal-width="900px"
+						modal-color="#229954">
+						<i src="/assets/svg/search.svg"></i>
+					</a>
+				</span>
+			</form>
+			<!-- Assets -->
+			<div
+				id="fetch-assets"
+				class="d-flex gap-2 flex-wrap justify-content-center w-100 text-center builder-panel-section-body"
+				array=""
+				object
+				filter-query-key="content-type"
+				filter-query-value="image, video"
+				filter-sort-key="position"
+				filter-sort-direction="asc"
+				render-query=":last-child">
+				<!-- Asset Template -->
+				<div
+					template
+					class="card position-relative flex-grow-1 p-2 builder-asset-card"
+					hover="display:block!important"
+					hover-query="#editassets{{object._id}}">
+					<div
+						id="editassets{{object._id}}"
+						class="d-none builder-edit-action">
+						<a
+							actions="state, openModal"
+							modal-src="https://server.cocreate.app/CoCreate-plugins/CoCreate-tui-image-editor/demo/index.html"
+							state-array="files"
+							state-object="{{object._id}}"
+							state_to="form-fields"
+							modal-width="900px">
+							<i src="/assets/svg/pencil-alt.svg"></i>
+						</a>
+					</div>
+					<a
+						actions="attributes"
+						attribute="src"
+						value="{{object.path}}">
+						<!-- image -->
+						<div
+							cloneable="true"
+							cloneable-html="<img src='{{object.path}}'>"
+							class="p-2 d-none"
+							image-type="{{object.content-type}}">
+							<img
+								width="auto"
+								height="auto"
+								array="files"
+								object="{{object._id}}"
+								key="path"
+								class="builder-panel-media-preview" />
+						</div>
+						<!-- Video -->
+						<div
+							cloneable="true"
+							cloneable-html="<video><source src='{{object.path}}'></video>"
+							class="p-2 d-none"
+							video-type="{{object.content-type}}">
+							<video
+								width="auto"
+								height="auto"
+								class="builder-panel-media-preview">
+								<source
+									array="files"
+									object="{{object._id}}"
+									key="path"
+									src="{{object.path}}"
+									type="{{object.content-type}}" />
+							</video>
+						</div>
+					</a>
+				</div>
+			</div>
+</div>

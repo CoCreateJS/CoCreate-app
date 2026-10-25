@@ -1,0 +1,146 @@
+					<div
+						class="builder-panel-section-heading"
+						click-query=".plugins"
+						click.class="show,hide">
+						<span class="plugins hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="plugins show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>stripe</span>
+					</div>
+					<div class="plugins show builder-panel-section-body">
+						<cocreate-select
+							class="floating-label"
+							placeholder="stripe"
+							attribute="stripe"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="createCustomer.email"
+									><span>email</span></cc-option
+								>
+								<cc-option value="createCustomer.description"
+									><span>description</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+						<cocreate-select
+							class="floating-label"
+							placeholder="actions"
+							attribute="actions"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="createCustomer"
+									><span>createCustomer</span></cc-option
+								>
+								<cc-option value="getBalance"
+									><span>getBalance</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+					</div>
+					<!--sendgrd -->
+					<div
+						class="builder-panel-section-heading"
+						click-query=".sendgrid"
+						click.class="show,hide">
+						<span class="sendgrid hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="sendgrid show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>sendgrid</span>
+					</div>
+					<div class="sendgrid show builder-panel-section-body">
+						<cocreate-select
+							class="floating-label"
+							id="sendgrid"
+							placeholder="sendgrid"
+							attribute="sendgrid"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="sendEmail.to"
+									><span>to</span></cc-option
+								>
+								<cc-option value="sendEmail.from"
+									><span>from</span></cc-option
+								>
+								<cc-option value="sendEmail.subject"
+									><span>subject</span></cc-option
+								>
+								<cc-option value="sendEmail.html"
+									><span>html</span></cc-option
+								>
+								<cc-option value="sendEmail.text"
+									><span>text</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+						<cocreate-select
+							class="floating-label"
+							placeholder="actions"
+							attribute="actions"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="sendEmail"
+									><span>sendEmail</span></cc-option
+								>
+								<cc-option value="domainAuthentication"
+									><span
+										>domainAuthentication</span
+									></cc-option
+								>
+							</ul>
+						</cocreate-select>
+					</div>
+				

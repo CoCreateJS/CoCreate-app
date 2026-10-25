@@ -110,7 +110,6 @@ export default {
             repo: "github.com/CoCreate-app/CoCreate-observer.git"
         },
         utils: {
-            import: "@cocreate/utils",
             path: "../CoCreate-modules/CoCreate-utils",
             repo: "github.com/CoCreate-app/CoCreate-utils.git"
         },
@@ -138,7 +137,6 @@ export default {
         },
         socket: {
             import: "@cocreate/socket-client",
-            // selector: "[socket='true']",
             path: "../CoCreate-modules/CoCreate-socket-client",
             repo: "github.com/CoCreate-app/CoCreate-socket-client.git"
         },
@@ -191,6 +189,11 @@ export default {
             path: "../CoCreate-modules/CoCreate-organizations",
             repo: "github.com/CoCreate-app/CoCreate-organizations.git"
         },
+        plugins: {
+            import: "@cocreate/plugins",
+            path: "../CoCreate-modules/CoCreate-plugins",
+            repo: "github.com/CoCreate-app/CoCreate-plugins.git"
+        },
         cssParser: {
             import: "@cocreate/css-parser",
             selector: "link[array][object][key], link[parse]",
@@ -233,12 +236,6 @@ export default {
             path: "../CoCreate-modules/CoCreate-api",
             repo: "github.com/CoCreate-app/CoCreate-api.git"
         },
-        plugins: {
-            import: "@cocreate/plugins",
-            // selector: "[plugin]",
-            path: "../CoCreate-modules/CoCreate-plugins",
-            repo: "github.com/CoCreate-app/CoCreate-plugins.git"
-        },
         dnd: {
             import: "@cocreate/dnd",
             selector: "[sortable], [cloneables], [draggable], [droppable], [cloneable]",
@@ -247,15 +244,9 @@ export default {
         },
         position: {
             import: "@cocreate/position",
-            selector: "[positionable], [moveable], [position-query]",
+            selector: "[positionable], [moveable], [position-target], [position-query]",
             path: "../CoCreate-modules/CoCreate-position",
             repo: "github.com/CoCreate-app/CoCreate-position.git"
-        },
-        conditionalLogic: {
-            import: "@cocreate/conditional-logic",
-            selector: "[show], [hide]",
-            path: "../CoCreate-modules/CoCreate-conditional-logic",
-            repo: "github.com/CoCreate-app/CoCreate-conditional-logic.git"
         },
         scroll: {
             import: "@cocreate/scroll",
@@ -274,18 +265,6 @@ export default {
             selector: "[resize], [height='auto']",
             path: "../CoCreate-modules/CoCreate-resize",
             repo: "github.com/CoCreate-app/CoCreate-resize.git"
-        },
-        clone: {
-            import: "@cocreate/clone",
-            selector: "[actions*='clone']",
-            path: "../CoCreate-modules/CoCreate-clone",
-            repo: "github.com/CoCreate-app/CoCreate-clone.git"
-        },
-        remove: {
-            import: "@cocreate/remove",
-            selector: "[actions*='remove']",
-            path: "../CoCreate-modules/CoCreate-remove",
-            repo: "github.com/CoCreate-app/CoCreate-remove.git"
         },
         attributes: {
             import: "@cocreate/attributes",
@@ -329,41 +308,11 @@ export default {
             path: "../CoCreate-modules/CoCreate-calculate",
             repo: "github.com/CoCreate-app/CoCreate-calculate.git"
         },
-        selection: {
-            import: "@cocreate/selection",
-            selector: "input, textarea, [contenteditable]",
-            path: "../CoCreate-modules/CoCreate-selection",
-            repo: "github.com/CoCreate-app/CoCreate-selection.git"
-        },
-        cursors: {
-            import: "@cocreate/cursors",
-            selector: "[array][object][key][crdt='true']",
-            path: "../CoCreate-modules/CoCreate-cursors",
-            repo: "github.com/CoCreate-app/CoCreate-cursors.git"
-        },
         editor: {
             import: "@cocreate/editor",
-            selector: "[editor], [contenteditable]:not([contenteditable=\"false\"]), input[crdt=\"true\"], textarea[crdt=\"true\"], iframe[crdt=\"true\"]",
+            selector: "[editor], [editor-language], [contenteditable]:not([contenteditable=\"false\"]), input[crdt=\"true\"], textarea[crdt=\"true\"], iframe[crdt=\"true\"]",
             path: "../CoCreate-modules/CoCreate-editor",
             repo: "gitlab.com/cocreatejs/CoCreate-editor.git"
-        },
-        text: {
-            import: "@cocreate/text",
-            selector: "input, textarea, [contenteditable]",
-            path: "../CoCreate-modules/CoCreate-text",
-            repo: "github.com/CoCreate-app/CoCreate-text.git"
-        },
-        "rich-text": {
-            import: "@cocreate/rich-text",
-            selector: "[actions*='nodeName'], [actions*='cloneElement'], [actions*='deleteElement'], [node-name]",
-            path: "../CoCreate-modules/CoCreate-rich-text",
-            repo: "github.com/CoCreate-app/CoCreate-rich-text.git"
-        },
-        codearea: {
-            import: "@cocreate/codearea",
-            selector: "[type='code']",
-            path: "../CoCreate-modules/CoCreate-codearea",
-            repo: "github.com/CoCreate-app/CoCreate-codearea.git"
         },
         clipboard: {
             import: "@cocreate/clipboard",
@@ -383,17 +332,23 @@ export default {
             path: "../CoCreate-modules/CoCreate-fullscreen",
             repo: "github.com/CoCreate-app/CoCreate-fullscreen.git"
         },
-        speechSynthesis: {
-            import: "@cocreate/speech-synthesis",
-            selector: "[speech-synthesis]",
-            path: "../CoCreate-modules/CoCreate-speech-synthesis",
-            repo: "github.com/CoCreate-app/CoCreate-speech-synthesis.git"
+        notification: {
+            import: "@cocreate/notification",
+            selector: "[actions*='notification']",
+            path: "../CoCreate-modules/CoCreate-notification",
+            repo: "github.com/CoCreate-app/CoCreate-notification.git"
         },
         speechRecognition: {
             import: "@cocreate/speech-recognition",
             selector: "[speech-recognition]",
             path: "../CoCreate-modules/CoCreate-speech-recognition",
             repo: "github.com/CoCreate-app/CoCreate-speech-recognition.git"
+        },
+        speechSynthesis: {
+            import: "@cocreate/speech-synthesis",
+            selector: "[speech-synthesis]",
+            path: "../CoCreate-modules/CoCreate-speech-synthesis",
+            repo: "github.com/CoCreate-app/CoCreate-speech-synthesis.git"
         },
         progress: {
             import: "@cocreate/progress",
@@ -418,13 +373,7 @@ export default {
             selector: "[vdom-query], [vdom-id]",
             path: "../CoCreate-modules/CoCreate-vdom",
             repo: "github.com/CoCreate-app/CoCreate-vdom.git"
-        },
-        notification: {
-            import: "@cocreate/notification",
-            selector: "[actions*='notification']",
-            path: "../CoCreate-modules/CoCreate-notification",
-            repo: "github.com/CoCreate-app/CoCreate-notification.git"
-        },
+        }
     },
 
     /**

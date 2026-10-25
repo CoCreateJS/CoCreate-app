@@ -1,0 +1,769 @@
+					<div
+						class="builder-panel-section-heading"
+						click-query=".logic"
+						click.class="show,hide">
+						<span class="logic hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="logic show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Logic</span>
+					</div>
+					<div class="logic show builder-panel-section-body">
+						<input
+							attribute="state_to"
+							type="text"
+							class="form-control"
+							placeholder="state_to"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							attribute="state_id"
+							type="text"
+							class="form-control"
+							placeholder="state_id"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<cocreate-select
+							class="floating-label"
+							placeholder="state-array:"
+							attribute="state-array"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="true"
+									><span>true</span></cc-option
+								>
+								<cc-option value="false"
+									><span>false</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+						<cocreate-select
+							class="floating-label"
+							placeholder="state-object:"
+							attribute="state-object"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="true"
+									><span>true</span></cc-option
+								>
+								<cc-option value="false"
+									><span>false</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+						<div class="d-flex gap-2 builder-panel-row">
+							<div class="w-50 me-2">
+								<input
+									attribute="state-prefix"
+									type="text"
+									class="form-control"
+									placeholder="state-prefix"
+									id="state-prefix"
+									state-id="builder"
+									attribute-query="iframe; *"
+									array=""
+									object=""
+									crud="false"
+									save="false"
+									read="false"
+									active />
+							</div>
+							<div class="w-50 ms-2">
+								<input
+									attribute="state-name"
+									type="text"
+									class="form-control"
+									placeholder="state-name"
+									id="state-name"
+									state-id="builder"
+									attribute-query="iframe; *"
+									array=""
+									object=""
+									crud="false"
+									save="false"
+									read="false"
+									active />
+							</div>
+						</div>
+
+						<input
+							attribute="state-value"
+							type="text"
+							class="form-control"
+							placeholder="state-value"
+							id="state-value"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<cocreate-select
+							class="floating-label"
+							id="state-fetch_object"
+							placeholder="state-fetch_object:"
+							attribute="state-fetch_object"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="true"
+									><span>true</span></cc-option
+								>
+								<cc-option value="false"
+									><span>false</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+						\
+						<input
+							attribute="state-filter-query-key"
+							type="text"
+							class="form-control"
+							placeholder="state-filter-query-key"
+							id="state-filter-query-key"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							attribute="state-filter-value"
+							type="text"
+							class="form-control"
+							placeholder="state-filter-value"
+							id="state-filter-value"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<cocreate-select
+							class="floating-label"
+							id=""
+							placeholder=""
+							attribute=""
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active>
+							<ul class="options builder-panel-options mt-2">
+								<cc-option value=""
+									><span>none</span></cc-option
+								>
+								<cc-option value="true"
+									><span>true</span></cc-option
+								>
+								<cc-option value="false"
+									><span>false</span></cc-option
+								>
+							</ul>
+						</cocreate-select>
+					</div>
+					<div
+						class="builder-panel-section-heading"
+						click-query=".datavisible"
+						click.class="show,hide">
+						<span class="datavisible hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="datavisible show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Conditional Logic</span>
+					</div>
+					<div class="datavisible show builder-panel-section-body">
+						<input
+							attribute="show"
+							type="text"
+							class="form-control"
+							placeholder="show"
+							id="show"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							attribute="hide"
+							type="text"
+							class="form-control"
+							placeholder="hide"
+							id="hide"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+					</div>
+					<div
+						class="builder-panel-section-heading"
+						click-query=".dataselected"
+						click.class="show,hide">
+						<span class="dataselected hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="dataselected show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Selected</span>
+					</div>
+					<div class="dataselected show builder-panel-section-body">
+						<input
+							attribute="selected.value"
+							type="text"
+							class="form-control"
+							placeholder="selected.value"
+							id="selected-assignment"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							attribute="selected-query"
+							type="text"
+							class="form-control"
+							placeholder="selected-query"
+							id="selected-query"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							attribute="selected-group"
+							type="text"
+							class="form-control"
+							placeholder="selected-group"
+							id="selected-group"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+					</div>
+					<div
+						class="builder-panel-section-heading"
+						click-query=".toggleattr"
+						click.class="show,hide">
+						<span class="toggleattr hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="toggleattr show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Toggle</span>
+					</div>
+					<div class="toggleattr show builder-panel-section-body">
+						<input
+							attribute="toggle"
+							type="text"
+							class="form-control"
+							placeholder="toggle"
+							id="toggle"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							attribute="toggle-attribute"
+							type="text"
+							class="form-control"
+							placeholder="toggle-attribute"
+							id="toggle-attribute"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							attribute="toggle-query"
+							type="text"
+							class="form-control"
+							placeholder="toggle-query"
+							id="toggle-query"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+					</div>
+					<div
+						class="builder-panel-section-heading"
+						click-query=".hoverattr"
+						click.class="show,hide">
+						<span class="hoverattr hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="hoverattr show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Hover</span>
+					</div>
+					<div class="hoverattr show builder-panel-section-body">
+						<input
+							type="text"
+							class="form-control"
+							attribute="hover"
+							placeholder="hover"
+							id="hover"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							type="text"
+							attribute="hover-attribute"
+							class="form-control"
+							placeholder="hover-attribute"
+							id="hover-attribute"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+						<input
+							type="text"
+							attribute="hover-query"
+							class="form-control"
+							placeholder="hover-query"
+							id="hover-query"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+					</div>
+					<div
+						class="builder-panel-section-heading"
+						click-query=".scroll"
+						click.class="show,hide">
+						<span class="scroll hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="scroll show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Scroll</span>
+					</div>
+					<div class="scroll show builder-panel-section-body">
+						<div >
+							<input
+								type="text"
+								attribute="scroll"
+								class="form-control"
+								placeholder="scroll"
+								id="scroll"
+								state-id="builder"
+								attribute-query="iframe; *"
+								array=""
+								object=""
+								crud="false"
+								save="false"
+								read="false"
+								active />
+							<input
+								type="text"
+								attribute="scroll-attribute"
+								class="form-control"
+								placeholder="scroll-attribute"
+								id="scroll-attribute"
+								state-id="builder"
+								attribute-query="iframe; *"
+								array=""
+								object=""
+								crud="false"
+								save="false"
+								read="false"
+								active />
+							<input
+								type="text"
+								attribute="scroll-query"
+								class="form-control"
+								placeholder="scroll-query"
+								id="scroll-query"
+								state-id="builder"
+								attribute-query="iframe; *"
+								array=""
+								object=""
+								crud="false"
+								save="false"
+								read="false"
+								active />
+						</div>
+						<div class="d-flex gap-2 builder-panel-row">
+							<div class="builder-panel-row-item">
+								<input
+									id="scroll-up"
+									class="form-control"
+									placeholder="scroll-up"
+									attribute="scroll-up"
+									state-id="builder"
+									attribute-query="iframe; *"
+									array=""
+									object=""
+									crud="false"
+									save="false"
+									read="false"
+									active />
+								<div
+									class="builder-unit-selector">
+									<cocreate-select
+										id="scroll-up-unit"
+										class="styleunit remove-none builder-style-unit"
+										state-id="builder"
+										array=""
+										object=""
+										crud="false"
+										save="false"
+										read="false"
+										attribute="attribute-unit"
+										attribute-query="#scroll-up">
+										<ul
+											class="options overflow-auto p-0 builder-panel-options"
+											array="modules"
+											filter-query-value="5ff747727005da1c27274193"
+											filter-query-key="_id.$eq"
+											key="units"
+											render-query="[template]">
+											<cc-option
+												class="m-0 p-1 rounded"
+												template
+												value="{{units}}"
+												><span value="{{units}}"
+													>{{units}}</span
+												></cc-option
+											>
+										</ul>
+									</cocreate-select>
+								</div>
+							</div>
+							<div class="builder-panel-row-item">
+								<input
+									id="scroll-down"
+									class="form-control"
+									placeholder="scroll-down:"
+									attribute="scroll-down"
+									state-id="builder"
+									attribute-query="iframe; *"
+									array=""
+									object=""
+									crud="false"
+									save="false"
+									read="false"
+									active />
+								<div
+									class="builder-unit-selector">
+									<cocreate-select
+										id="scroll-down-unit"
+										class="styleunit remove-none builder-style-unit"
+										state-id="builder"
+										array=""
+										object=""
+										crud="false"
+										save="false"
+										read="false"
+										attribute="attribute-unit"
+										attribute-query="#scroll-down">
+										<ul
+											class="options overflow-auto p-0 builder-panel-options"
+											array="modules"
+											filter-query-value="5ff747727005da1c27274193"
+											filter-query-key="_id.$eq"
+											key="units"
+											render-query="[template]">
+											<cc-option
+												class="m-0 p-1 rounded"
+												template
+												value="{{units}}"
+												><span value="{{units}}"
+													>{{units}}</span
+												></cc-option
+											>
+										</ul>
+									</cocreate-select>
+								</div>
+							</div>
+						</div>
+						<div >
+							<input
+								id="scroll-position"
+								attribute="scroll-position"
+								class="form-control"
+								placeholder="scroll-position:"
+								state-id="builder"
+								attribute-query="iframe; *"
+								array=""
+								object=""
+								crud="false"
+								save="false"
+								read="false"
+								active />
+							<div
+								class="builder-unit-selector">
+								<cocreate-select
+									id="scroll-position-unit"
+									class="styleunit remove-none builder-style-unit"
+									state-id="builder"
+									array=""
+									object=""
+									crud="false"
+									save="false"
+									read="false"
+									attribute="attribute-unit"
+									attribute-query="#scroll-position">
+									<ul class="options builder-panel-options">
+										<cc-option value="px"
+											><span class="m-auto"
+												>px</span
+											></cc-option
+										>
+										<cc-option value="%"
+											><span class="m-auto"
+												>%</span
+											></cc-option
+										>
+									</ul>
+								</cocreate-select>
+							</div>
+						</div>
+						<div >
+							<input
+								type="text"
+								attribute="scroll-top"
+								class="form-control"
+								placeholder="scroll-top"
+								id="scroll-top"
+								state-id="builder"
+								attribute-query="iframe; *"
+								array=""
+								object=""
+								crud="false"
+								save="false"
+								read="false"
+								active />
+							<input
+								type="text"
+								attribute="scroll-bottom"
+								class="form-control"
+								placeholder="scroll-bottom"
+								id="scroll-bottomn"
+								state-id="builder"
+								attribute-query="iframe; *"
+								array=""
+								object=""
+								crud="false"
+								save="false"
+								read="false"
+								active />
+							<input
+								type="text"
+								attribute="scrolling"
+								class="form-control"
+								placeholder="scrolling"
+								id="scrolling"
+								state-id="builder"
+								attribute-query="iframe; *"
+								array=""
+								object=""
+								crud="false"
+								save="false"
+								read="false"
+								active />
+							<input
+								type="text"
+								attribute="scroll-intersect"
+								class="form-control"
+								placeholder="scroll-intersect"
+								id="scroll-intersect"
+								state-id="builder"
+								attribute-query="iframe; *"
+								array=""
+								object=""
+								crud="false"
+								save="false"
+								read="false"
+								active />
+						</div>
+					</div>
+					<!--Clone -->
+					<div
+						class="builder-panel-section-heading"
+						click-query=".clone"
+						click.class="show,hide">
+						<span class="clone hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="clone show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Clone</span>
+					</div>
+					<div class="clone show builder-panel-section-body">
+						<input
+							attribute="clone_id"
+							type="text"
+							class="form-control"
+							placeholder="clone_id"
+							id="clone_id"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+					</div>
+					<!--Calculates -->
+					<div
+						class="builder-panel-section-heading"
+						click-query=".calculate"
+						click.class="show,hide">
+						<span class="calculate hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="calculate show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span>Calculates</span>
+					</div>
+					<div class="calculate show builder-panel-section-body">
+						<input
+							attribute="calculate"
+							type="text"
+							class="form-control"
+							placeholder="calculate"
+							id="calculate"
+							state-id="builder"
+							attribute-query="iframe; *"
+							array=""
+							object=""
+							crud="false"
+							save="false"
+							read="false"
+							active />
+					</div>
+				

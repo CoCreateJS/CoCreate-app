@@ -1,0 +1,82 @@
+<div
+				id="elements"
+				class="components d-none active"
+				role="tabpanel"
+				aria-labelledby="builder-elements-btn"
+				tabindex="0"
+				data-view="elements"
+				aria-hidden="false"
+				state-id="builder-block-elements"
+				state.aria-hidden
+				array="tags"
+				filter-query-key="module_id"
+				filter-query-value="5ff747727005da1c27274194"
+				filter-sort-key="position"
+				filter-sort-direction="asc"
+				render-query=":last-child">
+				<!-- Block Categories Template -->
+				<div
+					template
+					render-as="tag">
+					<div
+						class="builder-panel-section-heading"
+						click-query=".category{{tag._id}}"
+						click.class="show,hide">
+						<span
+							class="category{{tag._id}} hide"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/plus.svg"></i
+						></span>
+						<span class="category{{tag._id}} show"
+							><i
+								class="builder-panel-icon"
+								src="/assets/svg/minus.svg"></i
+						></span>
+						<span
+							array="{{tag.array}}"
+							object="{{tag._id}}"
+							key="name"
+							>Category Name</span
+						>
+					</div>
+					<!-- Blocks  -->
+					<div
+						class="category{{tag._id}} d-flex gap-2 flex-wrap justify-content-center text-center show builder-panel-section-body"
+						array="blocks"
+						filter-query-key="category"
+						filter-query-value="{{tag._id}}"
+						filter-sort-key="position"
+						filter-sort-direction="asc"
+						render-query=":last-child">
+						<!-- Blocks Template -->
+						<div
+							template
+							class="card position-relative flex-grow-1 p-2 builder-block-card"
+							hover="display:block!important"
+							hover-query="#editblock{{object._id}}"
+							object="{{object._id}}">
+							<div
+								id="editblock{{object._id}}"
+								class="d-none builder-edit-action">
+								<a
+									actions="state, openModal"
+									modal-src="../blocks/form.html"
+									state-array="{{object.array}}"
+									state-object="{{object._id}}"
+									state_to="form-fields"
+									modal-width="320px">
+									<i src="/assets/svg/pencil-alt.svg"></i>
+								</a>
+							</div>
+							<div
+								cloneable="true"
+								cloneable-html="{{object.html}}"
+								class="p-2 builder-block-card-preview">
+								<i>{{object.icon}}</i>
+								<p class="fs-12">{{object.name}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

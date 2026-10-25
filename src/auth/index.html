@@ -215,7 +215,8 @@
 				class="card position:relative margin-top:10px padding:20px {{status}}">
 				<span class="{{type}} font-weight:400">{{message}}</span>
 				<a
-					actions="remove"
+					click-query="$parent"
+					click.$remove=""
 					class="position:absolute top:4px right:4px"
 					aria-label="Dismiss notification">
 					<i

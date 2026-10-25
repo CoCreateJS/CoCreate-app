@@ -404,8 +404,10 @@
 								class="product-actions text-nowrap"
 								style="width: 1%">
 								<button
+									type="button"
 									class="btn btn-soft-danger delete-btn"
-									remove-query="$parent"
+									click-query="$closest tr"
+									click.$remove=""
 									aria-label="Delete product row">
 									<i src="/assets/svg/remix/delete-bin-line.svg"></i>
 								</button>

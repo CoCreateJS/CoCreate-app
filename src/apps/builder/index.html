@@ -1,333 +1,333 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			http-equiv="X-UA-Compatible"
-			content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1" />
-		<title>Builder | CoCreate</title>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="assets/favicon.ico" />
-		<link
-			rel="stylesheet"
-			href="./index.css"
-			array="files"
-			object="610cb468c0e9580010e5ba50"
-			key="src"
-			type="text/css" />
-		<link
-			rel="manifest"
-			href="/manifest.webmanifest" />
-	</head>
+<link rel="stylesheet" href="/apps/builder/index.css" />
+<link rel="stylesheet" href="/components/list/header.css" />
 
-	<body>
-		<!--<nav class="nav d-flex position:relative align-items:center box-shadow-bottom" content_id="canvas" scroll=", hide-nav" scroll-up="5" scroll-down="5" array="files" object="60de0fae14b5ab0c2dd2feb9" key="src">-->
-		<nav
-			class="nav d-flex position:relative align-items:center box-shadow-bottom"
-			content_id="canvas"
-			scroll=", hide-nav"
-			scroll-up="5"
-			scroll-down="5">
-			<!-- Menu Icon Arrow Left Animations -->
-			<a
-				class="menu_icon arrow-left"
-				click="active"
-				toggle="width:0px,width:310px"
-				toggle-query="#menuL"
-				toggle-attribute="style">
-				<span></span>
-				<span></span>
-				<span></span>
-			</a>
+<div class="builder-app">
+		<header class="app-panel-header builder-header">
+			<div
+				class="list-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+				<div class="list-header-primary d-flex align-items-center gap-2">
+					<button
+						type="button"
+						class="list-toolbar-control list-toolbar-icon btn btn-light"
+						aria-controls="menuL"
+						aria-label="Toggle components menu"
+						title="Components"
+						click-query="#menuL"
+						click.class="show,hide">
+						<i src="/assets/svg/remix/menu-2-line.svg"></i>
+					</button>
+					<div class="builder-title d-flex align-items-center gap-2">
+						<i src="/assets/svg/remix/layout-masonry-line.svg"></i>
+						<h5 class="mb-0">Builder</h5>
+					</div>
+				</div>
 
-			<!-- Horizontal Scroll Nav/Tabs -->
-			<ul
-				class="direction:rtl display:inline-flex align-items:center overflow:auto font-size:20px list-style-type:none width:100% height:50px">
-				<!-- Modal Controls -->
-				<li class="margin-right:15px">
-					<a actions="closeModal"
-						><i
-							class="height:18px"
-							src="/assets/svg/times.svg"></i
-					></a>
-				</li>
-				<li class="margin-right:15px">
-					<a actions="minMaxModal">
-						<i
-							toggle="/assets/svg/window-restore.svg, /assets/svg/window-maximize.svg"
-							toggle-attribute="src"
-							class="height:18px"
-							src="/assets/svg/window-maximize.svg"></i>
-					</a>
-				</li>
-				<li class="margin-right:15px">
-					<a actions="parkModal"
-						><i
-							class="height:18px"
-							src="/assets/svg/window-minimize.svg"></i
-					></a>
-				</li>
-
-				<!-- fullscreen toogle and icon transform-->
-				<li class="margin-right:15px">
-					<a fullscreen>
-						<i
-							class="height:18px"
-							src="/assets/svg/expand.svg"></i>
-						<i
-							class="height:18px"
-							src="/assets/svg/compress.svg"></i>
-					</a>
+				<ul class="list-header-actions hstack gap-2 ms-auto">
+				<li>
+					<button
+						type="button"
+						class="list-toolbar-control list-toolbar-icon btn btn-light"
+						fullscreen
+						fullscreen-query="$closest .builder-app"
+						aria-label="Toggle fullscreen"
+						title="Toggle fullscreen">
+						<i src="/assets/svg/remix/fullscreen-line.svg"></i>
+						<i src="/assets/svg/remix/fullscreen-exit-line.svg"></i>
+					</button>
 				</li>
 
 				<!-- Save and Make live -->
-				<li class="margin-right:15px">
-					<a
+				<li>
+					<button
+						type="button"
+						class="list-toolbar-control list-toolbar-icon btn btn-light"
 						actions="saveDomText"
-						state_id="builder"
+						state-id="builder"
 						array=""
 						object=""
 						key="src"
-						><i src="/assets/svg/save.svg"></i
-					></a>
+						aria-label="Save"
+						title="Save">
+						<i src="/assets/svg/remix/save-line.svg"></i>
+					</button>
 				</li>
 
 				<!-- Builder Controls -->
-				<li class="margin-right:15px">
-					<a
+				<li>
+					<button
+						type="button"
 						id="redo-canvas"
-						class=""
-						><i src="/assets/svg/redo-alt.svg"></i
-					></a>
+						class="list-toolbar-control list-toolbar-icon btn btn-light"
+						aria-label="Redo"
+						title="Redo">
+						<i src="/assets/svg/remix/arrow-go-forward-line.svg"></i>
+					</button>
 				</li>
-				<li class="margin-right:15px">
-					<a
+				<li>
+					<button
+						type="button"
 						id="undo-canvas"
-						class=""
-						><i src="/assets/svg/undo-alt.svg"></i
-					></a>
+						class="list-toolbar-control list-toolbar-icon btn btn-light"
+						aria-label="Undo"
+						title="Undo">
+						<i src="/assets/svg/remix/arrow-go-back-line.svg"></i>
+					</button>
 				</li>
 
 				<li
-					class="margin-right:15px min-width:40px line-height:40px border-radius:50% text-align:center background:whitesmoke"
+					class="builder-device-button"
 					selected-value="max-width:100%"
 					selected-query=".canvas-container"
 					selected-group="screen-size"
 					selected>
-					<a
+					<button type="button" class="list-toolbar-control list-toolbar-icon btn btn-light"
 						id="desktop-view"
-						class=""
-						><i src="/assets/svg/desktop.svg"></i
-					></a>
+						aria-label="Desktop preview"
+						title="Desktop preview"
+						><i src="/assets/svg/remix/computer-line.svg"></i
+					></button>
 				</li>
 				<li
-					class="margin-right:15px min-width:40px line-height:40px border-radius:50% text-align:center background:whitesmoke"
+					class="builder-device-button"
 					selected-value="max-width:768px"
 					selected-query=".canvas-container"
 					selected-group="screen-size">
-					<a
+					<button type="button" class="list-toolbar-control list-toolbar-icon btn btn-light"
 						id="tablet-view"
-						class=""
-						><i src="/assets/svg/tablet-alt.svg"></i
-					></a>
+						aria-label="Tablet preview"
+						title="Tablet preview"
+						><i src="/assets/svg/remix/tablet-line.svg"></i
+					></button>
 				</li>
 				<li
-					class="margin-right:15px min-width:40px line-height:40px border-radius:50% text-align:center background:whitesmoke"
+					class="builder-device-button"
 					selected-value="max-width:375px"
 					selected-query=".canvas-container"
 					selected-group="screen-size">
-					<a
+					<button type="button" class="list-toolbar-control list-toolbar-icon btn btn-light"
 						id="mobile-view"
-						class=""
-						><i src="/assets/svg/mobile-alt.svg"></i
-					></a>
+						aria-label="Mobile preview"
+						title="Mobile preview"
+						><i src="/assets/svg/remix/smartphone-line.svg"></i
+					></button>
 				</li>
 
-				<li
+				<li>
+					<button
+					type="button"
+					class="list-toolbar-control list-toolbar-icon btn btn-light"
 					actions="disableLinks"
 					link-query="#canvas;"
-					class="margin-right:15px"
-					show="[actions='enableLinks']"
-					hide="[actions='disableLinks']">
-					<i src="/assets/svg/link.svg"></i>
+					click-query="[actions='enableLinks'], [actions='disableLinks']"
+					click.class="show,hide"
+					aria-label="Disable links in preview"
+					title="Disable links in preview">
+					<i src="/assets/svg/remix/link.svg"></i>
+					</button>
 				</li>
-				<li
+				<li>
+					<button
+					type="button"
+					class="list-toolbar-control list-toolbar-icon btn btn-light hide"
 					actions="enableLinks"
 					link-query="#canvas;"
-					class="margin-right:15px color:red"
-					hidden
-					show="[actions='disableLinks']"
-					hide="[actions='enableLinks']">
-					<i src="/assets/svg/unlink.svg"></i>
+					click-query="[actions='enableLinks'], [actions='disableLinks']"
+					click.class="show,hide"
+					aria-label="Enable links in preview"
+					title="Enable links in preview">
+					<i src="/assets/svg/remix/links-line.svg"></i>
+					</button>
 				</li>
 
 				<!-- Render Code Editor -->
-				<li class="margin-right:15px">
-					<a
+				<li>
+					<button
+						type="button"
+						class="list-toolbar-control list-toolbar-icon btn btn-light"
 						actions="state, openModal"
 						modal-src="../code-editor/index.html"
 						modal-width="900px"
-						modal-color="#229954">
-						<i src="/assets/svg/code.svg"></i>
-						<div
-							state_id="builder"
-							state-array=""
-							state-object=""
-							key=""
-							state_to="code-editor"></div>
-					</a>
+						modal-color="#229954"
+						aria-label="Edit page code"
+						title="Edit page code">
+						<i src="/assets/svg/remix/code-s-slash-line.svg"></i>
+					</button>
+					<div
+						state_id="builder"
+						state-array=""
+						state-object=""
+						key=""
+						state_to="code-editor"></div>
 				</li>
-				<li class="margin-right:15px">
-					<a
+				<li>
+					<button
+						type="button"
 						id="element-borders"
-						class=""
-						><i src="/assets/svg/square.svg"></i
-					></a>
+						class="list-toolbar-control list-toolbar-icon btn btn-light"
+						aria-label="Toggle element borders"
+						title="Toggle element borders">
+						<i src="/assets/svg/square.svg"></i>
+					</button>
 				</li>
-				<li class="margin-right:15px padding-left:15px">
-					<a id="clean-canvas"
-						><i
-							class="height:18px"
-							src="/assets/svg/trash-alt.svg"></i
-					></a>
+				<li>
+					<button
+						type="button"
+						id="clean-canvas"
+						class="list-toolbar-control list-toolbar-icon btn btn-soft-danger"
+						aria-label="Clear canvas"
+						title="Clear canvas">
+						<i src="/assets/svg/remix/delete-bin-line.svg"></i>
+					</button>
 				</li>
 			</ul>
 
-			<!-- Menu Icon Arrow Right Animations -->
-			<a
-				class="menu_icon arrow-right"
-				click="active"
-				toggle="width:0px,width:260px"
-				toggle-query="#menuR"
-				toggle-attribute="style">
-				<span></span>
-				<span></span>
-				<span></span>
-			</a>
-		</nav>
-
-		<!-- Modal viewport -->
-		<div
-			id="modal-viewport"
-			class="position:fixed z-index:12!important"></div>
-
-		<!-- Main Container -->
-		<main
-			content_id="canvas"
-			class="height:100vh">
-			<div class="canvas-container height:100% margin:auto">
-				<iframe
-					contenteditable
-					sortable
-					id="canvas"
-					state_id="builder"
-					array=""
-					object=""
-					key="src"
-					read="false"
-					update="false"
-					crud="false"
-					frameborder="0"
-					width="100%"
-					height="100%"></iframe>
+			<button
+				type="button"
+				class="list-toolbar-control list-toolbar-icon btn btn-light builder-properties-toggle"
+				aria-controls="menuR"
+				aria-label="Toggle properties panel"
+				title="Properties"
+				click-query="#menuR"
+				click.class="show,hide">
+				<i src="/assets/svg/remix/equalizer-line.svg"></i>
+			</button>
 			</div>
-		</main>
+		</header>
 
-		<!-- SideNav Left -->
-		<sidenav
-			id="menuL"
-			class="position:fixed top:0px left:0px overflow-hidden background:whitesmoke height:100vh width:260px width:0px@xs@sm@md"
-			resizable
-			resize-query="[content_id='canvas']"
-			resize-property="margin-left"
-			resize-value="width">
-			<div
-				class="domEditor"
-				array="files"
-				object="60de0fae14b5ab0c2dd2feba"
-				key="src"></div>
-			<div resize="right"></div>
-		</sidenav>
+		<div id="modal-viewport" class="position:fixed z-index:12!important"></div>
 
-		<!-- SideNav Right -->
-		<sidenav
-			id="menuR"
-			class="position:fixed top:0px right:0px overflow-hidden background:whitesmoke height:100vh width:310px width:0px@xs@sm@md"
-			resizable
-			resize-query="[content_id='canvas']"
-			resize-property="margin-right"
-			resize-value="width">
-			<input
-				type="hidden"
-				attribute="eid" />
+		<div class="builder-workspace">
+			<aside
+				id="menuL"
+				class="builder-sidebar builder-sidebar-left show"
+				aria-label="Builder components">
+				<div class="builder-sidebar-header">
+					<h6 class="mb-0">Components</h6>
+					<button
+						type="button"
+						class="list-toolbar-control list-toolbar-icon btn btn-light builder-sidebar-close"
+						aria-label="Close components menu"
+						title="Close components menu"
+						click-query="#menuL"
+						click.class="show,hide">
+						<i src="/assets/svg/remix/close-line.svg"></i>
+					</button>
+				</div>
+				<div
+					class="builder-sidebar-content"
+					src="/apps/builder/components/left-panel/index.html"></div>
+			</aside>
+
+			<section
+				content_id="canvas"
+				class="app-panel builder-canvas"
+				aria-label="Builder preview">
+				<div class="canvas-container">
+					<iframe
+						editor="html"
+						title="Builder page preview"
+						sortable
+						id="canvas"
+						state-id="builder"
+						array=""
+						object=""
+						key="src"
+						read="false"
+						update="false"
+						crud="false"></iframe>
+				</div>
+			</section>
+
+			<aside
+				id="menuR"
+				class="builder-sidebar builder-sidebar-right show"
+				aria-label="Builder properties">
+				<div class="builder-sidebar-header">
+					<h6 class="mb-0">Properties</h6>
+					<button
+						type="button"
+						class="list-toolbar-control list-toolbar-icon btn btn-light builder-sidebar-close"
+						aria-label="Close properties panel"
+						title="Close properties panel"
+						click-query="#menuR"
+						click.class="show,hide">
+						<i src="/assets/svg/remix/close-line.svg"></i>
+					</button>
+				</div>
+			<input type="hidden" attribute="eid" />
 			<div
-				class="domEditor"
-				array="files"
-				object="60de0fae14b5ab0c2dd2febb"
-				key="src"></div>
-			<div resize="left"></div>
-		</sidenav>
+				class="builder-sidebar-content"
+				src="/apps/builder/components/right-panel/index.html"></div>
+			</aside>
+		</div>
 
 		<!-- Selected Toolbar -->
 		<toolbar
-			toolbar-placement="top"
+			position-target
+			position-placement="top-start"
+			position-offset="0"
+			position-padding="8"
+			position-collision="flip shift"
 			toolbar-query="iframe;"
 			toolbar-event="click"
 			config-key="selectable"
-			class="position:absolute pointer-events:none display:none">
+			class="builder-overlay-toolbar builder-selection-toolbar position-absolute pe-none">
 			<tools
-				class="d-flex justify-content:space-between width:100% color:white font-size:11px">
+				class="builder-overlay-tools d-flex justify-content-between w-100">
 				<span
-					class="padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid"
+					class="builder-element-label"
 					tagname></span>
-				<!--<span class="padding:3px background:dodgerblue pointer-events:auto"><i  src="/assets/svg/arrows-alt.svg"></i></span>-->
 				<div
-					class="d-flex align-items:center padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid pointer-events:auto">
+					class="builder-element-actions d-flex align-items-center">
 					<span
 						actions="cloneElement"
-						class="margin-right:10px"
+						class="builder-element-action"
+						title="Duplicate element"
 						><i src="/assets/svg/clone.svg"></i
 					></span>
 					<span
 						actions="deleteElement"
-						class="margin-right:10px"
+						class="builder-element-action"
+						title="Delete element"
 						><i src="/assets/svg/trash-alt.svg"></i
 					></span>
 					<span
 						actions="previousElement"
-						class="margin-right:10px"
+						class="builder-element-action"
+						title="Move element up"
 						><i src="/assets/svg/arrow-up.svg"></i
 					></span>
-					<span actions="nextElement"
+					<span
+						actions="nextElement"
+						class="builder-element-action"
+						title="Move element down"
 						><i src="/assets/svg/arrow-down.svg"></i
 					></span>
 				</div>
 			</tools>
 			<div
-				class="height:100% width:100% border:2px_dodgerblue_solid"></div>
+				class="builder-selection-outline"></div>
 		</toolbar>
 
 		<!-- Hover Toolbar -->
 		<toolbar
-			toolbar-placent="top"
+			position-target
+			position-placement="top-start"
+			position-offset="0"
+			position-padding="8"
+			position-collision="flip shift"
 			toolbar-query="iframe;"
 			toolbar-event="mouseover"
 			config-key="hoverable"
-			class="position:absolute pointer-events:none display:none">
+			class="builder-overlay-toolbar builder-hover-toolbar position-absolute pe-none">
 			<tools
-				class="tools d-flex align-items:center color:white font-size:11px">
+				class="builder-overlay-tools d-flex align-items-center">
 				<span
-					class="padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid"
+					class="builder-element-label"
 					tagname></span>
 			</tools>
 			<div
-				class="height:100% width:100% border:1px_dodgerblue_solid"></div>
+				class="builder-hover-outline"></div>
 		</toolbar>
 		<!-- End Hover Toolbar -->
 
@@ -337,14 +337,14 @@
 			toolbar-query="iframe;"
 			toolbar-event="mouseup"
 			config-key="editable"
-			class="toolbar position:absolute pointer-events:none display:none">
+			class="toolbar builder-richtext-toolbar position-absolute pe-none">
 			<tools
-				class="d-flex align-items:center width:fit-content background:gainsboro border-radius:5px pointer-events:auto">
+				class="builder-richtext-tools d-flex align-items-center">
 				<div
 					actions="nodeName"
 					node-name="b"
 					node-target="#canvas;"
-					class="padding:5px"
+					class="builder-richtext-action"
 					id="bold-button">
 					<i src="/assets/svg/bold.svg"></i>
 				</div>
@@ -352,30 +352,36 @@
 					actions="nodeName"
 					node-name="i"
 					node-target="#canvas;"
+					class="builder-richtext-action"
 					id="italic-button">
 					<i src="/assets/svg/italic.svg"></i>
 				</div>
 				<div
 					id="link-button"
-					show="#link"
-					hide="#link">
+					class="builder-richtext-action"
+					click-query="#link"
+					click.class="show,hide">
 					<i src="/assets/svg/link.svg"></i>
 				</div>
 				<div
 					id="link"
-					class="position:absolute d-flex align-items:center transition:0.4s background:gainsboro height:28px border-radius:5px"
-					hidden>
+					class="builder-richtext-link-form position-absolute d-flex align-items-center hide">
 					<input
 						type="text"
-						key="" />
+						key=""
+						class="form-control" />
 					<div
 						actions="nodeName"
 						node-name="a"
 						node-target="#canvas;"
+						class="builder-richtext-action"
 						id="nodename">
 						<i src="/assets/svg/link.svg"></i>
 					</div>
-					<div hide="#link">
+					<div
+						class="builder-richtext-action"
+						click-query="#link"
+						click.class="show,hide">
 						<i src="/assets/svg/times.svg"></i>
 					</div>
 				</div>
@@ -383,24 +389,27 @@
 					actions="nodeName"
 					node-name="q"
 					node-target="#canvas;"
+					class="builder-richtext-action"
 					id="quote-button">
 					<i src="/assets/svg/quote-right.svg"></i>
 				</div>
 				<div
 					id="heading-btn"
-					hover="width:fit-content"
+					class="builder-richtext-action"
+					hover.style="width:fit-content"
 					hover-query="#headings">
 					<i src="/assets/svg/heading.svg"></i>
 				</div>
 				<div
 					id="headings"
-					hover="width:fit-content"
+					class="builder-richtext-heading-options"
 					hover-query="#headings"
-					class="position:absolute d-flex align-items:center transition:0.4s width:0px background:gainsboro overflow-hidden height:28px border-radius:5px">
+					hover.style="width:fit-content">
 					<div
 						actions="nodeName"
 						node-name="h1"
 						node-target="#canvas;"
+						class="builder-richtext-action"
 						id="header-1-button">
 						<i src="/assets/svg/heading.svg"></i><sub>1</sub>
 					</div>
@@ -408,6 +417,7 @@
 						actions="nodeName"
 						node-name="h2"
 						node-target="#canvas;"
+						class="builder-richtext-action"
 						id="header-2-button">
 						<i src="/assets/svg/heading.svg"></i><sub>2</sub>
 					</div>
@@ -415,6 +425,7 @@
 						actions="nodeName"
 						node-name="h3"
 						node-target="#canvas;"
+						class="builder-richtext-action"
 						id="header-3-button">
 						<i src="/assets/svg/heading.svg"></i><sub>3</sub>
 					</div>
@@ -422,6 +433,7 @@
 						actions="nodeName"
 						node-name="h4"
 						node-target="#canvas;"
+						class="builder-richtext-action"
 						id="header-4-button">
 						<i src="/assets/svg/heading.svg"></i><sub>4</sub>
 					</div>
@@ -429,6 +441,7 @@
 						actions="nodeName"
 						node-name="h5"
 						node-target="#canvas;"
+						class="builder-richtext-action"
 						id="header-5-button">
 						<i src="/assets/svg/heading.svg"></i><sub>5</sub>
 					</div>
@@ -436,30 +449,29 @@
 						actions="nodeName"
 						node-name="h6"
 						node-target="#canvas;"
+						class="builder-richtext-action"
 						id="header-6-button">
 						<i src="/assets/svg/heading.svg"></i><sub>6</sub>
 					</div>
 				</div>
 				<div
 					id="show-controls"
-					show="#sidebar-controls"
-					hide="#sidebar-controls">
+					class="builder-richtext-action"
+					click-query="#sidebar-controls"
+					click.class="show,hide">
 					<i src="/assets/svg/plus.svg"></i>
 				</div>
-				<div
-					id="sidebar-controls"
-					class="d-flex align-items:center"
-					hidden>
-					<div id="image-button">
+				<div id="sidebar-controls" class="builder-richtext-control-group hide">
+					<div id="image-button" class="builder-richtext-action">
 						<i src="/assets/svg/camera.svg"></i>
 					</div>
-					<div id="video-button">
+					<div id="video-button" class="builder-richtext-action">
 						<i src="/assets/svg/play.svg"></i>
 					</div>
-					<div id="tweet-button">
+					<div id="tweet-button" class="builder-richtext-action">
 						<i src="/assets/svg/twitter.svg"></i>
 					</div>
-					<div id="divider-button">
+					<div id="divider-button" class="builder-richtext-action">
 						<i src="/assets/svg/minus.svg"></i>
 					</div>
 				</div>
@@ -522,6 +534,7 @@
 				{ selector: "a.menu_icon span", selectable: false }
 			];
 		</script>
+		<script src="/apps/builder/overlay-position.js"></script>
 
 		<!-- element-config Example using html elements and attributes to define config -->
 		<!--<element-config config-query="iframe; html" array="" object="" key="" style="display:none">-->
@@ -529,7 +542,4 @@
 		<!--    <config selector="h1, h2, h3, h4, h5, h6, p, span, blockquote" editable="true" draggable="true" selectable="true" hoverable="true" mouseover="true"></config>-->
 		<!--</element-config>-->
 
-		<!--<script src="https://CoCreate.app/dist/CoCreate.js"></script>-->
-		<script src="https://CoCreate.app/dist/CoCreate.js"></script>
-	</body>
-</html>
+	</div>

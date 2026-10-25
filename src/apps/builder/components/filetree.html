@@ -19,8 +19,8 @@
 	<div class="padding:5px" template>
 		<span
 			class=""
-			show="#directory{{$auto._id}}"
-			hide="#directory{{$auto._id}}"
+			click-query="#directory{{$auto._id}}"
+			click.class="show,hide"
 			toggle="fa-caret-down, fa-caret-right"
 			toggle-query="#icon{{$auto._id}}">
 			<i id="icon{{$auto._id}}" class="fa fa-caret-right"></i>
@@ -34,8 +34,7 @@
 		>
 		<div
 			id="directory{{$auto._id}}"
-			class="domEditor margin-left:10px"
-			hidden
+			class="domEditor margin-left:10px hide"
 			array="files"
 			object="611ab5d9251afa96bd20f6cc"
 			key="src"

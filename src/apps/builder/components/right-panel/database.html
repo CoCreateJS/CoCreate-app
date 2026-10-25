@@ -1,0 +1,324 @@
+<div
+	class="builder-panel-section-heading"
+	click-query=".database"
+	click.class="show,hide">
+	<span class="database hide"
+		><i
+			class="builder-panel-icon"
+			src="/assets/svg/plus.svg"></i
+	></span>
+	<span class="database show"
+		><i
+			class="builder-panel-icon"
+			src="/assets/svg/minus.svg"></i
+	></span>
+	<span>Database</span>
+</div>
+<div class="database show builder-panel-section-body">
+	<div class="d-flex gap-2 builder-panel-row">
+		<div class="builder-panel-row-item">
+			<cocreate-select
+				class="floating-label"
+				id="realtime"
+				placeholder="realtime:"
+				attribute="realtime"
+				state-id="builder"
+				attribute-query="iframe; *"
+				array=""
+				object=""
+				crud="false"
+				save="false"
+				read="false"
+				active>
+				<ul
+					class="options builder-panel-options mt-2"
+					search_id="search_01">
+					<cc-option value=""><span>none</span></cc-option>
+					<cc-option value="true"><span>true</span></cc-option>
+					<cc-option value="false"><span>false</span></cc-option>
+				</ul>
+			</cocreate-select>
+		</div>
+		<div class="builder-panel-row-item">
+			<cocreate-select
+				class="floating-label"
+				id="cursors"
+				placeholder="cursors:"
+				attribute="cursors"
+				state-id="builder"
+				attribute-query="iframe; *"
+				array=""
+				object=""
+				crud="false"
+				save="false"
+				read="false"
+				active>
+				<ul class="options builder-panel-options mt-2">
+					<cc-option value=""><span>none</span></cc-option>
+					<cc-option value="true"><span>true</span></cc-option>
+					<cc-option value="false"><span>false</span></cc-option>
+				</ul>
+			</cocreate-select>
+		</div>
+	</div>
+	<div >
+		<cocreate-select
+			class="floating-label"
+			id="array"
+			placeholder="array:"
+			attribute="array"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active>
+			<ul class="options builder-panel-options mt-2">
+				<cc-option value=""><span>none</span></cc-option>
+				<cc-option value="true"><span>true</span></cc-option>
+				<cc-option value="false"><span>false</span></cc-option>
+			</ul>
+		</cocreate-select>
+	</div>
+	<div >
+		<cocreate-select
+			class="floating-label"
+			id="object"
+			placeholder="object:"
+			attribute="object"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active>
+			<ul class="options builder-panel-options mt-2">
+				<cc-option value=""><span>none</span></cc-option>
+				<cc-option value="true"><span>true</span></cc-option>
+				<cc-option value="false"><span>false</span></cc-option>
+			</ul>
+		</cocreate-select>
+	</div>
+	<div >
+		<input
+			attribute="name"
+			type="text"
+			class="form-control"
+			placeholder="Name"
+			id="name"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active />
+	</div>
+	<div >
+		<textarea
+			attribute="value"
+			class="form-control"
+			placeholder="value"
+			id="value"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active></textarea>
+	</div>
+	<div >
+		<input
+			attribute="value-prefix"
+			type="text"
+			class="form-control"
+			placeholder="value-prefix"
+			id="value-prefix"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active />
+	</div>
+	<div >
+		<input
+			attribute="value-suffix"
+			type="text"
+			class="form-control"
+			placeholder="value-suffix"
+			id="value-suffix"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active />
+	</div>
+	<div >
+		<input
+			attribute="value"
+			type="text"
+			class="form-control"
+			placeholder="value"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active />
+	</div>
+	<div >
+		<input
+			attribute="name"
+			type="text"
+			class="form-control"
+			placeholder="Name"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active />
+	</div>
+	<div class="d-flex gap-2 builder-panel-row">
+		<div class="builder-panel-row-item">
+			<cocreate-select
+				class="floating-label"
+				id="read"
+				placeholder="read:"
+				attribute="read"
+				state-id="builder"
+				attribute-query="iframe; *"
+				array=""
+				object=""
+				crud="false"
+				save="false"
+				read="false"
+				active>
+				<ul class="options builder-panel-options mt-2">
+					<cc-option value=""><span>none</span></cc-option>
+					<cc-option value="true"><span>true</span></cc-option>
+					<cc-option value="false"><span>false</span></cc-option>
+				</ul>
+			</cocreate-select>
+		</div>
+		<div class="builder-panel-row-item">
+			<cocreate-select
+				class="floating-label"
+				id="save"
+				placeholder="save:"
+				attribute="save"
+				state-id="builder"
+				attribute-query="iframe; *"
+				array=""
+				object=""
+				crud="false"
+				save="false"
+				read="false"
+				active>
+				<ul class="options builder-panel-options mt-2">
+					<cc-option value=""><span>none</span></cc-option>
+					<cc-option value="true"><span>true</span></cc-option>
+					<cc-option value="false"><span>false</span></cc-option>
+				</ul>
+			</cocreate-select>
+		</div>
+	</div>
+	<div >
+		<cocreate-select
+			class="floating-label"
+			id="actions"
+			placeholder="actions:"
+			attribute="actions"
+			state-id="builder"
+			attribute-query="iframe; *"
+			array=""
+			object=""
+			crud="false"
+			save="false"
+			read="false"
+			active>
+			<ul class="options builder-panel-options mt-2">
+				<cc-option value=""><span>none</span></cc-option>
+				<cc-option value="true"><span>true</span></cc-option>
+				<cc-option value="false"><span>false</span></cc-option>
+			</ul>
+		</cocreate-select>
+	</div>
+</div>
+<div
+	class="builder-panel-section-heading"
+	click-query=".fetchlist"
+	click.class="show,hide">
+	<span class="fetchlist hide"
+		><i
+			class="builder-panel-icon"
+			src="/assets/svg/plus.svg"></i
+	></span>
+	<span class="fetchlist show"
+		><i
+			class="builder-panel-icon"
+			src="/assets/svg/minus.svg"></i
+	></span>
+	<span>Fetch List</span>
+</div>
+<div class="fetchlist show builder-panel-section-body">
+	<input
+		attribute="filter-query-key"
+		type="text"
+		class="form-control"
+		placeholder="filter-query-key"
+		id="filter-query-key"
+		state-id="builder"
+		attribute-query="iframe; *"
+		array=""
+		object=""
+		crud="false"
+		save="false"
+		read="false"
+		active />
+	<input
+		attribute="filter-value"
+		type="text"
+		class="form-control"
+		placeholder="filter-value"
+		id="filter-value"
+		state-id="builder"
+		attribute-query="iframe; *"
+		array=""
+		object=""
+		crud="false"
+		save="false"
+		read="false"
+		active />
+	<input
+		attribute="template_id"
+		type="text"
+		class="form-control"
+		placeholder="template_id"
+		id="template_id"
+		state-id="builder"
+		attribute-query="iframe; *"
+		array=""
+		object=""
+		crud="false"
+		save="false"
+		read="false"
+		active />
+</div>

@@ -102,25 +102,21 @@
         "highlight": "$highlightCode"
     },
     "$window.document.addEventListener": [
-        "codeareaLoaded",
+        "editorLoaded",
         {
             "$function": {
                 "body": {
-                    "$CoCreate.codearea.set": {
-                        "highlight": "$highlightCode"
-                    }
+                    "$CoCreate.editor.setHighlighter": "$highlightCode"
                 }
             }
         }
     ],
     "$return": {
         "$if": {
-            "$CoCreate.codearea.set": {
+            "$CoCreate.editor.setHighlighter": {
                 "$exists": {
                     "$true": {
-                        "$CoCreate.codearea.set": {
-                            "highlight": "$highlightCode"
-                        }
+                        "$CoCreate.editor.setHighlighter": "$highlightCode"
                     }
                 }
             }

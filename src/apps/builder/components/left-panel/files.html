@@ -1,0 +1,113 @@
+<div id="files" class="left-panel active" role="tabpanel" aria-labelledby="builder-files-btn" data-view="files">
+			<!-- Search Files -->
+			<form class="px-2 pb-4">
+				<input
+					type="text"
+					class="form-control"
+					state-to="results" />
+				<span
+					class="builder-panel-search-action">
+					<a
+						actions="state, openModal"
+						state_to="render"
+						array="website-pages"
+						object=""
+						state-key="src"
+						modal-width="900px"
+						modal-color="#229954">
+						<i src="/assets/svg/search.svg"></i>
+					</a>
+				</span>
+			</form>
+			<!-- File Tree -->
+			<div class="p-2">
+				<span 
+					><i
+						class="fa fa-caret-down"
+						toggle="fa-caret-right, fa-caret-down"></i
+				></span>
+				<span
+					class="ms-2"
+					array="websites"
+					object=""
+					key="name"
+					>Project name</span
+				>
+				<div
+					id="fetch-files"
+					class="fetch-files ms-3"
+					sortable
+					array=""
+					object
+					filter-query-key="directory.$eq"
+					filter-query-value="/"
+					filter-sort-key="name"
+					filter-sort-direction="asc"
+					render-query=":last-child">
+					<div
+						filter-query-key="content-type"
+						filter-query-value="text/directory"
+						filter-query="$parent"></div>
+					<!--Folder Template -->
+					<div
+						class="p-2"
+						template
+						reder-as="$auto"
+						object="{{$auto._id}}">
+						<span
+							
+							click-query="#directory{{$auto._id}}"
+							click.class="show,hide"
+							toggle="fa-caret-down, fa-caret-right"
+							toggle-query="#icon{{$auto._id}}">
+							<i
+								id="icon{{$auto._id}}"
+								class="fa fa-caret-right"></i>
+						</span>
+						<span
+							class="ms-2"
+							array="files"
+							object="{{$auto._id}}"
+							key="name"></span>
+
+						<!-- fetches folder and file template. This loops until tree ends -->
+						<div
+							id="directory{{$auto._id}}"
+							class="domEditor ms-3 hide"
+							array="files"
+							object="611ab5d9251afa96bd20f6cc"
+							key="src"
+							filter-query-value="{{$auto.path}}"></div>
+					</div>
+				</div>
+				<div
+					class="fetch-files ms-3"
+					sortable
+					array=""
+					object
+					filter-query-key="directory.$eq"
+					filter-query-value="/"
+					filter-sort-key="name"
+					render-query=":last-child">
+					<div
+						filter-query-key="content-type.$ne"
+						filter-query-value="text/directory"
+						filter-query="$parent"></div>
+
+					<!-- File Template -->
+					<div
+						class="p-2"
+						template
+						object="{{$auto._id}}">
+						<span class="{{$auto.content-type}}"
+							><i src="/assets/svg/html5.svg"></i
+						></span>
+						<span
+							class="ms-2"
+							array="files"
+							object="{{$auto._id}}"
+							key="name"></span>
+					</div>
+				</div>
+			</div>
+</div>

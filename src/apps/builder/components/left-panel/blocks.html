@@ -1,0 +1,43 @@
+<div
+	id="blocks"
+	class="left-panel position-relative active"
+	role="tabpanel"
+	aria-labelledby="builder-blocks-btn"
+	data-view="blocks">
+<div
+	class="d-flex gap-2 justify-content-center position-relative mb-4"
+	role="tablist"
+	aria-label="Builder block categories">
+	<button
+		id="builder-elements-btn"
+		type="button"
+		role="tab"
+		aria-controls="elements"
+		aria-selected="true"
+		class="card w-50 text-center p-2"
+	>
+		Elements
+	</button>
+	<button
+		id="builder-components-btn"
+		type="button"
+		role="tab"
+		aria-controls="components"
+		aria-selected="false"
+		class="card w-50 text-center p-2"
+	>
+		Components
+	</button>
+	<button
+		type="button"
+		class="p-2 grow-hover rounded-circle builder-add-component-button"
+		actions="state, openModal"
+		modal-src="../marketplace/list.html"
+		modal-width="830px"
+		aria-label="Add component">
+		<i class="builder-panel-icon" src="/assets/svg/plus.svg"></i>
+	</button>
+</div>
+<div src="/apps/builder/components/left-panel/elements.html"></div>
+<div src="/apps/builder/components/left-panel/components.html"></div>
+</div>
