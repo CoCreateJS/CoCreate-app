@@ -99,6 +99,10 @@ export default {
      * @property {string[]} [exclude] - Array of strings used to exclude the module from specific CLI commands.
      */
     modules: {
+        utils: {
+            path: "../CoCreate-modules/CoCreate-utils",
+            repo: "github.com/CoCreate-app/CoCreate-utils.git"
+        },
         "element-prototype": {
             import: "@cocreate/element-prototype",
             path: "../CoCreate-modules/CoCreate-element-prototype",
@@ -108,10 +112,6 @@ export default {
             import: "@cocreate/observer",
             path: "../CoCreate-modules/CoCreate-observer",
             repo: "github.com/CoCreate-app/CoCreate-observer.git"
-        },
-        utils: {
-            path: "../CoCreate-modules/CoCreate-utils",
-            repo: "github.com/CoCreate-app/CoCreate-utils.git"
         },
         indexeddb: {
             import: "@cocreate/indexeddb",
@@ -151,12 +151,6 @@ export default {
             path: "../CoCreate-modules/CoCreate-crud-client",
             repo: "github.com/CoCreate-app/CoCreate-crud-client.git"
         },
-        crdt: {
-            import: "@cocreate/crdt",
-            selector: "[crdt='true']",
-            path: "../CoCreate-modules/CoCreate-crdt",
-            repo: "github.com/CoCreate-app/CoCreate-crdt.git"
-        },
         state: {
             import: "@cocreate/state",
             selector: "link[state_to][state_id][key], link[parse]",
@@ -193,6 +187,24 @@ export default {
             import: "@cocreate/plugins",
             path: "../CoCreate-modules/CoCreate-plugins",
             repo: "github.com/CoCreate-app/CoCreate-plugins.git"
+        },
+        crdt: {
+            import: "@cocreate/crdt",
+            selector: "[crdt='true']",
+            path: "../CoCreate-modules/CoCreate-crdt",
+            repo: "github.com/CoCreate-app/CoCreate-crdt.git"
+        },
+        cursors: {
+            import: "@cocreate/cursors",
+            selector: "input[crdt='true'], textarea[crdt='true'], [contenteditable][crdt='true']",
+            path: "../CoCreate-modules/CoCreate-cursors",
+            repo: "gitlab.com/cocreatejs/CoCreate-cursors.git"
+        },
+        editor: {
+            import: "@cocreate/editor",
+            selector: "[editor], [editor-language], [contenteditable][crdt='true'], input[crdt='true'], textarea[crdt='true'], iframe[crdt='true']",
+            path: "../CoCreate-modules/CoCreate-editor",
+            repo: "gitlab.com/cocreatejs/CoCreate-editor.git"
         },
         cssParser: {
             import: "@cocreate/css-parser",
@@ -236,15 +248,9 @@ export default {
             path: "../CoCreate-modules/CoCreate-api",
             repo: "github.com/CoCreate-app/CoCreate-api.git"
         },
-        dnd: {
-            import: "@cocreate/dnd",
-            selector: "[sortable], [cloneables], [draggable], [droppable], [cloneable]",
-            path: "../CoCreate-modules/CoCreate-dnd",
-            repo: "github.com/CoCreate-app/CoCreate-dnd.git"
-        },
         position: {
             import: "@cocreate/position",
-            selector: "[positionable], [moveable], [position-target], [position-query]",
+            selector: "[draggable], [draggable-query], [clonable-query], [droppable-query], [position-target], [position-query]",
             path: "../CoCreate-modules/CoCreate-position",
             repo: "github.com/CoCreate-app/CoCreate-position.git"
         },
@@ -290,12 +296,6 @@ export default {
             path: "../CoCreate-modules/CoCreate-search",
             repo: "github.com/CoCreate-app/CoCreate-search.git"
         },
-        elementConfig: {
-            import: "@cocreate/element-config",
-            selector: "[config-query]",
-            path: "../CoCreate-modules/CoCreate-element-config",
-            repo: "github.com/CoCreate-app/CoCreate-element-config.git"
-        },
         validation: {
             import: "@cocreate/validation",
             selector: "[actions*='validate'], [required]",
@@ -307,12 +307,6 @@ export default {
             selector: "[calculate]",
             path: "../CoCreate-modules/CoCreate-calculate",
             repo: "github.com/CoCreate-app/CoCreate-calculate.git"
-        },
-        editor: {
-            import: "@cocreate/editor",
-            selector: "[editor], [editor-language], [contenteditable]:not([contenteditable=\"false\"]), input[crdt=\"true\"], textarea[crdt=\"true\"], iframe[crdt=\"true\"]",
-            path: "../CoCreate-modules/CoCreate-editor",
-            repo: "gitlab.com/cocreatejs/CoCreate-editor.git"
         },
         clipboard: {
             import: "@cocreate/clipboard",

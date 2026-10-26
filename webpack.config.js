@@ -33,6 +33,30 @@ function getUtilsChunkName(module) {
     return `utils-${readableName}`;
 }
 
+function getEditorChunkName(module) {
+    const resource = module.nameForCondition?.() || module.resource || "";
+    const normalizedResource = resource.replace(/\\/g, "/");
+    const match = normalizedResource.match(
+        /\/CoCreate-editor\/src\/editors\/(.+?)\.js$/
+    );
+
+    if (!match) {
+        return "editor-shared";
+    }
+
+    const readableName = match[1]
+        .replace(/\/index$/, "")
+        .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+        .replace(/[\/_]+/g, "-")
+        .toLowerCase();
+
+    if (readableName === "utilities-config") {
+        return "editor-syntax";
+    }
+
+    return `editor-${readableName}`;
+}
+
 import CoCreateConfig from "./CoCreate.config.js";
 import cocreateWebpack from "@cocreate/webpack";
 const { ModuleGenerator, FileUploader, UnicodeLoader } = cocreateWebpack;
@@ -203,9 +227,17 @@ export default async (env, argv) => {
                         priority: 30,
                         reuseExistingChunk: true
                     },
-                    socketClientBrowserWs: {
+                    editor: {
+                        test: /[\\/]CoCreate-editor[\\/]src[\\/]editors[\\/]/,
+                        name: getEditorChunkName,
+                        chunks: "all",
+                        enforce: true,
+                        priority: 30,
+                        reuseExistingChunk: true
+                    },
+                    ws: {
                         test: /[\\/]CoCreate-socket-client[\\/]node_modules[\\/]ws[\\/]browser\.js$/,
-                        name: "socket-client-browser-ws",
+                        name: "ws",
                         chunks: "all",
                         enforce: true,
                         priority: 30,

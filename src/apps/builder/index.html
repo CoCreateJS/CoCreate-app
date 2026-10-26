@@ -224,7 +224,7 @@
 				aria-label="Builder preview">
 				<div class="canvas-container">
 					<iframe
-						editor="html"
+						editor="dom"
 						title="Builder page preview"
 						sortable
 						id="canvas"
@@ -264,10 +264,6 @@
 		<!-- Selected Toolbar -->
 		<toolbar
 			position-target
-			position-placement="top-start"
-			position-offset="0"
-			position-padding="8"
-			position-collision="flip shift"
 			toolbar-query="iframe;"
 			toolbar-event="click"
 			config-key="selectable"
@@ -312,10 +308,6 @@
 		<!-- Hover Toolbar -->
 		<toolbar
 			position-target
-			position-placement="top-start"
-			position-offset="0"
-			position-padding="8"
-			position-collision="flip shift"
 			toolbar-query="iframe;"
 			toolbar-event="mouseover"
 			config-key="hoverable"

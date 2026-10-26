@@ -344,7 +344,6 @@ dependency("config", import(/* webpackChunkName: "config" */ "@cocreate/config")
 dependency("socket", import(/* webpackChunkName: "socket" */ "@cocreate/socket-client"));
 dependency("events", import(/* webpackChunkName: "events" */ "@cocreate/events"));
 lazyLoad("crud", "[crud='true'], [database], [array]", () => import(/* webpackChunkName: "crud" */ "@cocreate/crud-client"));
-lazyLoad("crdt", "[crdt='true']", () => import(/* webpackChunkName: "crdt" */ "@cocreate/crdt"));
 lazyLoad("state", "link[state_to][state_id][key], link[parse]", () => import(/* webpackChunkName: "state" */ "@cocreate/state"));
 dependency("link", import(/* webpackChunkName: "link" */ "@cocreate/link"));
 dependency("aria", import(/* webpackChunkName: "aria" */ "@cocreate/aria"));
@@ -352,6 +351,9 @@ lazyLoad("cache", "[cache='true']", () => import(/* webpackChunkName: "cache" */
 dependency("pwa", import(/* webpackChunkName: "pwa" */ "@cocreate/pwa"));
 dependency("organizations", import(/* webpackChunkName: "organizations" */ "@cocreate/organizations"));
 dependency("plugins", import(/* webpackChunkName: "plugins" */ "@cocreate/plugins"));
+lazyLoad("crdt", "[crdt='true']", () => import(/* webpackChunkName: "crdt" */ "@cocreate/crdt"));
+lazyLoad("cursors", "input[crdt='true'], textarea[crdt='true'], [contenteditable][crdt='true']", () => import(/* webpackChunkName: "cursors" */ "@cocreate/cursors"));
+lazyLoad("editor", "[editor], [editor-language], [contenteditable][crdt='true'], input[crdt='true'], textarea[crdt='true'], iframe[crdt='true']", () => import(/* webpackChunkName: "editor" */ "@cocreate/editor"));
 lazyLoad("cssParser", "link[array][object][key], link[parse]", () => import(/* webpackChunkName: "cssParser" */ "@cocreate/css-parser"));
 lazyLoad("actions", "[actions]", () => import(/* webpackChunkName: "actions" */ "@cocreate/actions"));
 lazyLoad("filter", "[filter-query]", () => import(/* webpackChunkName: "filter" */ "@cocreate/filter"));
@@ -359,8 +361,7 @@ lazyLoad("render", "[render], [render-query], [template], template", () => impor
 lazyLoad("file", "[type='file'], [actions*='upload'], [actions*='download'], [actions*='saveLocally'], [actions*='import'], [actions*='export'], [actions*='createFile'], [actions*='deleteFile'], [actions*='createDirectory'], [actions*='deleteDirectory']", () => import(/* webpackChunkName: "file" */ "@cocreate/file"));
 lazyLoad("elements", "form, [src], [storage], [database], [array]", () => import(/* webpackChunkName: "elements" */ "@cocreate/elements"));
 lazyLoad("api", "[actions], [template_id]", () => import(/* webpackChunkName: "api" */ "@cocreate/api"));
-lazyLoad("dnd", "[sortable], [cloneables], [draggable], [droppable], [cloneable]", () => import(/* webpackChunkName: "dnd" */ "@cocreate/dnd"));
-lazyLoad("position", "[positionable], [moveable], [position-target], [position-query]", () => import(/* webpackChunkName: "position" */ "@cocreate/position"));
+lazyLoad("position", "[draggable], [draggable-query], [clonable-query], [droppable-query], [position-target], [position-query]", () => import(/* webpackChunkName: "position" */ "@cocreate/position"));
 lazyLoad("scroll", "[scroll], [scroll-to], [scrollable-x], [scrollable-y]", () => import(/* webpackChunkName: "scroll" */ "@cocreate/scroll"));
 lazyLoad("scrollbar", "[scrollbar]", () => import(/* webpackChunkName: "scrollbar" */ "@cocreate/scrollbar"));
 lazyLoad("resize", "[resize], [height='auto']", () => import(/* webpackChunkName: "resize" */ "@cocreate/resize"));
@@ -368,11 +369,8 @@ lazyLoad("attributes", "[attribute]", () => import(/* webpackChunkName: "attribu
 lazyLoad("users", "[session], [actions*='signUp'], [actions*='signIn'], [actions*='signOut'], [user-status]", () => import(/* webpackChunkName: "users" */ "@cocreate/users"));
 lazyLoad("unique", "[unique]", () => import(/* webpackChunkName: "unique" */ "@cocreate/unique"));
 lazyLoad("search", "[search-query]", () => import(/* webpackChunkName: "search" */ "@cocreate/search"));
-lazyLoad("elementConfig", "[config-query]", () => import(/* webpackChunkName: "elementConfig" */ "@cocreate/element-config"));
 lazyLoad("validation", "[actions*='validate'], [required]", () => import(/* webpackChunkName: "validation" */ "@cocreate/validation"));
 lazyLoad("calculate", "[calculate]", () => import(/* webpackChunkName: "calculate" */ "@cocreate/calculate"));
-lazyLoad("selection", "input, textarea, [contenteditable]", () => import(/* webpackChunkName: "selection" */ "@cocreate/selection"));
-lazyLoad("editor", "[editor], [editor-language], [contenteditable]:not([contenteditable=\"false\"]), input[crdt=\"true\"], textarea[crdt=\"true\"], iframe[crdt=\"true\"]", () => import(/* webpackChunkName: "editor" */ "@cocreate/editor"));
 lazyLoad("clipboard", "[actions*='clipboard'], [clipboard], [clipboard-query]", () => import(/* webpackChunkName: "clipboard" */ "@cocreate/clipboard"));
 lazyLoad("print", "[actions*='print'], [print-query]", () => import(/* webpackChunkName: "print" */ "@cocreate/print"));
 lazyLoad("fullscreen", "[fullscreen]", () => import(/* webpackChunkName: "fullscreen" */ "@cocreate/fullscreen"));
