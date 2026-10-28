@@ -1,0 +1,257 @@
+<div class="p-3 d-flex flex-column h-100">
+	<div class="d-flex align-items-center justify-content-between mb-3">
+		<div>
+			<h5 class="mb-1">Databases</h5>
+			<p class="text-muted fs-12 mb-0">Browse arrays and records</p>
+		</div>
+		<button
+			type="button"
+			class="database-menu-btn"
+			aria-label="Close databases menu"
+			aria-controls="databases-sidebar"
+			aria-close
+			aria-expanded="true">
+			<i
+				src="/assets/svg/remix/close-line.svg"
+				aria-hidden="true"></i>
+		</button>
+	</div>
+
+	<div class="database-storage-picker">
+		<div class="form-label fs-12 text-muted mb-1">
+			Storage connection
+		</div>
+		<div class="dropdown">
+			<button
+				type="button"
+				id="database-storage-label"
+				class="database-storage-select form-select text-start d-flex align-items-center justify-content-between gap-2"
+				aria-controls="database-storage-options"
+				aria-expanded="false"
+				aria-label="Storage connection">
+				<span class="database-storage-current app-identity app-list">
+					<span class="app-image">
+						<img
+							src="/assets/svg/remix/database-2-line.svg"
+							alt="" />
+					</span>
+					<span class="app-title">All</span>
+				</span>
+				<i
+					src="/assets/svg/remix/arrow-down-s-line.svg"
+					aria-hidden="true"></i>
+			</button>
+			<div
+				id="database-storage-options"
+				class="dropdown-menu database-storage-options"
+				role="radiogroup"
+				aria-label="Storage connections"
+				aria-hidden="true"
+				aria-close-on="anywhere">
+				<label class="dropdown-item d-flex align-items-center gap-2 mb-0">
+					<input
+						type="radio"
+						name="database-storage"
+						value=""
+						checked
+						state='{"database-names":{"storage":""},"database-arrays":{"storage":"","database":"","hidden":false},"database-records":{"storage":"","database":"","array":"","hidden":true},"database-selected-database":{"$textContent":"All"},"database-selected-array":{"value":"Choose an array"},"offcanvas-app-form":{"storage":"","database":"","array":"","object":""}}' />
+					<div
+						class="app-identity app-list"
+						click-query="$closest .dropdown .database-storage-current"
+						click.value="$value">
+						<span class="app-image">
+							<img
+								src="/assets/svg/remix/database-2-line.svg"
+								alt="" />
+						</span>
+						<span class="app-title">All</span>
+					</div>
+				</label>
+				<label class="dropdown-item d-flex align-items-center gap-2 mb-0">
+					<input
+						type="radio"
+						name="database-storage"
+						value="indexeddb"
+						state='{"database-names":{"storage":"indexeddb"},"database-arrays":{"storage":"indexeddb","database":"","hidden":false},"database-records":{"storage":"indexeddb","database":"","array":"","hidden":true},"database-selected-database":{"$textContent":"All"},"database-selected-array":{"value":"Choose an array"},"offcanvas-app-form":{"storage":"indexeddb","database":"","array":"","object":""}}' />
+					<div
+						class="app-identity app-list"
+						click-query="$closest .dropdown .database-storage-current"
+						click.value="$value">
+						<span class="app-image">
+							<img
+								src="/assets/svg/remix/database-2-line.svg"
+								alt="" />
+						</span>
+						<span class="app-title">IndexedDB</span>
+					</div>
+				</label>
+				<div
+					id="database-storage-providers"
+					class="database-storage-providers"
+					array="apis"
+					object
+					filter-query-key="type"
+					filter-query-value="storage"
+					filter-sort-key="name"
+					filter-sort-direction="asc"
+					filter-limit="0"
+					render-query="template">
+					<input
+						type="hidden"
+						value="true"
+						get-value-type="boolean"
+						filter-query-key="enabled"
+						filter-query="$document #database-storage-providers" />
+					<template>
+						<label
+							class="dropdown-item d-flex align-items-center gap-2 mb-0">
+							<input
+								type="radio"
+								name="database-storage"
+								value="{{object.name}}"
+								state='{"database-names":{"storage":"{{object.name}}"},"database-arrays":{"storage":"{{object.name}}","database":"","hidden":false},"database-records":{"storage":"{{object.name}}","database":"","array":"","hidden":true},"database-selected-database":{"$textContent":"All"},"database-selected-array":{"value":"Choose an array"},"offcanvas-app-form":{"storage":"{{object.name}}","database":"","array":"","object":""}}' />
+							<div
+								class="app-identity app-list"
+								src="/apps/apis/templates/list.html"
+								click-query="$closest .dropdown .database-storage-current"
+								click.value="$value"></div>
+						</label>
+					</template>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="database-name-picker mt-3">
+		<label
+			class="form-label fs-12 text-muted mb-1"
+			for="database-name-select"
+			>Database</label
+		>
+		<div class="dropdown">
+			<button
+				type="button"
+				id="database-name-select"
+				class="database-name-select form-select text-start"
+				aria-controls="database-name-options"
+				aria-expanded="false"
+				aria-label="Choose a database">
+				<span
+					class="database-selected-name"
+					state-id="database-selected-database"
+					>All</span
+				>
+			</button>
+			<div
+				id="database-name-options"
+				class="dropdown-menu database-name-options"
+				role="listbox"
+				aria-label="Databases"
+				aria-hidden="true"
+				aria-close-on="anywhere">
+				<button
+					type="button"
+					class="dropdown-item text-start"
+					role="option"
+					value=""
+					state='{"database-arrays":{"database":"","hidden":false},"database-records":{"database":"","array":"","hidden":true},"database-selected-database":{"$textContent":"All"},"database-selected-array":{"value":"Choose an array"},"offcanvas-app-form":{"database":"","array":"","object":""}}'>
+					All
+				</button>
+				<div
+					id="database-names"
+					state-id="database-names"
+					class="database-name-list"
+					database=""
+					storage=""
+					filter-sort-key="name"
+					filter-sort-direction="asc"
+					filter-limit="0"
+					render-query="button[template]">
+					<button
+						template
+						type="button"
+						class="dropdown-item text-start"
+						role="option"
+						value="{{object.name}}"
+						state='{"database-arrays":{"database":"{{object.name}}","hidden":false},"database-records":{"database":"{{object.name}}","array":"","hidden":true},"database-selected-database":{"$textContent":"{{object.name}}"},"database-selected-array":{"value":"Choose an array"},"offcanvas-app-form":{"database":"{{object.name}}","array":"","object":""}}'>
+						{{object.name}}
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<label
+		class="database-search d-flex align-items-center gap-2 mt-3"
+		for="database-array-search">
+		<i
+			src="/assets/svg/remix/search-2-line.svg"
+			aria-hidden="true"></i>
+		<input
+			id="database-array-search"
+			type="search"
+			class="form-control"
+			filter-search
+			filter-query="$document #database-arrays"
+			placeholder="Search arrays"
+			aria-label="Search arrays" />
+	</label>
+
+	<div
+		class="database-array-scroll mt-3"
+		scrollbar>
+		<ul
+			id="database-arrays"
+			state-id="database-arrays"
+			class="database-array-list list-unstyled mb-0"
+			array=""
+			storage=""
+			database=""
+			filter-sort-key="name"
+			filter-sort-direction="asc"
+			filter-limit="0"
+			render-query="li[template]">
+			<li
+				template
+				class="database-array-item">
+				<button
+					type="button"
+					class="database-array-link"
+					state='{"database-records":{"array":"{{array.name}}","hidden":false},"database-selected-array":{"value":"{{array.name}}"},"offcanvas-app-form":{"array":"{{array.name}}","object":""}}'>
+					<i
+						src="/assets/svg/remix/table-line.svg"
+						aria-hidden="true"></i>
+					<span class="database-array-name">{{array.name}}</span>
+				</button>
+				<button
+					type="button"
+					class="database-array-add"
+					aria-label="Create a record in {{array.name}}"
+					title="Create a record in {{array.name}}"
+					state-to="offcanvas-app-view"
+					state.src="/apps/databases/app.html">
+					<span
+						hidden
+						state='{"offcanvas-app-form":{"array":"{{array.name}}","object":""}}'></span>
+					<i
+						src="/assets/svg/remix/add-line.svg"
+						aria-hidden="true"></i>
+				</button>
+			</li>
+		</ul>
+	</div>
+
+	<div class="database-sidebar-footer mt-auto pt-3">
+		<div class="d-flex align-items-center gap-2">
+			<i
+				src="/assets/svg/remix/database-2-line.svg"
+				aria-hidden="true"></i>
+			<div>
+				<div class="fw-semibold fs-13">Connected storage</div>
+				<div class="text-muted fs-12">
+					Arrays available to this account
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

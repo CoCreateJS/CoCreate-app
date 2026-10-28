@@ -132,6 +132,16 @@
 					<i src="/assets/svg/remix/add-line.svg"></i>
 				</a>
 			</li>
+			<li class="nav-item">
+				<a
+					id="account-databases-list-btn"
+					state-to="adminView"
+					state.src="/apps/databases/index.html"
+					class="nav-link menu-link">
+					<i src="/assets/svg/remix/database-2-line.svg"></i>
+					<span>Databases</span>
+				</a>
+			</li>
 
 			<li
 				class="nav-item d-flex justify-content-between align-items-center">
@@ -172,6 +182,16 @@
 						state.$reset
 						state.array="apps"></div>
 					<i src="/assets/svg/remix/add-line.svg"></i>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a
+					id="account-builder-btn"
+					state-to="adminView"
+					state.src="/apps/builder/index.html"
+					class="nav-link menu-link">
+					<i src="/assets/svg/remix/layout-masonry-line.svg"></i>
+					<span>Builder</span>
 				</a>
 			</li>
 
@@ -269,9 +289,9 @@
 					state-to="adminView"
 					state.src="/components/list/index.html"
 					class="nav-link menu-link"
-					title="Configurations">
+					title="Server Configurations">
 					<i src="/assets/svg/remix/settings-3-line.svg"></i>
-					<span>Configurations</span>
+					<span>Server Configurations</span>
 					<div
 						state-to="app"
 						state.object="6a96308fbe321a28ad3edec1"
@@ -583,16 +603,6 @@
 						state.$reset
 						state.array="ai-instructions"></div>
 					<i src="/assets/svg/remix/add-line.svg"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a
-					id="account-builder-btn"
-					state-to="adminView"
-					state.src="/apps/builder/index.html"
-					class="nav-link menu-link">
-					<i src="/assets/svg/remix/layout-masonry-line.svg"></i>
-					<span>Builder</span>
 				</a>
 			</li>
 		</ul>

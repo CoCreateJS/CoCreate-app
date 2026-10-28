@@ -1,0 +1,56 @@
+<div
+	id="database-records"
+	state-id="database-records"
+	class="database-records"
+	array=""
+	storage=""
+	database=""
+	hidden
+	object
+	filter-limit="20"
+	filter-sort-key="_id"
+	filter-sort-direction="desc"
+	render-query="article[template]">
+	<article
+		template
+		render-reference="false"
+		array="{{object.$array[0]}}"
+		object="{{object._id}}"
+		class="database-record-card card">
+		<div
+			class="database-record-heading d-flex align-items-center justify-content-between gap-3">
+			<div class="min-width:0">
+				<div class="database-record-label">Record</div>
+				<code class="database-record-id">{{object._id}}</code>
+			</div>
+			<button
+				type="button"
+				class="btn btn-sm btn-light database-record-edit"
+				aria-label="Edit record {{object._id}}"
+				title="Edit record"
+				aria-controls="offcanvas-app"
+				aria-haspopup="dialog"
+				aria-expanded="false"
+				aria-open
+				state-to="offcanvas-app-view"
+				state.src="/apps/databases/app.html">
+				<span
+					hidden
+					state='{"offcanvas-app-form":{"array":"{{object.$array[0]}}","object":"{{object._id}}"}}'></span>
+				<i
+					src="/assets/svg/remix/pencil-line.svg"
+					aria-hidden="true"></i>
+				<span>Edit JSON</span>
+			</button>
+		</div>
+		<div class="database-record-body">
+			<pre class="database-record-json mb-0"><code>{{object}}</code></pre>
+		</div>
+	</article>
+	<div
+		style="height: 20px"
+		filter-limit="10"
+		filter-on="scroll"
+		filter-query="$previous"
+		aria-hidden="true"></div>
+</div>

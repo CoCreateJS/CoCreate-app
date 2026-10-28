@@ -1,0 +1,34 @@
+<link
+	rel="stylesheet"
+	href="/apps/databases/index.css" />
+
+<div class="databases-app">
+	<div class="database-workspace">
+		<aside
+			id="databases-sidebar"
+			state-id="databases-sidebar"
+			state.aria-hidden
+			aria-close-on="button"
+			class="database-sidebar minimal-border"
+			aria-hidden="false"
+			src="/apps/databases/components/sidenav.html"></aside>
+		<button
+			type="button"
+			tabindex="-1"
+			class="database-sidebar-backdrop"
+			aria-label="Close databases menu"
+			aria-controls="databases-sidebar"
+			aria-close
+			aria-expanded="false"></button>
+
+		<main
+			class="database-content app-panel minimal-border flex-grow-1">
+			<header
+				class="database-header flex-shrink-0"
+				src="/apps/databases/components/header.html"></header>
+			<div class="database-main-body">
+				<div src="/apps/databases/components/records.html"></div>
+			</div>
+		</main>
+	</div>
+</div>
