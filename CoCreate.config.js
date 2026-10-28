@@ -272,12 +272,6 @@ export default {
             path: "../CoCreate-modules/CoCreate-resize",
             repo: "github.com/CoCreate-app/CoCreate-resize.git"
         },
-        attributes: {
-            import: "@cocreate/attributes",
-            selector: "[attribute]",
-            path: "../CoCreate-modules/CoCreate-attributes",
-            repo: "github.com/CoCreate-app/CoCreate-attributes.git"
-        },
         users: {
             import: "@cocreate/users",
             selector: "[session], [actions*='signUp'], [actions*='signIn'], [actions*='signOut'], [user-status]",

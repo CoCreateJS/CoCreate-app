@@ -365,7 +365,6 @@ lazyLoad("position", "[draggable], [draggable-query], [clonable-query], [droppab
 lazyLoad("scroll", "[scroll], [scroll-to], [scrollable-x], [scrollable-y]", () => import(/* webpackChunkName: "scroll" */ "@cocreate/scroll"));
 lazyLoad("scrollbar", "[scrollbar]", () => import(/* webpackChunkName: "scrollbar" */ "@cocreate/scrollbar"));
 lazyLoad("resize", "[resize], [height='auto']", () => import(/* webpackChunkName: "resize" */ "@cocreate/resize"));
-lazyLoad("attributes", "[attribute]", () => import(/* webpackChunkName: "attributes" */ "@cocreate/attributes"));
 lazyLoad("users", "[session], [actions*='signUp'], [actions*='signIn'], [actions*='signOut'], [user-status]", () => import(/* webpackChunkName: "users" */ "@cocreate/users"));
 lazyLoad("unique", "[unique]", () => import(/* webpackChunkName: "unique" */ "@cocreate/unique"));
 lazyLoad("search", "[search-query]", () => import(/* webpackChunkName: "search" */ "@cocreate/search"));

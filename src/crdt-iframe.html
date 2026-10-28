@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
+		<title>CoCreate Editor CRDT iframe test</title>
+		<style>
+			body {
+				margin: 2rem auto;
+				padding: 0 1rem;
+				max-width: 72rem;
+				display: block;
+			}
+			iframe {
+				box-sizing: border-box;
+				width: 100%;
+				height: 32rem;
+			}
+			.crdt-editor-stage {
+				position: relative;
+				min-width: 0;
+			}
+			.position-hover-test {
+				box-sizing: border-box;
+				min-height: 14rem;
+				margin-bottom: 1rem;
+				padding: 1rem;
+				border: 1px solid #d9dee5;
+				border-radius: 0.5rem;
+				font:
+					16px/1.5 system-ui,
+					sans-serif;
+			}
+			.crdt-editor-stage .builder-hover-toolbar {
+				display: block;
+			}
+			.crdt-editor-stage .builder-hover-toolbar[hidden] {
+				display: none !important;
+			}
+			.builder-overlay-toolbar > .builder-overlay-tools {
+				transform: translateY(-100%);
+			}
+		</style>
+		<link
+			href="/apps/builder/index.css"
+			rel="stylesheet"
+			type="text/css" />
+		<link
+			href="/assets/css/index.css"
+			rel="stylesheet"
+			type="text/css" />
+	</head>
+	<body>
+		<div class="crdt-editor-stage">
+			<div
+				position-events="click"
+				position-query="iframe $clickedElement $matches *"
+				position-element="$top .builder-selection-toolbar">
+				<div
+					position-events="mouseover, mousemove, mouseout"
+					position-query="iframe $hoveredElement $matches :is(h1,h2,h3,h4,h5)"
+					position-element="$top .builder-heading-text-toolbar"
+					position-box="text">
+					<div
+						position-events="mouseover, mousemove, mouseout"
+						position-query="iframe $hoveredElement $matches :not(h1,h2,h3,h4,h5)"
+						position-element="$top .builder-other-text-toolbar"
+						position-box="text">
+						<div
+							position-events="selectionchange"
+							position-query="iframe $selection"
+							position-element="$top .builder-richtext-toolbar"
+							position-box="text">
+							<iframe
+								id="crdt-editor-frame"
+								aria-label="CRDT DOM editor"
+								editor="dom"
+								array="files"
+								object="6a99ae37c87961219462f30a"
+								key="src"
+								crdt="true"
+								realtime="true"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Selected Toolbar -->
+		<toolbar
+			class="builder-overlay-toolbar builder-selection-toolbar position-fixed pe-none"
+			hidden>
+			<tools
+				class="builder-overlay-tools d-flex justify-content-between w-100">
+				<span
+					class="builder-element-label"
+					tagname></span>
+				<div class="builder-element-actions d-flex align-items-center">
+					<span
+						actions="cloneElement"
+						class="builder-element-action"
+						title="Duplicate element"
+						><i src="/assets/svg/clone.svg"></i
+					></span>
+					<span
+						actions="deleteElement"
+						class="builder-element-action"
+						title="Delete element"
+						><i src="/assets/svg/trash-alt.svg"></i
+					></span>
+					<span
+						actions="previousElement"
+						class="builder-element-action"
+						title="Move element up"
+						><i src="/assets/svg/arrow-up.svg"></i
+					></span>
+					<span
+						actions="nextElement"
+						class="builder-element-action"
+						title="Move element down"
+						><i src="/assets/svg/arrow-down.svg"></i
+					></span>
+				</div>
+			</tools>
+			<div class="builder-selection-outline"></div>
+		</toolbar>
+
+		<!-- Hover Toolbar -->
+		<toolbar
+			class="builder-overlay-toolbar builder-hover-toolbar position-fixed pe-none"
+			hidden>
+			<tools class="builder-overlay-tools d-flex align-items-center">
+				<span
+					class="builder-element-label"
+					tagname
+					>test</span
+				>
+			</tools>
+			<div class="builder-hover-outline"></div>
+		</toolbar>
+		<!-- End Hover Toolbar -->
+		<toolbar
+			class="builder-overlay-toolbar builder-heading-text-toolbar position-fixed pe-none"
+			hidden>
+			<tools class="builder-overlay-tools d-flex align-items-center">
+				<span class="builder-element-label">Heading text start</span>
+			</tools>
+			<div class="builder-hover-outline"></div>
+		</toolbar>
+		<toolbar
+			class="builder-overlay-toolbar builder-other-text-toolbar position-fixed pe-none"
+			hidden>
+			<tools class="builder-overlay-tools d-flex align-items-center">
+				<span class="builder-element-label">Other text start</span>
+			</tools>
+			<div class="builder-hover-outline"></div>
+		</toolbar>
+
+		<!-- Collaboration Toolbar -->
+		<div
+			class="toolbar builder-richtext-toolbar position-absolute pe-none"
+			hidden>
+			<tools class="builder-richtext-tools d-flex align-items-center">
+				<label
+					class="builder-richtext-action"
+					id="bold-button"
+					title="Bold">
+					<input
+						type="checkbox"
+						value="fw-bold"
+						editor-query="$document #record-editor $contentDocument $clickedElement"
+						editor-type="attribute"
+						editor.class="$value"
+						aria-label="Bold" />
+					<i src="/assets/svg/bold.svg"></i>
+				</label>
+				<label
+					class="builder-richtext-action"
+					id="italic-button"
+					title="Italic">
+					<input
+						type="checkbox"
+						value="fst-italic"
+						editor-query="$document #record-editor $contentDocument $clickedElement"
+						editor-type="attribute"
+						editor.class="$value"
+						aria-label="Italic" />
+					<i src="/assets/svg/italic.svg"></i>
+				</label>
+				<div
+					id="link-button"
+					class="builder-richtext-action"
+					click-query="#link"
+					click.class="show,hide">
+					<i src="/assets/svg/link.svg"></i>
+				</div>
+				<div
+					id="link"
+					class="builder-richtext-link-form position-absolute d-flex align-items-center hide">
+					<input
+						type="text"
+						key=""
+						editor-query="$document #record-editor $contentDocument $clickedElement"
+						editor-type="attribute"
+						editor.href="$value"
+						aria-label="Link URL"
+						class="form-control" />
+					<div
+						class="builder-richtext-action"
+						click-query="#link"
+						click.class="show,hide">
+						<i src="/assets/svg/times.svg"></i>
+					</div>
+				</div>
+				<label
+					class="builder-richtext-action"
+					id="quote-button"
+					title="Block quote">
+					<input
+						type="radio"
+						name="builder-element-tag"
+						key="builder-element-tag"
+						value="q"
+						editor-query="$document #record-editor $contentDocument $clickedElement"
+						editor-type="element"
+						aria-label="Quote" />
+					<i src="/assets/svg/quote-right.svg"></i>
+				</label>
+				<div
+					id="heading-btn"
+					class="builder-richtext-action"
+					hover.style="width:fit-content"
+					hover-query="#headings">
+					<i src="/assets/svg/heading.svg"></i>
+				</div>
+				<div
+					id="headings"
+					class="builder-richtext-heading-options"
+					hover-query="#headings"
+					hover.style="width:fit-content">
+					<label
+						class="builder-richtext-action"
+						id="header-1-button"
+						title="Heading 1">
+						<input
+							type="radio"
+							name="builder-element-tag"
+							key="builder-element-tag"
+							value="h1"
+							editor-query="$document #record-editor $contentDocument $clickedElement"
+							editor-type="element"
+							aria-label="Heading 1" />
+						<i src="/assets/svg/heading.svg"></i><sub>1</sub>
+					</label>
+					<label
+						class="builder-richtext-action"
+						id="header-2-button"
+						title="Heading 2">
+						<input
+							type="radio"
+							name="builder-element-tag"
+							key="builder-element-tag"
+							value="h2"
+							editor-query="$document #record-editor $contentDocument $clickedElement"
+							editor-type="element"
+							aria-label="Heading 2" />
+						<i src="/assets/svg/heading.svg"></i><sub>2</sub>
+					</label>
+					<label
+						class="builder-richtext-action"
+						id="header-3-button"
+						title="Heading 3">
+						<input
+							type="radio"
+							name="builder-element-tag"
+							key="builder-element-tag"
+							value="h3"
+							editor-query="$document #record-editor $contentDocument $clickedElement"
+							editor-type="element"
+							aria-label="Heading 3" />
+						<i src="/assets/svg/heading.svg"></i><sub>3</sub>
+					</label>
+					<label
+						class="builder-richtext-action"
+						id="header-4-button"
+						title="Heading 4">
+						<input
+							type="radio"
+							name="builder-element-tag"
+							key="builder-element-tag"
+							value="h4"
+							editor-query="$document #record-editor $contentDocument $clickedElement"
+							editor-type="element"
+							aria-label="Heading 4" />
+						<i src="/assets/svg/heading.svg"></i><sub>4</sub>
+					</label>
+					<label
+						class="builder-richtext-action"
+						id="header-5-button"
+						title="Heading 5">
+						<input
+							type="radio"
+							name="builder-element-tag"
+							key="builder-element-tag"
+							value="h5"
+							editor-query="$document #record-editor $contentDocument $clickedElement"
+							editor-type="element"
+							aria-label="Heading 5" />
+						<i src="/assets/svg/heading.svg"></i><sub>5</sub>
+					</label>
+					<label
+						class="builder-richtext-action"
+						id="header-6-button"
+						title="Heading 6">
+						<input
+							type="radio"
+							name="builder-element-tag"
+							key="builder-element-tag"
+							value="h6"
+							editor-query="$document #record-editor $contentDocument $clickedElement"
+							editor-type="element"
+							aria-label="Heading 6" />
+						<i src="/assets/svg/heading.svg"></i><sub>6</sub>
+					</label>
+				</div>
+				<div
+					id="show-controls"
+					class="builder-richtext-action"
+					click-query="#sidebar-controls"
+					click.class="show,hide">
+					<i src="/assets/svg/plus.svg"></i>
+				</div>
+				<div
+					id="sidebar-controls"
+					class="builder-richtext-control-group hide">
+					<div
+						id="image-button"
+						class="builder-richtext-action">
+						<i src="/assets/svg/camera.svg"></i>
+					</div>
+					<div
+						id="video-button"
+						class="builder-richtext-action">
+						<i src="/assets/svg/play.svg"></i>
+					</div>
+					<div
+						id="tweet-button"
+						class="builder-richtext-action">
+						<i src="/assets/svg/twitter.svg"></i>
+					</div>
+					<div
+						id="divider-button"
+						class="builder-richtext-action">
+						<i src="/assets/svg/minus.svg"></i>
+					</div>
+				</div>
+			</tools>
+			<div class="height:100% width:100% pointer-events:none"></div>
+			<!-- End Collaboration Toolbar -->
+		</div>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>
