@@ -1,0 +1,31 @@
+<link
+	rel="stylesheet"
+	href="/components/code/index.css" />
+
+<div class="component-code">
+	<div
+		editor="code"
+		language="json"
+		contenteditable="true"
+		key="{}"
+		validate
+		role="textbox"
+		aria-multiline="true"
+		aria-label="JSON editor"
+		value-evaluate="false"
+		spellcheck="false"></div>
+	<button
+		type="button"
+		class="btn position-absolute top-0 end-0 m-2 p-1 border-0 bg-transparent fs-24"
+		clipboard
+		clipboard-query="$parent [editor]"
+		aria-label="Copy code"
+		title="Copy code">
+		<i
+			src="/assets/svg/remix/file-copy-line.svg"
+			aria-hidden="true"></i>
+		<i
+			src="/assets/svg/remix/check-line.svg"
+			aria-hidden="true"></i>
+	</button>
+</div>

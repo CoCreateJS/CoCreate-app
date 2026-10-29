@@ -1,7 +1,7 @@
 <div
 	id="database-records"
 	state-id="database-records"
-	class="database-records"
+	class="database-records list-view"
 	array=""
 	storage=""
 	database=""
@@ -36,7 +36,9 @@
 				state.src="/apps/databases/app.html">
 				<span
 					hidden
-					state='{"offcanvas-app-form":{"array":"{{object.$array[0]}}","object":"{{object._id}}"}}'></span>
+					state-to="offcanvas-app-form"
+					state.array="{{object.$array[0]}}"
+					state.object="{{object._id}}"></span>
 				<i
 					src="/assets/svg/remix/pencil-line.svg"
 					aria-hidden="true"></i>
@@ -44,7 +46,9 @@
 			</button>
 		</div>
 		<div class="database-record-body">
-			<pre class="database-record-json mb-0"><code>{{object}}</code></pre>
+			<pre class="database-record-json mb-0">
+                <code language="json">{{object}}</code>
+            </pre>
 		</div>
 	</article>
 	<div

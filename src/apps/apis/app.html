@@ -6,7 +6,7 @@
 	<span
 		hidden
 		observe
-		observe-selector="#APIs-details-view, #APIs-form-view, #APIs-codearea-view, #offcanvas-app, #create-panel, #apis-aside form[state-id='offcanvas-app-form']"
+		observe-selector="#APIs-details-view, #APIs-form-view, #APIs-code-view, #offcanvas-app, #create-panel, #apis-aside form[state-id='offcanvas-app-form']"
 		observe-attribute-filter="aria-hidden, hidden, object"
 		observe-query="$parent [data-api-secret][]"
 		observe.type="password"
@@ -67,14 +67,14 @@
 			</form>
 		</div>
 		<div
-			id="APIs-codearea-view"
+			id="APIs-code-view"
 			class="offcanvas-app-view"
-			data-view="codearea"
+			data-view="code"
 			role="tabpanel"
-			aria-labelledby="APIs-codearea-btn"
+			aria-labelledby="APIs-code-btn"
 			tabindex="0"
 			aria-hidden="true"
-			state-id="apis-codearea"
+			state-id="apis-code"
 			state.aria-hidden
 			hidden>
 			<form
@@ -83,7 +83,7 @@
 				object
 				autocomplete="off">
 				<div scrollbar>
-					<div src="/components/offcanvas-app/codearea.html"></div>
+					<div src="/components/offcanvas-app/code.html"></div>
 				</div>
 				<footer
 					src="/components/offcanvas-app/footer.html"

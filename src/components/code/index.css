@@ -1,0 +1,26 @@
+.component-code {
+	position: relative;
+}
+
+/* Placement uses button utilities; code controls visibility only. */
+.component-code > :is([clipboard], [clipboard-query]) {
+	z-index: 2;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.component-code:is(:hover, :focus-within) > :is([clipboard], [clipboard-query]) {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+@media (hover: none) {
+	.component-code > :is([clipboard], [clipboard-query]) {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+.component-code pre {
+	margin: 0;
+}

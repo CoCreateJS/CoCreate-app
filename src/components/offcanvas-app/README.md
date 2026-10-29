@@ -10,7 +10,7 @@ and JSON editor. Their app-specific files are organized as follows:
 - `create.html`: standalone create shell used by New buttons.
 
 The app shell loads form and details from the app's `components/` directory and
-JSON from `/components/offcanvas-app/codearea.html`. Each form owns a
+JSON from `/components/offcanvas-app/code.html`. Each form owns a
 `scrollbar` wrapper around its empty `src` host so fetched content does not
 replace the scrollbar structure. Edit, JSON, and create forms own the shared
 save/cancel footer.

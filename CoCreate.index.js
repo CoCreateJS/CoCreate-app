@@ -353,7 +353,7 @@ dependency("organizations", import(/* webpackChunkName: "organizations" */ "@coc
 dependency("plugins", import(/* webpackChunkName: "plugins" */ "@cocreate/plugins"));
 lazyLoad("crdt", "[crdt='true']", () => import(/* webpackChunkName: "crdt" */ "@cocreate/crdt"));
 lazyLoad("cursors", "input[crdt='true'], textarea[crdt='true'], [contenteditable][crdt='true']", () => import(/* webpackChunkName: "cursors" */ "@cocreate/cursors"));
-lazyLoad("editor", "[editor], [editor-language], [contenteditable][crdt='true'], input[crdt='true'], textarea[crdt='true'], iframe[crdt='true']", () => import(/* webpackChunkName: "editor" */ "@cocreate/editor"));
+lazyLoad("editor", "[editor], code[language], [contenteditable][crdt='true'], input[crdt='true'], textarea[crdt='true'], iframe[crdt='true']", () => import(/* webpackChunkName: "editor" */ "@cocreate/editor"));
 lazyLoad("cssParser", "link[array][object][key], link[parse]", () => import(/* webpackChunkName: "cssParser" */ "@cocreate/css-parser"));
 lazyLoad("actions", "[actions]", () => import(/* webpackChunkName: "actions" */ "@cocreate/actions"));
 lazyLoad("filter", "[filter-query]", () => import(/* webpackChunkName: "filter" */ "@cocreate/filter"));

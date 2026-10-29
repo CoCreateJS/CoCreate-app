@@ -135,14 +135,18 @@
 	display: none !important;
 }
 
-.offcanvas-app-view[data-view="codearea"] .component-codearea > textarea,
-.offcanvas-app-view[data-view="codearea"] .component-codearea > pre,
-.offcanvas-app-view[data-view="codearea"] .component-codearea > pre * {
+.offcanvas-app-view[data-view="code"] .component-code > textarea,
+.offcanvas-app-view[data-view="code"] .component-code > pre,
+.offcanvas-app-view[data-view="code"] .component-code > pre *,
+.offcanvas-app-view[data-view="code"] .component-code [editor] > pre,
+.offcanvas-app-view[data-view="code"] .component-code [editor] > pre * {
 	-webkit-text-security: disc;
 }
 
-.offcanvas-app-view[data-view="codearea"][aria-hidden="false"]:not([aria-hidden="true"] *) .component-codearea > textarea,
-.offcanvas-app-view[data-view="codearea"][aria-hidden="false"]:not([aria-hidden="true"] *) .component-codearea > pre,
-.offcanvas-app-view[data-view="codearea"][aria-hidden="false"]:not([aria-hidden="true"] *) .component-codearea > pre * {
+.offcanvas-app-view[data-view="code"][aria-hidden="false"]:not([aria-hidden="true"] *) .component-code > textarea,
+.offcanvas-app-view[data-view="code"][aria-hidden="false"]:not([aria-hidden="true"] *) .component-code > pre,
+.offcanvas-app-view[data-view="code"][aria-hidden="false"]:not([aria-hidden="true"] *) .component-code > pre *,
+.offcanvas-app-view[data-view="code"][aria-hidden="false"]:not([aria-hidden="true"] *) .component-code [editor] > pre,
+.offcanvas-app-view[data-view="code"][aria-hidden="false"]:not([aria-hidden="true"] *) .component-code [editor] > pre * {
 	-webkit-text-security: none;
 }

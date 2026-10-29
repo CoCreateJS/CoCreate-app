@@ -202,7 +202,7 @@ export default {
         },
         editor: {
             import: "@cocreate/editor",
-            selector: "[editor], [editor-language], [contenteditable][crdt='true'], input[crdt='true'], textarea[crdt='true'], iframe[crdt='true']",
+            selector: "[editor], code[language], [contenteditable][crdt='true'], input[crdt='true'], textarea[crdt='true'], iframe[crdt='true']",
             path: "../CoCreate-modules/CoCreate-editor",
             repo: "gitlab.com/cocreatejs/CoCreate-editor.git"
         },

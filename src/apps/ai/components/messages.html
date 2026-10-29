@@ -105,11 +105,11 @@
 						</li>
 						<li class="nav-item">
 							<button
-								id="ai-view-{{object._id}}-{{view.object}}-codearea-tab"
+								id="ai-view-{{object._id}}-{{view.object}}-code-tab"
 								type="button"
 								role="tab"
 								class="ai-crud-view-button nav-link text-decoration-none"
-								aria-controls="ai-view-{{object._id}}-{{view.object}}-codearea"
+								aria-controls="ai-view-{{object._id}}-{{view.object}}-code"
 								aria-selected="false"
 								aria-label="Show JSON"
 								title="JSON">
@@ -250,9 +250,9 @@
 							</footer>
 						</form>
 						<form
-							id="ai-view-{{object._id}}-{{view.object}}-codearea"
+							id="ai-view-{{object._id}}-{{view.object}}-code"
 							role="tabpanel"
-							aria-labelledby="ai-view-{{object._id}}-{{view.object}}-codearea-tab"
+							aria-labelledby="ai-view-{{object._id}}-{{view.object}}-code-tab"
 							aria-hidden="true"
 							storage="{{view.storage}}"
 							database="{{view.database}}"
@@ -260,14 +260,14 @@
 							object="{{view.object}}"
 							autocomplete="off">
 							<div
-								src="/components/offcanvas-app/codearea.html"></div>
+								src="/components/offcanvas-app/code.html"></div>
 							<footer class="ai-crud-view-footer card-footer">
 								<div class="hstack gap-2 justify-content-end">
 									<button
 										type="button"
 										class="btn btn-light"
-										actions="click, timeout(0), action($document #ai-view-{{object._id}}-{{view.object}}-codearea-restore)"
-										click-query="$document #ai-view-{{object._id}}-{{view.object}}-codearea"
+										actions="click, timeout(0), action($document #ai-view-{{object._id}}-{{view.object}}-code-restore)"
+										click-query="$document #ai-view-{{object._id}}-{{view.object}}-code"
 										click.object="">
 										Cancel
 									</button>
@@ -282,11 +282,11 @@
 										<span class="button-text">Save</span>
 									</button>
 									<button
-										id="ai-view-{{object._id}}-{{view.object}}-codearea-restore"
+										id="ai-view-{{object._id}}-{{view.object}}-code-restore"
 										type="button"
 										actions="attributes"
 										attribute="object"
-										attribute-query="#ai-view-{{object._id}}-{{view.object}}-codearea"
+										attribute-query="#ai-view-{{object._id}}-{{view.object}}-code"
 										value="{{view.object}}"
 										hidden></button>
 								</div>
