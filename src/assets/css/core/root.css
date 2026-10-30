@@ -1,6 +1,6 @@
 /* Faithfully extracted from the legacy SCSS build. */
 :root,
-[data-color-scheme="light"] {
+[color-scheme="light"] {
 	--coc-blue: #3577f1;
 	--coc-indigo: #405189;
 	--coc-purple: #6559cc;
@@ -123,7 +123,7 @@
 	--coc-form-invalid-color: #f06548;
 	--coc-form-invalid-border-color: #f06548;
 }
-[data-color-scheme="dark"] {
+[color-scheme="dark"] {
 	color-scheme: dark;
 	--coc-body-color: #ced4da;
 	--coc-body-color-rgb: 206, 212, 218;
@@ -227,7 +227,7 @@
 	--coc-sidebar-user-name-text: #fff;
 	--coc-sidebar-user-name-sub-text: rgba(255, 255, 255, 0.5);
 }
-:root[data-color-scheme="dark"] {
+:root[color-scheme="dark"] {
 	--coc-card-logo-dark: none;
 	--coc-card-logo-light: block;
 	--coc-footer-bg: #212529;
@@ -241,7 +241,7 @@
 	--coc-input-bg-custom: #262a2f;
 	--coc-input-border-custom: #2a2f34;
 }
-:root[data-color-scheme="dark"]:is(
+:root[color-scheme="dark"]:is(
 		[data-theme="default"],
 		[data-theme="minimal"],
 		[data-theme="material"],
@@ -266,7 +266,7 @@
 	--coc-body-bg: #1a1d21;
 	--coc-boxed-body-bg: #111316;
 }
-:root[data-color-scheme="dark"] .table-light {
+:root[color-scheme="dark"] .table-light {
 	--coc-table-color: white;
 	/* --coc-table-bg: var(--coc-light); */
 	--coc-table-border-color: var(--coc-border-color);
@@ -277,22 +277,22 @@
 	--coc-table-hover-bg: var(--coc-light);
 	--coc-table-hover-color: white;
 }
-:root[data-color-scheme="dark"] .btn-light,
-:root[data-color-scheme="dark"] .btn-outline-light {
+:root[color-scheme="dark"] .btn-light,
+:root[color-scheme="dark"] .btn-outline-light {
 	--coc-btn-color: #8d8e90;
 	--coc-btn-active-color: #fff;
 	--coc-btn-hover-color: #fff;
 }
-:root[data-color-scheme="dark"] .btn-ghost-dark,
-:root[data-color-scheme="dark"] .btn-outline-dark,
-:root[data-color-scheme="dark"] .btn-soft-dark {
+:root[color-scheme="dark"] .btn-ghost-dark,
+:root[color-scheme="dark"] .btn-outline-dark,
+:root[color-scheme="dark"] .btn-soft-dark {
 	--coc-btn-color: #fff;
 }
-:root[data-color-scheme="dark"] .btn-ghost-dark {
+:root[color-scheme="dark"] .btn-ghost-dark {
 	--coc-btn-active-color: #fff;
 	--coc-btn-hover-color: #fff;
 }
-:root[data-color-scheme="dark"] .dropdown-menu {
+:root[color-scheme="dark"] .dropdown-menu {
 	--coc-dropdown-bg: #292e33;
 	--coc-dropdown-link-color: #adb5bd;
 	--coc-dropdown-link-hover-color: #b9bfc4;
@@ -301,7 +301,7 @@
 	--coc-dropdown-link-active-color: #adb5bd;
 	--coc-dropdown-link-active-bg: #2f343a;
 }
-:root[data-color-scheme="dark"] {
+:root[color-scheme="dark"] {
 	--coc-header-bg: #292e32;
 	--coc-header-border: #292e32;
 	--coc-header-item-color: #e9ecef;
@@ -311,7 +311,7 @@
 	--coc-topbar-search-bg: #202328;
 	--coc-topbar-search-color: #fff;
 }
-:root[data-color-scheme="dark"][data-topbar-color="primary"] {
+:root[color-scheme="dark"][data-topbar-color="primary"] {
 	--coc-header-bg: var(--coc-primary);
 	--coc-header-border: var(--coc-primary);
 	--coc-header-item-color: rgba(255, 255, 255, 0.85);
@@ -321,7 +321,7 @@
 	--coc-topbar-search-bg: rgba(255, 255, 255, 0.05);
 	--coc-topbar-search-color: #fff;
 }
-:root[data-color-scheme="dark"] {
+:root[color-scheme="dark"] {
 	--coc-vertical-menu-bg: #fff;
 	--coc-vertical-menu-border: #fff;
 	--coc-vertical-menu-item-color: #6d7080;
@@ -334,7 +334,7 @@
 	--coc-vertical-menu-sub-item-active-color: var(--coc-primary);
 	--coc-vertical-menu-title-color: #919da9;
 }
-:root[data-color-scheme="dark"][data-sidebar-color="dark"] {
+:root[color-scheme="dark"][data-sidebar-color="dark"] {
 	--coc-vertical-menu-bg: #212529;
 	--coc-vertical-menu-border: #212529;
 	--coc-vertical-menu-item-color: #7c7f90;

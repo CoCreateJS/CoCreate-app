@@ -17,146 +17,105 @@
 
 <div class="builder-right-panel-root">
 	<div class="builder-right-panel-content">
-		<ul
-			class="builder-sidebar-tabs nav nav-tabs nav-tabs-custom nav-success"
-			role="tablist"
-			aria-label="Builder property views">
-			<li class="nav-item">
-				<button
-					id="builder-styles-btn"
-					type="button"
-					role="tab"
-					aria-controls="builder-right-styles-view"
-					aria-selected="true"
-					class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
-					title="Styles"
-					aria-label="Styles">
-					<i
-						src="/assets/svg/paint-brush.svg"
-						aria-hidden="true"></i>
-				</button>
-			</li>
-			<li class="nav-item">
-				<button
-					id="builder-database-btn"
-					type="button"
-					role="tab"
-					aria-controls="builder-right-database-view"
-					aria-selected="false"
-					class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
-					title="Database"
-					aria-label="Database">
-					<i
-						src="/assets/svg/database.svg"
-						aria-hidden="true"></i>
-				</button>
-			</li>
-			<li class="nav-item">
-				<button
-					id="builder-broadcast-btn"
-					type="button"
-					role="tab"
-					aria-controls="builder-right-broadcast-view"
-					aria-selected="false"
-					class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
-					title="Broadcast"
-					aria-label="Broadcast">
-					<i
-						src="/assets/svg/broadcast-tower.svg"
-						aria-hidden="true"></i>
-				</button>
-			</li>
-			<li class="nav-item">
-				<button
-					id="builder-logic-btn"
-					type="button"
-					role="tab"
-					aria-controls="builder-right-logic-view"
-					aria-selected="false"
-					class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
-					title="Logic"
-					aria-label="Logic">
-					<i
-						src="/assets/svg/brain.svg"
-						aria-hidden="true"></i>
-				</button>
-			</li>
-			<li class="nav-item">
-				<button
-					id="builder-plugins-btn"
-					type="button"
-					role="tab"
-					aria-controls="builder-right-plugins-view"
-					aria-selected="false"
-					class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
-					title="Plugins"
-					aria-label="Plugins">
-					<i
-						src="/assets/svg/plug.svg"
-						aria-hidden="true"></i>
-				</button>
-			</li>
-		</ul>
 		<div
-			class="builder-property-form builder-property-views builder-panel-scroll"
+			class="builder-property-form builder-panel-scroll"
 			scrollbar
 			scrollbar-type="scrolly">
 			<div class="builder-panel-scroll-viewport">
 				<div
-					id="builder-right-styles-view"
+					id="builder-right-attributes-view"
 					class="builder-panel-view"
-					role="tabpanel"
-					aria-labelledby="builder-styles-btn"
-					tabindex="0"
-					aria-hidden="false"
-					aria-label="Styles"
-					state-id="builder-right-styles-view"
-					state.aria-hidden
-					src="/apps/builder/components/right-panel/styles.html"></div>
-				<div
-					id="builder-right-database-view"
-					class="builder-panel-view"
-					role="tabpanel"
-					aria-labelledby="builder-database-btn"
-					tabindex="0"
-					aria-hidden="true"
-					aria-label="Database"
-					state-id="builder-right-database-view"
-					state.aria-hidden
-					src="/apps/builder/components/right-panel/database.html"></div>
-				<div
-					id="builder-right-broadcast-view"
-					class="builder-panel-view"
-					role="tabpanel"
-					aria-labelledby="builder-broadcast-btn"
-					tabindex="0"
-					aria-hidden="true"
-					aria-label="Broadcast"
-					state-id="builder-right-broadcast-view"
-					state.aria-hidden
-					src="/apps/builder/components/right-panel/broadcast.html"></div>
-				<div
-					id="builder-right-logic-view"
-					class="builder-panel-view"
-					role="tabpanel"
-					aria-labelledby="builder-logic-btn"
-					tabindex="0"
-					aria-hidden="true"
-					aria-label="Logic"
-					state-id="builder-right-logic-view"
-					state.aria-hidden
-					src="/apps/builder/components/right-panel/logic.html"></div>
-				<div
-					id="builder-right-plugins-view"
-					class="builder-panel-view"
-					role="tabpanel"
-					aria-labelledby="builder-plugins-btn"
-					tabindex="0"
-					aria-hidden="true"
-					aria-label="Plugins"
-					state-id="builder-right-plugins-view"
-					state.aria-hidden
-					src="/apps/builder/components/right-panel/plugins.html"></div>
+					aria-label="Element attributes"
+					tabindex="0">
+					<section class="builder-panel-section-body" aria-labelledby="builder-attributes-heading">
+						<div class="builder-panel-section-heading">
+							<span id="builder-attributes-heading">Attributes</span>
+						</div>
+						<div class="mb-3">
+							<div class="d-flex align-items-center justify-content-between mb-1">
+								<label class="small fw-medium mb-0" for="builder-attribute-value-1">id</label>
+								<div class="dropdown d-inline-block">
+									<a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle dropdown text-muted" role="button" aria-haspopup="menu" aria-controls="builder-attribute-id-menu" aria-expanded="false" aria-label="Actions for id">
+										<i src="/assets/svg/remix/more-2-fill.svg" class="align-middle fs-18" aria-hidden="true"></i>
+									</a>
+									<ul id="builder-attribute-id-menu" class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere" role="menu" aria-label="id actions">
+										<li><a class="dropdown-item text-danger" role="menuitem">Delete attribute</a></li>
+									</ul>
+								</div>
+							</div>
+							<input id="builder-attribute-value-1" class="form-control form-control-sm" value="hero-title" placeholder="id value" aria-label="id value" />
+						</div>
+						<div class="mb-3">
+							<div class="d-flex align-items-center justify-content-between mb-1">
+								<label class="small fw-medium mb-0" for="builder-attribute-value-2">class</label>
+								<div class="dropdown d-inline-block">
+									<a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle dropdown text-muted" role="button" aria-haspopup="menu" aria-controls="builder-attribute-class-menu" aria-expanded="false" aria-label="Actions for class">
+										<i src="/assets/svg/remix/more-2-fill.svg" class="align-middle fs-18" aria-hidden="true"></i>
+									</a>
+									<ul id="builder-attribute-class-menu" class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere" role="menu" aria-label="class actions">
+										<li><a class="dropdown-item text-danger" role="menuitem">Delete attribute</a></li>
+									</ul>
+								</div>
+							</div>
+							<input id="builder-attribute-value-2" class="form-control form-control-sm" value="display-4 fw-bold" placeholder="class value" aria-label="class value" />
+						</div>
+
+						<div class="mt-2 pt-2 border-top">
+							<div class="d-flex align-items-center gap-2">
+								<label class="visually-hidden" for="builder-attribute-name-new">New attribute name</label>
+								<input id="builder-attribute-name-new" class="form-control form-control-sm" placeholder="Name" aria-label="New attribute name" />
+								<span class="text-muted">=</span>
+								<label class="visually-hidden" for="builder-attribute-value-new">New attribute value</label>
+								<input id="builder-attribute-value-new" class="form-control form-control-sm" placeholder="Value" aria-label="New attribute value" />
+								<button type="button" class="btn btn-sm btn-light" title="Add attribute" aria-label="Add attribute">
+									<i src="/assets/svg/plus.svg" aria-hidden="true"></i>
+								</button>
+							</div>
+						</div>
+					</section>
+
+					<section class="mt-4" aria-labelledby="builder-styles-heading">
+						<div class="d-flex align-items-center justify-content-between mb-2">
+							<span id="builder-styles-heading" class="small fw-medium">Styles</span>
+							<div class="dropdown d-inline-block">
+								<a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle dropdown text-muted" role="button" aria-haspopup="menu" aria-controls="builder-attribute-style-menu" aria-expanded="false" aria-label="Actions for style">
+									<i src="/assets/svg/remix/more-2-fill.svg" class="align-middle fs-18" aria-hidden="true"></i>
+								</a>
+								<ul id="builder-attribute-style-menu" class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere" role="menu" aria-label="style actions">
+									<li><a class="dropdown-item text-danger" role="menuitem">Delete style attribute</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="card mb-2">
+							<div class="card-body p-2">
+								<div class="d-flex align-items-center justify-content-between mb-1">
+									<label class="small fw-medium mb-0" for="builder-style-value-color">color</label>
+									<div class="dropdown d-inline-block">
+										<a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle dropdown text-muted" role="button" aria-haspopup="menu" aria-controls="builder-style-color-menu" aria-expanded="false" aria-label="Actions for color style property">
+											<i src="/assets/svg/remix/more-2-fill.svg" class="align-middle fs-18" aria-hidden="true"></i>
+										</a>
+										<ul id="builder-style-color-menu" class="dropdown-menu dropdown-menu-end" aria-close-on="anywhere" role="menu" aria-label="color property actions">
+											<li><a class="dropdown-item text-danger" role="menuitem">Delete property</a></li>
+										</ul>
+									</div>
+								</div>
+								<input id="builder-style-value-color" class="form-control form-control-sm" value="#263238" placeholder="color value" aria-label="color style value" />
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body p-2">
+								<div class="d-flex align-items-center justify-content-between mb-1">
+									<label class="visually-hidden" for="builder-style-property-new">New style property</label>
+									<input id="builder-style-property-new" class="form-control form-control-sm" placeholder="Property" aria-label="New style property" />
+									<button type="button" class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle" title="Add style property" aria-label="Add style property">
+										<i src="/assets/svg/plus.svg" aria-hidden="true"></i>
+									</button>
+								</div>
+								<label class="visually-hidden" for="builder-style-value-new">New style value</label>
+								<input id="builder-style-value-new" class="form-control form-control-sm" placeholder="Value" aria-label="New style value" />
+							</div>
+						</div>
+					</section>
 			</div>
 		</div>
 	</div>

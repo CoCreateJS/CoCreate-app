@@ -946,7 +946,7 @@ button {
 	user-select: none;
 	opacity: var(--coc-btn-close-disabled-opacity);
 }
-[data-color-scheme="dark"] .btn-close {
+[color-scheme="dark"] .btn-close {
 	-webkit-filter: var(--coc-btn-close-white-filter);
 	filter: var(--coc-btn-close-white-filter);
 }

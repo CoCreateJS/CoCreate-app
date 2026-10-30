@@ -230,7 +230,7 @@ Separate inspection from presentation for large files. Read only the file and fi
                     object: [
                         {
                             name: "index.html",
-                            src: "<!doctype html><html lang=\"en\"><head><title>About</title><meta name=\"sitemap-changefreq\" content=\"monthly\"><meta name=\"sitemap-priority\" content=\"0.8\"></head><body><h1 i18n=\"heading\">About us</h1><p i18n=\"summary\">Learn more about our team.</p></body></html>",
+                            src: "<!doctype html><html lang=\"en\"><head><title>About</title><meta name=\"color-scheme\" content=\"light dark\"><meta name=\"theme-color\" content=\"#405189\" media=\"(prefers-color-scheme: light)\"><meta name=\"theme-color\" content=\"#292e32\" media=\"(prefers-color-scheme: dark)\"><meta name=\"sitemap-changefreq\" content=\"monthly\"><meta name=\"sitemap-priority\" content=\"0.8\"></head><body><h1 i18n=\"heading\">About us</h1><p i18n=\"summary\">Learn more about our team.</p></body></html>",
                             host: ["*"],
                             directory: "about",
                             path: "/about",
@@ -249,7 +249,7 @@ Separate inspection from presentation for large files. Read only the file and fi
                     object: [
                         {
                             name: "index.html",
-                            src: "<!doctype html><html><head><title>Article</title></head><body><main array=\"articles\" key=\"content\"></main></body></html>",
+                            src: "<!doctype html><html><head><title>Article</title><meta name=\"color-scheme\" content=\"light dark\"><meta name=\"theme-color\" content=\"#405189\" media=\"(prefers-color-scheme: light)\"><meta name=\"theme-color\" content=\"#292e32\" media=\"(prefers-color-scheme: dark)\"></head><body><main array=\"articles\" key=\"content\"></main></body></html>",
                             host: ["*"],
                             directory: "blog",
                             path: "/blog/*",
@@ -348,7 +348,7 @@ Request /sitemap.xml to inspect the generated public structure. If it is a sitem
                     object: [
                         {
                             _id: "FILE_OBJECT_ID",
-                            src: "<!doctype html><html lang=\"en\"><head><title>Product</title><meta name=\"sitemap-changefreq\" content=\"weekly\"><meta name=\"sitemap-priority\" content=\"0.8\"></head><body><img sitemap=\"true\" src=\"/assets/product.jpg\" alt=\"Product overview\"><video sitemap=\"true\" src=\"/media/product.mp4\" poster=\"/assets/product-video.jpg\" title=\"Product walkthrough\" sitemap-duration=\"120\"></video></body></html>",
+                            src: "<!doctype html><html lang=\"en\"><head><title>Product</title><meta name=\"color-scheme\" content=\"light dark\"><meta name=\"theme-color\" content=\"#405189\" media=\"(prefers-color-scheme: light)\"><meta name=\"theme-color\" content=\"#292e32\" media=\"(prefers-color-scheme: dark)\"><meta name=\"sitemap-changefreq\" content=\"weekly\"><meta name=\"sitemap-priority\" content=\"0.8\"></head><body><img sitemap=\"true\" src=\"/assets/product.jpg\" alt=\"Product overview\"><video sitemap=\"true\" src=\"/media/product.mp4\" poster=\"/assets/product-video.jpg\" title=\"Product walkthrough\" sitemap-duration=\"120\"></video></body></html>",
                             sitemap: {
                                 enable: true
                             }

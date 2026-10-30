@@ -35,8 +35,8 @@
 						fullscreen-query="$closest .builder-app"
 						aria-label="Toggle fullscreen"
 						title="Toggle fullscreen">
-						<i src="/assets/svg/remix/fullscreen-line.svg"></i>
-						<i src="/assets/svg/remix/fullscreen-exit-line.svg"></i>
+						<i class="fullscreen-icon" src="/assets/svg/remix/fullscreen-line.svg"></i>
+						<i class="fullscreen-exit-icon" src="/assets/svg/remix/fullscreen-exit-line.svg"></i>
 					</button>
 				</li>
 
@@ -127,9 +127,9 @@
 					<button
 						type="button"
 						class="list-toolbar-control list-toolbar-icon btn btn-light"
-						actions="disableLinks"
+						actions="disableHref"
 						link-query="#canvas;"
-						click-query="[actions='enableLinks'], [actions='disableLinks']"
+						click-query="[actions='enableHref'], [actions='disableHref']"
 						click.class="show,hide"
 						aria-label="Disable links in preview"
 						title="Disable links in preview">
@@ -140,9 +140,9 @@
 					<button
 						type="button"
 						class="list-toolbar-control list-toolbar-icon btn btn-light hide"
-						actions="enableLinks"
+						actions="enableHref"
 						link-query="#canvas;"
-						click-query="[actions='enableLinks'], [actions='disableLinks']"
+						click-query="[actions='enableHref'], [actions='disableHref']"
 						click.class="show,hide"
 						aria-label="Enable links in preview"
 						title="Enable links in preview">

@@ -8,6 +8,10 @@
 	"id": "/",
 	"theme_color": "#405189",
 	"background_color": "#ffffff",
+	"color_scheme_dark": {
+		"theme_color": "#292e32",
+		"background_color": "#1a1d21"
+	},
 	"display": "standalone",
 	"categories": ["developer", "productivity", "utilities"],
 	"icons": [

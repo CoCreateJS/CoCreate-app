@@ -336,11 +336,11 @@
 	display: none;
 }
 
-[data-color-scheme="dark"] .light-dark-mode .theme-icon-moon {
+[color-scheme="dark"] .light-dark-mode .theme-icon-moon {
 	display: none;
 }
 
-[data-color-scheme="dark"] .light-dark-mode .theme-icon-sun {
+[color-scheme="dark"] .light-dark-mode .theme-icon-sun {
 	display: inline-flex;
 }
 

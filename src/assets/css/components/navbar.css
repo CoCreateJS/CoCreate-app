@@ -223,7 +223,7 @@
 .fullscreen-enable [data-toggle="fullscreen"] .bx-fullscreen::before {
 	content: "\eacb";
 }
-[data-color-scheme="dark"] .light-dark-mode .bx-moon::before {
+[color-scheme="dark"] .light-dark-mode .bx-moon::before {
 	content: "\ec34";
 }
 [data-topbar-color="primary"] .logo-dark {
@@ -232,10 +232,10 @@
 [data-topbar-color="primary"] .logo-light {
 	display: flex;
 }
-[data-color-scheme="dark"][data-topbar-color="defualt"] .logo-dark {
+[color-scheme="dark"][data-topbar-color="defualt"] .logo-dark {
 	display: none;
 }
-[data-color-scheme="dark"][data-topbar-color="defualt"] .logo-light {
+[color-scheme="dark"][data-topbar-color="defualt"] .logo-light {
 	display: flex;
 }
 @media (max-width: 600px) {
@@ -585,10 +585,10 @@
 .navbar-light.is-sticky .navbar-brand .card-logo-light {
 	display: none;
 }
-[data-color-scheme="dark"] .navbar-light.is-sticky .navbar-brand .card-logo-dark {
+[color-scheme="dark"] .navbar-light.is-sticky .navbar-brand .card-logo-dark {
 	display: none;
 }
-[data-color-scheme="dark"] .navbar-light.is-sticky .navbar-brand .card-logo-light {
+[color-scheme="dark"] .navbar-light.is-sticky .navbar-brand .card-logo-light {
 	display: block;
 }
 .navbar {
@@ -781,7 +781,7 @@
 	}
 }
 
-.navbar[data-color-scheme="dark"] {
+.navbar[color-scheme="dark"] {
 	--coc-navbar-color: rgba(255, 255, 255, 0.55);
 	--coc-navbar-hover-color: rgba(255, 255, 255, 0.75);
 	--coc-navbar-disabled-color: rgba(255, 255, 255, 0.25);

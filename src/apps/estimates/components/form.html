@@ -476,7 +476,10 @@
 					<tbody id="newlink">
 						<tr
 							id="1"
-							class="product">
+							class="product"
+							input-events="input,onload"
+							input-query=".product-line-price"
+							input.value="$(Number($query(.product-price).value) * Number($query(.product-quantity).value))">
 							<th
 								scope="row"
 								class="product-id">
@@ -525,11 +528,8 @@
 										type="button"
 										class="minus"
 										aria-label="Decrease Quantity"
-										calculate="($next) - 1"
 										click-query="$next"
-										click.value="$value"
-										click.if=">=0"
-										value>
+										click.value="$(Number($query($next).value) > 0 ? Number($query($next).value) - 1 : 0)">
 										-
 									</button>
 									<input
@@ -543,10 +543,8 @@
 										type="button"
 										class="plus"
 										aria-label="Increase Quantity"
-										calculate="($previous) + 1"
 										click-query="$previous"
-										click.value="$value"
-										value>
+										click.value="$(Number($query($previous).value) + 1)">
 										+
 									</button>
 								</div>
@@ -559,7 +557,6 @@
 										id="productPrice-1"
 										placeholder="$0.00"
 										readonly
-										calculate="($document #productRate-1) * ($document #product-qty-1)"
 										aria-label="Product Line Amount" />
 								</div>
 							</td>

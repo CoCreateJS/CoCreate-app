@@ -10,7 +10,7 @@
 	data-preloader="disable"
 	data-theme="default"
 	data-theme-colors="default"
-	data-color-scheme=""
+	color-scheme=""
 	session>
 	<head>
 		<meta charset="utf-8" />
@@ -33,9 +33,15 @@
 		<meta
 			name="robots"
 			content="index, follow" />
+		<meta name="color-scheme" content="light dark" />
 		<meta
 			name="theme-color"
-			content="#405189" />
+			content="#405189"
+			media="(prefers-color-scheme: light)" />
+		<meta
+			name="theme-color"
+			content="#292e32"
+			media="(prefers-color-scheme: dark)" />
 
 		<link
 			rel="canonical"

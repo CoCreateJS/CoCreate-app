@@ -929,9 +929,16 @@ body:has(#ai-chat-panel[aria-hidden="true"]) #offcanvas-app {
 	padding-right: 0;
 }
 
-[fullscreen] i:last-child {
+[fullscreen] .fullscreen-exit-icon {
 	display: none;
+}
 
+[fullscreen="true"] .fullscreen-icon {
+	display: none;
+}
+
+[fullscreen="true"] .fullscreen-exit-icon {
+	display: unset;
 }
 #offcanvas-app:has([data-component-form])
 	> .offcanvas-app-content

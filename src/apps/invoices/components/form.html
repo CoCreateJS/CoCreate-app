@@ -321,8 +321,14 @@
 						id="newlink"
 						key="items"
 						render-query="[template]"
-						filter-limit>
-						<tr template>
+						filter-limit
+						input-query="$closest form #cart-subtotal"
+						input.value="$($add($queryAll(.lineAmounts)))">
+						<tr
+							template
+							input-events="input,onload"
+							input-query=".lineAmounts"
+							input.value="$(Number($query(.product-price).value) * Number($query(.quantity).value))">
 							<th
 								scope="row"
 								class="item-id">
@@ -359,11 +365,8 @@
 										type="button"
 										class="minus"
 										aria-label="Decrease quantity"
-										calculate="($next) - 1"
 										click-query="$next"
-										click.value="$value"
-										click.if=">=0"
-										value>
+										click.value="$(Number($query($next).value) > 0 ? Number($query($next).value) - 1 : 0)">
 										–
 									</button>
 
@@ -382,10 +385,8 @@
 										type="button"
 										class="plus"
 										aria-label="Increase quantity"
-										calculate="($previous) + 1"
 										click-query="$previous"
-										click.value="$value"
-										value>
+										click.value="$(Number($query($previous).value) + 1)">
 										+
 									</button>
 								</div>
@@ -398,7 +399,7 @@
 									readonly
 									placeholder="$0.00"
 									aria-label="Line item amount"
-									calculate="($document #rate{{index}}[]) * ($document #quantity{{index}}[])" />
+									value-bubbles="true" />
 							</td>
 							<td
 								class="product-actions text-nowrap"
@@ -463,11 +464,8 @@
 										type="button"
 										class="minus"
 										aria-label="Decrease quantity"
-										calculate="($next) - 1"
 										click-query="$next"
-										click.value="$value"
-										click.if=">=0"
-										value>
+										click.value="$(Number($query($next).value) > 0 ? Number($query($next).value) - 1 : 0)">
 										–
 									</button>
 									<input
@@ -483,10 +481,8 @@
 										type="button"
 										class="plus"
 										aria-label="Increase quantity"
-										calculate="($previous) + 1"
 										click-query="$previous"
-										click.value="$value"
-										value>
+										click.value="$(Number($query($previous).value) + 1)">
 										+
 									</button>
 								</div>
@@ -517,7 +513,9 @@
 						</tr>
 					</tbody>
 
-					<tbody>
+					<tbody
+						input-query="$closest form #cart-total"
+						input.value="$(Number($query(.cart-subtotal).value) + Number($query(.cart-tax).value) + Number($query(.cart-shipping).value) - Number($query(.cart-discount).value))">
 						<tr class="border-top border-top-dashed mt-2">
 							<td colspan="3"></td>
 							<td
@@ -531,12 +529,14 @@
 											<td style="width: 150px">
 												<input
 													type="text"
-													class="form-control bg-light border-0 cart-items"
+													class="form-control bg-light border-0 cart-items cart-subtotal"
 													id="cart-subtotal"
 													placeholder="$0.00"
 													readonly
 													aria-labelledby="cart-subtotal"
-													calculate="($document .lineAmounts[])"
+													input-query="$closest form #cart-tax"
+													input.value="$(Number($value) * Number($query($closest form .cart-tax-rate).value))"
+													value-bubbles="true"
 													key="cart.subtotal" />
 											</td>
 										</tr>
@@ -547,15 +547,16 @@
 											<td>
 												<input
 													type="text"
-													class="form-control bg-light border-0 cart-items"
+													class="form-control bg-light border-0 cart-items cart-tax"
 													id="cart-tax"
 													placeholder="$0.00"
 													readonly
 													aria-labelledby="cart-tax"
-													calculate="($document #cart-subtotal[]) * ($next)"
+													value-bubbles="true"
 													key="cart.tax" />
 												<input
 													type="hidden"
+													class="cart-tax-rate"
 													value="0.125" />
 											</td>
 										</tr>
@@ -564,7 +565,7 @@
 											<td>
 												<input
 													type="text"
-													class="form-control bg-light border-0"
+													class="form-control bg-light border-0 cart-discount"
 													id="cart-discount"
 													placeholder="$0.00"
 													readonly
@@ -579,7 +580,7 @@
 											<td>
 												<input
 													type="text"
-													class="form-control bg-light border-0 cart-items"
+													class="form-control bg-light border-0 cart-items cart-shipping"
 													id="cart-shipping"
 													placeholder="$0.00"
 													readonly
@@ -600,7 +601,7 @@
 													placeholder="$0.00"
 													readonly
 													aria-labelledby="cart-total"
-													calculate="($document .cart-items[]) - ($document #cart-discount)"
+													value-bubbles="false"
 													key="cart.total" />
 											</td>
 										</tr>
