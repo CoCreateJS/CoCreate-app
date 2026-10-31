@@ -1,0 +1,259 @@
+<style>
+	.builder-dom-tree {
+		min-width: 0;
+		overflow-x: auto;
+		padding: 8px;
+		color: var(--coc-body-color);
+		font-size: 13px;
+	}
+
+	.builder-dom-tree-children {
+		margin-left: 12px;
+		padding-left: 8px;
+		border-left: 1px solid var(--coc-border-color);
+	}
+
+	.builder-dom-tree-row {
+		display: flex;
+		min-height: 30px;
+		align-items: center;
+		gap: 7px;
+		padding: 3px 5px;
+		border-radius: var(--coc-border-radius-sm, 4px);
+		white-space: nowrap;
+	}
+
+	.builder-dom-tree-branch > summary {
+		list-style: none;
+		cursor: pointer;
+	}
+
+	.builder-dom-tree-branch > summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.builder-dom-tree-branch > summary::before,
+	.builder-dom-tree-leaf::before {
+		width: 10px;
+		flex: 0 0 10px;
+		color: var(--coc-secondary-color);
+	}
+
+	.builder-dom-tree-branch > summary::before {
+		content: "▸";
+	}
+
+	.builder-dom-tree-branch[open] > summary::before {
+		content: "▾";
+	}
+
+	.builder-dom-tree-leaf::before {
+		content: "";
+	}
+
+	.builder-dom-tree-row:hover,
+	.builder-dom-tree-row-selected {
+		background: var(--coc-tertiary-bg);
+	}
+
+	.builder-dom-tree-row-selected {
+		color: var(--coc-primary);
+		background: var(--coc-primary-bg-subtle);
+	}
+
+	.builder-dom-tree-drag {
+		width: 14px;
+		height: 14px;
+		flex: 0 0 14px;
+		color: var(--coc-secondary-color);
+		cursor: grab;
+	}
+
+	.builder-dom-tree-name {
+		flex: 1 1 auto;
+		color: var(--coc-primary);
+		font-weight: var(--coc-font-weight-medium, 500);
+	}
+
+	.builder-dom-tree-actions {
+		display: inline-flex;
+		flex: 0 0 auto;
+		align-items: center;
+		gap: 2px;
+		margin-left: auto;
+	}
+
+	.builder-dom-tree-action {
+		display: inline-flex;
+		width: 26px;
+		height: 26px;
+		align-items: center;
+		justify-content: center;
+		border-radius: var(--coc-border-radius-sm, 4px);
+		color: var(--coc-secondary-color);
+	}
+
+	.builder-dom-tree-row:hover .builder-dom-tree-action {
+		color: var(--coc-body-color);
+	}
+
+	.builder-dom-tree-action > i {
+		width: 15px;
+		height: 15px;
+	}
+</style>
+
+<div
+	id="dom-tree"
+	class="left-panel active builder-dom-tree"
+	role="tabpanel"
+	aria-labelledby="builder-dom-tree-btn"
+	data-view="dom-tree">
+	<div class="builder-dom-tree-document" aria-label="Example HTML document">
+		<details class="builder-dom-tree-branch" open>
+			<summary class="builder-dom-tree-row">
+				<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+				<span class="builder-dom-tree-name">html</span>
+				<span class="builder-dom-tree-actions" aria-hidden="true">
+					<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+					<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+				</span>
+			</summary>
+			<div class="builder-dom-tree-children">
+				<details class="builder-dom-tree-branch" open>
+					<summary class="builder-dom-tree-row">
+						<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+						<span class="builder-dom-tree-name">head</span>
+						<span class="builder-dom-tree-actions" aria-hidden="true">
+							<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+							<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+						</span>
+					</summary>
+					<div class="builder-dom-tree-children">
+						<div class="builder-dom-tree-row builder-dom-tree-leaf">
+							<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+							<span class="builder-dom-tree-name">meta</span>
+							<span class="builder-dom-tree-actions" aria-hidden="true">
+								<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+								<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+							</span>
+						</div>
+						<div class="builder-dom-tree-row builder-dom-tree-leaf">
+							<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+							<span class="builder-dom-tree-name">title</span>
+							<span class="builder-dom-tree-actions" aria-hidden="true">
+								<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+								<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+							</span>
+						</div>
+						<div class="builder-dom-tree-row builder-dom-tree-leaf">
+							<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+							<span class="builder-dom-tree-name">link</span>
+							<span class="builder-dom-tree-actions" aria-hidden="true">
+								<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+								<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+							</span>
+						</div>
+					</div>
+				</details>
+
+				<details class="builder-dom-tree-branch" open>
+					<summary class="builder-dom-tree-row">
+						<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+						<span class="builder-dom-tree-name">body</span>
+						<span class="builder-dom-tree-actions" aria-hidden="true">
+							<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+							<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+						</span>
+					</summary>
+					<div class="builder-dom-tree-children">
+						<details class="builder-dom-tree-branch" open>
+							<summary class="builder-dom-tree-row builder-dom-tree-row-selected">
+								<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+								<span class="builder-dom-tree-name">main</span>
+								<span class="builder-dom-tree-actions" aria-hidden="true">
+									<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+									<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+								</span>
+							</summary>
+							<div class="builder-dom-tree-children">
+								<details class="builder-dom-tree-branch" open>
+									<summary class="builder-dom-tree-row">
+										<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+										<span class="builder-dom-tree-name">section</span>
+										<span class="builder-dom-tree-actions" aria-hidden="true">
+											<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+											<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+										</span>
+									</summary>
+									<div class="builder-dom-tree-children">
+										<div class="builder-dom-tree-row builder-dom-tree-leaf">
+											<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+											<span class="builder-dom-tree-name">h1</span>
+											<span class="builder-dom-tree-actions" aria-hidden="true">
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+											</span>
+										</div>
+										<div class="builder-dom-tree-row builder-dom-tree-leaf">
+											<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+											<span class="builder-dom-tree-name">p</span>
+											<span class="builder-dom-tree-actions" aria-hidden="true">
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+											</span>
+										</div>
+										<div class="builder-dom-tree-row builder-dom-tree-leaf">
+											<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+											<span class="builder-dom-tree-name">img</span>
+											<span class="builder-dom-tree-actions" aria-hidden="true">
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+											</span>
+										</div>
+									</div>
+								</details>
+								<details class="builder-dom-tree-branch" open>
+									<summary class="builder-dom-tree-row">
+										<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+										<span class="builder-dom-tree-name">form</span>
+										<span class="builder-dom-tree-actions" aria-hidden="true">
+											<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+											<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+										</span>
+									</summary>
+									<div class="builder-dom-tree-children">
+										<div class="builder-dom-tree-row builder-dom-tree-leaf">
+											<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+											<span class="builder-dom-tree-name">label</span>
+											<span class="builder-dom-tree-actions" aria-hidden="true">
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+											</span>
+										</div>
+										<div class="builder-dom-tree-row builder-dom-tree-leaf">
+											<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+											<span class="builder-dom-tree-name">input</span>
+											<span class="builder-dom-tree-actions" aria-hidden="true">
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+											</span>
+										</div>
+										<div class="builder-dom-tree-row builder-dom-tree-leaf">
+											<i class="builder-dom-tree-drag" src="/assets/svg/remix/draggable.svg" aria-hidden="true"></i>
+											<span class="builder-dom-tree-name">button</span>
+											<span class="builder-dom-tree-actions" aria-hidden="true">
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/eye-line.svg"></i></span>
+												<span class="builder-dom-tree-action"><i src="/assets/svg/remix/more-2-fill.svg"></i></span>
+											</span>
+										</div>
+									</div>
+								</details>
+							</div>
+						</details>
+					</div>
+				</details>
+			</div>
+		</details>
+	</div>
+</div>

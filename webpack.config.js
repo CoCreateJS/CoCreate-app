@@ -106,6 +106,10 @@ export default async (env, argv) => {
             alias: {
                 // Resolve every configured CoCreate dependency to one workspace module
                 ...workspaceAliases,
+                "@cocreate/utils/queryElements$": path.resolve(
+                    __dirname,
+                    "../CoCreate-modules/CoCreate-utils/src/modules/queryElements.js"
+                ),
                 // Force @cocreate/utils to resolve directly to the browser entry point
                 "@cocreate/utils$": path.resolve(__dirname, "node_modules/@cocreate/utils/src/browser.js")
             },
@@ -233,6 +237,30 @@ export default async (env, argv) => {
                         chunks: "all",
                         enforce: true,
                         priority: 30,
+                        reuseExistingChunk: true
+                    },
+                    editorCore: {
+                        test: /[\\/]CoCreate-editor[\\/]src[\\/](events|selection|textChange)\.js$/,
+                        name: "editor-core",
+                        chunks: "all",
+                        enforce: true,
+                        priority: 31,
+                        reuseExistingChunk: true
+                    },
+                    positionEvents: {
+                        test: /[\\/]CoCreate-position[\\/]src[\\/]helpers[\\/]events\.js$/,
+                        name: "position-events",
+                        chunks: "all",
+                        enforce: true,
+                        priority: 31,
+                        reuseExistingChunk: true
+                    },
+                    usersSessionCookie: {
+                        test: /[\\/]CoCreate-users[\\/]src[\\/]client[\\/]sessionCookie\.js$/,
+                        name: "users-session-cookie",
+                        chunks: "all",
+                        enforce: true,
+                        priority: 31,
                         reuseExistingChunk: true
                     },
                     ws: {

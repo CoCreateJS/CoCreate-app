@@ -5,18 +5,19 @@
 		aria-label="Builder component views">
 		<li class="nav-item">
 			<button
-				id="builder-vdom-btn"
+				id="builder-dom-tree-btn"
 				type="button"
 				role="tab"
-				aria-controls="builder-left-vdom-view"
+				aria-controls="builder-left-dom-tree-view"
 				aria-selected="false"
 				class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
 				toggle="#canvas"
-				toggle-query="#vdom"
-				toggle-attribute="vdom-selector"
-				title="Virtual DOM"
-				aria-label="Virtual DOM">
-				<i src="/assets/svg/stream.svg" aria-hidden="true"></i>
+				toggle-query="#dom-tree"
+				title="DOM Tree"
+				aria-label="DOM Tree">
+				<i
+					src="/assets/svg/stream.svg"
+					aria-hidden="true"></i>
 			</button>
 		</li>
 		<li class="nav-item">
@@ -32,7 +33,9 @@
 				toggle-attribute="array"
 				title="Assets"
 				aria-label="Assets">
-				<i src="/assets/svg/photo-video.svg" aria-hidden="true"></i>
+				<i
+					src="/assets/svg/photo-video.svg"
+					aria-hidden="true"></i>
 			</button>
 		</li>
 		<li class="nav-item">
@@ -48,7 +51,9 @@
 				toggle-attribute="array"
 				title="Files"
 				aria-label="Files">
-				<i src="/assets/svg/folder.svg" aria-hidden="true"></i>
+				<i
+					src="/assets/svg/folder.svg"
+					aria-hidden="true"></i>
 			</button>
 		</li>
 		<li class="nav-item">
@@ -61,7 +66,9 @@
 				class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
 				title="Upload"
 				aria-label="Upload">
-				<i src="/assets/svg/cloud-upload-alt.svg" aria-hidden="true"></i>
+				<i
+					src="/assets/svg/cloud-upload-alt.svg"
+					aria-hidden="true"></i>
 			</button>
 		</li>
 		<li class="nav-item">
@@ -74,7 +81,9 @@
 				class="nav-link text-decoration-none list-toolbar-control list-toolbar-icon btn btn-light"
 				title="Blocks"
 				aria-label="Blocks">
-				<i src="/assets/svg/th-large.svg" aria-hidden="true"></i>
+				<i
+					src="/assets/svg/th-large.svg"
+					aria-hidden="true"></i>
 			</button>
 		</li>
 	</ul>
@@ -85,16 +94,16 @@
 		scrollbar-type="scrolly">
 		<div class="builder-left-panel-views">
 			<div
-				id="builder-left-vdom-view"
+				id="builder-left-dom-tree-view"
 				class="builder-panel-view"
 				role="tabpanel"
-				aria-labelledby="builder-vdom-btn"
+				aria-labelledby="builder-dom-tree-btn"
 				tabindex="0"
 				aria-hidden="true"
-				aria-label="Virtual DOM"
-				state-id="builder-left-vdom-view"
+				aria-label="DOM Tree"
+				state-id="builder-left-dom-tree-view"
 				state.aria-hidden
-				src="/apps/builder/components/left-panel/vdom.html"></div>
+				src="/apps/builder/components/left-panel/dom-tree.html"></div>
 			<div
 				id="builder-left-assets-view"
 				class="builder-panel-view"
