@@ -1,26 +1,59 @@
-# Instance storage contract
+# Endpoint configuration
 
-Clusters store `storage` as the `_id` of an `apis` record. The provisioning form
-and autoscaler pass that same ID in `create-instance` request `data.storage`.
-Credentials are resolved by the endpoint AST for each invocation.
+Endpoint AST records are kept in provider-specific folders under `config` so
+that records can be inspected and synced by integration. AWS records live in
+`AWS/data.js`; MongoDB Atlas records live in `MongoDB/data.js`. Other cloud
+provider records remain in the root `data.js` until their own pass.
 
-Every cloud `create-instance` endpoint starts with `storageActions`: validate the
-ID, read one enabled `type: "storage"` API record through organization-scoped
-CRUD, check its name and provider, and encode the returned object as UTF-8 JSON.
-The lookup uses `filter.key` to exclude the metadata listed by the API provider
-fields template, keeping `name`, `provider`, and the remaining credential fields.
-The endpoint passes `object[0]` unchanged, including any incidental ID or routing
-fields retained by CRUD. The driver validates its own connection requirements.
+## AWS endpoints
 
-The startup-script template uses `$storageBase64` from the endpoint's execution
-scope. `data.storage` stays an ID; the rendered script writes the decoded flat
-connection object into bootstrap `storage` on the new server. Endpoint actions
-render the script once, using `$bootstrapScript` for plain cloud user data and
-`$bootstrapScriptBase64` when the cloud expects base64.
+The AWS folder currently contains the literal AST records for `resolve-image`,
+`create-instance`, and `delete-instance`. These use the existing AWS API
+provider record and retain their current endpoint IDs and behavior.
 
-Publish the updated endpoint records and startup-script configuration together,
-and run an API server build that supports the AST `$throw` operator. Existing
-cluster records must save their storage reference under `storage`; the former
-`storageProvider` field is not used by this contract. Updating an API credential
-affects subsequent launches; already running servers retain their bootstrap
-configuration until refreshed.
+## MongoDB Atlas provisioning
+
+MongoDB Atlas provisioning records live in `MongoDB/data.js`. The Atlas
+Administration API record (`mongodb-atlas-admin`) remains separate from the
+MongoDB storage connection record (`mongodb`). These endpoints are disabled
+until Atlas API credentials, permissions, and billing eligibility are confirmed.
+
+Provision in this order:
+
+1. `create-organization` takes `data.tenantOrganizationId`; its response gives
+   the Atlas organization ID.
+2. `create-project` takes `data.atlasOrganizationId` and
+   `data.tenantOrganizationId`; its response gives the project ID.
+3. `create-free-cluster` takes `data.atlasProjectId`, `data.clusterName`,
+   `data.cloudProvider` (`AWS`, `GCP`, or `AZURE`), and `data.regionName`.
+4. `add-project-ip-access-list-entry` takes `data.atlasProjectId`,
+   `data.cidrBlock`, and optionally `data.comment`. The value `0.0.0.0/0`
+   allows connections from all IPv4 addresses. Access is still gated by
+   database authentication. For ephemeral CoCreate nodes this avoids tracking
+   changing node IPs, but it permits network attempts from anywhere.
+   `remove-project-ip-access-list-entry` takes `data.atlasProjectId` and
+   `data.entryValue`; URL-encode `/` in CIDR values as `%2F`.
+5. `create-database-user` takes `data.atlasProjectId`, `data.clusterName`,
+   `data.databaseName`, `data.username`, and `data.password`. It creates a
+   SCRAM user with `readWrite` access only to that database and cluster.
+6. `get-cluster-connection` takes `data.atlasProjectId` and
+   `data.clusterName`. The response contains `connectionStrings.standardSrv`.
+   This is the cluster URI, not a credential-bearing Atlas connection object;
+   combine it with the separately stored database username/password, safely
+   URL-encoding both credentials.
+7. `invite-organization-owner` takes `data.atlasOrganizationId` and
+   `data.email`. It sends an Atlas organization invitation with the fixed
+   `ORG_OWNER` role and returns the Atlas user ID and pending membership status.
+   The customer can accept with an existing Atlas account or create one while
+   accepting. The invitation expires after 30 days.
+
+A database user is distinct from an Atlas API Service Account. The service
+account authorizes management calls to the Atlas Admin API. The database user
+authenticates clients to MongoDB. The URI is obtained from cluster details.
+
+Atlas documents that creating an organization requires the calling
+organization to be a paying organization. Confirm that prerequisite before
+enabling `create-organization`. Every endpoint remains disabled in the seed
+until its credentials and required permissions are configured. The Atlas
+Admin API Service Account must have Organization Owner access to the target
+organization to invite an owner.

@@ -14,11 +14,23 @@ export const seedApisPayload = {
   "object": [
     {
       "_id": "65f8ca227b39a3c1a8904dfd",
-      name: "mongodb", // Friendly name for the API configuration
+      name: "mongodb",
+      type: "storage",
       provider: "mongodb",
-      url: "",
-      description: "MongoDB Atlas API integration for managing clusters, databases, and collections. Utilizes dynamic credential resolution for secure access.",
-      status: "active"
+      connectionString: "",
+      description: "Default CoCreate platform MongoDB storage connection.",
+      enabled: true
+    },
+    {
+      "_id": "6a61543c0000000000000001",
+      name: "mongodb-atlas-admin",
+      provider: "mongodb-atlas",
+      type: "api",
+      url: "https://cloud.mongodb.com/api/atlas/v2",
+      clientId: "",
+      clientSecret: "",
+      enabled: false,
+      description: "MongoDB Atlas Admin API credentials for organization, project, cluster, network access, and database-user management. Configure the Atlas Service Account client ID and secret here; keep MongoDB connection strings on the separate mongodb storage record."
     },
     {
       "_id": "65f8ca227b39a3c1a8904dfe",
