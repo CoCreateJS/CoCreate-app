@@ -348,9 +348,6 @@ lazyLoad("localstorage", "[storage*='localstorage'], [localstorage-set], [locals
 lazyLoad("crud", "[crud='true'], [database], [array]", () => import(/* webpackChunkName: "crud" */ "@cocreate/crud-client"));
 lazyLoad("state", "[state-to], [state-id]", () => import(/* webpackChunkName: "state" */ "@cocreate/state"));
 lazyLoad("cache", "[cache='true']", () => import(/* webpackChunkName: "cache" */ "@cocreate/cache"));
-lazyLoad("pwa", "[actions*='install']", () => import(/* webpackChunkName: "pwa" */ "@cocreate/pwa"));
-lazyLoad("geolocation", "[actions*='geoLocation']", () => import(/* webpackChunkName: "geolocation" */ "@cocreate/geolocation"));
-lazyLoad("webShare", "[share], [actions*='share']", () => import(/* webpackChunkName: "webShare" */ "@cocreate/web-share"));
 lazyLoad("plugins", "[plugins]", () => import(/* webpackChunkName: "plugins" */ "@cocreate/plugins"));
 lazyLoad("crdt", "[crdt='true']", () => import(/* webpackChunkName: "crdt" */ "@cocreate/crdt"));
 lazyLoad("cursors", "input[crdt='true'], textarea[crdt='true'], [contenteditable][crdt='true']", () => import(/* webpackChunkName: "cursors" */ "@cocreate/cursors"));
@@ -361,6 +358,7 @@ lazyLoad("filter", "[filter-query]", () => import(/* webpackChunkName: "filter" 
 lazyLoad("render", "[render], [render-query], [template], template", () => import(/* webpackChunkName: "render" */ "@cocreate/render"));
 lazyLoad("file", "[type='file'], [actions*='upload'], [actions*='download'], [actions*='saveLocally'], [actions*='import'], [actions*='export'], [actions*='createFile'], [actions*='deleteFile'], [actions*='createDirectory'], [actions*='deleteDirectory']", () => import(/* webpackChunkName: "file" */ "@cocreate/file"));
 lazyLoad("elements", "form, [src], [storage], [database], [array], [href], [target], [actions*='disableHref'], [actions*='enableHref']", () => import(/* webpackChunkName: "elements" */ "@cocreate/elements"));
+lazyLoad("workflows", "[workflow]", () => import(/* webpackChunkName: "workflows" */ "@cocreate/workflows"));
 lazyLoad("api", "[actions], [template_id]", () => import(/* webpackChunkName: "api" */ "@cocreate/api"));
 lazyLoad("position", "[draggable], [draggable-query], [clonable-query], [droppable-query], [position-target], [position-query]", () => import(/* webpackChunkName: "position" */ "@cocreate/position"));
 lazyLoad("scroll", "[scroll], [scroll-to], [scrollable-x], [scrollable-y]", () => import(/* webpackChunkName: "scroll" */ "@cocreate/scroll"));
@@ -368,13 +366,16 @@ lazyLoad("scrollbar", "[scrollbar]", () => import(/* webpackChunkName: "scrollba
 lazyLoad("resize", "[resize], [height='auto']", () => import(/* webpackChunkName: "resize" */ "@cocreate/resize"));
 lazyLoad("organizations", "[actions*='createOrganization'], [actions*='createEnvironments']", () => import(/* webpackChunkName: "organizations" */ "@cocreate/organizations"));
 lazyLoad("users", "[session], [actions*='signUp'], [actions*='signIn'], [actions*='inviteUser'], [actions*='acceptInvite'], [actions*='forgotPassword'], [actions*='resetPassword'], [actions*='signOut'], [user-status]", () => import(/* webpackChunkName: "users" */ "@cocreate/users"));
-lazyLoad("unique", "[unique]", () => import(/* webpackChunkName: "unique" */ "@cocreate/unique"));
 lazyLoad("search", "[search-query]", () => import(/* webpackChunkName: "search" */ "@cocreate/search"));
-lazyLoad("validation", "[actions*='validate'], [required]", () => import(/* webpackChunkName: "validation" */ "@cocreate/validation"));
 lazyLoad("clipboard", "[actions*='clipboard'], [clipboard], [clipboard-query]", () => import(/* webpackChunkName: "clipboard" */ "@cocreate/clipboard"));
 lazyLoad("print", "[actions*='print'], [print-query]", () => import(/* webpackChunkName: "print" */ "@cocreate/print"));
 lazyLoad("fullscreen", "[fullscreen]", () => import(/* webpackChunkName: "fullscreen" */ "@cocreate/fullscreen"));
-lazyLoad("wakeLock", "[wake-lock], [actions*='wakeLock']", () => import(/* webpackChunkName: "wakeLock" */ "@cocreate/wake-lock"));
+lazyLoad("pwa", "[actions*='install']", () => import(/* webpackChunkName: "pwa" */ "@cocreate/pwa"));
 lazyLoad("notification", "[actions*='notification']", () => import(/* webpackChunkName: "notification" */ "@cocreate/notification"));
+lazyLoad("geolocation", "[actions*='geoLocation']", () => import(/* webpackChunkName: "geolocation" */ "@cocreate/geolocation"));
 lazyLoad("speechRecognition", "[speech-recognition]", () => import(/* webpackChunkName: "speechRecognition" */ "@cocreate/speech-recognition"));
 lazyLoad("speechSynthesis", "[speech-synthesis]", () => import(/* webpackChunkName: "speechSynthesis" */ "@cocreate/speech-synthesis"));
+lazyLoad("webShare", "[share], [actions*='share']", () => import(/* webpackChunkName: "webShare" */ "@cocreate/web-share"));
+lazyLoad("contactPicker", "[actions*='getContacts']", () => import(/* webpackChunkName: "contactPicker" */ "@cocreate/contact-picker"));
+lazyLoad("wakeLock", "[wake-lock], [actions*='wakeLock']", () => import(/* webpackChunkName: "wakeLock" */ "@cocreate/wake-lock"));
+lazyLoad("validation", "[actions*='validate'], [required]", () => import(/* webpackChunkName: "validation" */ "@cocreate/validation"));

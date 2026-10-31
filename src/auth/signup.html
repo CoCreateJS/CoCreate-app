@@ -6,6 +6,7 @@
 		object=""
 		read="false"
 		realtime="false"
+		workflow="unique"
 		data-signup-step="account"
 		aria-label="Create your account and organization">
 		<style>
@@ -25,11 +26,10 @@
 			}
 			#email[unique="false"] ~ #signup-email-error {
 				display: block !important;
-				content: "This email is already in use.";
 			}
-			#signup-hostname[unique="false"] ~ #signup-hostname-error {
+			.input-group:has(#signup-hostname[unique="false"])
+				+ #signup-hostname-error {
 				display: block !important;
-				content: "Hostname is not available";
 			}
 		</style>
 
@@ -99,10 +99,13 @@
 					id="email"
 					name="email"
 					autocomplete="email"
+					input="$workflow('unique', $this)"
+					unique-key="email"
+					array="users"
+					object=""
 					key="email"
 					placeholder="Enter email address"
 					required
-					unique
 					aria-required="true"
 					aria-errormessage="signup-email-error" />
 				<span
@@ -230,6 +233,7 @@
 							form-attributes="false"
 							name="host[0].name"
 							key="host[0].name"
+							unique-key="host.name"
 							class="form-control"
 							placeholder="your-team"
 							autocomplete="off"
@@ -238,7 +242,7 @@
 							maxlength="63"
 							pattern="[a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?"
 							value-suffix=".cocreatejs.com"
-							unique
+							input="$workflow('unique', $this)"
 							required
 							aria-describedby="signup-hostname-suffix signup-hostname-help"
 							aria-errormessage="signup-hostname-error" />

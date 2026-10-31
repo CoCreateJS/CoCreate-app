@@ -232,6 +232,12 @@ export default {
             path: "../CoCreate-modules/CoCreate-elements",
             repo: "github.com/CoCreate-app/CoCreate-elements.git"
         },
+        workflows: {
+            import: "@cocreate/workflows",
+            selector: "[workflow]",
+            path: "../CoCreate-modules/CoCreate-workflows",
+            repo: "github.com/CoCreateJS/CoCreate-workflows.git"
+        },
         api: {
             import: "@cocreate/api",
             selector: "[actions], [template_id]",
@@ -273,12 +279,6 @@ export default {
             selector: "[session], [actions*='signUp'], [actions*='signIn'], [actions*='inviteUser'], [actions*='acceptInvite'], [actions*='forgotPassword'], [actions*='resetPassword'], [actions*='signOut'], [user-status]",
             path: "../CoCreate-modules/CoCreate-users",
             repo: "github.com/CoCreate-app/CoCreate-users.git"
-        },
-        unique: {
-            import: "@cocreate/unique",
-            selector: "[unique]",
-            path: "../CoCreate-modules/CoCreate-unique",
-            repo: "github.com/CoCreate-app/CoCreate-unique.git"
         },
         search: {
             import: "@cocreate/search",

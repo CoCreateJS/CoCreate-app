@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>CoCreate Editor VDOM</title>
+		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
+		<style>
+			body { margin: 2rem auto; padding: 0 1rem; max-width: 80rem; }
+			iframe { box-sizing: border-box; width: 100%; height: 32rem; border: 1px solid #d9dee5; }
+			.vdom-columns { display: grid; grid-template-columns: minmax(18rem, 1fr) minmax(18rem, 1fr); gap: 1rem; }
+			.vdom-panel { min-width: 0; padding: 1rem; border: 1px solid #d9dee5; border-radius: .5rem; }
+			.vdom-tree, .vdom-tree ul { list-style: none; margin: 0; padding-left: 1rem; }
+			.vdom-tree { padding-left: 0; }
+			.vdom-tree li { margin: .25rem 0; }
+			.vdom-label, .vdom-flat { font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+			.vdom-flat { max-height: 32rem; overflow: auto; white-space: pre-wrap; }
+			.vdom-kind { color: #687386; }
+			.vdom-node-row {
+				padding: 0.35rem 0;
+				border-bottom: 1px solid #d9dee5;
+				font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+				overflow-wrap: anywhere;
+			}
+			.vdom-node-row[data-kind="attribute"],
+			.vdom-node-row[data-kind="elementEnd"],
+			.vdom-node-row[data-kind="markup"],
+			.vdom-node-row[data-source-only="true"] {
+				display: none;
+			}
+			@media (max-width: 760px) { .vdom-columns { grid-template-columns: 1fr; } }
+		</style>
+	</head>
+	<body>
+		<main>
+			<header>
+				<h1>Editor nodes to nested VDOM</h1>
+				<p>
+					This experiment reads the iframe Editor’s flat
+					<code>editor.nodes</code> collection and keeps element start tags
+					and text nodes. The tree below is derived from each detail’s
+					<code>parentNode</code> reference.
+				</p>
+			</header>
+			<iframe
+				id="crdt-page-frame"
+				src="/crdt-iframe.html"
+				title="CRDT DOM editor page"
+				editor="dom"
+				array="files"
+				object="6a99ae37c87961219462f30a"
+				key="src"></iframe>
+			<section class="vdom-panel" aria-labelledby="vdom-flat-template-heading">
+				<h2 id="vdom-flat-template-heading">Declarative flat node list</h2>
+				<p>Editor node details projected into a flat template. CSS hides attributes, end tags, markup, and source-only text.</p>
+				<div
+					id="vdom-node-list"
+					editor-query="#crdt-page-frame"
+					editor-nodes
+					render-query="[template='vdom-node-row']">
+					<div
+						template="vdom-node-row"
+						class="vdom-node-row"
+						data-kind="{{object.kind}}"
+						data-source-only="{{object.sourceOnly}}">
+						<span>{{object.kind}}</span>
+						<span>{{object.tag}}</span>
+						<span>{{object.value}}</span>
+						<span>parent: {{object.parentNode.tag}}</span>
+					</div>
+				</div>
+			</section>
+			<section class="vdom-columns" aria-live="polite">
+				<article class="vdom-panel">
+					<h2>Nested view</h2>
+					<p id="vdom-status">Waiting for the Editor iframe…</p>
+					<div id="vdom-tree"></div>
+				</article>
+				<article class="vdom-panel">
+					<h2>Flat nodes</h2>
+					<pre id="vdom-flat" class="vdom-flat"></pre>
+				</article>
+			</section>
+		</main>
+		<script>
+			(() => {
+				const pageFrame = document.querySelector("#crdt-page-frame");
+				const status = document.querySelector("#vdom-status");
+				const treeOutput = document.querySelector("#vdom-tree");
+				const flatOutput = document.querySelector("#vdom-flat");
+				let editorFrame;
+				let refreshQueued = false;
+
+				function detailLabel(detail) {
+					const kind = detail.kind || "node";
+					const attributeName = kind === "attribute"
+						? /^\s*([^\s=/>]+)/.exec(detail.value || "")?.[1]
+						: "";
+					const name = kind === "element" ? `<${detail.tag || "element"}>`
+						: kind === "attribute" ? `@${attributeName || "attribute"}`
+							: kind;
+					const value = typeof detail.value === "string" ? detail.value : "";
+					return { kind, name, value };
+				}
+
+				function appendBranch(parent, detail, children) {
+					const item = document.createElement("li");
+					const label = document.createElement("div");
+					const { kind, name, value } = detailLabel(detail);
+					label.className = "vdom-label";
+					const kindLabel = document.createElement("span");
+					kindLabel.className = "vdom-kind";
+					kindLabel.textContent = `${kind} · `;
+					label.append(kindLabel, document.createTextNode(name));
+					if (value) label.append(document.createTextNode(` ${JSON.stringify(value)}`));
+					item.append(label);
+					const nested = children.get(detail);
+					if (nested?.length) {
+						const list = document.createElement("ul");
+						for (const child of nested) appendBranch(list, child, children);
+						item.append(list);
+					}
+					parent.append(item);
+				}
+
+				function renderNodes() {
+					refreshQueued = false;
+					const editorNodes = editorFrame?.editor?.nodes;
+					if (!Array.isArray(editorNodes)) {
+						status.textContent = "Editor nodes are not available yet.";
+						return;
+					}
+					const nodes = editorNodes.filter(node =>
+						node.kind === "element" || (node.kind === "text" && !node.sourceOnly));
+					const children = new Map();
+					const roots = [];
+					for (const node of nodes) {
+						const parent = node.parentNode;
+						if (parent && nodes.includes(parent)) {
+							if (!children.has(parent)) children.set(parent, []);
+							children.get(parent).push(node);
+						} else roots.push(node);
+					}
+					const tree = document.createElement("ul");
+					tree.className = "vdom-tree";
+					for (const root of roots) appendBranch(tree, root, children);
+					treeOutput.replaceChildren(tree);
+					flatOutput.textContent = nodes.map((node, index) => {
+						const parentIndex = nodes.indexOf(node.parentNode);
+						const { kind, name, value } = detailLabel(node);
+						return `${String(index).padStart(3, "0")} ${kind} ${name} parent=${parentIndex < 0 ? "root" : parentIndex} value=${JSON.stringify(value)}`;
+					}).join("\n");
+					status.textContent = `${nodes.length} flat details · ${roots.length} root details`;
+				}
+
+				function scheduleRender() {
+					if (refreshQueued) return;
+					refreshQueued = true;
+					requestAnimationFrame(renderNodes);
+				}
+
+				function connectEditor() {
+					try {
+						const pageDocument = pageFrame.contentDocument;
+						editorFrame = pageDocument?.querySelector("#crdt-editor-frame");
+						if (!editorFrame) {
+							status.textContent = "Waiting for #crdt-editor-frame…";
+							return;
+						}
+						editorFrame.addEventListener("editor-details-change", scheduleRender);
+						editorFrame.addEventListener("editor-source-change", scheduleRender);
+						editorFrame.addEventListener("load", scheduleRender);
+						scheduleRender();
+					} catch (error) {
+						status.textContent = `Could not read the editor iframe: ${error.message}`;
+					}
+				}
+
+				pageFrame.addEventListener("load", connectEditor);
+			})();
+		</script>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>

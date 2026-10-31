@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="color-scheme"
+			content="light dark" />
+		<meta
+			name="theme-color"
+			content="#405189"
+			media="(prefers-color-scheme: light)" />
+		<meta
+			name="theme-color"
+			content="#292e32"
+			media="(prefers-color-scheme: dark)" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
+		<title>CoCreate URL File Import Demo</title>
+		<link
+			href="/assets/css/index.css"
+			rel="stylesheet"
+			type="text/css" />
+		<style>
+			.url-import-result:not([content-type^="image/"])
+				.url-import-preview {
+				display: none;
+			}
+		</style>
+	</head>
+	<body class="bg-light">
+		<main
+			class="container py-4"
+			style="max-width: 900px">
+			<header class="mb-4">
+				<h1 class="h3 mb-2">Import a file from a URL</h1>
+				<p class="text-muted mb-0">
+					Fetch a URL, save it in files, and view it at the
+					destination pathname on this host. This demo displays the
+					result and saves it to the database.
+				</p>
+			</header>
+
+			<form
+				id="file-uploader-demo"
+				workflow="fileFromUrl"
+				class="card mb-4"
+				autocomplete="off"
+				aria-label="Import file from URL">
+				<div class="card-body">
+					<label
+						class="form-label mb-1"
+						for="import-url"
+						>File URL</label
+					>
+					<div class="d-flex flex-wrap gap-2 align-items-start">
+						<input
+							id="import-url"
+							class="form-control flex-grow-1"
+							style="flex-basis: 300px"
+							type="url"
+							name="url"
+							value="https://www.w3.org/Icons/w3c_home.png"
+							fileFromUrl-key="src"
+							fileFromUrl-set-data="false"
+							aria-describedby="import-url-help"
+							required />
+						<label
+							class="form-label"
+							for="import-path"
+							>Destination directory</label
+						>
+						<input
+							id="import-path"
+							class="form-control"
+							value="/"
+							fileFromUrl-key="path"
+							fileFromUrl-set-data="false" />
+						<label
+							class="form-label"
+							for="import-access"
+							>Cache and access policy</label
+						>
+						<select
+							id="import-access"
+							class="form-control"
+							fileFromUrl-key="headers.cache-control"
+							fileFromUrl-set-data="false">
+							<option value="public, max-age=3600">Public</option>
+							<option value="private, no-store">
+								Authenticated
+							</option>
+						</select>
+						<button
+							class="btn btn-primary"
+							actions="validate, fileFromUrl">
+							Import URL
+						</button>
+					</div>
+					<p
+						id="import-url-help"
+						class="small text-muted mt-2 mb-0">
+						The sample is a small W3C PNG image. You can replace it
+						with another public file URL.
+					</p>
+				</div>
+				<input
+					id="imported-file"
+					type="file"
+					fileFromUrl-key="fileFromUrl"
+					fileFromUrl-get-data="false"
+					realtime="false"
+					hidden />
+			</form>
+
+			<section
+				class="card"
+				aria-labelledby="imported-file-heading"
+				aria-live="polite">
+				<div class="card-header">
+					<h2
+						id="imported-file-heading"
+						class="h5 mb-0">
+						Imported file
+					</h2>
+				</div>
+				<div class="card-body">
+					<p class="text-muted">
+						The returned file will appear here after import.
+					</p>
+					<template file-for="imported-file">
+						<article
+							class="url-import-result"
+							content-type="{{object.content-type}}">
+							<div class="url-import-preview mb-3">
+								<img
+									class="img-fluid rounded border p-3"
+									style="
+										max-height: 240px;
+										object-fit: contain;
+									"
+									src="data:{{object.content-type}};base64,{{object.src}}"
+									alt="Preview of {{object.name}}" />
+							</div>
+							<dl class="mb-3">
+								<dt>Name</dt>
+								<dd>{{object.name}}</dd>
+								<dt>Content type</dt>
+								<dd>{{object.content-type}}</dd>
+								<dt>Size</dt>
+								<dd>{{object.size}} bytes</dd>
+								<dt>Path</dt>
+								<dd>
+									<a
+										href="{{object.pathname}}"
+										target="_blank"
+										rel="noopener"
+										>{{object.pathname}}</a
+									>
+								</dd>
+							</dl>
+							<label
+								class="form-label mb-1"
+								for="imported-source-{{object.id}}">
+								Returned Base64
+							</label>
+							<textarea
+								id="imported-source-{{object.id}}"
+								class="form-control font-monospace"
+								rows="6"
+								value-evaluate="false"
+								readonly>
+{{object.src}}</textarea
+							>
+						</article>
+					</template>
+				</div>
+			</section>
+		</main>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>
