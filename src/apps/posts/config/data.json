@@ -20,7 +20,7 @@
       "hashtags": "#newfeature #update",
       "mentions": "@cocreate",
       "location": "New York",
-      "link": "https://cocreate.app/blog/new-feature",
+      "link": "https://CoCreateJS.com/blog/new-feature",
       "audience": "public",
       "engagement": {
         "likes": 120,
@@ -46,7 +46,7 @@
       "hashtags": "#sale #summer",
       "mentions": "@cocreate",
       "location": "Miami",
-      "link": "https://cocreate.app/sale",
+      "link": "https://CoCreateJS.com/sale",
       "audience": "public",
       "engagement": {
         "likes": 250,
@@ -98,7 +98,7 @@
       "hashtags": "#team #bts",
       "mentions": "",
       "location": "San Francisco",
-      "link": "https://cocreate.app/blog/bts",
+      "link": "https://CoCreateJS.com/blog/bts",
       "audience": "public",
       "engagement": {
         "likes": 0,
@@ -124,7 +124,7 @@
       "hashtags": "",
       "mentions": "",
       "location": "",
-      "link": "https://cocreate.app/newsletter",
+      "link": "https://CoCreateJS.com/newsletter",
       "audience": "public",
       "engagement": {
         "likes": 0,

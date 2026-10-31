@@ -6,7 +6,7 @@ A full-stack, zero-build application boilerplate and platform engine built on **
 
 ## Documentation
 
-For complete API references, HTML attribute specifications, UI customization, and native mobile compilation steps, refer to the [CoCreateJS Documentation](https://www.google.com/search?q=https://cocreate.app/docs).
+For complete API references, HTML attribute specifications, UI customization, and native mobile compilation steps, refer to the [CoCreateJS Documentation](https://www.google.com/search?q=https://CoCreateJS.com/docs).
 
 ---
 
