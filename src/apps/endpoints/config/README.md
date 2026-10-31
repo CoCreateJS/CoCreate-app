@@ -11,6 +11,26 @@ The AWS folder currently contains the literal AST records for `resolve-image`,
 `create-instance`, and `delete-instance`. These use the existing AWS API
 provider record and retain their current endpoint IDs and behavior.
 
+`create-member-account` starts account creation inside the existing AWS
+Organization. It accepts `data.accountName` and a unique,
+customer-controlled `data.rootEmail`; its response returns a
+`createAccountRequestId`. AWS creates the member account asynchronously.
+`get-member-account-creation-status` accepts that request ID and returns the
+state and, after success, the new `accountId`. Account creation must be called
+with management-account credentials that have `organizations:CreateAccount`
+and `organizations:DescribeCreateAccountStatus` permissions. AWS creates the
+`OrganizationAccountAccessRole` for management-account access; the endpoint
+does not create long-lived IAM access keys in the member account.
+
+AWS calls this a member account rather than a sub-organization. A new member
+account's root email must be unique across AWS accounts. If a customer already
+has an AWS account, use an account invitation flow rather than `CreateAccount`.
+For a future handoff to the customer's AWS Organization, AWS supports direct
+account transfer by invitation and acceptance. A created member account must
+be at least four days old, and the destination organization must be at least
+seven days old. Prepare root access for the customer and remove the old
+management account's access role after transfer.
+
 ## MongoDB Atlas provisioning
 
 MongoDB Atlas provisioning records live in `MongoDB/data.js`. The Atlas
