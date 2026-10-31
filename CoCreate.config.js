@@ -188,13 +188,13 @@ export default {
             import: "@cocreate/cursors",
             selector: "input[crdt='true'], textarea[crdt='true'], [contenteditable][crdt='true']",
             path: "../CoCreate-modules/CoCreate-cursors",
-            repo: "gitlab.com/cocreatejs/CoCreate-cursors.git"
+            repo: "github.com/cocreatejs/CoCreate-cursors.git"
         },
         editor: {
             import: "@cocreate/editor",
             selector: "[editor], code[language], [contenteditable][crdt='true'], input[crdt='true'], textarea[crdt='true'], iframe[crdt='true']",
             path: "../CoCreate-modules/CoCreate-editor",
-            repo: "gitlab.com/cocreatejs/CoCreate-editor.git"
+            repo: "github.com/cocreatejs/CoCreate-editor.git"
         },
         cssParser: {
             import: "@cocreate/css-parser",
@@ -260,7 +260,7 @@ export default {
             import: "@cocreate/scrollbar",
             selector: "[scrollbar]",
             path: "../CoCreate-modules/CoCreate-scrollbar",
-            repo: "gitlab.com/cocreatejs/CoCreate-scrollbar.git"
+            repo: "github.com/cocreatejs/CoCreate-scrollbar.git"
         },
         resize: {
             import: "@cocreate/resize",
@@ -512,7 +512,7 @@ export default {
     projects: {
         CoCreateWS: {
             path: "../CoCreate-app",
-            repo: "https://gitlab.com/cocreatejs/CoCreate-app.git",
+            repo: "https://github.com/cocreatejs/CoCreate-app.git",
             exclude: ["git"]
         }
     }
