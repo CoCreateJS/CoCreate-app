@@ -108,7 +108,7 @@ export default async (env, argv) => {
                 ...workspaceAliases,
                 "@cocreate/utils/queryElements$": path.resolve(
                     __dirname,
-                    "../CoCreate-modules/CoCreate-utils/src/modules/queryElements.js"
+                    "../CoCreate-modules/utils/src/modules/queryElements.js"
                 ),
                 // Force @cocreate/utils to resolve directly to the browser entry point
                 "@cocreate/utils$": path.resolve(__dirname, "node_modules/@cocreate/utils/src/browser.js")
