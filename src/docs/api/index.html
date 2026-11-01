@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>api documentation</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="api API documentation." />
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			name="theme-color"
+			content="#405189"
+			media="(prefers-color-scheme: light)" />
+		<meta
+			name="theme-color"
+			content="#292e32"
+			media="(prefers-color-scheme: dark)" />
+		<meta content="CoCreate" name="author" />
+
+		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+		<link plugins />
+		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
+	<body>
+		<div
+			class="docs-render-root"
+			data-docs-render>
+			<div data-docs-view>
+				<div class="docs-layout">
+					<aside class="docs-sidebar" aria-label="Documentation navigation" scrollbar>
+						<div src="/docs/menu.html"></div>
+					</aside>
+					<main class="docs-content" scrollbar>
+						<div class="docs-content-inner">
+						<p class="docs-eyebrow">module · @cocreate/api</p>
+						<h1>api</h1>
+						
+							<article class="docs-symbol" id="module-cocreate-api-handler">
+								<div class="docs-symbol-heading">
+									<h2>@cocreate/api-handler</h2>
+									<span class="docs-kind">module</span>
+								</div>
+								<p>Core API Handler module for dynamic multi-tenant integrations, webhook routing, and AST macro pipeline execution.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="module-cocreate-api-handler-init">
+								<div class="docs-symbol-heading">
+									<h2>init</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Binds server core services. Socket access is resolved when a request runs.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>Server</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Core server instance containing CRUD and, later, a socket manager on workers.</dd>
+									
+										<dt>
+											<code>Server.crud</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Database CRUD service operator.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Promise.&lt;Object&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Exported API interface.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="module-cocreate-api-handler-create-tenant-proxy">
+								<div class="docs-symbol-heading">
+									<h2>createTenantProxy</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Creates a Proxy firewall wrapper to automatically inject multi-tenant scope parameters (`organization_id` and `host`) into target method invocations.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>target</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Target service instance to proxy (e.g., crud or wsManager).</dd>
+									
+										<dt>
+											<code>orgId</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Multi-tenant organization identifier.</dd>
+									
+										<dt>
+											<code>host</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Host domain identifier.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Proxy</code>
+											
+												<code>undefined</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Proxied target service with auto-injected tenant parameters, or undefined if target is falsy.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="module-cocreate-api-handler-create-sandbox">
+								<div class="docs-symbol-heading">
+									<h2>createSandbox</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Constructs an isolated execution sandbox enforcing multi-tenant isolation via proxy firewalls for AST operations.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>context</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Raw execution context.</dd>
+									
+										<dt>
+											<code>context.payload</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Execution payload data object.</dd>
+									
+										<dt>
+											<code>context.event</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Webhook or inbound trigger event data.</dd>
+									
+										<dt>
+											<code>context.request</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Incoming HTTP request object.</dd>
+									
+										<dt>
+											<code>context.response</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Outgoing HTTP response object.</dd>
+									
+										<dt>
+											<code>context.crud</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Database service interface instance.</dd>
+									
+										<dt>
+											<code>context.wsManager</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>WebSocket manager instance.</dd>
+									
+										<dt>
+											<code>context.key</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Provider key/credential string.</dd>
+									
+										<dt>
+											<code>context.config</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Full provider API configuration object.</dd>
+									
+										<dt>
+											<code>context.organization_id</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Target multi-tenant organization ID.</dd>
+									
+										<dt>
+											<code>context.host</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Target host domain.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Secure AST execution sandbox object containing firewalled utilities.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="module-cocreate-api-handler-send">
+								<div class="docs-symbol-heading">
+									<h2>send</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Resolves endpoint definitions, executes AST macro actions, or dispatches outgoing HTTP requests.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>data</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Execution directive payload.</dd>
+									
+										<dt>
+											<code>data.url</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional pre-formatted target HTTP endpoint URL (Direct Execution Path).</dd>
+									
+										<dt>
+											<code>data.api</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>API configuration name (e.g., &#39;stripe-test&#39;).</dd>
+									
+										<dt>
+											<code>data.method</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>HTTP method (e.g., &#39;post&#39;). A matched endpoint configuration may override it.</dd>
+									
+										<dt>
+											<code>data.endpoint</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Stored endpoint name (e.g., &#39;create-customer&#39;) or direct API path (e.g., &#39;/v1/customers&#39;).</dd>
+									
+										<dt>
+											<code>data.data</code>
+											<span class="docs-type-list">
+												
+													<span>*</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Request content passed to the external API.</dd>
+									
+										<dt>
+											<code>data.searchParams</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Query parameters appended to the request URL.</dd>
+									
+										<dt>
+											<code>data.headers</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Custom HTTP header directives.</dd>
+									
+										<dt>
+											<code>data.timeout</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Request timeout in milliseconds.</dd>
+									
+										<dt>
+											<code>data.socket</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>WebSocket client reference for real-time response emit.</dd>
+									
+										<dt>
+											<code>data.organization_id</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Multi-tenant organization identifier.</dd>
+									
+										<dt>
+											<code>data.host</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Target host domain.</dd>
+									
+										<dt>
+											<code>parentContext</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												
+													<span>null</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Outer sandbox execution context when nested.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Promise.&lt;Object&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										The mutated execution envelope, with response content assigned to `data.data`.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="module-cocreate-api-handler-webhook">
+								<div class="docs-symbol-heading">
+									<h2>webhook</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Processes incoming HTTP webhook requests, verifies HMAC/JWT security signatures, and executes pipelines.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>req</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Native Node.js HTTP incoming request stream.</dd>
+									
+										<dt>
+											<code>res</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Native Node.js HTTP server response stream.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Promise.&lt;void&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="module-cocreate-api-handler-make-http-request">
+								<div class="docs-symbol-heading">
+									<h2>makeHttpRequest</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Low-level HTTP dispatch utility wrapping native `fetch` with AbortController timeout handling.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>url</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Absolute target URL endpoint.</dd>
+									
+										<dt>
+											<code>options</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Fetch request options (method, headers, body, signal).</dd>
+									
+										<dt>
+											<code>options.timeout</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Timeout threshold in milliseconds before aborting.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Promise.&lt;Response&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Native fetch Response instance.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="module-cocreate-api-handler-get-api-config">
+								<div class="docs-symbol-heading">
+									<h2>getApiConfig</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Queries database storage for provider connection credentials and API configuration settings.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>data</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Context object containing search criteria.</dd>
+									
+										<dt>
+											<code>data.organization_id</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Target organization ID (resolves via hostname if absent).</dd>
+									
+										<dt>
+											<code>data.host</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Target host domain.</dd>
+									
+										<dt>
+											<code>name</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>API provider identifier (e.g., &#39;stripe&#39;, &#39;openai&#39;, &#39;twilio&#39;).</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Promise.&lt;Object&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Standardized API configuration object containing key, url, and headers.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						<template render="module.doclets" render-as="doclet">
+							<article class="docs-symbol" id="{{doclet.anchor}}">
+								<div class="docs-symbol-heading">
+									<h2>{{doclet.name}}</h2>
+									<span class="docs-kind">{{doclet.kind}}</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						</template>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>

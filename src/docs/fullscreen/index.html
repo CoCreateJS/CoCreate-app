@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>fullscreen documentation</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="fullscreen API documentation." />
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			name="theme-color"
+			content="#405189"
+			media="(prefers-color-scheme: light)" />
+		<meta
+			name="theme-color"
+			content="#292e32"
+			media="(prefers-color-scheme: dark)" />
+		<meta content="CoCreate" name="author" />
+
+		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+		<link plugins />
+		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
+	<body>
+		<div
+			class="docs-render-root"
+			data-docs-render>
+			<div data-docs-view>
+				<div class="docs-layout">
+					<aside class="docs-sidebar" aria-label="Documentation navigation" scrollbar>
+						<div src="/docs/menu.html"></div>
+					</aside>
+					<main class="docs-content" scrollbar>
+						<div class="docs-content-inner">
+						<p class="docs-eyebrow">module · @cocreate/fullscreen</p>
+						<h1>fullscreen</h1>
+						<template render="module.doclets" render-as="doclet">
+							<article class="docs-symbol" id="{{doclet.anchor}}">
+								<div class="docs-symbol-heading">
+									<h2>{{doclet.name}}</h2>
+									<span class="docs-kind">{{doclet.kind}}</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						</template>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>

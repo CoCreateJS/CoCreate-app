@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>CoCreateJS Documentation</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="CoCreateJS module documentation." />
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			name="theme-color"
+			content="#405189"
+			media="(prefers-color-scheme: light)" />
+		<meta
+			name="theme-color"
+			content="#292e32"
+			media="(prefers-color-scheme: dark)" />
+		<meta content="CoCreate" name="author" />
+
+		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+		<link plugins />
+		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
+	<body>
+		<div
+			class="docs-render-root"
+			data-docs-render>
+			<div data-docs-view>
+				<div class="docs-layout">
+					<aside class="docs-sidebar" aria-label="Documentation navigation" scrollbar>
+						<div src="/docs/menu.html"></div>
+					</aside>
+					<main class="docs-content" scrollbar>
+						<div class="docs-content-inner">
+						<p class="docs-eyebrow">Documentation</p>
+						<h1>Modules</h1>
+						<p class="docs-lead">Browse generated API documentation by module.</p>
+						<div class="docs-module-list">
+							<template render="modules" render-as="module">
+								<a
+									class="docs-module-card"
+									href="/docs/{{module.slug}}/"
+									aria-current="page">
+									<span class="docs-eyebrow">{{module.type}}</span>
+									<strong>{{module.name}}</strong>
+									<span>{{module.docletCount}} documented symbols</span>
+								</a>
+							</template>
+						</div>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>

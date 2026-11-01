@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>render documentation</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="render API documentation." />
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			name="theme-color"
+			content="#405189"
+			media="(prefers-color-scheme: light)" />
+		<meta
+			name="theme-color"
+			content="#292e32"
+			media="(prefers-color-scheme: dark)" />
+		<meta content="CoCreate" name="author" />
+
+		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+		<link plugins />
+		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
+	<body>
+		<div
+			class="docs-render-root"
+			data-docs-render>
+			<div data-docs-view>
+				<div class="docs-layout">
+					<aside class="docs-sidebar" aria-label="Documentation navigation" scrollbar>
+						<div src="/docs/menu.html"></div>
+					</aside>
+					<main class="docs-content" scrollbar>
+						<div class="docs-content-inner">
+						<p class="docs-eyebrow">module · @cocreate/render</p>
+						<h1>render</h1>
+						
+							<article class="docs-symbol" id="init">
+								<div class="docs-symbol-heading">
+									<h2>init</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Initializes elements based on specified rendering attributes. If a specific element is provided, it initializes that element.If no element is provided, it queries and initializes all elements matching the defined selector criteria for rendering attributes.Supported rendering attributes:- render-query: [Describe what this attribute does]</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>element</code>
+											<span class="docs-type-list">
+												
+													<span>Element</span>
+												
+													<span>Array.&lt;Element&gt;</span>
+												
+													<span>HTMLCollection</span>
+												
+													<span>null</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional. A single element, an array of elements, an HTMLCollection, or null.- If an HTMLCollection or an array of elements is provided, each element in the collection/array is initialized.- If a single element is provided, only that element is initialized.- If null or omitted, the function queries and initializes all elements matching the &#39;elementSelector&#39;.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="render">
+								<div class="docs-symbol-heading">
+									<h2>render</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Asynchronously renders content based on the provided parameters. This function handles the rendering logic for elementsbased on data sources, selectors, and other options.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>options</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>An object containing the parameters for rendering.</dd>
+									
+										<dt>
+											<code>options.source</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>The data source used for rendering.</dd>
+									
+										<dt>
+											<code>options.element</code>
+											<span class="docs-type-list">
+												
+													<span>Element</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>The DOM element where content will be rendered.</dd>
+									
+										<dt>
+											<code>options.selector</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>CSS selector to specify target elements for rendering.</dd>
+									
+										<dt>
+											<code>options.data</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Data to be used in rendering.</dd>
+									
+										<dt>
+											<code>options.key</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional key to reference specific parts of the data.</dd>
+									
+										<dt>
+											<code>options.index</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional index, typically used when rendering lists or arrays.</dd>
+									
+										<dt>
+											<code>options.currentIndex</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>The current index in a list or array rendering process.</dd>
+									
+										<dt>
+											<code>options.update</code>
+											<span class="docs-type-list">
+												
+													<span>boolean</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Flag to indicate if the rendering should update existing content.</dd>
+									
+										<dt>
+											<code>options.remove</code>
+											<span class="docs-type-list">
+												
+													<span>boolean</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Flag to indicate if the rendering should remove elements instead of updating or appending.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="render-value">
+								<div class="docs-symbol-heading">
+									<h2>renderValue</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Renders placeholders within a string using asynchronous AST calculations and data context binding.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>node</code>
+											<span class="docs-type-list">
+												
+													<span>Node</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>The target DOM node (attributes, text nodes, elements).</dd>
+									
+										<dt>
+											<code>data</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>The contextual database record or dataset being rendered.</dd>
+									
+										<dt>
+											<code>placeholder</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>The raw template string containing double curly braces (e.g. &quot;{{ $query(&#39;#input&#39;).value }}&quot;).</dd>
+									
+										<dt>
+											<code>renderAs</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional alias scope context.</dd>
+									
+										<dt>
+											<code>renderedNode</code>
+											<span class="docs-type-list">
+												
+													<span>HTMLElement</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional target element where rendering applies.</dd>
+									
+										<dt>
+											<code>index</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional current iteration index if rendering a list.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Promise.&lt;string&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										- A promise resolving to the fully processed output string.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						<template render="module.doclets" render-as="doclet">
+							<article class="docs-symbol" id="{{doclet.anchor}}">
+								<div class="docs-symbol-heading">
+									<h2>{{doclet.name}}</h2>
+									<span class="docs-kind">{{doclet.kind}}</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						</template>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>

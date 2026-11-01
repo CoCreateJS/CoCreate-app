@@ -1,0 +1,4550 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>utils documentation</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="utils API documentation." />
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			name="theme-color"
+			content="#405189"
+			media="(prefers-color-scheme: light)" />
+		<meta
+			name="theme-color"
+			content="#292e32"
+			media="(prefers-color-scheme: dark)" />
+		<meta content="CoCreate" name="author" />
+
+		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+		<link plugins />
+		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
+	<body>
+		<div
+			class="docs-render-root"
+			data-docs-render>
+			<div data-docs-view>
+				<div class="docs-layout">
+					<aside class="docs-sidebar" aria-label="Documentation navigation" scrollbar>
+						<div src="/docs/menu.html"></div>
+					</aside>
+					<main class="docs-content" scrollbar>
+						<div class="docs-content-inner">
+						<p class="docs-eyebrow">module · @cocreate/utils</p>
+						<h1>utils</h1>
+						
+							<article class="docs-symbol" id="cloud-providers">
+								<div class="docs-symbol-heading">
+									<h2>cloudProviders</h2>
+									<span class="docs-kind">constant</span>
+								</div>
+								<p>Comprehensive Cloud Provider Registry (ESM)
+Maps infrastructure probes (AWS, GCP, Azure, DigitalOcean, OCI, Hetzner, Vultr, Equinix)
+to exact geographical coordinates (lat/lng), country, and region IDs.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="encode-content">
+								<div class="docs-symbol-heading">
+									<h2>encodeContent</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Prepare content for JSON socket envelopes or text-based storage.
+Auto format preserves UTF-8 text and encodes binary as a Base64 data URL.
+Explicit formats: text, binary, base64, data-url. Blob/File input returns a Promise.
+`encoding` describes the input string, while `format` selects the output.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="decode-content">
+								<div class="docs-symbol-heading">
+									<h2>decodeContent</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Restore content for HTTP responses, filesystem writes, or binary storage.
+Auto format returns UTF-8 text for textual MIME types and Uint8Array otherwise.
+Explicit formats: text, binary, bytes, arraybuffer. Blob/File input returns a Promise.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-content-type">
+								<div class="docs-symbol-heading">
+									<h2>getContentType</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Resolve an explicit MIME type, data URL, Blob/File type, extension, or pathname.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-extensions">
+								<div class="docs-symbol-heading">
+									<h2>getExtensions</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Return every known extension for a MIME type; the preferred extension is first.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-extension">
+								<div class="docs-symbol-heading">
+									<h2>getExtension</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Return the preferred extension for a MIME type, or the caller&#39;s fallback.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="is-text-content-type">
+								<div class="docs-symbol-heading">
+									<h2>isTextContentType</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Classify textual content, including MIME families not explicitly in the registry.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="content-types">
+								<div class="docs-symbol-heading">
+									<h2>contentTypes</h2>
+									<span class="docs-kind">constant</span>
+								</div>
+								<p>MIME records maintained here; forward and reverse indexes are derived once.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="fetch-file-from-url">
+								<div class="docs-symbol-heading">
+									<h2>fetchFileFromURL</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Fetches the binary asset from a remote URL, updates the file parameters,
+converts the raw output to Base64, and sends the updated payload back to the client socket.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>data</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Socket event payload</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="fetch-with-timeout">
+								<div class="docs-symbol-heading">
+									<h2>fetchWithTimeout</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Internal helper to perform fetch requests with an AbortSignal timeout.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="is-valid-ip">
+								<div class="docs-symbol-heading">
+									<h2>isValidIP</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Internal helper to validate IPv4 and IPv6 strings.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-local-node-ip">
+								<div class="docs-symbol-heading">
+									<h2>getLocalNodeIP</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Inspects node OS network interfaces to find a valid non-internal local IP.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="resolve-info">
+								<div class="docs-symbol-heading">
+									<h2>resolveInfo</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Resolves a raw client information object into concrete latitude, longitude, and ISO country code.
+Optimized path:
+1. Direct valid coordinates -&gt; Immediate return with continent added
+2. Missing coordinates but region present -&gt; Attempt cloud region match for lat/lon
+3. Fallback -&gt; Return getCountryLocation coordinates</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>info</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Client telemetry or location metadata</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											
+												<code>null</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Resolved location object
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="normalize-info-payload">
+								<div class="docs-symbol-heading">
+									<h2>normalizeInfoPayload</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Formats data into a normalized client information payload.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="fetch-client-info">
+								<div class="docs-symbol-heading">
+									<h2>fetchClientInfo</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Internal resolver that attempts provider endpoints sequentially.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-client-info">
+								<div class="docs-symbol-heading">
+									<h2>getClientInfo</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Single unified function to retrieve client IP, location, and network metadata.
+Returns the same in-memory object reference across calls.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>options</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									
+										<dt>
+											<code>options.timeout</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Hard timeout limit per request (ms)</dd>
+									
+										<dt>
+											<code>options.bypassCache</code>
+											<span class="docs-type-list">
+												
+													<span>boolean</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Force a fresh network request</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Promise.&lt;Object&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Standardized location object
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-clock-offset">
+								<div class="docs-symbol-heading">
+									<h2>getClockOffset</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Returns the cached time offset in milliseconds.
+Always 0 on the server (NTP-managed) or fallback.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-country-location">
+								<div class="docs-symbol-heading">
+									<h2>getCountryLocation</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Helper function to retrieve country location object (country code, latitude, longitude, continent) 
+by ISO 2-letter country code. Case-insensitive lookup.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>countryCode</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>ISO 3166-1 alpha-2 code (e.g. &quot;US&quot;, &quot;de&quot;, &quot;JP&quot;)</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											
+												<code>null</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Location object or null
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-data">
+								<div class="docs-symbol-heading">
+									<h2>getData</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Collects values from elements keyed with `key` or `{prefix}-key`.
+A `get-data=&quot;false&quot;` or `{prefix}-get-data=&quot;false&quot;` attribute opts an element out.
+Dotted and array keys use the same conversion convention as CoCreate API.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code></code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Promise.&lt;Object&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="mask-comments">
+								<div class="docs-symbol-heading">
+									<h2>maskComments</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Replaces HTML comment contents with spaces to preserve character index offsets 1:1.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>html</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Raw HTML input</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Comment-masked HTML string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="parse-attributes">
+								<div class="docs-symbol-heading">
+									<h2>parseAttributes</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Parses raw HTML attribute string into a key-value map.
+Handles double quotes, single quotes, unquoted values, and boolean attributes.
+Distinguishes full attribute keys with hyphens (e.g., state-src vs src).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>attrString</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Opening tag attributes string</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Record.&lt;string, string&gt;</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Map of attribute names to string values
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="find-matching-end-tag">
+								<div class="docs-symbol-heading">
+									<h2>findMatchingEndTag</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Finds the corresponding matching end tag for a given open tag considering nested depth.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>html</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Raw HTML string</dd>
+									
+										<dt>
+											<code>targetTag</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Uppercase tag name to match</dd>
+									
+										<dt>
+											<code>searchFromIndex</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Index after the opening tag</dd>
+									
+										<dt>
+											<code>selfClosingElements</code>
+											<span class="docs-type-list">
+												
+													<span>Set.&lt;string&gt;</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional set of self-closing tag names</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											
+												<code>null</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Index boundaries
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="element-handle">
+								<div class="docs-symbol-heading">
+									<h2>ElementHandle</h2>
+									<span class="docs-kind">class</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="htmlscanner">
+								<div class="docs-symbol-heading">
+									<h2>HTMLScanner</h2>
+									<span class="docs-kind">class</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="htmlscanner-to-string">
+								<div class="docs-symbol-heading">
+									<h2>toString</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Reconstructs the full HTML string by executing all pending handle mutations bottom-up (right-to-left).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Mutated HTML string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="relay-events">
+								<div class="docs-symbol-heading">
+									<h2>relayEvents</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Relay events from same-origin iframe documents through their iframe elements.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="resolve-property">
+								<div class="docs-symbol-heading">
+									<h2>resolveProperty</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Resolve a case-insensitive name to its original property key.
+Searches own and inherited string keys without reading property values.
+Names must be unique ignoring case; differently cased matches throw.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>object</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												
+													<span>function</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									
+										<dt>
+											<code>name</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											
+												<code>undefined</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										The original key, or undefined when not found.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="der-tag">
+								<div class="docs-symbol-heading">
+									<h2>derTag</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Packs a single ASN.1 tag and length wrapper around content bytes.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>tag</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>ASN.1 tag identifier byte</dd>
+									
+										<dt>
+											<code>content</code>
+											<span class="docs-type-list">
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Raw content payload buffer</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Buffer</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										DER-encoded tag-length-value structure
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="der-sequence">
+								<div class="docs-symbol-heading">
+									<h2>derSequence</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Packs an array of ASN.1 DER elements into a DER Sequence (0x30).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>items</code>
+											<span class="docs-type-list">
+												
+													<span>Array.&lt;Buffer&gt;</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Array of DER-encoded element buffers</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Buffer</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										DER Sequence buffer
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="der-set">
+								<div class="docs-symbol-heading">
+									<h2>derSet</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Packs an array of ASN.1 DER elements into a DER Set (0x31).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>items</code>
+											<span class="docs-type-list">
+												
+													<span>Array.&lt;Buffer&gt;</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Array of DER-encoded element buffers</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Buffer</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										DER Set buffer
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="der-oid">
+								<div class="docs-symbol-heading">
+									<h2>derOID</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Encodes a dot-separated Object Identifier (OID) string into DER format.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>oidString</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Dot-separated OID string (e.g. &quot;2.5.4.3&quot;)</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Buffer</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										DER OID buffer
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security">
+								<div class="docs-symbol-heading">
+									<h2>Security</h2>
+									<span class="docs-kind">class</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-timing-safe-equal">
+								<div class="docs-symbol-heading">
+									<h2>timingSafeEqual</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Constant-time comparison between two string or Buffer values.
+Guards against timing side-channel attacks during verification.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>a</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>First comparison value</dd>
+									
+										<dt>
+											<code>b</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Second comparison value</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>boolean</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										True if values match identically
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-base64url-encode">
+								<div class="docs-symbol-heading">
+									<h2>base64urlEncode</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Encodes input into Base64URL format (RFC 7515).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>input</code>
+											<span class="docs-type-list">
+												
+													<span>any</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Input object, string, or buffer</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Base64URL encoded string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-base64-url-encode">
+								<div class="docs-symbol-heading">
+									<h2>base64UrlEncode</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>CamelCase alias for base64urlEncode for normalized cross-module conventions.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>input</code>
+											<span class="docs-type-list">
+												
+													<span>any</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Input object, string, or buffer</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Base64URL encoded string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-base64url-decode">
+								<div class="docs-symbol-heading">
+									<h2>base64urlDecode</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Decodes Base64URL string back into UTF-8 string or parsed JSON object.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>str</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Base64URL encoded input</dd>
+									
+										<dt>
+											<code>parseJson</code>
+											<span class="docs-type-list">
+												
+													<span>boolean</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Attempt JSON parsing if true</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>any</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Decoded string or parsed object
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-base64-url-decode">
+								<div class="docs-symbol-heading">
+									<h2>base64UrlDecode</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>CamelCase alias for base64urlDecode for normalized cross-module conventions.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>str</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Base64URL encoded input</dd>
+									
+										<dt>
+											<code>parseJson</code>
+											<span class="docs-type-list">
+												
+													<span>boolean</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Attempt JSON parsing if true</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>any</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Decoded string or parsed object
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-base64-encode">
+								<div class="docs-symbol-heading">
+									<h2>base64Encode</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Encodes input into standard Base64 format.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>input</code>
+											<span class="docs-type-list">
+												
+													<span>any</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Input object, string, or buffer</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Base64 string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-hex-encode">
+								<div class="docs-symbol-heading">
+									<h2>hexEncode</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Encodes input into Hexadecimal format.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>input</code>
+											<span class="docs-type-list">
+												
+													<span>any</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Input object, string, or buffer</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Hex string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-hash">
+								<div class="docs-symbol-heading">
+									<h2>hash</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Generates a cryptographic hash digest (SHA-256, SHA-512, MD5, etc.).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>payload</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Data to hash</dd>
+									
+										<dt>
+											<code>algorithm</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Hashing algorithm</dd>
+									
+										<dt>
+											<code>digest</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Output format (&#39;hex&#39;, &#39;base64&#39;, &#39;base64url&#39;)</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Calculated digest string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-sign-hmac">
+								<div class="docs-symbol-heading">
+									<h2>signHmac</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Generates an HMAC signature using a shared secret.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>payload</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Data to sign</dd>
+									
+										<dt>
+											<code>secret</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Shared secret key</dd>
+									
+										<dt>
+											<code>algorithm</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>HMAC algorithm</dd>
+									
+										<dt>
+											<code>digest</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Output digest format (&#39;hex&#39;, &#39;base64&#39;, &#39;base64url&#39;)</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Calculated HMAC string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-generate-key-pair">
+								<div class="docs-symbol-heading">
+									<h2>generateKeyPair</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Dynamically generates RSA, EC, Ed25519, or X25519 key pairs.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>type</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Key algorithm type (&#39;rsa&#39;, &#39;ec&#39;, &#39;ed25519&#39;, &#39;x25519&#39;)</dd>
+									
+										<dt>
+											<code>options</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Options (e.g. { modulusLength: 2048 }, { namedCurve: &#39;prime256v1&#39; })</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										PEM key pair object
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-generate-api-key">
+								<div class="docs-symbol-heading">
+									<h2>generateApiKey</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Constructs API keys with custom service prefixes and entropy lengths.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>options</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Options ({ prefix, byteLength, encoding })</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Key details
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-verify-api-key">
+								<div class="docs-symbol-heading">
+									<h2>verifyApiKey</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Validates an incoming API key against a stored SHA-256 hash in constant time.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>incomingApiKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Incoming API key</dd>
+									
+										<dt>
+											<code>storedHashedKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Expected SHA-256 hash</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>boolean</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										True if key matches
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-generate-jwt">
+								<div class="docs-symbol-heading">
+									<h2>generateJWT</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Generates a signed JWT with symmetric or asymmetric algorithms.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>tokenEnvelope</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Token envelope ({ header, payload })</dd>
+									
+										<dt>
+											<code>secretOrPrivateKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Key or secret</dd>
+									
+										<dt>
+											<code>algorithm</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>JWT algorithm (HS256, RS256, ES256, etc.)</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Compact signed JWT string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-verify-jwt">
+								<div class="docs-symbol-heading">
+									<h2>verifyJWT</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Verifies and decodes a signed JWT token.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>token</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Signed JWT string</dd>
+									
+										<dt>
+											<code>secretOrPublicKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Key or secret</dd>
+									
+										<dt>
+											<code>algorithm</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>JWT algorithm</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											
+												<code>null</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Decoded payload object or null if invalid
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-decode-token">
+								<div class="docs-symbol-heading">
+									<h2>decodeToken</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>High-level token decoder and verifier.
+Decodes JWT payload directly or verifies signature when secret is supplied.
+Normalized method to prevent module-level execution errors.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>token</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Token string to decode</dd>
+									
+										<dt>
+											<code>secretOrPublicKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Optional secret/key for verification</dd>
+									
+										<dt>
+											<code>algorithm</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>JWT algorithm</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											
+												<code>null</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Decoded payload or null
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-verify-token">
+								<div class="docs-symbol-heading">
+									<h2>verifyToken</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Alias for verifyJWT for normalized authentication module contracts.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-generate-token">
+								<div class="docs-symbol-heading">
+									<h2>generateToken</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Alias for generateJWT for normalized authentication module contracts.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-encrypt">
+								<div class="docs-symbol-heading">
+									<h2>encrypt</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>AES-256-GCM Authenticated Symmetric Encryption.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>payload</code>
+											<span class="docs-type-list">
+												
+													<span>any</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Plaintext payload string or object</dd>
+									
+										<dt>
+											<code>secretKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Passphrase or 32-byte key buffer</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Encrypted envelope
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-decrypt">
+								<div class="docs-symbol-heading">
+									<h2>decrypt</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>AES-256-GCM Authenticated Symmetric Decryption.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>envelope</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Encrypted envelope</dd>
+									
+										<dt>
+											<code>secretKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Passphrase or 32-byte key buffer</dd>
+									
+										<dt>
+											<code>parseJson</code>
+											<span class="docs-type-list">
+												
+													<span>boolean</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Attempt JSON parsing if true</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>any</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Decoded plaintext string or object
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-create-csr">
+								<div class="docs-symbol-heading">
+									<h2>createCSR</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Generates a DER-encoded PKCS#10 Certificate Signing Request (CSR)
+supporting single and multi-domain (SAN) configurations for Let&#39;s Encrypt / SSL.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>privateKeyInput</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>crypto.KeyObject</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Domain private key (PEM or KeyObject)</dd>
+									
+										<dt>
+											<code>domains</code>
+											<span class="docs-type-list">
+												
+													<span>Array.&lt;string&gt;</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>List of SAN domain names (primary domain first)</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Base64URL-encoded DER CSR
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-read-certificate-expiry">
+								<div class="docs-symbol-heading">
+									<h2>readCertificateExpiry</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Extracts expiration Date from a PEM Certificate using native Node X509 parser.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>certPem</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>PEM-encoded certificate</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Date</code>
+											
+												<code>null</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Expiration date object or null if invalid
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-parse-private-key">
+								<div class="docs-symbol-heading">
+									<h2>parsePrivateKey</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Converts a PEM string or KeyObject into a KeyObject.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>keyInput</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>crypto.KeyObject</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>crypto.KeyObject</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-export-jwk">
+								<div class="docs-symbol-heading">
+									<h2>exportJwk</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Exports a public key derived from key input as a JWK object.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>keyInput</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>crypto.KeyObject</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										JWK representation
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-get-jwk-thumbprint">
+								<div class="docs-symbol-heading">
+									<h2>getJwkThumbprint</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Calculates RFC 7638 SHA-256 JWK Thumbprint</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>jwk</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>JWK key object</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Base64URL encoded thumbprint
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-create-jws">
+								<div class="docs-symbol-heading">
+									<h2>createJWS</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Constructs a JWS signature object for ACME RFC 8555 protocol requests.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>header</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Protected header fields (nonce, url, kid/jwk)</dd>
+									
+										<dt>
+											<code>payload</code>
+											<span class="docs-type-list">
+												
+													<span>any</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Body payload string or object</dd>
+									
+										<dt>
+											<code>privateKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>crypto.KeyObject</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Signing private key</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Stringified JOSE JSON structure { protected, payload, signature }
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-generate-vapid-keys">
+								<div class="docs-symbol-heading">
+									<h2>generateVapidKeys</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Generates NIST P-256 (prime256v1) ECC key pairs for VAPID Web Push Notifications.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>Object</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Base64URL-encoded key pair
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-create-vapid-token">
+								<div class="docs-symbol-heading">
+									<h2>createVapidToken</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Generates a VAPID token value for browser push notifications (RFC 8292).
+Returns: &quot;vapid t=&lt;jwt&gt;, k=&lt;public_key&gt;&quot;</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>options</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>VAPID options ({ audience, subject, expiration, publicKey })</dd>
+									
+										<dt>
+											<code>privateKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>crypto.KeyObject</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>VAPID private key</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Formatted VAPID authorization string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-create-oauth-assertion">
+								<div class="docs-symbol-heading">
+									<h2>createOAuthAssertion</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Generates an OAuth 2.0 Client Assertion JWT (RFC 7523).
+Standardized protocol used for service-to-service authentication across
+Google Cloud, Salesforce, DocuSign, Okta, and enterprise OAuth 2.0 providers.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>options</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Assertion details ({ issuer, subject, audience, scopes, expirationSeconds })</dd>
+									
+										<dt>
+											<code>privateKey</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>crypto.KeyObject</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Signing private key</dd>
+									
+										<dt>
+											<code>algorithm</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Signing algorithm</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Signed OAuth assertion JWT string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-create-webhook-signature">
+								<div class="docs-symbol-heading">
+									<h2>createWebhookSignature</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Computes a standard Webhook signature string (Stripe, Twilio, GitHub).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>payload</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												
+													<span>Buffer</span>
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Raw incoming request body</dd>
+									
+										<dt>
+											<code>secret</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Webhook signing secret key</dd>
+									
+										<dt>
+											<code>options</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Options ({ timestamp, algorithm, format })</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Webhook signature string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-create-aws-sig-v4-token">
+								<div class="docs-symbol-heading">
+									<h2>createAwsSigV4Token</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Calculates an AWS SigV4 authorization signature string.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>requestDetails</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Details ({ method, uri, queryParams, headers, payload, region, service })</dd>
+									
+										<dt>
+											<code>credentials</code>
+											<span class="docs-type-list">
+												
+													<span>Object</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Credentials ({ accessKeyId, secretAccessKey })</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Full AWS SigV4 Authorization string
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="security-transform">
+								<div class="docs-symbol-heading">
+									<h2>transform</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Dynamic Transformation Pipeline (ASC Executor Integration)
+Executes a chain of atomic security operations sequentially.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>initialValue</code>
+											<span class="docs-type-list">
+												
+													<span>any</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Base input string, object, or buffer</dd>
+									
+										<dt>
+											<code>pipelineSteps</code>
+											<span class="docs-type-list">
+												
+													<span>Array.&lt;Object&gt;</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>Ordered list of dynamic operations</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											
+												<code>Buffer</code>
+											
+												<code>Object</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										Final transformed token string or object
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="has-selection">
+								<div class="docs-symbol-heading">
+									<h2>hasSelection</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Check whether the document selection intersects an element.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="get-selection-rects">
+								<div class="docs-symbol-heading">
+									<h2>getSelectionRects</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Measure source offsets after the caller maps them to DOM ranges.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="set-data">
+								<div class="docs-symbol-heading">
+									<h2>setData</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Sets values on elements keyed with `key` or `{prefix}-key`.
+A `set-data=&quot;false&quot;` or `{prefix}-set-data=&quot;false&quot;` attribute opts an element out.
+A key of `{}` maps the complete data object to its element.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code></code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="ulid-decode">
+								<div class="docs-symbol-heading">
+									<h2>ulidDecode</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Decodes the timestamp from a ULID string.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>ulidStr</code>
+											<span class="docs-type-list">
+												
+													<span>string</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>The 26-character ULID string.</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>number</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										The extracted Unix timestamp in milliseconds.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="uuid">
+								<div class="docs-symbol-heading">
+									<h2>uuid</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Generates an RFC 4122 compliant UUID Version 4 (Universally Unique Identifier).
+
+By default, this returns a standard 36-character string. If a custom length 
+less than 36 is provided, it returns a truncated unique identifier (UID).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									
+										<dt>
+											<code>length</code>
+											<span class="docs-type-list">
+												
+													<span>number</span>
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>The desired length of the returned identifier (maximum 36).</dd>
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								
+									<p>
+										<span class="docs-type-list">
+											
+												<code>string</code>
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										A standard UUIDv4 or a truncated custom-length unique identifier.
+									</p>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								
+									<pre><code>// Returns standard UUIDv4: &quot;f81d4fae-7dec-11d0-a765-00a0c91e6bf6&quot;
+uuid(); </code></pre>
+								
+									<pre><code>// Returns truncated unique identifier: &quot;f81d4fae&quot;
+uuid(8); </code></pre>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="case-handler">
+								<div class="docs-symbol-heading">
+									<h2>caseHandler</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Adjusts casing transformations on attributes.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="regex">
+								<div class="docs-symbol-heading">
+									<h2>regex</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Transforms output based on Regular Expression definitions.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="encode-value">
+								<div class="docs-symbol-heading">
+									<h2>encodeValue</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Encodes values.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="decode-value">
+								<div class="docs-symbol-heading">
+									<h2>decodeValue</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Decodes values.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="to-boolean">
+								<div class="docs-symbol-heading">
+									<h2>toBoolean</h2>
+									<span class="docs-kind">function</span>
+								</div>
+								<p>Converts element values to an explicit boolean.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						<template render="module.doclets" render-as="doclet">
+							<article class="docs-symbol" id="{{doclet.anchor}}">
+								<div class="docs-symbol-heading">
+									<h2>{{doclet.name}}</h2>
+									<span class="docs-kind">{{doclet.kind}}</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						</template>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>

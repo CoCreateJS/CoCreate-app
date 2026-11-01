@@ -78,6 +78,20 @@ export default {
             ]
         }
     ],
+    documentation: {
+        output: "./src/docs",
+        template: "./src/apps/docs/templates",
+        targets: [
+            { template: "menu.html", output: "menu.html" },
+            { template: "index.html", output: "index.html" },
+            {
+                template: "page.html",
+                output: "{{module.slug}}/index.html",
+                each: "modules",
+                as: "module"
+            }
+        ]
+    },
     /**
      * @property {string} moduleOutputPath
      * @description Defines the destination file path where the build system (e.g., ModuleGenerator Webpack plugin) 

@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>cssParser documentation</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="cssParser API documentation." />
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			name="theme-color"
+			content="#405189"
+			media="(prefers-color-scheme: light)" />
+		<meta
+			name="theme-color"
+			content="#292e32"
+			media="(prefers-color-scheme: dark)" />
+		<meta content="CoCreate" name="author" />
+
+		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+		<link plugins />
+		<link href="/assets/css/index.css" rel="stylesheet" type="text/css" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
+	<body>
+		<div
+			class="docs-render-root"
+			data-docs-render>
+			<div data-docs-view>
+				<div class="docs-layout">
+					<aside class="docs-sidebar" aria-label="Documentation navigation" scrollbar>
+						<div src="/docs/menu.html"></div>
+					</aside>
+					<main class="docs-content" scrollbar>
+						<div class="docs-content-inner">
+						<p class="docs-eyebrow">module · @cocreate/css-parser</p>
+						<h1>cssParser</h1>
+						
+							<article class="docs-symbol" id="media-range-name">
+								<div class="docs-symbol-heading">
+									<h2>MediaRangeName</h2>
+									<span class="docs-kind">typedef</span>
+								</div>
+								<p>* Defines a comprehensive set of responsive screen size breakpoints in pixels (or device-independent pixels).The ranges are inclusive on the minimum width and exclusive on the maximum width (max-width - 1).&#39;0&#39; in the second position of a range signifies &#39;and up&#39; (e.g., [1401, 0] means &gt;= 1401px).Tiers:- xxxs: Smallest Smartwatches (0px to 191px)- xxs: Medium-Large Smartwatches (192px to 319px)- xs: Smallest Smartphones (320px to 575px)- sm: Landscape Phones &amp; Small Tablets (576px to 768px)- md: Tablets (769px to 992px)- lg: Small Desktops &amp; Laptops (993px to 1200px)- xl: Standard Desktops (1201px to 1400px)- xxl: Large Monitors, TVs (1401px and up)* @type {MediaRangeName[]}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="ranges">
+								<div class="docs-symbol-heading">
+									<h2>ranges</h2>
+									<span class="docs-kind">constant</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="height-range-name">
+								<div class="docs-symbol-heading">
+									<h2>HeightRangeName</h2>
+									<span class="docs-kind">typedef</span>
+								</div>
+								<p>Defines a comprehensive set of responsive screen size breakpoints for the vertical (height) dimension in pixels (or device-independent pixels).The numerical values mirror the width breakpoints to maintain a unified design scale across orientation flips (e.g., a 769px screen is &#39;md&#39; size, whether it&#39;s width or height).The ranges are inclusive on the minimum and exclusive on the maximum (max-1).&#39;0&#39; in the second position signifies &#39;and up&#39;.Tiers:- h-xxxs: Smallest Smartwatches (0px to 191px)- h-xxs: Medium-Large Smartwatches (192px to 319px)- h-xs: Smallest Phones Landscape / Extreme Condensation (320px to 575px)- h-sm: Landscape Phones &amp; Small Tablets (576px to 768px)- h-md: Tablets / Comfortable Vertical Space (769px to 992px)- h-lg: Small Desktops / Ample Vertical Space (993px to 1200px)- h-xl: Standard Desktops (1201px to 1400px)- h-xxl: Large Monitors, TVs (1401px and up)* NOTE: These are typically used with &#39;max-height&#39; CSS media queries to trigger condensation (removing complexity as vertical space runs out).</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						
+							<article class="docs-symbol" id="height-ranges">
+								<div class="docs-symbol-heading">
+									<h2>heightRanges</h2>
+									<span class="docs-kind">constant</span>
+								</div>
+								<p>The Height Breakpoint Ranges.</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						<template render="module.doclets" render-as="doclet">
+							<article class="docs-symbol" id="{{doclet.anchor}}">
+								<div class="docs-symbol-heading">
+									<h2>{{doclet.name}}</h2>
+									<span class="docs-kind">{{doclet.kind}}</span>
+								</div>
+								<p>{{doclet.description}}</p>
+
+								<h3>Parameters</h3>
+								<dl class="docs-parameters">
+									<template render="doclet.params" render-as="param">
+										<dt>
+											<code>{{param.name}}</code>
+											<span class="docs-type-list">
+												<template render="param.type.names" render-as="typeName">
+													<span>{{typeName}}</span>
+												</template>
+											</span>
+										</dt>
+										<dd>{{param.description}}</dd>
+									</template>
+								</dl>
+
+								<h3>Returns</h3>
+								<template render="doclet.returns" render-as="return">
+									<p>
+										<span class="docs-type-list">
+											<template render="return.type.names" render-as="typeName">
+												<code>{{typeName}}</code>
+											</template>
+										</span>
+										{{return.description}}
+									</p>
+								</template>
+
+								<h3>Examples</h3>
+								<template render="doclet.examples" render-as="example">
+									<pre><code>{{example}}</code></pre>
+								</template>
+							</article>
+						</template>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<script src="/dist/CoCreate.js"></script>
+	</body>
+</html>

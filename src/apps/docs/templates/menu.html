@@ -1,0 +1,21 @@
+<nav aria-label="Documentation navigation">
+	<a href="/docs/" aria-current="page">All documentation</a>
+	<ul class="docs-menu">
+		<template render="modules" render-as="module">
+			<li class="docs-menu-item">
+				<details>
+					<summary>{{module.name}}</summary>
+					<ul>
+						<template render="module.doclets" render-as="doclet">
+							<li>
+								<a class="docs-symbol-link" href="/docs/{{module.slug}}/#{{doclet.anchor}}">
+									{{doclet.name}}
+								</a>
+							</li>
+						</template>
+					</ul>
+				</details>
+			</li>
+		</template>
+	</ul>
+</nav>
