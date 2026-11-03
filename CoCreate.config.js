@@ -5,8 +5,7 @@ export default {
         $branch: {
             main: "wss://cocreatejs.com",
             dev: "wss://dev.cocreatejs.com",
-            test: "wss://test.cocreatejs.com",
-            "account-shell": "wss://dev.cocreatejs.com"
+            test: "wss://test.cocreatejs.com"
         }
     },
     directories: [
@@ -61,13 +60,12 @@ export default {
                 "./CHANGELOG.md",
                 "./CONTRIBUTING.md",
                 "./CoCreate.index.js",
+                "./webpack.config.js",
                 "./package.json",
                 "./yarn.lock",
                 "./prettier.config.js",
-                "./release.config.js",
-                "./webpack.config.js",
-                "./src/admin/",
-                "./src/apps/"
+                "./release.config.js"
+
             ]
         },
         {
@@ -386,7 +384,7 @@ export default {
     plugins: {
         webpack: {
             path: "../CoCreate-plugins/webpack",
-            repo: "github.com/CoCreateJS/CoCreate-webpack.git"
+            repo: "github.com/CoCreateJS/Webpack.git"
         },
         Toastify: {
             js: [{ src: "https://cdn.jsdelivr.net/npm/toastify-js", crossOrigin: "anonymous" }],

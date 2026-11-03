@@ -683,6 +683,34 @@ export default {
             },
             "description": "Creates an empty private repository for a managed CoCreate organization.",
             "enabled": true
+        },
+        {
+            "_id": "6b0000000000000000000012",
+            "api_id": "65f8ca227b39a3c1a8904e12", // GitHub Organizations API Provider Ref
+            "name": "create-repository-from-template",
+            "method": "post",
+            "endpoint": {
+                "$concat": [
+                    "/repos/",
+                    "$templateOwner",
+                    "/",
+                    "$templateRepository",
+                    "/generate"
+                ]
+            },
+            "actions": {
+                "templateOwner": requiredText('$payload.data.templateOwner', 'create-repository-from-template requires data.templateOwner.'),
+                "templateRepository": requiredText('$payload.data.templateRepository', 'create-repository-from-template requires data.templateRepository.'),
+                "repositoryName": requiredText('$payload.data.name', 'create-repository-from-template requires data.name.')
+            },
+            "data": {
+                "owner": "$owner",
+                "name": "$repositoryName",
+                "private": true,
+                "include_all_branches": false
+            },
+            "description": "Creates a private repository in the managed organization from a GitHub template repository. Pass templateOwner, templateRepository, and name; name is the destination repository name.",
+            "enabled": true
         }
     ]
 };

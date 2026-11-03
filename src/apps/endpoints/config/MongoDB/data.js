@@ -54,20 +54,20 @@ export default {
                 "authorizationHeader": {
                     "$concat": ["Bearer ", "$accessToken"]
                 },
-                "tenantOrganizationId": {
-                    "$if.$payload.data.tenantOrganizationId.$type": {
+                "organizationName": {
+                    "$if.$payload.data.organizationName.$type": {
                         "string": {
-                            "$if.$payload.data.tenantOrganizationId.$regex": {
+                            "$if.$payload.data.organizationName.$regex": {
                                 "\\S": {
-                                    "$payload.data.tenantOrganizationId.trim": []
+                                    "$payload.data.organizationName.trim": []
                                 },
                                 "$else": {
-                                    "$throw": "create-organization requires a CoCreate tenant organization ID."
+                                    "$throw": "create-organization requires an organizationName."
                                 }
                             }
                         },
                         "$else": {
-                            "$throw": "create-organization requires a CoCreate tenant organization ID."
+                            "$throw": "create-organization requires an organizationName."
                         }
                     }
                 }
@@ -78,9 +78,9 @@ export default {
                 "Content-Type": "application/json"
             },
             "data": {
-                "name": "$payload.data.tenantOrganizationId"
+                "name": "$payload.data.organizationName"
             },
-            "description": "Creates an Atlas organization named with the CoCreate tenant organization ID. Atlas requires the calling organization to be a paying organization; configure service account credentials and confirm billing eligibility before enabling.",
+            "description": "Creates an Atlas organization with the supplied organizationName. Atlas requires the calling organization to be a paying organization; configure service account credentials and confirm billing eligibility before enabling.",
             "enabled": false
         },
         {
@@ -124,20 +124,20 @@ export default {
                 "authorizationHeader": {
                     "$concat": ["Bearer ", "$accessToken"]
                 },
-                "tenantOrganizationId": {
-                    "$if.$payload.data.tenantOrganizationId.$type": {
+                "projectName": {
+                    "$if.$payload.data.projectName.$type": {
                         "string": {
-                            "$if.$payload.data.tenantOrganizationId.$regex": {
+                            "$if.$payload.data.projectName.$regex": {
                                 "\\S": {
-                                    "$payload.data.tenantOrganizationId.trim": []
+                                    "$payload.data.projectName.trim": []
                                 },
                                 "$else": {
-                                    "$throw": "create-project requires a CoCreate tenant organization ID."
+                                    "$throw": "create-project requires a projectName."
                                 }
                             }
                         },
                         "$else": {
-                            "$throw": "create-project requires a CoCreate tenant organization ID."
+                            "$throw": "create-project requires a projectName."
                         }
                     }
                 },
@@ -165,16 +165,16 @@ export default {
                 "Content-Type": "application/json"
             },
             "data": {
-                "name": "$payload.data.tenantOrganizationId",
+                "name": "$payload.data.projectName",
                 "orgId": "$payload.data.atlasOrganizationId"
             },
-            "description": "Creates one Atlas project in the specified tenant Atlas organization, using the CoCreate tenant organization ID as the project name.",
+            "description": "Creates an Atlas project with the supplied projectName in the specified Atlas organization.",
             "enabled": false
         },
         {
             "_id": "6a61543c0000000000000004",
             "api_id": "6a61543c0000000000000001", // MongoDB Atlas Administration API Provider Ref
-            "name": "create-free-cluster",
+            "name": "create-cluster",
             "method": "post",
             "endpoint": {
                 "$concat": [
@@ -224,26 +224,8 @@ export default {
                 "Accept": "application/vnd.atlas.2025-03-12+json",
                 "Content-Type": "application/json"
             },
-            "data": {
-                "name": "$payload.data.clusterName",
-                "clusterType": "REPLICASET",
-                "replicationSpecs": [
-                    {
-                        "regionConfigs": [
-                            {
-                                "regionName": "$payload.data.regionName",
-                                "providerName": "TENANT",
-                                "backingProviderName": "$payload.data.cloudProvider",
-                                "electableSpecs": {
-                                    "instanceSize": "M0",
-                                    "nodeCount": 3
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            "description": "Creates one Atlas Free (M0) cluster in the specified Atlas project. Requires atlasProjectId, clusterName, cloudProvider (AWS, GCP, or AZURE), and a valid free-cluster regionName.",
+            "data": "$payload.data.cluster",
+            "description": "Creates an Atlas cluster in the specified project using the supplied cluster specification. Pass the Atlas cluster request body as data.cluster; tier, provider, region, and topology are selected by the caller.",
             "enabled": false
         },
         {
@@ -510,7 +492,7 @@ export default {
         {
             "_id": "6a61543c0000000000000009",
             "api_id": "6a61543c0000000000000001",
-            "name": "invite-organization-owner",
+            "name": "invite-organization-user",
             "method": "post",
             "endpoint": {
                 "$concat": [
@@ -565,12 +547,12 @@ export default {
                                     "$payload.data.atlasOrganizationId.trim": []
                                 },
                                 "$else": {
-                                    "$throw": "invite-organization-owner requires an Atlas organization ID."
+                                    "$throw": "invite-organization-user requires an Atlas organization ID."
                                 }
                             }
                         },
                         "$else": {
-                            "$throw": "invite-organization-owner requires an Atlas organization ID."
+                            "$throw": "invite-organization-user requires an Atlas organization ID."
                         }
                     }
                 },
@@ -582,12 +564,29 @@ export default {
                                     "$payload.data.email.trim": []
                                 },
                                 "$else": {
-                                    "$throw": "invite-organization-owner requires the customer's email address."
+                                    "$throw": "invite-organization-user requires an email address."
                                 }
                             }
                         },
                         "$else": {
-                            "$throw": "invite-organization-owner requires the customer's email address."
+                            "$throw": "invite-organization-user requires an email address."
+                        }
+                    }
+                },
+                "organizationRole": {
+                    "$if.$payload.data.organizationRole.$type": {
+                        "string": {
+                            "$if.$payload.data.organizationRole.$regex": {
+                                "\\S": {
+                                    "$payload.data.organizationRole.trim": []
+                                },
+                                "$else": {
+                                    "$throw": "invite-organization-user requires an organizationRole."
+                                }
+                            }
+                        },
+                        "$else": {
+                            "$throw": "invite-organization-user requires an organizationRole."
                         }
                     }
                 }
@@ -601,11 +600,11 @@ export default {
                 "username": "$payload.data.email",
                 "roles": {
                     "orgRoles": [
-                        "ORG_OWNER"
+                        "$organizationRole"
                     ]
                 }
             },
-            "description": "Invites the supplied email to the specified tenant Atlas organization as an Organization Owner. The response includes the Atlas user ID and membership status; the user must accept the invitation.",
+            "description": "Invites the supplied email to the specified Atlas organization with the supplied organizationRole. The response includes the Atlas user ID and membership status; the user must accept the invitation.",
             "enabled": false
         }
     ]

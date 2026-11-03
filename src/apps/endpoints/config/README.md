@@ -40,12 +40,13 @@ until Atlas API credentials, permissions, and billing eligibility are confirmed.
 
 Provision in this order:
 
-1. `create-organization` takes `data.tenantOrganizationId`; its response gives
-   the Atlas organization ID.
-2. `create-project` takes `data.atlasOrganizationId` and
-   `data.tenantOrganizationId`; its response gives the project ID.
-3. `create-free-cluster` takes `data.atlasProjectId`, `data.clusterName`,
-   `data.cloudProvider` (`AWS`, `GCP`, or `AZURE`), and `data.regionName`.
+1. `create-organization` takes `data.organizationName`; its response gives the
+   Atlas organization ID.
+2. `create-project` takes `data.atlasOrganizationId` and `data.projectName`; its
+   response gives the project ID.
+3. `create-cluster` takes `data.atlasProjectId` and a provider-native Atlas
+   cluster request body in `data.cluster`. The caller selects the tier, provider,
+   region, and topology, so the same endpoint can create an M0 or paid cluster.
 4. `add-project-ip-access-list-entry` takes `data.atlasProjectId`,
    `data.cidrBlock`, and optionally `data.comment`. The value `0.0.0.0/0`
    allows connections from all IPv4 addresses. Access is still gated by
@@ -61,11 +62,11 @@ Provision in this order:
    This is the cluster URI, not a credential-bearing Atlas connection object;
    combine it with the separately stored database username/password, safely
    URL-encoding both credentials.
-7. `invite-organization-owner` takes `data.atlasOrganizationId` and
-   `data.email`. It sends an Atlas organization invitation with the fixed
-   `ORG_OWNER` role and returns the Atlas user ID and pending membership status.
-   The customer can accept with an existing Atlas account or create one while
-   accepting. The invitation expires after 30 days.
+7. `invite-organization-user` takes `data.atlasOrganizationId`, `data.email`,
+   and `data.organizationRole`. It sends an Atlas organization invitation with
+   the requested role and returns the Atlas user ID and pending membership
+   status. The user can accept with an existing Atlas account or create one
+   while accepting. The invitation expires after 30 days.
 
 A database user is distinct from an Atlas API Service Account. The service
 account authorizes management calls to the Atlas Admin API. The database user

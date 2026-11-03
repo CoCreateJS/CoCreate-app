@@ -46,7 +46,7 @@ export default {
                 "allowPlatformCommands": true,
                 "platformCommandTimeout": 600000,
                 "platformCommandMaxOutputBytes": 1048576,
-                "localFsRoot": "/home/ubuntu/Dev/CoCreateWS/organizations",
+                "localFsRoot": "/home/ubuntu/Dev/CoCreate-server/organizations",
                 "publicPath": "/public",
                 "tools": {
                     "crud": {
