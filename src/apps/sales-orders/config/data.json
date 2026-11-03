@@ -22,10 +22,7 @@
       "status": "processing",
       "tags": [
         "priority"
-      ],
-      "modified": {
-        "on": "2026-08-25T10:00:00.000Z"
-      }
+      ]
     },
     {
       "_id": "68b6e8290000000000000002",
@@ -45,10 +42,7 @@
       "status": "pending",
       "tags": [
         "new"
-      ],
-      "modified": {
-        "on": "2026-08-27T14:30:00.000Z"
-      }
+      ]
     },
     {
       "_id": "68b6e8290000000000000003",
@@ -69,10 +63,7 @@
       "status": "delivered",
       "tags": [
         "infrastructure"
-      ],
-      "modified": {
-        "on": "2026-08-29T09:15:00.000Z"
-      }
+      ]
     }
   ]
 }

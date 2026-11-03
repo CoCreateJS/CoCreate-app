@@ -24,8 +24,7 @@
       "approval_by": "Bob Johnson",
       "receipt": "assets/receipts/exp-001.pdf",
       "notes": "Urgent purchase for printer ink.",
-      "tags": ["office", "recurring"],
-      "modified": { "on": "2025-07-26T08:10:00.000Z" }
+      "tags": ["office", "recurring"]
     },
     {
       "_id": "688492c105e2797580f70901",
@@ -48,8 +47,7 @@
       "approval_by": "Eva Green",
       "receipt": "assets/receipts/exp-002.pdf",
       "notes": "Includes hotel and flight.",
-      "tags": ["business", "conference"],
-      "modified": { "on": "2025-07-26T08:10:00.000Z" }
+      "tags": ["business", "conference"]
     },
     {
       "_id": "688492c103b273187bbf0902",
@@ -72,8 +70,7 @@
       "approval_by": "David Kim",
       "receipt": "assets/receipts/exp-003.pdf",
       "notes": "Annual renewal for design software.",
-      "tags": ["software", "annual"],
-      "modified": { "on": "2025-07-26T08:10:00.000Z" }
+      "tags": ["software", "annual"]
     }
   ]
 }

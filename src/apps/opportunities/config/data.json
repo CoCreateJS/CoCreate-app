@@ -23,10 +23,7 @@
       "status": "open",
       "stage": "Lead Discovered",
       "tags": ["hot", "follow-up"],
-      "priority": "High",
-      "created": {
-        "on": "2025-07-26T05:37:55.895Z"
-      }
+      "priority": "High"
     },
     {
       "_id": "688469b3062c5b9e6a150284",
@@ -48,10 +45,7 @@
       "status": "open",
       "stage": "Contact Initiated",
       "tags": ["cold"],
-      "priority": "Medium",
-      "created": {
-        "on": "2025-07-26T05:37:55.896Z"
-      }
+      "priority": "Medium"
     },
     {
       "_id": "688469b3062c5b9e6a150286",
@@ -73,10 +67,7 @@
       "status": "won",
       "stage": "Need Identified",
       "tags": ["hot"],
-      "priority": "High",
-      "created": {
-        "on": "2025-07-26T05:37:55.897Z"
-      }
+      "priority": "High"
     },
     {
       "_id": "688469b3062c5b9e6a150283",
@@ -98,10 +89,7 @@
       "status": "open",
       "stage": "Meeting Arranged",
       "tags": ["follow-up"],
-      "priority": "Medium",
-      "created": {
-        "on": "2025-07-26T05:37:55.898Z"
-      }
+      "priority": "Medium"
     },
     {
       "_id": "688469b3062c5b9e6a150282",
@@ -123,10 +111,7 @@
       "status": "won",
       "stage": "Offer Accepted",
       "tags": ["hot"],
-      "priority": "High",
-      "created": {
-        "on": "2025-07-26T05:37:55.899Z"
-      }
+      "priority": "High"
     }
   ]
 }

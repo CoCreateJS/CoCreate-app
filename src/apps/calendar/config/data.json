@@ -22,15 +22,7 @@
       "status": "scheduled",
       "type": ["calendar", "events"],
       "tags": ["meeting", "planning"],
-      "organization": "68c7bbf505da6ef2c862092c",
-      "created": {
-        "on": "2026-02-25T14:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-02-25T14:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "organization": "68c7bbf505da6ef2c862092c"
     },
     {
       "_id": "68b5a1012f4e1f7b8a010002",
@@ -51,15 +43,7 @@
       "status": "scheduled",
       "type": ["calendar", "events"],
       "tags": ["meeting", "reminder"],
-      "organization": "68c7bbf505da6ef2c862092c",
-      "created": {
-        "on": "2026-02-25T14:10:00.000Z",
-        "by": "68765ca00be67f92d8df050c"
-      },
-      "modified": {
-        "on": "2026-02-25T14:10:00.000Z",
-        "by": "68765ca00be67f92d8df050c"
-      }
+      "organization": "68c7bbf505da6ef2c862092c"
     },
     {
       "_id": "68b5a1012f4e1f7b8a010003",
@@ -80,15 +64,7 @@
       "status": "scheduled",
       "type": ["calendar", "events"],
       "tags": ["deadline"],
-      "organization": "68c7bbf505da6ef2c862092c",
-      "created": {
-        "on": "2026-02-25T14:20:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-02-25T14:20:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "organization": "68c7bbf505da6ef2c862092c"
     },
     {
       "_id": "68b5a1012f4e1f7b8a010004",
@@ -109,15 +85,7 @@
       "status": "scheduled",
       "type": ["calendar", "events"],
       "tags": ["meeting"],
-      "organization": "68c7bbf505da6ef2c862092c",
-      "created": {
-        "on": "2026-02-25T14:30:00.000Z",
-        "by": "68765ca00be67f92d8df050c"
-      },
-      "modified": {
-        "on": "2026-02-25T14:30:00.000Z",
-        "by": "68765ca00be67f92d8df050c"
-      }
+      "organization": "68c7bbf505da6ef2c862092c"
     },
     {
       "_id": "68b5a1012f4e1f7b8a010005",
@@ -138,15 +106,7 @@
       "status": "scheduled",
       "type": ["calendar", "events"],
       "tags": ["holiday", "reminder"],
-      "organization": "68c7bbf505da6ef2c862092c",
-      "created": {
-        "on": "2026-02-25T14:40:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-02-25T14:40:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "organization": "68c7bbf505da6ef2c862092c"
     },
     {
       "_id": "68b5a1012f4e1f7b8a010006",
@@ -167,15 +127,7 @@
       "status": "scheduled",
       "type": ["calendar", "events"],
       "tags": ["deadline", "reminder"],
-      "organization": "68c7bbf505da6ef2c862092c",
-      "created": {
-        "on": "2026-02-25T14:50:00.000Z",
-        "by": "68765ca00be67f92d8df050c"
-      },
-      "modified": {
-        "on": "2026-02-25T14:50:00.000Z",
-        "by": "68765ca00be67f92d8df050c"
-      }
+      "organization": "68c7bbf505da6ef2c862092c"
     }
   ]
 }

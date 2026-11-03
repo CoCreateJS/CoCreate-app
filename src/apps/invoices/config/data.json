@@ -85,10 +85,7 @@
       "tax": 0,
       "shipping": 0,
       "total": 900000,
-      "notes": "This unpaid invoice is the active shopping cart. Once payment is completed, it continues as the customer's invoice record.",
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z"
-      }
+      "notes": "This unpaid invoice is the active shopping cart. Once payment is completed, it continues as the customer's invoice record."
     },
     {
       "_id": "67f0a1b2c3d4e5f607182902",
@@ -162,10 +159,7 @@
       "tax": 0,
       "shipping": 0,
       "total": 270000,
-      "notes": "Optimization invoice completed after diagnostic enrollment and first in-clinic infusion.",
-      "modified": {
-        "on": "2026-03-18T14:30:00.000Z"
-      }
+      "notes": "Optimization invoice completed after diagnostic enrollment and first in-clinic infusion."
     },
     {
       "_id": "67f0a1b2c3d4e5f607182903",
@@ -239,10 +233,7 @@
       "tax": 0,
       "shipping": 0,
       "total": 275000,
-      "notes": "Maintenance invoice prepared for the next regenerative cycle.",
-      "modified": {
-        "on": "2026-03-20T09:15:00.000Z"
-      }
+      "notes": "Maintenance invoice prepared for the next regenerative cycle."
     },
     {
       "_id": "67f0a1b2c3d4e5f607182904",
@@ -317,10 +308,7 @@
       "tax": 0,
       "shipping": 0,
       "total": 170000,
-      "notes": "Prescription maintenance bundle paid and queued for shipment.",
-      "modified": {
-        "on": "2026-03-22T16:45:00.000Z"
-      }
+      "notes": "Prescription maintenance bundle paid and queued for shipment."
     },
     {
       "_id": "68b6e6c10000000000000001",
@@ -394,8 +382,7 @@
         "cardholderName": "James Price",
         "cardNumber": "Pending",
         "amount": 18500
-      },
-      "modified": { "on": "2026-08-25T10:00:00.000Z" }
+      }
     },
     {
       "_id": "68b6e6c10000000000000002",
@@ -469,8 +456,7 @@
         "cardholderName": "James Price",
         "cardNumber": "Pending",
         "amount": 9200
-      },
-      "modified": { "on": "2026-08-27T14:30:00.000Z" }
+      }
     },
     {
       "_id": "68b6e6c10000000000000003",
@@ -544,8 +530,7 @@
         "cardholderName": "James Price",
         "cardNumber": "Pending",
         "amount": 24000
-      },
-      "modified": { "on": "2026-08-29T09:15:00.000Z" }
+      }
     }
   ]
 }

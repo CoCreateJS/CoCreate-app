@@ -5,7 +5,6 @@
   "object":[
   {
     "_id": "68c7bbf505da6ef2c862092c",
-    "organization_id": "68c7bbf505da6ef2c862092c",
     "host": [
       {
         "array": "",
@@ -33,7 +32,6 @@
       }
     ],
     "name": "Geneomes",
-    "owner": "5ff747727005da1c272740ac",
     "storage": [
       {
         "name": "mongodb",

@@ -33,15 +33,7 @@
       "tags": ["featured", "diagnostics", "baseline"],
       "short_description": "At-home biological baseline with full lab processing.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000013",
@@ -74,15 +66,7 @@
       "tags": ["3rd Generation", "Proliferation", "Differentiation"],
       "short_description": "A third-generation regenerative intervention using pure Cellular Growth Factors.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000002",
@@ -114,15 +98,7 @@
       "tags": ["Custom Formula", "Data Driven", "Subscription"],
       "short_description": "Data-driven custom daily formula.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000004",
@@ -154,15 +130,7 @@
       "tags": ["growth factors", "loading dose", "regenerate"],
       "short_description": "Primary regenerative loading dose for clinical initiation.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000005",
@@ -194,15 +162,7 @@
       "tags": ["growth factors", "1 mL", "intramuscular"],
       "short_description": "1 mL intramuscular regenerative maintenance dose.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000006",
@@ -234,15 +194,7 @@
       "tags": ["growth factors", "0.5 mL", "subcutaneous"],
       "short_description": "0.5 mL subcutaneous regenerative dose.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000007",
@@ -274,15 +226,7 @@
       "tags": ["growth factors", "dropper", "microneedling"],
       "short_description": "1 mL topical dropper for microneedling protocols.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000008",
@@ -315,15 +259,7 @@
       "tags": ["Hardware", "Needless Injector", "At-Home"],
       "short_description": "At-home delivery hardware for systemic use.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000009",
@@ -355,15 +291,7 @@
       "tags": ["hardware", "microneedling", "at-home"],
       "short_description": "Topical delivery hardware for skin or scalp protocols.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000010",
@@ -396,15 +324,7 @@
       "tags": ["bundle", "longevity", "featured"],
       "short_description": "Discover diagnostics + one application device + full vial loading dose.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000011",
@@ -437,15 +357,7 @@
       "tags": ["bundle", "rejuvenate", "featured"],
       "short_description": "Discover diagnostics + one application device + two full vial loading doses.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     },
     {
       "_id": "68d100000000000000000012",
@@ -478,15 +390,7 @@
       "tags": ["bundle", "transcend", "featured"],
       "short_description": "Discover diagnostics + one application device + three full vial loading doses.",
       "status": "active",
-      "type": "product",
-      "created": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2026-03-25T10:00:00.000Z",
-        "by": "5ff747727005da1c272740ac"
-      }
+      "type": "product"
     }
   ]
 }

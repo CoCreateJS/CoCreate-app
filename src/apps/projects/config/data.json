@@ -21,8 +21,7 @@
       "team_members": ["Alice Smith", "John Doe", "Jane Roe"],
       "owner": "Alice Smith",
       "start_date": "2024-07-01",
-      "due_date": "2024-08-01",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-08-01"
     },
     {
       "_id": "688491b105e2797580f70801",
@@ -42,8 +41,7 @@
       "team_members": ["Bob Johnson", "Emily Clark"],
       "owner": "Bob Johnson",
       "start_date": "2024-07-10",
-      "due_date": "2024-09-15",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-09-15"
     },
     {
       "_id": "688491b103b273187bbf0802",
@@ -63,8 +61,7 @@
       "team_members": ["Carol Lee", "Sam Lee"],
       "owner": "Carol Lee",
       "start_date": "2024-07-15",
-      "due_date": "2024-08-15",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-08-15"
     },
     {
       "_id": "688491b10a05c1699c350803",
@@ -84,8 +81,7 @@
       "team_members": ["Frank Hook", "Jane Roe", "John Doe"],
       "owner": "Frank Hook",
       "start_date": "2024-09-01",
-      "due_date": "2024-10-01",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-10-01"
     },
     {
       "_id": "688491b10a05c1699c350804",
@@ -105,8 +101,7 @@
       "team_members": ["Jennifer", "Alice Smith", "John Doe", "Jane Roe"],
       "owner": "Jennifer",
       "start_date": "2024-10-01",
-      "due_date": "2024-11-01",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-11-01"
     },
     {
       "_id": "688491b10a05c1699c350805",
@@ -126,8 +121,7 @@
       "team_members": ["Frank Hook", "M", "John Doe"],
       "owner": "Frank Hook",
       "start_date": "2024-09-01",
-      "due_date": "2024-09-20",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-09-20"
     },
     {
       "_id": "688491b10a05c1699c350806",
@@ -147,8 +141,7 @@
       "team_members": ["Jane Roe", "Jennifer"],
       "owner": "Jane Roe",
       "start_date": "2024-07-15",
-      "due_date": "2024-08-20",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-08-20"
     },
     {
       "_id": "688491b10a05c1699c350807",
@@ -168,8 +161,7 @@
       "team_members": ["E", "Jane Roe", "John Doe"],
       "owner": "E",
       "start_date": "2024-08-01",
-      "due_date": "2024-09-05",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-09-05"
     },
     {
       "_id": "688491b10a05c1699c350808",
@@ -189,8 +181,7 @@
       "team_members": ["R", "Jane Roe", "John Doe"],
       "owner": "R",
       "start_date": "2024-09-10",
-      "due_date": "2024-10-10",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-10-10"
     },
     {
       "_id": "688491b10a05c1699c350809",
@@ -210,8 +201,7 @@
       "team_members": ["A", "Jane Roe", "John Doe"],
       "owner": "A",
       "start_date": "2024-09-01",
-      "due_date": "2024-09-25",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-09-25"
     },
     {
       "_id": "688491b10a05c1699c35080a",
@@ -231,8 +221,7 @@
       "team_members": ["Jennifer"],
       "owner": "Jennifer",
       "start_date": "2024-09-15",
-      "due_date": "2024-10-15",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-10-15"
     },
     {
       "_id": "688491b10a05c1699c35080b",
@@ -252,8 +241,7 @@
       "team_members": ["Jane Roe", "John Doe", "E", "2+"],
       "owner": "Jane Roe",
       "start_date": "2024-07-01",
-      "due_date": "2024-08-20",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-08-20"
     },
     {
       "_id": "688491b10a05c1699c35080c",
@@ -273,8 +261,7 @@
       "team_members": ["A", "Jane Roe"],
       "owner": "A",
       "start_date": "2024-09-10",
-      "due_date": "2024-09-30",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-09-30"
     },
     {
       "_id": "688491b10a05c1699c35080d",
@@ -294,8 +281,7 @@
       "team_members": ["Jane Roe", "John Doe", "E", "2+"],
       "owner": "Jane Roe",
       "start_date": "2024-08-01",
-      "due_date": "2024-10-20",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-10-20"
     },
     {
       "_id": "688491b10a05c1699c35080e",
@@ -315,8 +301,7 @@
       "team_members": ["Jane Roe"],
       "owner": "Jane Roe",
       "start_date": "2024-08-01",
-      "due_date": "2024-09-05",
-      "modified": { "on": "2025-07-26T08:00:00.000Z" }
+      "due_date": "2024-09-05"
     }
   ]
 }

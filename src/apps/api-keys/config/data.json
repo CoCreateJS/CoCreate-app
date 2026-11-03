@@ -9,12 +9,6 @@
     "admin": true,
     "name": "admin",
     "key": "2567her8-efe2-409b-92c3-524c94nyue",
-      "modified": {
-        "on": {
-          "$date": "2025-09-17T14:24:15.405Z"
-        },
-        "by": null
-      },
       "type": "key",
       "status": "active"
   },
@@ -48,12 +42,6 @@
     "default": true,
     "name": "default",
     "key": "4210vl09-e332-pn45-bc42-772490pdg31",
-    "modified": {
-      "on": {
-        "$date": "2025-09-17T14:24:15.405Z"
-      },
-      "by": null
-    },
     "type": "key",
     "status": "active"
   },
@@ -61,12 +49,6 @@
     "_id": "68e1134a8c1d2e3f4a5b6c7d",
     "description": "Administrator role granting full organization access to assigned users.",
     "admin": true,
-    "modified": {
-      "on": {
-        "$date": "2025-09-17T14:24:15.405Z"
-      },
-      "by": null
-    },
     "name": "admin",
     "type": "role",
     "status": "active"
@@ -83,12 +65,6 @@
         }
       }
     },
-    "modified": {
-      "on": {
-        "$date": "2026-04-01T00:00:00.000Z"
-      },
-      "by": null
-    },
     "name": "patient",
     "type": "role",
     "status": "active"
@@ -100,11 +76,6 @@
     "email": "app-tester@cocreatejs.com",
     "name": "app-tester@cocreatejs.com",
     "key": "68765ca00d899aa18761050d",
-    "modified": {
-      "on": {
-        "$date": "2025-10-09T11:23:01.679Z"
-      }
-    },
     "password": "dGVtcG9yYXJ5NA==",
     "roles": [
       "68e1134a8c1d2e3f4a5b6c7d"

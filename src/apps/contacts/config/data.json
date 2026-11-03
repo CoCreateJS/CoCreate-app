@@ -69,14 +69,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-09-03T07:39:23.058Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-10-04T01:28:37.166Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "",
       "age": 43,
@@ -180,14 +172,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "by": "5ff747727005da1c272740ac",
-        "on": "2025-07-16T09:12:34.253Z"
-      },
-      "modified": {
-        "by": "5ff747727005da1c272740ac",
-        "on": "2025-08-01T15:22:10.915Z"
-      },
       "status": "active",
       "nickname": "",
       "age": 55,
@@ -270,14 +254,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-07-18T11:45:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-03T10:05:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "Amy",
       "age": 24,
@@ -359,14 +335,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-07-20T14:30:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-05T18:40:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "Mili",
       "age": 43,
@@ -450,14 +418,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-07-22T08:10:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-07T09:15:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "",
       "age": 43,
@@ -542,14 +502,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-07-24T17:55:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-09T21:30:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "inactive",
       "nickname": "",
       "age": 43,
@@ -635,14 +587,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-07-26T12:20:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-11T13:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "",
       "age": 43,
@@ -727,14 +671,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-07-28T19:40:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-13T16:55:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "",
       "age": 43,
@@ -818,14 +754,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-07-30T07:05:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-15T20:10:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "",
       "age": 43,
@@ -909,14 +837,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-08-01T13:25:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-17T22:25:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "",
       "age": 43,
@@ -1001,14 +921,6 @@
         }
       ],
       "lastSignIn": "2023-05-19T21:56:09.330Z",
-      "created": {
-        "on": "2025-08-03T16:50:24.253Z",
-        "by": "5ff747727005da1c272740ac"
-      },
-      "modified": {
-        "on": "2025-08-19T11:35:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "status": "active",
       "nickname": "",
       "age": 43,
@@ -1048,10 +960,6 @@
       "tags": [],
       "skills": ["javascript", "node.js", "mongodb"],
       "availability": "Full Time",
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Nicholas Ball is a full-time candidate seeking opportunities in software engineering. He is eager to contribute his skills to dynamic teams and is motivated by challenges that foster professional growth.",
       "nickname": "",
       "age": 43,
@@ -1091,10 +999,6 @@
       "tags": [],
       "skills": ["customer support", "administration"],
       "availability": "Part Time",
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Philippa Santiago is a part-time candidate with experience in customer support and administration. She is known for her adaptability and her commitment to providing excellent service in every role.",
       "nickname": "",
       "age": 43,
@@ -1134,10 +1038,6 @@
       "tags": [],
       "skills": ["marketing", "communications"],
       "availability": "Part Time",
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Cassian Jenning is a part-time candidate interested in marketing and communications roles. He enjoys creative projects and is always looking for new ways to engage audiences.",
       "nickname": "",
       "age": 43,
@@ -1177,10 +1077,6 @@
       "tags": [],
       "skills": ["graphic design", "css", "html"],
       "availability": "Freelancer",
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Nadia Harding is a freelancer with a background in graphic design and creative projects. She values flexibility in her work and enjoys collaborating with clients to bring their ideas to life.",
       "nickname": "",
       "age": 43,
@@ -1220,10 +1116,6 @@
       "tags": [],
       "skills": ["pharmaceutical sales", "client relations"],
       "availability": "Part Time",
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Nancy Martino (Applicant) is a part-time applicant with experience in pharmaceutical sales. She is enthusiastic about new opportunities and is dedicated to building strong client relationships.",
       "nickname": "",
       "age": 43,
@@ -1263,10 +1155,6 @@
       "tags": [],
       "skills": ["javascript", "react", "mobile development"],
       "availability": "Full Time",
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Alexis Clarke (Applicant) is a full-time applicant skilled in mobile app development. She is passionate about technology and enjoys working on innovative projects that make a difference.",
       "nickname": "",
       "age": 43,
@@ -1304,10 +1192,6 @@
       ],
       "status": "active",
       "tags": [],
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Jeff Taylor is an active customer with a focus on IT consulting and support. He values clear communication and is committed to finding effective solutions for his business needs.",
       "nickname": "",
       "age": 43,
@@ -1345,10 +1229,6 @@
       ],
       "status": "active",
       "tags": [],
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Robert McMahon is an active customer interested in cloud solutions and infrastructure. He is always looking for ways to improve efficiency and enjoys learning about new technologies.",
       "nickname": "",
       "age": 43,
@@ -1386,10 +1266,6 @@
       ],
       "status": "active",
       "tags": [],
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Carolyn Jones is an active customer with a background in business analytics. She is detail-oriented and enjoys using data to drive decision-making and business growth.",
       "nickname": "",
       "age": 43,
@@ -1427,10 +1303,6 @@
       ],
       "status": "active",
       "tags": [],
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Glen Matney is an active customer specializing in network administration. He is dedicated to maintaining reliable systems and is known for his problem-solving abilities.",
       "nickname": "",
       "age": 43,
@@ -1468,10 +1340,6 @@
       ],
       "status": "block",
       "tags": [],
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Charles Kubik is a blocked customer, previously engaged in software procurement. He has experience in vendor management and is knowledgeable about the software industry.",
       "nickname": "",
       "age": 43,
@@ -1509,10 +1377,6 @@
       ],
       "status": "active",
       "tags": [],
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Ava Brooks is a consultant at Brooks Consulting, expert in business strategy. She enjoys helping organizations grow and is committed to delivering results for her clients.",
       "nickname": "",
       "age": 43,
@@ -1550,10 +1414,6 @@
       ],
       "status": "active",
       "tags": [],
-      "modified": {
-        "on": "2025-07-20T19:45:59.915Z",
-        "by": "5ff747727005da1c272740ac"
-      },
       "description": "Liam Carter is the founder of Carter Solutions, focused on enterprise software. He is passionate about building scalable solutions and leading teams to success.",
       "nickname": "",
       "age": 43,

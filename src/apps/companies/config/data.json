@@ -17,13 +17,7 @@
       "since": "2024",
       "status": "active",
       "tags": ["partner", "customer"],
-      "type": ["customer"],
-      "created": {
-      "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-      "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["customer"]
     },
     {
       "_id": "687f5c7d008f86f722a70c1c",
@@ -39,13 +33,7 @@
       "since": "1992",
       "status": "active",
       "tags": ["partner", "customer"],
-      "type": ["customer"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["customer"]
     },
     {
       "_id": "687f5c7d01d440ca227a0c21",
@@ -61,13 +49,7 @@
       "since": "1975",
       "status": "prospect",
       "tags": ["customer"],
-      "type": ["customer"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["customer"]
     },
     {
       "_id": "687f5c7d027f1cb57fe60c22",
@@ -83,13 +65,7 @@
       "since": "2009",
       "status": "active",
       "tags": ["partner", "customer"],
-      "type": ["vendor", "customer"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["vendor", "customer"]
     },
     {
       "_id": "687f5c7d02a9b13bc95e0c1d",
@@ -105,13 +81,7 @@
       "since": "1993",
       "status": "inactive",
       "tags": ["vendor"],
-      "type": ["vendor"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["vendor"]
     },
     {
       "_id": "687f5c7d0326537c8fdd0c19",
@@ -127,13 +97,7 @@
       "since": "1995",
       "status": "active",
       "tags": ["partner"],
-      "type": ["vendor"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["vendor"]
     },
     {
       "_id": "687f5c7d04dc4fc2cc2f0c1a",
@@ -149,13 +113,7 @@
       "since": "2005",
       "status": "inactive",
       "tags": ["vendor"],
-      "type": ["vendor"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["vendor"]
     },
     {
       "_id": "687f5c7d0914ab5068690c20",
@@ -171,13 +129,7 @@
       "since": "1989",
       "status": "inactive",
       "tags": ["vendor"],
-      "type": ["seller"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["seller"]
     },
     {
       "_id": "687f5c7d0cf14bfdaefa0c1e",
@@ -193,13 +145,7 @@
       "since": "2005",
       "status": "prospect",
       "tags": ["customer"],
-      "type": ["customer"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["customer"]
     },
     {
       "_id": "687f5c7d0dd1d4a712520c1f",
@@ -215,13 +161,7 @@
       "since": "1991",
       "status": "active",
       "tags": ["partner"],
-      "type": ["vendor"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["vendor"]
     },
     {
       "_id": "687f5c7d0fc29f3071000c1b",
@@ -237,13 +177,7 @@
       "since": "1998",
       "status": "prospect",
       "tags": ["customer"],
-      "type": ["customer"],
-      "created": {
-        "on": "2025-07-22T09:40:13.810Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["customer"]
     },
     {
       "_id": "6884767904ede78fb79a016f",
@@ -259,13 +193,7 @@
       "since": "",
       "status": "",
       "tags": ["seller"],
-      "type": ["seller"],
-      "created": {
-        "on": "2025-07-26T06:32:25.953Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["seller"]
     },
     {
       "_id": "688476790ebb1fd4f7930170",
@@ -281,13 +209,7 @@
       "since": "",
       "status": "",
       "tags": ["seller"],
-      "type": ["seller"],
-      "created": {
-        "on": "2025-07-26T06:32:25.953Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["seller"]
     },
     {
       "_id": "688476790b9fcea392670171",
@@ -303,13 +225,7 @@
       "since": "",
       "status": "",
       "tags": ["seller"],
-      "type": ["seller"],
-      "created": {
-        "on": "2025-07-26T06:32:25.953Z"
-      },
-      "modified": {
-        "on": "2025-07-26T06:23:09.429Z"
-      }
+      "type": ["seller"]
     }
   ]
 }
