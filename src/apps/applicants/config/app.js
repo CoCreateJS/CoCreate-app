@@ -4,11 +4,11 @@ export default {
     "upsert": true,
     "object": {
         "_id": "6a96308f88ce2e69559ce874",
-        "name": "Candidates",
-        "singularName": "Candidate",
-        "path": "/apps/candidates",
-        "card": "/apps/candidates/components/card.html",
-        "cardTemplate": "/apps/candidates/templates/card.html",
+        "name": "Applicants",
+        "singularName": "Applicant",
+        "path": "/apps/applicants",
+        "card": "/apps/applicants/components/card.html",
+        "cardTemplate": "/apps/applicants/templates/card.html",
         "templates": {
             "card": "templates/card.html",
             "list": "templates/list.html"
@@ -19,14 +19,14 @@ export default {
         },
         "category": "Human Resources",
         "icon": "/assets/svg/remix/user-search-line.svg",
-        "description": "App to manage and track Candidates.",
+        "description": "App to manage and track Applicants.",
         "status": "active",
         "fields": [
             {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Enter name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n        <a\n          role=\"button\"\n          tabindex=\"0\"\n          class=\"d-flex align-items-center\"\n          state-to=\"offcanvas-app\"\n          state.object=\"6a96308f88ce2e69559ce874\"\n          aria-controls=\"offcanvas-app\"\n          aria-open\n          aria-haspopup=\"dialog\"\n          aria-expanded=\"false\">\n          <div state-to=\"offcanvas-app-view\" state.src=\"/apps/candidates/app.html\"></div>\n          <div state-to=\"offcanvas-app-form\" state.array=\"contacts\" state.object=\"{{object._id}}\"></div>\n          <div class=\"avatar-xs rounded-circle position-relative overflow-hidden flex-shrink-0\">\n            <div class=\"avatar-title bg-secondary-subtle text-secondary material-shadow\">\n              <span class=\"avatar-initial\">{{object.first_name[0]}}</span>\n              <img\n                class=\"position-absolute object-fit-cover\"\n                src=\"{{object.avatar[0].src}}\"\n                alt=\"Avatar\"\n                width=\"100%\"\n                height=\"100%\"\n                array=\"contacts\"\n                object=\"{{object._id}}\"\n                key=\"avatar[0].src\"\n                onerror=\"this.onerror=null; this.src='/assets/images/transparent.png';\"/>\n            </div>\n          </div>\n          <span class=\"flex-grow-1 ms-2 name\">{{object.first_name}} {{object.last_name}}</span>\n        </a>\n      ",
+                "tableTemplate": "\n        <a\n          role=\"button\"\n          tabindex=\"0\"\n          class=\"d-flex align-items-center\"\n          state-to=\"offcanvas-app\"\n          state.object=\"6a96308f88ce2e69559ce874\"\n          aria-controls=\"offcanvas-app\"\n          aria-open\n          aria-haspopup=\"dialog\"\n          aria-expanded=\"false\">\n          <div state-to=\"offcanvas-app-view\" state.src=\"/apps/applicants/app.html\"></div>\n          <div state-to=\"offcanvas-app-form\" state.array=\"contacts\" state.object=\"{{object._id}}\"></div>\n          <div class=\"avatar-xs rounded-circle position-relative overflow-hidden flex-shrink-0\">\n            <div class=\"avatar-title bg-secondary-subtle text-secondary material-shadow\">\n              <span class=\"avatar-initial\">{{object.first_name[0]}}</span>\n              <img\n                class=\"position-absolute object-fit-cover\"\n                src=\"{{object.avatar[0].src}}\"\n                alt=\"Avatar\"\n                width=\"100%\"\n                height=\"100%\"\n                array=\"contacts\"\n                object=\"{{object._id}}\"\n                key=\"avatar[0].src\"\n                onerror=\"this.onerror=null; this.src='/assets/images/transparent.png';\"/>\n            </div>\n          </div>\n          <span class=\"flex-grow-1 ms-2 name\">{{object.first_name}} {{object.last_name}}</span>\n        </a>\n      ",
                 "attributes": [
                     {
                         "name": "class",
@@ -497,7 +497,7 @@ export default {
             {
                 "label": "Type",
                 "tagName": "select",
-                "filterTemplate": "\n\t\t\t\t\t<select id=\"type-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"type.$in\">\n\t\t\t\t\t\t<option value=\"lead\">Lead</option>\n\t\t\t\t\t\t<option value=\"partner\">Partner</option>\n\t\t\t\t\t\t<option value=\"customer\">Customer</option>\n\t\t\t\t\t\t<option value=\"vendor\">Vendor</option>\n\t\t\t\t\t\t<option value=\"candidate\">Candidate</option>\n\t\t\t\t\t\t<option value=\"advisor\">Advisor</option>\n\t\t\t\t\t\t<option value=\"consultant\">Consultant</option>\n\t\t\t\t\t\t<option value=\"employee\">Employee</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
+                "filterTemplate": "\n\t\t\t\t\t<select id=\"type-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"type.$in\">\n\t\t\t\t\t\t<option value=\"lead\">Lead</option>\n\t\t\t\t\t\t<option value=\"partner\">Partner</option>\n\t\t\t\t\t\t<option value=\"customer\">Customer</option>\n\t\t\t\t\t\t<option value=\"vendor\">Vendor</option>\n\t\t\t\t\t\t<option value=\"candidate\">Applicant</option>\n\t\t\t\t\t\t<option value=\"advisor\">Advisor</option>\n\t\t\t\t\t\t<option value=\"consultant\">Consultant</option>\n\t\t\t\t\t\t<option value=\"employee\">Employee</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
                 "tableTemplate": "<span render=\"object.type\" render-as=\"type\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{type}}\n</span>",
                 "children": [
                     {
@@ -548,7 +548,7 @@ export default {
                                 "value": "candidate"
                             }
                         ],
-                        "innerText": "Candidate"
+                        "innerText": "Applicant"
                     },
                     {
                         "tagName": "option",
@@ -695,7 +695,7 @@ export default {
             {
                 "label": "Tags",
                 "tagName": "select",
-                "filterTemplate": "\n\t\t\t\t\t<select id=\"tags-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"tags.$in\">\n\t\t\t\t\t\t<option value=\"vip\">VIP</option>\n\t\t\t\t\t\t<option value=\"trial\">Trial</option>\n\t\t\t\t\t\t<option value=\"newsletter\">Newsletter</option>\n\t\t\t\t\t\t<option value=\"inactive\">Inactive</option>\n\t\t\t\t\t\t<option value=\"exiting\">Exiting</option>\n\t\t\t\t\t\t<option value=\"long-term\">Long-term</option>\n\t\t\t\t\t\t<option value=\"new\">New</option>\n\t\t\t\t\t\t<option value=\"prospect\">Prospect</option>\n\t\t\t\t\t\t<option value=\"referral\">Referral</option>\n\t\t\t\t\t\t<option value=\"candidate\">Candidate</option>\n\t\t\t\t\t\t<option value=\"priority\">Priority</option>\n\t\t\t\t\t\t<option value=\"blocked\">Blocked</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
+                "filterTemplate": "\n\t\t\t\t\t<select id=\"tags-filter\" class=\"form-select\" multiple filter-query=\"$document .list-view\" filter-query-key=\"tags.$in\">\n\t\t\t\t\t\t<option value=\"vip\">VIP</option>\n\t\t\t\t\t\t<option value=\"trial\">Trial</option>\n\t\t\t\t\t\t<option value=\"newsletter\">Newsletter</option>\n\t\t\t\t\t\t<option value=\"inactive\">Inactive</option>\n\t\t\t\t\t\t<option value=\"exiting\">Exiting</option>\n\t\t\t\t\t\t<option value=\"long-term\">Long-term</option>\n\t\t\t\t\t\t<option value=\"new\">New</option>\n\t\t\t\t\t\t<option value=\"prospect\">Prospect</option>\n\t\t\t\t\t\t<option value=\"referral\">Referral</option>\n\t\t\t\t\t\t<option value=\"candidate\">Applicant</option>\n\t\t\t\t\t\t<option value=\"priority\">Priority</option>\n\t\t\t\t\t\t<option value=\"blocked\">Blocked</option>\n\t\t\t\t\t</select>\n\t\t\t\t",
                 "tableTemplate": "<span render=\"object.tags\" render-as=\"tags\" template class=\"badge bg-primary-subtle text-primary me-1\">\n  {{tags}}\n</span>",
                 "children": [
                     {
@@ -796,7 +796,7 @@ export default {
                                 "value": "candidate"
                             }
                         ],
-                        "innerText": "Candidate"
+                        "innerText": "Applicant"
                     },
                     {
                         "tagName": "option",

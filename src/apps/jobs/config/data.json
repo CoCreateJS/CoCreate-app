@@ -1,6 +1,6 @@
 {
   "method": "object.update",
-  "array": "jobPosts",
+  "array": "jobs",
   "upsert": true,
   "object": [
     {

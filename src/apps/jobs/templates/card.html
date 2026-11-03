@@ -30,7 +30,7 @@
 							aria-controls="offcanvas-app"
 							aria-open
 							aria-haspopup="dialog"
-							aria-expanded="false"><span state-to="offcanvas-app-form" state.array="jobPosts" state.object="{{object._id}}" hidden></span>{{object.jobTitle}}</a>
+							aria-expanded="false"><span state-to="offcanvas-app-form" state.array="jobs" state.object="{{object._id}}" hidden></span>{{object.jobTitle}}</a>
 					</h5>
 				</div>
 				<span class="text-muted fs-12">{{object.companyName}}</span>
@@ -64,4 +64,4 @@
 		</div>
 	</article>
 </template>
-<div onload.array="jobPosts" onload-query="$parent"></div>
+<div onload.array="jobs" onload-query="$parent"></div>

@@ -1,24 +1,24 @@
 <div
-	id="candidates-aside"
+	id="applicants-aside"
 	class="offcanvas-app-shell app-panel d-flex flex-column width:100% height:100% min-height:0 overflow-hidden"
 	role="region"
-	aria-label="Candidates record">
+	aria-label="Applicants record">
 	<header
 		src="/components/offcanvas-app/header.html"
 		value-replace="/\{\{app\.name\}\}/g"
-		value-replacement="Candidates"
+		value-replacement="Applicants"
 		value-type="outerHtml"></header>
 	<div
 		class="component-form-body flex-grow-1 min-height:0">
 		<div
-			id="Candidates-details-view"
+			id="Applicants-details-view"
 			class="offcanvas-app-view"
 			data-view="details"
 			role="tabpanel"
-			aria-labelledby="Candidates-details-btn"
+			aria-labelledby="Applicants-details-btn"
 			tabindex="0"
 			aria-hidden="false"
-			state-id="candidates-details"
+			state-id="applicants-details"
 			state.aria-hidden
 			hidden>
 			<form
@@ -28,19 +28,19 @@
 				object
 				autocomplete="off">
 				<div scrollbar>
-					<div src="/apps/candidates/components/details.html"></div>
+					<div src="/apps/applicants/components/details.html"></div>
 				</div>
 			</form>
 		</div>
 		<div
-			id="Candidates-form-view"
+			id="Applicants-form-view"
 			class="offcanvas-app-view"
 			data-view="form"
 			role="tabpanel"
-			aria-labelledby="Candidates-form-btn"
+			aria-labelledby="Applicants-form-btn"
 			tabindex="0"
 			aria-hidden="true"
-			state-id="candidates-form"
+			state-id="applicants-form"
 			state.aria-hidden
 			hidden>
 			<form
@@ -50,7 +50,7 @@
 				object
 				autocomplete="off">
 				<div scrollbar>
-					<div src="/apps/candidates/components/form.html"></div>
+					<div src="/apps/applicants/components/form.html"></div>
 				</div>
 				<footer
 					src="/components/offcanvas-app/footer.html"
@@ -58,14 +58,14 @@
 			</form>
 		</div>
 		<div
-			id="Candidates-code-view"
+			id="Applicants-code-view"
 			class="offcanvas-app-view"
 			data-view="code"
 			role="tabpanel"
-			aria-labelledby="Candidates-code-btn"
+			aria-labelledby="Applicants-code-btn"
 			tabindex="0"
 			aria-hidden="true"
-			state-id="candidates-code"
+			state-id="applicants-code"
 			state.aria-hidden
 			hidden>
 			<form
