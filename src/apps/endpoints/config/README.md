@@ -31,6 +31,17 @@ be at least four days old, and the destination organization must be at least
 seven days old. Prepare root access for the customer and remove the old
 management account's access role after transfer.
 
+## Bunny DNS routing
+
+Bunny endpoint records live in `Bunny/data.js`. `create-dns-record` accepts
+`data.zoneId` and a Bunny-shaped `data.record`; `delete-dns-record` accepts
+`data.zoneId` and `data.recordId`. Both endpoint records and the Bunny routing
+API seed remain disabled until an API key is configured and the domain/zone
+ownership path is confirmed. The API key is sent in the `AccessKey` header.
+The managed route workflow and region mapping are documented in the workspace
+`Bunny.md`; do not invoke DNS mutations until its public-IP and routing-policy
+inputs are available.
+
 ## MongoDB Atlas provisioning
 
 MongoDB Atlas provisioning records live in `MongoDB/data.js`. The Atlas

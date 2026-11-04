@@ -53,7 +53,13 @@ export default {
             "name": "bunny.net",
             "provider": "bunny",
             "type": "routing",
+            "url": "https://api.bunny.net",
             "apiKey": "",
+            "headers": {
+                "AccessKey": "$config.apiKey",
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
             "description": "bunny.net DNS and traffic routing connection.",
             "enabled": false
         },

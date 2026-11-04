@@ -24,9 +24,9 @@ export default {
         "_id": "6a96308fbe321a28ad3edec1",
         "name": "Server Configs",
         "singularName": "Server Config",
-        "path": "/apps/servers/configs",
-        "card": "/apps/servers/configs/components/card.html",
-        "cardTemplate": "/apps/servers/configs/templates/card.html",
+        "path": "/apps/server-configs",
+        "card": "/apps/server-configs/components/card.html",
+        "cardTemplate": "/apps/server-configs/templates/card.html",
         "templates": {
             "card": "templates/card.html",
             "list": "templates/list.html"
@@ -48,7 +48,7 @@ export default {
                 "label": "Name",
                 "tagName": "input",
                 "filterTemplate": "<input id=\"server-config-name-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by name\" filter-query=\"$document .list-view\" filter-query-key=\"name.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/servers/configs/app.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"servers_config\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
+                "tableTemplate": "\n          <a role=\"button\" tabindex=\"0\" class=\"name\" state-to=\"offcanvas-app-view\" state.src=\"/apps/server-configs/app.html\" aria-controls=\"offcanvas-app\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-open>\n            <div state-to=\"offcanvas-app-form\" state.array=\"servers_config\" state.object=\"{{object._id}}\"></div>\n            <span>{{object.name}}</span>\n          </a>\n        ",
                 "attributes": [
                     { "name": "class", "value": "form-control" },
                     { "name": "id", "value": "server-config-name" },
