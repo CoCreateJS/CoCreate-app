@@ -19,13 +19,14 @@ export default {
         "worker": "*",
         "config": {
             "enabled": true,
-            "localFsRoot": "/home/ubuntu/Dev/CoCreate-server/organizations",
-            "api": "github-organizations",
-            "getEndpoint": "get-organization-repository",
-            "createEndpoint": "create-organization-repository",
-            "owner": "CoCreate-organizations",
-            "templateUrl": "https://github.com/CoCreateJS/CoCreate-app-template.git",
-            "gitBinary": "git"
+            "databaseWorkflow": "create-organization-database",
+            "organizationWorkflow": "create-organization",
+            "repositoryWorkflow": "create-organization-repository",
+            "repositoryProvisioning": {
+                "api": "github-organizations",
+                "templateOwner": "CoCreateJS",
+                "templateRepository": "CoCreate-app-template"
+            }
         }
     }
 };

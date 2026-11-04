@@ -33,6 +33,7 @@ export default {
 # Zero-Trust / Immutable Node Lockdown
 # ==============================================================================
 set -euo pipefail
+umask 077
 
 # ------------------------------------------------------------------------------
 # 1. Host System Directories Preparation
@@ -117,11 +118,11 @@ printf '%s' '`, "$storageBase64", `' | base64 --decode > /etc/cocreatews/storage
 test -s /etc/cocreatews/storage.json
 chmod 600 /etc/cocreatews/storage.json
 
-# CoCreate.config.prompt resolves variable-backed configuration such as
-# storage from its global config object. JSON is a supported config format.
-printf '{"storage":' > /root/CoCreate.config.js
-cat /etc/cocreatews/storage.json >> /root/CoCreate.config.js
-printf '}\n' >> /root/CoCreate.config.js
+# Keep the node identity, host, and storage outside the repository.
+# Cluster fetches its API key through CRUD after boot; it is not sent as user data.
+# JSON/base64 preserves values; file permissions restrict access.
+# Do not print this config or enable shell tracing around credential handling.
+printf '%s' '`, "$bootstrapConfigBase64", `' | base64 --decode > /root/CoCreate.config.js
 chmod 600 /root/CoCreate.config.js
 
 cat << 'EOF' > /usr/local/bin/cocreatews-start

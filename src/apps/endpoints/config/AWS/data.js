@@ -201,6 +201,22 @@ export default {
                 "storageBase64": {
                     "$storageBytes.toString": "base64"
                 },
+                "bootstrapConfig": {
+                    "organization_id": "$payload.organization_id",
+                    "host": "$payload.data.host",
+                    "storage": "$storageConfig"
+                },
+                "bootstrapConfigBytes": {
+                    "$Buffer.from": [
+                        {
+                            "$JSON.stringify": "$bootstrapConfig"
+                        },
+                        "utf8"
+                    ]
+                },
+                "bootstrapConfigBase64": {
+                    "$bootstrapConfigBytes.toString": "base64"
+                },
                 "bootstrapScript": {
                     "$astAsync": "$payload.data.startupScript"
                 },

@@ -338,7 +338,7 @@ export default {
                         }
                     },
                     "read_project_file": {
-                        "description": "Reads from virtual or local file storage depending on target or context. With target=auto or omitted, the configured local organization workspace is preferred.",
+                        "description": "Reads from virtual or local file storage depending on target or context. With target=auto or omitted, the configured local organization workspace is preferred. Local targets require the platform organization; tenant requests default to CRUD-backed virtual files.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -368,7 +368,7 @@ export default {
                         }
                     },
                     "write_project_file": {
-                        "description": "Writes to virtual or local storage depending on target or context. With target=auto or omitted, the configured local organization workspace is preferred; publishing the change to the live CRUD-backed file repository remains an explicit coc upload operation.",
+                        "description": "Writes to virtual or local storage depending on target or context. With target=auto or omitted, the configured local organization workspace is preferred; publishing the change to the live CRUD-backed file repository remains an explicit coc upload operation. Local targets require the platform organization; tenant requests default to CRUD-backed virtual files.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -397,7 +397,7 @@ export default {
                         }
                     },
                     "read_local_file": {
-                        "description": "Reads a line range from a local file within the authenticated organization's sites workspace. Large files must be read in successive ranges; use totalLines and hasMore to continue.",
+                        "description": "Platform organization only. Local access is rejected for non-platform requests. Reads a line range from a local file within the authenticated organization's sites workspace. Large files must be read in successive ranges; use totalLines and hasMore to continue.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -421,7 +421,7 @@ export default {
                         }
                     },
                     "edit_local_file": {
-                        "description": "Safely edits part of a local file by replacing one exact, unique block of text. Read the relevant line range first and include enough surrounding text for oldText to match exactly once. The operation refuses missing or ambiguous matches and preserves the rest of the file.",
+                        "description": "Platform organization only. Local access is rejected for non-platform requests. Safely edits part of a local file by replacing one exact, unique block of text. Read the relevant line range first and include enough surrounding text for oldText to match exactly once. The operation refuses missing or ambiguous matches and preserves the rest of the file.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -443,7 +443,7 @@ export default {
                         }
                     },
                     "write_local_file": {
-                        "description": "Writes a file within the authenticated organization's sites workspace. AI runtime metadata under .ai is outside this tool's path boundary. Only available when allowLocalFileSystem=true.",
+                        "description": "Platform organization only. Local access is rejected for non-platform requests. Writes a file within the authenticated organization's sites workspace. AI runtime metadata under .ai is outside this tool's path boundary. Only available when allowLocalFileSystem=true.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -461,7 +461,7 @@ export default {
                         }
                     },
                     "coc": {
-                        "description": "Downloads database-backed site files into the authenticated organization's isolated sites workspace or uploads selected site files through tenant-scoped CRUD. Site downloads process one file at a time and skip existing files unless overwrite=true. AI metadata under .ai is inaccessible to this tool. This tool cannot execute commands.",
+                        "description": "Platform organization only. Local access is rejected for non-platform requests. Downloads database-backed site files into the authenticated organization's isolated sites workspace or uploads selected site files through tenant-scoped CRUD. Site downloads process one file at a time and skip existing files unless overwrite=true. AI metadata under .ai is inaccessible to this tool. This tool cannot execute commands.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -494,7 +494,7 @@ export default {
                         }
                     },
                     "git_project": {
-                        "description": "Inspects and manages local Git history in the authenticated organization's isolated project workspace. Repository cloning, remotes, credentials, and network synchronization are server-owned and unavailable to this tool. Mutating actions require explicit local-write confirmation unless the server permits unconfirmed local writes.",
+                        "description": "Platform organization only. Local access is rejected for non-platform requests. Inspects and manages local Git history in the authenticated organization's isolated project workspace. Repository cloning, remotes, credentials, and network synchronization are server-owned and unavailable to this tool. Mutating actions require explicit local-write confirmation unless the server permits unconfirmed local writes.",
                         "parameters": {
                             "type": "object",
                             "properties": {

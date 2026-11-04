@@ -1,87 +1,71 @@
 {
-  "method": "object.update",
-  "array": "keys",
-  "upsert": true,
-  "object": [
-    {
-    "_id": "68e1134a6b2c4d5e7f8a9010",
-    "description": "Administrative API key with full organization access.",
-    "admin": true,
-    "name": "admin",
-    "key": "2567her8-efe2-409b-92c3-524c94nyue",
-      "type": "key",
-      "status": "active"
-  },
-  {
-    "_id": "68e1134a4f7b9d2c1a3e4f51",
-    "description": "Default API key for authentication, account access, and permitted content reads.",
-    "actions": {
-      "object": {
-        "*": {
-          "contacts": {
-            "_id.$eq": "$user_id"
-          }
+    "method": "object.update",
+    "array": "keys",
+    "upsert": true,
+    "object": [
+        {
+            "_id": "68e1134a6b2c4d5e7f8a9010",
+            "description": "Administrative API key with full organization access.",
+            "admin": true,
+            "name": "admin",
+            "key": "",
+            "type": "key",
+            "status": "active"
         },
-        "read": {
-          "$array": [
-            "ai",
-            "blog-posts"
-          ]
+        {
+            "_id": "68e1134a4f7b9d2c1a3e4f51",
+            "description": "Default API key for authentication, account access, and permitted content reads.",
+            "actions": {
+                "object": {
+                    "*": {
+                    "contacts": {
+                        "_id.$eq": "$user_id"
+                    }
+                    },
+                    "read": {
+                    "$array": [
+                        "ai",
+                        "blog-posts"
+                    ]
+                    }
+                },
+                "checkSession": "true",
+                "signIn": "true",
+                "signUp": "true",
+                "acceptInvite": "true",
+                "forgotPassword": "true",
+                "resetPassword": "true",
+                "updateUserStatus": "true",
+                "isUnique": "true",
+                "inviteUser": "true"
+            },
+            "default": true,
+            "name": "default",
+            "key": "",
+            "type": "key",
+            "status": "active"
+        },
+        {
+            "_id": "68e1134a8c1d2e3f4a5b6c7d",
+            "description": "Administrator role granting full organization access to assigned users.",
+            "admin": true,
+            "name": "admin",
+            "type": "role",
+            "status": "active"
+        },
+        {
+            "_id": "68e1134b0a1b2c3d4e5f6078",
+            "description": "Test user credential linked to a contact profile and assigned the administrator role.",
+            "array": "contacts",
+            "email": "app-tester@cocreatejs.com",
+            "name": "app-tester@cocreatejs.com",
+            "key": "",
+            "password": "",
+            "roles": [
+                "68e1134a8c1d2e3f4a5b6c7d"
+            ],
+            "type": "user",
+            "status": "active"
         }
-      },
-      "checkSession": "true",
-      "signIn": "true",
-      "signUp": "true",
-      "acceptInvite": "true",
-      "forgotPassword": "true",
-      "resetPassword": "true",
-      "updateUserStatus": "true",
-      "isUnique": "true",
-      "inviteUser": "true"
-    },
-    "default": true,
-    "name": "default",
-    "key": "4210vl09-e332-pn45-bc42-772490pdg31",
-    "type": "key",
-    "status": "active"
-  },
-  {
-    "_id": "68e1134a8c1d2e3f4a5b6c7d",
-    "description": "Administrator role granting full organization access to assigned users.",
-    "admin": true,
-    "name": "admin",
-    "type": "role",
-    "status": "active"
-  },
-  {
-    "_id": "68e1134ab7c8d9e0f1a2b3c4",
-    "description": "Patient role allowing users to access and manage their own diagnostic records.",
-    "actions": {
-      "object": {
-        "*": {
-          "diagnostics": {
-            "user_id.$eq": "$user_id"
-          }
-        }
-      }
-    },
-    "name": "patient",
-    "type": "role",
-    "status": "active"
-  },
-  {
-    "_id": "68e1134b0a1b2c3d4e5f6078",
-    "description": "Test user credential linked to a contact profile and assigned the administrator role.",
-    "array": "contacts",
-    "email": "app-tester@cocreatejs.com",
-    "name": "app-tester@cocreatejs.com",
-    "key": "68765ca00d899aa18761050d",
-    "password": "dGVtcG9yYXJ5NA==",
-    "roles": [
-      "68e1134a8c1d2e3f4a5b6c7d"
-    ],
-    "type": "user",
-    "status": "active"
-  }
-]
+    ]
 }

@@ -80,6 +80,13 @@ const storageActions = {
     storageProvider: requiredText('$storageConfig.provider', 'The storage API record requires a provider.'),
     storageBytes: { "$Buffer.from": [{ "$JSON.stringify": '$storageConfig' }, 'utf8'] },
     storageBase64: { "$storageBytes.toString": 'base64' },
+    // API keys are fetched by the node after CRUD is ready, never sent as user data.
+    bootstrapConfig: {
+        organization_id: '$payload.organization_id', host: '$payload.data.host',
+        storage: '$storageConfig'
+    },
+    bootstrapConfigBytes: { "$Buffer.from": [{ "$JSON.stringify": '$bootstrapConfig' }, 'utf8'] },
+    bootstrapConfigBase64: { "$bootstrapConfigBytes.toString": 'base64' },
     bootstrapScript: { "$astAsync": '$payload.data.startupScript' },
     bootstrapScriptBytes: { "$Buffer.from": ['$bootstrapScript', 'utf8'] },
     bootstrapScriptBase64: { "$bootstrapScriptBytes.toString": 'base64' }
@@ -661,42 +668,18 @@ export default {
             "enabled": true
         },
         {
-            "_id": "65f8cb447b39a3c1a8904e3d",
-            "api_id": "65f8ca227b39a3c1a8904e12", // GitHub Organizations API Provider Ref
-            "name": "create-organization-repository",
-            "method": "post",
-            "endpoint": {
-                "$concat": [[
-                    "/orgs/",
-                    "$owner",
-                    "/repos"
-                ]]
-            },
-            "data": {
-                "name": "$data.data.name",
-                "description": "$data.data.description",
-                "private": true,
-                "has_issues": false,
-                "has_projects": false,
-                "has_wiki": false,
-                "auto_init": false
-            },
-            "description": "Creates an empty private repository for a managed CoCreate organization.",
-            "enabled": true
-        },
-        {
             "_id": "6b0000000000000000000012",
             "api_id": "65f8ca227b39a3c1a8904e12", // GitHub Organizations API Provider Ref
             "name": "create-repository-from-template",
             "method": "post",
             "endpoint": {
-                "$concat": [
+                "$concat": [[
                     "/repos/",
                     "$templateOwner",
                     "/",
                     "$templateRepository",
                     "/generate"
-                ]
+                ]]
             },
             "actions": {
                 "templateOwner": requiredText('$payload.data.templateOwner', 'create-repository-from-template requires data.templateOwner.'),

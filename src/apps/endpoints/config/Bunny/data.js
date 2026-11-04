@@ -14,7 +14,7 @@ export default {
 			_id: "6b0300000000000000000001",
 			api_id: "b1056eecfdf173eba3fc12b9",
 			name: "create-dns-record",
-			method: "post",
+			method: "put",
 			endpoint: {
 				$concat: [["/dnszone/", "$payload.data.zoneId", "/records"]]
 			},

@@ -120,6 +120,27 @@
 		</div>
 	</div>
 	<section class="width:100% border-top border-top-dashed pt-3">
+		<label class="form-label d-flex flex-column gap-1 mb-0">
+			Routing provider
+			<select
+				id="cluster-routing-providers"
+				class="form-select"
+				key="routing"
+				required>
+				<option value="">Select a routing provider</option>
+				<option template value="{{object._id}}">{{object.name}}</option>
+			</select>
+			<div
+				array="apis"
+				filter-query-key="type"
+				filter-query-value="routing"
+				filter-sort-key="name"
+				filter-sort-direction="asc"
+				filter-limit="0"
+				render-query="$previous"></div>
+		</label>
+	</section>
+	<section class="width:100% border-top border-top-dashed pt-3">
 		<div class="d-flex align-items-center justify-content-between gap-3">
 			<div class="d-flex align-items-center gap-2">
 				<h6 class="mb-0">Autoscaling</h6>
