@@ -12,7 +12,7 @@ function getUtilsChunkName(module) {
     const resource = module.nameForCondition?.() || module.resource || "";
     const normalizedResource = resource.replace(/\\/g, "/");
     const match = normalizedResource.match(
-        /\/CoCreate-utils\/src\/modules\/(.+?)\.js$/
+        /\/CoCreate-modules\/utils\/src\/modules\/(.+?)\.js$/
     );
 
     if (!match) {
@@ -26,6 +26,7 @@ function getUtilsChunkName(module) {
 
     const readableName = modulePath
         .replace(/\/index$/, "")
+        .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
         .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
         .replace(/[\/_]+/g, "-")
         .toLowerCase();
@@ -37,7 +38,7 @@ function getEditorChunkName(module) {
     const resource = module.nameForCondition?.() || module.resource || "";
     const normalizedResource = resource.replace(/\\/g, "/");
     const match = normalizedResource.match(
-        /\/CoCreate-editor\/src\/editors\/(.+?)\.js$/
+        /\/CoCreate-modules\/editor\/src\/editors\/(.+?)\.js$/
     );
 
     if (!match) {
@@ -46,6 +47,7 @@ function getEditorChunkName(module) {
 
     const readableName = match[1]
         .replace(/\/index$/, "")
+        .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
         .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
         .replace(/[\/_]+/g, "-")
         .toLowerCase();
@@ -55,6 +57,23 @@ function getEditorChunkName(module) {
     }
 
     return `editor-${readableName}`;
+}
+
+function getChunkFilename({ chunk }) {
+    const name = String(chunk.name ?? chunk.id)
+        .replace(/^CoCreate-modules_/, "")
+        .replace(/_src_(?:editors|modules)_/g, "-")
+        .replace(/_src_/g, "-")
+        .replace(/_node_modules_ws_browser_js$/, "-ws-browser")
+        .replace(/_js$/, "")
+        .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
+        .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+        .replace(/[_/]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "")
+        .toLowerCase();
+
+    return `${name}.js`;
 }
 
 import CoCreateConfig from "./CoCreate.config.js";
@@ -85,7 +104,7 @@ export default async (env, argv) => {
         output: {
             path: path.resolve(__dirname, "./src/dist"),
             filename: isProduction ? "[name].js" : "[name].js",
-            chunkFilename: isProduction ? "[name].js" : "[name].js",
+            chunkFilename: getChunkFilename,
             library: "CoCreate", // Global namespace in the browser
             libraryExport: "default", 
             clean: true
@@ -224,7 +243,7 @@ export default async (env, argv) => {
                 cacheGroups: {
                     defaultVendors: false,
                     utils: {
-                        test: /[\\/]CoCreate-utils[\\/]src[\\/]modules[\\/]/,
+                        test: /[\\/]CoCreate-modules[\\/]utils[\\/]src[\\/]modules[\\/]/,
                         name: getUtilsChunkName,
                         chunks: "all",
                         enforce: true,
@@ -232,7 +251,7 @@ export default async (env, argv) => {
                         reuseExistingChunk: true
                     },
                     editor: {
-                        test: /[\\/]CoCreate-editor[\\/]src[\\/]editors[\\/]/,
+                        test: /[\\/]CoCreate-modules[\\/]editor[\\/]src[\\/]editors[\\/]/,
                         name: getEditorChunkName,
                         chunks: "all",
                         enforce: true,
@@ -240,7 +259,7 @@ export default async (env, argv) => {
                         reuseExistingChunk: true
                     },
                     editorCore: {
-                        test: /[\\/]CoCreate-editor[\\/]src[\\/](events|selection|textChange)\.js$/,
+                        test: /[\\/]CoCreate-modules[\\/]editor[\\/]src[\\/](events|selection|textChange)\.js$/,
                         name: "editor-core",
                         chunks: "all",
                         enforce: true,
@@ -248,7 +267,7 @@ export default async (env, argv) => {
                         reuseExistingChunk: true
                     },
                     positionEvents: {
-                        test: /[\\/]CoCreate-position[\\/]src[\\/]helpers[\\/]events\.js$/,
+                        test: /[\\/]CoCreate-modules[\\/]position[\\/]src[\\/]helpers[\\/]events\.js$/,
                         name: "position-events",
                         chunks: "all",
                         enforce: true,
@@ -256,16 +275,32 @@ export default async (env, argv) => {
                         reuseExistingChunk: true
                     },
                     usersSessionCookie: {
-                        test: /[\\/]CoCreate-users[\\/]src[\\/]client[\\/]sessionCookie\.js$/,
+                        test: /[\\/]CoCreate-modules[\\/]users[\\/]src[\\/]client[\\/]sessionCookie\.js$/,
                         name: "users-session-cookie",
                         chunks: "all",
                         enforce: true,
                         priority: 31,
                         reuseExistingChunk: true
                     },
+                    speechRecognition: {
+                        test: /[\\/]CoCreate-modules[\\/]speech-recognition[\\/]src[\\/]/,
+                        name: "speech-recognition",
+                        chunks: "all",
+                        enforce: true,
+                        priority: 30,
+                        reuseExistingChunk: true
+                    },
+                    speechSynthesis: {
+                        test: /[\\/]CoCreate-modules[\\/]speech-synthesis[\\/]src[\\/]/,
+                        name: "speech-synthesis",
+                        chunks: "all",
+                        enforce: true,
+                        priority: 30,
+                        reuseExistingChunk: true
+                    },
                     ws: {
-                        test: /[\\/]CoCreate-socket-client[\\/]node_modules[\\/]ws[\\/]browser\.js$/,
-                        name: "ws",
+                        test: /[\\/]CoCreate-modules[\\/]socket-client[\\/]node_modules[\\/]ws[\\/]browser\.js$/,
+                        name: "socket-client-ws-browser",
                         chunks: "all",
                         enforce: true,
                         priority: 30,

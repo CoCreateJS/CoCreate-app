@@ -35,8 +35,12 @@
 						fullscreen-query="$closest .builder-app"
 						aria-label="Toggle fullscreen"
 						title="Toggle fullscreen">
-						<i class="fullscreen-icon" src="/assets/svg/remix/fullscreen-line.svg"></i>
-						<i class="fullscreen-exit-icon" src="/assets/svg/remix/fullscreen-exit-line.svg"></i>
+						<i
+							class="fullscreen-icon"
+							src="/assets/svg/remix/fullscreen-line.svg"></i>
+						<i
+							class="fullscreen-exit-icon"
+							src="/assets/svg/remix/fullscreen-exit-line.svg"></i>
 					</button>
 				</li>
 
@@ -237,19 +241,19 @@
 			aria-label="Builder preview">
 			<div class="canvas-container">
 				<div
-					class="builder-position-trigger"
+					class="builder-position-trigger h-100"
 					position-events="click"
 					position-query="iframe $clickedElement $matches *"
 					position-element="$top .builder-selection-toolbar"
 					position-box="element">
 					<div
-						class="builder-position-trigger"
+						class="builder-position-trigger h-100"
 						position-events="mouseover, mousemove, mouseout"
 						position-query="iframe $hoveredElement $matches *"
 						position-element="$top .builder-hover-toolbar"
 						position-box="element">
 						<div
-							class="builder-position-trigger"
+							class="builder-position-trigger h-100"
 							position-events="selectionchange"
 							position-query="iframe $selection"
 							position-element="$top .builder-richtext-toolbar"

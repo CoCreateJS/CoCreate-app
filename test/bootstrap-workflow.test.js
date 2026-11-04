@@ -7,6 +7,7 @@ import { getStorage } from '../../CoCreate-modules/crud-server/src/getStorage.js
 import seed from '../src/apps/workflows/config/data.js';
 import organizationSeed from '../src/apps/workflows/config/organization.js';
 import repositorySeed from '../src/apps/workflows/config/repository.js';
+import clusterSeed from '../src/apps/workflows/config/cluster.js';
 
 const workflowName = 'create-organization-database';
 async function run(t, options = {}) {
@@ -39,12 +40,15 @@ async function run(t, options = {}) {
             if (request.method === 'object.read') {
                 if (request.organization_id === 'source') return { object: (options.missingCredential && request.array === 'keys') || (options.missingProfile && request.array !== 'keys') ? [] : [request.array === 'keys' ? credential : sourceUser] };
                 if (options.duplicateHost && request.array === 'organizations' && request.filter?.query?.['host.name']) return { object: [{ _id: 'taken' }] };
-                if (request.array === 'workflows' && request.organization_id === 'platform') return { object: [definition, ...organizationSeed.object, ...repositorySeed.object].filter(item => item.name === request.filter.query.name && !(options.missingRepositoryWorkflow && item.name === 'create-organization-repository')) };
+                if (request.array === 'workflows' && request.organization_id === 'platform') return { object: [definition, ...organizationSeed.object, ...clusterSeed.object, ...repositorySeed.object].filter(item => item.name === request.filter.query.name && !(options.missingRepositoryWorkflow && item.name === 'create-organization-repository') && !(options.missingClusterWorkflow && item.name === 'create-organization-cluster')) };
+                if (request.array === 'workflows') return { object: structuredClone(stored.filter(item => item.name === request.filter.query.name)) };
                 if (request.array === 'apis') return { object: [{ _id: 'github-api', owner: 'managed-org' }] };
                 const id = request.object?.[0]?._id || request.filter?.query?._id;
                 return { object: structuredClone(id ? stored.filter(item => item._id === id) : stored) };
             }
             if (options.credentialActivationError && request.array === 'apis' && request.object?.enabled === true) return { success: false };
+            if (options.failedClusterScope === request.organization_id && request.array === 'clusters') return { success: false };
+            if (options.failTenantCluster && request.array === 'clusters' && request.organization_id !== 'platform') return { success: false };
             if (options.failedTenantArray === request.array && request.organization_id !== 'platform') return { success: false };
             const objects = Array.isArray(request.object) ? request.object : [request.object];
             for (const object of objects) {
@@ -86,11 +90,11 @@ async function run(t, options = {}) {
     await initOrganizations(runtime, { databaseProvisioning: {
         cloudProvider: 'AWS', regionName: 'US_EAST_1', cidrBlock: '192.0.2.0/24',
         organizationId: 'forged-id', ...options.settings
-    } });
+    }, ...(options.clusterProvisioning && { clusterProvisioning: options.clusterProvisioning }) });
     await runtime.organizations.create({
         socket: { organization_id: 'source', user_id: options.anonymous ? undefined : 'user-1', host: 'platform.test', ...(options.expired && { expires: 1 }) },
         organization_id: 'forged-platform', user: { _id: 'forged-user' }, key: [{ admin: true }],
-        organization: options.organization || { name: 'Tenant', host: [{ name: 'tenant.test' }], bootstrapStorage: { provider: 'forged' }, git: { repository: 'forged-repository' } }
+        organization: options.organization || { name: 'Tenant', host: [{ name: 'tenant.test' }], bootstrapStorage: { provider: 'forged' }, cluster_id: 'forged-cluster', git: { repository: 'forged-repository' } }
     });
     return { response, records, requests, apiCalls };
 }
@@ -120,6 +124,16 @@ test('the real Atlas workflow stores and returns its bootstrap before tenant ini
     assert.ok(requests.indexOf(writes[0]) < requests.findIndex(item => item.organization_id === organization._id));
     assert.equal(apiCalls[0].data.organizationName, organization._id);
     assert.equal(organization.git.checkout_branch, 'dev');
+    const platformCluster = records.get('platform:clusters')[0];
+    const tenantCluster = records.get(`${organization._id}:clusters`)[0];
+    assert.deepEqual(platformCluster, tenantCluster);
+    assert.equal(platformCluster.name, organization._id);
+    assert.equal(platformCluster.type, 'organization');
+    assert.equal(platformCluster.host, 'tenant.test');
+    assert.equal(platformCluster.scaleIn.minClusterSize, 0);
+    assert.equal(organization.cluster_id, platformCluster._id);
+    assert.equal(records.get(`${organization._id}:organizations`)[0].cluster_id, platformCluster._id);
+    assert.equal(response.organization.cluster_id, platformCluster._id);
     const github = apiCalls.filter(item => item.api === 'github-organizations');
     assert.deepEqual(github.map(item => item.endpoint), ['create-repository-from-template', 'get-repository-file', 'update-repository-file', 'create-repository-branch', 'create-repository-branch', 'get-github-ssh-host-keys', 'create-repository-deploy-key']);
     const config = JSON.parse(github[2].data.content.slice('export default '.length).trim().replace(/;$/, ''));
@@ -239,5 +253,42 @@ for (const option of ['readOnlyDeployKey', 'missingHostKeys', 'credentialActivat
         assert.equal(credentials[0].enabled, false);
         assert.equal(credentials[0].status, 'pending');
         assert.equal(JSON.stringify(response).includes(credentials[0].privateKey), false);
+    });
+}
+
+for (const options of [{ missingClusterWorkflow: true }, { failedClusterScope: 'platform' }, { failTenantCluster: true }]) {
+    test(`cluster failure cannot complete signup: ${JSON.stringify(options)}`, async t => {
+        const { response, apiCalls } = await run(t, options);
+        assert.equal(response.success, false);
+        assert.equal(apiCalls.some(call => call.api === 'github-organizations'), false);
+    });
+}
+
+test('cluster deployment settings come from platform configuration, with identity fixed by signup', async t => {
+    const { response, records } = await run(t, { clusterProvisioning: {
+        _id: 'forged-cluster', name: 'forged-name', type: 'forged-type', host: 'forged.test',
+        organization_id: 'forged-owner', clouds: ['cloud-api'], storage: 'storage-api', routing: 'routing-api',
+        scaleIn: { minClusterSize: 1 }
+    } });
+    assert.equal(response.success, true, response.message);
+    const cluster = records.get('platform:clusters')[0];
+    assert.notEqual(cluster._id, 'forged-cluster');
+    assert.equal(cluster.name, response.organization._id);
+    assert.equal(cluster.type, 'organization');
+    assert.equal(cluster.host, 'tenant.test');
+    assert.equal(cluster.organization_id, undefined);
+    assert.deepEqual(cluster.clouds, ['cloud-api']);
+    assert.equal(cluster.storage, 'storage-api');
+    assert.equal(cluster.routing, 'routing-api');
+    assert.equal(cluster.scaleIn.minClusterSize, 1);
+});
+
+for (const minimum of [-1, '0', 0.5]) {
+    test(`invalid initial cluster minimum ${JSON.stringify(minimum)} is rejected before provisioning`, async t => {
+        const { response, records, apiCalls } = await run(t, { clusterProvisioning: { scaleIn: { minClusterSize: minimum } } });
+        assert.equal(response.success, false);
+        assert.match(response.message, /minimum cluster size/);
+        assert.equal(records.size, 0);
+        assert.equal(apiCalls.length, 0);
     });
 }

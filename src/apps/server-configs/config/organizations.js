@@ -21,6 +21,10 @@ export default {
             "enabled": true,
             "databaseWorkflow": "create-organization-database",
             "organizationWorkflow": "create-organization",
+            "clusterWorkflow": "create-organization-cluster",
+            "clusterProvisioning": {
+                "scaleIn": { "minClusterSize": 0 }
+            },
             "repositoryWorkflow": "create-organization-repository",
             "repositoryProvisioning": {
                 "api": "github-organizations",
