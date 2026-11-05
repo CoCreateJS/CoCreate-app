@@ -742,7 +742,7 @@ export default {
                     },
                     "url": "$actions.repository.data.html_url",
                     "default_branch": "main",
-                    "checkout_branch": "dev",
+                    "checkout_branch": "main",
                     "initialization": {
                         "status": "ready",
                         "commit": "$actions.commitSha"

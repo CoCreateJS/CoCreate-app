@@ -37,6 +37,8 @@ export default {
                     name: '$actions.server.name', server_id: '$actions.server._id', cluster_id: '$actions.server.cluster_id',
                     region: '$actions.server.infrastructure.region', vmType: '$actions.server.infrastructure.vmType',
                     storage: '$actions.server.storage', host: '$actions.server.host',
+                    vpcId: '$actions.cluster.vpcId', spot: '$actions.cluster.spot',
+                    os: '$actions.cluster.os', application: '$actions.cluster.application',
                     startupScript: '$payload.create-organization-server.0.startupScript',
                     binaryUrl: '$payload.create-organization-server.0.binaryUrl',
                     environment: '$payload.create-organization-server.0.environment'

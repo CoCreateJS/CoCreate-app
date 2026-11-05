@@ -3,7 +3,8 @@ import test from 'node:test';
 import { astAsync } from '@cocreate/utils';
 import Config from '@cocreate/config';
 import Workflows from '../../CoCreate-modules/workflows/src/server.js';
-import { init as initOrganizationServers } from '../../CoCreate-modules/cluster/src/organization-servers.js';
+import { init as initManager } from '../../CoCreate-modules/cluster/src/manager.js';
+import { ServerMesh } from '../../CoCreate-modules/cluster/src/mesh/index.js';
 import serverSeed from '../src/apps/workflows/config/server.js';
 import startupSeed from '../src/apps/server-configs/config/autoscaler.js';
 import aws from '../src/apps/endpoints/config/AWS/data.js';
@@ -14,7 +15,7 @@ const tenant = 'aaaaaaaaaaaaaaaaaaaaaaaa', clusterId = 'bbbbbbbbbbbbbbbbbbbbbbbb
 async function run(t, options = {}) {
     const platform = 'cccccccccccccccccccccccc';
     const records = new Map(), requests = [], apiCalls = [];
-    const cluster = { _id: clusterId, name: tenant, type: 'organization', host: 'tenant.test', clouds: ['cloud-api'], storage: 'storage-api', vertical: { min: { vCPU: 1, memoryGb: 2 } } };
+    const cluster = { _id: clusterId, name: 'Production', manager: { organization_id: platform, host: 'platform.test', for: tenant }, type: 'organization', host: 'tenant.test', initialDeployment: { cloud: 'cloud-api', region: 'us-east-1', vmType: 't3a.small' }, storage: 'storage-api' };
     const tenantStorage = { name: 'tenant-storage', provider: 'mongodb', connectionString: 'mongodb://tenant-only.test' };
     const endpoint = aws.object.find(item => item.name === 'create-instance');
     t.mock.method(Config, 'get', () => undefined);
@@ -31,6 +32,7 @@ async function run(t, options = {}) {
             if (request.method === 'object.read') {
                 if (request.array === 'organizations') return { object: [{ _id: tenant, cluster_id: clusterId, bootstrapStorage: tenantStorage }] };
                 if (request.array === 'clusters') return { object: [cluster] };
+                if (request.array === 'keys') return { object: [{ key: 'test-only-management-key' }] };
                 if (request.array === 'apis') return { object: [{ _id: 'cloud-api', type: 'cloud', enabled: true, name: 'platform-cloud', provider: 'aws', token: 'platform-token-must-not-leak' }] };
                 if (request.array === 'workflows') return { object: serverSeed.object.filter(item => item.name === query.name) };
                 return { object: structuredClone(objects.filter(item => Object.entries(query).every(([field, value]) => item[field] === value))) };
@@ -53,6 +55,9 @@ async function run(t, options = {}) {
             assert.equal(context.organization_id, platform);
             assert.equal(request.api, 'platform-cloud');
             assert.equal(request.endpoint, 'create-instance');
+            assert.equal(request.region, 'us-east-1');
+            assert.equal(request.data.region, 'us-east-1');
+            assert.equal(request.data.vmType, 't3a.small');
             assert.equal(typeof request.data.environment, 'string');
             // Run the real cloud endpoint's script preprocessing in platform context.
             const sandbox = {
@@ -79,20 +84,25 @@ async function run(t, options = {}) {
     };
     await Workflows.init(runtime);
     runtime.workflow = Workflows;
-    const handler = await initOrganizationServers(runtime);
-    return { handler, records, requests, apiCalls, platform };
+    const handler = await initManager(runtime);
+    runtime.manager = handler;
+    const mesh = new ServerMesh();
+    mesh.server = runtime;
+    return { handler, mesh, records, requests, apiCalls, platform };
 }
 
 test('activation renders tenant startup, dispatches the real VM workflow in platform scope, and mirrors provider data', async t => {
-    const { handler, records, requests, platform } = await run(t);
-    const result = await handler.ensure(tenant);
+    const { mesh, records, requests, apiCalls, platform } = await run(t);
+    const result = await mesh.checkOrganizationServers(tenant);
     assert.equal(result.status, 'created');
     const parent = records.get(`${platform}:servers`)[0];
     const child = records.get(`${tenant}:servers`)[0];
     assert.deepEqual(parent, child);
+    assert.equal(child.manager.apiKey, 'test-only-management-key');
+    assert.equal(JSON.stringify(apiCalls).includes('test-only-management-key'), false);
     assert.equal(child.infrastructure.instanceId, 'i-test');
     assert.equal(child.infrastructure.privateIpAddress, '10.0.0.2');
-    const writes = requests.filter(item => item.array === 'servers' && item.method === 'object.update');
+    const writes = requests.filter(item => item.array === 'servers' && item.method === 'object.update' && item.object['infrastructure.instanceId']);
     assert.deepEqual(writes[0].object, writes[1].object);
     assert.equal(writes[0].organization_id, platform);
     assert.equal(writes[1].organization_id, tenant);
@@ -100,13 +110,13 @@ test('activation renders tenant startup, dispatches the real VM workflow in plat
 });
 
 for (const option of ['providerError', 'noInstanceId', 'failPersistence']) {
-    test(`VM failure ${option} preserves references and prevents a duplicate launch`, async t => {
-        const { handler, records, apiCalls, platform } = await run(t, { [option]: true });
-        await assert.rejects(handler.ensure(tenant));
+    test(`VM failure ${option} retains inventory without a blocking creation reservation`, async t => {
+        const { mesh, records, apiCalls, platform } = await run(t, { [option]: true });
+        await assert.rejects(mesh.checkOrganizationServers(tenant));
         assert.ok(records.get(`${platform}:servers`)[0]._id);
-        assert.ok(records.get(`${platform}:organization_server_reservations`)[0].server_id);
-        assert.equal((await handler.ensure(tenant)).status, 'existing');
-        assert.equal(apiCalls.length, 1);
+        assert.equal(records.has(`${platform}:organization_server_reservations`), false);
+        await assert.rejects(mesh.checkOrganizationServers(tenant));
+        assert.equal(apiCalls.length, 2);
     });
 }
 

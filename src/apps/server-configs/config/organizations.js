@@ -23,6 +23,11 @@ export default {
             "organizationWorkflow": "create-organization",
             "clusterWorkflow": "create-organization-cluster",
             "clusterProvisioning": {
+                "initialDeployment": {
+                    "cloud": "65f8ca227b39a3c1a8904e02",
+                    "region": "us-east-1",
+                    "vmType": "t3a.small"
+                },
                 "scaleIn": { "minClusterSize": 0 }
             },
             "repositoryWorkflow": "create-organization-repository",

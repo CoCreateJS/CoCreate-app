@@ -25,8 +25,14 @@ export default {
             organizationId: requiredText('$payload.create-organization-cluster.0.organizationId', 'Organization cluster requires an organization ID.'),
             clusterId: requiredText('$payload.create-organization-cluster.0.cluster._id', 'Organization cluster requires a cluster ID.'),
             clusterName: requiredText('$payload.create-organization-cluster.0.cluster.name', 'Organization cluster requires a name.'),
-            checkName: { '$if.$actions.clusterName.$eq': { '$actions.organizationId': true, $else: { $throw: 'Organization cluster name must equal its organization ID.' } } },
+            managerOrganizationId: requiredText('$payload.create-organization-cluster.0.cluster.manager.organization_id', 'Organization cluster requires its manager organization ID.'),
+            managerHost: requiredText('$payload.create-organization-cluster.0.cluster.manager.host', 'Organization cluster requires its manager host.'),
+            managedOrganizationId: requiredText('$payload.create-organization-cluster.0.cluster.manager.for', 'Organization cluster requires the managed organization ID.'),
+            checkManagedOrganization: { '$if.$actions.managedOrganizationId.$eq': { '$actions.organizationId': true, $else: { $throw: 'Cluster manager.for must equal the managed organization ID.' } } },
             checkType: { '$if.$payload.create-organization-cluster.0.cluster.type.$eq': { organization: true, $else: { $throw: 'An organization cluster is required.' } } },
+            initialDeploymentCloud: requiredText('$payload.create-organization-cluster.0.cluster.initialDeployment.cloud', 'Organization cluster requires initialDeployment cloud.'),
+            initialDeploymentRegion: requiredText('$payload.create-organization-cluster.0.cluster.initialDeployment.region', 'Organization cluster requires initialDeployment region.'),
+            initialDeploymentVmType: requiredText('$payload.create-organization-cluster.0.cluster.initialDeployment.vmType', 'Organization cluster requires initialDeployment vmType.'),
             cluster: {
                 '$crud.send': {
                     method: 'object.update', array: 'clusters', upsert: true,

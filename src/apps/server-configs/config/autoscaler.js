@@ -244,6 +244,8 @@ echo "[CoCreate] Node successfully locked down. HTTP (80), HTTPS (443), and mesh
             "worker": "*",
             "config": {
                 "clouds.aws": {
+                    "endpoint": { "delete": "delete-instance" },
+                    "method": { "delete": "post" },
                     "instances": [
                         { "name": "t3a.nano", "vCPU": 2, "memoryGb": 0.5 },
                         { "name": "t3a.small", "vCPU": 2, "memoryGb": 2, "default": true },

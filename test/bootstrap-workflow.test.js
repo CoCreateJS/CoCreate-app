@@ -8,6 +8,7 @@ import seed from '../src/apps/workflows/config/data.js';
 import organizationSeed from '../src/apps/workflows/config/organization.js';
 import repositorySeed from '../src/apps/workflows/config/repository.js';
 import clusterSeed from '../src/apps/workflows/config/cluster.js';
+import managementKeySeed from '../src/apps/api-keys/config/managed-cluster.js';
 
 const workflowName = 'create-organization-database';
 async function run(t, options = {}) {
@@ -38,6 +39,9 @@ async function run(t, options = {}) {
             const key = `${request.organization_id}:${request.array}`;
             const stored = records.get(key) || [];
             if (request.method === 'object.read') {
+                const reference = [managementKeySeed]
+                    .find(seed => seed.array === request.array && seed.object[0]._id === request.filter?.query?._id);
+                if (reference && request.organization_id === 'platform') return { object: options.missingManagementReference ? [] : structuredClone(reference.object) };
                 if (request.organization_id === 'source') return { object: (options.missingCredential && request.array === 'keys') || (options.missingProfile && request.array !== 'keys') ? [] : [request.array === 'keys' ? credential : sourceUser] };
                 if (options.duplicateHost && request.array === 'organizations' && request.filter?.query?.['host.name']) return { object: [{ _id: 'taken' }] };
                 if (request.array === 'workflows' && request.organization_id === 'platform') return { object: [definition, ...organizationSeed.object, ...clusterSeed.object, ...repositorySeed.object].filter(item => item.name === request.filter.query.name && !(options.missingRepositoryWorkflow && item.name === 'create-organization-repository') && !(options.missingClusterWorkflow && item.name === 'create-organization-cluster')) };
@@ -46,8 +50,13 @@ async function run(t, options = {}) {
                 const id = request.object?.[0]?._id || request.filter?.query?._id;
                 return { object: structuredClone(id ? stored.filter(item => item._id === id) : stored) };
             }
-            if (options.credentialActivationError && request.array === 'apis' && request.object?.enabled === true) return { success: false };
+            if (options.credentialActivationError && request.array === 'apis' && request.object?.enabled === true &&
+                stored.some(item => item._id === request.object._id && item.authentication === 'ssh-deploy-key')) return { success: false };
+            if (options.failedManagementArray === request.array && request.method === 'object.create') return { success: false };
             if (options.failedClusterScope === request.organization_id && request.array === 'clusters') return { success: false };
+            if ((options.failedRepositoryClusterScope === request.organization_id ||
+                (options.failedRepositoryClusterScope === 'any-tenant' && request.organization_id !== 'platform')) &&
+                request.array === 'clusters' && request.object?.repositories) return { success: false };
             if (options.failTenantCluster && request.array === 'clusters' && request.organization_id !== 'platform') return { success: false };
             if (options.failedTenantArray === request.array && request.organization_id !== 'platform') return { success: false };
             const objects = Array.isArray(request.object) ? request.object : [request.object];
@@ -123,32 +132,56 @@ test('the real Atlas workflow stores and returns its bootstrap before tenant ini
     assert.equal(writes.length, 1, 'Only the workflow persists bootstrap credentials');
     assert.ok(requests.indexOf(writes[0]) < requests.findIndex(item => item.organization_id === organization._id));
     assert.equal(apiCalls[0].data.organizationName, organization._id);
-    assert.equal(organization.git.checkout_branch, 'dev');
+    assert.equal(organization.git.checkout_branch, 'main');
     const platformCluster = records.get('platform:clusters')[0];
     const tenantCluster = records.get(`${organization._id}:clusters`)[0];
     assert.deepEqual(platformCluster, tenantCluster);
     assert.equal(platformCluster.name, organization._id);
+    assert.deepEqual(platformCluster.manager, { organization_id: 'platform', host: 'platform.test', for: organization._id });
+    const initialClusterWrite = requests.find(request => request.array === 'clusters' && request.object?.manager);
+    assert.deepEqual(initialClusterWrite.object.repositories, []);
+    assert.equal(records.has('platform:servers'), false);
     assert.equal(platformCluster.type, 'organization');
     assert.equal(platformCluster.host, 'tenant.test');
     assert.equal(platformCluster.scaleIn.minClusterSize, 0);
+    assert.deepEqual(platformCluster.initialDeployment, {
+        cloud: '65f8ca227b39a3c1a8904e02', region: 'us-east-1', vmType: 't3a.small'
+    });
     assert.equal(organization.cluster_id, platformCluster._id);
     assert.equal(records.get(`${organization._id}:organizations`)[0].cluster_id, platformCluster._id);
     assert.equal(response.organization.cluster_id, platformCluster._id);
+    const managementKey = records.get('platform:keys').find(item => item.cluster_id === platformCluster._id);
+    assert.match(managementKey.key, /^[a-f0-9-]{36}$/);
+    assert.equal(managementKey.tenant_organization_id, organization._id);
+    assert.equal(managementKey.admin, false);
+    assert.equal(managementKey.default, false);
+    assert.deepEqual(managementKey.methods, managementKeySeed.object[0].methods);
+    assert.equal(records.get(`${organization._id}:apis`).some(item => item.provider === 'CoCreate'), false);
+    assert.equal(records.has(`${organization._id}:endpoints`), false);
+    assert.equal(JSON.stringify(response).includes(managementKey.key), false);
+    assert.equal(JSON.stringify(apiCalls).includes(managementKey.key), false);
     const github = apiCalls.filter(item => item.api === 'github-organizations');
     assert.deepEqual(github.map(item => item.endpoint), ['create-repository-from-template', 'get-repository-file', 'update-repository-file', 'create-repository-branch', 'create-repository-branch', 'get-github-ssh-host-keys', 'create-repository-deploy-key']);
     const config = JSON.parse(github[2].data.content.slice('export default '.length).trim().replace(/;$/, ''));
     assert.equal(config.organization_id, organization._id);
     assert.deepEqual(config.host.$branch, { main: 'wss://tenant.test', dev: 'wss://dev.tenant.test', test: 'wss://test.tenant.test' });
+    assert.equal(config.host.$branch[platformCluster.repositories[0].branch], `wss://${platformCluster.host}`);
     assert.equal(config.apikey, '');
     assert.equal(config.directories[0].object.src, '{{source}}');
     assert.equal(github[3].data.sha, github[4].data.sha);
     assert.equal(response.organization.bootstrapStorage, undefined);
-    const repositoryCredential = records.get(`${organization._id}:apis`)[0];
+    const repositoryCredential = records.get(`${organization._id}:apis`).find(item => item.authentication === 'ssh-deploy-key');
     assert.equal(repositoryCredential.authentication, 'ssh-deploy-key');
     assert.equal(repositoryCredential.enabled, true);
     assert.equal(repositoryCredential.deploy_key_id, 123);
     assert.equal(repositoryCredential._id, organization.git.api);
     assert.equal(repositoryCredential.repository_url, organization.git.clone_url);
+    assert.deepEqual(platformCluster.repositories, [{
+        url: organization.git.clone_url, api: repositoryCredential._id,
+        branch: 'main', remote: 'origin', localFsRoot: '../', directory: organization.git.repository,
+        onStartup: 'clone', onShutdown: 'commit-and-push', startupTimeoutMs: 60000, shutdownTimeoutMs: 10000,
+        initialUpload: { enabled: true, completed: false }
+    }]);
     assert.equal(repositoryCredential.expires_at, undefined);
     assert.match(repositoryCredential.privateKey, /BEGIN RSA PRIVATE KEY/);
     assert.equal(JSON.stringify(response).includes(repositoryCredential.privateKey), false);
@@ -156,6 +189,24 @@ test('the real Atlas workflow stores and returns its bootstrap before tenant ini
     assert.equal(records.has('platform:apis'), false);
     assert.equal(JSON.stringify(response).includes(bootstrap.connectionString), false);
 });
+
+for (const scope of ['platform', 'tenant']) {
+    test(`failed ${scope} cluster repository registration prevents signup readiness`, async t => {
+        const { response } = await run(t, { failedRepositoryClusterScope: scope === 'platform' ? 'platform' : 'any-tenant' });
+        assert.equal(response.success, false);
+    });
+}
+
+for (const options of [{ missingManagementReference: true }, { failedManagementArray: 'keys' }]) {
+    test(`management access failure cannot complete signup: ${JSON.stringify(options)}`, async t => {
+        const { response, records, apiCalls } = await run(t, options);
+        assert.equal(response.success, false);
+        const organization = records.get('platform:organizations')[0];
+        assert.equal(organization.provisioning.cluster.status, 'ready');
+        assert.equal(organization.provisioning.management.status, 'failed');
+        assert.equal(apiCalls.some(call => call.api === 'github-organizations'), false);
+    });
+}
 
 for (const bootstrap of [
     { name: 'primary', provider: 'postgresql', connectionUri: 'postgres://test', ssl: { rejectUnauthorized: true }, custom: ['a', 3] },
@@ -248,7 +299,7 @@ for (const option of ['readOnlyDeployKey', 'missingHostKeys', 'credentialActivat
     test(`signup cannot finish with ${option}`, async t => {
         const { response, records } = await run(t, { [option]: true });
         assert.equal(response.success, false);
-        const credentials = [...records.entries()].filter(([key]) => key.endsWith(':apis')).flatMap(([, value]) => value);
+        const credentials = [...records.entries()].filter(([key]) => key.endsWith(':apis')).flatMap(([, value]) => value).filter(item => item.authentication === 'ssh-deploy-key');
         assert.equal(credentials.length, 1);
         assert.equal(credentials[0].enabled, false);
         assert.equal(credentials[0].status, 'pending');
@@ -267,7 +318,8 @@ for (const options of [{ missingClusterWorkflow: true }, { failedClusterScope: '
 test('cluster deployment settings come from platform configuration, with identity fixed by signup', async t => {
     const { response, records } = await run(t, { clusterProvisioning: {
         _id: 'forged-cluster', name: 'forged-name', type: 'forged-type', host: 'forged.test',
-        organization_id: 'forged-owner', clouds: ['cloud-api'], storage: 'storage-api', routing: 'routing-api',
+        organization_id: 'forged-owner', manager: { organization_id: 'forged-manager', host: 'forged.test', for: 'forged-tenant' }, clouds: ['cloud-api'], storage: 'storage-api', routing: 'routing-api',
+        initialDeployment: { cloud: 'custom-cloud', region: 'custom-region', vmType: 'custom-vm' },
         scaleIn: { minClusterSize: 1 }
     } });
     assert.equal(response.success, true, response.message);
@@ -277,10 +329,20 @@ test('cluster deployment settings come from platform configuration, with identit
     assert.equal(cluster.type, 'organization');
     assert.equal(cluster.host, 'tenant.test');
     assert.equal(cluster.organization_id, undefined);
+    assert.deepEqual(cluster.manager, { organization_id: 'platform', host: 'platform.test', for: response.organization._id });
     assert.deepEqual(cluster.clouds, ['cloud-api']);
     assert.equal(cluster.storage, 'storage-api');
     assert.equal(cluster.routing, 'routing-api');
     assert.equal(cluster.scaleIn.minClusterSize, 1);
+    assert.deepEqual(cluster.initialDeployment, { cloud: 'custom-cloud', region: 'custom-region', vmType: 'custom-vm' });
+    const tenantCluster = records.get(`${cluster.manager.for}:clusters`)[0];
+    assert.deepEqual(tenantCluster.initialDeployment, cluster.initialDeployment);
+    assert.deepEqual(tenantCluster.manager, cluster.manager);
+    assert.equal(Object.hasOwn(cluster.manager, 'initialDeployment'), false);
+    assert.equal(Object.hasOwn(cluster.manager, 'repositories'), false);
+    assert.ok(cluster.repositories.length > 0);
+    assert.equal(records.has('platform:servers'), false);
+    assert.equal(records.has(`${cluster.manager.for}:servers`), false);
 });
 
 for (const minimum of [-1, '0', 0.5]) {
@@ -288,6 +350,16 @@ for (const minimum of [-1, '0', 0.5]) {
         const { response, records, apiCalls } = await run(t, { clusterProvisioning: { scaleIn: { minClusterSize: minimum } } });
         assert.equal(response.success, false);
         assert.match(response.message, /minimum cluster size/);
+        assert.equal(records.size, 0);
+        assert.equal(apiCalls.length, 0);
+    });
+}
+
+for (const initialDeployment of [null, '', { cloud: '' }, { region: '' }, { vmType: '' }]) {
+    test(`invalid initial deployment is rejected before signup provisioning: ${JSON.stringify(initialDeployment)}`, async t => {
+        const { response, records, apiCalls } = await run(t, { clusterProvisioning: { scaleIn: { minClusterSize: 0 }, initialDeployment } });
+        assert.equal(response.success, false);
+        assert.match(response.message, /initialDeployment/);
         assert.equal(records.size, 0);
         assert.equal(apiCalls.length, 0);
     });

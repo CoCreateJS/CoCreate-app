@@ -430,14 +430,57 @@ export default {
             "_id": "65f8cb447b39a3c1a8904e15",
             "api_id": "65f8ca227b39a3c1a8904e02",
             "name": "delete-instance",
-            "method": "delete",
-            "endpoint": {
-                "$concat": [
-                    "/instances/",
-                    "$payload.data.vmId"
-                ]
+            "method": "post",
+            "endpoint": "/",
+            "description": "Terminates an EC2 instance through the signed HTTP Query API and confirms the matching termination acknowledgement.",
+            "actions": {
+                "aws": {
+                    "$api.send": {
+                        "api": "$config.name",
+                        "method": "post",
+                        "endpoint": "/",
+                        "region": "$payload.region",
+                        "encoding": "form",
+                        "data": {
+                            "Action": "TerminateInstances",
+                            "Version": "2016-11-15",
+                            "InstanceId.1": "$payload.data.vmId"
+                        }
+                    }
+                },
+                "instanceId": {
+                    "$aws.data.match": [
+                        "<instanceId>([^<]+)</instanceId>"
+                    ]
+                },
+                "state": {
+                    "$aws.data.match": [
+                        "<currentState>[\\s\\S]*?<name>([^<]+)</name>"
+                    ]
+                },
+                "checkInstance": {
+                    "$if.$instanceId.1.$eq": {
+                        "$payload.data.vmId": true,
+                        "$else": {
+                            "$throw": "AWS termination response did not identify the requested instance."
+                        }
+                    }
+                },
+                "checkState": {
+                    "$if.$state.1.$eq": {
+                        "shutting-down": true,
+                        "terminated": true,
+                        "$else": {
+                            "$throw": "AWS did not acknowledge instance termination."
+                        }
+                    }
+                }
             },
-            "description": "Terminates targeted AWS EC2 virtual machine instance.",
+            "resolved": true,
+            "data": {
+                "instanceId": "$instanceId.1",
+                "state": "$state.1"
+            },
             "enabled": true
         },
         {

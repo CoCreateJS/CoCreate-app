@@ -89,3 +89,23 @@ enabling `create-organization`. Every endpoint remains disabled in the seed
 until its credentials and required permissions are configured. The Atlas
 Admin API Service Account must have Organization Owner access to the target
 organization to invite an owner.
+
+## Built-in managed-network requests
+
+Cluster server.manager.send directly POSTs the prepared provider envelope to
+https://<server.manager.host>/manager, using manager.apiKey in the Authorization
+Bearer header. This is a built-in network relationship, with no CoCreate
+transport API/endpoint seed or nested data.request wrapper. Unmanaged dispatch
+still uses server.api.send. The same manager mirrors existing state.save server
+updates through the core authorized handler; telemetry is excluded.
+
+The keyless permission reference remains in api-keys/config/managed-cluster.js.
+Signup generates an authorized platform keys record; first-VM creation includes
+its credential in manager on both inventory copies. Authorize evaluates
+instance endpoint permissions on incoming requests. Cluster-ID/AST predicates
+remain deferred. Existing database records from the retired transport approach,
+if any were uploaded, require explicit migration/cleanup separately.
+
+### AWS termination
+
+AWS delete-instance uses a signed HTTP Query POST to / with Action=TerminateInstances, Version=2016-11-15 and InstanceId.1. It accepts only a matching instance ID in shutting-down or terminated state and returns normalized instanceId/state. It uses the existing AWS API/SigV4 configuration, without an SDK. The AWS provider profile now selects post for method.delete. AutoScaler marks decommission.status terminating after this acknowledgement and retains server inventory for the normal State/logging lifecycle. It does not poll for final VM termination or delete the record; eventual garbage cleanup is separate.
