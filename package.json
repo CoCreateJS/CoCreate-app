@@ -45,7 +45,7 @@
     "upload": "coc upload"
   },
   "devDependencies": {
-    "@cocreate/webpack": "^1.9.0"
+    "@cocreate/webpack": "^2.0.0"
   },
   "dependencies": {
     "@cocreate/client": "^2.0.0",
