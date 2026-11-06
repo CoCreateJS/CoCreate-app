@@ -42,6 +42,17 @@ The managed route workflow and region mapping are documented in the workspace
 `Bunny.md`; do not invoke DNS mutations until its public-IP and routing-policy
 inputs are available.
 
+The [Bunny region mapping](Bunny/region-mapping.json) groups cloud regions by
+DNS routing region. Select the DNS region first, then a cloud provider and one
+of its mapped regions. Provider values are arrays so a DNS region can offer
+multiple cloud-region candidates. Region keys are the routing group labels;
+cloud-region values are provider region codes.
+
+For autoscaling, aggregate demand and available capacity within the selected
+DNS routing region across cloud providers, then choose a cloud region within
+that group for provisioning. This mapping supplies the selection data; the
+autoscaler does not consume it yet.
+
 ## MongoDB Atlas provisioning
 
 MongoDB Atlas provisioning records live in `MongoDB/data.js`. The Atlas

@@ -1,0 +1,104 @@
+{
+  "provider": "bunny",
+  "regions": {
+    "US East": {
+      "aws": [
+        "us-east-1"
+      ],
+      "gcp": [
+        "us-east4"
+      ],
+      "azure": [
+        "eastus"
+      ]
+    },
+    "US West": {
+      "aws": [
+        "us-west-2"
+      ],
+      "gcp": [
+        "us-west1"
+      ],
+      "azure": [
+        "westus2"
+      ]
+    },
+    "Europe Central": {
+      "aws": [
+        "eu-central-1"
+      ],
+      "gcp": [
+        "europe-west3"
+      ],
+      "azure": [
+        "germanywestcentral"
+      ]
+    },
+    "Europe West": {
+      "aws": [
+        "eu-west-2"
+      ],
+      "gcp": [
+        "europe-west2"
+      ],
+      "azure": [
+        "ukwest"
+      ]
+    },
+    "Asia East": {
+      "aws": [
+        "ap-northeast-1"
+      ],
+      "gcp": [
+        "asia-northeast1"
+      ],
+      "azure": [
+        "japaneast"
+      ]
+    },
+    "Asia Southeast": {
+      "aws": [
+        "ap-southeast-1"
+      ],
+      "gcp": [
+        "asia-southeast1"
+      ],
+      "azure": [
+        "southeastasia"
+      ]
+    },
+    "Oceania": {
+      "aws": [
+        "ap-southeast-2"
+      ],
+      "gcp": [
+        "australia-southeast1"
+      ],
+      "azure": [
+        "australiaeast"
+      ]
+    },
+    "South America": {
+      "aws": [
+        "sa-east-1"
+      ],
+      "gcp": [
+        "southamerica-east1"
+      ],
+      "azure": [
+        "brazilsouth"
+      ]
+    },
+    "Middle East & Africa": {
+      "aws": [
+        "me-central-1"
+      ],
+      "gcp": [
+        "me-central1"
+      ],
+      "azure": [
+        "uaenorth"
+      ]
+    }
+  }
+}
