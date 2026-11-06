@@ -268,7 +268,7 @@
 					id="signup-create-btn"
 					type="button"
 					class="btn btn-success btn-spinner w-100"
-					actions="disabled, validate(#signup-form), signUp, signIn, createOrganization, click, focus"
+					actions="disabled, validate(#signup-form), signUp, signIn, createOrganization, timeout(60000), click, focus"
 					click-query="$closest form"
 					click.data-signup-step="complete"
 					focus-query="$document #signup-complete-title"
@@ -280,7 +280,7 @@
 						>Create account and organization</span
 					>
 					<span class="button-busy"
-						>Creating your account and organization...</span
+						>Preparing your organization and starting your workspace...</span
 					>
 				</button>
 			</div>

@@ -35,7 +35,7 @@ Signup repository initialization also registers the server-generated public key 
 
 Organization cluster deployment defaults come from trusted `organizations.clusterProvisioning`; the minimum defaults explicitly to zero. The workflow requires `initialDeployment.cloud`, `initialDeployment.region` and `initialDeployment.vmType`. Signup supplies static AWS API `65f8ca227b39a3c1a8904e02`, region `us-east-1`, and VM type `t3a.small` through trusted `organizations.clusterProvisioning` for now; future selection can populate the same fields. This workflow creates no VM and makes no startup-script changes. It supplies a stable managed cluster identity for the platform's later deployment processor.
 
-`create-organization-server` (`server.js`) is the separate first-VM workflow. Mesh queries running servers for the cluster identified by manager.for and manager.organization_id, then calls Manager.createServer(cluster) when empty. Manager consumes the exact cloud, region and VM type in cluster.initialDeployment, creates server inventory in both scopes, and prepares the startup AST using manager.for as the tenant identity. This workflow dispatches the prepared script through the selected platform cloud's `create-instance`, validates its instance ID and persists the provider patch in platform inventory. Cluster applies the identical patch in tenant scope without changing cloud execution scope. It does not run signup, create databases/repositories, or repeat tenant initialization. The existing generic `provision-cluster-vm` workflow remains separate from this managed-organization entry.
+`create-organization-server` (`server.js`) is the separate first-VM workflow. Signup invokes Manager.createServer(cluster) after document and repository setup. Later Mesh activation queries running servers for the cluster identified by manager.for and manager.organization_id, then calls the same method when empty. Manager consumes the exact cloud, region and VM type in cluster.initialDeployment, creates server inventory in both scopes, and prepares the startup AST using manager.for as the tenant identity. This workflow dispatches the prepared script through the selected platform cloud's `create-instance`, validates its instance ID and persists the provider patch in platform inventory. Cluster applies the identical patch in tenant scope without changing cloud execution scope. It does not run signup, create databases/repositories, or repeat tenant initialization. The existing generic `provision-cluster-vm` workflow remains separate from this managed-organization entry.
 
 Repository lifecycle now reads cluster.repositories rather than repository
 servers_config records. After GitHub initialization, the signup handler appends
@@ -51,4 +51,9 @@ identical metadata in both cluster copies. The workflow requires those fields an
 manager.for against the organization being initialized; name is a nonempty editable label.
 initialDeployment and repositories remain sibling cluster properties. The initial draft
 has a repositories array; repository initialization populates both copies before ready.
-Signup prepares these documents and never invokes VM deployment itself.
+After preparing these documents, signup awaits server.manager.createServer(cluster)
+with the completed repository configuration before returning success and the tenant
+/auth/ redirect. Manager uses initialDeployment and the existing VM workflow. The
+client waits one minute with its signup spinner visible before Actions follows href.
+This delay does not verify application readiness; checkout and initial upload run
+on the new node. Creation failure aborts the signup action chain.

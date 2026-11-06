@@ -25,7 +25,7 @@ export default {
             "worker": "*",
             "config": {
                 "host": "dev.cocreatejs.com",
-                "binaryUrl": "https://github.com/CoCreateJS/CoCreate-server/releases/download/dev-latest/cocreatews-node-linux-x64.tar.gz",
+                "binaryUrl": "https://github.com/CoCreateJS/CoCreate-server/releases/download/dev-latest/cocreate-server-node-linux-x86_64.tar.gz",
                 "startupScript": {
                     "$concat": [[`#!/usr/bin/env bash
 # ==============================================================================

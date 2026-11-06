@@ -31,7 +31,8 @@ async function run(t, options = {}) {
             const query = request.filter?.query || {};
             if (request.method === 'object.read') {
                 if (request.array === 'organizations') return { object: [{ _id: tenant, cluster_id: clusterId, bootstrapStorage: tenantStorage }] };
-                if (request.array === 'clusters') return { object: [cluster] };
+                if (request.array === 'clusters') return { object: Object.entries(query).every(([field, value]) =>
+                    field.split('.').reduce((object, key) => object?.[key], cluster) === value) ? [cluster] : [] };
                 if (request.array === 'keys') return { object: [{ key: 'test-only-management-key' }] };
                 if (request.array === 'apis') return { object: [{ _id: 'cloud-api', type: 'cloud', enabled: true, name: 'platform-cloud', provider: 'aws', token: 'platform-token-must-not-leak' }] };
                 if (request.array === 'workflows') return { object: serverSeed.object.filter(item => item.name === query.name) };
@@ -57,7 +58,7 @@ async function run(t, options = {}) {
             assert.equal(request.endpoint, 'create-instance');
             assert.equal(request.region, 'us-east-1');
             assert.equal(request.data.region, 'us-east-1');
-            assert.equal(request.data.vmType, 't3a.small');
+            assert.equal(request.data.vmType, options.vmType || 't3a.small');
             assert.equal(typeof request.data.environment, 'string');
             // Run the real cloud endpoint's script preprocessing in platform context.
             const sandbox = {
@@ -88,13 +89,17 @@ async function run(t, options = {}) {
     runtime.manager = handler;
     const mesh = new ServerMesh();
     mesh.server = runtime;
-    return { handler, mesh, records, requests, apiCalls, platform };
+    return { handler, mesh, cluster, records, requests, apiCalls, platform };
 }
 
 test('activation renders tenant startup, dispatches the real VM workflow in platform scope, and mirrors provider data', async t => {
     const { mesh, records, requests, apiCalls, platform } = await run(t);
     const result = await mesh.checkOrganizationServers(tenant);
     assert.equal(result.status, 'created');
+    assert.deepEqual(result.data, { instanceId: 'i-test', privateIpAddress: '10.0.0.2' });
+    const workflowClusterRead = requests.find(request => request.array === 'clusters' && request.filter?.query?._id === clusterId);
+    assert.deepEqual(workflowClusterRead.filter.query, { _id: clusterId, type: 'organization', 'manager.for': tenant });
+    assert.equal(workflowClusterRead.organization_id, platform);
     const parent = records.get(`${platform}:servers`)[0];
     const child = records.get(`${tenant}:servers`)[0];
     assert.deepEqual(parent, child);
@@ -107,6 +112,23 @@ test('activation renders tenant startup, dispatches the real VM workflow in plat
     assert.equal(writes[0].organization_id, platform);
     assert.equal(writes[1].organization_id, tenant);
     assert.equal(records.has(`${platform}:organization_server_reservations`), false);
+});
+
+test('later deployment uses the same real workflow with its selected placement and server ID', async t => {
+    const { handler, cluster, records, apiCalls, platform } = await run(t, { vmType: 't3a.medium' });
+    const serverId = 'dddddddddddddddddddddddd';
+    const result = await handler.createServer(cluster, {
+        ...cluster.initialDeployment, vmType: 't3a.medium', server_id: serverId, api: 'platform-cloud'
+    });
+    assert.deepEqual(result.data, { instanceId: 'i-test', privateIpAddress: '10.0.0.2' });
+    assert.equal(apiCalls[0].data.server_id, serverId);
+    assert.equal(cluster.initialDeployment.vmType, 't3a.small');
+    const parent = records.get(`${platform}:servers`)[0];
+    const child = records.get(`${tenant}:servers`)[0];
+    assert.deepEqual(parent, child);
+    assert.equal(parent._id, serverId);
+    assert.equal(parent.infrastructure.vmType, 't3a.medium');
+    assert.equal(parent.infrastructure.instanceId, 'i-test');
 });
 
 for (const option of ['providerError', 'noInstanceId', 'failPersistence']) {

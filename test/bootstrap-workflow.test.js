@@ -27,12 +27,23 @@ async function run(t, options = {}) {
             '$data.create-organization-database.0.bootstrapStorage': '$actions.bootstrapStorage'
         };
     }
-    const records = new Map(), requests = [], apiCalls = [];
+    const records = new Map(), requests = [], apiCalls = [], creationCalls = [];
     let response;
     const sourceUser = { _id: 'user-1', name: 'Existing User', password: 'legacy-password' };
     const credential = { _id: 'credential-1', type: 'user', key: 'user-1', array: 'contacts', password: 'existing-hash' };
     const runtime = {
         organization_id: 'platform',
+        manager: { async createServer(cluster) {
+            creationCalls.push(structuredClone(cluster));
+            assert.equal(response, undefined, 'organization response must wait for server creation');
+            assert.deepEqual(cluster, records.get('platform:clusters')[0]);
+            assert.deepEqual(cluster, records.get(`${cluster.manager.for}:clusters`)[0]);
+            assert.ok(cluster.repositories.length > 0);
+            assert.equal(records.get(`${cluster.manager.for}:apis`).find(item => item.authentication === 'ssh-deploy-key').enabled, true);
+            if (options.onCreateServer) await options.onCreateServer(cluster);
+            if (options.creationError) throw new Error('Server creation failed');
+            return { status: 'created', server: { manager: { apiKey: 'not-for-client' } }, data: { instanceId: 'instance-1' } };
+        } },
         wsManager: { on() {}, send(value) { response = value; return value; } },
         crud: { async send(request) {
             requests.push(structuredClone(request));
@@ -105,8 +116,37 @@ async function run(t, options = {}) {
         organization_id: 'forged-platform', user: { _id: 'forged-user' }, key: [{ admin: true }],
         organization: options.organization || { name: 'Tenant', host: [{ name: 'tenant.test' }], bootstrapStorage: { provider: 'forged' }, cluster_id: 'forged-cluster', git: { repository: 'forged-repository' } }
     });
-    return { response, records, requests, apiCalls };
+    return { response, records, requests, apiCalls, creationCalls };
 }
+
+test('signup awaits creation with the complete saved cluster before returning the tenant sign-in redirect', async t => {
+    let completeCreation, started;
+    const pending = new Promise(resolve => { completeCreation = resolve; });
+    const entered = new Promise(resolve => { started = resolve; });
+    let finished = false;
+    const operation = run(t, { onCreateServer: async () => { started(); await pending; } });
+    operation.then(() => { finished = true; });
+    await entered;
+    assert.equal(finished, false);
+    completeCreation();
+    const { response, creationCalls } = await operation;
+    assert.equal(response.success, true, response.message);
+    assert.equal(creationCalls.length, 1);
+    assert.equal(creationCalls[0]._id, response.organization.cluster_id);
+    assert.equal(response.redirect, 'https://tenant.test/auth/');
+    assert.equal(JSON.stringify(response).includes('not-for-client'), false);
+    assert.equal(response.data, undefined);
+});
+
+test('server creation rejection aborts organization success and provides no redirect', async t => {
+    const { response, records, creationCalls } = await run(t, { creationError: true });
+    assert.equal(creationCalls.length, 1);
+    assert.equal(response.success, false);
+    assert.equal(response.error, 'Server creation failed');
+    assert.equal(response.redirect, undefined);
+    assert.equal(records.get('platform:organizations')[0].provisioning.status, 'failed');
+    assert.equal(records.get('platform:organizations')[0].provisioning.repository.status, 'ready');
+});
 
 test('the upload seed retains the existing static ID and disabled state', () => {
     assert.equal(seed.array, 'workflows');

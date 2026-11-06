@@ -10,7 +10,7 @@ export default {
     method: 'object.update', array: 'workflows', upsert: true,
     object: [{
         _id: '6b0600000000000000000002', name: 'create-organization-server', enabled: true,
-        description: 'Creates the first organization VM through platform cloud credentials and persists its provider identity. Cluster mirrors the same inventory and provider patch into the tenant scope.',
+        description: 'Creates an organization VM through platform cloud credentials and persists its provider identity. Cluster mirrors the same inventory and provider patch into the tenant scope.',
         actions: {
             serverLookup: { '$crud.send': {
                 method: 'object.read', array: 'servers', filter: {
@@ -20,7 +20,7 @@ export default {
             server: readOne('serverLookup', 'The reserved platform server is unavailable.'),
             clusterLookup: { '$crud.send': {
                 method: 'object.read', array: 'clusters', filter: {
-                    query: { _id: '$actions.server.cluster_id', type: 'organization', name: '$actions.server.tenant_organization_id' }, limit: 1
+                    query: { _id: '$actions.server.cluster_id', type: 'organization', 'manager.for': '$actions.server.tenant_organization_id' }, limit: 1
                 }
             } },
             cluster: readOne('clusterLookup', 'The managed organization cluster is unavailable.'),
@@ -61,6 +61,7 @@ export default {
             persist: { '$crud.send': { method: 'object.update', array: 'servers', object: '$actions.patch' } },
             persisted: readOne('persist', 'The provider instance ID was not persisted in platform inventory.'),
             '$data.create-organization-server.0.patch': '$actions.patch',
+            '$data.create-organization-server.0.data': '$actions.instance.data',
             '$data.create-organization-server.0.server': '$actions.persisted'
         }
     }]
