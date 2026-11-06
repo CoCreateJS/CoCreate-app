@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@cocreate/client": "^2.0.0",
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "@cocreate/socket": "^2.0.1"
   }
 }

@@ -146,9 +146,9 @@ export default {
             repo: "github.com/CoCreateJS/CoCreate-config.git"
         },
         socket: {
-            import: "@cocreate/socket-client",
-            path: "../CoCreate-modules/socket-client",
-            repo: "github.com/CoCreateJS/CoCreate-socket-client.git"
+            import: "@cocreate/socket",
+            path: "../CoCreate-modules/socket",
+            repo: "github.com/CoCreateJS/socket.git"
         },
         events: {
             import: "@cocreate/events",

@@ -299,8 +299,8 @@ export default async (env, argv) => {
                         reuseExistingChunk: true
                     },
                     ws: {
-                        test: /[\\/]CoCreate-modules[\\/]socket-client[\\/]node_modules[\\/]ws[\\/]browser\.js$/,
-                        name: "socket-client-ws-browser",
+                        test: /[\\/]CoCreate-modules[\\/]socket[\\/]node_modules[\\/]ws[\\/]browser\.js$/,
+                        name: "socket-ws-browser",
                         chunks: "all",
                         enforce: true,
                         priority: 30,

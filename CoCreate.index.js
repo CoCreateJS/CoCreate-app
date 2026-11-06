@@ -341,7 +341,7 @@ dependency("element-prototype", import(/* webpackChunkName: "element-prototype" 
 dependency("observer", import(/* webpackChunkName: "observer" */ "@cocreate/observer"));
 dependency("indexeddb", import(/* webpackChunkName: "indexeddb" */ "@cocreate/indexeddb"));
 dependency("config", import(/* webpackChunkName: "config" */ "@cocreate/config"));
-dependency("socket", import(/* webpackChunkName: "socket" */ "@cocreate/socket-client"));
+dependency("socket", import(/* webpackChunkName: "socket" */ "@cocreate/socket"));
 dependency("events", import(/* webpackChunkName: "events" */ "@cocreate/events"));
 dependency("aria", import(/* webpackChunkName: "aria" */ "@cocreate/aria"));
 lazyLoad("localstorage", "[storage*='localstorage'], [localstorage-set], [localstorage-get]", () => import(/* webpackChunkName: "localstorage" */ "@cocreate/local-storage"));
