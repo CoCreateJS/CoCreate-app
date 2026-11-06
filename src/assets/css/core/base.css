@@ -369,7 +369,7 @@ strong {
 }
 
 .bg-overlay-pattern {
-    background-image: url(/assets/images/landing/bg-pattern.png);
+    background-image: url(/assets/images/bg-pattern.png);
     background-color: transparent;
     background-position: center;
     background-size: cover;
