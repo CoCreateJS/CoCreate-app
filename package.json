@@ -45,11 +45,11 @@
     "upload": "coc upload"
   },
   "devDependencies": {
-    "@cocreate/webpack": "^2.0.0"
+    "@cocreate/webpack": "^2.0.1"
   },
   "dependencies": {
     "@cocreate/client": "^2.0.0",
     "bootstrap": "^5.3.8",
-    "@cocreate/socket": "^2.0.1"
+    "@cocreate/socket": "^3.0.0"
   }
 }
