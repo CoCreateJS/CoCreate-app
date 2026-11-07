@@ -345,7 +345,7 @@ dependency("socket", import(/* webpackChunkName: "socket" */ "@cocreate/socket")
 dependency("events", import(/* webpackChunkName: "events" */ "@cocreate/events"));
 dependency("aria", import(/* webpackChunkName: "aria" */ "@cocreate/aria"));
 lazyLoad("localstorage", "[storage*='localstorage'], [localstorage-set], [localstorage-get]", () => import(/* webpackChunkName: "localstorage" */ "@cocreate/local-storage"));
-lazyLoad("crud", "[crud='true'], [database], [array]", () => import(/* webpackChunkName: "crud" */ "@cocreate/crud-client"));
+lazyLoad("crud", "[crud='true'], [database], [array]", () => import(/* webpackChunkName: "crud" */ "@cocreate/crud/client"));
 lazyLoad("state", "[state-to], [state-id]", () => import(/* webpackChunkName: "state" */ "@cocreate/state"));
 lazyLoad("cache", "[cache='true']", () => import(/* webpackChunkName: "cache" */ "@cocreate/cache"));
 lazyLoad("plugins", "[plugins]", () => import(/* webpackChunkName: "plugins" */ "@cocreate/plugins"));

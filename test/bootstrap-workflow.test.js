@@ -3,7 +3,7 @@ import test from 'node:test';
 import Workflows from '../../CoCreate-modules/workflows/src/server.js';
 import { init as initOrganizations } from '../../CoCreate-modules/organizations/src/server/index.js';
 import config from '../../CoCreate-modules/config/src/server.js';
-import { getStorage } from '../../CoCreate-modules/crud-server/src/getStorage.js';
+import { getStorage } from '../../CoCreate-modules/crud/src/server/getStorage.js';
 import seed from '../src/apps/workflows/config/data.js';
 import organizationSeed from '../src/apps/workflows/config/organization.js';
 import repositorySeed from '../src/apps/workflows/config/repository.js';

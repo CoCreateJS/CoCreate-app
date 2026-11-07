@@ -167,10 +167,10 @@ export default {
             repo: "github.com/CoCreateJS/CoCreate-local-storage.git"
         },
         crud: {
-            import: "@cocreate/crud-client",
+            import: "@cocreate/crud/client",
             selector: "[crud='true'], [database], [array]",
-            path: "../CoCreate-modules/crud-client",
-            repo: "github.com/CoCreateJS/CoCreate-crud-client.git"
+            path: "../CoCreate-modules/crud",
+            repo: "github.com/CoCreateJS/crud-server.git"
         },
         state: {
             import: "@cocreate/state",

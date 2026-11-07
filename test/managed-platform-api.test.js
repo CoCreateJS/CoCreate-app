@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createServer } from 'node:http';
 import { once } from 'node:events';
-import crud from '../../CoCreate-modules/crud-server/src/index.js';
+import { crudServer } from '../../CoCreate-modules/crud/src/server/index.js';
 import Config from '@cocreate/config';
 import authorize from '../../CoCreate-modules/authorize/src/index.js';
 import keySeed from '../src/apps/api-keys/config/managed-cluster.js';
@@ -26,7 +26,7 @@ test('direct managed HTTPS request passes HTTP authorization and endpoint permis
     t.mock.method(Config, 'query', async () => undefined);
     const credential = 'test-only-managed-network-key', calls = [], stateCalls = [];
     const key = { ...structuredClone(keySeed.object[0]), key: credential };
-    t.mock.method(crud, 'send', async query => {
+    t.mock.method(crudServer, 'send', async query => {
         const suppliedKey = query.filter.query.$or.find(item => item.key)?.key;
         return { object: suppliedKey === credential ? [key] : [] };
     });
