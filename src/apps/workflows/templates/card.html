@@ -1,0 +1,27 @@
+<template>
+	<article class="card app-card" role="row" aria-selected="false"
+		array="workflows" object="{{object._id}}" read="false">
+		<div class="card-body app-card-body">
+			<div class="app-heading">
+				<div class="app-identity">
+					<span class="app-image" aria-hidden="true"><i src="/assets/svg/remix/node-tree.svg"></i></span>
+					<h5 class="app-title">
+						<a role="button" tabindex="0" state-to="offcanvas-app-view"
+							state.src="/apps/workflows/app.html" aria-controls="offcanvas-app"
+							aria-haspopup="dialog" aria-expanded="false" aria-open>
+							<span state-to="offcanvas-app-form" state.array="workflows"
+								state.object="{{object._id}}" hidden></span>{{object.name}}
+						</a>
+					</h5>
+				</div>
+				<div class="app-badges">
+					<span class="badge app-badge" role="status" aria-label="Enabled status"
+						key="enabled" data-value="{{object.enabled}}"
+						onload.value="$(`{{object.enabled}}` === 'true' ? 'Enabled' : 'Disabled')"></span>
+				</div>
+			</div>
+			<p class="text-muted mb-0" key="description">{{object.description}}</p>
+		</div>
+	</article>
+</template>
+<div onload.array="workflows" onload-query="$parent"></div>

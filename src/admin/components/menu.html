@@ -328,6 +328,48 @@
 					<i src="/assets/svg/remix/add-line.svg"></i>
 				</a>
 			</li>
+			<li
+				class="nav-item d-flex justify-content-between align-items-center">
+				<a
+					id="account-workflows-list-btn"
+					state-to="adminView"
+					state.src="/components/list/index.html"
+					class="nav-link menu-link"
+					title="Workflows">
+					<i src="/assets/svg/remix/node-tree.svg"></i>
+					<span>Workflows</span>
+					<div
+						state-to="app"
+						state.object="6b0900000000000000000001"
+						state.input.array="workflows"></div>
+					<div
+						state-to="table"
+						state.filter-query-key=""
+						state.filter-query-value=""></div>
+					<div
+						state-to="list"
+						state.filter-query-key=""
+						state.filter-query-value=""
+						state.filter-query-options=""
+						state.src="/apps/workflows/templates/card.html"></div>
+				</a>
+				<a
+					class="nav-link nav-action"
+					state-to="create-panel-view"
+					state.src="/apps/workflows/create.html"
+					aria-controls="create-panel"
+					aria-haspopup="dialog"
+					aria-expanded="false"
+					aria-open
+					aria-label="Create workflow"
+					title="Create workflow">
+					<div
+						state-to="offcanvas-app-form"
+						state.$reset
+						state.array="workflows"></div>
+					<i src="/assets/svg/remix/add-line.svg"></i>
+				</a>
+			</li>
 
 			<li class="menu-title"><span>Connections</span></li>
 			<li class="nav-item">

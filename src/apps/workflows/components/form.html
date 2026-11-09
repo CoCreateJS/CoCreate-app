@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/components/code/index.css" />
+
+<div class="card-body d-flex flex-column gap-4 h-100">
+	<input type="hidden" key="_id" />
+	<section>
+		<h5 class="text-uppercase fw-semibold mb-3">Workflow identity</h5>
+		<div class="d-flex flex-wrap gap-3">
+			<label class="form-label d-flex flex-column gap-1 flex-grow-1">
+				Name
+				<input id="workflow-name" type="text" key="name" class="form-control"
+					placeholder="createOrganization" value-evaluate="false" required />
+			</label>
+			<label class="form-check form-switch d-flex align-items-center gap-2 mt-4">
+				<input id="workflow-enabled" class="form-check-input" type="checkbox"
+					role="switch" key="enabled" />
+				<span class="form-check-label">Enabled</span>
+			</label>
+		</div>
+	</section>
+	<section class="border-top border-top-dashed pt-3">
+		<label class="form-label d-flex flex-column gap-1">
+			Description
+			<textarea id="workflow-description" key="description" height="auto"
+				class="form-control" rows="3" value-evaluate="false"
+				placeholder="Describe what this workflow does"></textarea>
+		</label>
+	</section>
+	<section class="border-top border-top-dashed pt-3">
+		<h5 class="text-uppercase fw-semibold mb-2">Actions</h5>
+		<p id="workflow-actions-help" class="text-muted mb-3">
+			Define named actions as a JSON object. Preserve dollar-prefixed expressions
+			such as <code>$data</code>, <code>$actions</code>, and <code>$crud.send</code>.
+		</p>
+		<div class="component-code border rounded p-3">
+			<pre aria-hidden="true"><code class="language-json"></code></pre>
+			<textarea id="workflow-actions" key="actions" type="code" lang="json"
+				value-type="json" value-evaluate="false" height="auto" rows="8"
+				class="form-control font-monospace" spellcheck="false"
+				aria-label="Workflow actions" aria-describedby="workflow-actions-help"
+				placeholder='{"result":"$data","$payload.data":"$actions.result"}' validate required></textarea>
+			<button type="button" class="btn position-absolute top-0 end-0 m-2 p-1 border-0 bg-transparent fs-24"
+				clipboard clipboard-query="$parent textarea" aria-label="Copy actions" title="Copy actions">
+				<i src="/assets/svg/remix/file-copy-line.svg" aria-hidden="true"></i>
+				<i src="/assets/svg/remix/check-line.svg" aria-hidden="true"></i>
+			</button>
+		</div>
+	</section>
+</div>
