@@ -726,7 +726,7 @@ Socket routing fields have distinct scopes:
 
 Always use broadcastClient. Do not generate the legacy broadcastBrowser property or broadcast-browser attribute.
 
-The socket client normally supplies clientId, frameId, socketId, organization_id, uuid, and timing metadata. Do not invent or override connection metadata unless the caller explicitly provides a valid routing value. Socket delivery is transient; use CRUD when the data must be persisted. Keep the runtime name wsManager in implementation references.`,
+The socket client normally supplies clientId, frameId, socketId, organization_id, uuid, and timing metadata. Do not invent or override connection metadata unless the caller explicitly provides a valid routing value. Socket delivery is transient; use CRUD when the data must be persisted. Keep the runtime name socket in implementation references.`,
             examples: [
                 {
                     method: "notification",

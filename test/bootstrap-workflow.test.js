@@ -4,13 +4,14 @@ import Workflows from '../../CoCreate-modules/workflows/src/server.js';
 import { init as initOrganizations } from '../../CoCreate-modules/organizations/src/server/index.js';
 import config from '../../CoCreate-modules/config/src/server.js';
 import { getStorage } from '../../CoCreate-modules/crud/src/server/getStorage.js';
-import seed from '../src/apps/workflows/config/data.js';
+import seed from '../src/apps/workflows/config/storage.js';
 import organizationSeed from '../src/apps/workflows/config/organization.js';
 import repositorySeed from '../src/apps/workflows/config/repository.js';
 import clusterSeed from '../src/apps/workflows/config/cluster.js';
-import managementKeySeed from '../src/apps/api-keys/config/managed-cluster.js';
+import apiKeySeed from '../src/apps/api-keys/config/data.json' with { type: 'json' };
+const managementRole = apiKeySeed.object.find(item => item._id === '6b0700000000000000000021');
 
-const workflowName = 'create-organization-database';
+const workflowName = 'createManagedMongoDB';
 async function run(t, options = {}) {
     t.mock.method(config, 'get', () => undefined);
     t.mock.method(config, 'query', async () => undefined);
@@ -22,9 +23,9 @@ async function run(t, options = {}) {
             bootstrapStorage: '$actions.provision.data',
             persistBootstrap: { '$crud.send': {
                 method: 'object.update', database: '$organization_id', array: 'organizations',
-                object: { _id: '$payload.create-organization-database.0.organizationId', bootstrapStorage: '$actions.bootstrapStorage' }
+                object: { _id: '$payload.createManagedMongoDB.0.organizationId', bootstrapStorage: '$actions.bootstrapStorage' }
             } },
-            '$data.create-organization-database.0.bootstrapStorage': '$actions.bootstrapStorage'
+            '$data.createManagedMongoDB.0.bootstrapStorage': '$actions.bootstrapStorage'
         };
     }
     const records = new Map(), requests = [], apiCalls = [], creationCalls = [];
@@ -33,6 +34,7 @@ async function run(t, options = {}) {
     const credential = { _id: 'credential-1', type: 'user', key: 'user-1', array: 'contacts', password: 'existing-hash' };
     const runtime = {
         organization_id: 'platform',
+        on() {},
         manager: { async createServer(cluster) {
             creationCalls.push(structuredClone(cluster));
             assert.equal(response, undefined, 'organization response must wait for server creation');
@@ -44,18 +46,15 @@ async function run(t, options = {}) {
             if (options.creationError) throw new Error('Server creation failed');
             return { status: 'created', server: { manager: { apiKey: 'not-for-client' } }, data: { instanceId: 'instance-1' } };
         } },
-        wsManager: { on() {}, send(value) { response = value; return value; } },
+        socket: { on() {}, send(value) { response = value; return value; } },
         crud: { async send(request) {
             requests.push(structuredClone(request));
             const key = `${request.organization_id}:${request.array}`;
             const stored = records.get(key) || [];
             if (request.method === 'object.read') {
-                const reference = [managementKeySeed]
-                    .find(seed => seed.array === request.array && seed.object[0]._id === request.filter?.query?._id);
-                if (reference && request.organization_id === 'platform') return { object: options.missingManagementReference ? [] : structuredClone(reference.object) };
                 if (request.organization_id === 'source') return { object: (options.missingCredential && request.array === 'keys') || (options.missingProfile && request.array !== 'keys') ? [] : [request.array === 'keys' ? credential : sourceUser] };
                 if (options.duplicateHost && request.array === 'organizations' && request.filter?.query?.['host.name']) return { object: [{ _id: 'taken' }] };
-                if (request.array === 'workflows' && request.organization_id === 'platform') return { object: [definition, ...organizationSeed.object, ...clusterSeed.object, ...repositorySeed.object].filter(item => item.name === request.filter.query.name && !(options.missingRepositoryWorkflow && item.name === 'create-organization-repository') && !(options.missingClusterWorkflow && item.name === 'create-organization-cluster')) };
+                if (request.array === 'workflows' && request.organization_id === 'platform') return { object: [definition, ...organizationSeed.object, ...clusterSeed.object, ...repositorySeed.object].filter(item => item.name === request.filter.query.name && !(options.missingRepositoryWorkflow && item.name === 'create-organization-repository') && !(options.missingClusterWorkflow && item.name === 'createClusterConfig')) };
                 if (request.array === 'workflows') return { object: structuredClone(stored.filter(item => item.name === request.filter.query.name)) };
                 if (request.array === 'apis') return { object: [{ _id: 'github-api', owner: 'managed-org' }] };
                 const id = request.object?.[0]?._id || request.filter?.query?._id;
@@ -107,7 +106,7 @@ async function run(t, options = {}) {
     };
     await Workflows.init(runtime);
     runtime.workflow = Workflows;
-    await initOrganizations(runtime, { databaseProvisioning: {
+    await initOrganizations(runtime, { storageProvisioning: {
         cloudProvider: 'AWS', regionName: 'US_EAST_1', cidrBlock: '192.0.2.0/24',
         organizationId: 'forged-id', ...options.settings
     }, ...(options.clusterProvisioning && { clusterProvisioning: options.clusterProvisioning }) });
@@ -195,7 +194,8 @@ test('the real Atlas workflow stores and returns its bootstrap before tenant ini
     assert.equal(managementKey.tenant_organization_id, organization._id);
     assert.equal(managementKey.admin, false);
     assert.equal(managementKey.default, false);
-    assert.deepEqual(managementKey.methods, managementKeySeed.object[0].methods);
+    assert.deepEqual(managementKey.roles, [managementRole._id]);
+    assert.equal(managementKey.methods, undefined);
     assert.equal(records.get(`${organization._id}:apis`).some(item => item.provider === 'CoCreate'), false);
     assert.equal(records.has(`${organization._id}:endpoints`), false);
     assert.equal(JSON.stringify(response).includes(managementKey.key), false);
@@ -237,7 +237,7 @@ for (const scope of ['platform', 'tenant']) {
     });
 }
 
-for (const options of [{ missingManagementReference: true }, { failedManagementArray: 'keys' }]) {
+for (const options of [{ missingManagementWorkflow: true }, { failedManagementArray: 'keys' }]) {
     test(`management access failure cannot complete signup: ${JSON.stringify(options)}`, async t => {
         const { response, records, apiCalls } = await run(t, options);
         assert.equal(response.success, false);

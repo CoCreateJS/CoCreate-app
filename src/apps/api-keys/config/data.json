@@ -15,18 +15,21 @@
         {
             "_id": "68e1134a4f7b9d2c1a3e4f51",
             "description": "Default API key for authentication, account access, and permitted content reads.",
-            "actions": {
+            "methods": {
                 "object": {
                     "*": {
-                    "contacts": {
-                        "_id.$eq": "$user_id"
-                    }
+                        "contacts": {
+                            "_id.$eq": "$user_id"
+                        },
+                        "organizations": {
+                            "owner.$eq": "$user_id"
+                        }
                     },
                     "read": {
-                    "$array": [
-                        "ai",
-                        "blog-posts"
-                    ]
+                        "$array": [
+                            "ai",
+                            "blog-posts"
+                        ]
                     }
                 },
                 "checkSession": "true",
@@ -66,6 +69,40 @@
             ],
             "type": "user",
             "status": "active"
+        },
+        {
+            "_id": "6b0700000000000000000021",
+            "description": "Role for managed cluster access. Grants instance endpoints, server state updates, and server inventory deletion; cluster/provider predicates remain deferred. The createOrganization workflow assigns this role to the managed key.",
+            "name": "Cluster Manager API Access",
+            "status": "active",
+            "type": "role",
+            "admin": false,
+            "methods": {
+                "post": {
+                    "$endpoint": [
+                        "create-instance",
+                        "delete-instance"
+                    ]
+                },
+                "delete": {
+                    "$endpoint": [
+                        "delete-instance"
+                    ]
+                },
+                "object": {
+                    "update": {
+                        "$array": [
+                            "servers",
+                            "clusters"
+                        ]
+                    },
+                    "delete": {
+                        "$array": [
+                            "servers"
+                        ]
+                    }
+                }
+            }
         }
     ]
 }

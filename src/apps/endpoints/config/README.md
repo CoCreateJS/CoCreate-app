@@ -77,8 +77,8 @@ Provision in this order:
    `remove-project-ip-access-list-entry` takes `data.atlasProjectId` and
    `data.entryValue`; URL-encode `/` in CIDR values as `%2F`.
 5. `create-database-user` takes `data.atlasProjectId`, `data.clusterName`,
-   `data.databaseName`, `data.username`, and `data.password`. It creates a
-   SCRAM user with `readWrite` access only to that database and cluster.
+   `data.username`, and `data.password`. It creates a SCRAM user with
+   `readWriteAnyDatabase` access, scoped to that cluster.
 6. `get-cluster-connection` takes `data.atlasProjectId` and
    `data.clusterName`. The response contains `connectionStrings.standardSrv`.
    This is the cluster URI, not a credential-bearing Atlas connection object;
@@ -110,12 +110,13 @@ transport API/endpoint seed or nested data.request wrapper. Unmanaged dispatch
 still uses server.api.send. The same manager mirrors existing state.save server
 updates through the core authorized handler; telemetry is excluded.
 
-The keyless permission reference remains in api-keys/config/managed-cluster.js.
-Signup generates an authorized platform keys record; first-VM creation includes
-its credential in manager on both inventory copies. Authorize evaluates
-instance endpoint permissions on incoming requests. Cluster-ID/AST predicates
-remain deferred. Existing database records from the retired transport approach,
-if any were uploaded, require explicit migration/cleanup separately.
+The managed cluster permission role is defined in api-keys/config/data.json and
+assigned to the platform-scoped managed key by the `createOrganization` workflow.
+That workflow currently returns the key with the organization result. Startup
+injection and Manager consumption are not wired yet. Authorize evaluates instance
+endpoint permissions on incoming requests; cluster-ID/AST predicates remain
+deferred. Existing database records from the retired transport approach, if any
+were uploaded, require explicit migration/cleanup separately.
 
 ### AWS termination
 

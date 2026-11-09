@@ -1,119 +1,218 @@
-/********************************************************************************
- * Copyright (C) 2026 CoCreate and Contributors.
- *
- * Licensed under GNU AGPLv3.
- ********************************************************************************/
-
-const requiredText = (path, message) => ({
-    [`$if.${path}.$type`]: {
-        string: {
-            [`$if.${path}.$regex`]: {
-                '\\S': { [`${path}.trim`]: [] },
-                $else: { $throw: message }
-            }
-        },
-        $else: { $throw: message }
-    }
-});
-
-const readOne = (action, message) => ({
-    [`$if.$actions.${action}.error.length.$gt`]: {
-        '0': { $throw: message },
-        $else: {
-            [`$if.$actions.${action}.object.0.$exists`]: {
-                $true: `$actions.${action}.object.0`,
-                $else: { $throw: message }
-            }
-        }
-    }
-});
-
-const endpointLookup = name => ({
-    '$crud.send': {
-        method: 'object.read', array: 'endpoints',
-        filter: {
-            query: { api_id: '$actions.api._id', name, enabled: true },
-            key: { _id: 1 }, limit: 1
-        }
-    }
-});
-
-const nodeData = {
-    server_id: '$actions.server._id',
-    cluster_id: '$actions.cluster._id',
-    ip: '$actions.server.ip',
-    host: '$actions.server.host',
-    infrastructure: '$actions.server.infrastructure',
-    location: '$actions.server.location'
-};
-
-/** Platform workflow seed: initialize routing and prepare direct node cleanup. */
+/** Platform workflows for host registration and host server routing. */
 export default {
     method: 'object.update', array: 'workflows', upsert: true,
-    object: [{
-        _id: '6b0400000000000000000001',
-        name: 'configure-cluster-routing',
-        description: 'Registers this server through its cluster routing API and returns the API request for direct shutdown cleanup.',
-        enabled: true,
-        actions: {
-            serverId: requiredText('$payload.configure-cluster-routing.0.server_id', 'configure-cluster-routing requires a server ID.'),
-            serverLookup: {
-                '$crud.send': {
-                    method: 'object.read', array: 'servers',
-                    filter: {
-                        query: { _id: '$actions.serverId' }, limit: 1,
-                        key: { _id: 1, cluster_id: 1, ip: 1, host: 1, infrastructure: 1, location: 1 }
+    object: [
+        {
+            _id: '6b0400000000000000000001',
+            name: 'addHost',
+            description: 'Registers an organization host in the configured Bunny DNS zone.',
+            enabled: true,
+            actions: {
+                host: {
+                    '$if.$data.host.$exists': {
+                        '$true': '$data.host',
+                        '$else': { '$throw': 'addHost requires a host.' }
+                    }
+                },
+                zoneId: {
+                    '$if.$data.zoneId.$exists': {
+                        '$true': '$data.zoneId',
+                        '$else': { '$throw': 'addHost requires a zoneId.' }
+                    }
+                },
+                record: {
+                    '$if.$data.record.$exists': {
+                        '$true': '$data.record',
+                        '$else': { '$throw': 'addHost requires a DNS record.' }
+                    }
+                },
+                create: {
+                    '$api.send': {
+                        api: 'bunny.net',
+                        endpoint: 'create-dns-record',
+                        data: { zoneId: '$zoneId', record: '$record' }
+                    }
+                },
+                '$if.$create.error.length.$gt': {
+                    '0': { '$throw': '$create.error' }
+                },
+                '$payload.data': {
+                    host: '$host',
+                    registration: '$create.data'
+                }
+            }
+        },
+        {
+            _id: '6b0400000000000000000002',
+            name: 'removeHost',
+            description: 'Removes an organization host record from the configured Bunny DNS zone.',
+            enabled: true,
+            actions: {
+                host: {
+                    '$if.$data.host.$exists': {
+                        '$true': '$data.host',
+                        '$else': { '$throw': 'removeHost requires a host.' }
+                    }
+                },
+                zoneId: {
+                    '$if.$data.zoneId.$exists': {
+                        '$true': '$data.zoneId',
+                        '$else': { '$throw': 'removeHost requires a zoneId.' }
+                    }
+                },
+                recordId: {
+                    '$if.$data.recordId.$exists': {
+                        '$true': '$data.recordId',
+                        '$else': { '$throw': 'removeHost requires a recordId.' }
+                    }
+                },
+                remove: {
+                    '$api.send': {
+                        api: 'bunny.net',
+                        endpoint: 'delete-dns-record',
+                        data: { zoneId: '$zoneId', recordId: '$recordId' }
+                    }
+                },
+                '$if.$remove.error.length.$gt': {
+                    '0': { '$throw': '$remove.error' }
+                },
+                '$payload.data': {
+                    host: '$host',
+                    recordId: '$recordId',
+                    result: '$remove.data'
+                }
+            }
+        },
+        {
+            _id: '6b0400000000000000000003',
+            name: 'addServer',
+            description: 'Adds a server IP to a host routing location with its weight and provider metadata.',
+            enabled: true,
+            actions: {
+                host: {
+                    '$if.$data.host.$exists': {
+                        '$true': '$data.host',
+                        '$else': { '$throw': 'addServer requires a host.' }
+                    }
+                },
+                serverId: {
+                    '$if.$data.serverId.$exists': {
+                        '$true': '$data.serverId',
+                        '$else': { '$throw': 'addServer requires a serverId.' }
+                    }
+                },
+                ip: {
+                    '$if.$data.ip.$exists': {
+                        '$true': '$data.ip',
+                        '$else': { '$throw': 'addServer requires an IP address.' }
+                    }
+                },
+                location: {
+                    '$if.$data.location.$exists': {
+                        '$true': '$data.location',
+                        '$else': { '$throw': 'addServer requires a routing location.' }
+                    }
+                },
+                routingApiName: {
+                    '$if.$data.api.$exists': {
+                        '$true': '$data.api',
+                        '$else': { '$throw': 'addServer requires a routing API name.' }
+                    }
+                },
+                addEndpointName: {
+                    '$if.$data.endpoint.$exists': {
+                        '$true': '$data.endpoint',
+                        '$else': { '$throw': 'addServer requires a configured add endpoint.' }
+                    }
+                },
+                removeEndpointName: {
+                    '$if.$data.removeEndpoint.$exists': {
+                        '$true': '$data.removeEndpoint',
+                        '$else': { '$throw': 'addServer requires a configured remove endpoint.' }
+                    }
+                },
+                request: {
+                    host: '$host',
+                    serverId: '$serverId',
+                    ip: '$ip',
+                    location: '$location',
+                    weight: '$data.weight',
+                    metadata: '$data.metadata'
+                },
+                add: {
+                    '$api.send': {
+                        api: '$routingApiName',
+                        endpoint: '$addEndpointName',
+                        data: '$request'
+                    }
+                },
+                '$if.$add.error.length.$gt': {
+                    '0': { '$throw': '$add.error' }
+                },
+                '$payload.data': {
+                    host: '$host',
+                    serverId: '$serverId',
+                    registration: '$add.data',
+                    remove: {
+                        api: '$routingApiName',
+                        endpoint: '$removeEndpointName',
+                        registration: '$add.data'
                     }
                 }
-            },
-            server: readOne('serverLookup', 'The managed server record is unavailable.'),
-            clusterId: requiredText('$actions.server.cluster_id', 'The managed server requires a cluster ID.'),
-            clusterLookup: {
-                '$crud.send': {
-                    method: 'object.read', array: 'clusters',
-                    filter: { query: { _id: '$actions.clusterId' }, key: { _id: 1, routing: 1 }, limit: 1 }
-                }
-            },
-            cluster: readOne('clusterLookup', 'The managed cluster record is unavailable.'),
-            routingId: requiredText('$actions.cluster.routing', 'The cluster requires a routing API record ID.'),
-            apiLookup: {
-                '$crud.send': {
-                    method: 'object.read', array: 'apis',
-                    filter: {
-                        query: { _id: '$actions.routingId', type: 'routing', enabled: true },
-                        key: { _id: 1, name: 1 }, limit: 1
+            }
+        },
+        {
+            _id: '6b0400000000000000000004',
+            name: 'removeServer',
+            description: 'Removes a server from its host routing location using its saved registration.',
+            enabled: true,
+            actions: {
+                host: {
+                    '$if.$data.host.$exists': {
+                        '$true': '$data.host',
+                        '$else': { '$throw': 'removeServer requires a host.' }
                     }
-                }
-            },
-            api: readOne('apiLookup', 'The selected enabled routing API is unavailable.'),
-            apiName: requiredText('$actions.api.name', 'The selected routing API requires a name.'),
-            addEndpointLookup: endpointLookup('add-routing'),
-            addEndpoint: readOne('addEndpointLookup', "The selected routing API requires an enabled 'add-routing' endpoint."),
-            removeEndpointLookup: endpointLookup('remove-routing'),
-            removeEndpoint: readOne('removeEndpointLookup', "The selected routing API requires an enabled 'remove-routing' endpoint."),
-            ip: requiredText('$actions.server.ip', 'The managed server requires an IP address before routing registration.'),
-            // Prepare identity-based cleanup before registration, so an API error
-            // can still leave enough context for the node's shutdown handler.
-            '$data.configure-cluster-routing.0.remove': {
-                api: '$actions.apiName', endpoint: 'remove-routing',
-                data: { ...nodeData, registration: null }
-            },
-            response: {
-                '$api.send': { api: '$actions.apiName', endpoint: 'add-routing', data: { ...nodeData } }
-            },
-            checkResponse: {
-                '$if.$actions.response.error.length.$gt': {
-                    '0': { $throw: "The 'add-routing' endpoint failed." },
-                    $else: {
-                        '$if.$actions.response.success.$eq': {
-                            $false: { $throw: "The 'add-routing' endpoint rejected the request." },
-                            $else: null
-                        }
+                },
+                serverId: {
+                    '$if.$data.serverId.$exists': {
+                        '$true': '$data.serverId',
+                        '$else': { '$throw': 'removeServer requires a serverId.' }
                     }
+                },
+                routingApiName: {
+                    '$if.$data.api.$exists': {
+                        '$true': '$data.api',
+                        '$else': { '$throw': 'removeServer requires a routing API name.' }
+                    }
+                },
+                removeEndpointName: {
+                    '$if.$data.endpoint.$exists': {
+                        '$true': '$data.endpoint',
+                        '$else': { '$throw': 'removeServer requires a configured remove endpoint.' }
+                    }
+                },
+                registration: {
+                    '$if.$data.registration.$exists': {
+                        '$true': '$data.registration',
+                        '$else': { '$throw': 'removeServer requires the saved server registration.' }
+                    }
+                },
+                remove: {
+                    '$api.send': {
+                        api: '$routingApiName',
+                        endpoint: '$removeEndpointName',
+                        data: '$registration'
+                    }
+                },
+                '$if.$remove.error.length.$gt': {
+                    '0': { '$throw': '$remove.error' }
+                },
+                '$payload.data': {
+                    host: '$host',
+                    serverId: '$serverId',
+                    result: '$remove.data'
                 }
-            },
-            '$data.configure-cluster-routing.0.result': '$actions.response.data',
-            '$data.configure-cluster-routing.0.remove.data.registration': '$actions.response.data'
+            }
         }
-    }]
+    ]
 };

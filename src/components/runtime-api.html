@@ -21,13 +21,13 @@ await server.crud.send({
   filter: { limit: 1 }
 });
 
-server.wsManager.on("message", callback);</code></pre></div></div>
+server.socket.on("message", callback);</code></pre></div></div>
 		</div>
 		<div class="w-400 flex-grow-1 d-flex flex-column gap-3">
 			<div><h5><code>server.routes</code></h5><p class="text-muted mb-0">A native Map for application request handlers. Method, host, tenant, and geographic policy remain ordinary JavaScript.</p></div>
 			<div><h5><code>server.api</code> and <code>server.files</code></h5><p class="text-muted mb-0">Built-in handlers that applications can use directly, call from a route, wrap, or replace.</p></div>
 			<div><h5><code>server.crud</code></h5><p class="text-muted mb-0">A unified object-based interface for data operations across storage providers.</p></div>
-			<div><h5><code>server.wsManager</code></h5><p class="text-muted mb-0">Realtime messages through a consistent event-driven interface.</p></div>
+			<div><h5><code>server.socket</code></h5><p class="text-muted mb-0">Realtime messages through a consistent event-driven interface.</p></div>
 			<div><h5><code>server.storage</code></h5><p class="text-muted mb-0">Shared runtime state and coordination across workers through IPC.</p></div>
 		</div>
 	</div>

@@ -19,9 +19,8 @@ export default {
         "worker": "*",
         "config": {
             "enabled": true,
-            "databaseWorkflow": "create-organization-database",
+            "storageWorkflow": "createManagedMongoDB",
             "organizationWorkflow": "create-organization",
-            "clusterWorkflow": "create-organization-cluster",
             "clusterProvisioning": {
                 "initialDeployment": {
                     "cloud": "65f8ca227b39a3c1a8904e02",

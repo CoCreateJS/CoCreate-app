@@ -415,8 +415,8 @@ export default {
                 "password": "$payload.data.password",
                 "roles": [
                     {
-                        "databaseName": "$payload.data.databaseName",
-                        "roleName": "readWrite"
+                        "databaseName": "admin",
+                        "roleName": "readWriteAnyDatabase"
                     }
                 ],
                 "scopes": [
@@ -426,7 +426,7 @@ export default {
                     }
                 ]
             },
-            "description": "Creates a SCRAM database user scoped to one Atlas cluster with readWrite on the specified tenant database. Store the password securely; it is not returned by Atlas.",
+            "description": "Creates a SCRAM database user scoped to one Atlas cluster with readWriteAnyDatabase access. Store the password securely; it is not returned by Atlas.",
             "enabled": false
         },
         {

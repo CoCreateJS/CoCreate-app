@@ -5,17 +5,18 @@ import { once } from 'node:events';
 import { crudServer } from '../../CoCreate-modules/crud/src/server/index.js';
 import Config from '@cocreate/config';
 import authorize from '../../CoCreate-modules/authorize/src/index.js';
-import keySeed from '../src/apps/api-keys/config/managed-cluster.js';
+import apiKeySeed from '../src/apps/api-keys/config/data.json' with { type: 'json' };
 import { init as initManager } from '../../CoCreate-modules/cluster/src/manager.js';
 import { init as initApi } from '../../CoCreate-modules/api/src/server.js';
 import { deleteServer } from '../../CoCreate-modules/autoscaler/src/cleanup.js';
 
-test('management reference grants instance endpoints, updates and server-only inventory deletion', () => {
-    const key = keySeed.object[0];
+const managementRole = apiKeySeed.object.find(item => item._id === '6b0700000000000000000021');
+
+test('managed-cluster role grants instance endpoints, updates and server-only inventory deletion', () => {
+    const key = managementRole;
     assert.match(key._id, /^[a-f0-9]{24}$/);
-    assert.equal(Object.hasOwn(key, 'key'), false);
+    assert.equal(key.type, 'role');
     assert.equal(key.admin, false);
-    assert.equal(key.default, false);
     assert.deepEqual(key.methods.post.$endpoint, ['create-instance', 'delete-instance']);
     assert.deepEqual(key.methods.object.update.$array, ['servers', 'clusters']);
     assert.deepEqual(key.methods.object.delete.$array, ['servers']);
@@ -25,9 +26,10 @@ test('direct managed HTTPS request passes HTTP authorization and endpoint permis
     t.mock.method(Config, 'get', () => undefined);
     t.mock.method(Config, 'query', async () => undefined);
     const credential = 'test-only-managed-network-key', calls = [], stateCalls = [];
-    const key = { ...structuredClone(keySeed.object[0]), key: credential };
+    const key = { _id: 'cluster-manager-key', type: 'key', key: credential, roles: [managementRole._id] };
     t.mock.method(crudServer, 'send', async query => {
-        const suppliedKey = query.filter.query.$or.find(item => item.key)?.key;
+        if (query.object?.some(item => item._id === managementRole._id)) return { object: [managementRole] };
+        const suppliedKey = query.filter?.query?.$or?.find(item => item.key)?.key;
         return { object: suppliedKey === credential ? [key] : [] };
     });
     const parent = {
