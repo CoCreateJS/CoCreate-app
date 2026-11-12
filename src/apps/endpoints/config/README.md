@@ -9,7 +9,15 @@ provider records remain in the root `data.js` until their own pass.
 
 The AWS folder currently contains the literal AST records for `resolve-image`,
 `create-instance`, and `delete-instance`. These use the existing AWS API
-provider record and retain their current endpoint IDs and behavior.
+provider record and retain their endpoint IDs.
+
+`create-instance` performs one EC2 `RunInstances` request. Its `data` contains
+caller-prepared AWS parameters such as `ImageId`, `InstanceType`, `MinCount`,
+`MaxCount`, `SecurityGroupId.1`, and base64 `UserData`. The endpoint supplies the
+fixed Action/Version, form encoding, and signature for the EC2 root path, then
+returns the native AWS response. It performs no storage reads, startup-script
+rendering, image lookup, VPC lookup, security-group setup, or nested API calls.
+`createAwsInstance` owns that orchestration and interprets the response.
 
 `create-member-account` starts account creation inside the existing AWS
 Organization. It accepts `data.accountName` and a unique,
@@ -35,7 +43,7 @@ management account's access role after transfer.
 
 Bunny endpoint records live in `Bunny/data.js`. `create-dns-record` accepts
 `data.zoneId` and a Bunny-shaped `data.record`; `delete-dns-record` accepts
-`data.zoneId` and `data.recordId`. Both endpoint records and the Bunny routing
+`data.zoneId` and `data.recordId`. Both endpoint records and the Bunny DNS
 API seed remain disabled until an API key is configured and the domain/zone
 ownership path is confirmed. The API key is sent in the `AccessKey` header.
 The managed route workflow and region mapping are documented in the workspace
@@ -103,21 +111,26 @@ organization to invite an owner.
 
 ## Built-in managed-network requests
 
-Cluster server.manager.send directly POSTs the prepared provider envelope to
-https://<server.manager.host>/manager, using manager.apiKey in the Authorization
-Bearer header. This is a built-in network relationship, with no CoCreate
-transport API/endpoint seed or nested data.request wrapper. Unmanaged dispatch
-still uses server.api.send. The same manager mirrors existing state.save server
-updates through the core authorized handler; telemetry is excluded.
+AutoScaler builds standard workflow envelopes for creation and deletion. Managed
+nodes POST them to the platform root through `server.manager.send`, using the manager
+API key in the Bearer header; local dispatch uses `server.workflow.run`. Manager
+sets platform organization and managed tenant scope, and the receiving central HTTP
+transport resolves the authoritative host and authorizes the operation. State patches
+still use ordinary managed CRUD envelopes; telemetry is excluded.
 
-The managed cluster permission role is defined in api-keys/config/data.json and
-assigned to the platform-scoped managed key by the `createOrganization` workflow.
-That workflow currently returns the key with the organization result. Startup
-injection and Manager consumption are not wired yet. Authorize evaluates instance
-endpoint permissions on incoming requests; cluster-ID/AST predicates remain
-deferred. Existing database records from the retired transport approach, if any
-were uploaded, require explicit migration/cleanup separately.
+The managed role in `api-keys/config/data.json` grants `createOrganizationServer`
+and `deleteOrganizationServer`. The organization workflow issues the managed key;
+startup supports supplying that key in manager JSON, while the complete signup
+handoff remains unwired. Parent workflows validate canonical cluster/server ownership
+before provider dispatch. Existing database keys/records need explicit migration or
+reseeding; editing source does not update them automatically.
 
 ### AWS termination
 
-AWS delete-instance uses a signed HTTP Query POST to / with Action=TerminateInstances, Version=2016-11-15 and InstanceId.1. It accepts only a matching instance ID in shutting-down or terminated state and returns normalized instanceId/state. It uses the existing AWS API/SigV4 configuration, without an SDK. The AWS provider profile now selects post for method.delete. AutoScaler marks decommission.status terminating after this acknowledgement and retains server inventory for the normal State/logging lifecycle. It does not poll for final VM termination or delete the record; eventual garbage cleanup is separate.
+`delete-instance` performs one signed HTTP Query POST to `/` with
+`Action=TerminateInstances`, `Version=2016-11-15`, and caller-prepared native
+`InstanceId.1`. It returns the native response without calling other endpoints.
+`deleteOrganizationServer` checks stored ownership and delegates to `deleteAwsInstance`,
+which validates the returned ID/state and normalizes the acknowledgement. AutoScaler
+commits `master.status: terminating` before workflow dispatch and marks failure when
+needed; inventory cleanup and DNS removal are separate lifecycle operations.

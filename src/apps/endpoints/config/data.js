@@ -114,8 +114,8 @@ export default {
             "description": "Launches a Google Compute Engine VM instance in the specified GCP zone.",
             "actions": { ...storageActions },
             "data": {
-                "name": "$payload.data.vmId",
-                "machineType": { "$concat": ["zones/", { "$null": ["$payload.data.zone", "$payload.data.region"] }, "/machineTypes/", "$payload.data.vmType"] },
+                "name": "$payload.data.id",
+                "machineType": { "$concat": ["zones/", { "$null": ["$payload.data.zone", "$payload.data.region"] }, "/machineTypes/", "$payload.data.type"] },
                 "tags": {
                     "items": ["http-server", "https-server"]
                 },
@@ -154,7 +154,7 @@ export default {
                     "/zones/",
                     { "$null": ["$payload.data.zone", "$payload.data.region"] },
                     "/instances/",
-                    "$payload.data.vmId"
+                    "$payload.data.id"
                 ]
             },
             "description": "Deletes specified Google Compute Engine VM instance.",
@@ -173,7 +173,7 @@ export default {
                     "/resourceGroups/",
                     { "$null": ["$payload.data.resourceGroup", "$config.resourceGroup", "default-rg"] },
                     "/providers/Microsoft.Compute/virtualMachines/",
-                    "$payload.data.vmId",
+                    "$payload.data.id",
                     "?api-version=2023-09-01"
                 ]
             },
@@ -217,7 +217,7 @@ export default {
                 "location": "$payload.data.region",
                 "properties": {
                     "hardwareProfile": {
-                        "vmSize": "$payload.data.vmType"
+                        "vmSize": "$payload.data.type"
                     },
                     "networkProfile": {
                         "networkInterfaces": [
@@ -240,7 +240,7 @@ export default {
                         }
                     },
                     "osProfile": {
-                        "computerName": "$payload.data.vmId",
+                        "computerName": "$payload.data.id",
                         "customData": "$bootstrapScriptBase64"
                     }
                 }
@@ -259,7 +259,7 @@ export default {
                     "/resourceGroups/",
                     { "$null": ["$payload.data.resourceGroup", "$config.resourceGroup", "default-rg"] },
                     "/providers/Microsoft.Compute/virtualMachines/",
-                    "$payload.data.vmId",
+                    "$payload.data.id",
                     "?api-version=2023-09-01"
                 ]
             },
@@ -276,9 +276,9 @@ export default {
             "description": "Spins up a new DigitalOcean Droplet compute instance.",
             "actions": { ...storageActions },
             "data": {
-                "name": { "$null": ["$payload.data.vmId", "$payload.data.name"] },
+                "name": { "$null": ["$payload.data.id", "$payload.data.name"] },
                 "region": "$payload.data.region",
-                "size": "$payload.data.vmType",
+                "size": "$payload.data.type",
                 "image": "ubuntu-24-04-x64",
                 "user_data": "$bootstrapScript"
             },
@@ -289,7 +289,7 @@ export default {
             "api_id": "65f8ca227b39a3c1a8904e05", // DigitalOcean API Provider Ref
             "name": "delete-instance",
             "method": "delete",
-            "endpoint": { "$concat": ["/v2/droplets/", "$payload.data.vmId"] },
+            "endpoint": { "$concat": ["/v2/droplets/", "$payload.data.id"] },
             "description": "Destroys a DigitalOcean Droplet instance by ID.",
             "enabled": true
         },
@@ -337,8 +337,8 @@ export default {
             "data": {
                 "compartmentId": { "$null": ["$payload.data.compartmentId", "$config.compartmentId"] },
                 "availabilityDomain": { "$null": ["$payload.data.availabilityDomain", "$config.availabilityDomain"] },
-                "shape": "$payload.data.vmType",
-                "displayName": "$payload.data.vmId",
+                "shape": "$payload.data.type",
+                "displayName": "$payload.data.id",
                 "createVnicDetails": {
                     "nsgIds": [
                         { "$null": ["$payload.data.securityGroupId", "$actions.existingOciNsg.data.id", "$actions.createdOciNsg.data.id"] }
@@ -355,7 +355,7 @@ export default {
             "api_id": "65f8ca227b39a3c1a8904e06", // OCI API Provider Ref
             "name": "delete-instance",
             "method": "delete",
-            "endpoint": { "$concat": ["/20160918/instances/", "$payload.data.vmId"] },
+            "endpoint": { "$concat": ["/20160918/instances/", "$payload.data.id"] },
             "description": "Terminates an Oracle Cloud Infrastructure instance.",
             "enabled": true
         },
@@ -369,8 +369,8 @@ export default {
             "description": "Creates a new Hetzner Cloud server instance.",
             "actions": { ...storageActions },
             "data": {
-                "name": "$payload.data.vmId",
-                "server_type": "$payload.data.vmType",
+                "name": "$payload.data.id",
+                "server_type": "$payload.data.type",
                 "location": "$payload.data.region",
                 "image": "ubuntu-24.04",
                 "user_data": "$bootstrapScript"
@@ -382,7 +382,7 @@ export default {
             "api_id": "65f8ca227b39a3c1a8904e07", // Hetzner API Provider Ref
             "name": "delete-instance",
             "method": "delete",
-            "endpoint": { "$concat": ["/v1/servers/", "$payload.data.vmId"] },
+            "endpoint": { "$concat": ["/v1/servers/", "$payload.data.id"] },
             "description": "Deletes a Hetzner Cloud server instance.",
             "enabled": true
         },
@@ -397,8 +397,8 @@ export default {
             "actions": { ...storageActions },
             "data": {
                 "region": "$payload.data.region",
-                "plan": "$payload.data.vmType",
-                "label": "$payload.data.vmId",
+                "plan": "$payload.data.type",
+                "label": "$payload.data.id",
                 "os_id": 215, // 215 = Ubuntu 24.04 LTS x64
                 "user_data": "$bootstrapScriptBase64"
             },
@@ -409,7 +409,7 @@ export default {
             "api_id": "65f8ca227b39a3c1a8904e08", // Vultr API Provider Ref
             "name": "delete-instance",
             "method": "delete",
-            "endpoint": { "$concat": ["/v2/instances/", "$payload.data.vmId"] },
+            "endpoint": { "$concat": ["/v2/instances/", "$payload.data.id"] },
             "description": "Halts and destroys a Vultr cloud compute instance.",
             "enabled": true
         },
@@ -429,8 +429,8 @@ export default {
             "description": "Provisions bare metal compute hardware on Equinix Metal.",
             "actions": { ...storageActions },
             "data": {
-                "hostname": "$payload.data.vmId",
-                "plan": "$payload.data.vmType",
+                "hostname": "$payload.data.id",
+                "plan": "$payload.data.type",
                 "metro": "$payload.data.region",
                 "operating_system": "ubuntu_24_04",
                 "userdata": "$bootstrapScript"
@@ -442,7 +442,7 @@ export default {
             "api_id": "65f8ca227b39a3c1a8904e09", // Equinix API Provider Ref
             "name": "delete-instance",
             "method": "delete",
-            "endpoint": { "$concat": ["/metal/v1/devices/", "$payload.data.vmId"] },
+            "endpoint": { "$concat": ["/metal/v1/devices/", "$payload.data.id"] },
             "description": "Deprovisions and deletes an Equinix Metal device.",
             "enabled": true
         },

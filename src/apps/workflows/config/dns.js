@@ -1,4 +1,4 @@
-/** Platform workflows for host registration and host server routing. */
+/** Platform workflows for host registration and host server dns. */
 export default {
     method: 'object.update', array: 'workflows', upsert: true,
     object: [
@@ -86,7 +86,7 @@ export default {
         {
             _id: '6b0400000000000000000003',
             name: 'addServer',
-            description: 'Adds a server IP to a host routing location with its weight and provider metadata.',
+            description: 'Adds a server IP to a host DNS location with its weight and provider metadata.',
             enabled: true,
             actions: {
                 host: {
@@ -110,13 +110,13 @@ export default {
                 location: {
                     '$if.$data.location.$exists': {
                         '$true': '$data.location',
-                        '$else': { '$throw': 'addServer requires a routing location.' }
+                        '$else': { '$throw': 'addServer requires a DNS location.' }
                     }
                 },
-                routingApiName: {
+                dnsApiName: {
                     '$if.$data.api.$exists': {
                         '$true': '$data.api',
-                        '$else': { '$throw': 'addServer requires a routing API name.' }
+                        '$else': { '$throw': 'addServer requires a DNS API name.' }
                     }
                 },
                 addEndpointName: {
@@ -141,7 +141,7 @@ export default {
                 },
                 add: {
                     '$api.send': {
-                        api: '$routingApiName',
+                        api: '$dnsApiName',
                         endpoint: '$addEndpointName',
                         data: '$request'
                     }
@@ -154,7 +154,7 @@ export default {
                     serverId: '$serverId',
                     registration: '$add.data',
                     remove: {
-                        api: '$routingApiName',
+                        api: '$dnsApiName',
                         endpoint: '$removeEndpointName',
                         registration: '$add.data'
                     }
@@ -164,7 +164,7 @@ export default {
         {
             _id: '6b0400000000000000000004',
             name: 'removeServer',
-            description: 'Removes a server from its host routing location using its saved registration.',
+            description: 'Removes a server from its host DNS location using its saved registration.',
             enabled: true,
             actions: {
                 host: {
@@ -179,10 +179,10 @@ export default {
                         '$else': { '$throw': 'removeServer requires a serverId.' }
                     }
                 },
-                routingApiName: {
+                dnsApiName: {
                     '$if.$data.api.$exists': {
                         '$true': '$data.api',
-                        '$else': { '$throw': 'removeServer requires a routing API name.' }
+                        '$else': { '$throw': 'removeServer requires a DNS API name.' }
                     }
                 },
                 removeEndpointName: {
@@ -199,7 +199,7 @@ export default {
                 },
                 remove: {
                     '$api.send': {
-                        api: '$routingApiName',
+                        api: '$dnsApiName',
                         endpoint: '$removeEndpointName',
                         data: '$registration'
                     }

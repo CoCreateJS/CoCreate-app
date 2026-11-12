@@ -40,7 +40,8 @@
                 "resetPassword": "true",
                 "updateUserStatus": "true",
                 "isUnique": "true",
-                "inviteUser": "true"
+                "inviteUser": "true",
+                "workflow": { "onboardOrganization": true }
             },
             "default": true,
             "name": "default",
@@ -78,6 +79,7 @@
             "type": "role",
             "admin": false,
             "methods": {
+                "workflow": { "createOrganizationServer": true, "deleteOrganizationServer": true },
                 "post": {
                     "$endpoint": [
                         "create-instance",

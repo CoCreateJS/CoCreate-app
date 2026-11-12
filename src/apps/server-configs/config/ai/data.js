@@ -1,27 +1,4 @@
-/********************************************************************************
- * Copyright (C) 2026 CoCreate and Contributors.
- *
- * Licensed under GNU AGPLv3.
- ********************************************************************************/
-
-/**
- * Seeding Payload: servers_config collection
- * 
- * AI configuration entries for server-side copilots and provider definitions
- * stored in the 'servers_config' array.
- *
- * Each AI provider is a separate top-level `ai` object alongside system-level
- * defaults; provider config is namespaced under "providers.<name>" dot-keys
- * (matching the "clouds.<provider>" convention) since @cocreate/config merges
- * matching docs' config objects with a flat Object.assign — unnamespaced
- * keys shared across docs (for example api and models) would overwrite each other.
- *
- * Providers: copilot (via @github/copilot-sdk), openai, and gemini. There is
- * no separate "github" provider — it duplicated copilot's code path with no
- * distinct implementation. OpenAI exposes the supported general, pro, compact,
- * and coding variants newer than GPT-5 while retaining earlier models for
- * compatibility. Copilot stays single-tier (gpt-5-mini).
- */
+/** Server AI Defaults seed for servers_config. */
 export default {
     "method": "object.update",
     "array": "servers_config",
@@ -136,7 +113,9 @@ export default {
                                     "description": "Instruction name, such as crud, files, apis, crm, or an organization-specific workflow."
                                 }
                             },
-                            "required": ["name"],
+                            "required": [
+                                "name"
+                            ],
                             "additionalProperties": false
                         }
                     },
@@ -196,12 +175,18 @@ export default {
                                     "description": "One worker ID or an array of worker IDs.",
                                     "oneOf": [
                                         {
-                                            "type": ["string", "number"]
+                                            "type": [
+                                                "string",
+                                                "number"
+                                            ]
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "type": ["string", "number"]
+                                                "type": [
+                                                    "string",
+                                                    "number"
+                                                ]
                                             }
                                         }
                                     ]
@@ -645,7 +630,7 @@ export default {
                         }
                     },
                     "manage_server_cluster": {
-                        "description": "Inspects and controls CoCreate servers. list/get read the servers collection; self returns the running process; control dispatches validated worker or master operations through server.send. Infrastructure uses provider-agnostic vmId and vmType fields. Worker controls are cordon, shed, and drain. restart may target a worker or, when worker is omitted, the master application. reboot and shutdown target the master host. Explain the effect and obtain clear user intent before state-changing operations. RESTRICTED: platform organization only.",
+                        "description": "Inspects and controls CoCreate servers. list/get read the servers collection; self returns the running process; control dispatches validated worker or master operations through server.send. Deployment contains provider-agnostic id/type, cloud, dns and location fields. Worker controls are cordon, shed, and drain. restart may target a worker or, when worker is omitted, the master application. reboot and shutdown target the master host. Explain the effect and obtain clear user intent before state-changing operations. RESTRICTED: platform organization only.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -677,14 +662,34 @@ export default {
                                 },
                                 "operation": {
                                     "type": "string",
-                                    "enum": ["cordon", "shed", "drain", "restart", "reboot", "shutdown"],
+                                    "enum": [
+                                        "cordon",
+                                        "shed",
+                                        "drain",
+                                        "restart",
+                                        "reboot",
+                                        "shutdown"
+                                    ],
                                     "description": "Operation for action=\"control\"."
                                 },
                                 "worker": {
                                     "description": "Worker ID or array of worker IDs. Required for cordon, shed, and drain; optional for restart.",
                                     "oneOf": [
-                                        { "type": ["string", "number"] },
-                                        { "type": "array", "items": { "type": ["string", "number"] } }
+                                        {
+                                            "type": [
+                                                "string",
+                                                "number"
+                                            ]
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": [
+                                                    "string",
+                                                    "number"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "value": {
@@ -694,9 +699,21 @@ export default {
                                 "organizations": {
                                     "description": "Organization ID, array of IDs, or false to stop shedding. Required for shed.",
                                     "oneOf": [
-                                        { "type": "string" },
-                                        { "type": "array", "items": { "type": "string" } },
-                                        { "type": "boolean", "enum": [false] }
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "type": "boolean",
+                                            "enum": [
+                                                false
+                                            ]
+                                        }
                                     ]
                                 }
                             },
@@ -761,90 +778,6 @@ export default {
                                 "action"
                             ]
                         }
-                    }
-                }
-            }
-        },
-        {
-            "_id": "65f8cb447b39a3c1a8904e41",
-            "type": "ai",
-            "provider": "copilot",
-            "name": "Copilot AI Provider",
-            "enabled": true,
-            "cluster": "*",
-            "server": "*",
-            "worker": "*",
-            "config": {
-                "providers.copilot": {
-                    "api": "copilot",
-                    "type": "copilot",
-                    "models": {
-                        "default": "gpt-5-mini",
-                        "allowed": [
-                            "gpt-5-mini"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "_id": "65f8cb447b39a3c1a8904e43",
-            "type": "ai",
-            "provider": "openai",
-            "name": "OpenAI Provider",
-            "enabled": true,
-            "cluster": "*",
-            "server": "*",
-            "worker": "*",
-            "config": {
-                "providers.openai": {
-                    "api": "openai",
-                    "type": "openai",
-                    "wireApi": "responses",
-                    "models": {
-                        "default": "gpt-5.6-terra",
-                        "allowed": [
-                            "gpt-5.6-terra",
-                            "gpt-5.6-sol",
-                            "gpt-5.6-luna",
-                            "gpt-5.5",
-                            "gpt-5.5-pro",
-                            "gpt-5.4",
-                            "gpt-5.4-pro",
-                            "gpt-5.4-mini",
-                            "gpt-5.4-nano",
-                            "gpt-5.3-codex",
-                            "gpt-5.2",
-                            "gpt-5.2-pro",
-                            "gpt-5.1",
-                            "gpt-5-pro",
-                            "gpt-5",
-                            "gpt-5-mini",
-                            "gpt-4.1"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "_id": "65f8cb447b39a3c1a8904e44",
-            "type": "ai",
-            "provider": "gemini",
-            "name": "Gemini Provider",
-            "enabled": true,
-            "cluster": "*",
-            "server": "*",
-            "worker": "*",
-            "config": {
-                "providers.gemini": {
-                    "api": "gemini",
-                    "type": "gemeni",
-                    "models": {
-                        "default": "gemini-1.5-flash",
-                        "allowed": [
-                            "gemini-1.5-flash",
-                            "gemini-1.5-pro"
-                        ]
                     }
                 }
             }

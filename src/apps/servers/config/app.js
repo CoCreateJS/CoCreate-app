@@ -84,24 +84,24 @@ export default {
             {
                 "label": "Provider",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"server-provider-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by provider\" filter-query=\"$document .list-view\" filter-query-key=\"infrastructure.provider.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "{{object.infrastructure.provider}}",
+                "filterTemplate": "<input id=\"server-provider-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by provider\" filter-query=\"$document .list-view\" filter-query-key=\"deployment.provider.$regex\" filter-query-options=\"i\" />",
+                "tableTemplate": "{{object.deployment.provider}}",
                 "attributes": [
                     { "name": "class", "value": "form-control" },
                     { "name": "id", "value": "server-provider" },
-                    { "name": "key", "value": "infrastructure.provider" },
+                    { "name": "key", "value": "deployment.provider" },
                     { "name": "type", "value": "text" }
                 ]
             },
             {
                 "label": "Region",
                 "tagName": "input",
-                "filterTemplate": "<input id=\"server-region-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by region\" filter-query=\"$document .list-view\" filter-query-key=\"infrastructure.region.$regex\" filter-query-options=\"i\" />",
-                "tableTemplate": "{{object.infrastructure.region}}",
+                "filterTemplate": "<input id=\"server-region-filter\" class=\"form-control\" type=\"text\" placeholder=\"Filter by region\" filter-query=\"$document .list-view\" filter-query-key=\"deployment.region.$regex\" filter-query-options=\"i\" />",
+                "tableTemplate": "{{object.deployment.region}}",
                 "attributes": [
                     { "name": "class", "value": "form-control" },
                     { "name": "id", "value": "server-region" },
-                    { "name": "key", "value": "infrastructure.region" },
+                    { "name": "key", "value": "deployment.region" },
                     { "name": "type", "value": "text" }
                 ]
             },

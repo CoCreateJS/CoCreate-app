@@ -11,7 +11,7 @@ export default {
                 "65f8ca227b39a3c1a8904e02"
             ],
             "storage": "65f8ca227b39a3c1a8904dfd",
-            "routing": "",
+            "dns": "",
             "host": "dev.cocreatejs.com",
             "binaryUrl": "https://github.com/CoCreateJS/CoCreate-server/releases/download/dev-latest/cocreate-server-node-linux-x86_64.tar.gz",
             "autoscaling": {

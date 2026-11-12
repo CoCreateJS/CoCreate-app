@@ -410,14 +410,14 @@
 						data-server-map-record
 						data-server-id="{{object._id}}"
 						data-host="{{object.host}}"
-						data-provider="{{object.infrastructure.provider}}"
-						data-region="{{object.infrastructure.region}}"
+						data-provider="{{object.deployment.provider}}"
+						data-region="{{object.deployment.region}}"
 						data-status="{{object.status}}"
 						data-cordoned="{{object.worker1.isCordoned}}"
 						data-shedding="{{object.worker1.isShedding}}"
 						data-draining="{{object.worker1.isDraining}}"
-						data-latitude="{{object.location.latitude}}"
-						data-longitude="{{object.location.longitude}}">
+						data-latitude="{{object.deployment.location.latitude}}"
+						data-longitude="{{object.deployment.location.longitude}}">
 						<button
 							type="button"
 							state-to="offcanvas-app-view"
@@ -473,7 +473,7 @@
 										array="servers"
 										object
 										key="$length"
-										filter-query-key="infrastructure.provider.$regex"
+										filter-query-key="deployment.provider.$regex"
 										filter-query-value="aws|amazon"
 										filter-query-options="i"
 										filter-limit>
@@ -493,7 +493,7 @@
 										array="servers"
 										object
 										key="$length"
-										filter-query-key="infrastructure.provider.$regex"
+										filter-query-key="deployment.provider.$regex"
 										filter-query-value="gcp|google"
 										filter-query-options="i"
 										filter-limit>
@@ -515,7 +515,7 @@
 										array="servers"
 										object
 										key="$length"
-										filter-query-key="infrastructure.provider.$regex"
+										filter-query-key="deployment.provider.$regex"
 										filter-query-value="azure|microsoft"
 										filter-query-options="i"
 										filter-limit>
@@ -535,7 +535,7 @@
 										array="servers"
 										object
 										key="$length"
-										filter-query-key="infrastructure.provider.$regex"
+										filter-query-key="deployment.provider.$regex"
 										filter-query-value="oci|oracle"
 										filter-query-options="i"
 										filter-limit>
@@ -616,7 +616,7 @@
 							placeholder="Provider"
 							aria-label="Filter cloud provider"
 							filter-query="$document #server-fleet-list"
-							filter-query-key="infrastructure.provider.$regex"
+							filter-query-key="deployment.provider.$regex"
 							filter-query-options="i" />
 						<input
 							type="search"
@@ -625,7 +625,7 @@
 							placeholder="Region"
 							aria-label="Filter region"
 							filter-query="$document #server-fleet-list"
-							filter-query-key="infrastructure.region.$regex"
+							filter-query-key="deployment.region.$regex"
 							filter-query-options="i" />
 						<select
 							class="form-select"
@@ -690,11 +690,11 @@
 										<code>{{object.ip}}</code>
 									</div>
 								</td>
-								<td>{{object.infrastructure.provider}}</td>
+								<td>{{object.deployment.provider}}</td>
 								<td>
-									<div>{{object.infrastructure.region}}</div>
+									<div>{{object.deployment.region}}</div>
 									<div class="text-muted fs-12">
-										{{object.infrastructure.zone}}
+										{{object.deployment.zone}}
 									</div>
 								</td>
 								<td>{{object.totalWorkers}}</td>

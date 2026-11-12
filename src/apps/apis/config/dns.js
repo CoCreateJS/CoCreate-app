@@ -15,7 +15,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  ********************************************************************************/
 
-/** Seeding payload: routing API providers. */
+/** Seeding payload: DNS API providers. */
 
 export default {
     "method": "object.update",
@@ -26,7 +26,7 @@ export default {
             "_id": "65f8ca227b39a3c1a8904e11",
             "name": "cloudflare",
             "provider": "cloudflare",
-            "type": "routing",
+            "type": "dns",
             "url": "https://api.cloudflare.com/client/v4",
             "apiToken": "",
             "headers": {
@@ -35,14 +35,14 @@ export default {
                 },
                 "Content-Type": "application/json"
             },
-            "description": "Cloudflare routing integration for managing load balancer monitors, origin pools, and cluster hostnames.",
+            "description": "Cloudflare DNS integration for managing load balancer monitors, origin pools, and cluster hostnames.",
             "enabled": true
         },
         {
             "_id": "d299d2835e77c00fd8399930",
             "name": "DNSimple",
             "provider": "dnsimple",
-            "type": "routing",
+            "type": "dns",
             "accountId": "",
             "token": "",
             "description": "DNSimple DNS and domain management connection.",
@@ -52,7 +52,7 @@ export default {
             "_id": "b1056eecfdf173eba3fc12b9",
             "name": "bunny.net",
             "provider": "bunny",
-            "type": "routing",
+            "type": "dns",
             "url": "https://api.bunny.net",
             "apiKey": "",
             "headers": {
@@ -60,14 +60,14 @@ export default {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            "description": "bunny.net DNS and traffic routing connection.",
+            "description": "bunny.net DNS connection.",
             "enabled": false
         },
         {
             "_id": "250f308b656da78054fa6187",
             "name": "DNS Made Easy",
             "provider": "dnsmadeeasy",
-            "type": "routing",
+            "type": "dns",
             "apiKey": "",
             "secretKey": "",
             "description": "DNS Made Easy managed DNS connection.",
@@ -77,7 +77,7 @@ export default {
             "_id": "0b5b72b4c249e30db0512e87",
             "name": "easyDNS",
             "provider": "easydns",
-            "type": "routing",
+            "type": "dns",
             "userToken": "",
             "apiKey": "",
             "description": "easyDNS managed DNS connection.",
@@ -87,7 +87,7 @@ export default {
             "_id": "bdd5676c43b5a75f6e1c5b67",
             "name": "ClouDNS",
             "provider": "cloudns",
-            "type": "routing",
+            "type": "dns",
             "authId": "",
             "authPassword": "",
             "description": "ClouDNS managed DNS connection.",

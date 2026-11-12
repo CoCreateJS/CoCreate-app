@@ -1,263 +1,599 @@
 export default {
-    method: 'object.update', array: 'workflows', upsert: true,
-    object: [
+    "method": "object.update",
+    "array": "workflows",
+    "upsert": true,
+    "object": [
         {
-            _id: '6b0000000000000000000002',
-            name: 'createOrganization',
-            description: 'Creates an organization and its managed platform key.',
-            enabled: true,
-            actions: {
-                '$data.organization.owner': '$payload.user_id',
-                create: {
-                    '$crud.send': {
-                        method: 'object.create',
-                        array: 'organizations',
-                        object: '$data.organization'
-                    }
-                },
-                '$if.$create.error.length.$gt': {
-                    '0': { '$throw': '$create.error' }
-                },
-                managedKey: {
-                    '$crud.send': {
-                        method: 'object.create',
-                        array: 'keys',
-                        object: {
-                            _id: '$object_id',
-                            name: '`Managed organization $create.object.0._id`',
-                            type: 'key',
-                            status: 'active',
-                            key: { '$uuid': [] },
-                            admin: false,
-                            default: false,
-                            roles: ['6b0700000000000000000021'],
-                            managedOrganization: '$create.object.0._id'
+            "_id": "6b0000000000000000000002",
+            "name": "createOrganization",
+            "description": "Creates an organization and its managed platform key.",
+            "enabled": true,
+            "actions": {
+                "organization": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.create",
+                            "array": "organizations",
+                            "object": {
+                                "name": "$data.organization.name",
+                                "host": "$data.organization.host",
+                                "location": "$data.organization.location",
+                                "owner": "$payload.user_id"
+                            }
                         }
-                    }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to create organizations."
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to create organizations."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing organizations record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
                 },
-                '$if.$managedKey.error.length.$gt': {
-                    '0': { '$throw': '$managedKey.error' }
+                "managedKey": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.create",
+                            "array": "keys",
+                            "object": {
+                                "_id": "$object_id",
+                                "name": "Managed organization {{$actions.organization.value._id}}",
+                                "type": "key",
+                                "status": "active",
+                                "key": {
+                                    "$uuid": []
+                                },
+                                "admin": false,
+                                "default": false,
+                                "roles": [
+                                    "6b0700000000000000000021"
+                                ],
+                                "managedOrganization": "$actions.organization.value._id"
+                            }
+                        }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to create keys."
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to create keys."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing keys record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
                 },
-                '$data.createOrganization': '$create.object.0',
-                '$data.createOrganization.managedKey': '$managedKey.object.0.key'
+                "$data.createOrganization": {
+                    "$Object.assign": [
+                        {},
+                        "$actions.organization.value",
+                        {
+                            "managedKey": "$actions.managedKey.value.key"
+                        }
+                    ]
+                }
             }
         },
         {
-            _id: '6b0000000000000000000003',
-            name: 'seedOrganization',
-            description: 'Seeds an organization database with its organization, owner, roles, and keys.',
-            enabled: true,
-            actions: {
-                organizationId: {
-                    '$if.$data.organizationId.$exists': {
-                        '$true': '$data.organizationId',
-                        '$else': { '$throw': 'seedOrganization requires an organizationId.' }
-                    }
-                },
-                userId: {
-                    '$if.$payload.user_id.$exists': {
-                        '$true': '$payload.user_id',
-                        '$else': { '$throw': 'seedOrganization requires an authenticated user.' }
-                    }
-                },
-                organization: {
-                    read: {
-                        '$crud.send': {
-                            method: 'object.read',
-                            array: 'organizations',
-                            object: [{ _id: '$organizationId' }],
-                            filter: { query: { owner: '$userId' }, limit: 1 }
+            "_id": "6b0000000000000000000003",
+            "name": "seedOrganization",
+            "description": "Seeds an organization database with its organization, owner, roles, and keys.",
+            "enabled": true,
+            "actions": {
+                "organizationId": {
+                    "$if.$data.organizationId.$exists": {
+                        "$true": "$data.organizationId",
+                        "$else": {
+                            "$throw": "seedOrganization requires an organizationId."
                         }
-                    },
-                    '$if.$read.error.length.$gt': {
-                        '0': { '$throw': '$read.error' },
-                        '$else': {
-                            '$if.$read.object.0.$exists': {
-                                '$true': {
-                                    '$read.object.0.organization_id': '$organizationId',
-                                    '$organization': '$read.object.0'
+                    }
+                },
+                "userId": {
+                    "$if.$payload.user_id.$exists": {
+                        "$true": "$payload.user_id",
+                        "$else": {
+                            "$throw": "seedOrganization requires an authenticated user."
+                        }
+                    }
+                },
+                "sourceOrganization": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.read",
+                            "array": "organizations",
+                            "filter": {
+                                "query": {
+                                    "_id": "$actions.organizationId",
+                                    "owner": "$actions.userId"
                                 },
-                                '$else': { '$throw': 'The organization was not found for this user.' }
+                                "limit": 1
                             }
                         }
                     },
-                    create: {
-                        '$crud.send': {
-                            method: 'object.create',
-                            organization_id: '$organizationId',
-                            array: 'organizations',
-                            object: '$organization'
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to read organizations."
+                                    }
+                                }
+                            }
                         }
                     },
-                    '$if.$create.error.length.$gt': {
-                        '0': { '$throw': '$create.error' }
-                    }
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to read organizations."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing organizations record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
                 },
-                userKey: {
-                    read: {
-                        '$crud.send': {
-                            method: 'object.read',
-                            array: 'keys',
-                            object: [],
-                            filter: { query: { type: 'user', key: '$userId' }, limit: 1 }
+                "organization": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.create",
+                            "array": "organizations",
+                            "object": {
+                                "$Object.assign": [
+                                    {},
+                                    "$actions.sourceOrganization.value",
+                                    {
+                                        "organization_id": "$actions.organizationId"
+                                    }
+                                ]
+                            },
+                            "organization_id": "$actions.organizationId",
+                            "host": "$data.host"
                         }
                     },
-                    '$if.$read.error.length.$gt': {
-                        '0': { '$throw': '$read.error' },
-                        '$else': {
-                            '$if.$read.object.0.$exists': {
-                                '$true': {
-                                    '$read.object.0.organization_id': '$organizationId',
-                                    '$userKey': '$read.object.0'
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to create organizations."
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to create organizations."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing organizations record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
+                },
+                "adminRole": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.create",
+                            "array": "keys",
+                            "object": {
+                                "_id": "$object_id",
+                                "description": "Administrator role granting full organization access.",
+                                "admin": true,
+                                "name": "admin",
+                                "type": "role",
+                                "status": "active"
+                            },
+                            "organization_id": "$actions.organizationId",
+                            "host": "$data.host"
+                        }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to create keys."
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to create keys."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing keys record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
+                },
+                "sourceKey": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.read",
+                            "array": "keys",
+                            "filter": {
+                                "query": {
+                                    "type": "user",
+                                    "key": "$actions.userId"
                                 },
-                                '$else': { '$throw': 'The signed-in user key was not found.' }
+                                "limit": 1
                             }
                         }
                     },
-                    create: {
-                        '$crud.send': {
-                            method: 'object.create',
-                            organization_id: '$organizationId',
-                            array: 'keys',
-                            object: {
-                                _id: '$object_id',
-                                type: 'user',
-                                key: '$userId',
-                                name: '$user.name',
-                                array: '$userKey.array',
-                                email: '$userKey.email',
-                                username: '$userKey.username',
-                                password: '$userKey.password',
-                                roles: ['$adminRole._id'],
-                                status: 'active'
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to read keys."
+                                    }
+                                }
                             }
                         }
                     },
-                    '$if.$create.error.length.$gt': {
-                        '0': { '$throw': '$create.error' }
-                    }
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to read keys."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing keys record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
                 },
-                user: {
-                    read: {
-                        '$crud.send': {
-                            method: 'object.read',
-                            array: '$userKey.array',
-                            object: [{ _id: '$userId' }],
-                            filter: { limit: 1, projection: { password: 0 } }
-                        }
-                    },
-                    '$if.$read.error.length.$gt': {
-                        '0': { '$throw': '$read.error' },
-                        '$else': {
-                            '$if.$read.object.0.$exists': {
-                                '$true': {
-                                    '$read.object.0.organization_id': '$organizationId',
-                                    '$user': '$read.object.0'
+                "sourceUser": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.read",
+                            "array": "$actions.sourceKey.value.array",
+                            "filter": {
+                                "query": {
+                                    "_id": "$actions.userId"
                                 },
-                                '$else': { '$throw': 'The signed-in user profile was not found.' }
+                                "limit": 1,
+                                "key": {
+                                    "password": 0
+                                }
                             }
                         }
                     },
-                    create: {
-                        '$crud.send': {
-                            method: 'object.create',
-                            organization_id: '$organizationId',
-                            array: '$userKey.array',
-                            object: '$user'
-                        }
-                    },
-                    '$if.$create.error.length.$gt': {
-                        '0': { '$throw': '$create.error' }
-                    }
-                },
-                adminRole: {
-                    create: {
-                        '$crud.send': {
-                            method: 'object.create',
-                            organization_id: '$organizationId',
-                            array: 'keys',
-                            object: {
-                                _id: '$object_id',
-                                description: 'Administrator role granting full organization access to assigned users.',
-                                admin: true,
-                                name: 'admin',
-                                type: 'role',
-                                status: 'active'
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to read $actions.sourceKey.value.array."
+                                    }
+                                }
                             }
                         }
                     },
-                    '$if.$create.error.length.$gt': {
-                        '0': { '$throw': '$create.error' },
-                        '$else': { '$adminRole': '$create.object.0' }
-                    }
-                },
-                adminKey: {
-                    create: {
-                        '$crud.send': {
-                            method: 'object.create',
-                            organization_id: '$organizationId',
-                            array: 'keys',
-                            object: {
-                                _id: '$object_id',
-                                description: 'Administrative API key with full organization access.',
-                                admin: true,
-                                name: 'admin',
-                                key: { '$uuid': [] },
-                                type: 'key',
-                                status: 'active'
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to read $actions.sourceKey.value.array."
                             }
                         }
                     },
-                    '$if.$create.error.length.$gt': {
-                        '0': { '$throw': '$create.error' },
-                        '$else': { '$adminKey': '$create.object.0' }
-                    }
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing $actions.sourceKey.value.array record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
                 },
-                defaultKey: {
-                    create: {
-                        '$crud.send': {
-                            method: 'object.create',
-                            organization_id: '$organizationId',
-                            array: 'keys',
-                            object: {
-                                _id: '$object_id',
-                                description: 'Default API key for authentication, account access, and permitted content reads.',
-                                methods: {
-                                    object: {
-                                        '*': {
-                                            contacts: { '_id.$eq': '$user_id' },
-                                            organizations: { 'owner.$eq': '$user_id' }
-                                        },
-                                        read: { '$array': ['ai', 'blog-posts'] }
-                                    },
-                                    checkSession: 'true',
-                                    signIn: 'true',
-                                    signUp: 'true',
-                                    acceptInvite: 'true',
-                                    forgotPassword: 'true',
-                                    resetPassword: 'true',
-                                    updateUserStatus: 'true',
-                                    isUnique: 'true',
-                                    inviteUser: 'true'
+                "user": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.create",
+                            "array": "$actions.sourceKey.value.array",
+                            "object": {
+                                "$Object.assign": [
+                                    {},
+                                    "$actions.sourceUser.value",
+                                    {
+                                        "organization_id": "$actions.organizationId"
+                                    }
+                                ]
+                            },
+                            "organization_id": "$actions.organizationId",
+                            "host": "$data.host"
+                        }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to create $actions.sourceKey.value.array."
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to create $actions.sourceKey.value.array."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing $actions.sourceKey.value.array record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
+                },
+                "userKey": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.create",
+                            "array": "keys",
+                            "object": {
+                                "_id": "$object_id",
+                                "type": "user",
+                                "key": "$actions.userId",
+                                "name": "$actions.sourceUser.value.name",
+                                "array": "$actions.sourceKey.value.array",
+                                "email": "$actions.sourceKey.value.email",
+                                "username": "$actions.sourceKey.value.username",
+                                "password": "$actions.sourceKey.value.password",
+                                "roles": [
+                                    "$actions.adminRole.value._id"
+                                ],
+                                "status": "active"
+                            },
+                            "organization_id": "$actions.organizationId",
+                            "host": "$data.host"
+                        }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to create keys."
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to create keys."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing keys record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
+                },
+                "adminKey": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.create",
+                            "array": "keys",
+                            "object": {
+                                "_id": "$object_id",
+                                "description": "Administrative API key with full organization access.",
+                                "admin": true,
+                                "name": "admin",
+                                "key": {
+                                    "$uuid": []
                                 },
-                                default: true,
-                                name: 'default',
-                                key: { '$uuid': [] },
-                                type: 'key',
-                                status: 'active'
+                                "type": "key",
+                                "status": "active"
+                            },
+                            "organization_id": "$actions.organizationId",
+                            "host": "$data.host"
+                        }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to create keys."
+                                    }
+                                }
                             }
                         }
                     },
-                    '$if.$create.error.length.$gt': {
-                        '0': { '$throw': '$create.error' },
-                        '$else': { '$defaultKey': '$create.object.0' }
-                    }
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to create keys."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing keys record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
                 },
-                '$data.seedOrganization': {
-                    initialized: true,
-                    organizationId: '$organizationId',
-                    userId: '$userId'
+                "sourceDefaultKey": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.read",
+                            "array": "keys",
+                            "filter": {
+                                "query": {
+                                    "type": "key",
+                                    "default": true
+                                },
+                                "limit": 1
+                            }
+                        }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to read keys."
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to read keys."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing keys record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
+                },
+                "defaultKey": {
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.create",
+                            "array": "keys",
+                            "object": {
+                                "_id": "$object_id",
+                                "description": "Default API key for authentication, account access, and permitted content reads.",
+                                "methods": "$actions.sourceDefaultKey.value.methods",
+                                "default": true,
+                                "name": "default",
+                                "key": {
+                                    "$uuid": []
+                                },
+                                "type": "key",
+                                "status": "active"
+                            },
+                            "organization_id": "$actions.organizationId",
+                            "host": "$data.host"
+                        }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to create keys."
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to create keys."
+                            }
+                        }
+                    },
+                    "checkRecord": {
+                        "$if.$result.object.0.$exists": {
+                            "$true": {},
+                            "$else": {
+                                "$throw": "Missing keys record."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
+                },
+                "$data.seedOrganization": {
+                    "initialized": true,
+                    "organizationId": "$actions.organizationId",
+                    "userId": "$actions.userId"
                 }
             }
-        }]
+        }
+    ]
 };

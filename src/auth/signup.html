@@ -6,15 +6,17 @@
 		object=""
 		read="false"
 		realtime="false"
-		workflow="unique"
+		workflow="unique, onboardOrganization"
 		data-signup-step="account"
 		aria-label="Create your account and organization">
 		<style>
 			.signup-form[data-signup-step="account"] .signup-organization,
 			.signup-form:not([data-signup-step="account"]) .signup-account,
 			.signup-form:not([data-signup-step="complete"]) .signup-complete,
-			.signup-form[data-signup-step="complete"]
+			.signup-form:not([data-signup-step="preparing"]) .signup-progress,
+			.signup-form:not([data-signup-step="organization"])
 				.signup-organization-fields,
+			.signup-form:has(#signup-create-btn[aria-invalid="true"]) .signup-progress-spinner,
 			.signup-form .button-busy {
 				display: none;
 			}
@@ -205,6 +207,8 @@
 					>
 					<input
 						id="signup-organization-name"
+						onboardOrganization-key="organization.name"
+						onboardOrganization-set-data="false"
 						array="organizations"
 						object=""
 						form-attributes="false"
@@ -228,6 +232,8 @@
 					<div class="input-group">
 						<input
 							id="signup-hostname"
+							onboardOrganization-key="organization.host[0].name"
+							onboardOrganization-set-data="false"
 							array="organizations"
 							object=""
 							form-attributes="false"
@@ -268,11 +274,8 @@
 					id="signup-create-btn"
 					type="button"
 					class="btn btn-success btn-spinner w-100"
-					actions="disabled, validate(#signup-form), signUp, signIn, createOrganization, timeout(60000), click, focus"
-					click-query="$closest form"
-					click.data-signup-step="complete"
-					focus-query="$document #signup-complete-title"
-					focus.$focus="$undefined">
+					actions="disabled, validate(#signup-form), signUp, signIn, action(#signup-show-progress), onboardOrganization, action(#signup-show-complete)"
+					aria-errormessage="signup-onboarding-error">
 					<span
 						class="spinner-border spinner-border-sm" hidden
 						aria-hidden="true"></span>
@@ -284,6 +287,20 @@
 					>
 				</button>
 			</div>
+			<button id="signup-show-progress" type="button" hidden
+				actions="click, focus"
+				click-query="$closest form" click.data-signup-step="preparing"
+				focus-query="$document #signup-progress-title" focus.$focus="$undefined"></button>
+			<button id="signup-show-complete" type="button" hidden
+				actions="click, focus"
+				click-query="$closest form" click.data-signup-step="complete"
+				focus-query="$document #signup-complete-title" focus.$focus="$undefined"></button>
+			<div class="signup-progress text-center py-4" role="status" aria-live="polite">
+				<div class="signup-progress-spinner spinner-border text-primary" aria-hidden="true"></div>
+				<h5 id="signup-progress-title" class="text-primary mt-3" tabindex="-1">Setting up your organization</h5>
+				<p class="text-muted">Preparing storage, your repository, and cluster configuration.</p>
+				<p id="signup-onboarding-error" class="text-danger" role="alert" hidden></p>
+			</div>
 			<div
 				class="signup-complete text-center py-4"
 				role="status">
@@ -293,11 +310,15 @@
 					id="signup-complete-title"
 					class="text-primary mt-3"
 					tabindex="-1">
-					Your organization is ready
+					Your organization is configured
 				</h5>
 				<p class="text-muted mb-0">
-					Your account and organization have been created.
+					Your account and organization configuration have been created. Workspace startup is handled automatically when you connect.
 				</p>
+				<div onboardOrganization-key="onboardOrganization"
+					onboardOrganization-get-data="false" render-query="a">
+					<a class="btn btn-success mt-3" href="{{redirect}}">Open workspace</a>
+				</div>
 			</div>
 		</section>
 	</form>

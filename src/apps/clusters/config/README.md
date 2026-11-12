@@ -1,76 +1,38 @@
-# Cluster routing
+# Cluster DNS
 
-`clusters.routing` stores one routing API record ID, just as `clusters.storage`
-stores a storage API record ID. It is a string, not a provider name or a list.
-The cluster form saves that selection; the shared cluster seed leaves it empty
-until a provider is chosen.
+Top-level `cluster.clouds` and `cluster.dns` are optional API-ID whitelists.
+Missing values, empty strings and empty arrays allow all enabled connections of the
+corresponding type in the executing organization. A nonempty selection restricts
+connections to those IDs; a single ID string is also accepted for the current UI.
+Matching server configs supply catalogs, and only catalogs with an eligible connection
+participate in placement. An unusable explicit selection never broadens access.
 
-## Initialization
+`cluster.dns` is separate from a launch's `deployment.dns`: each selected POP
+includes `apiId` for its DNS connection, along with the provider's POP `id`.
+The current UI saves one dns ID; the runtime also accepts an array.
 
-`../../workflows/config/routing.js` seeds a single platform workflow, `configure-cluster-routing`. The node's
-primary invokes it once after readiness. It reads the managed server and its
-cluster, resolves the selected enabled routing API, checks its endpoint aliases,
-and calls `add-routing`.
+## Deployment and saved server dns
 
-The workflow uses stored node/cluster data rather than input to select a
-different cluster, provider, database, or storage. Provider credentials are
-not returned. Existing scope enforcement keeps CRUD and API execution in the
-invoking node's configured organization and host.
+AutoScaler reads enabled DNS catalogs, chooses the nearest eligible POP per
+DNS connection, and sorts the results by distance from the demand centroid. The first POP
+anchors cloud-region selection; the entire array travels in `deployment.dns`.
+Without eligible POPs, placement uses the demand centroid directly and dns is `[]`.
 
-## Prepared removal
+`createOrganizationServer` normalizes a single supplied POP object into an array and
+saves the array as `server.deployment.dns` in platform and tenant inventory before creating
+the provider instance. The saved cluster configuration is not modified by a launch.
 
-The workflow returns `configure-cluster-routing[0].remove`:
+## Workflow ownership
 
-```js
-{
-  api: 'selected-provider-name',
-  endpoint: 'remove-routing',
-  data: {
-    server_id,
-    cluster_id,
-    ip,
-    host,
-    infrastructure,
-    location,
-    registration: { /* provider registration result, such as zone/record IDs */ }
-  }
-}
-```
+Provider registration and removal belong in the parent server creation/deletion
+workflows. Cluster boot, worker readiness and shutdown no longer register or withdraw
+routes, and no cleanup request is cached in a runtime dns helper.
 
-Cluster's node-owned `routing.js` retains this request in memory. Graceful
-shutdown calls `server.api.send` directly with it, adding the shutdown reason.
-There is no `removeRouting` workflow and no server/cluster/provider-selection
-lookup repeated by a removal workflow. The API dispatcher still loads the
-enabled provider configuration and endpoint using their names.
+The [DNS definitions](../../workflows/config/dns.js) contain `addHost`,
+`removeHost`, `addServer` and `removeServer`. These are not yet wired into parent
+server lifecycle workflows. Provider endpoint mapping, usable address/readiness and
+saved registration IDs still need integration. A selected POP ID alone may not be
+sufficient to remove a provider registration later.
 
-Identity-based cleanup is prepared before the registration API call, then
-filled with the registration result after success. If registration fails,
-shutdown can still receive the prepared identity-based request. Adapters must
-support cleanup by server identity when registration IDs are unavailable.
-If initialization never prepared cleanup, shutdown does not attempt to
-rediscover it. Restarting the process runs initialization again.
-
-## Provider endpoint contract
-
-Every supported routing API supplies `add-routing` and `remove-routing`.
-Endpoint records are associated with the API by `api_id` and selected by name;
-each endpoint owns its HTTP method, path, AST actions, and payload mapping.
-The initialization workflow does not impose an HTTP method on either operation.
-
-Both receive the node fields shown above. Removal also receives the saved
-registration result and shutdown reason. The add endpoint should return
-nonsecret registration details sufficient for the remove endpoint, such as
-provider record IDs. Repeat registration/removal should be safe for the same
-server. Provider settings and routing policy belong in trusted configuration.
-
-Both aliases are checked before registration because an unmatched endpoint
-name otherwise becomes a literal API request path. Keep the configured aliases
-available for nodes using their prepared cleanup requests.
-
-## Bunny integration still required
-
-These aliases do not simply rename `create-dns-record`/`delete-dns-record`.
-The existing Bunny endpoints accept provider-shaped zone/record fields; the
-agreed scripted cluster routing also needs a verified node-list update mechanism
-and fallback cluster reference. Implement those adapters before enabling live
-routing. This source change does not enable credentials or alter DNS records.
+This documentation update does not enable provider credentials, upload definitions
+or change DNS records.

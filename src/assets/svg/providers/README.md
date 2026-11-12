@@ -8,7 +8,7 @@ Original brand marks belong to their respective owners. License texts are includ
 
 Cloud icons: AWS, Google Cloud, Azure, DigitalOcean, Oracle and Vultr from SVG Logos (CC0); Hetzner and Equinix Metal from Simple Icons (CC0), https://github.com/simple-icons/simple-icons.
 
-Routing icons: Cloudflare and bunny.net from SVG Logos (CC0). Other routing providers use the standard routing icon.
+DNS icons: Cloudflare and bunny.net from SVG Logos (CC0). Other DNS providers use the standard DNS icon.
 
 AI icons: OpenAI, Google Gemini, and GitHub Copilot from SVG Logos (CC0).
 

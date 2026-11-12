@@ -15,7 +15,7 @@ const tenant = 'aaaaaaaaaaaaaaaaaaaaaaaa', clusterId = 'bbbbbbbbbbbbbbbbbbbbbbbb
 async function run(t, options = {}) {
     const platform = 'cccccccccccccccccccccccc';
     const records = new Map(), requests = [], apiCalls = [];
-    const cluster = { _id: clusterId, name: 'Production', manager: { organization_id: platform, host: 'platform.test', for: tenant }, type: 'organization', host: 'tenant.test', initialDeployment: { cloud: 'cloud-api', region: 'us-east-1', vmType: 't3a.small' }, storage: 'storage-api' };
+    const cluster = { _id: clusterId, name: 'Production', manager: { organization_id: platform, host: 'platform.test', for: tenant }, type: 'organization', host: 'tenant.test', deployment: { cloud: 'cloud-api', region: 'us-east-1', type: 't3a.small' }, storage: 'storage-api' };
     const tenantStorage = { name: 'tenant-storage', provider: 'mongodb', connectionString: 'mongodb://tenant-only.test' };
     const endpoint = aws.object.find(item => item.name === 'create-instance');
     t.mock.method(Config, 'get', () => undefined);
@@ -58,7 +58,7 @@ async function run(t, options = {}) {
             assert.equal(request.endpoint, 'create-instance');
             assert.equal(request.region, 'us-east-1');
             assert.equal(request.data.region, 'us-east-1');
-            assert.equal(request.data.vmType, options.vmType || 't3a.small');
+            assert.equal(request.data.type, options.type || 't3a.small');
             assert.equal(typeof request.data.environment, 'string');
             // Run the real cloud endpoint's script preprocessing in platform context.
             const sandbox = {
@@ -80,7 +80,7 @@ async function run(t, options = {}) {
             assert.equal(Object.hasOwn(nodeConfig, 'apikey'), false);
             if (options.providerError) return { error: ['Provider failure'] };
             if (options.noInstanceId) return { data: {} };
-            return { data: { instanceId: 'i-test', privateIpAddress: '10.0.0.2' } };
+            return { data: { id: 'i-test', privateIpAddress: '10.0.0.2' } };
         } }
     };
     await Workflows.init(runtime);
@@ -96,7 +96,7 @@ test('activation renders tenant startup, dispatches the real VM workflow in plat
     const { mesh, records, requests, apiCalls, platform } = await run(t);
     const result = await mesh.checkOrganizationServers(tenant);
     assert.equal(result.status, 'created');
-    assert.deepEqual(result.data, { instanceId: 'i-test', privateIpAddress: '10.0.0.2' });
+    assert.deepEqual(result.data, { id: 'i-test', privateIpAddress: '10.0.0.2' });
     const workflowClusterRead = requests.find(request => request.array === 'clusters' && request.filter?.query?._id === clusterId);
     assert.deepEqual(workflowClusterRead.filter.query, { _id: clusterId, type: 'organization', 'manager.for': tenant });
     assert.equal(workflowClusterRead.organization_id, platform);
@@ -105,9 +105,9 @@ test('activation renders tenant startup, dispatches the real VM workflow in plat
     assert.deepEqual(parent, child);
     assert.equal(child.manager.apiKey, 'test-only-management-key');
     assert.equal(JSON.stringify(apiCalls).includes('test-only-management-key'), false);
-    assert.equal(child.infrastructure.instanceId, 'i-test');
-    assert.equal(child.infrastructure.privateIpAddress, '10.0.0.2');
-    const writes = requests.filter(item => item.array === 'servers' && item.method === 'object.update' && item.object['infrastructure.instanceId']);
+    assert.equal(child.deployment.id, 'i-test');
+    assert.equal(child.deployment.privateIpAddress, '10.0.0.2');
+    const writes = requests.filter(item => item.array === 'servers' && item.method === 'object.update' && item.object['deployment.id']);
     assert.deepEqual(writes[0].object, writes[1].object);
     assert.equal(writes[0].organization_id, platform);
     assert.equal(writes[1].organization_id, tenant);
@@ -115,20 +115,20 @@ test('activation renders tenant startup, dispatches the real VM workflow in plat
 });
 
 test('later deployment uses the same real workflow with its selected placement and server ID', async t => {
-    const { handler, cluster, records, apiCalls, platform } = await run(t, { vmType: 't3a.medium' });
+    const { handler, cluster, records, apiCalls, platform } = await run(t, { type: 't3a.medium' });
     const serverId = 'dddddddddddddddddddddddd';
     const result = await handler.createServer(cluster, {
-        ...cluster.initialDeployment, vmType: 't3a.medium', server_id: serverId, api: 'platform-cloud'
+        ...cluster.deployment, type: 't3a.medium', server_id: serverId, api: 'platform-cloud'
     });
-    assert.deepEqual(result.data, { instanceId: 'i-test', privateIpAddress: '10.0.0.2' });
+    assert.deepEqual(result.data, { id: 'i-test', privateIpAddress: '10.0.0.2' });
     assert.equal(apiCalls[0].data.server_id, serverId);
-    assert.equal(cluster.initialDeployment.vmType, 't3a.small');
+    assert.equal(cluster.deployment.type, 't3a.small');
     const parent = records.get(`${platform}:servers`)[0];
     const child = records.get(`${tenant}:servers`)[0];
     assert.deepEqual(parent, child);
     assert.equal(parent._id, serverId);
-    assert.equal(parent.infrastructure.vmType, 't3a.medium');
-    assert.equal(parent.infrastructure.instanceId, 'i-test');
+    assert.equal(parent.deployment.type, 't3a.medium');
+    assert.equal(parent.deployment.id, 'i-test');
 });
 
 for (const option of ['providerError', 'noInstanceId', 'failPersistence']) {

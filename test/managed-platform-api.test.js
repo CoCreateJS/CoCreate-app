@@ -39,7 +39,7 @@ test('direct managed HTTPS request passes HTTP authorization and endpoint permis
         }, authorize,
         api: { send: async envelope => {
             calls.push(envelope);
-            return { ...envelope, data: { instanceId: 'test-instance' } };
+            return { ...envelope, data: { id: 'test-instance' } };
         } }
     };
     parent.api = { ...await initApi(parent), ...parent.api };
@@ -58,7 +58,7 @@ test('direct managed HTTPS request passes HTTP authorization and endpoint permis
     Object.assign(manager, { organization_id: 'parent', host: 'parent.test', apiKey: credential });
     const payload = { api: 'parent-cloud', endpoint: 'create-instance', method: 'post', organization_id: 'tenant', host: 'tenant.test', data: { cluster_id: 'cluster-test' } };
     const result = await manager.send(payload);
-    assert.equal(result.data.instanceId, 'test-instance');
+    assert.equal(result.data.id, 'test-instance');
     assert.equal(calls[0].organization_id, 'direct-test-parent');
     assert.equal(calls[0].apikey, undefined);
     await manager.send({ ...payload, endpoint: 'delete-instance' });

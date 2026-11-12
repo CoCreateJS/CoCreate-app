@@ -204,7 +204,7 @@
 										name="first-deployment-provider"
 										array="servers"
 										object
-										key="infrastructure.provider"
+										key="deployment.provider"
 										value="{{object.provider}}"
 										aria-errormessage="first-deployment-provider-error"
 										input-query="$closest form #first-deployment-api-request"
@@ -261,9 +261,9 @@
 								type="hidden"
 								array="servers"
 								object
-								key="cloud"
+								key="deployment.cloud"
 								value="{{object._id}}"
-								{{object.name}}-key="cloud"
+								{{object.name}}-key="deployment.cloud"
 								{{object.name}}-response="false" />
 							<input
 								type="hidden"
@@ -318,7 +318,7 @@
 															name="first-deployment-region"
 															array="servers"
 															object
-															key="infrastructure.region"
+															key="deployment.region"
 															value="{{region.region}}"
 															change-query="$closest .dropdown #first-deployment-region"
 															change.value="{{region.name}} ({{region.region}})"
@@ -331,11 +331,11 @@
 												</div>
 											</div>
 											<select
-												id="first-deployment-vm-type"
+												id="first-deployment-server-type"
 												hidden
 												array="servers"
 												object
-												key="infrastructure.vmType">
+												key="deployment.type">
 												<option
 													template
 													render="profile.value.instances"
@@ -362,9 +362,9 @@
 							<input
 								type="hidden"
 								form-attributes="false"
-								{{object.name}}-key="vmType"
+								{{object.name}}-key="type"
 								{{object.name}}-response="false"
-								value="$query($closest form #first-deployment-vm-type).getValue()" />
+								value="$query($closest form #first-deployment-server-type).getValue()" />
 							<input
 								id="first-deployment-server-id"
 								type="hidden"
@@ -444,20 +444,20 @@
 								type="hidden"
 								array="servers"
 								object
-								key="infrastructure.vCPU"
+								key="deployment.vCPU"
 								{{object.name}}-key="vCPU"
 								{{object.name}}-response="false"
-								value="$query($closest form #first-deployment-vm-type option:checked).dataset.vcpu"
+								value="$query($closest form #first-deployment-server-type option:checked).dataset.vcpu"
 								value-type="number" />
 							<input
 								id="first-deployment-memory"
 								type="hidden"
 								array="servers"
 								object
-								key="infrastructure.memoryGb"
+								key="deployment.memoryGb"
 								{{object.name}}-key="memoryGb"
 								{{object.name}}-response="false"
-								value="$query($closest form #first-deployment-vm-type option:checked).dataset.memoryGb"
+								value="$query($closest form #first-deployment-server-type option:checked).dataset.memoryGb"
 								value-type="number" />
 							<button
 								id="request-deployment-api"

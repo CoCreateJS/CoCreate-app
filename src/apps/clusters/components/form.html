@@ -121,19 +121,19 @@
 	</div>
 	<section class="width:100% border-top border-top-dashed pt-3">
 		<label class="form-label d-flex flex-column gap-1 mb-0">
-			Routing provider
+			DNS provider
 			<select
-				id="cluster-routing-providers"
+				id="cluster-dns-providers"
 				class="form-select"
-				key="routing"
+				key="dns"
 				required>
-				<option value="">Select a routing provider</option>
+				<option value="">Select a DNS provider</option>
 				<option template value="{{object._id}}">{{object.name}}</option>
 			</select>
 			<div
 				array="apis"
 				filter-query-key="type"
-				filter-query-value="routing"
+				filter-query-value="dns"
 				filter-sort-key="name"
 				filter-sort-direction="asc"
 				filter-limit="0"

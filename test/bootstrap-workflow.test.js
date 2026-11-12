@@ -44,7 +44,7 @@ async function run(t, options = {}) {
             assert.equal(records.get(`${cluster.manager.for}:apis`).find(item => item.authentication === 'ssh-deploy-key').enabled, true);
             if (options.onCreateServer) await options.onCreateServer(cluster);
             if (options.creationError) throw new Error('Server creation failed');
-            return { status: 'created', server: { manager: { apiKey: 'not-for-client' } }, data: { instanceId: 'instance-1' } };
+            return { status: 'created', server: { manager: { apiKey: 'not-for-client' } }, data: { id: 'instance-1' } };
         } },
         socket: { on() {}, send(value) { response = value; return value; } },
         crud: { async send(request) {
@@ -183,8 +183,8 @@ test('the real Atlas workflow stores and returns its bootstrap before tenant ini
     assert.equal(platformCluster.type, 'organization');
     assert.equal(platformCluster.host, 'tenant.test');
     assert.equal(platformCluster.scaleIn.minClusterSize, 0);
-    assert.deepEqual(platformCluster.initialDeployment, {
-        cloud: '65f8ca227b39a3c1a8904e02', region: 'us-east-1', vmType: 't3a.small'
+    assert.deepEqual(platformCluster.deployment, {
+        cloud: '65f8ca227b39a3c1a8904e02', region: 'us-east-1', type: 't3a.small'
     });
     assert.equal(organization.cluster_id, platformCluster._id);
     assert.equal(records.get(`${organization._id}:organizations`)[0].cluster_id, platformCluster._id);
@@ -358,8 +358,8 @@ for (const options of [{ missingClusterWorkflow: true }, { failedClusterScope: '
 test('cluster deployment settings come from platform configuration, with identity fixed by signup', async t => {
     const { response, records } = await run(t, { clusterProvisioning: {
         _id: 'forged-cluster', name: 'forged-name', type: 'forged-type', host: 'forged.test',
-        organization_id: 'forged-owner', manager: { organization_id: 'forged-manager', host: 'forged.test', for: 'forged-tenant' }, clouds: ['cloud-api'], storage: 'storage-api', routing: 'routing-api',
-        initialDeployment: { cloud: 'custom-cloud', region: 'custom-region', vmType: 'custom-vm' },
+        organization_id: 'forged-owner', manager: { organization_id: 'forged-manager', host: 'forged.test', for: 'forged-tenant' }, clouds: ['cloud-api'], storage: 'storage-api', dns: 'dns-api',
+        deployment: { cloud: 'custom-cloud', region: 'custom-region', type: 'custom-vm' },
         scaleIn: { minClusterSize: 1 }
     } });
     assert.equal(response.success, true, response.message);
@@ -372,13 +372,13 @@ test('cluster deployment settings come from platform configuration, with identit
     assert.deepEqual(cluster.manager, { organization_id: 'platform', host: 'platform.test', for: response.organization._id });
     assert.deepEqual(cluster.clouds, ['cloud-api']);
     assert.equal(cluster.storage, 'storage-api');
-    assert.equal(cluster.routing, 'routing-api');
+    assert.equal(cluster.dns, 'dns-api');
     assert.equal(cluster.scaleIn.minClusterSize, 1);
-    assert.deepEqual(cluster.initialDeployment, { cloud: 'custom-cloud', region: 'custom-region', vmType: 'custom-vm' });
+    assert.deepEqual(cluster.deployment, { cloud: 'custom-cloud', region: 'custom-region', type: 'custom-vm' });
     const tenantCluster = records.get(`${cluster.manager.for}:clusters`)[0];
-    assert.deepEqual(tenantCluster.initialDeployment, cluster.initialDeployment);
+    assert.deepEqual(tenantCluster.deployment, cluster.deployment);
     assert.deepEqual(tenantCluster.manager, cluster.manager);
-    assert.equal(Object.hasOwn(cluster.manager, 'initialDeployment'), false);
+    assert.equal(Object.hasOwn(cluster.manager, 'deployment'), false);
     assert.equal(Object.hasOwn(cluster.manager, 'repositories'), false);
     assert.ok(cluster.repositories.length > 0);
     assert.equal(records.has('platform:servers'), false);
@@ -395,11 +395,11 @@ for (const minimum of [-1, '0', 0.5]) {
     });
 }
 
-for (const initialDeployment of [null, '', { cloud: '' }, { region: '' }, { vmType: '' }]) {
-    test(`invalid initial deployment is rejected before signup provisioning: ${JSON.stringify(initialDeployment)}`, async t => {
-        const { response, records, apiCalls } = await run(t, { clusterProvisioning: { scaleIn: { minClusterSize: 0 }, initialDeployment } });
+for (const deployment of [null, '', { cloud: '' }, { region: '' }, { type: '' }]) {
+    test(`invalid initial deployment is rejected before signup provisioning: ${JSON.stringify(deployment)}`, async t => {
+        const { response, records, apiCalls } = await run(t, { clusterProvisioning: { scaleIn: { minClusterSize: 0 }, deployment } });
         assert.equal(response.success, false);
-        assert.match(response.message, /initialDeployment/);
+        assert.match(response.message, /deployment/);
         assert.equal(records.size, 0);
         assert.equal(apiCalls.length, 0);
     });

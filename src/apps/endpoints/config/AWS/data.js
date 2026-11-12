@@ -92,337 +92,63 @@ export default {
             "api_id": "65f8ca227b39a3c1a8904e02",
             "name": "create-instance",
             "method": "post",
-            "endpoint": "/instances",
-            "description": "Provisions EC2 instances with cluster-scoped network security.",
-            "actions": {
-                "storageId": {
-                    "$if.$payload.data.storage.$type": {
-                        "string": {
-                            "$if.$payload.data.storage.$regex": {
-                                "\\S": {
-                                    "$payload.data.storage.trim": []
-                                },
-                                "$else": {
-                                    "$throw": "create-instance requires a storage API record ID."
-                                }
-                            }
-                        },
-                        "$else": {
-                            "$throw": "create-instance requires a storage API record ID."
-                        }
-                    }
-                },
-                "storageResponse": {
-                    "$crud.send": {
-                        "method": "object.read",
-                        "array": "apis",
-                        "filter": {
-                            "query": {
-                                "_id": "$storageId",
-                                "type": "storage",
-                                "enabled": true
-                            },
-                            "key": {
-                                "avatar": 0,
-                                "icon": 0,
-                                "type": 0,
-                                "headers": 0,
-                                "url": 0,
-                                "description": 0,
-                                "enabled": 0,
-                                "created": 0,
-                                "updated": 0,
-                                "deleted": 0,
-                                "permissions": 0,
-                                "organization_id": 0,
-                                "pricing": 0
-                            },
-                            "limit": 1
-                        }
-                    }
-                },
-                "storageConfig": {
-                    "$if.$storageResponse.error.length.$gt": {
-                        "0": {
-                            "$throw": "Unable to read the selected storage API record."
-                        },
-                        "$else": {
-                            "$if.$storageResponse.object.0.$exists": {
-                                "$true": "$storageResponse.object.0",
-                                "$else": {
-                                    "$throw": "The selected enabled storage API record is unavailable."
-                                }
-                            }
-                        }
-                    }
-                },
-                "storageName": {
-                    "$if.$storageConfig.name.$type": {
-                        "string": {
-                            "$if.$storageConfig.name.$regex": {
-                                "\\S": {
-                                    "$storageConfig.name.trim": []
-                                },
-                                "$else": {
-                                    "$throw": "The storage API record requires a name."
-                                }
-                            }
-                        },
-                        "$else": {
-                            "$throw": "The storage API record requires a name."
-                        }
-                    }
-                },
-                "storageProvider": {
-                    "$if.$storageConfig.provider.$type": {
-                        "string": {
-                            "$if.$storageConfig.provider.$regex": {
-                                "\\S": {
-                                    "$storageConfig.provider.trim": []
-                                },
-                                "$else": {
-                                    "$throw": "The storage API record requires a provider."
-                                }
-                            }
-                        },
-                        "$else": {
-                            "$throw": "The storage API record requires a provider."
-                        }
-                    }
-                },
-                "storageBytes": {
-                    "$Buffer.from": [
+            "endpoint": "/",
+            "encoding": "form",
+            "description": "Calls AWS EC2 RunInstances once with caller-prepared native parameters. Returns the AWS response for the workflow to interpret.",
+            "headers": {
+                "Authorization": {
+                    "$security.createAwsSigV4Token": [
                         {
-                            "$JSON.stringify": "$storageConfig"
+                            "method": "POST",
+                            "uri": "/",
+                            "payload": {
+                                "$objectToSearchParams": [
+                                    {
+                                        "$Object.assign": [
+                                            {},
+                                            "$payload.data",
+                                            {
+                                                "Action": "RunInstances",
+                                                "Version": "2016-11-15"
+                                            }
+                                        ]
+                                    },
+                                    false
+                                ]
+                            },
+                            "region": "$payload.region",
+                            "service": "ec2",
+                            "isoDate": "$x-amz-date",
+                            "headers": {
+                                "content-type": "application/x-www-form-urlencoded; charset=utf-8",
+                                "host": {
+                                    "$concat": [
+                                        [
+                                            "ec2.",
+                                            "$payload.region",
+                                            ".amazonaws.com"
+                                        ]
+                                    ]
+                                },
+                                "x-amz-date": "$x-amz-date"
+                            }
                         },
-                        "utf8"
-                    ]
-                },
-                "storageBase64": {
-                    "$storageBytes.toString": "base64"
-                },
-                "bootstrapConfig": {
-                    "organization_id": "$payload.organization_id",
-                    "host": "$payload.data.host",
-                    "storage": "$storageConfig"
-                },
-                "bootstrapConfigBytes": {
-                    "$Buffer.from": [
                         {
-                            "$JSON.stringify": "$bootstrapConfig"
-                        },
-                        "utf8"
-                    ]
-                },
-                "bootstrapConfigBase64": {
-                    "$bootstrapConfigBytes.toString": "base64"
-                },
-                "bootstrapScript": {
-                    "$astAsync": "$payload.data.startupScript"
-                },
-                "bootstrapScriptBytes": {
-                    "$Buffer.from": [
-                        "$bootstrapScript",
-                        "utf8"
-                    ]
-                },
-                "bootstrapScriptBase64": {
-                    "$bootstrapScriptBytes.toString": "base64"
-                },
-                "image": {
-                    "$api.send": {
-                        "api": "$config.name",
-                        "method": "post",
-                        "endpoint": "resolve-image",
-                        "region": "$payload.data.region",
-                        "data": {
-                            "Name": "/aws/service/canonical/ubuntu/server/noble/stable/current/amd64/hvm/ebs-gp3/ami-id"
+                            "accessKeyId": "$config.accessKeyId",
+                            "secretAccessKey": "$config.secretAccessKey"
                         }
-                    }
-                },
-                "defaultVpc": {
-                    "$api.send": {
-                        "api": "$config.name",
-                        "method": "post",
-                        "endpoint": "/",
-                        "region": "$payload.data.region",
-                        "encoding": "form",
-                        "data": {
-                            "Action": "DescribeVpcs",
-                            "Version": "2016-11-15",
-                            "Filter.1.Name": "is-default",
-                            "Filter.1.Value.1": "true"
-                        }
-                    }
-                },
-                "defaultVpcId": {
-                    "$defaultVpc.data.match": [
-                        "<vpcId>([^<]+)</vpcId>"
-                    ]
-                },
-                "vpcId": {
-                    "$null": [
-                        "$payload.data.vpcId",
-                        "$defaultVpcId.1"
-                    ]
-                },
-                "existingSecurityGroup": {
-                    "$api.send": {
-                        "api": "$config.name",
-                        "method": "post",
-                        "endpoint": "/",
-                        "region": "$payload.data.region",
-                        "encoding": "form",
-                        "data": {
-                            "Action": "DescribeSecurityGroups",
-                            "Version": "2016-11-15",
-                            "Filter.1.Name": "vpc-id",
-                            "Filter.1.Value.1": "$vpcId",
-                            "Filter.2.Name": "tag:CoCreateClusterId",
-                            "Filter.2.Value.1": "$payload.data.cluster_id",
-                            "Filter.3.Name": "tag:CoCreateRole",
-                            "Filter.3.Value.1": "server",
-                            "Filter.4.Name": "tag:CoCreateManaged",
-                            "Filter.4.Value.1": "true"
-                        }
-                    }
-                },
-                "existingSecurityGroupId": {
-                    "$existingSecurityGroup.data.match": [
-                        "<groupId>([^<]+)</groupId>"
-                    ]
-                },
-                "createdSecurityGroup": {
-                    "$if.$existingSecurityGroupId.$eq": {
-                        "$null": {
-                            "$api.send": {
-                                "api": "$config.name",
-                                "method": "post",
-                                "endpoint": "/",
-                                "region": "$payload.data.region",
-                                "encoding": "form",
-                                "data": {
-                                    "Action": "CreateSecurityGroup",
-                                    "Version": "2016-11-15",
-                                    "GroupName": "cocreate-cluster-{{$payload.data.cluster_id}}",
-                                    "GroupDescription": "CoCreate server cluster {{$payload.data.cluster_id}}",
-                                    "VpcId": "$vpcId",
-                                    "TagSpecification.1.ResourceType": "security-group",
-                                    "TagSpecification.1.Tag.1.Key": "CoCreateClusterId",
-                                    "TagSpecification.1.Tag.1.Value": "$payload.data.cluster_id",
-                                    "TagSpecification.1.Tag.2.Key": "CoCreateRole",
-                                    "TagSpecification.1.Tag.2.Value": "server",
-                                    "TagSpecification.1.Tag.3.Key": "CoCreateManaged",
-                                    "TagSpecification.1.Tag.3.Value": "true"
-                                }
-                            }
-                        },
-                        "$else": null
-                    }
-                },
-                "createdSecurityGroupId": {
-                    "$createdSecurityGroup.data.match": [
-                        "<groupId>([^<]+)</groupId>"
-                    ]
-                },
-                "securityGroupId": {
-                    "$null": [
-                        "$existingSecurityGroupId.1",
-                        "$createdSecurityGroupId.1"
-                    ]
-                },
-                "securityGroupIngress": {
-                    "$if.$existingSecurityGroupId.$eq": {
-                        "$null": {
-                            "$api.send": {
-                                "api": "$config.name",
-                                "method": "post",
-                                "endpoint": "/",
-                                "region": "$payload.data.region",
-                                "encoding": "form",
-                                "data": {
-                                    "Action": "AuthorizeSecurityGroupIngress",
-                                    "Version": "2016-11-15",
-                                    "GroupId": "$securityGroupId",
-                                    "IpPermissions.1.IpProtocol": "tcp",
-                                    "IpPermissions.1.FromPort": 80,
-                                    "IpPermissions.1.ToPort": 80,
-                                    "IpPermissions.1.IpRanges.1.CidrIp": "0.0.0.0/0",
-                                    "IpPermissions.2.IpProtocol": "tcp",
-                                    "IpPermissions.2.FromPort": 443,
-                                    "IpPermissions.2.ToPort": 443,
-                                    "IpPermissions.2.IpRanges.1.CidrIp": "0.0.0.0/0",
-                                    "IpPermissions.3.IpProtocol": "tcp",
-                                    "IpPermissions.3.FromPort": 8090,
-                                    "IpPermissions.3.ToPort": 8090,
-                                    "IpPermissions.3.Groups.1.GroupId": "$securityGroupId"
-                                }
-                            }
-                        },
-                        "$else": null
-                    }
-                },
-                "aws": {
-                    "$api.send": {
-                        "api": "$config.name",
-                        "method": "post",
-                        "endpoint": "/",
-                        "region": "$payload.data.region",
-                        "encoding": "form",
-                        "data": {
-                            "Action": "RunInstances",
-                            "Version": "2016-11-15",
-                            "ImageId": "$image.data.Parameter.Value",
-                            "InstanceType": "$payload.data.vmType",
-                            "MinCount": 1,
-                            "MaxCount": 1,
-                            "SecurityGroupId.1": "$securityGroupId",
-                            "TagSpecification.1.ResourceType": "instance",
-                            "TagSpecification.1.Tag.1.Key": "Name",
-                            "TagSpecification.1.Tag.1.Value": "$payload.data.name",
-                            "UserData": "$bootstrapScriptBase64"
-                        }
-                    }
-                },
-                "instanceId": {
-                    "$aws.data.match": [
-                        "<instanceId>([^<]+)</instanceId>"
-                    ]
-                },
-                "imageId": {
-                    "$aws.data.match": [
-                        "<imageId>([^<]+)</imageId>"
-                    ]
-                },
-                "instanceType": {
-                    "$aws.data.match": [
-                        "<instanceType>([^<]+)</instanceType>"
-                    ]
-                },
-                "state": {
-                    "$aws.data.match": [
-                        "<instanceState>[\\s\\S]*?<name>([^<]+)</name>"
-                    ]
-                },
-                "availabilityZone": {
-                    "$aws.data.match": [
-                        "<availabilityZone>([^<]+)</availabilityZone>"
-                    ]
-                },
-                "privateIpAddress": {
-                    "$aws.data.match": [
-                        "<privateIpAddress>([^<]+)</privateIpAddress>"
                     ]
                 }
             },
-            "resolved": true,
             "data": {
-                "instanceId": "$actions.instanceId.1",
-                "imageId": "$actions.imageId.1",
-                "instanceType": "$actions.instanceType.1",
-                "state": "$actions.state.1",
-                "availabilityZone": "$actions.availabilityZone.1",
-                "privateIpAddress": "$actions.privateIpAddress.1"
+                "$Object.assign": [
+                    {},
+                    "$payload.data",
+                    {
+                        "Action": "RunInstances",
+                        "Version": "2016-11-15"
+                    }
+                ]
             },
             "enabled": true
         },
@@ -432,54 +158,62 @@ export default {
             "name": "delete-instance",
             "method": "post",
             "endpoint": "/",
-            "description": "Terminates an EC2 instance through the signed HTTP Query API and confirms the matching termination acknowledgement.",
-            "actions": {
-                "aws": {
-                    "$api.send": {
-                        "api": "$config.name",
-                        "method": "post",
-                        "endpoint": "/",
-                        "region": "$payload.region",
-                        "encoding": "form",
-                        "data": {
-                            "Action": "TerminateInstances",
-                            "Version": "2016-11-15",
-                            "InstanceId.1": "$payload.data.vmId"
+            "encoding": "form",
+            "description": "Calls AWS EC2 TerminateInstances once with prepared native parameters. Returns the native response to the workflow.",
+            "headers": {
+                "Authorization": {
+                    "$security.createAwsSigV4Token": [
+                        {
+                            "method": "POST",
+                            "uri": "/",
+                            "payload": {
+                                "$objectToSearchParams": [
+                                    {
+                                        "$Object.assign": [
+                                            {},
+                                            "$payload.data",
+                                            {
+                                                "Action": "TerminateInstances",
+                                                "Version": "2016-11-15"
+                                            }
+                                        ]
+                                    },
+                                    false
+                                ]
+                            },
+                            "region": "$payload.region",
+                            "service": "ec2",
+                            "isoDate": "$x-amz-date",
+                            "headers": {
+                                "content-type": "application/x-www-form-urlencoded; charset=utf-8",
+                                "host": {
+                                    "$concat": [
+                                        [
+                                            "ec2.",
+                                            "$payload.region",
+                                            ".amazonaws.com"
+                                        ]
+                                    ]
+                                },
+                                "x-amz-date": "$x-amz-date"
+                            }
+                        },
+                        {
+                            "accessKeyId": "$config.accessKeyId",
+                            "secretAccessKey": "$config.secretAccessKey"
                         }
-                    }
-                },
-                "instanceId": {
-                    "$aws.data.match": [
-                        "<instanceId>([^<]+)</instanceId>"
                     ]
-                },
-                "state": {
-                    "$aws.data.match": [
-                        "<currentState>[\\s\\S]*?<name>([^<]+)</name>"
-                    ]
-                },
-                "checkInstance": {
-                    "$if.$instanceId.1.$eq": {
-                        "$payload.data.vmId": true,
-                        "$else": {
-                            "$throw": "AWS termination response did not identify the requested instance."
-                        }
-                    }
-                },
-                "checkState": {
-                    "$if.$state.1.$eq": {
-                        "shutting-down": true,
-                        "terminated": true,
-                        "$else": {
-                            "$throw": "AWS did not acknowledge instance termination."
-                        }
-                    }
                 }
             },
-            "resolved": true,
             "data": {
-                "instanceId": "$instanceId.1",
-                "state": "$state.1"
+                "$Object.assign": [
+                    {},
+                    "$payload.data",
+                    {
+                        "Action": "TerminateInstances",
+                        "Version": "2016-11-15"
+                    }
+                ]
             },
             "enabled": true
         },

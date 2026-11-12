@@ -20,16 +20,17 @@ export default {
         "config": {
             "enabled": true,
             "storageWorkflow": "createManagedMongoDB",
-            "organizationWorkflow": "create-organization",
+            "organizationWorkflow": "createOrganization",
+            "onboardingWorkflow": "onboardOrganization",
+            "storageProvisioning": {
+                "cloudProvider": "AWS",
+                "regionName": "US_EAST_1",
+                "cidrBlock": ""
+            },
             "clusterProvisioning": {
-                "initialDeployment": {
-                    "cloud": "65f8ca227b39a3c1a8904e02",
-                    "region": "us-east-1",
-                    "vmType": "t3a.small"
-                },
                 "scaleIn": { "minClusterSize": 0 }
             },
-            "repositoryWorkflow": "create-organization-repository",
+            "repositoryWorkflow": "createRepository",
             "repositoryProvisioning": {
                 "api": "github-organizations",
                 "templateOwner": "CoCreateJS",

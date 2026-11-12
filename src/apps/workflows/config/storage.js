@@ -1,4 +1,4 @@
-/** MongoDB Atlas provisioning workflow. Keep disabled until provider settings are configured. */
+/** MongoDB Atlas provisioning; remains disabled until provider setup is complete. */
 export default {
     "method": "object.update",
     "array": "workflows",
@@ -13,91 +13,131 @@ export default {
                 "organizationId": {
                     "$if.$data.organizationId.$exists": {
                         "$true": "$data.organizationId",
-                        "$else": { "$throw": "createManagedMongoDB requires an organizationId." }
+                        "$else": {
+                            "$throw": "createManagedMongoDB requires organizationId."
+                        }
                     }
                 },
                 "cloudProvider": {
                     "$if.$data.cloudProvider.$exists": {
                         "$true": "$data.cloudProvider",
-                        "$else": { "$throw": "createManagedMongoDB requires a cloudProvider." }
+                        "$else": {
+                            "$throw": "createManagedMongoDB requires cloudProvider."
+                        }
                     }
                 },
                 "regionName": {
                     "$if.$data.regionName.$exists": {
                         "$true": "$data.regionName",
-                        "$else": { "$throw": "createManagedMongoDB requires a regionName." }
+                        "$else": {
+                            "$throw": "createManagedMongoDB requires regionName."
+                        }
                     }
                 },
                 "cidrBlock": {
                     "$if.$data.cidrBlock.$exists": {
                         "$true": "$data.cidrBlock",
-                        "$else": { "$throw": "createManagedMongoDB requires a cidrBlock." }
+                        "$else": {
+                            "$throw": "createManagedMongoDB requires cidrBlock."
+                        }
                     }
                 },
                 "projectName": "Production",
-                "clusterName": "cluster-$uuid",
-                "username": "cocreate-$uuid(20)",
-                "password": "$uuid()",
+                "clusterName": {
+                    "$concat": [
+                        [
+                            "cluster-",
+                            {
+                                "$uuid": []
+                            }
+                        ]
+                    ]
+                },
+                "username": {
+                    "$concat": [
+                        [
+                            "cocreate-",
+                            {
+                                "$uuid": []
+                            }
+                        ]
+                    ]
+                },
+                "password": {
+                    "$uuid": []
+                },
                 "organization": {
-                    "create": {
+                    "result": {
                         "$api.send": {
                             "api": "mongodb-atlas-admin",
                             "method": "post",
                             "endpoint": "create-organization",
                             "data": {
-                                "organizationName": "$organizationId"
+                                "organizationName": "$actions.organizationId"
                             }
                         }
                     },
-                    "$if.$create.error.length.$gt": {
-                        "0": {
-                            "$throw": "$create.error"
-                        },
-                        "$else": {
-                            "$organization": "$create.data"
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "MongoDB organization provisioning failed."
+                                    }
+                                }
+                            }
                         }
+                    },
+                    "value": {
+                        "$null": [
+                            "$result.data.organization",
+                            "$result.data"
+                        ]
                     }
-
                 },
                 "project": {
-                    "create": {
+                    "result": {
                         "$api.send": {
                             "api": "mongodb-atlas-admin",
                             "method": "post",
                             "endpoint": "create-project",
                             "data": {
-                                "atlasOrganizationId": "$organization.id",
-                                "projectName": "$projectName"
+                                "atlasOrganizationId": "$actions.organization.value.id",
+                                "projectName": "$actions.projectName"
                             }
                         }
                     },
-                    "$if.$create.error.length.$gt": {
-                        "0": {
-                            "$throw": "$create.error"
-                        },
-                        "$else": {
-                            "$project": "$create.data"
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "MongoDB project provisioning failed."
+                                    }
+                                }
+                            }
                         }
-                    }
+                    },
+                    "value": "$result.data"
                 },
                 "cluster": {
-                    "create": {
+                    "result": {
                         "$api.send": {
                             "api": "mongodb-atlas-admin",
                             "method": "post",
                             "endpoint": "create-cluster",
                             "data": {
-                                "atlasProjectId": "$project.id",
+                                "atlasProjectId": "$actions.project.value.id",
                                 "cluster": {
-                                    "name": "$clusterName",
+                                    "name": "$actions.clusterName",
                                     "clusterType": "REPLICASET",
                                     "replicationSpecs": [
                                         {
                                             "regionConfigs": [
                                                 {
-                                                    "regionName": "$regionName",
+                                                    "regionName": "$actions.regionName",
                                                     "providerName": "TENANT",
-                                                    "backingProviderName": "$cloudProvider",
+                                                    "backingProviderName": "$actions.cloudProvider",
                                                     "electableSpecs": {
                                                         "instanceSize": "M0",
                                                         "nodeCount": 3
@@ -110,142 +150,170 @@ export default {
                             }
                         }
                     },
-                    "$if.$create.error.length.$gt": {
-                        "0": {
-                            "$throw": "$create.error"
-                        },
-                        "$else": {
-                            "$cluster": "$create.data"
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "MongoDB cluster provisioning failed."
+                                    }
+                                }
+                            }
                         }
-                    }
+                    },
+                    "value": "$result.data"
                 },
                 "access": {
-                    "create": {
+                    "result": {
                         "$api.send": {
                             "api": "mongodb-atlas-admin",
                             "method": "post",
                             "endpoint": "add-project-ip-access-list-entry",
                             "data": {
-                                "atlasProjectId": "$project.id",
-                                "cidrBlock": "$cidrBlock",
+                                "atlasProjectId": "$actions.project.value.id",
+                                "cidrBlock": "$actions.cidrBlock",
                                 "comment": "CoCreate tenant database access"
                             }
                         }
                     },
-                    "$if.$create.error.length.$gt": {
-                        "0": {
-                            "$throw": "$create.error"
-                        },
-                        "$else": {
-                            "$access": "$create.data"
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "MongoDB access provisioning failed."
+                                    }
+                                }
+                            }
                         }
-                    }
+                    },
+                    "value": "$result.data"
                 },
                 "databaseUser": {
-                    "create": {
+                    "result": {
                         "$api.send": {
                             "api": "mongodb-atlas-admin",
                             "method": "post",
                             "endpoint": "create-database-user",
                             "data": {
-                                "atlasProjectId": "$project.id",
-                                "clusterName": "$clusterName",
-                                "username": "$username",
-                                "password": "$password"
+                                "atlasProjectId": "$actions.project.value.id",
+                                "clusterName": "$actions.clusterName",
+                                "username": "$actions.username",
+                                "password": "$actions.password"
                             }
                         }
                     },
-                    "$if.$create.error.length.$gt": {
-                        "0": {
-                            "$throw": "$create.error"
-                        },
-                        "$else": {
-                            "$databaseUser": "$create.data"
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "MongoDB databaseUser provisioning failed."
+                                    }
+                                }
+                            }
                         }
-                    }
+                    },
+                    "value": "$result.data"
                 },
                 "connectionString": {
-                    "create": {
+                    "result": {
                         "$api.send": {
                             "api": "mongodb-atlas-admin",
                             "method": "get",
                             "endpoint": "get-cluster-connection",
                             "data": {
-                                "atlasProjectId": "$project.id",
-                                "clusterName": "$clusterName"
+                                "atlasProjectId": "$actions.project.value.id",
+                                "clusterName": "$actions.clusterName"
                             }
                         }
                     },
-                    "$if.$create.error.length.$gt": {
-                        "0": {
-                            "$throw": "$create.error"
-                        },
-                        "$else": {
-                            "$connectionString": {
-                                "$if.$create.data.connectionStrings.standardSrv.$regex": {
-                                    "\\S": {
-                                        "$create.data.connectionStrings.standardSrv.replace": [
-                                            "mongodb+srv://",
-                                            {
-                                                "$concat": [
-                                                    [
-                                                        "mongodb+srv://",
-                                                        {
-                                                            "$encodeURIComponent": "$username"
-                                                        },
-                                                        ":",
-                                                        {
-                                                            "$encodeURIComponent": "$password"
-                                                        },
-                                                        "@"
-                                                    ]
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    "$else": null
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "MongoDB connectionString provisioning failed."
+                                    }
                                 }
                             }
                         }
+                    },
+                    "value": "$result.data"
+                },
+                "checkConnection": {
+                    "$if.$actions.connectionString.value.connectionStrings.standardSrv.$exists": {
+                        "$true": {},
+                        "$else": {
+                            "$throw": "MongoDB has not returned its bootstrap connection string yet."
+                        }
                     }
+                },
+                "encodedUsername": {
+                    "$encodeURIComponent": "$actions.username"
+                },
+                "encodedPassword": {
+                    "$encodeURIComponent": "$actions.password"
+                },
+                "connectionUri": {
+                    "$actions.connectionString.value.connectionStrings.standardSrv.replace": [
+                        "mongodb+srv://",
+                        "mongodb+srv://{{$actions.encodedUsername}}:{{$actions.encodedPassword}}@"
+                    ]
                 },
                 "storage": {
                     "name": "mongodb",
                     "provider": "mongodb",
-                    "username": "$username",
-                    "password": "$password",
-                    "connectionString": "$connectionString"
+                    "username": "$actions.username",
+                    "password": "$actions.password",
+                    "connectionString": "$actions.connectionUri"
                 },
                 "saveStorage": {
-                    "$crud.send": {
-                        "method": "object.update",
-                        "database": "$organization_id",
-                        "array": "organizations",
-                        "object": {
-                            "_id": "$organizationId",
-                            "storage": "$storage",
-                            "atlas": {
-                                "organizationId": "$organization.id",
-                                "projectId": "$project.id",
-                                "clusterId": "$cluster.id",
-                                "clusterName": "$clusterName",
-                                "username": "$username",
-                                "password": "$password",
-                                "connectionString": "$connectionString"
+                    "result": {
+                        "$crud.send": {
+                            "method": "object.update",
+                            "array": "organizations",
+                            "object": {
+                                "_id": "$actions.organizationId",
+                                "storage": "$actions.storage",
+                                "bootstrapStorage": "$actions.storage",
+                                "atlas": {
+                                    "organizationId": "$actions.organization.value.id",
+                                    "projectId": "$actions.project.value.id",
+                                    "clusterId": "$actions.cluster.value.id",
+                                    "clusterName": "$actions.clusterName"
+                                }
+                            },
+                            "database": "$organization_id"
+                        }
+                    },
+                    "checkError": {
+                        "$if.$result.error.$exists": {
+                            "$true": {
+                                "$if.$result.error.length.$gt": {
+                                    "0": {
+                                        "$throw": "Unable to update organizations."
+                                    }
+                                }
                             }
                         }
-                    }
+                    },
+                    "checkSuccess": {
+                        "$if.$result.success.$eq": {
+                            "$false": {
+                                "$throw": "Unable to update organizations."
+                            }
+                        }
+                    },
+                    "value": "$result.object.0"
                 },
                 "$data.createManagedMongoDB": {
-                    "storage": "$storage",
+                    "storage": "$actions.storage",
                     "provisioned": true,
-                    "organizationId": "$organization.id",
-                    "projectId": "$project.id",
-                    "clusterId": "$cluster.id",
-                    "clusterName": "$clusterName",
-                    "username": "$username",
-                    "password": "$password",
-                    "connectionString": "$connectionString",
+                    "organizationId": "$actions.organization.value.id",
+                    "projectId": "$actions.project.value.id",
+                    "clusterId": "$actions.cluster.value.id",
+                    "clusterName": "$actions.clusterName"
                 }
             }
         }

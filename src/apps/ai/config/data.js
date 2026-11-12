@@ -433,7 +433,7 @@ Illustrative optional endpoints object. Use this pattern for an executable serve
   "api_id": "API_OBJECT_ID",
   "name": "delete-instance",
   "method": "delete",
-  "endpoint": { "$concat": ["/instances/", "$payload.data.vmId"] },
+  "endpoint": { "$concat": ["/instances/", "$payload.data.id"] },
   "description": "Terminates the targeted provider instance.",
   "enabled": true
 }
@@ -520,7 +520,7 @@ The examples above illustrate record shape and composition, not literal IDs or a
                                 $null: ["$payload.data.zone", "$payload.data.region"]
                             },
                             "/instances/",
-                            "$payload.data.vmId"
+                            "$payload.data.id"
                         ]
                     }
                 },
@@ -623,7 +623,7 @@ The examples above illustrate record shape and composition, not literal IDs or a
             description: "Server guidance",
             default: true,
             enabled: true,
-            instructions: `Use manage_server_cluster to inspect server topology and perform validated operational controls. Server records are stored in the servers array and contain top-level server lifecycle state, master state, worker1..workerN state, location, and provider-agnostic infrastructure fields including provider, region, zone, vmId, and vmType.
+            instructions: `Use manage_server_cluster to inspect server topology and perform validated operational controls. Server records are stored in the servers array and contain top-level server lifecycle state, master state, worker1..workerN state, and a deployment object containing cloud, dns, location, provider, region, zone, id, and type.
 
 Worker controls:
 - cordon prevents a worker from accepting new edge traffic without terminating existing connections.

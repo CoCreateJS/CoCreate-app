@@ -20,7 +20,7 @@ async function persist(cluster) {
 const definition = () => ({
     _id: 'cluster-1', type: 'organization', name: 'Production', host: 'tenant.test',
     manager: { organization_id: 'platform', host: 'platform.test', for: 'tenant' },
-    initialDeployment: { cloud: 'cloud-api', region: 'us-east-1', vmType: 't3a.small' },
+    deployment: { cloud: 'cloud-api', region: 'us-east-1', type: 't3a.small' },
     repositories: [{ url: 'git@example.test:tenant/app.git', branch: 'main' }]
 });
 
@@ -32,7 +32,7 @@ test('cluster persistence accepts a display name distinct from its managed organ
     assert.deepEqual(writes[1].object, { _id: 'tenant', cluster_id: cluster._id });
     assert.equal(writes[0].object.name, 'Production');
     assert.equal(writes[0].object.manager.for, 'tenant');
-    assert.equal(writes[0].object.initialDeployment.vmType, 't3a.small');
+    assert.equal(writes[0].object.deployment.type, 't3a.small');
     assert.deepEqual(writes[0].object.repositories, cluster.repositories);
 });
 
@@ -54,10 +54,10 @@ test('manager.for must identify the organization being initialized', async () =>
     assert.deepEqual(writes, []);
 });
 
-test('initialDeployment stays a required cluster property', async () => {
+test('deployment stays a required cluster property', async () => {
     const cluster = definition();
-    cluster.manager.initialDeployment = cluster.initialDeployment;
-    delete cluster.initialDeployment;
+    cluster.manager.deployment = cluster.deployment;
+    delete cluster.deployment;
     const { result, writes } = await persist(cluster);
     assert.ok(result.error?.length || result.success === false);
     assert.deepEqual(writes, []);

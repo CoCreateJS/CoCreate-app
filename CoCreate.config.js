@@ -11,6 +11,8 @@ export default {
     directories: [
         {
             entry: "./src",
+            storage: "db",
+            database: "dev",
             array: "files",
             languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
             exclude: ["/admin/", "/apps/", "/config/"],
@@ -27,6 +29,8 @@ export default {
         },
         {
             entry: "./src",
+            storage: "db",
+            database: "dev",
             array: "files",
             languages: ["en", "es", "fr", "pt", "nl", "ht", "gn"],
             include: ["/admin/", "/apps/"],
@@ -279,12 +283,6 @@ export default {
             selector: "[resize], [height='auto']",
             path: "../CoCreate-modules/resize",
             repo: "github.com/CoCreateJS/CoCreate-resize.git"
-        },
-        organizations: {
-            import: "@cocreate/organizations",
-            selector: "[actions*='createOrganization'], [actions*='createEnvironments']",
-            path: "../CoCreate-modules/organizations",
-            repo: "github.com/CoCreateJS/CoCreate-organizations.git"
         },
         users: {
             import: "@cocreate/users",
