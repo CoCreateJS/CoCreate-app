@@ -152,3 +152,13 @@ permits any enabled cloud API in the workflow's organization; a nonempty selecti
 restricts creation and deletion to those IDs. AutoScaler applies the same optional
 API-ID whitelist convention to `cluster.dns` before choosing POPs. Deployment POPs
 carry their connection `apiId`; provider credentials stay in their API records.
+
+
+`mesh.js` seeds the `peerUnavailable` workflow. Mesh directly invokes it
+when abnormal peer recovery is exhausted and independently emits a notification
+event. The workflow adds queued messages and observer evidence to the server
+record using `$addToSet`, then marks an eligible unreachable peer failed. It
+preserves retirement statuses and never invokes a provider termination API.
+Publish this seed to the observing server organization's `workflows` array before
+enabling failure reporting in its runtime. Editing the stored actions changes
+failure policy without rebuilding Mesh.
