@@ -26,11 +26,11 @@ export default {
                                     "observedAt": "$payload.peerUnavailable.0.observedAt",
                                     "reason": "$payload.peerUnavailable.0.reason",
                                     "peerOrganizationId": "$payload.peerUnavailable.0.peerOrganizationId",
-                            "remoteAddress": "$payload.peerUnavailable.0.remoteAddress",
-                            "retries": "$payload.peerUnavailable.0.retries",
-                            "recoveryWaitMs": "$payload.peerUnavailable.0.recoveryWaitMs",
-                            "closeCode": "$payload.peerUnavailable.0.closeCode",
-                            "peerReachable": "$payload.peerUnavailable.0.peerReachable"
+                                    "remoteAddress": "$payload.peerUnavailable.0.remoteAddress",
+                                    "retries": "$payload.peerUnavailable.0.retries",
+                                    "recoveryWaitMs": "$payload.peerUnavailable.0.recoveryWaitMs",
+                                    "closeCode": "$payload.peerUnavailable.0.closeCode",
+                                    "peerReachable": "$payload.peerUnavailable.0.peerReachable"
                                 }
                             }
                         },

@@ -153,7 +153,6 @@ restricts creation and deletion to those IDs. AutoScaler applies the same option
 API-ID whitelist convention to `cluster.dns` before choosing POPs. Deployment POPs
 carry their connection `apiId`; provider credentials stay in their API records.
 
-
 `mesh.js` seeds the `peerUnavailable` workflow. Mesh directly invokes it
 when abnormal peer recovery is exhausted and independently emits a notification
 event. The workflow adds queued messages and observer evidence to the server
